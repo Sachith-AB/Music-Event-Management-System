@@ -4,6 +4,19 @@
         <div class="wrapper">
             <h2>Register Page</h2>
 
+            <?php
+                if(isset($_SESSION['add-user'])){
+                    echo $_SESSION['add-user'];
+                    unset($_SESSION['add-user']);
+                }
+
+                if(isset($_SESSION['add-user-faild'])){
+                    echo $_SESSION['add-user-faild'];
+                    unset($_SESSION['add-user-faild']);
+                }
+
+            ?><br><br>
+
             <form action="" method="post">
             <table>
                 <tr>
@@ -19,7 +32,7 @@
                     <td><input type="password" name="password" placeholder="password"></td><br>
                 </tr>
                 <tr>
-                    <td colspan="2"><input type="submit" name="submit" value="Submit" class="edit-btn"></td><br>
+                    <td colspan="2"><input type="submit" name="submit" value="Submit" class=""></td><br>
                 </tr>
             </table>
             </form>
@@ -34,20 +47,24 @@
         $email = $_POST['email'];
         $password = password_hash($_POST['password'],PASSWORD_DEFAULT);
 
-        $sql = "INSERT INTO users SET
-        name = '$name',
-        email = '$email',
-        password = '$password'
-        ";
-
-        $res = mysqli_query($conn,$sql) or die(mysqli_error($conn));
-
-        if($res == true){
-            $_SESSION['add-user'] = '<div>=user added';
-            header('location:'.SITEURL.'home.php');
+        if(!$name || !$email || !$password){
+            $_SESSION['add-user-faild'] = '<div class="">=user added fail</div>';
+            header('location:'.SITEURL.'/register.php');
         }else{
-            $_SESSION['add'] = '<div class="error">Admin added failed</div>';
-            header('location:'.SITEURL.'admin/add-admin.php');
+            $sql = "INSERT INTO users SET
+            name = '$name',
+            email = '$email',
+            password = '$password'";
+
+            $res = mysqli_query($conn,$sql) or die(mysqli_error($conn));
+
+            if($res == true){
+                $_SESSION['add-user'] = '<div class="">=user added</div>';
+                header('location:'.SITEURL.'/home.php');
+            }else{
+                $_SESSION['add-user'] = '<div class="">user added failed</div>';
+                header('location:'.SITEURL.'/register.php');
+        }
         }
     }
 ?>
