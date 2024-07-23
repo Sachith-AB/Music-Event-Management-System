@@ -18,23 +18,23 @@
             ?><br><br>
 
             <form action="" method="post">
-            <table>
-                <tr>
-                    <td>Full Name:</td>
-                    <td><input type="text" name="name" placeholder="full name"></td><br>
-                </tr>
-                <tr>
-                    <td>Email:</td>
-                    <td><input type="email" name="email" placeholder="email"></td><br>
-                </tr>
-                <tr>
-                    <td>Password:</td>
-                    <td><input type="password" name="password" placeholder="password"></td><br>
-                </tr>
-                <tr>
-                    <td colspan="2"><input type="submit" name="submit" value="Submit" class=""></td><br>
-                </tr>
-            </table>
+                <table>
+                    <tr>
+                        <td>Full Name:</td>
+                        <td><input type="text" name="name" placeholder="full name"></td><br>
+                    </tr>
+                    <tr>
+                        <td>Email:</td>
+                        <td><input type="email" name="email" placeholder="email"></td><br>
+                    </tr>
+                    <tr>
+                        <td>Password:</td>
+                        <td><input type="password" name="password" placeholder="password"></td><br>
+                    </tr>
+                    <tr>
+                        <td colspan="2"><input type="submit" name="submit" value="Submit" class=""></td><br>
+                    </tr>
+                </table>
             </form>
         </div>
     </div>
@@ -42,14 +42,14 @@
 <?php include('components/footer.php') ?>
 
 <?php
-    if(isset($_POST['submit'])){
+    if(isset($_POST["submit"])){
+
         $name = $_POST['name'];
         $email = $_POST['email'];
         $password = password_hash($_POST['password'],PASSWORD_DEFAULT);
 
         if(!$name || !$email || !$password){
-            $_SESSION['add-user-faild'] = '<div class="">=user added fail</div>';
-            header('location:'.SITEURL.'/register.php');
+           echo "All field are required";
         }else{
             $sql = "INSERT INTO users SET
             name = '$name',
@@ -60,11 +60,11 @@
 
             if($res == true){
                 $_SESSION['add-user'] = '<div class="">=user added</div>';
-                header('location:'.SITEURL.'/home.php');
+                header('location:'.SITEURL.'home.php');
             }else{
                 $_SESSION['add-user'] = '<div class="">user added failed</div>';
-                header('location:'.SITEURL.'/register.php');
-        }
+                header('location:'.SITEURL.'register.php');
+            }
         }
     }
 ?>
