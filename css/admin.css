@@ -10,7 +10,7 @@
     padding: 1%;
     width: 80%;
     margin: auto;
-    margin-top: 1%;
+    border: 1px;
 }
 
 .text-center{
@@ -19,6 +19,7 @@
 
 .menu{
     text-align: end;
+    border-bottom: 1px solid gray;
 }
 
 .menu ul{
@@ -40,7 +41,10 @@
     text-decoration: underline;
 }
 
-
+.main-content{
+    background-color: #e6e7e8;
+    height: 100%;
+}
 
 .footer{
     background-color: darkblue;
