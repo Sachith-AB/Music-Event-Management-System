@@ -4,19 +4,6 @@
         <div class="wrapper">
             <h2>Register Page</h2>
 
-            <?php
-                if(isset($_SESSION['add-user'])){
-                    echo $_SESSION['add-user'];
-                    unset($_SESSION['add-user']);
-                }
-
-                if(isset($_SESSION['add-user-faild'])){
-                    echo $_SESSION['add-user-faild'];
-                    unset($_SESSION['add-user-faild']);
-                }
-
-            ?><br><br>
-
             <form action="" method="post">
                 <table>
                     <tr>
@@ -35,6 +22,13 @@
                         <td colspan="2"><input type="submit" name="submit" value="Submit" class=""></td><br>
                     </tr>
                 </table>
+                <?php
+                if(isset($_SESSION['add-faild'])){
+                    echo $_SESSION['add-faild'];
+                    unset($_SESSION['add-faild']);
+                }
+
+            ?>
             </form>
         </div>
     </div>
@@ -49,7 +43,8 @@
         $password = password_hash($_POST['password'],PASSWORD_DEFAULT);
 
         if(!$name || !$email || !$password){
-           echo "All field are required";
+            $_SESSION['add-faild'] = '<div class="error">Admin added failed</div>';
+            header('location:'.SITEURL.'register.php');
         }else{
             $sql = "INSERT INTO users SET
             name = '$name',
@@ -59,10 +54,11 @@
             $res = mysqli_query($conn,$sql) or die(mysqli_error($conn));
 
             if($res == true){
-                $_SESSION['add-user'] = '<div class="">=user added</div>';
+                //create session variables
+                $_SESSION['add-user'] = '<div class="success">User Added</div>';
                 header('location:'.SITEURL.'home.php');
             }else{
-                $_SESSION['add-user'] = '<div class="">user added failed</div>';
+                $_SESSION['add-faild'] = '<div class="error">Admin added failed</div>';
                 header('location:'.SITEURL.'register.php');
             }
         }

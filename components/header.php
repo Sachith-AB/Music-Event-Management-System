@@ -1,3 +1,7 @@
+<?php
+    include ('./config/constant.php');
+?>
+
 <html>
     <title>Event Management System-Home Page</title>
     <link rel="stylesheet" href="./css/admin.css">

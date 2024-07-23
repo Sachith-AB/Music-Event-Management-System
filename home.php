@@ -1,9 +1,19 @@
 <?php include('components/header.php');?>
+
+    <?php 
+        if(isset($_SESSION['add-user'])){
+            echo $_SESSION['add-user'];
+            unset($_SESSION['add-user']);
+        }
+
+    ?>
         
         <!-- Main contanent -->
         <div class="main-content">
             <div class="wrapper">
-                <strong>sa</strong>
+                <div>
+                    Home
+                </div>
             </div>
         </div>
         <!--Main end -->
