@@ -1,4 +1,4 @@
-<?php include('components/header.php')?>
+<?php include('components/header.php');?>
         
         <!-- Main contanent -->
         <div class="main-content">
@@ -7,5 +7,5 @@
             </div>
         </div>
         <!--Main end -->
-        
+
 <?php include('components/footer.php');
