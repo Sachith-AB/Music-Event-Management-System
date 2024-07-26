@@ -19,7 +19,6 @@
 
 .menu{
     text-align: end;
-    border-bottom: 1px solid gray;
 }
 
 .menu ul{
@@ -47,8 +46,8 @@
 }
 
 .footer{
-    background-color: darkblue;
+    background-color: rgb(246, 246, 248);
 }
 .footer p{
-    color: white;
+    color: rgb(152, 151, 151);
 }
