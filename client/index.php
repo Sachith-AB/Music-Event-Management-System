@@ -1,4 +1,3 @@
-
 <?php include('components/header.php') ?>        
         <!-- Main contanent -->
         <div class="main-content">
