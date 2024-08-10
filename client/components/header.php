@@ -1,5 +1,5 @@
 <?php
-    include ('./config/constant.php');
+   include('../config/constant.php')
 ?>
 
 <html>
