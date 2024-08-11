@@ -1,6 +1,8 @@
 <?php
 
-class Event extends Controller {
+class Event {
+
+    use Controller;
     public function index(){
         echo "this is event controller";
 
