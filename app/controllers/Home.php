@@ -11,12 +11,12 @@
 
         $user = new User;
 
-        $arr['name'] = 'vindaya';
+        $arr['name'] = 'vindyahewa';
         $arr['email'] = 'vindya@gmail.com';
-        $arr['password'] = 'sachith';
+        $arr['password'] = 'vindya';
         $arr['username'] = 'vindya123';
 
-        $result = $user->insert($arr);
+        $result = $user->update(20,$arr);
         show($result);
     }
  }

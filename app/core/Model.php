@@ -87,5 +87,21 @@ trait Model {
                 }
             }
         }
+
+        $keys = array_keys($data);
+        $query = "UPDATE $this->table SET ";
+
+        foreach($keys as $key){
+            $query .= $key . " = :". $key . ", ";
+        }
+        $query = trim($query,", ");
+
+        $query .= " WHERE $id_column = :$id_column";
+        
+        $data[$id_column] = $id;
+        $this->query($query, $data);
+
+        return false;
+
     }
 }
