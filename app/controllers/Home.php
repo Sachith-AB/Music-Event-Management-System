@@ -11,12 +11,9 @@
 
         $user = new User;
 
-        $arr['name'] = 'vindyahewa';
-        $arr['email'] = 'vindya@gmail.com';
-        $arr['password'] = 'vindya';
-        $arr['username'] = 'vindya123';
+        $arr['id'] = 19;
 
-        $result = $user->update(20,$arr);
+        $result = $user->first($arr);
         show($result);
     }
  }
