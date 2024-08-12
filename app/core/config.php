@@ -1,7 +1,7 @@
 <?php 
 
 if($_SERVER['SERVER_NAME'] == 'localhost'){
-    define('ROOT','http://localhost/musica/public');
+    define('ROOT','http://localhost/Music-Event-Management-System/public');
     /**
      * database config
      */
