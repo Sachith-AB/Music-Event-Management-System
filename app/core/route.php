@@ -6,4 +6,4 @@ route('signup','Signup@index');
 
 
 
-route('purchaseticket','ticket@index');
+route('purchaseticket','ticket/Ticket@index');
