@@ -4,14 +4,19 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Sign Up Form</title>
-    <link rel="stylesheet" href="<?=ROOT?>/assets/css/signin.css">
+    <link rel="stylesheet" href="<?=ROOT?>/assets/css/signup.css">
 </head>
 <body>
     <div class="container">
         <div class="form-box">
-            <h1>Welcome</h1>
-            <p>Log In</p>
+            <h1>Create an Account</h1>
             <form>
+                <label for="name">Full Name</label>
+                <input type="text" id="name" placeholder="Enter your full name" required>
+
+                <label for="username">Username</label>
+                <input type="text" id="username" placeholder="Choose a username" required>
+
                 <label for="email">Email</label>
                 <input type="email" id="email" placeholder="example.email@gmail.com" required>
                 
@@ -23,9 +28,9 @@
                     <label for="agree">I agree with <a href="#">Terms & Conditions</a></label>
                 </div>
                 
-                <button type="submit" class="sign-in-btn">Sign In</button>
+                <button type="submit" class="sign-up-btn">Sign Up</button>
                 
-                <div class="alternative-signin">
+                <div class="alternative-signup">
                     <p>Or sign up with</p>
                     <div class="social-buttons">
                         <button class="google-btn">G</button>
@@ -33,7 +38,7 @@
                     </div>
                 </div>
                 
-                <p class="sign-in-link">Not Yet Account? <a href="#">Sign up</a></p>
+                <p class="sign-in-link">Already have an account? <a href="#">Log in</a></p>
             </form>
         </div>
     </div>
