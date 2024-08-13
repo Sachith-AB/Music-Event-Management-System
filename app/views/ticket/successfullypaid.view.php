@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Musicia - Ticket Purchase</title>
+    <title>Musicia - Ticket Purchase Success</title>
     <link rel="stylesheet" href="<?=ROOT?>/assets/css/ticket/ticketstyle.css">
 </head>
 <body>
@@ -15,9 +15,14 @@
     <!-- Main Content -->
     <main>
         <div class="event-details-container">
-            <div class="back-link">
-                <a href="#">&#8592;     Purchase Ticket</a> <span class="time-left">Time left: 25:00</span>
+        <div class="success-message">
+            <div class="success-icon">
+                &#10004;
             </div>
+            <div class="success-text">
+                Successful payment!
+            </div>
+        </div>
             <h1 class="event-title">Rock Revolt: A Fusion of Power and Passion</h1>
             <div class="event-info">
                 <div class="event-item">
@@ -32,6 +37,15 @@
 
                 <div class="event-item">
                     <div class="icon">
+                        <img src="<?=ROOT?>/assets/images/ticket/Duration-icon.png" alt="Place Icon">
+                    </div>
+                    <div>
+                        <h3>Duration</h3>
+                        <p>2 Hours</p>
+                    </div>
+                </div>
+                <div class="event-item">
+                    <div class="icon">
                         <img src="<?=ROOT?>/assets/images/ticket/location-icon.png" alt="Place Icon">
                     </div>
                     <div>
@@ -39,93 +53,117 @@
                         <p>Central Park, New York, NY<br>United States</p>
                     </div>
                 </div>
+                <div class="event-item">
+                    <div class="icon">
+                        <img src="<?=ROOT?>/assets/images/ticket/ticket-icon.png" alt="Place Icon">
+                    </div>
+                    <div>
+                        <h3>Ticket</h3>
+                        <p>2 tickets</p>
+                    </div>
+                </div>
         </div>
 
-        <div class="form-line"></div>
-
-
-        <!--contact section-->
+        
         <div class="event-details-container">
-        <div class="contact-header">
-            <h2>Contact information</h2>
-            <a href="#" class="login-link">Log in</a>
-        </div>
-        <form>
+            <!--purchase information-->
+            <div class="contact-header">
+                <h2>Purchase Information</h2>
+            </div>
             <div class="input-group">
                 <div class="input-field">
-                    <label for="first-name">First name</label>
-                    <input type="text" id="first-name" placeholder="Amanda" required>
+                    <label for="first-name">Code</label>
+                    <p>#123456789</p>
                 </div>
                 <div class="input-field">
-                    <label for="last-name">Last name</label>
-                    <input type="text" id="last-name" placeholder="Smith" required>
+                    <label for="last-name">Date</label>
+                    <p?>June 01,2023</p>
+                </div>
+                <div class="input-field">
+                    <label for="last-name">Total</label>
+                    <p>$162</p>
+                </div>
+                <div class="input-field">
+                    <label for="last-name">Payment method</label>
+                    <p>Matercard-****3456</p>
                 </div>
             </div>
 
+
+            <!--contact information-->
+            <div class="contact-header">
+                <h2>Contact Information</h2>
+            </div>
             <div class="input-group">
                 <div class="input-field">
-                    <label for="email">Email</label>
-                    <input type="email" id="email" placeholder="Amanda@email.com" required>
+                    <label for="first-name">Fname</label>
+                    <p>Amanda</p>
                 </div>
                 <div class="input-field">
-                    <label for="phone">Phone number</label>
-                    <input type="tel" id="phone" placeholder="(724) 651-7073" required>
+                    <label for="last-name">Lname</label>
+                    <p?>Smith</p>
+                </div>
+                <div class="input-field">
+                    <label for="last-name">Email</label>
+                    <p>amanda@gmail.com</p>
+                </div>
+                <div class="input-field">
+                    <label for="last-name">Phone number</label>
+                    <p>(724)4546798</p>
                 </div>
             </div>
 
-            <div class="checkbox-group">
-                <label><input type="checkbox" checked> Keep me updated on this event</label>
-                <label><input type="checkbox" checked> I agree with the <a href="#">Terms of Use</a> & <a href="#">Privacy Policy</a></label>
-            </div>
-        </form>
+            
+
+            
+        
     </div>  
     
     <!--ticket section-->
 
     <div class="event-details-container">
-        <h2>Ticket</h2>
-        
-        <!-- Ticket Selection -->
-        <div class="ticket-selection">
-            <div class="price">
-                <p>$90 / Ticket</p>
-            </div>
-            <div class="quantity">
-                <input type="radio" name="ticket-quantity" id="one-ticket">
-                <label for="one-ticket">1</label>
-                <input type="radio" name="ticket-quantity" id="two-tickets" checked>
-                <label for="two-tickets">2</label>
-            </div>
+        <div class="contact-header">
+            <h3>Ticket (2) total: <span>$162</span></h3>
+            <a href="#" class="login-link">View ticket</a>
         </div>
+
+        
         
         <!-- Ticket 1 -->
         <div class="ticket-details">
             <div class="ticket-header">
                 <h3>Ticket 1</h3>
-                <label><input type="checkbox"> Same contact information</label>
             </div>
             <div class="input-group">
                 <div class="input-field">
-                    <label for="first-name-1">First name</label>
-                    <input type="text" id="first-name-1" placeholder="Amanda">
+                    <label for="first-name">Fname</label>
+                    <p>Amanda</p>
                 </div>
                 <div class="input-field">
-                    <label for="last-name-1">Last name</label>
-                    <input type="text" id="last-name-1" placeholder="Smith">
+                    <label for="last-name">Lname</label>
+                    <p?>Smith</p>
+                </div>
+                <div class="input-field">
+                    <label for="last-name">Email</label>
+                    <p>amanda@gmail.com</p>
+                </div>
+                <div class="input-field">
+                    <label for="last-name">Phone number</label>
+                    <p>(724)4546798</p>
+                </div>
+                <div class="input-field">
+                    <div class="qr-code">
+                        <div class="qr-code-part">
+                            <p><strong>Code</strong></p>
+                            <a href="#">MRCE-934912</a>
+                        </div>
+                        <img src="<?=ROOT?>/assets/images/ticket/QR_code-image.png" alt="QR Code">
+                    </div>
                 </div>
             </div>
-            <div class="input-group">
-                <div class="input-field">
-                    <label for="email-1">Email</label>
-                    <input type="email" id="email-1" placeholder="Amanda@email.com">
-                </div>
-                <div class="input-field">
-                    <label for="phone-1">Phone number</label>
-                    <input type="tel" id="phone-1" placeholder="(724) 651-7073">
-                </div>
-            </div>
-        </div>
+        </div>        
         
+ 
         <!-- Ticket 2 -->
         <div class="ticket-details">
             <div class="ticket-header">
@@ -133,30 +171,36 @@
             </div>
             <div class="input-group">
                 <div class="input-field">
-                    <label for="first-name-2">First name</label>
-                    <input type="text" id="first-name-2" placeholder="Charles">
+                    <label for="first-name">Fname</label>
+                    <p>Amanda</p>
                 </div>
                 <div class="input-field">
-                    <label for="last-name-2">Last name</label>
-                    <input type="text" id="last-name-2" placeholder="Sanchez">
-                </div>
-            </div>
-            <div class="input-group">
-                <div class="input-field">
-                    <label for="email-2">Email</label>
-                    <input type="email" id="email-2" placeholder="Charles@email.com">
+                    <label for="last-name">Lname</label>
+                    <p?>Smith</p>
                 </div>
                 <div class="input-field">
-                    <label for="phone-2">Phone number</label>
-                    <input type="tel" id="phone-2" placeholder="(570) 775-9922">
+                    <label for="last-name">Email</label>
+                    <p>amanda@gmail.com</p>
+                </div>
+                <div class="input-field">
+                    <label for="last-name">Phone number</label>
+                    <p>(724)4546798</p>
+                </div>
+                <div class="input-field">
+                    <div class="qr-code">
+                        <div class="qr-code-part">
+                            <p><strong>Code</strong></p>
+                            <a href="#">MRCE-934912</a>
+                        </div>
+                        <img src="<?=ROOT?>/assets/images/ticket/QR_code-image.png" alt="QR Code">
+                    </div>
                 </div>
             </div>
         </div>
 
         <!-- Add Ticket Button -->
         <div class="button-group">
-            <button type="button" class="add-ticket-btn">+ Add Ticket</button>
-            <button type="button" class="next-btn" onclick="showSummary()">Next</button>
+            <button type="button" class="add-ticket-btn">Go to my ticket</button>
         </div>
     </div>
 
