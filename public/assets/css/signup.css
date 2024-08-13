@@ -27,7 +27,7 @@ body {
     border-radius: 10px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
     position: relative;
-    width: 350px;
+    width: 70%;
     text-align: center;
 }
 
@@ -35,6 +35,7 @@ h1 {
     font-size: 2rem;
     font-weight: bold;
     color: #333;
+    font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
 }
 
 p {
@@ -82,6 +83,11 @@ input[type="text"], input[type="email"], input[type="password"] {
     text-decoration: none;
 }
 
+.terms a:hover {
+    color: #7b61ff;
+    text-decoration: underline;
+}
+
 .sign-up-btn {
     width: 100%;
     padding: 0.75rem;
@@ -107,25 +113,6 @@ input[type="text"], input[type="email"], input[type="password"] {
     display: flex;
     justify-content: space-between;
     margin-top: 0.5rem;
-}
-
-.google-btn, .facebook-btn {
-    width: 48%;
-    padding: 0.75rem;
-    border: none;
-    border-radius: 5px;
-    font-size: 1rem;
-    cursor: pointer;
-}
-
-.google-btn {
-    background-color: #F4B6C2;
-    color: #D80027;
-}
-
-.facebook-btn {
-    background-color: #C7CEEA;
-    color: #3B5998;
 }
 
 .sign-in-link {

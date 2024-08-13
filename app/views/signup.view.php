@@ -9,36 +9,31 @@
 <body>
     <div class="container">
         <div class="form-box">
-            <h1>Create an Account</h1>
+            <h1>Get Started</h1>
             <form>
-                <label for="name">Full Name</label>
-                <input type="text" id="name" placeholder="Enter your full name" required>
+                <div class="input-wrap">
+                    <label for="name">Name</label>
+                    <input type="text" id="name" placeholder="Name" required>
 
-                <label for="username">Username</label>
-                <input type="text" id="username" placeholder="Choose a username" required>
-
+                </div>
                 <label for="email">Email</label>
-                <input type="email" id="email" placeholder="example.email@gmail.com" required>
-                
+                <input type="email" id="email" placeholder="Email" required>
+
                 <label for="password">Password</label>
-                <input type="password" id="password" placeholder="Enter at least 8+ characters" required>
+                <input type="password" id="password" placeholder="Password" required>
                 
+                <label for="password">Confirm Password</label>
+                <input type="password" id="password" placeholder="Confirm Password" required>
+
                 <div class="terms">
                     <input type="checkbox" id="agree" required>
-                    <label for="agree">I agree with <a href="#">Terms & Conditions</a></label>
+                    <label for="agree">I agree with&nbsp;<a href="#">Terms & Conditions</a></label>
+
                 </div>
                 
                 <button type="submit" class="sign-up-btn">Sign Up</button>
                 
-                <div class="alternative-signup">
-                    <p>Or sign up with</p>
-                    <div class="social-buttons">
-                        <button class="google-btn">G</button>
-                        <button class="facebook-btn">f</button>
-                    </div>
-                </div>
-                
-                <p class="sign-in-link">Already have an account? <a href="#">Log in</a></p>
+                <p class="sign-in-link">Already have an account? <a href="signin">Log in</a></p>
             </form>
         </div>
     </div>

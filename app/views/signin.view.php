@@ -9,31 +9,22 @@
 <body>
     <div class="container">
         <div class="form-box">
-            <h1>Welcome</h1>
-            <p>Log In</p>
+            <h1 class="head-1">Welcome Back</h1>
             <form>
                 <label for="email">Email</label>
-                <input type="email" id="email" placeholder="example.email@gmail.com" required>
+                <input type="email" id="email" placeholder="Email" required>
                 
                 <label for="password">Password</label>
-                <input type="password" id="password" placeholder="Enter at least 8+ characters" required>
+                <input type="password" id="password" placeholder="Password" required>
                 
                 <div class="terms">
                     <input type="checkbox" id="agree" required>
-                    <label for="agree">I agree with <a href="#">Terms & Conditions</a></label>
+                    <label for="agree">I agree with&nbsp;<a href="#">Terms & Conditions</a></label>
                 </div>
                 
                 <button type="submit" class="sign-in-btn">Sign In</button>
                 
-                <div class="alternative-signin">
-                    <p>Or sign up with</p>
-                    <div class="social-buttons">
-                        <button class="google-btn">G</button>
-                        <button class="facebook-btn">f</button>
-                    </div>
-                </div>
-                
-                <p class="sign-in-link">Not Yet Account? <a href="#">Sign up</a></p>
+                <p class="sign-in-link">Not Registerd Yet? <a href="#">Sign up</a></p>
             </form>
         </div>
     </div>
