@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Musicia - Ticket Purchase</title>
-    <link rel="stylesheet" href="<?=ROOT?>/assets/css/ticketstyle.css">
+    <link rel="stylesheet" href="<?=ROOT?>/assets/css/ticket/ticketstyle.css">
 </head>
 <body>
 
@@ -22,7 +22,7 @@
             <div class="event-info">
                 <div class="event-item">
                     <div class="icon">
-                        <img src="calendar-icon2.jpg" alt="Date Icon">
+                        <img src="<?=ROOT?>/assets/images/ticket/calendar-icon2.jpg" alt="Date Icon">
                     </div>
                     <div>
                         <h3>Date and Time</h3>
@@ -32,7 +32,7 @@
 
                 <div class="event-item">
                     <div class="icon">
-                        <img src="location-icon.png" alt="Place Icon">
+                        <img src="<?=ROOT?>/assets/images/ticket/location-icon.png" alt="Place Icon">
                     </div>
                     <div>
                         <h3>Place</h3>
@@ -182,7 +182,7 @@
         <p>$162</p>
     </div>
         <div class="payment-method">
-            <img src="mastercard-icon.png" alt="Mastercard">
+            <img src="<?=ROOT?>/assets/images/ticket/mastercard-icon.png" alt="Mastercard">
             <span>Mastercard **** 5987</span>
         </div>
         <button class="pay-now-btn">Pay now</button>
@@ -201,7 +201,7 @@
     <div class="musicevent-events-container">
         <div class="musicevent-event-card">
             <div class="musicevent-event-badge">20% OFF</div>
-            <img src="musicevent1.jpg" alt="Musical Fusion Festival" class="musicevent-event-image">
+            <img src="<?=ROOT?>/assets/images/ticket/musicevent1.jpg" alt="Musical Fusion Festival" class="musicevent-event-image">
             <div class="musicevent-event-info">
                 <div class="musicevent-event-title">Musical Fusion Festival</div>
                 <div class="musicevent-event-details">
@@ -214,7 +214,7 @@
 
         <div class="musicevent-event-card">
             <div class="musicevent-event-badge">Buy 2 get 1 free</div>
-            <img src="musicevent2.jpeg" alt="Metropolis Marathon" class="musicevent-event-image">
+            <img src="<?=ROOT?>/assets/images/ticket/musicevent2.jpeg" alt="Metropolis Marathon" class="musicevent-event-image">
             <div class="musicevent-event-info">
                 <div class="musicevent-event-title">Metropolis Marathon</div>
                 <div class="musicevent-event-details">
