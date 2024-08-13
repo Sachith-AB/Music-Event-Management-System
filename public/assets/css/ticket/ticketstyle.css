@@ -239,6 +239,7 @@ body {
     background-color: #f9f9f9;
 }
 
+
 .add-ticket {
     text-align: center;
     
@@ -447,3 +448,36 @@ body {
     padding: 5px 0; /* Add some vertical spacing */
     line-height: 1.5; /* Increase line height for better readability */
 }
+
+
+
+/* successfully paid page */
+/* ticket section*/
+
+
+.qr-code {
+    gap: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #f8f9fa;
+    border-radius: 8px;
+    padding: 10px;
+}
+
+.qr-code-part {
+    flex-direction: column;
+}
+
+.qr-code img {
+    height: 60px;
+    width: 60px;
+}
+
+.qr-code-part a {
+    color: #9b71e9;
+    font-weight: bold;
+    text-decoration: none;
+    margin-top: 5px;
+}
+
