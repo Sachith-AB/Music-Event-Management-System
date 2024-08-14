@@ -481,3 +481,125 @@ body {
     margin-top: 5px;
 }
 
+
+
+/* upcommingevent page */
+.upcommingeve-container {
+    display: flex;
+    max-width: 1200px;
+    margin: 20px auto;
+    padding: 20px;
+}
+
+.upcommingeve-profile {
+    width: 25%;
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    margin-right: 20px;
+}
+
+.upcommingeve-profile img {
+    width: 120px;
+    height: 120px;
+    border-radius: 50%;
+    object-fit: cover;
+    margin-bottom: 20px;
+}
+
+.upcommingeve-profile h3 {
+    margin: 10px 0;
+    font-size: 24px;
+}
+
+.upcommingeve-profile p {
+    margin: 5px 0;
+    color: #777;
+}
+
+.upcommingeve-profile button {
+    background-color: #6a52ff;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 25px;
+    cursor: pointer;
+    font-size: 14px;
+}
+
+.upcommingeve-tickets {
+    width: 75%;
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+}
+
+.upcommingeve-tickets h2 {
+    margin-bottom: 20px;
+    font-size: 24px;
+}
+
+.upcommingeve-tab {
+    display: inline-block;
+    padding: 10px 20px;
+    margin-right: 10px;
+    cursor: pointer;
+    border-bottom: 2px solid transparent;
+    font-size: 18px;
+}
+
+.upcommingeve-tab.active {
+    border-bottom: 2px solid #6a52ff;
+    color: #6a52ff;
+}
+
+.upcommingeve-ticket-card {
+    display: flex;
+    margin-bottom: 20px;
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+}
+
+.upcommingeve-ticket-card:hover{
+    transform: scale(1.05);
+    cursor: pointer;
+}
+
+.upcommingeve-ticket-image {
+    width: 30%;
+    background-color: #f0f0f0;
+}
+
+.upcommingeve-ticket-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.upcommingeve-ticket-info {
+    padding: 20px;
+    width: 70%;
+    background-color: #fff;
+}
+
+.upcommingeve-ticket-info h3 {
+    margin: 0;
+    font-size: 20px;
+    margin-bottom: 10px;
+}
+
+.upcommingeve-ticket-info p {
+    margin: 5px 0;
+    color: #777;
+}
+
+.upcommingeve-ticket-info .ticket-meta {
+    margin-top: 10px;
+    font-size: 14px;
+    color: #6a52ff;
+
+}
