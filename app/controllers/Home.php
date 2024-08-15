@@ -8,6 +8,7 @@
         //echo "This is the home controllers";
         $this->view('home');
 
+
     }
  }
 

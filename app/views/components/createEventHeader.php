@@ -13,9 +13,9 @@
     </div>
     <nav>
         <ul>
-            <li><a href="#treanding">Explore</a></li>
-            <li><a href="#new-events">Upcoming Events</a></li>
-            <li><a href="signup.php" class="sign-up">Sign Up</a></li>
+            <li><a href="#treanding">Create Events</a></li>
+            <li><a href="#new-events">Events Status</a></li>
+            <li><a href="signup.php" class="sign-up">My Events</a></li>
         </ul>
     </nav>
 </header>
@@ -37,5 +37,6 @@
         });
     });
 </script>
+
 </body>
 </html>

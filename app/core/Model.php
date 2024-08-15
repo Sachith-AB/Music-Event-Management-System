@@ -30,6 +30,7 @@ trait Model {
 
         $query = trim($query," && ");
         $query .= " ORDER BY $this->order_column $this->order_type LIMIT $this->limit OFFSET $this->offset";
+        show($query);
         $data = array_merge($data,$data_not);
 
         return $this->query($query,$data);

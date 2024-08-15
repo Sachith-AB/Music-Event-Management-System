@@ -8,7 +8,7 @@
     <link rel="stylesheet" href="<?=ROOT?>/assets/css/landing.css">
 </head>
 <body>  
-    <section class="trending-events">
+    <section id ="treanding" class="trending-events">
         <h1>Discover Unforgettable Experience at</h1>
         <h1 class="highlight">Musicia</h1>
         <div class="search-bar">
@@ -35,7 +35,7 @@
             </div>
 
             <div class="event">
-                <img src="images/top2.png" alt="Melody Mania">
+                <img src="<?=ROOT?>/assets/images/top2.png" alt="Melody Mania">
                 <div class="event-info">
                     <div class="event-details">
                         <h3>Melody Mania</h3>
@@ -49,7 +49,7 @@
             </div>
 
             <div class="event">
-                <img src="images/top3.png" alt="Rock Fest Extravaganza">
+                <img src="<?=ROOT?>/assets/images/top3.png" alt="Rock Fest Extravaganza">
                 <div class="event-info">
                     <div class="event-details">
                         <h3>Rock Fest</h3>
@@ -63,41 +63,46 @@
             </div>
         </div>
     </section>
-    <div class="events-selection">
-        <div class="events-header">
-            <h2> New Events in
-                <select id="city-select">
-                    <option value="colombo">Colombo</option>
-                    <option value="kandy">Kandy</option>
-                    <option value="galle">Galle</option>
-                    <option value="jaffna">Jaffna</option>
-                    <option value="kurunegala">Kurunegala</option>
-                </select>
-            </h2>
-            <button class="view-more-btn" onclick="toggleVisibility()">View more</button>
+
+    <div id="new-events">
+        <div class="events-selection">
+            <div class="events-header">
+                <h2> New Events in
+                    <select id="city-select">
+                        <option value="colombo">Colombo</option>
+                        <option value="kandy">Kandy</option>
+                        <option value="galle">Galle</option>
+                        <option value="jaffna">Jaffna</option>
+                        <option value="kurunegala">Kurunegala</option>
+                    </select>
+                </h2>
+                <button class="view-more-btn" onclick="toggleVisibility()">View more</button>
+            </div>
         </div>
-    </div>
-    <div class="category-buttons">
-        <button>All</button>
-        <button>Indoor</button>
-        <button>Outdoor</button>
-    </div>
-    <div class="events-container" id="events-container">
-        <!-- Events will be dynamically inserted here -->
-    </div>
+        <div class="category-buttons">
+            <button onclick="setActiveButton(this)">All</button>
+            <button onclick="setActiveButton(this)">Indoor</button>
+            <button onclick="setActiveButton(this)">Outdoor</button>
+        </div>
 
-    <script src="<?=ROOT?>/assets/js/events.js"></script> <!-- Ensure this is the last thing before closing--->
+        <div class="events-container" id="events-container">
+            <!-- Events will be dynamically inserted here -->
+        </div>
 
+    </div>
     <div class = "events-selection">
         <div class ="events-header">
             <h2>Upcoming 24 hours</h2>
-            <button class="view-more-btn" onclick="toggleVisibility()">View more</button>
         </div>
     </div>
     <div class = "events-container2" id = "events-container2">
         <!--Events Dynamically inserted here -->
     </div>
 
+    <script src="<?=ROOT?>/assets/js/events.js"></script> <!-- Ensure this is the last thing before closing--->
+
 
 </body>
 </html>
+
+<?php include ('../app/views/components/footer.php'); ?>
