@@ -1,6 +1,9 @@
 <?php
 
 route('home','Home@index');
+
+
+route('signin','Signin@index');
 route('signup','Signup@index');
 
 
