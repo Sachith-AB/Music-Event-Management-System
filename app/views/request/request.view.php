@@ -4,7 +4,7 @@
 
     <title>Request</title>
 
-    <link rel="stylesheet" href="eventReq.css">
+    <link rel="stylesheet" href="<?=ROOT?>/assets/css/request/request.css">
 
 </head>
 
