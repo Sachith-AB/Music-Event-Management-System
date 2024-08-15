@@ -1,0 +1,470 @@
+body, html {
+    margin: 0;
+    padding: 0;
+    font-family: 'Inter';
+    height: 100%;
+    overflow-x: hidden;
+}
+
+/*header*/
+header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 1000;
+    background-color: white;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 10px 20px;
+    font-size: 14px;
+    
+}
+
+.logo img {
+    max-height: 50px; 
+}
+
+nav {
+    flex-grow: 1;
+}
+
+nav ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    justify-content: center;
+    width: 100%;
+}
+
+nav ul li {
+    margin-right: 20px;
+    position: relative;
+    font-size: medium;
+}
+
+nav ul li a {
+    text-decoration: none;
+    color: #000;
+    font-size: 16px;
+    padding: 5px 10px;
+    transition: color 0.3s;
+    display: block;
+}
+
+nav ul li a:hover {
+    color: #00BDD6FF;
+}
+
+nav ul li a::after {
+    content: '';
+    display: block;
+    height: 2px;
+    width: 0%;
+    background-color: #00BDD6FF;
+    transition: width 0.3s ease;
+    position: absolute;
+    left: 0;
+    bottom: -2px;
+}
+
+nav ul li a:hover::after,
+nav ul li a:active::after {
+    width: 100%;
+}
+
+nav ul li a.active{
+    color: #00BDD6FF;
+}
+
+nav ul li.sign-up {
+    padding: 8px 16px;
+    background-color: #00BDD6FF;
+    border-radius: 5px;
+    color: white;
+    text-decoration: none;
+}
+/*header end*/
+
+/*footer*/
+.footer {
+    background-color: #222;
+    color: white;
+    font-family: 'Inter', sans-serif;
+    padding: 40px 20px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: center;
+    text-align: center;
+}
+
+.box-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    justify-content: center;
+    width: 100%;
+}
+
+.box {
+    flex: 1;
+    min-width: 150px;
+    max-width: 300px;
+}
+
+.box h3 {
+    margin-bottom: 10px;
+    font-size: 18px;
+}
+
+.box a {
+    display: block;
+    color: #ccc;
+    margin-bottom: 5px;
+    text-decoration: none;
+    transition: color 0.3s;
+}
+
+.box a:hover {
+    color: #00BDD6FF;
+}
+
+.box a i {
+    margin-right: 8px;
+}
+
+.fab {
+    color: #00BDD6FF;
+}
+
+.credit {
+    margin-top: 20px;
+    text-align: center;
+    font-size: 14px;
+    width: 100%;
+}
+
+.credit span {
+    color: #0095A9FF;
+}
+/*footer end*/
+
+/* First Part Styling */
+
+.trending-events {
+    padding: 20px;
+    background-image: url('../images/bg.png');
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+    min-height: 100vh;
+    padding-top: 100px;
+    margin: 40px;
+    border-radius: 10px;
+    box-sizing: border-box;
+    border: 5px solid rgba(0, 0, 0, 0.8); 
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.7);  
+}
+
+.content-box {
+    max-width: 800px;
+    margin: 0 auto;
+    background: rgba(255, 255, 255, 0.1); 
+    padding: 30px;
+    border-radius: 15px;
+}
+
+.trending-events h1 {
+    font-size: 2.5em;
+    margin: 10px 0;
+    font-family: 'Epilogue';
+    color: #FFFFFFFF;
+    text-align: center;
+}
+
+.trending-events .highlight {
+    color: #00BDD6FF;
+}
+
+.search-bar {
+    display: flex;
+    justify-content: center;
+}
+
+.search-bar input[type="search"] {
+    padding: 10px;
+    width: 30%;
+    margin-top: 10px;
+    font-size: 1rem;
+    border: 2px solid transparent;
+    border-radius: 5px;
+    background: rgba(255, 255, 255, 0.9);
+    max-width: 600px;
+    transition: border-color 0.3s ease;
+}
+
+.search-bar input[type="search"]:focus {
+    border-color: #00BDD6FF;
+    outline: none;
+}
+
+.heading {
+    display: flex; 
+    justify-content: center; 
+    align-items: center; 
+    gap: 10px; 
+    margin-top: 60px;
+}
+
+.heading h2 {
+    font-size: 1.5em;
+    margin: 0; 
+    color: white; 
+}
+
+.heading .top {
+    color: #00BDD6FF;
+}
+
+.events {
+    display: flex;
+    justify-content: space-around;
+    margin-top: 20px;
+}
+
+.event {
+    width: 28%;
+    background-size: cover;
+    border-radius: 10px;
+    padding: 20px;
+    background: #323842FF;
+    border-radius: 4px;
+    box-shadow: 0px 17px 35px #171a1f, 0px 0px 2px #171a1f;
+    text-align: left; 
+    transition: transform 0.3s ease;
+}
+
+.event img {
+    width: 100%;
+    height: auto;
+    border-radius: 5px;
+    margin-bottom: 15px; 
+    transition: transform 0.3 ease;
+}
+
+.event:hover{
+    transform: scale(1.1);
+    cursor: pointer;
+}
+
+.event img:hover{
+    transform: scale(1.1);
+    cursor: pointer;
+}
+.event-info {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start; 
+}
+
+.event-details {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+
+.event h3 {
+    font-size: 1.4em;
+    margin: 0;
+    color: white;
+}
+
+.date-time, .price-from {
+    font-size: 0.9em;
+    color: #00BDD6FF; 
+    margin: 5px 0;
+}
+
+.venue {
+    font-size: 0.9em;
+    color: white;
+}
+
+.pricing {
+    text-align: right; 
+}
+
+.price {
+    font-size: 1.1em;
+    color: white; 
+    margin: 0;
+}
+
+.price-from {
+    font-size: 0.9em;
+}
+
+.events-section {
+    padding: 20px;
+    background-color: #fff;
+    margin: 20px auto;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    width: 80%;
+    border: 1px solid #ddd;
+}
+
+.events-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+    padding-left: 45px;
+}
+
+.events-header h2 {
+    margin: 0;
+    font-size: 24px;
+    font-family: 'Epilogue';
+}
+
+#city-select {
+    font-size: 24px;
+    font-family: 'Epilogue';
+    background-color: white;
+    color: #00BDD6FF;
+    border: none;
+    padding: 5px 10px;
+    border-radius: 5px;
+    margin-left: 5px;
+}
+
+#city-select:hover {
+    color: #0056b3;
+}
+
+.view-more-btn {
+    padding: 10px 20px;
+    margin: 0.3em;
+    background: black;
+    color: #00BDD6FF;
+    border: none;
+    border-radius: 5px;
+    font-size: 15px;
+    cursor: pointer;
+    margin-right: 45px;
+    position: relative;
+    overflow: hidden;
+    z-index: 1;
+    display: flex;
+    transition: color 1s ease;
+    margin-top: 20px ;
+}
+
+.view-more-btn:hover::after {
+    transform: skewX(-45deg) scale(1, 1);
+}
+
+.view-more-btn:hover {
+    color: black;
+}
+
+.view-more-btn::after {
+    content: "";
+    position: absolute;
+    background: #00BDD6FF;
+    z-index: -1;
+    left: -50%;
+    right: -50%;
+    top: 0;
+    bottom: 0;
+    transform: skewX(-45deg) scale(0, 1);
+    transition: transform 1s ease;
+}
+
+.category-buttons {
+    display: flex;
+    justify-content: flex-start;
+    gap: 10px;
+    margin-bottom: 20px;
+    padding-left: 20px; 
+    margin-left: 25px;
+    width: fit-content; 
+}
+
+.category-buttons button {
+    background-color: white;
+    color: #00BDD6FF;
+    border: 1px solid #ccc;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.category-buttons button:hover {
+    background-color: #00BDD6FF;
+    color: white;
+    border: 1px solid #00BDD6FF;
+    box-shadow: 0 0 5px #00BDD6FF, 0 0 10px #00BDD6FF;
+}
+
+.category-buttons button.active {
+    background-color: #00BDD6FF;
+    color: white;
+    border: 2px solid #00BDD6FF;
+    box-shadow: 0 0 5px #00BDD6FF, 0 0 10px #00BDD6FF;
+}
+
+.events-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    padding-left: 50px;
+    gap: 5px;
+    
+
+
+}
+
+.event-card {
+    flex: 1 1 calc(33.333% - 20px);
+    width: 20%;
+    background-color: #fff;
+    margin: 2px;
+    padding: 5px;
+    border-radius: 3px;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+    transition: transform 0.3s ease;
+    text-align: center;
+}
+
+.event-card img {
+    width: 100%;
+    height: auto;
+    border-radius: 1px;
+    max-height: 200px;
+    object-fit: contain;
+    margin-bottom: 15px;
+}
+
+.event-card:hover {
+    transform: scale(1.05);
+    cursor: pointer;
+    box-shadow: black;
+}
+
+
+
+.events-container2 {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    padding-left: 50px;
+    gap: 5px;
+    margin-top: 20px; 
+    clear: both
+}
