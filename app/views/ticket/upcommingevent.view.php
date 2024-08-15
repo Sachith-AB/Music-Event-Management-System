@@ -80,38 +80,65 @@
 
 
     <!--recommended event section-->
+    <div class="event-details-container">
 
-    <h2>Other events you may like</h2>
+        <h2>Recommonded Events</h2>
 
-    <div class="musicevent-events-container">
-        <div class="musicevent-event-card">
-            <div class="musicevent-event-badge">20% OFF</div>
-            <img src="<?=ROOT?>/assets/images/ticket/musicevent1.jpg" alt="Musical Fusion Festival" class="musicevent-event-image">
-            <div class="musicevent-event-info">
-                <div class="musicevent-event-title">Musical Fusion Festival</div>
-                <div class="musicevent-event-details">
-                    <div>📅 Monday, June 06 | 06:00 PM</div>
-                    <div>📍 New York, NY</div>
+        <div class="musicevent-events-container">
+            <div class="musicevent-event-card">
+                <div class="musicevent-event-badge">20% OFF</div>
+                <img src="<?=ROOT?>/assets/images/ticket/musicevent1.jpg" alt="Musical Fusion Festival" class="musicevent-event-image">
+                <div class="musicevent-event-info">
+                    <div class="musicevent-event-title">Musical Fusion Festival</div>
+                    <div class="musicevent-event-details">
+                        <div>📅 Monday, June 06 | 06:00 PM</div>
+                        <div>📍 New York, NY</div>
+                    </div>
+                    <div class="musicevent-event-price">From $80</div>
                 </div>
-                <div class="musicevent-event-price">From $80</div>
+            </div>
+
+            <div class="musicevent-event-card">
+                <div class="musicevent-event-badge">Buy 2 get 1 free</div>
+                <img src="<?=ROOT?>/assets/images/ticket/musicevent2.jpeg" alt="Metropolis Marathon" class="musicevent-event-image">
+                <div class="musicevent-event-info">
+                    <div class="musicevent-event-title">Metropolis Marathon</div>
+                    <div class="musicevent-event-details">
+                        <div>📅 Tuesday, June 07 | 06:00 AM</div>
+                        <div>📍 Atlanta</div>
+                    </div>
+                    <div class="musicevent-event-price">From $10</div>
+                </div>
+            </div>
+
+            <div class="musicevent-event-card">
+                <div class="musicevent-event-badge">Buy 2 get 1 free</div>
+                <img src="<?=ROOT?>/assets/images/ticket/musicevent2.jpeg" alt="Metropolis Marathon" class="musicevent-event-image">
+                <div class="musicevent-event-info">
+                    <div class="musicevent-event-title">Metropolis Marathon</div>
+                    <div class="musicevent-event-details">
+                        <div>📅 Tuesday, June 07 | 06:00 AM</div>
+                        <div>📍 Atlanta</div>
+                    </div>
+                    <div class="musicevent-event-price">From $10</div>
+                </div>
+            </div>
+
+            <div class="musicevent-event-card">
+                <div class="musicevent-event-badge">Buy 2 get 1 free</div>
+                <img src="<?=ROOT?>/assets/images/ticket/musicevent2.jpeg" alt="Metropolis Marathon" class="musicevent-event-image">
+                <div class="musicevent-event-info">
+                    <div class="musicevent-event-title">Metropolis Marathon</div>
+                    <div class="musicevent-event-details">
+                        <div>📅 Tuesday, June 07 | 06:00 AM</div>
+                        <div>📍 Atlanta</div>
+                    </div>
+                    <div class="musicevent-event-price">From $10</div>
+                </div>
             </div>
         </div>
 
-        <div class="musicevent-event-card">
-            <div class="musicevent-event-badge">Buy 2 get 1 free</div>
-            <img src="<?=ROOT?>/assets/images/ticket/musicevent2.jpeg" alt="Metropolis Marathon" class="musicevent-event-image">
-            <div class="musicevent-event-info">
-                <div class="musicevent-event-title">Metropolis Marathon</div>
-                <div class="musicevent-event-details">
-                    <div>📅 Tuesday, June 07 | 06:00 AM</div>
-                    <div>📍 Atlanta</div>
-                </div>
-                <div class="musicevent-event-price">From $10</div>
-            </div>
-        </div>
+        <a href="#" class="view-more">View more</a>
     </div>
-
-    <a href="#" class="view-more">View more</a>
-
 </body>
  

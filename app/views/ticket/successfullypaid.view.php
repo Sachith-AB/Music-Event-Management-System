@@ -5,6 +5,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Musicia - Ticket Purchase Success</title>
     <link rel="stylesheet" href="<?=ROOT?>/assets/css/ticket/ticketstyle.css">
+
+    <!-- Include Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
 </head>
 <body>
 
@@ -27,7 +30,7 @@
             <div class="event-info">
                 <div class="event-item">
                     <div class="icon">
-                        <img src="<?=ROOT?>/assets/images/ticket/calendar-icon2.jpg" alt="Date Icon">
+                    <i class="fas fa-calendar-alt"></i>
                     </div>
                     <div>
                         <h3>Date and Time</h3>
@@ -37,7 +40,7 @@
 
                 <div class="event-item">
                     <div class="icon">
-                        <img src="<?=ROOT?>/assets/images/ticket/Duration-icon.png" alt="Place Icon">
+                        <i class="fas fa-clock"></i>
                     </div>
                     <div>
                         <h3>Duration</h3>
@@ -46,7 +49,7 @@
                 </div>
                 <div class="event-item">
                     <div class="icon">
-                        <img src="<?=ROOT?>/assets/images/ticket/location-icon.png" alt="Place Icon">
+                        <i class="fas fa-map-marker-alt"></i>
                     </div>
                     <div>
                         <h3>Place</h3>
@@ -55,7 +58,7 @@
                 </div>
                 <div class="event-item">
                     <div class="icon">
-                        <img src="<?=ROOT?>/assets/images/ticket/ticket-icon.png" alt="Place Icon">
+                        <i class="fas fa-ticket-alt"></i> 
                     </div>
                     <div>
                         <h3>Ticket</h3>
@@ -200,8 +203,16 @@
 
         <!-- Add Ticket Button -->
         <div class="button-group">
-            <button type="button" class="add-ticket-btn">Go to my ticket</button>
+            <button type="button" class="add-ticket-btn" onclick="goToMyTickets()">Go to my ticket</button>
         </div>
+
+
+        <script>
+            function goToMyTickets() {
+                window.location.href = "upcommingevent";
+            }
+        </script>
+
     </div>
 
     <!--summary section -->
@@ -239,40 +250,66 @@
     </script>
 
     <!--other event section-->
+    <div class="event-details-container">
+        <h2>Other events you may like</h2>
 
-    <h2>Other events you may like</h2>
-
-    <div class="musicevent-events-container">
-        <div class="musicevent-event-card">
-            <div class="musicevent-event-badge">20% OFF</div>
-            <img src="<?=ROOT?>/assets/images/ticket/musicevent1.jpg" alt="Musical Fusion Festival" class="musicevent-event-image">
-            <div class="musicevent-event-info">
-                <div class="musicevent-event-title">Musical Fusion Festival</div>
-                <div class="musicevent-event-details">
-                    <div>📅 Monday, June 06 | 06:00 PM</div>
-                    <div>📍 New York, NY</div>
+        <div class="musicevent-events-container">
+            <div class="musicevent-event-card">
+                <div class="musicevent-event-badge">20% OFF</div>
+                <img src="<?=ROOT?>/assets/images/ticket/musicevent1.jpg" alt="Musical Fusion Festival" class="musicevent-event-image">
+                <div class="musicevent-event-info">
+                    <div class="musicevent-event-title">Musical Fusion Festival</div>
+                    <div class="musicevent-event-details">
+                        <div>📅 Monday, June 06 | 06:00 PM</div>
+                        <div>📍 New York, NY</div>
+                    </div>
+                    <div class="musicevent-event-price">From $80</div>
                 </div>
-                <div class="musicevent-event-price">From $80</div>
+            </div>
+
+            <div class="musicevent-event-card">
+                <div class="musicevent-event-badge">Buy 2 get 1 free</div>
+                <img src="<?=ROOT?>/assets/images/ticket/musicevent2.jpeg" alt="Metropolis Marathon" class="musicevent-event-image">
+                <div class="musicevent-event-info">
+                    <div class="musicevent-event-title">Metropolis Marathon</div>
+                    <div class="musicevent-event-details">
+                        <div>📅 Tuesday, June 07 | 06:00 AM</div>
+                        <div>📍 Atlanta</div>
+                    </div>
+                    <div class="musicevent-event-price">From $10</div>
+                </div>
+            </div>
+
+            <div class="musicevent-event-card">
+                <div class="musicevent-event-badge">Buy 2 get 1 free</div>
+                <img src="<?=ROOT?>/assets/images/ticket/musicevent2.jpeg" alt="Metropolis Marathon" class="musicevent-event-image">
+                <div class="musicevent-event-info">
+                    <div class="musicevent-event-title">Metropolis Marathon</div>
+                    <div class="musicevent-event-details">
+                        <div>📅 Tuesday, June 07 | 06:00 AM</div>
+                        <div>📍 Atlanta</div>
+                    </div>
+                    <div class="musicevent-event-price">From $10</div>
+                </div>
+            </div>
+
+            <div class="musicevent-event-card">
+                <div class="musicevent-event-badge">Buy 2 get 1 free</div>
+                <img src="<?=ROOT?>/assets/images/ticket/musicevent2.jpeg" alt="Metropolis Marathon" class="musicevent-event-image">
+                <div class="musicevent-event-info">
+                    <div class="musicevent-event-title">Metropolis Marathon</div>
+                    <div class="musicevent-event-details">
+                        <div>📅 Tuesday, June 07 | 06:00 AM</div>
+                        <div>📍 Atlanta</div>
+                    </div>
+                    <div class="musicevent-event-price">From $10</div>
+                </div>
             </div>
         </div>
 
-        <div class="musicevent-event-card">
-            <div class="musicevent-event-badge">Buy 2 get 1 free</div>
-            <img src="<?=ROOT?>/assets/images/ticket/musicevent2.jpeg" alt="Metropolis Marathon" class="musicevent-event-image">
-            <div class="musicevent-event-info">
-                <div class="musicevent-event-title">Metropolis Marathon</div>
-                <div class="musicevent-event-details">
-                    <div>📅 Tuesday, June 07 | 06:00 AM</div>
-                    <div>📍 Atlanta</div>
-                </div>
-                <div class="musicevent-event-price">From $10</div>
-            </div>
-        </div>
+        <a href="#" class="view-more">View more</a>
+
     </div>
-
-    <a href="#" class="view-more">View more</a>
-
-
             
     </main>
 
