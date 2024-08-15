@@ -6,8 +6,22 @@ class Ticket {
     use Model;
     public function index() {
 
-        echo "This is the ticket controllers";
         $this->view('ticket/purchaseticket');
+        
+       
+    }
+
+
+    public function index2() {
+
+        $this->view('ticket/successfullypaid');
+       
+    }
+
+
+    public function index3() {
+
+        $this->view('ticket/upcommingevent');
        
     }
 }

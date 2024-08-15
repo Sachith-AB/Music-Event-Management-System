@@ -4,7 +4,10 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Musicia - Ticket Purchase</title>
-    <link rel="stylesheet" href="<?=ROOT?>/assets/css/ticketstyle.css">
+    <link rel="stylesheet" href="<?=ROOT?>/assets/css/ticket/ticketstyle.css">
+
+    <!-- Include Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
 </head>
 <body>
 
@@ -22,7 +25,7 @@
             <div class="event-info">
                 <div class="event-item">
                     <div class="icon">
-                        <img src="calendar-icon2.jpg" alt="Date Icon">
+                        <i class="fas fa-calendar-alt"></i>
                     </div>
                     <div>
                         <h3>Date and Time</h3>
@@ -32,7 +35,7 @@
 
                 <div class="event-item">
                     <div class="icon">
-                        <img src="location-icon.png" alt="Place Icon">
+                        <i class="fas fa-map-marker-alt"></i>
                     </div>
                     <div>
                         <h3>Place</h3>
@@ -100,55 +103,59 @@
         
         <!-- Ticket 1 -->
         <div class="ticket-details">
-            <div class="ticket-header">
-                <h3>Ticket 1</h3>
-                <label><input type="checkbox"> Same contact information</label>
-            </div>
-            <div class="input-group">
-                <div class="input-field">
-                    <label for="first-name-1">First name</label>
-                    <input type="text" id="first-name-1" placeholder="Amanda">
+            <div>
+                <div class="ticket-header">
+                    <h3>Ticket 1</h3>
+                    <label><input type="checkbox"> Same contact information</label>
                 </div>
-                <div class="input-field">
-                    <label for="last-name-1">Last name</label>
-                    <input type="text" id="last-name-1" placeholder="Smith">
+                <div class="input-group">
+                    <div class="input-field">
+                        <label for="first-name-1">First name</label>
+                        <input type="text" id="first-name-1" placeholder="Amanda">
+                    </div>
+                    <div class="input-field">
+                        <label for="last-name-1">Last name</label>
+                        <input type="text" id="last-name-1" placeholder="Smith">
+                    </div>
                 </div>
-            </div>
-            <div class="input-group">
-                <div class="input-field">
-                    <label for="email-1">Email</label>
-                    <input type="email" id="email-1" placeholder="Amanda@email.com">
-                </div>
-                <div class="input-field">
-                    <label for="phone-1">Phone number</label>
-                    <input type="tel" id="phone-1" placeholder="(724) 651-7073">
+                <div class="input-group">
+                    <div class="input-field">
+                        <label for="email-1">Email</label>
+                        <input type="email" id="email-1" placeholder="Amanda@email.com">
+                    </div>
+                    <div class="input-field">
+                        <label for="phone-1">Phone number</label>
+                        <input type="tel" id="phone-1" placeholder="(724) 651-7073">
+                    </div>
                 </div>
             </div>
         </div>
         
         <!-- Ticket 2 -->
         <div class="ticket-details">
-            <div class="ticket-header">
-                <h3>Ticket 2</h3>
-            </div>
-            <div class="input-group">
-                <div class="input-field">
-                    <label for="first-name-2">First name</label>
-                    <input type="text" id="first-name-2" placeholder="Charles">
+            <div>
+                <div class="ticket-header">
+                    <h3>Ticket 2</h3>
                 </div>
-                <div class="input-field">
-                    <label for="last-name-2">Last name</label>
-                    <input type="text" id="last-name-2" placeholder="Sanchez">
+                <div class="input-group">
+                    <div class="input-field">
+                        <label for="first-name-2">First name</label>
+                        <input type="text" id="first-name-2" placeholder="Charles">
+                    </div>
+                    <div class="input-field">
+                        <label for="last-name-2">Last name</label>
+                        <input type="text" id="last-name-2" placeholder="Sanchez">
+                    </div>
                 </div>
-            </div>
-            <div class="input-group">
-                <div class="input-field">
-                    <label for="email-2">Email</label>
-                    <input type="email" id="email-2" placeholder="Charles@email.com">
-                </div>
-                <div class="input-field">
-                    <label for="phone-2">Phone number</label>
-                    <input type="tel" id="phone-2" placeholder="(570) 775-9922">
+                <div class="input-group">
+                    <div class="input-field">
+                        <label for="email-2">Email</label>
+                        <input type="email" id="email-2" placeholder="Charles@email.com">
+                    </div>
+                    <div class="input-field">
+                        <label for="phone-2">Phone number</label>
+                        <input type="tel" id="phone-2" placeholder="(570) 775-9922">
+                    </div>
                 </div>
             </div>
         </div>
@@ -182,10 +189,17 @@
         <p>$162</p>
     </div>
         <div class="payment-method">
-            <img src="mastercard-icon.png" alt="Mastercard">
+            <img src="<?=ROOT?>/assets/images/ticket/mastercard-icon.png" alt="Mastercard">
             <span>Mastercard **** 5987</span>
         </div>
-        <button class="pay-now-btn">Pay now</button>
+        <button class="pay-now-btn" onclick="goToMyTickets()">Pay now</button>
+
+        <!--add script to go go successfullypaid page-->
+        <script>
+            function goToMyTickets() {
+                window.location.href = "successfullypaid";
+            }
+        </script>
     </div>
 
     <script>
@@ -195,39 +209,39 @@
     </script>
 
     <!--other event section-->
+    <div class="event-details-container">
+        <h2>Other events you may like</h2>
 
-    <h2>Other events you may like</h2>
-
-    <div class="musicevent-events-container">
-        <div class="musicevent-event-card">
-            <div class="musicevent-event-badge">20% OFF</div>
-            <img src="musicevent1.jpg" alt="Musical Fusion Festival" class="musicevent-event-image">
-            <div class="musicevent-event-info">
-                <div class="musicevent-event-title">Musical Fusion Festival</div>
-                <div class="musicevent-event-details">
-                    <div>📅 Monday, June 06 | 06:00 PM</div>
-                    <div>📍 New York, NY</div>
+        <div class="musicevent-events-container">
+            <div class="musicevent-event-card">
+                <div class="musicevent-event-badge">20% OFF</div>
+                <img src="<?=ROOT?>/assets/images/ticket/musicevent1.jpg" alt="Musical Fusion Festival" class="musicevent-event-image">
+                <div class="musicevent-event-info">
+                    <div class="musicevent-event-title">Musical Fusion Festival</div>
+                    <div class="musicevent-event-details">
+                        <div>📅 Monday, June 06 | 06:00 PM</div>
+                        <div>📍 New York, NY</div>
+                    </div>
+                    <div class="musicevent-event-price">From $80</div>
                 </div>
-                <div class="musicevent-event-price">From $80</div>
+            </div>
+
+            <div class="musicevent-event-card">
+                <div class="musicevent-event-badge">Buy 2 get 1 free</div>
+                <img src="<?=ROOT?>/assets/images/ticket/musicevent2.jpeg" alt="Metropolis Marathon" class="musicevent-event-image">
+                <div class="musicevent-event-info">
+                    <div class="musicevent-event-title">Metropolis Marathon</div>
+                    <div class="musicevent-event-details">
+                        <div>📅 Tuesday, June 07 | 06:00 AM</div>
+                        <div>📍 Atlanta</div>
+                    </div>
+                    <div class="musicevent-event-price">From $10</div>
+                </div>
             </div>
         </div>
 
-        <div class="musicevent-event-card">
-            <div class="musicevent-event-badge">Buy 2 get 1 free</div>
-            <img src="musicevent2.jpeg" alt="Metropolis Marathon" class="musicevent-event-image">
-            <div class="musicevent-event-info">
-                <div class="musicevent-event-title">Metropolis Marathon</div>
-                <div class="musicevent-event-details">
-                    <div>📅 Tuesday, June 07 | 06:00 AM</div>
-                    <div>📍 Atlanta</div>
-                </div>
-                <div class="musicevent-event-price">From $10</div>
-            </div>
-        </div>
+        <a href="#" class="view-more">View more</a>
     </div>
-
-    <a href="#" class="view-more">View more</a>
-
 
             
     </main>
