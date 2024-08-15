@@ -17,4 +17,11 @@ class Ticket {
         $this->view('ticket/successfullypaid');
        
     }
+
+
+    public function index3() {
+
+        $this->view('ticket/upcommingevent');
+       
+    }
 }
