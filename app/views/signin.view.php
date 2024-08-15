@@ -10,15 +10,15 @@
     <div class="container">
         <div class="form-box">
             <h1 class="head-1">Welcome Back</h1>
-            <form>
+            <form method="POST">
                 <label for="email">Email</label>
-                <input type="email" id="email" placeholder="Email" required>
+                <input name="email" type="email" id="email" placeholder="Email" required>
                 
                 <label for="password">Password</label>
-                <input type="password" id="password" placeholder="Password" required>
+                <input name="password" type="password" id="password" placeholder="Password" required>
                 
                 <div class="terms">
-                    <input type="checkbox" id="agree" required>
+                    <input name="agree" type="checkbox" id="agree" required>
                     <label for="agree">I agree with&nbsp;<a href="#">Terms & Conditions</a></label>
                 </div>
                 
