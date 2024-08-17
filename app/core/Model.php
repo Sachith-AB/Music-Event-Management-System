@@ -7,6 +7,7 @@ trait Model {
     protected $offset = 0;
     protected $order_type = 'desc';
     protected $order_column = 'id';
+    public $errors = [];
 
     public function findAll() {
         $query = "SELECT * FROM $this->table ORDER BY $this->order_column $this->order_type LIMIT $this->limit OFFSET $this->offset";
@@ -30,6 +31,7 @@ trait Model {
 
         $query = trim($query," && ");
         $query .= " ORDER BY $this->order_column $this->order_type LIMIT $this->limit OFFSET $this->offset";
+        show($query);
         $data = array_merge($data,$data_not);
 
         return $this->query($query,$data);

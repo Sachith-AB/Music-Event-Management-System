@@ -1,0 +1,161 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Arial, sans-serif;
+}
+
+body {
+    background-color: #f4f4f9;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+.container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+    width: 100%;
+}
+
+.form-box {
+    background-color: white;
+    padding: 2rem;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    position: relative;
+    width: 70%;
+    text-align: center;
+}
+
+.close-btn {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    background-color: transparent;
+    border: none;
+    font-size: 24px;
+    cursor: pointer;
+}
+
+h1 {
+    font-size: 2rem;
+    font-weight: bold;
+    color: #333;
+    font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+}
+
+p {
+    margin-bottom: 1rem;
+    color: #666;
+}
+
+label {
+    display: block;
+    text-align: left;
+    margin-bottom: 0.5rem;
+    color: #333;
+    font-weight: bold;
+}
+
+input[type="email"], input[type="password"] {
+    width: 100%;
+    padding: 0.75rem;
+    margin-bottom: 1rem;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    font-size: 1rem;
+}
+
+.terms {
+    display: flex;
+    align-items: center;
+    margin-bottom: 1rem;
+    font-size: 0.9rem;
+    color: #666;
+}
+
+.terms label {
+    display: inline-flex; /* Ensure label is aligned properly with checkbox */
+    align-items: center;
+    margin: 0; /* Remove default margins to fit everything in one line */
+}
+
+.terms input {
+    margin-right: 0.5rem;
+}
+
+.terms a {
+    color: #7b61ff;
+    text-decoration: none;
+}
+
+.terms a:hover{
+    cursor: pointer;
+    text-decoration: underline;
+}
+
+.sign-in-btn {
+    width: 100%;
+    padding: 0.75rem;
+    border: none;
+    background-color: #7b61ff;
+    color: white;
+    font-size: 1rem;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.sign-in-btn:hover {
+    background-color: #7860f2;
+}
+
+.alternative-signin {
+    margin-top: 1.5rem;
+    color: #666;
+    font-size: 0.9rem;
+}
+
+.social-buttons {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 0.5rem;
+}
+
+.google-btn, .facebook-btn {
+    width: 48%;
+    padding: 0.75rem;
+    border: none;
+    border-radius: 5px;
+    font-size: 1rem;
+    cursor: pointer;
+}
+
+.google-btn {
+    background-color: #F4B6C2;
+    color: #D80027;
+}
+
+.facebook-btn {
+    background-color: #C7CEEA;
+    color: #3B5998;
+}
+
+.sign-in-link {
+    margin-top: 1.5rem;
+    font-size: 0.9rem;
+    color: #666;
+}
+
+.sign-in-link a {
+    color: #7b61ff;
+    text-decoration: none;
+}
+
+.sign-in-link a:hover {
+    cursor: pointer;
+    text-decoration: underline;
+}

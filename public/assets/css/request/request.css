@@ -1,0 +1,172 @@
+.head li {
+    list-style-type: none;
+    display: inline;
+    padding: 1%;
+    
+    
+}
+
+.head li a {
+
+    text-decoration: none;
+    color: #565D6DFF;
+    justify-content: space-between;
+    font-size: 17px;
+    
+}
+
+.head li a:hover {
+    color: #6D31EDFF;
+    text-decoration: underline;
+}
+
+.input {
+        text-align: center;
+        margin-top: 15px;
+}
+
+.search {
+    margin-top: 20px;
+    margin-bottom: 0px;
+    padding: 0.5%;
+    width:30%;
+}
+
+.main-content h1 {
+    margin-left: 5%;
+    margin-top: 2%;
+    margin-bottom: 0%;
+    
+    
+}
+
+
+
+.head {
+    
+    margin: 0px;
+    padding: 5px;
+    background-color: rgb(199, 199, 223);
+    width: 100%;
+}
+
+.container {
+
+    display: flex;
+    justify-content: space-between;
+    gap: 0px;
+    
+           
+}
+
+.item {
+    width: 25%;
+    padding: 5%;
+    text-align: left;
+
+}
+
+button.details {
+    color: rgb(137, 95, 226);
+    width: 270px;
+    display: flex;
+    justify-content: center;
+    opacity: 1; 
+    border-radius: 4px; /* border-m */
+    border-width: 2px; 
+    border-color: rgb(180, 153, 236);
+    padding:5 12px;
+}
+
+.confirm  {
+
+    margin-top: 14px;
+    display: flex;
+    justify-content: space-between;
+    
+    width: 270px;
+}
+
+.confirm button.left {
+    color:white;
+    background-color:  #6D31EDFF;
+    opacity: 1; 
+    border: none; 
+    border-radius: 4px;
+    width: 100px;
+    font-size: 12px;
+    padding: 3px 0px;
+}
+
+.confirm button.right {
+    color: #6D31EDFF;
+    opacity: 1; 
+    border: none; 
+    border-radius: 4px;
+    width: 100px;
+    background-color: rgb(227, 236, 236);
+    font-size: 12px;
+    padding: 3px 0px;
+}
+
+.rest h1 {
+    margin-left: 66px;
+}
+ 
+
+.rest input {
+    width: 100%;
+    border-style: solid; 
+    outline: none;
+    border-radius: 4px; /* border-m */
+    border-width: 1px; 
+    border-color: rgb(145, 149, 156); /* neutral-400 */
+    padding: 5px 10px;
+    width: 15%;
+    margin-left: 66px;
+     
+
+}
+
+.item2 {
+
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    width: 25%;
+    padding: 5%;
+    
+}
+
+.info {
+
+    padding-right: 20px;
+    margin-right: 10px;
+    width:50%;
+}
+
+.item2 img {
+    width: 150px;
+    height: auto;
+}
+
+p {
+
+    color: #9095A1FF;
+    
+}
+
+.info button {
+    color: #6D31EDFF; /* primary-500 */
+    background:rgb(193, 195, 201);; /* white */
+    opacity: 1; 
+    border-radius: 4px; /* border-m */
+    border-width: 1px; 
+     /* primary-500 */
+    border-style: none;
+    width: 100px;
+    padding: 2px 0px;
+}
+
+
+
