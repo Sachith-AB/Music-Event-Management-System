@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Musicia - Ticket Purchase Success</title>
     <link rel="stylesheet" href="<?=ROOT?>/assets/css/ticket/ticketstyle.css">
+    <link rel="stylesheet" href="<?=ROOT?>/assets/css/ticket/popupmodal-style.css">
 
     <!-- Include Font Awesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
@@ -127,10 +128,45 @@
     <div class="event-details-container">
         <div class="contact-header">
             <h3>Ticket (2) total: <span>$162</span></h3>
-            <a href="#" class="login-link">View ticket</a>
+            <a href="#" class="login-link" onclick="openModal()">View Ticket</a>
         </div>
 
+
+        <!--modal foe ticket view button-->
+        <div id="ticketModal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2>Digital Ticket</h2>
+                <span class="close" onclick="closeModal()">&times;</span>
+            </div>
+            <div class="ticket-info">
+                <h3>Rock Revolt: A Fusion of Power and Passion</h3>
+                <p>Date: Saturday, February 20</p>
+                <p>Time: 08:00 PM</p>
+                <p>Venue: Central Park, New York, NY</p>
+                <div class="qr-code">
+                    <img src="https://via.placeholder.com/100x100.png?text=QR+Code" alt="QR Code">
+                </div>
+                <p>Ticket Code: MRCE-934912</p>
+                <div class="barcode"></div>
+            </div>
+        </div>
         
+        <script src="<?=ROOT?>/assets/js/ticker/ticket-popup.js"></script> 
+        
+    </div>
+
+    <!--<script>
+        function openModal() {
+            document.getElementById("ticketModal").style.display = "flex";
+        }
+
+        function closeModal() {
+            document.getElementById("ticketModal").style.display = "none";
+        }
+    </script>-->
+
+      
         
         <!-- Ticket 1 -->
         <div class="ticket-details">

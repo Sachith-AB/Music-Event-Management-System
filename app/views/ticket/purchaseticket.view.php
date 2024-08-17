@@ -19,7 +19,7 @@
     <main>
         <div class="event-details-container">
             <div class="back-link">
-                <a href="#">&#8592;     Purchase Ticket</a> <span class="time-left">Time left: 25:00</span>
+                <a href="#"><i class="fas fa-arrow-left"></i>     Purchase Ticket</a> <span class="time-left">Time left: 25:00</span>
             </div>
             <h1 class="event-title">Rock Revolt: A Fusion of Power and Passion</h1>
             <div class="event-info">
