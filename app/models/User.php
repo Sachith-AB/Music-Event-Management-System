@@ -36,10 +36,6 @@ class User {
             }
         }
 
-        if(empty($data['agree'])){
-            $this->errors['agree'] = "Please accept terms & conditions";
-        }
-
         if(empty($this->errors)){
             return true;
         }

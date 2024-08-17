@@ -148,6 +148,7 @@ form.sign-up-form {
 .logo span a:hover {
   color: #00BDD6FF;
   cursor: pointer;
+  text-decoration: underline;
 }
 
 .heading h2 {
@@ -170,6 +171,7 @@ form.sign-up-form {
 }
 .toggle:hover {
   color: #00BDD6FF;
+  text-decoration: underline;
 }
 
 .input-wrap {

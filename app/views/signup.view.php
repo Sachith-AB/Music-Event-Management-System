@@ -111,8 +111,8 @@
                             </div>
                             <div class="actual-form">
                                 <div class="input-wrap">
-                                    <input type="text" name="fullname" class="input-field" >
-                                    <label for="fullname">Name</label>
+                                    <input type="text" name="name" class="input-field" placeholder="Name">
+                                  <!--  <label for="fullname">Name</label> -->
                                 </div>
                                 <div class="input-wrap">
                                     <input type="text" name="email" class="input-field">
@@ -126,7 +126,7 @@
                                     </a>
                                 </div>
                                 <div class="input-wrap">
-                                    <input type="password" name="re-password" class="input-field" id="re-password" >
+                                    <input type="password" name="confirm-password" class="input-field" id="re-password" >
                                     <label for="pass">Confirm Password</label>
                                     <a href="#" class="hide active" onclick="togglePasswordVisibility('re-password','re-toggleIcon')">
                                         <ion-icon name="eye-outline" id="re-toggleIcon"></ion-icon>
