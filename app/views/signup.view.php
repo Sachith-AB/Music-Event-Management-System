@@ -42,55 +42,6 @@
             <div class="box">
                 <div class="inner-box">
                     <div class="form-warp">
-
-                        <!-- --------------------------
-                        Sign-In Part
-                    ------------------------------- -->
-                        <form method="POST" class="sign-in-form" id="signinForm">
-                            <div class="logo">
-                                <img src="<?= ROOT ?>/assets/images/logo.JPG" alt="company_logo">
-                                <!-- <h4>Amoral</h4> -->
-                                <span>
-                                    <a href="<?= ROOT ?>/home">
-                                        <ion-icon name="chevron-back-outline"></ion-icon>
-                                        <!-- <ion-icon name="chevron-back-circle-outline"></ion-icon> -->
-                                        Back
-                                    </a>
-                                </span>
-                            </div>
-
-                            <div class="heading">
-                                <h2>Welcome Back</h2>
-                                <h6>Not Registred Yet ?</h6>
-                                <a href="#" class="toggle">Sign Up</a>
-                            </div>
-                            <div class="actual-form">
-                                <div class="input-wrap">
-                                    <input type="text" name="email" class="input-field">
-                                    <label for="email">Email</label>
-                                </div>
-                                <div class="input-wrap">
-                                    <input type="password" name="password" class="input-field" id="s-password">
-                                    <label for="pass">Password</label>
-                                    <a href="#" class="hide active">
-                                        <ion-icon name="eye-outline" id="s-toggleIcon"></ion-icon>
-                                    </a>
-
-
-                                </div>
-                                <input type="submit" name="signIn" value="SignIn" class="sign-btn" accesskey="enter">
-                                <p class="text">
-                                    Forget your password or your login details?
-                                    <a href="#" id="help" class="toggle-1">Get Help</a> Signing in
-                                </p>
-
-                            </div>
-                        </form>
-
-
-                        <!-- --------------------------
-                        Sign-Up Part
-                    ------------------------------- -->
                         <form class="sign-up-form" id="signupForm" method="POST">
                             <div class="logo">
                                 <img src="<?= ROOT ?>/assets/images/logo.JPG" alt="company_logo">
@@ -111,8 +62,9 @@
                             </div>
                             <div class="actual-form">
                                 <div class="input-wrap">
-                                    <input type="text" name="name" class="input-field" placeholder="Name">
-                                  <!--  <label for="fullname">Name</label> -->
+                                    <input type="text" name="name" class="input-field" >
+                                    <label for="fullname">Name</label>
+                                    <span id="nameError" class="error"></span>
                                 </div>
                                 <div class="input-wrap">
                                     <input type="text" name="email" class="input-field">
@@ -139,8 +91,12 @@
                                     <a href="#" class="toggle-1">Terms of Services</a> and
                                     <a href="#" class="toggle-1">Privacy Policy</a>
                                 </p>
-
                             </div>
+                            <?php if(!empty($errors)): ?>
+                                <div class="alert alert-danger">
+                                    <?= implode("<br>", $errors)?>
+                                </div>
+                            <?php endif; ?>
                         </form>
                     </div>
 
@@ -150,15 +106,15 @@
                     <div class="carousel">
                         <div class="images-wrapper">
 
-                            <img src="<?= ROOT ?>/assets/images/" class="image img-1 show" alt="">
-                            <img src="<?= ROOT ?>/assets/images/" class="image img-2" alt="">
+                            <img src="<?= ROOT ?>/assets/images/bg.png" class="image img-1 show" alt="">
+                            <img src="<?= ROOT ?>/assets/images/bg.png" class="image img-2" alt="">
                             <img src="<?= ROOT ?>/assets/images/" class="image img-3" alt="">
                             <img src="<?= ROOT ?>/assets/images/" class="image img-4" alt="">
                         </div>
                         <div class="text-slider">
                             <div class="text-wrap">
                                 <div class="text-group">
-                                    <h2>Create Your Own Music Event</h2>
+                                    <h2>Create Your Own Music Events</h2>
                                     <h2>Customize as you like</h2>
                                     <h2>Follow Us On All Social Media</h2>
 
@@ -182,7 +138,7 @@
         </main>
     </div>
 
-    
+    <script src="<?= ROOT ?>/assets/js/signin-up.js"></script>
     
 </body>
 
