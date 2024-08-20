@@ -258,49 +258,43 @@
     line-height: 22px; 
     font-weight: 400; 
     opacity: 1; 
+    gap: 4px;
   }
   /* Header Menu 7 - Item */
   .header-menu .header-menu-item {
     padding: 15px 36.17px; 
+    width: 107px;
     display: flex; 
     align-items: center; 
     justify-content: center; 
     color: #565D6DFF; /* neutral-600 */
-    background:white; /* transparent */
+    background:rgb(241, 241, 241); /* transparent */
     border-radius: 4px; /* border-m */
     cursor: pointer; 
     white-space: nowrap; 
+  }
+
+  .header-menu .header-menu-item:hover{
+    background-color: rgb(227, 226, 226);
+  }
+
+  .header-menu .header-menu-item:active {
+    transform: scale(1.1); /* Increase size by 10% */
+    transition: transform 0.2s ease-in-out;
   }
   /* Header Menu 7 - Selected item */
   .header-menu .header-menu-item.selected {
     position: relative; 
     font-weight: 700; 
-    color: rgb(235, 242, 243); /* primary-500 */
+    color: rgb(252, 254, 254); /* primary-500 */
     background: #00BDD6FF; /* primary-200 */
   }
-  /* Header Menu 7 - Selected item */
-  .header-menu .header-menu-item.selected:hover:active {
-    color: rgb(249, 252, 252); /* primary-500 */
-    transform: scale(1.1); /* Increase size by 10% */
-    transition: transform 0.2s ease-in-out;
-  }
-  /* Header menu item 1 */
-  .header-menu .header-menu-item:nth-child(1) {
-    font-family: sans-serif; 
-    font-size: 14px; 
-    line-height: 22px; 
-    font-weight: 700; 
-    color: rgb(255, 255, 255); /* primary-500 */
-  }
-  /* Header menu item 2 */
-  .header-menu .header-menu-item:nth-child(2) {
-    font-family: sans-serif; 
-    font-size: 14px; 
-    line-height: 22px; 
-    font-weight: 400; 
-    color: rgb(0, 0, 0); /* neutral-600 */
+
+  .header-menu-item.selected:hover {
+    background-color: rgb(16, 171, 192);
   }
 
+  
 .event {
     position: absolute; 
     top: 245px; 
@@ -386,3 +380,30 @@
     border-color: #F3F4F6FF; /* neutral-200 */
     border-style: solid; 
   }
+
+  .page-content {
+    display: flex;
+    flex-direction: column; /* Default: column layout */
+    gap: 20px;
+}
+
+@media (max-width: 768px) {
+    .page-content {
+        flex-direction: row; /* Change to row layout on small screens */
+        flex-wrap: wrap; /* Allows wrapping of items */
+    }
+
+    .container, .header-menu, .event-detail {
+        flex: 1 1 100%; /* Take up full width on small screens */
+        margin-bottom: 20px; /* Adds spacing between rows */
+    }
+    
+    .textbox {
+        flex: 1 1 100%; /* Make input take full width */
+    }
+
+    .avatar, .tag {
+        flex-direction: row; /* For any content you want to align in a row */
+    }
+}
+

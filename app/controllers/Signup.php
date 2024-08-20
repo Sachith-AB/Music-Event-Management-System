@@ -6,12 +6,14 @@ class Signup {
     public function index() {
         
         $user = new User;
+        $data = [];
 
         if($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['signUp'])) {
-            $this->userRegistration($user,$_POST);
+           $data = $this->userRegistration($user,$_POST);
             
         }
-        $this->view('signup');
+        
+        $this->view('signup',$data);
     }
 
 
@@ -23,18 +25,19 @@ class Signup {
         $email = $POST['email'];
         $password = $POST['password'];
         $confirm_password = $POST['confirm-password'];
-
+        
         //check data validation
         if($user->validUser($_POST)){
 
             unset($POST['signUp']); //Remove sign up key before saving
             unset($POST['confirm-password']); //Remove confirm-password before saving
-
-            $res = $user->insert($POST);
+            $res = $user->insert($_POST);
             redirect('signin');
+        }else{
+
+            //show($user->errors);
+            return $user->errors;
         }
     }
-
-    private function userLogin($user,$POST){}
 }
 

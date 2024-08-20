@@ -7,32 +7,50 @@
     <link rel="stylesheet" href="<?=ROOT?>/assets/css/ticketHolder/profile.css">
 </head>
 <body>
-    <h1 class="head1">My Ticket</h1>
-    <div>
-        <div class="container">
-            <div class="avatar">
-                <img src="https://www.shutterstock.com/image-photo/adult-female-avatar-image-on-260nw-2419909229.jpg" alt="user image">
+    <div class="page-content">
+        <h1 class="head1">My Ticket</h1>
+        <div>
+            <div class="container">
+                <div class="avatar">
+                    <img src="https://www.shutterstock.com/image-photo/adult-female-avatar-image-on-260nw-2419909229.jpg" alt="user image">
+                </div>
+                <h2 class="head2">Amanda Smith</h2>
+                <h3 class="head3">amnd@gmail.com</h3>
+                <div class="tag">
+                    <div class="tag-item">24 Purchase</div>
+                    <div class="tag-item">4 Following</div>
+                    <div class="tag-item">10 Likes</div>
+                </div>
+                <button class="button">Update Profile</button>
             </div>
-            <h2 class="head2">Amanda Smith</h2>
-            <h3 class="head3">amnd@gmail.com</h3>
-            <div class="tag">
-                <div class="tag-item">24 Purchase</div>
-                <div class="tag-item">4 Following</div>
-                <div class="tag-item">10 Likes</div>
+            <div class="header-menu">
+                <div class="header-menu-item selected">Upcoming</div>
+                <div class="header-menu-item">Used</div>
             </div>
-            <button class="button">Update Profile</button>
-        </div>
-        <div class="header-menu">
-            <div class="header-menu-item selected">Upcoming</div>
-            <div class="header-menu-item">Used</div>
-        </div>
-        <h3 class="event">4 Event</h3>
-        <div class="textbox">
-            <input type="text" name="search" id="search" placeholder="Search">
-        </div>
-        <div class="event-detail">
-            <img class="event-image" src="https://media.istockphoto.com/id/613552524/photo/guitarist-on-stage-soft-and-blur-concept.jpg?s=612x612&w=0&k=20&c=_phKVgnj7AaY5TglzHdUZ4OgK4C_6Ly2iIIYuCS-Hi0=" alt="event" >
+            <h3 class="event">4 Event</h3>
+            <div class="textbox">
+                <input type="text" name="search" id="search" placeholder="Search">
+            </div>
+            <div class="event-detail">
+                <img class="event-image" src="https://media.istockphoto.com/id/613552524/photo/guitarist-on-stage-soft-and-blur-concept.jpg?s=612x612&w=0&k=20&c=_phKVgnj7AaY5TglzHdUZ4OgK4C_6Ly2iIIYuCS-Hi0=" alt="event" >
+            </div>
         </div>
     </div>
+
+    <script>
+        const menuItems = document.querySelectorAll('.header-menu-item');
+        
+        menuItems.forEach(item => {
+            item.addEventListener('click', function() {
+                // Remove 'selected' class from all items
+                menuItems.forEach(i => i.classList.remove('selected'));
+                
+                // Add 'selected' class to the clicked item
+                this.classList.add('selected');
+            });
+        });
+    </script>
+    
 </body>
 </html>
+

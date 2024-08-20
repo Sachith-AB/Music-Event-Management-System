@@ -9,15 +9,9 @@
     <link rel="stylesheet" href="<?= ROOT ?>/assets/css/signin-up.css">
 
 
-    
-
-
 
     <!-- toast css ang icon library -->
     <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
-    <link rel="stylesheet" href="<?= ROOT ?>/assets/css/toast.css">
-
-    <link rel="icon" href="<?= ROOT ?>/assets/images/amoral_1.ico">
 
 
 </head>
@@ -71,17 +65,17 @@
                                     <label for="email">Email</label>
                                 </div>
                                 <div class="input-wrap">
-                                    <input type="password" name="password" class="input-field" id="r-password" >
+                                    <input type="password" name="password" class="input-field" id="s-password" >
                                     <label for="pass">Password</label>
-                                    <a href="#" class="hide active" onclick="togglePasswordVisibility('r-password','r-toggleIcon')">
-                                        <ion-icon name="eye-outline" id="r-toggleIcon"></ion-icon>
+                                    <a href="#" class="hide active" onclick="togglePasswordVisibility('s-password','s-toggleIcon')">
+                                        <ion-icon name="eye-outline" id="s-toggleIcon"></ion-icon>
                                     </a>
                                 </div>
                                 <div class="input-wrap">
-                                    <input type="password" name="confirm-password" class="input-field" id="re-password" >
+                                    <input type="password" name="confirm-password" class="input-field" id="c-password" >
                                     <label for="pass">Confirm Password</label>
-                                    <a href="#" class="hide active" onclick="togglePasswordVisibility('re-password','re-toggleIcon')">
-                                        <ion-icon name="eye-outline" id="re-toggleIcon"></ion-icon>
+                                    <a href="#" class="hide active" onclick="togglePasswordVisibility('c-password','c-toggleIcon')">
+                                        <ion-icon name="eye-outline" id="c-toggleIcon"></ion-icon>
                                     </a>
                                 </div>
                                 <input type="submit" name="signUp" value="SignUp" class="sign-btn" id="sign-up-btn">
@@ -92,11 +86,6 @@
                                     <a href="#" class="toggle-1">Privacy Policy</a>
                                 </p>
                             </div>
-                            <?php if(!empty($errors)): ?>
-                                <div class="alert alert-danger">
-                                    <?= implode("<br>", $errors)?>
-                                </div>
-                            <?php endif; ?>
                         </form>
                     </div>
 
@@ -138,8 +127,9 @@
         </main>
     </div>
 
-    <script src="<?= ROOT ?>/assets/js/signin-up.js"></script>
-    
-</body>
+    <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+    <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
+    <script src="<?=ROOT?>/assets/js/signin-up.js"></script>
 
+</body>
 </html>

@@ -23,3 +23,17 @@ inputs.forEach((input) => {
     })
 });
 
+//password visibility
+function togglePasswordVisibility(passwordId, IconId) {
+
+    var passwordField = document.getElementById(passwordId);
+    var toggleIcon = document.getElementById(IconId);
+
+    if (passwordField.type === "password") {
+        toggleIcon.setAttribute("name", "eye-off-outline");
+        passwordField.type = "text";
+      } else {
+        passwordField.type = "password";
+        toggleIcon.setAttribute("name", "eye-outline");
+      }
+}  
