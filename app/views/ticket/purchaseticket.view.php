@@ -238,6 +238,32 @@
                     <div class="musicevent-event-price">From $10</div>
                 </div>
             </div>
+
+            <div class="musicevent-event-card">
+                <div class="musicevent-event-badge">Buy 2 get 1 free</div>
+                <img src="<?=ROOT?>/assets/images/ticket/musicevent3.jpg" alt="Metropolis Marathon" class="musicevent-event-image">
+                <div class="musicevent-event-info">
+                    <div class="musicevent-event-title">Metropolis Marathon</div>
+                    <div class="musicevent-event-details">
+                        <div>📅 Tuesday, June 07 | 06:00 AM</div>
+                        <div>📍 Atlanta</div>
+                    </div>
+                    <div class="musicevent-event-price">From $10</div>
+                </div>
+            </div>
+
+            <div class="musicevent-event-card">
+                <div class="musicevent-event-badge">Buy 2 get 1 free</div>
+                <img src="<?=ROOT?>/assets/images/ticket/musicevent4.jpg" alt="Metropolis Marathon" class="musicevent-event-image">
+                <div class="musicevent-event-info">
+                    <div class="musicevent-event-title">Metropolis Marathon</div>
+                    <div class="musicevent-event-details">
+                        <div>📅 Tuesday, June 07 | 06:00 AM</div>
+                        <div>📍 Atlanta</div>
+                    </div>
+                    <div class="musicevent-event-price">From $10</div>
+                </div>
+            </div>
         </div>
 
         <a href="#" class="view-more">View more</a>
