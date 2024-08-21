@@ -80,6 +80,10 @@
                                 </div>
                                 <input type="submit" name="signUp" value="SignUp" class="sign-btn" id="sign-up-btn">
                                 <!-- <button type="submit" name="signUp" value="SignUp" class="sign-btn" id="sign-up-btn">SignUp</button> -->
+
+                                <?php if (!empty($data['error'])){
+                                    echo $data['error'];
+                                } ?>
                                 <p class="text">
                                     By signing up, I agree to the
                                     <a href="#" class="toggle-1">Terms of Services</a> and

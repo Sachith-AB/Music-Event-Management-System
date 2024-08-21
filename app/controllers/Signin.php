@@ -26,7 +26,7 @@ class Signin {
             $arr['email'] = $_POST['email'];
 
             $row = $user->first($arr);
-            //show($row);
+            show($row);
             if($row){
 
                 //echo 'check';

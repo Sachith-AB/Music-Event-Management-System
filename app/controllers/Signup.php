@@ -32,7 +32,7 @@ class Signup {
             unset($POST['signUp']); //Remove sign up key before saving
             unset($POST['confirm-password']); //Remove confirm-password before saving
             $res = $user->insert($_POST);
-            redirect('signin');
+            //redirect('signin');
         }else{
 
             //show($user->errors);
