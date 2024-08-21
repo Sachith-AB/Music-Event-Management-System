@@ -64,7 +64,7 @@ class User {
 			$password = $_POST['password'];
 			$hash = password_hash($password, PASSWORD_BCRYPT);
 			$_POST['password'] = $hash;
-			echo $_POST['password'];
+			//echo $_POST['password'];
 			
             return true;
 		} else {

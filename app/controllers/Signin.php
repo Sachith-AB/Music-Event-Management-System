@@ -26,21 +26,21 @@ class Signin {
             $arr['email'] = $_POST['email'];
 
             $row = $user->first($arr);
-            show($row);
+            //show($row);
             if($row){
 
                 //echo 'check';
                 $checkpassword = password_verify($_POST['password'], $row->password);
 
                 if($checkpassword){
-                    echo 'check';
+                    //echo 'check';
                     unset($row->password);
                     session_start();
                     $_SESSION['USER'] = $row;
                     redirect('home');
 
                 }else{
-                    echo "error";
+                    //echo "error";
                     $error = "Invalid Email or Password";
                 }
             }

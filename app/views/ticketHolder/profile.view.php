@@ -12,7 +12,7 @@
         <div>
             <div class="container">
                 <div class="avatar">
-                    <img src="https://www.shutterstock.com/image-photo/adult-female-avatar-image-on-260nw-2419909229.jpg" alt="user image">
+                    <img src="<?=$_SESSION['USER']->pro_pic ?>" alt="user image">
                 </div>
                 <h2 class="head2">Amanda Smith</h2>
                 <h3 class="head3">amnd@gmail.com</h3>
@@ -21,7 +21,7 @@
                     <div class="tag-item">4 Following</div>
                     <div class="tag-item">10 Likes</div>
                 </div>
-                <button class="button">Update Profile</button>
+                <a href="update-profile" class="button" type="button">Update Profile</a>
             </div>
             <div class="header-menu">
                 <div class="header-menu-item selected">Upcoming</div>

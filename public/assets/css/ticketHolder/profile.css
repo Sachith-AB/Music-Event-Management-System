@@ -222,8 +222,8 @@
     border: none; 
     border-radius: 4px; /* border-m */
     gap: 6px; 
+    text-decoration: none;
   }
-  
   .button .icon {
     width: 20px; 
     height: 20px; 

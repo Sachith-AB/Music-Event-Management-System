@@ -19,3 +19,4 @@ route('upcommingevent','ticket/Ticket@index3');
 route('request','request/Request@index');
 
 route('profile','ticketHolder/Profile@index');
+route('update-profile','ticketHolder/UpdateProf@index');
