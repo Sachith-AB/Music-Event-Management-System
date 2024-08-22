@@ -12,7 +12,7 @@ class Signin {
         if($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['signIn'])){
 
             $data = $this->userLogin($user);
-            show($data);
+            //show($data);
         }
         $this->view('signin',$data);
     }
@@ -42,7 +42,29 @@ class Signin {
                 }else{
                     //echo "error";
                     $error = "Invalid Email or Password";
+
+                    $passData = 'email=' . $_POST['email'] . '&pass=' . $_POST['password'];
+                    $errors = 'flag=' . 1 . '&error=' . $error . '&error_no=' . 7 ;
+
+                    unset($_POST['signIn']);
+                    redirect("signin?$errors&$passData");
+                    //echo 'check';
+                    exit;
+                    //return $error; 
                 }
+            }else{
+
+                $error = "User not found";
+
+                $passData = $passData = 'email=' . $_POST['email'] . '&pass=' . $_POST['password'];
+                $errors = 'flag=' . 1 . '&error=' . $error . '&error_no=' . 8 ;
+
+                unset($_POST['signIn']);
+                    redirect("signin?$errors&$passData");
+                    //echo 'check';
+                    exit;
+                    //return $error;
+
             }
         }else{
                 //show($user->errors);

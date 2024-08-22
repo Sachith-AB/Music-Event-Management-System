@@ -19,6 +19,7 @@
                     <div>
                         <p class="p1">Upload your photo</p>
                         <p class="p2">Your photo should be in PNG or JPG format</p>
+                        <input type="file" name="p_p" id="fileInput" action="image/*" value="">
                         <button type="button" class="button" id="customButton">Upload File</button>
 
                     </div>
@@ -27,27 +28,22 @@
                     <form action="POST" class="form">
 
                         <div class="input-wrap">
-                            <label for="Name">Name</label>
+                            <!-- <label for="Name">Name</label> -->
                             <input type="text" placeholder="Name">
                         </div>
 
                         <div class="input-wrap">
-                            <label for="Email">Email</label>
+                            <!-- <label for="Email">Email</label> -->
                             <input type="email" placeholder="Email">
                         </div>
 
                         <div class="input-wrap">
-                            <label for="Password">Password</label>
-                            <input type="password" placeholder="Password">
-                        </div>
-
-                        <div class="input-wrap">
-                            <label for="contact">Contact</label>
+                            <!-- <label for="contact">Contact</label> -->
                             <input type="text" placeholder="Contact">
                         </div>
 
                         <div class="input-wrap">
-                            <label for="about">About me</label>
+                            <!-- <label for="about">About me</label> -->
                             <textarea type="text" maxlength="255" placeholder="Tell something about yourself"></textarea>
                         </div>
 

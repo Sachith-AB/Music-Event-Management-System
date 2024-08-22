@@ -16,19 +16,13 @@ body {
     border-radius: 8px;
     width: 1000px;
     /* text-align: center; */
+    margin-right: 3px;
 }
 
 @media screen and (max-width: 1024px) {
     .page-content {
         width: 600px; /* Adjust width for tablet size screens */
-    }
-}
-
-/* Media query for mobile phones */
-@media screen and (max-width: 768px) {
-    .page-content {
-        width: 650px; /* Adjust width for mobile devices */
-        padding: 20px; /* Reduce padding for smaller screens */
+        margin-right: 3px;
     }
 }
 
@@ -140,7 +134,7 @@ button {
     border-radius: 4px;
     font-weight: 600;
     cursor: pointer;
-    margin-right: 10px;
+    /* margin-right: 10px; */
 }
 
 button:hover {
@@ -160,4 +154,36 @@ button:nth-child(1):hover {
 .button-wrap{
     display: flex;
     flex-direction: row;
+    /* justify-content: right; */
+    gap: 4px;
+}
+
+/* Media query for mobile phones */
+@media screen and (max-width: 768px) {
+    .page-content {
+        width: 400px; /* Adjust width for mobile devices */
+        padding: 20px; /* Reduce padding for smaller screens */
+        text-align: center;
+        /* justify-items: center; */
+    }
+
+    .avatar {
+        justify-content: center;
+    }
+
+    .image {
+        display: flex;
+        flex-direction: column;
+        gap: 15px;
+    }
+
+    .input-wrap {
+        /* margin-bottom: 20px; */
+        text-align: center;
+        /* justify-content: right; */
+    }
+
+    .button-wrap {
+        margin-left: 10px;
+    }
 }

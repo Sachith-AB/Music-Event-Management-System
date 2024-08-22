@@ -16,6 +16,19 @@
 
 <body>
 
+    <?php 
+
+    //Get the pass data from URL for sign in part
+    $email = htmlspecialchars($_GET['email'] ?? '');
+    $pass = htmlspecialchars($_GET['pass'] ?? '');
+    $flag = htmlspecialchars($_GET['flag'] ?? 2);
+    $error = htmlspecialchars($_GET['error']?? '');
+    // echo $email;
+    // echo $pass;
+    // echo $flag;
+    // echo $error;
+    ?>
+
     <style>
         .page-content {
             display: flex;
@@ -57,10 +70,30 @@
                                     </a>
                                 </div>
                                 <input type="submit" name="signIn" value="Sign In" class="sign-btn" id="sign-in-btn">
+                                
+                                <!-- Show error -->
+                                <?php if (!empty($data['error'])): ?>
+                                    <div id="error-popup" class="popup">
+                                        <ion-icon name="alert-circle-outline" style="font-size: 30px;"></ion-icon>
+                                        <p id="error-message" class="p"><?php echo $data['error'] ?></p>
+                                        <span id="countdown">5</span> sec
+                                        </div>
+                                    </div>
+
+                                <?php elseif($flag == 1): ?>
+                                    <div id="error-popup" class="popup">
+                                        <ion-icon name="alert-circle-outline" style="font-size: 30px;"></ion-icon>
+                                        <p id="error-message" class="p"><?php echo $error ?></p>
+                                        <span id="countdown">5</span> sec
+                                        </div>
+                                    </div>
+                                <?php endif ?>
+
                                 <p class="text">
                                     Forgot your password or your login details?
                                     <a href="#" id="help" class="toggle-1">Get Help</a> Signing in
                                 </p>
+
                             </div>
                         </form>
                     </div>
