@@ -7,7 +7,9 @@
     <link rel="stylesheet" href="<?=ROOT?>/assets/css/ticketHolder/profile.css">
 </head>
 <body>
-    <?php $id = $data['id'] ?>
+    <?php $id = $data['id'];
+    $success = htmlspecialchars($_GET['msg']);
+    ?>
     <div class="page-content">
         <h1 class="head1">My Ticket</h1>
         <div>
@@ -18,6 +20,7 @@
                 <div class="details">
                     <h2 class="head2"><?php echo $data['name'] ?></h2>
                     <h3 class="head3"><?php echo $data['email'] ?></h3>
+                    <h3 class="head3"><?php echo $data['contact'] ?></h3>
                 </div>
                 <div class="tag">
                     <div class="tag-item">24 Purchase</div>
@@ -40,6 +43,13 @@
         </div>
     </div>
 
+    <div id="error-popup" class="popup">
+        <ion-icon name="alert-circle-outline" style="font-size: 30px;"></ion-icon>
+        <p id="error-message" class="p"><?php echo $success ?></p>
+        <span id="countdown">5</span> sec
+    </div>
+        </div>
+
     <script>
         const menuItems = document.querySelectorAll('.header-menu-item');
         
@@ -53,6 +63,12 @@
             });
         });
     </script>
+
+    <script src="<?=ROOT?>/assets/js/message.js"></script>
+
+    <!-- Ionicons Scripts -->
+    <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+    <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
     
 </body>
 </html>

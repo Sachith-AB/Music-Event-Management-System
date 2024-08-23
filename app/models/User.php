@@ -8,7 +8,7 @@ class User {
         'name',
         'email',
         'password',
-        'username',
+        'contact',
         'pro_pic'
     ];
 

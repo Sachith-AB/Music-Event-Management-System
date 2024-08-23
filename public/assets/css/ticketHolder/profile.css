@@ -393,6 +393,50 @@
     gap: 20px;
 }
 
+/* Popup error styling */
+.popup {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 200px; /* Reduced width */
+  background-color: #0d7e18;
+  color: white;
+  padding: 5px; /* Reduced padding */
+  border-radius: 8px; /* Slightly smaller border radius */
+  text-align: center;
+  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+  z-index: 999;
+  font-family: sans-serif;
+}
+
+/* Icon styling */
+.popup ion-icon {
+  font-size: 24px; /* Slightly smaller icon */
+  color: white;
+  margin-bottom: 5px; /* Less space between icon and message */
+  animation: shake 0.8s ease infinite; /* Shake animation for 0.6 seconds */
+}
+
+/* Error message styling */
+.popup p {
+  font-size: 14px; /* Smaller text size */
+  margin: 5px 0; /* Reduce margin to decrease height */
+  line-height: 1.2; /* Tighter line spacing */
+}
+
+/* Countdown styling */
+#countdown {
+  font-size: 12px; /* Smaller countdown text */
+}
+
+/* Optional: Style the overall popup container if needed */
+.popup-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
 @media (max-width: 768px) {
     .page-content {
         flex-direction: row; /* Change to row layout on small screens */

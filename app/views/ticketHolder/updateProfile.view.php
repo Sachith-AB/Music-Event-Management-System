@@ -29,38 +29,34 @@
 
                         <div class="input-wrap">
                             <!-- <label for="Name">Name</label> -->
-                            <input type="text" placeholder="Name" value="<?php echo $data['name'] ?>">
+                            <input name="name" type="text" placeholder="Name" value="<?php echo $data['name'] ?>">
                         </div>
 
                         <div class="input-wrap">
                             <!-- <label for="Email">Email</label> -->
-                            <input type="email" placeholder="Email" value="<?php echo $data['name'] ?>">
+                            <input name="email" type="email" placeholder="Email" value="<?php echo $data['email'] ?>">
                         </div>
 
                         <div class="input-wrap">
                             <!-- <label for="contact">Contact</label> -->
-                            <input type="text" placeholder="Contact" value="<?php echo $data['name'] ?>">
-                        </div>
-
-                        <div class="input-wrap">
-                            <!-- <label for="about">About me</label> -->
-                            <textarea type="text" maxlength="255" placeholder="Tell something about yourself"></textarea>
+                            <input name="contact" type="text" placeholder="Contact" value="<?php echo $data['contact'] ?>">
                         </div>
 
                         <div class="button-wrap">
                             <button type="button" onclick="goToProfile()">Cancel</button>
-                            <button>Save profile</button>
+                            <button type="sumbit" name="update">Save profile</button>
                         </div>
-
-                        <script>
-                            function goToProfile() {
-                                window.location.href = "profile?id=<?php echo $data['id']?>";
-                            }
-                        </script>
                     </form>
                 </div>
             </div>
         </div>
     </div>
+
+    <script>
+        function goToProfile() {
+            window.location.href = "profile?id=<?php echo $data['id']?>";
+        }
+    </script>
+
 </body>
 </html>

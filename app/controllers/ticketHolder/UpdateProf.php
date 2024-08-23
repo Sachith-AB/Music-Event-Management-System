@@ -8,12 +8,19 @@ class UpdateProf {
     public function index () {
 
         $user = new User;
+        $data = [];
+        $success = '';
 
-        $data = $this->updateProfile($user);
+        if($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['update'])){
+            
+            $this->updateDetail($user,$_POST);
+            //show($_POST);
+        }
+        $data = $this->getData($user);
         $this->view('ticketHolder/updateProfile',$data);
     }
 
-    public function updateProfile($user) {
+    public function getData($user) {
 
         $id = htmlspecialchars($_GET['id']);
         
@@ -23,5 +30,15 @@ class UpdateProf {
         return $data;
 
 
+    }
+
+    public function updateDetail($user,$POST) {
+
+        $id = htmlspecialchars($_GET['id']);
+        $msg = "Profile updated Succesfully";
+        $success = 'flag=' . 2 . '&msg=' . $msg . '&success_no=' . 1;
+        $res = $user->update($id,$POST);
+        unset($POST['update']);
+        redirect("profile?id=$id&$success");
     }
 }
