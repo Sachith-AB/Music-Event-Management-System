@@ -99,45 +99,131 @@
                 <h2>performers Profiles</h2>
 
                 <div class="carousel-container">
-                    <div class="card-container">
-                        <div class="card">
-                            <div class="card-image">
-                                <img src="<?= ROOT ?>/assets/images/ticket/performer1.jpeg" alt="Performer 1">
-                            </div>
-                            <div class="card-details">
-                                <h3>Chandler Bing</h3>
-                                <div class="social-icons">
-                                    <a href="#"><i class="fas fa-user-circle"></i></a>
-                                    <div class="heart-icon">
-                                        <a href="#" id="heart"><i class="far fa-heart"></i></a>
+                    <div class="carousel-track-container">
+                        <div class="card-container">
+                            <div class="card">
+                                <div class="card-image">
+                                    <img src="<?= ROOT ?>/assets/images/ticket/performer1.jpeg" alt="Performer 1">
+                                </div>
+                                <div class="card-details">
+                                    <h3>Chandler Bing</h3>
+                                    <div class="social-icons">
+                                        <a href="#"><i class="fas fa-user-circle"></i></a>
+                                        <div class="heart-icon">
+                                            <a href="#" id="heart"><i class="far fa-heart"></i></a>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
-                        </div>
 
-                        <div class="card">
-                            <div class="card-image">
-                                <img src="<?= ROOT ?>/assets/images/ticket/performer2.jpeg" alt="Performer 1">
-                            </div>
-                            <div class="card-details">
-                                <h3>Chandler Bing</h3>
-                                <div class="social-icons">
-                                    <a href="#"><i class="fas fa-user-circle"></i></a>
-                                    <div class="heart-icon">
-                                        <a href="#" id="heart"><i class="far fa-heart"></i></a>
+                            <div class="card">
+                                <div class="card-image">
+                                    <img src="<?= ROOT ?>/assets/images/ticket/performer2.jpeg" alt="Performer 1">
+                                </div>
+                                <div class="card-details">
+                                    <h3>Chandler Bing</h3>
+                                    <div class="social-icons">
+                                        <a href="#"><i class="fas fa-user-circle"></i></a>
+                                        <div class="heart-icon">
+                                            <a href="#" id="heart"><i class="far fa-heart"></i></a>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
-                        </div>
 
-                <!-- Add more cards for other performers -->
+                            <div class="card">
+                                <div class="card-image">
+                                    <img src="<?= ROOT ?>/assets/images/ticket/performer2.jpeg" alt="Performer 1">
+                                </div>
+                                <div class="card-details">
+                                    <h3>Chandler Bing</h3>
+                                    <div class="social-icons">
+                                        <a href="#"><i class="fas fa-user-circle"></i></a>
+                                        <div class="heart-icon">
+                                            <a href="#" id="heart"><i class="far fa-heart"></i></a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="card">
+                                <div class="card-image">
+                                    <img src="<?= ROOT ?>/assets/images/ticket/performer2.jpeg" alt="Performer 1">
+                                </div>
+                                <div class="card-details">
+                                    <h3>Chandler Bing</h3>
+                                    <div class="social-icons">
+                                        <a href="#"><i class="fas fa-user-circle"></i></a>
+                                        <div class="heart-icon">
+                                            <a href="#" id="heart"><i class="far fa-heart"></i></a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="card">
+                                <div class="card-image">
+                                    <img src="<?= ROOT ?>/assets/images/ticket/performer2.jpeg" alt="Performer 1">
+                                </div>
+                                <div class="card-details">
+                                    <h3>Chandler Bing</h3>
+                                    <div class="social-icons">
+                                        <a href="#"><i class="fas fa-user-circle"></i></a>
+                                        <div class="heart-icon">
+                                            <a href="#" id="heart"><i class="far fa-heart"></i></a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="card">
+                                <div class="card-image">
+                                    <img src="<?= ROOT ?>/assets/images/ticket/performer2.jpeg" alt="Performer 1">
+                                </div>
+                                <div class="card-details">
+                                    <h3>Chandler Bing</h3>
+                                    <div class="social-icons">
+                                        <a href="#"><i class="fas fa-user-circle"></i></a>
+                                        <div class="heart-icon">
+                                            <a href="#" id="heart"><i class="far fa-heart"></i></a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="card">
+                                <div class="card-image">
+                                    <img src="<?= ROOT ?>/assets/images/ticket/performer2.jpeg" alt="Performer 1">
+                                </div>
+                                <div class="card-details">
+                                    <h3>Chandler Bing</h3>
+                                    <div class="social-icons">
+                                        <a href="#"><i class="fas fa-user-circle"></i></a>
+                                        <div class="heart-icon">
+                                            <a href="#" id="heart"><i class="far fa-heart"></i></a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            
+
+                    <!-- Add more cards for other performers -->
+                        </div>
                     </div>
-
 
                     <div class="carousel-controls">
                         <span class="prev">&larr;</span>
                         <span class="next">&rarr;</span>
                     </div>
+
+
+
+                    
+
+
+
+
                 </div>
 
 
@@ -153,4 +239,6 @@
         </section>
     </div>
     </main>
+
+    <script src="<?= ROOT ?>/assets/js/ticker/ticketholder_event.js"></script>
 </body>
