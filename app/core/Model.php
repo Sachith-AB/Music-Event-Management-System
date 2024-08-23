@@ -118,4 +118,21 @@ trait Model {
         echo $query;
         return false;
     }
+
+    public function firstById($id) {
+
+        $query = "SELECT * FROM $this->table WHERE id = :id";
+
+        $data = ['id' => $id];
+
+        // Execute the query
+        $result = $this->query($query, $data);
+
+        // Check if a result is found
+        if ($result) {
+            return $result[0]; // Return the first result
+        }
+
+        return false; // Return false if no result
+        }
 }

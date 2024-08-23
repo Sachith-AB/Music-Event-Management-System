@@ -4,11 +4,29 @@ class Profile {
 
     use Controller;
 
+    use Model;
+
+    
+
     public function index(){
-        $this->view('ticketHolder/profile');
+
+        $user = new User;
+
+        $data = $this->profile($user);
+        //show( $data);
+        $this->view('ticketHolder/profile', $data);
+        
     }
 
-    public function profile(){
-        
+    public function profile($user){
+
+        $id = htmlspecialchars($_GET['id']);
+        //echo $id;
+
+        $row = $user->firstById($id);
+        $data = json_decode(json_encode($row),true);
+        //show($data) ;
+        return $data;
+        //show($row);
     }
 }

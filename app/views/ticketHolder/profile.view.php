@@ -7,8 +7,6 @@
     <link rel="stylesheet" href="<?=ROOT?>/assets/css/ticketHolder/profile.css">
 </head>
 <body>
-
-<?php $id = htmlspecialchars($_GET['id']) ?>
     <div class="page-content">
         <h1 class="head1">My Ticket</h1>
         <div>
@@ -16,8 +14,8 @@
                 <div class="avatar">
                     <img src="<?=$_SESSION['USER']->pro_pic ?>" alt="user image">
                 </div>
-                <h2 class="head2">Amanda Smith</h2>
-                <h3 class="head3">amnd@gmail.com</h3>
+                <h2 class="head2"><?php echo $data['name'] ?></h2>
+                <h3 class="head3"><?php echo $data['email'] ?></h3>
                 <div class="tag">
                     <div class="tag-item">24 Purchase</div>
                     <div class="tag-item">4 Following</div>
