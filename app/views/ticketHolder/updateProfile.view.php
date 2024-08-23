@@ -25,21 +25,21 @@
                     </div>
                 </div>
                 <div>
-                    <form action="POST" class="form">
+                    <form method="POST" class="form">
 
                         <div class="input-wrap">
                             <!-- <label for="Name">Name</label> -->
-                            <input type="text" placeholder="Name">
+                            <input type="text" placeholder="Name" value="<?php echo $data['name'] ?>">
                         </div>
 
                         <div class="input-wrap">
                             <!-- <label for="Email">Email</label> -->
-                            <input type="email" placeholder="Email">
+                            <input type="email" placeholder="Email" value="<?php echo $data['name'] ?>">
                         </div>
 
                         <div class="input-wrap">
                             <!-- <label for="contact">Contact</label> -->
-                            <input type="text" placeholder="Contact">
+                            <input type="text" placeholder="Contact" value="<?php echo $data['name'] ?>">
                         </div>
 
                         <div class="input-wrap">
@@ -48,10 +48,15 @@
                         </div>
 
                         <div class="button-wrap">
-                            <button>Cancel</button>
+                            <button type="button" onclick="goToProfile()">Cancel</button>
                             <button>Save profile</button>
                         </div>
 
+                        <script>
+                            function goToProfile() {
+                                window.location.href = "profile?id=<?php echo $data['id']?>";
+                            }
+                        </script>
                     </form>
                 </div>
             </div>

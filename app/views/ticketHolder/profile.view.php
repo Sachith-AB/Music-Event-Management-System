@@ -7,21 +7,24 @@
     <link rel="stylesheet" href="<?=ROOT?>/assets/css/ticketHolder/profile.css">
 </head>
 <body>
+    <?php $id = $data['id'] ?>
     <div class="page-content">
         <h1 class="head1">My Ticket</h1>
         <div>
             <div class="container">
                 <div class="avatar">
-                    <img src="<?=$_SESSION['USER']->pro_pic ?>" alt="user image">
+                    <img src="<?=$data['pro_pic'] ?>" alt="user image">
                 </div>
-                <h2 class="head2"><?php echo $data['name'] ?></h2>
-                <h3 class="head3"><?php echo $data['email'] ?></h3>
+                <div class="details">
+                    <h2 class="head2"><?php echo $data['name'] ?></h2>
+                    <h3 class="head3"><?php echo $data['email'] ?></h3>
+                </div>
                 <div class="tag">
                     <div class="tag-item">24 Purchase</div>
                     <div class="tag-item">4 Following</div>
                     <div class="tag-item">10 Likes</div>
                 </div>
-                <a href="update-profile" class="button" type="button">Update Profile</a>
+                <a href="update-profile?id=<?php echo $data['id']?>" class="button" type="button">Update Profile</a>
             </div>
             <div class="header-menu">
                 <div class="header-menu-item selected">Upcoming</div>
