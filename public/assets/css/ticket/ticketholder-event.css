@@ -1,0 +1,354 @@
+/* Reset padding and margin for the body and html */
+html, body {
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    height: 100%;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+}
+
+/* hero section */
+.hero-section {
+    position: relative;
+    width: 100%; /* Ensure it takes full width */
+    height: 400px;
+    background-size: cover;
+    background-position: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    color: #fff;
+    margin: 0;
+    padding: 0;
+    animation: slide 15s infinite; 
+}
+
+
+.hero-section .overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, 0.5); /* Dark overlay */
+    z-index: 1;
+}
+
+@keyframes slide {
+    0% {
+        background-image: url('https://www.greenlightbooking.com/wp-content/uploads/2016/02/1aug31glb.jpg');
+    }
+    50% {
+        background-image: url('https://www.greenlightbooking.com/wp-content/uploads/2016/02/1aug31glb.jpg');
+    }
+    50.01% {
+        background-image: url('https://media.istockphoto.com/id/1958337090/photo/crowd-is-going-wild-and-dancing-at-music-festival-and-rising-their-hands.webp?b=1&s=170667a&w=0&k=20&c=_knZQ9uwpftIhDE_6WWQ4FhgYQTrPAxQV-4Epe1ajkg='); /* Replace with the second image URL */
+    }
+    100% {
+        background-image: url('https://media.istockphoto.com/id/1958337090/photo/crowd-is-going-wild-and-dancing-at-music-festival-and-rising-their-hands.webp?b=1&s=170667a&w=0&k=20&c=_knZQ9uwpftIhDE_6WWQ4FhgYQTrPAxQV-4Epe1ajkg='); /* Replace with the second image URL */
+    }
+}
+
+.hero-section .content {
+    position: relative;
+    z-index: 2;
+    max-width: 800px;
+    padding: 20px;
+    background: rgba(255, 255, 255, 0.8); /* Slightly transparent white background */
+    border-radius: 10px;
+}
+
+.hero-section .event-date {
+    font-size: 14px;
+    margin-bottom: 10px;
+    color: #6b6b6b;
+}
+
+.hero-section .event-title {
+    font-size: 32px;
+    margin-bottom: 10px;
+    font-weight: bold;
+    color: #3a3a3a;
+}
+
+.hero-section .event-subtitle {
+    font-size: 16px;
+    margin-bottom: 20px;
+    color: #5a5a5a;
+}
+
+.hero-section .buttons {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+}
+
+.hero-section .btn {
+    padding: 10px 20px;
+    border-radius: 5px;
+    text-decoration: none;
+    color: #fff;
+    font-weight: bold;
+    transition: background-color 0.3s ease;
+}
+
+.hero-section .btn-red {
+    background-color: #ff4b4b;
+}
+
+.hero-section .btn-blue {
+    background-color: #4b6bff;
+}
+
+.hero-section .btn-red:hover {
+    background-color: #e74343;
+}
+
+.hero-section .btn-blue:hover {
+    background-color: #3a5bff;
+}
+
+
+
+
+.event-container {
+    
+    margin: 0 auto;
+    padding: 40px;
+}
+
+/* Middle Section */
+.middle-section {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 40px;
+}
+
+.info-section {
+    background: #f4f4f4;
+    gap: 20px;
+    width: 75%;
+    border-radius: 10px;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+
+}
+
+.information{
+    display: flex;
+    justify-content: space-between;
+    padding: 15px;
+}
+
+
+.info-section h2 {
+    font-size: 24px;
+    color:  #00BDD6FF;
+    padding: 10px;
+    display: flex;
+
+}
+/*.timing-location-item {
+    background: #f4f4f4;
+    padding: 20px;
+    border-radius: 10px;
+    text-align: center;
+    flex: 1;
+}
+
+.timing-location-item i {
+    font-size: 24px;
+    color: #6c63ff;
+    margin-bottom: 10px;
+}*/
+
+.map img {
+    width: 80%;
+    border-radius: 10px;
+    height: 300px;
+}
+
+.event-item {
+    display: flex;
+    align-items: center;
+    
+    border-radius: 10px;
+    padding: 20px;
+    width: 35%;
+}
+
+.event-item .icon {
+    width: 40px;  /* Set the width of the icon */
+    height: 40px; /* Set the height of the icon */
+    background-color: #d8d1f6; /* Optional: Background color for the icon container */
+    padding: 5px;  /* Adjust padding if needed */
+    border-radius: 50%; /* Keep the circular shape */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+}
+.icon i {
+    font-size: 30px; /* Adjust size */
+    color: #00BDD6FF;  /* Adjust color */
+}
+
+.icon img {
+    width: 100%;  /* Scale the image to fit within the container */
+    height: 100%; /* Scale the image to fit within the container */
+    object-fit: contain; /* Maintain the aspect ratio of the image */
+}
+
+.event-item h3 {
+    margin-left: 20px;
+    font-size: 16px;
+    color: #6a6a6a;
+    margin-bottom: 5px;
+}
+
+.event-item p {
+    margin-left: 20px;
+    font-size: 14px;
+    color: #6a6a6a;
+}
+.event-paragraph {
+    text-align: left;
+    font-size: 16px;
+    color: #6a6a6a;
+    margin: 10px;
+}
+
+
+
+
+
+/*performers profile section*/
+.carousel-container {
+    width: 80%;
+    max-width: 1000px;
+    position: relative;
+}
+
+.card-container {
+    display: flex;
+    gap: 20px;
+    
+}
+
+.card {
+    position: relative;
+    width: 200px;
+    height: 300px;
+    overflow: hidden;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    cursor: pointer;
+    transition: transform 0.3s ease;
+    display: flex;
+    flex-direction: column;
+}
+
+.card:hover {
+    transform: scale(1.2);
+}
+
+.card-image {
+    flex: 1 1 auto; /* Make the image take up the remaining space */
+}
+.card-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* Ensures the image covers the card */
+    object-position: center; /* Centers the image in the card */
+    border-radius: 10px; 
+}
+
+.card-details {
+    position: absolute;
+    bottom: 0; /* Position at the bottom */
+    left: 0;
+    width: 100%;
+    background: rgba(0, 0, 0, 0.7);
+    color: #fff;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    text-align: center;
+    padding: 10px 0;
+}
+
+.card:hover .card-details {
+    opacity: 1;
+}
+
+.card-details h3 {
+    margin: 10px 0;
+    font-size: 18px;
+}
+
+.social-icons {
+    margin-top: 10px;
+    display: flex;
+    margin-left: 10px;
+}
+
+.social-icons a {
+    margin: 0 5px;
+    color: #00BDD6FF;
+    font-size: 20px;
+    text-decoration: none;
+}
+.heart-icon a {
+    color: #ff0000; /* Default heart color */
+    font-size: 20px;
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+.heart-icon a.hearted {
+    color: #ff0000; /* Color for the hearted state */
+}
+
+.heart-icon a:hover {
+    color: #ff6666; /* Slightly lighter color on hover */
+}
+
+
+
+
+
+.ticket-price {
+    text-align: center;
+    background: #f4f4f4;
+    padding: 20px;
+    border-radius: 10px;
+    width: 25%;
+    margin-left: 20px;
+
+}
+
+.price-info p:first-child {
+    font-size: 16px;
+    color: #555;
+}
+
+.price-info p:last-child {
+    font-size: 24px;
+    color: #3a3a3a;
+}
+
+.purchase-btn {
+    background-color: #6c63ff;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-top: 20px;
+    display: block;
+}
+
+.purchase-btn:hover {
+    background-color: #5848c2;
+}
