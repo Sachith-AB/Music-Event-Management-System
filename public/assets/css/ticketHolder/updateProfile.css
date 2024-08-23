@@ -1,0 +1,189 @@
+/* General body styling */
+body {
+    font-family:sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: white; /* Light background for the whole page */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100%;
+}
+
+.page-content {
+    background: white;
+    padding: 30px;
+    border-radius: 8px;
+    width: 1000px;
+    /* text-align: center; */
+    margin-right: 3px;
+}
+
+@media screen and (max-width: 1024px) {
+    .page-content {
+        width: 600px; /* Adjust width for tablet size screens */
+        margin-right: 3px;
+    }
+}
+
+.head1 {
+    font-size: 24px;
+    font-weight: 700;
+    margin-bottom: 20px;
+}
+
+.head2 {
+    font-size: 18px;
+    font-weight: 600;
+    margin-bottom: 10px;
+}
+
+.avatar {
+    margin-bottom: 20px;
+    display: flex;
+    /* justify-content: center; */
+}
+
+.avatar img {
+    border-radius: 50%;
+    width: 120px;
+    height: 120px;
+    object-fit: cover;
+}
+
+.p1 {
+    
+    font-size: 16px;
+    font-weight: 600;
+    margin-bottom: 5px;
+}
+
+.p2 {
+    font-size: 12px;
+    color: #717171;
+    margin-bottom: 15px;
+}
+
+.image {
+    display: flex;
+    flex-direction: row;
+    gap: 15px;
+}
+    
+
+/* Button styling */
+.button {
+    display: inline-block;
+    padding: 8px 12px;
+    font-size: 14px;
+    background-color: #00BDD6FF; /* Primary color */
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-weight: 500;
+    margin-top: 10px;
+}
+
+.button:hover {
+    background-color: rgb(16, 171, 192); /* Darker on hover */
+}
+
+.form {
+    margin-top: 20px;
+}
+
+.input-wrap {
+    margin-bottom: 20px;
+    text-align: left;
+}
+
+label {
+    display: block;
+    font-size: 14px;
+    font-weight: 600;
+    margin-bottom: 5px;
+}
+
+input, textarea {
+    width: 90%;
+    border: none;
+    align-items: center;
+    padding: 10px;
+    font-size: 14px;
+    border-radius: 4px;
+    outline: none;
+    transition: border-color 0.3s ease;
+    background-color: #F3F4F6FF;
+}
+
+input:focus, textarea:focus {
+    border-color: rgb(16, 171, 192); /* Focus color for input fields */
+}
+
+textarea {
+    resize: none;
+    height: 100px;
+}
+
+button {
+    padding: 10px 20px;
+    background-color: #00BDD6FF;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    font-weight: 600;
+    cursor: pointer;
+    /* margin-right: 10px; */
+}
+
+button:hover {
+    background-color: rgb(16, 171, 192);
+}
+
+/* Cancel button styling */
+button:nth-child(1) {
+    background-color: #e0e0e0;
+    color: #333;
+}
+
+button:nth-child(1):hover {
+    background-color: #c2c2c2;
+}
+
+.button-wrap{
+    display: flex;
+    flex-direction: row;
+    /* justify-content: right; */
+    gap: 4px;
+}
+
+/* Media query for mobile phones */
+@media screen and (max-width: 768px) {
+    .page-content {
+        width: 400px; /* Adjust width for mobile devices */
+        padding: 20px; /* Reduce padding for smaller screens */
+        text-align: center;
+        /* justify-items: center; */
+    }
+
+    .avatar {
+        justify-content: center;
+    }
+
+    .image {
+        display: flex;
+        flex-direction: column;
+        gap: 15px;
+    }
+
+    .input-wrap {
+        /* margin-bottom: 20px; */
+        text-align: center;
+        /* justify-content: right; */
+    }
+
+    .button-wrap {
+        margin-left: 10px;
+    }
+}

@@ -10,8 +10,8 @@ trait Model {
     public $errors = [];
 
     public function findAll() {
+
         $query = "SELECT * FROM $this->table ORDER BY $this->order_column $this->order_type LIMIT $this->limit OFFSET $this->offset";
-        
         return $this->query($query);
     }
 
@@ -41,6 +41,7 @@ trait Model {
 
         $keys = array_keys($data);
         $keys_not = array_keys($data_not);
+
         $query="SELECT * FROM $this->table WHERE ";
 
         foreach($keys as $key){
@@ -65,6 +66,7 @@ trait Model {
     }
 
     public function insert($data) {
+
         if(!empty($this->allowedColumns)){
             foreach($data as $key => $value){
                 if(!in_array($key,$this->allowedColumns)){
@@ -81,6 +83,7 @@ trait Model {
     }
 
     public function update($id, $data, $id_column = 'id') {
+
         //remove unwanted data
         if(!empty($this->allowedColumns)){
             foreach($data as $key => $value){
@@ -108,10 +111,28 @@ trait Model {
     }
 
     public function delete($id, $id_column = 'id') {
+
         $data[$id_column] = $id;
         $query = "DELETE FROM $this->table WHERE $id_column = :$id_column";
         $this->query($query,$data);
         echo $query;
         return false;
     }
+
+    public function firstById($id) {
+
+        $query = "SELECT * FROM $this->table WHERE id = :id";
+
+        $data = ['id' => $id];
+
+        // Execute the query
+        $result = $this->query($query, $data);
+
+        // Check if a result is found
+        if ($result) {
+            return $result[0]; // Return the first result
+        }
+
+        return false; // Return false if no result
+        }
 }

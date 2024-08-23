@@ -13,37 +13,99 @@ class User {
     ];
 
     public function validUser($data) {
-
+        
         $this->errors = [];
 
-        if(empty($data['name'])){
-            $this->errors['name'] = "Name is required";
-        }
+        //flage mean errors include
 
-        if(empty($data['email'])){
-            $this->errors['email'] = "Email is required";
-        }else if(!filter_var($data['email'],FILTER_VALIDATE_EMAIL)){
-            $this->errors['email'] = "Email is not valid";
-        }
+        // is empty name
+        $this->errors = [];
 
-        if(empty($data['password'])){
-            $this->errors['password'] = "Password is required";
-        }
+        // is empty name 
+		if (empty($data['name'])) {
+			$this->errors['flag'] = true;
+			$this->errors['error'] = "Name is Required ";
+			$this->errors['error_no'] = 1;
+			return;
+		}
 
-        if (isset($data['password']) && isset($data['confirm-password'])) {
-            if ($data['password'] !== $data['confirm-password']) {
-                $this->errors['confirm-password'] = "Passwords must match.";
-            }
-        }
+        // is empty email 
+		if (empty($data['email'])) {
+			$this->errors['flag'] = true;
+			$this->errors['error'] = "Email is Required ";
+			$this->errors['error_no'] = 2;
+			return;
+		}
 
-        if(empty($data['agree'])){
-            $this->errors['agree'] = "Please accept terms & conditions";
-        }
+        else if (!filter_var($data['email'], FILTER_VALIDATE_EMAIL)) {
+			$this->errors['flag'] = true;
+			$this->errors['error'] = "Email is not Valid ";
+			$this->errors['error_no'] = 3;
+			return;
+		}
 
-        if(empty($this->errors)){
+        // is empty password 
+		if (empty($data['password']) || empty($data['confirm-password'])) {
+			$this->errors['flag'] = true;
+			$this->errors['error'] = "Password is Required ";
+			$this->errors['error_no'] = 5;
+			return;
+		} else if ($data['password'] != $data['confirm-password']) {
+			$this->errors['flag'] = true;
+			$this->errors['error'] = "Passwords does not match ";
+			$this->errors['error_no'] = 6;
+			return;
+		}
+
+        // errors no then hash passwords
+		if (empty($this->errors)) {
+
+			// password hashing 
+			$password = $_POST['password'];
+			$hash = password_hash($password, PASSWORD_BCRYPT);
+			$_POST['password'] = $hash;
+			//echo $_POST['password'];
+			
             return true;
-        }
-
-        return false;
+		} else {
+			return false;
+		}
+        
     }
+
+	public function signInData($data){
+
+		$this->errors = [];
+
+		// is empty email 
+		if (empty($data['email'])) {
+			$this->errors['flag'] = true;
+			$this->errors['error'] = "Email is Required ";
+			$this->errors['error_no'] = 1;
+			return;
+		}
+
+		else if (!filter_var($data['email'], FILTER_VALIDATE_EMAIL)) {
+			$this->errors['flag'] = true;
+			$this->errors['error'] = "Email is not Valid ";
+			$this->errors['error_no'] = 2;
+			return;
+		}
+
+		else if($data['email'])
+
+		// is empty password 
+		if (empty($data['password'])) {
+			$this->errors['flag'] = true;
+			$this->errors['error'] = "Password is Required ";
+			$this->errors['error_no'] = 3;
+			return;
+		}	
+
+		if (empty($this->errors)) {
+			return true;
+		} else {
+			return false;
+		}
+	}
 }

@@ -6,26 +6,72 @@ class Signin {
 
     public function index() {
 
+        $user = new User;
         $data = [];
+        
+        if($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['signIn'])){
 
-        if($_SERVER['REQUEST_METHOD'] == 'POST'){
-            $user = new User;
+            $data = $this->userLogin($user);
+            //show($data);
+        }
+        $this->view('signin',$data);
+    }
+
+    private function  userLogin($user){
+        //echo 'check';
+
+        if($user->signInData($_POST)){
+            
+            //echo 'check';
             $arr['email'] = $_POST['email'];
 
             $row = $user->first($arr);
             //show($row);
-
             if($row){
-                if($row->password === $_POST['password']){
+
+                //echo 'check';
+                $checkpassword = password_verify($_POST['password'], $row->password);
+
+                if($checkpassword){
+                    //echo 'check';
+                    unset($row->password);
+                    //session_start();
                     $_SESSION['USER'] = $row;
-                    //redirect('home');
+                    $id = $row->id;
+                    //unset($_SESSION['USER']);
+                    //show($row);
+                    redirect("home?id=$id");
+
+                }else{
+                    //echo "error";
+                    $error = "Invalid Email or Password";
+
+                    $passData = 'email=' . $_POST['email'] . '&pass=' . $_POST['password'];
+                    $errors = 'flag=' . 1 . '&error=' . $error . '&error_no=' . 7 ;
+
+                    unset($_POST['signIn']);
+                    redirect("signin?$errors&$passData");
+                    //echo 'check';
+                    exit;
+                    //return $error; 
                 }
+            }else{
+
+                $error = "User not found";
+
+                $passData = $passData = 'email=' . $_POST['email'] . '&pass=' . $_POST['password'];
+                $errors = 'flag=' . 1 . '&error=' . $error . '&error_no=' . 8 ;
+
+                unset($_POST['signIn']);
+                    redirect("signin?$errors&$passData");
+                    //echo 'check';
+                    exit;
+                    //return $error;
+
             }
-
-            $user->errors['email'] = "Wrong email or password";
-            $data['errors'] = $user->errors;
-
+        }else{
+                //show($user->errors);
+                return $user->errors;
         }
-        $this->view('signin');
     }
 }

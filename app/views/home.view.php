@@ -7,7 +7,9 @@
     <title>Explore Events</title>
     <link rel="stylesheet" href="<?=ROOT?>/assets/css/landing.css">
 </head>
-<body>  
+
+
+<body> 
     <section id ="treanding" class="trending-events">
         <h1>Discover Unforgettable Experience at</h1>
         <h1 class="highlight">Musicia</h1>
