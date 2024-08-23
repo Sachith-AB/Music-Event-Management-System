@@ -7,6 +7,10 @@
     <link rel="stylesheet" href="<?=ROOT?>/assets/css/landing.css">
 </head>
 <body>
+<?php 
+    $id = 0;
+    $id = htmlspecialchars($_GET['id']);
+?>
 <header>
     <div class="logo">
         <img src = "logo.png" alt = "musicia"> 
@@ -15,7 +19,11 @@
         <ul>
             <li><a href="#treanding">Explore</a></li>
             <li><a href="#new-events">Upcoming Events</a></li>
-            <li><a href="signup.php" class="sign-up">Sign Up</a></li>
+            <?php if($id != 0): ?>
+                <li><a href="profile?id=<?php echo $id ?>" class="sign-up">image</a></li>
+            <?php else: ?>
+                <li><a href="signup" class="sign-up">Sign Up</a></li>
+            <?php endif ?>
         </ul>
     </nav>
 </header>

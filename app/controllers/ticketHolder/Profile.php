@@ -7,4 +7,8 @@ class Profile {
     public function index(){
         $this->view('ticketHolder/profile');
     }
+
+    public function profile(){
+        
+    }
 }

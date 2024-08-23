@@ -7,6 +7,8 @@
     <link rel="stylesheet" href="<?=ROOT?>/assets/css/ticketHolder/profile.css">
 </head>
 <body>
+
+<?php $id = htmlspecialchars($_GET['id']) ?>
     <div class="page-content">
         <h1 class="head1">My Ticket</h1>
         <div>

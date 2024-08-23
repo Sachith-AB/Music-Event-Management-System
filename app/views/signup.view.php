@@ -18,7 +18,18 @@
 
 <body>
 
-    
+<?php 
+
+    //Get the pass data from URL for sign in part
+    $email = htmlspecialchars($_GET['email'] ?? '');
+    $pass = htmlspecialchars($_GET['pass'] ?? '');
+    $flag = htmlspecialchars($_GET['flag'] ?? 2);
+    $error = htmlspecialchars($_GET['error']?? '');
+    // echo $email;
+    // echo $pass;
+    // echo $flag;
+    // echo $error;
+?>
     <!-- loading page -->
     
         <style>
@@ -82,16 +93,12 @@
                                 </div>
                                 <input type="submit" name="signUp" value="SignUp" class="sign-btn" id="sign-up-btn">
                                 <!-- <button type="submit" name="signUp" value="SignUp" class="sign-btn" id="sign-up-btn">SignUp</button> -->
+
+                               
+
                             </div>
-                                <!-- Show error -->
-                                <?php if (!empty($data['error'])): ?>
-                                    <div id="error-popup" class="popup">
-                                        <ion-icon name="alert-circle-outline" style="font-size: 30px;"></ion-icon>
-                                        <p id="error-message" class="p"><?php echo $data['error'] ?></p>
-                                        <span class="count" id="countdown">5</span> sec
-                                    </div>
-                                    
-                                <?php endif ?>
+
+                                 
                             
                                 <p class="text">
                                     By signing up, I agree to the
@@ -106,13 +113,13 @@
                     Images Slider
                 ------------------------------- -->
                     <div class="carousel">
-                        <!-- <div class="images-wrapper">
+                        <div class="images-wrapper">
 
                             <img src="<?= ROOT ?>/assets/images/bg.png" class="image img-1 show" alt="">
                             <img src="<?= ROOT ?>/assets/images/bg.png" class="image img-2" alt="">
                             <img src="<?= ROOT ?>/assets/images/" class="image img-3" alt="">
                             <img src="<?= ROOT ?>/assets/images/" class="image img-4" alt="">
-                        </div> -->
+                        </div>
                         <div class="text-slider">
                             <div class="text-wrap">
                                 <div class="text-group">
@@ -139,6 +146,23 @@
             </div>
         </main>
     </div>
+
+    <!-- Show error -->
+    <?php if (!empty($data['error'])): ?>
+        <div id="error-popup" class="popup">
+            <ion-icon name="alert-circle-outline" style="font-size: 30px;"></ion-icon>
+            <p id="error-message" class="p"><?php echo $data['error'] ?></p>
+            <span id="countdown">5</span> sec
+            </div>
+        </div>
+
+    <?php elseif($flag == 1): ?>
+        <div id="error-popup" class="popup">
+            <ion-icon name="alert-circle-outline" style="font-size: 30px;"></ion-icon>
+            <p id="error-message" class="p"><?php echo $error ?></p>
+            <span id="countdown">5</span</div>
+        </div>
+    <?php endif ?>
 
     <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
     <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>

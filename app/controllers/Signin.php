@@ -35,9 +35,12 @@ class Signin {
                 if($checkpassword){
                     //echo 'check';
                     unset($row->password);
-                    session_start();
+                    //session_start();
                     $_SESSION['USER'] = $row;
-                    redirect('home');
+                    $id = $row->id;
+                    //unset($_SESSION['USER']);
+                    //show($row);
+                    redirect("home?id=$id");
 
                 }else{
                     //echo "error";

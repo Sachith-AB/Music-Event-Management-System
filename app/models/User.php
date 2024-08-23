@@ -48,12 +48,12 @@ class User {
 		if (empty($data['password']) || empty($data['confirm-password'])) {
 			$this->errors['flag'] = true;
 			$this->errors['error'] = "Password is Required ";
-			$this->errors['error_no'] = 4;
+			$this->errors['error_no'] = 5;
 			return;
 		} else if ($data['password'] != $data['confirm-password']) {
 			$this->errors['flag'] = true;
 			$this->errors['error'] = "Passwords does not match ";
-			$this->errors['error_no'] = 5;
+			$this->errors['error_no'] = 6;
 			return;
 		}
 
@@ -91,6 +91,8 @@ class User {
 			$this->errors['error_no'] = 2;
 			return;
 		}
+
+		else if($data['email'])
 
 		// is empty password 
 		if (empty($data['password'])) {

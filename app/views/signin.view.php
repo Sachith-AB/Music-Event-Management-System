@@ -70,24 +70,6 @@
                                     </a>
                                 </div>
                                 <input type="submit" name="signIn" value="Sign In" class="sign-btn" id="sign-in-btn">
-                                
-                                <!-- Show error -->
-                                <?php if (!empty($data['error'])): ?>
-                                    <div id="error-popup" class="popup">
-                                        <ion-icon name="alert-circle-outline" style="font-size: 30px;"></ion-icon>
-                                        <p id="error-message" class="p"><?php echo $data['error'] ?></p>
-                                        <span id="countdown">5</span> sec
-                                        </div>
-                                    </div>
-
-                                <?php elseif($flag == 1): ?>
-                                    <div id="error-popup" class="popup">
-                                        <ion-icon name="alert-circle-outline" style="font-size: 30px;"></ion-icon>
-                                        <p id="error-message" class="p"><?php echo $error ?></p>
-                                        <span id="countdown">5</span> sec
-                                        </div>
-                                    </div>
-                                <?php endif ?>
 
                                 <p class="text">
                                     Forgot your password or your login details?
@@ -129,6 +111,24 @@
             </div>
         </main>
     </div>
+
+    <!-- Show error -->
+    <?php if (!empty($data['error'])): ?>
+        <div id="error-popup" class="popup">
+            <ion-icon name="alert-circle-outline" style="font-size: 30px;"></ion-icon>
+            <p id="error-message" class="p"><?php echo $data['error'] ?></p>
+            <span id="countdown">5</span> sec
+            </div>
+        </div>
+
+    <?php elseif($flag == 1): ?>
+        <div id="error-popup" class="popup">
+            <ion-icon name="alert-circle-outline" style="font-size: 30px;"></ion-icon>
+            <p id="error-message" class="p"><?php echo $error ?></p>
+            <span id="countdown">5</span> sec
+            </div>
+        </div>
+    <?php endif ?>
 
     <!-- Ionicons Scripts -->
     <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>

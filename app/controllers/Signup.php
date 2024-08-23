@@ -29,10 +29,27 @@ class Signup {
         //check data validation
         if($user->validUser($_POST)){
 
-            unset($POST['signUp']); //Remove sign up key before saving
-            unset($POST['confirm-password']); //Remove confirm-password before saving
-            $res = $user->insert($_POST);
-            redirect('signin');
+            $arr['email'] = $_POST['email'];
+            $row = $user->first($arr);
+            show($row);
+
+            //Check email taken or not
+            if($row == 0){
+
+                unset($POST['signUp']); //Remove sign up key before saving
+                unset($POST['confirm-password']); //Remove confirm-password before saving
+                $res = $user->insert($_POST);
+                redirect('signin');
+            }else {
+                $error = "Email is Already Taken";
+                $passData = 'email=' . $_POST['email'] . '&pass=' . $_POST['password'];
+                $errors = 'flag=' . 1 . '&error=' . $error . '&error_no=' . 7 ;
+
+                unset($_POST['signIn']);
+                redirect("signup?$errors&$passData");
+                //echo 'check';
+                exit;
+            }
         }else{
 
             //show($user->errors);
