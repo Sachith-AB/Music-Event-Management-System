@@ -10,7 +10,7 @@ route('signup','Signup@index');
 
 
 
-route('createEvent', 'event/Create@index');
+route('create-event', 'event/Create@index');
 
 
 
@@ -28,3 +28,6 @@ route('ticketevent','ticket/Ticket@index4');
 
 
 route('request','request/Request@index');
+
+route('profile','ticketHolder/Profile@index');
+route('update-profile','ticketHolder/UpdateProf@index');

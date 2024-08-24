@@ -1,3 +1,5 @@
+
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -12,9 +14,7 @@
 <body>
 
     <!-- Include Header -->
-    <div class="header">
-        
-    </div>
+    <?php include ('../app/views/components/Header.php'); ?>
     <!-- Main Content -->
     <main>
         <div class="event-details-container">
