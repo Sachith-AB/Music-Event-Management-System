@@ -8,7 +8,8 @@
 </head>
 <body>
     <?php $id = $data['id'];
-    $success = htmlspecialchars($_GET['msg']);
+    $success = htmlspecialchars($_GET['msg'] ?? '');
+    $flag = htmlspecialchars($_GET['flag'] ?? 0);
     ?>
     <div class="page-content">
         <h1 class="head1">My Ticket</h1>
@@ -43,12 +44,12 @@
         </div>
     </div>
 
-    <div id="error-popup" class="popup">
-        <ion-icon name="alert-circle-outline" style="font-size: 30px;"></ion-icon>
-        <p id="error-message" class="p"><?php echo $success ?></p>
-        <span id="countdown">5</span> sec
-    </div>
-        </div>
+    <?php if($flag == 2):?>
+        <?php
+            $message = $success;
+            include ("../app/views/components/s-message.php")
+            ?>
+    <?php  endif ?>
 
     <script>
         const menuItems = document.querySelectorAll('.header-menu-item');

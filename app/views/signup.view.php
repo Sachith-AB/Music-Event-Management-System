@@ -94,11 +94,11 @@
                                 <input type="submit" name="signUp" value="SignUp" class="sign-btn" id="sign-up-btn">
                                 <!-- <button type="submit" name="signUp" value="SignUp" class="sign-btn" id="sign-up-btn">SignUp</button> -->
 
-                               
+                            
 
                             </div>
 
-                                 
+                                
                             
                                 <p class="text">
                                     By signing up, I agree to the
@@ -149,19 +149,16 @@
 
     <!-- Show error -->
     <?php if (!empty($data['error'])): ?>
-        <div id="error-popup" class="popup">
-            <ion-icon name="alert-circle-outline" style="font-size: 30px;"></ion-icon>
-            <p id="error-message" class="p"><?php echo $data['error'] ?></p>
-            <span id="countdown">5</span> sec
-            </div>
-        </div>
+        <?php 
+            $message = $data['error'];
+            include("../app/views/components/r-message.php")
+        ?>
 
     <?php elseif($flag == 1): ?>
-        <div id="error-popup" class="popup">
-            <ion-icon name="alert-circle-outline" style="font-size: 30px;"></ion-icon>
-            <p id="error-message" class="p"><?php echo $error ?></p>
-            <span id="countdown">5</span</div>
-        </div>
+        <?php 
+            $message = $error;
+            include("../app/views/components/r-message.php")
+        ?>
     <?php endif ?>
 
     <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>

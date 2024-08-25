@@ -14,18 +14,22 @@
             <div class="">
                 <div class="image">
                     <div class="avatar">
-                        <img src="https://www.shutterstock.com/image-photo/adult-female-avatar-image-on-260nw-2419909229.jpg" alt="pro pic">
+                        <img src="<?php echo $data['pro_pic'] ?>" alt="pro pic">
                     </div>
                     <div>
                         <p class="p1">Upload your photo</p>
                         <p class="p2">Your photo should be in PNG or JPG format</p>
-                        <input type="file" name="p_p" id="fileInput" action="image/*" value="">
-                        <button type="button" class="button" id="customButton">Upload File</button>
+                        
 
                     </div>
                 </div>
                 <div>
-                    <form method="POST" class="form">
+                    <form method="POST" class="form" enctype="multipart/form-data">
+
+                        <div class="input-wrap">
+                            <input type="file" name="pro_pic" id="fileInput" accept="image/*" value="">
+                            <button type="submit" class="button" id="customButton" name="uploadImage">Upload File</button>
+                        </div>
 
                         <div class="input-wrap">
                             <!-- <label for="Name">Name</label> -->
