@@ -1,32 +1,63 @@
 document.addEventListener('DOMContentLoaded', () => {
-    console.log('DOM fully loaded and parsed');
-  
-
-    const prevBtn = document.querySelector('.prev');
-    const nextBtn = document.querySelector('.next');
+    // Carousel functionality
     const cardContainer = document.querySelector('.card-container');
+    const leftArrow = document.querySelector('.left-arrow');
+    const rightArrow = document.querySelector('.right-arrow');
 
-    if (!prevBtn || !nextBtn || !cardContainer) {
-        console.error('One or more elements are not found');
-        return;
-    }
+    const scrollStep = 300; // Adjust this based on the card width
     let scrollAmount = 0;
-    const cardWidth = 220; // Adjust according to your card width + margin
 
-    nextBtn.addEventListener('click', () => {
-        console.error('One or more elements are not found');
-        scrollAmount += cardWidth;
-        cardContainer.scrollTo({
-            left: scrollAmount,
-            behavior: 'smooth'
+    if (leftArrow && rightArrow && cardContainer) {
+        leftArrow.addEventListener('click', () => {
+            if (scrollAmount > 0) {
+                scrollAmount -= scrollStep;
+                cardContainer.scrollBy({
+                    left: -scrollStep,
+                    behavior: 'smooth'
+                });
+            }
         });
-    });
 
-    prevBtn.addEventListener('click', () => {
-        scrollAmount -= cardWidth;
-        cardContainer.scrollTo({
-            left: scrollAmount,
-            behavior: 'smooth'
+        rightArrow.addEventListener('click', () => {
+            if (scrollAmount < cardContainer.scrollWidth - cardContainer.clientWidth) {
+                scrollAmount += scrollStep;
+                cardContainer.scrollBy({
+                    left: scrollStep,
+                    behavior: 'smooth'
+                });
+            }
         });
-    });
+    }
+
+    // Band image functionality
+    const bandImages = [
+        "<?= ROOT ?>/assets/images/ticket/band1.jpg",
+        "<?= ROOT ?>/assets/images/ticket/band2.jpg",
+        "<?= ROOT ?>/assets/images/ticket/band3.jpg"
+    ];
+
+    const bandImageElement = document.querySelector('.band-image img');
+    let currentIndex = 0;
+
+    function changeBandImage() {
+        currentIndex = (currentIndex + 1) % bandImages.length;
+
+        // First, hide the image with a smooth transition
+        bandImageElement.style.transition = 'opacity 1s ease';
+        bandImageElement.style.opacity = '0';
+
+        setTimeout(() => {
+            // Change the image source when the image is hidden
+            bandImageElement.src = bandImages[currentIndex];
+
+            // Wait for a tiny delay before making the image visible again
+            setTimeout(() => {
+                bandImageElement.style.transition = 'opacity 1s ease';
+                bandImageElement.style.opacity = '1';
+            }, 50);
+        }, 1000); // Duration must match the transition duration
+    }
+
+    // Change the image every 15 seconds
+    setInterval(changeBandImage, 15000);
 });

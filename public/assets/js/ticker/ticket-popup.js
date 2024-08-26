@@ -7,7 +7,7 @@ function closeModal() {
 }*/
 
 
-function openModal() {
+function openViewTicketModal() {
     const modal = document.getElementById('ticketModal');
     if (modal) {
         modal.style.display = 'flex';
@@ -16,7 +16,7 @@ function openModal() {
     }
 }
 
-function closeModal() {
+function closeViewTicketModal() {
     const modal = document.getElementById('ticketModal');
     if (modal) {
         modal.style.display = 'none';

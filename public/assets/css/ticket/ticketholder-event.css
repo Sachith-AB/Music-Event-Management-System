@@ -113,9 +113,9 @@ html, body {
 
 
 .event-container {
-    
-    margin: 0 auto;
-    padding: 40px;
+    margin: 30px auto;
+    padding-left: 60px;
+    padding-right: 60px;
 }
 
 /* Middle Section */
@@ -226,25 +226,24 @@ html, body {
 
 /*performers profile section*/
 .carousel-container {
-    padding: 40px;
+    padding: 60px;
     width: 80%;
-    height: 800px;
     max-width: 1080px;
     position: relative;
     overflow-x: hidden;
+    
 }
 .carousel-track-container {
-    
     display: flex;
-    width: 80%;
+    width: 100%;
     max-width: 1100px;
-    
     
 }
 .card-container {
     display: flex;
     gap: 20px;
-    
+    width: 100%;
+    scroll-behavior: smooth;
     
 }
 
@@ -264,6 +263,7 @@ html, body {
 
 .card:hover {
     transform: scale(1.2);
+    transition: all 1s ease-in-out;
 }
 
 .card-image {
@@ -275,6 +275,30 @@ html, body {
     object-fit: cover; /* Ensures the image covers the card */
     object-position: center; /* Centers the image in the card */
     border-radius: 10px; 
+}
+.arrow{
+    font-size: 120px;
+    position: absolute;
+    top: 50%; /* Position the arrow vertically in the center */
+    transform: translateY(-50%);
+    color: rgb(7, 7, 7);
+    opacity: 0.5;
+    cursor: pointer;
+    z-index: 10; /* Make sure the arrows are above other elements */
+    transition: opacity 0.3s ease;
+}
+
+.left-arrow {
+    left: 0; /* Position the arrow outside of the card container */
+
+}
+
+.right-arrow {
+    right: 0; /* Position the arrow outside of the card container */
+}
+
+.arrow:hover {
+    opacity: 0.5; /* Increase opacity on hover */
 }
 
 .card-details {
@@ -361,7 +385,53 @@ html, body {
     color: white;
     padding: 10px;
 }*/
+.band {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background-color: white;
+    padding: 20px;
+    width: 80%;
+    max-width: 800px;
+    margin: 20px auto;
+    box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.1);
+    border-radius: 10px;
+    overflow: hidden;
+    position: relative;
+}
 
+.band-image {
+    width: 50%;
+    height: auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: transform 1s ease; /* Smooth transition for image change */
+}
+
+.band-image img {
+    width: 100%;
+    height: auto;
+    border-radius: 10px;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
+}
+
+.band-info {
+    flex-grow: 1;
+    color: black;
+    padding-left: 20px; /* Space between image and text */
+}
+
+.band-info h2 {
+    margin: 0 0 10px 0;
+    font-size: 24px;
+}
+
+.band-info p {
+    margin: 0;
+    font-size: 16px;
+    line-height: 1.4;
+}
 
 
 
