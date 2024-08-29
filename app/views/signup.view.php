@@ -115,16 +115,17 @@
                     <div class="carousel">
                         <div class="images-wrapper">
 
-                            <img src="<?= ROOT ?>/assets/images/bg.png" class="image img-1 show" alt="">
-                            <img src="<?= ROOT ?>/assets/images/bg.png" class="image img-2" alt="">
-                            <img src="<?= ROOT ?>/assets/images/" class="image img-3" alt="">
-                            <img src="<?= ROOT ?>/assets/images/" class="image img-4" alt="">
+                            <img src="<?= ROOT ?>/assets/images/sign-in-up/image-2.jpg" class="image img-1 show" alt="">
+                            <img src="<?= ROOT ?>/assets/images/sign-in-up/image-4.jpg" class="image img-2" alt="">
+                            <img src="<?= ROOT ?>/assets/images/sign-in-up/image-3.jpg" class="image img-3" alt="">
+                            <img src="<?= ROOT ?>/assets/images/sign-in-up/image-1.jpg" class="image img-4" alt="">
                         </div>
                         <div class="text-slider">
                             <div class="text-wrap">
                                 <div class="text-group">
                                     <h2>Create Your Own Music Events</h2>
                                     <h2>Customize as you like</h2>
+                                    <h2>Purchase Your Ticket With Ease</h2>
                                     <h2>Follow Us On All Social Media</h2>
 
                                 </div>

@@ -1,3 +1,5 @@
+//Error pop up
+
 document.addEventListener("DOMContentLoaded", function() {
     const errorPopup = document.getElementById('error-popup');
     const countdownElement = document.getElementById('countdown');

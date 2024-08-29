@@ -13,7 +13,7 @@ class UpdateProf {
 
         if($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['uploadImage'])){
 
-            //$this->uploadImage();
+            //$this->uploadImage($_FILES['pro_pic']);
             //echo "check";
             //show($_FILES);
         }
@@ -49,53 +49,7 @@ class UpdateProf {
         redirect("profile?id=$id&$success");
     }
 
-    public function uploadImage () {
-
-        if(isset($_FILES['pro_pic'])){
-
-            //echo "check";
-            $image = $_FILES['pro_pic'];
-            $directory = ROOT.'/assets/images/user/pro-pic/';
-            $fileTmpName = $image['tmp_name'];
-            
-            $id = htmlspecialchars($_GET['id']);
-
-            //Generate a random name for the image
-            $fileExtension = pathinfo($image['name'], PATHINFO_EXTENSION); // Extract extension
-            $randomName = "pro_pic_id=".$id."_" .rand(00000,99999) . "." . $fileExtension;
-            
-
-            // Set the target path with the new random name
-            $targetPath = $directory . $randomName;
-
-            //validate file type
-            $allowedTypes = ['image/png', 'image/jpeg'];
-
-            if($image != ""){
-                if(in_array($image['type'],$allowedTypes)){
-                    if($image['size'] < 5000000){ //5MB limit
-                        if (move_uploaded_file($fileTmpName, $targetPath)) {
-                            echo "File uploaded successfully with name: $randomName";
-                        } else {
-                            //echo "Failed to move the uploaded file.";
-                            unset($_FILES['pro_pic']);
-                        }
-                    }else {
-                        echo "File too large";
-                        unset($_FILES['pro_pic']);
-                    }
-                } else {
-                    echo "Invalid file type";
-                    unset($_FILES['pro_pic']);
-                }
-            }else {
-                return false;
-            }
-            
-            
-
-        }else {
-            return false;
-        }
+    public function uploadImage ($image) {
+        
     }
 }

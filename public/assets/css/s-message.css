@@ -34,7 +34,7 @@
   font-size: 24px; /* Slightly smaller icon */
   color: white;
   margin-bottom: 5px; /* Less space between icon and message */
-  animation: popUp  1.5s ease-out; /* popup animation for 0.6 seconds */
+  animation: popUp  1.5s infinite; /* popup animation for 0.6 seconds */
 }
 
 /* Error message styling */

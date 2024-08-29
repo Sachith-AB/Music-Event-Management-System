@@ -12,8 +12,8 @@
     $flag = htmlspecialchars($_GET['flag'] ?? 0);
     ?>
     <div class="page-content">
-        <h1 class="head1">My Ticket</h1>
-        <div>
+        <h1 class="head1">My Profile</h1>
+        <div class="all">
             <div class="container">
                 <div class="avatar">
                     <img src="<?=$data['pro_pic'] ?>" alt="user image">
