@@ -7,6 +7,10 @@
     <title>Update Profile</title>
 </head>
 <body>
+    <?php 
+        $flag = htmlspecialchars($_GET['flag'] ?? 0);
+        $error = htmlspecialchars($_GET['msg'] ?? '');
+    ?>
     <div class="">
         <div class="page-content">
             <h1 class="head1">Edit profile</h1>
@@ -14,22 +18,24 @@
             <div class="">
                 <div class="image">
                     <div class="avatar">
-                        <img src="<?php echo $data['pro_pic'] ?>" alt="pro pic">
+                        <img src="<?=ROOT?>/assets/images/user/<?php echo $data['pro_pic'] ?>" alt="pro pic">
                     </div>
                     <div>
                         <p class="p1">Upload your photo</p>
                         <p class="p2">Your photo should be in PNG or JPG format</p>
-                        
 
                     </div>
                 </div>
-                <div>
-                    <form method="POST" class="form" enctype="multipart/form-data">
 
-                        <div class="input-wrap">
-                            <input type="file" name="pro_pic" id="fileInput" accept="image/*" value="">
-                            <button type="submit" class="button" id="customButton" name="uploadImage">Upload File</button>
-                        </div>
+                <form  method="POST" enctype="multipart/form-data">
+                    <div class="input-wrap">
+                        <input type="file" name="pro_pic" id="fileInput">
+                        <button type="submit" class="button" id="customButton" name="uploadImage">Upload File</button>
+                    </div>
+                </form>
+
+                <div>
+                    <form method="POST" class="form" >
 
                         <div class="input-wrap">
                             <!-- <label for="Name">Name</label> -->
@@ -56,11 +62,24 @@
         </div>
     </div>
 
+    <?php if($flag == 1):?>
+        <?php
+            $message = $error;
+            include ("../app/views/components/r-message.php");
+        ?>
+    <?php  endif ?>
+
     <script>
         function goToProfile() {
             window.location.href = "profile?id=<?php echo $data['id']?>";
         }
     </script>
+
+    <script src="<?=ROOT?>/assets/js/message.js"></script>
+
+    <!-- Ionicons Scripts -->
+    <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+    <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
 
 </body>
 </html>
