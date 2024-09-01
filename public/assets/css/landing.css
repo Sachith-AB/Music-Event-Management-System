@@ -1,7 +1,7 @@
 body, html {
     margin: 0;
     padding: 0;
-    font-family: 'Inter';
+    font-family:sans-serif;
     height: 100%;
     overflow-x: hidden;
 }
@@ -92,7 +92,7 @@ nav ul li.sign-up {
 .footer {
     background-color: #222;
     color: white;
-    font-family: 'Inter', sans-serif;
+    font-family: sans-serif;
     padding: 40px 20px;
     display: flex;
     flex-wrap: wrap;
@@ -152,11 +152,11 @@ nav ul li.sign-up {
 }
 /*footer end*/
 
-/* First Part Styling */
 
+/*trending events*/
 .trending-events {
     padding: 20px;
-    background-image: url('../images/bg.png');
+    background-image: url('../images/landing/bg.png');
     background-size: cover;
     background-position: center;
     background-attachment: fixed;
@@ -180,7 +180,7 @@ nav ul li.sign-up {
 .trending-events h1 {
     font-size: 2.5em;
     margin: 10px 0;
-    font-family: 'Epilogue';
+    font-family: sans-serif;
     color: #FFFFFFFF;
     text-align: center;
 }
@@ -328,12 +328,12 @@ nav ul li.sign-up {
 .events-header h2 {
     margin: 0;
     font-size: 24px;
-    font-family: 'Epilogue';
+    font-family: sans-serif;
 }
 
 #city-select {
     font-size: 24px;
-    font-family: 'Epilogue';
+    font-family: sans-serif;
     background-color: white;
     color: #00BDD6FF;
     border: none;
@@ -349,8 +349,8 @@ nav ul li.sign-up {
 .view-more-btn {
     padding: 10px 20px;
     margin: 0.3em;
-    background: black;
-    color: #00BDD6FF;
+    background: #00BDD6FF;
+    color: white ;
     border: none;
     border-radius: 5px;
     font-size: 15px;
@@ -369,13 +369,13 @@ nav ul li.sign-up {
 }
 
 .view-more-btn:hover {
-    color: black;
+    color: #00BDD6FF;
 }
 
 .view-more-btn::after {
     content: "";
     position: absolute;
-    background: #00BDD6FF;
+    background: black;
     z-index: -1;
     left: -50%;
     right: -50%;

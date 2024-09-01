@@ -8,6 +8,7 @@
     <link rel="stylesheet" href="<?=ROOT?>/assets/css/landing.css">
 </head>
 <body>  
+    <!--Trending Events -->
     <section id ="treanding" class="trending-events">
         <h1>Discover Unforgettable Experience at</h1>
         <h1 class="highlight">Musicia</h1>
@@ -21,7 +22,7 @@
         </div>
         <div class="events">
             <div class="event">
-                <img src="<?=ROOT?>/assets/images/top1.png" alt="Classical Serenade">
+                <img src="<?=ROOT?>/assets/images/landing/top1.png" alt="Classical Serenade">
                 <div class="event-info">
                     <div class="event-details">
                         <h3>Classical Serenade</h3>
@@ -35,7 +36,7 @@
             </div>
 
             <div class="event">
-                <img src="<?=ROOT?>/assets/images/top2.png" alt="Melody Mania">
+                <img src="<?=ROOT?>/assets/images/landing/top2.png" alt="Melody Mania">
                 <div class="event-info">
                     <div class="event-details">
                         <h3>Melody Mania</h3>
@@ -49,7 +50,7 @@
             </div>
 
             <div class="event">
-                <img src="<?=ROOT?>/assets/images/top3.png" alt="Rock Fest Extravaganza">
+                <img src="<?=ROOT?>/assets/images/landing/top3.png" alt="Rock Fest Extravaganza">
                 <div class="event-info">
                     <div class="event-details">
                         <h3>Rock Fest</h3>
@@ -64,6 +65,9 @@
         </div>
     </section>
 
+
+
+    <!--Event Browsing-->
     <div id="new-events">
         <div class="events-selection">
             <div class="events-header">
@@ -99,7 +103,7 @@
         <!--Events Dynamically inserted here -->
     </div>
 
-    <script src="<?=ROOT?>/assets/js/events.js"></script> <!-- Ensure this is the last thing before closing--->
+    <script src="<?=ROOT?>/assets/js/events.js"></script> 
 
 
 </body>
