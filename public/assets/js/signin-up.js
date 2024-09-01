@@ -1,4 +1,6 @@
 const inputs = document.querySelectorAll(".input-field");
+const bullets = document.querySelectorAll(".bullets span");
+const images = document.querySelectorAll(".image");
 
 
 inputs.forEach((input) => {
@@ -38,22 +40,24 @@ function togglePasswordVisibility(passwordId, IconId) {
       }
 }
 
-document.addEventListener("DOMContentLoaded", function() {
-    const errorPopup = document.getElementById('error-popup');
-    const countdownElement = document.getElementById('countdown');
-    let countdownValue = 5; // Start countdown from 5 seconds
+// image slider & bullet navigation
+let index = 0;
 
-    if (errorPopup) {
-        // Start the countdown
-        const countdownInterval = setInterval(function() {
-            countdownValue--;
-            countdownElement.textContent = countdownValue;
+function moveSlider() {
+  index = (index % images.length) + 1;
 
-            // Hide the error popup when the countdown reaches 0
-            if (countdownValue <= 0) {
-                clearInterval(countdownInterval);
-                errorPopup.style.display = 'none';
-            }
-        }, 1000); // Update every 1 second
-    }
-});
+  let currentImage = document.querySelector(`.img-${index}`);
+  images.forEach((img) => img.classList.remove("show"));
+  currentImage.classList.add("show");
+
+  const textSlider = document.querySelector(".text-group");
+  textSlider.style.transform = `translateY(${-(index - 1) * 2.2}rem)`;
+
+  let currentBullet = document.querySelector(`.bull-${index}`);
+  bullets.forEach((bull) => bull.classList.remove("active"));
+  currentBullet.classList.add("active");
+}
+
+setInterval(moveSlider, 2000);
+
+

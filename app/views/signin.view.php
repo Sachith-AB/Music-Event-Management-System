@@ -83,17 +83,20 @@
                     <!-- Image Slider -->
                     <div class="carousel">
                         <div class="images-wrapper">
-                            <img src="<?= ROOT ?>/assets/images/Alee.png" class="image img-1 show" alt="">
-                            <img src="<?= ROOT ?>/assets/images/signin-up/2.jpg" class="image img-2" alt="">
-                            <img src="<?= ROOT ?>/assets/images/signin-up/3.jpg" class="image img-3" alt="">
-                            <img src="<?= ROOT ?>/assets/images/signin-up/4.jpg" class="image img-4" alt="">
+
+                            <img src="<?= ROOT ?>/assets/images/sign-in-up/image-2.jpg" class="image img-1 show" alt="">
+                            <img src="<?= ROOT ?>/assets/images/sign-in-up/image-4.jpg" class="image img-2" alt="">
+                            <img src="<?= ROOT ?>/assets/images/sign-in-up/image-3.jpg" class="image img-3" alt="">
+                            <img src="<?= ROOT ?>/assets/images/sign-in-up/image-1.jpg" class="image img-4" alt="">
                         </div>
                         <div class="text-slider">
                             <div class="text-wrap">
                                 <div class="text-group">
-                                    <h2>Create Your Own Designs</h2>
+                                    <h2>Create Your Own Music Events</h2>
                                     <h2>Customize as you like</h2>
+                                    <h2>Purchase Your Ticket With Ease</h2>
                                     <h2>Follow Us On All Social Media</h2>
+
                                 </div>
                             </div>
 
@@ -114,26 +117,25 @@
 
     <!-- Show error -->
     <?php if (!empty($data['error'])): ?>
-        <div id="error-popup" class="popup">
-            <ion-icon name="alert-circle-outline" style="font-size: 30px;"></ion-icon>
-            <p id="error-message" class="p"><?php echo $data['error'] ?></p>
-            <span id="countdown">5</span> sec
-            </div>
-        </div>
+        <?php 
+            $message = $data['error'];
+            include("../app/views/components/r-message.php")
+        ?>
 
     <?php elseif($flag == 1): ?>
-        <div id="error-popup" class="popup">
-            <ion-icon name="alert-circle-outline" style="font-size: 30px;"></ion-icon>
-            <p id="error-message" class="p"><?php echo $error ?></p>
-            <span id="countdown">5</span> sec
-            </div>
-        </div>
+        <?php 
+            $message = $error;
+            include("../app/views/components/r-message.php")
+        ?>
     <?php endif ?>
 
     <!-- Ionicons Scripts -->
     <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
     <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
+
+    
     <script src="<?=ROOT?>/assets/js/signin-up.js"></script>
+    <script src="<?=ROOT?>/assets/js/message.js"></script>
 
 </body>
 </html>

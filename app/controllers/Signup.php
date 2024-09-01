@@ -31,7 +31,7 @@ class Signup {
 
             $arr['email'] = $_POST['email'];
             $row = $user->first($arr);
-            show($row);
+            //show($row);
 
             //Check email taken or not
             if($row == 0){

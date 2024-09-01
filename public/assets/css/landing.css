@@ -86,6 +86,14 @@ nav ul li.sign-up {
     color: white;
     text-decoration: none;
 }
+
+.image {
+
+    height: 50px;
+    width: 50px;
+    border-radius: 70px;
+    cursor: pointer;
+}
 /*header end*/
 
 /*footer*/

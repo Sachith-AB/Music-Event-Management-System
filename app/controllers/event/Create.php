@@ -8,6 +8,6 @@ class Create {
 
         echo "This is the event controllers";
         $this->view('event/createEvent');
-       
+        
     }
 }

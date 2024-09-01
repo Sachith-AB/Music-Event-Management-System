@@ -7,17 +7,23 @@
     <link rel="stylesheet" href="<?=ROOT?>/assets/css/ticketHolder/profile.css">
 </head>
 <body>
-    <?php $id = $data['id'] ?>
+    <?php $id = $data['id'];
+
+    $success = htmlspecialchars($_GET['msg'] ?? '');
+    $flag = htmlspecialchars($_GET['flag'] ?? 0);
+    
+    ?>
     <div class="page-content">
-        <h1 class="head1">My Ticket</h1>
-        <div>
+        <h1 class="head1">My Profile</h1>
+        <div class="all">
             <div class="container">
                 <div class="avatar">
-                    <img src="<?=$data['pro_pic'] ?>" alt="user image">
+                    <img src="<?=ROOT?>/assets/images/user/<?php echo $data['pro_pic'] ?>" alt="user image">
                 </div>
                 <div class="details">
                     <h2 class="head2"><?php echo $data['name'] ?></h2>
                     <h3 class="head3"><?php echo $data['email'] ?></h3>
+                    <h3 class="head3"><?php echo $data['contact'] ?></h3>
                 </div>
                 <div class="tag">
                     <div class="tag-item">24 Purchase</div>
@@ -35,10 +41,22 @@
                 <input type="text" name="search" id="search" placeholder="Search">
             </div>
             <div class="event-detail">
-                <img class="event-image" src="https://media.istockphoto.com/id/613552524/photo/guitarist-on-stage-soft-and-blur-concept.jpg?s=612x612&w=0&k=20&c=_phKVgnj7AaY5TglzHdUZ4OgK4C_6Ly2iIIYuCS-Hi0=" alt="event" >
+                <div>
+                    <img class="event-image" src="<?=ROOT?>/assets/images/events/image-1.jpg" alt="event" >
+                </div>
+                <div>
+                    <h1>February 20 | 08:00 PM</h1>
+                </div>
             </div>
         </div>
     </div>
+
+    <?php if($flag == 2):?>
+        <?php
+            $message = $success;
+            include ("../app/views/components/s-message.php")
+            ?>
+    <?php  endif ?>
 
     <script>
         const menuItems = document.querySelectorAll('.header-menu-item');
@@ -53,6 +71,12 @@
             });
         });
     </script>
+
+    <script src="<?=ROOT?>/assets/js/message.js"></script>
+
+    <!-- Ionicons Scripts -->
+    <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+    <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
     
 </body>
 </html>
