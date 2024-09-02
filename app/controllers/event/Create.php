@@ -15,7 +15,7 @@ class Create {
         }
 
 
-         $this->view('event/createEvent',$data);
+        $this->view('event/createEvent',$data);
 
         echo "This is the event controllers";
         $this->view('event/createEvent');

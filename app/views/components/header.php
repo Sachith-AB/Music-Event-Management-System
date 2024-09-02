@@ -19,7 +19,7 @@
             <li><a href="#treanding">Explore</a></li>
             <li><a href="#new-events">Upcoming Events</a></li>
             <?php if($id != 0): ?>
-                <img class="image" onclick="goToProfile()" src="<?=ROOT?>/assets/images/user/pro-pic/<?php echo $data['pro_pic'] ?>" alt="user profile">
+                <img class="image" onclick="goToProfile()" src="<?=ROOT?>/assets/images/user/<?php echo $data['pro_pic'] ?>" alt="user profile">
             <?php else: ?>
                 <li><a href="signup" class="sign-up">Sign Up</a></li>
             <?php endif ?>
