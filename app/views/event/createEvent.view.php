@@ -57,7 +57,7 @@ $_SESSION['last_visit'] = date('Y-m-d H:i:s');
 
         <!--create main content -->
         <div class="main-content">
-            <form action="submit_event.php" method="POST" enctype="multipart/form-data">
+            <form method="POST" enctype="multipart/form-data">
                 <section id="upload-cover">
                     <h2>Upload Cover</h2>
                     <div class="upload-cover">
@@ -166,7 +166,7 @@ $_SESSION['last_visit'] = date('Y-m-d H:i:s');
                     <div class="ticket-container">
                         <h3>Ticket</h3>
                         <div class="form-group">
-                            <input type="radio" id="paid-ticket" name="tixket_type">
+                            <input type="radio" id="paid-ticket" name="ticket_type">
                             <lable for="paid-ticket">Paid</lable>
                             <input type="radio" id="free-ticket" name="ticket_type">
                             <lable for="free-ticket">Free</lable>
@@ -205,7 +205,7 @@ $_SESSION['last_visit'] = date('Y-m-d H:i:s');
                             <input type = "time" id="sale-start-time" name="sale_start_time">
                         </div>
 
-                        <button type="button" class="review-button">Review</button>
+                        <button type="submit" class="review-button" name="submit">Review</button>
                 </section>
 
             </form>

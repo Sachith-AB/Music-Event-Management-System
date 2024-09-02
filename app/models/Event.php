@@ -98,4 +98,3 @@ class Event {
         return false;
     }
 }
-?>
