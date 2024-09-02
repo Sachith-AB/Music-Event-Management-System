@@ -44,7 +44,7 @@ class Signin {
 
                 }else{
                     //echo "error";
-                    $error = "Invalid Email or Password";
+                    $error = "Password Invalid";
 
                     $passData = 'email=' . $_POST['email'] . '&pass=' . $_POST['password'];
                     $errors = 'flag=' . 1 . '&error=' . $error . '&error_no=' . 7 ;

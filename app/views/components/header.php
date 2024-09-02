@@ -8,8 +8,7 @@
 </head>
 <body>
 <?php 
-    $id = 0;
-    $id = htmlspecialchars($_GET['id']);
+    $id = htmlspecialchars($_GET['id'] ?? $_SESSION['USER']);
 ?>
 <header>
     <div class="logo">
@@ -20,7 +19,7 @@
             <li><a href="#treanding">Explore</a></li>
             <li><a href="#new-events">Upcoming Events</a></li>
             <?php if($id != 0): ?>
-                <li><a href="profile?id=<?php echo $id ?>" class="sign-up">image</a></li>
+                <img class="image" onclick="goToProfile()" src="<?=ROOT?>/assets/images/user/<?php echo $data['pro_pic'] ?>" alt="user profile">
             <?php else: ?>
                 <li><a href="signup" class="sign-up">Sign Up</a></li>
             <?php endif ?>
@@ -44,6 +43,10 @@
             }   
         });
     });
+
+    function goToProfile() {
+        window.location.href = "profile?id=<?php echo $data['id']?>";
+    }
 </script>
 </body>
 </html>

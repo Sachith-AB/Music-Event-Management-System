@@ -104,6 +104,7 @@ trait Model {
         $query .= " WHERE $id_column = :$id_column";
         
         $data[$id_column] = $id;
+        //echo $query;
         $this->query($query, $data);
 
         return false;

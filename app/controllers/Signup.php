@@ -1,5 +1,6 @@
 <?php 
 
+
 class Signup {
 
     use Controller;
@@ -9,7 +10,7 @@ class Signup {
         $data = [];
 
         if($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['signUp'])) {
-           $data = $this->userRegistration($user,$_POST);
+            $data = $this->userRegistration($user,$_POST);
             
         }
         
@@ -17,7 +18,6 @@ class Signup {
     }
 
 
-    //All users sign up
     private function userRegistration($user,$POST){
         
         //pass values to variables come from post method
@@ -31,7 +31,7 @@ class Signup {
 
             $arr['email'] = $_POST['email'];
             $row = $user->first($arr);
-            show($row);
+            //show($row);
 
             //Check email taken or not
             if($row == 0){

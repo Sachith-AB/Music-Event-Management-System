@@ -7,11 +7,23 @@
     public function index(){
 
         $user = new User;
-        //echo "This is the home controllers";
-        $this->view('home');
+        
+        $data = $this->getData($user);
+        $this->view('home',$data);
 
 
     }
- }
 
- 
+    public function getData($user) {
+
+        $id = htmlspecialchars($_GET['id']);
+        
+        $row = $user->firstById($id);
+        //show($row);
+        $data = json_decode(json_encode($row),true);
+        return $data;
+
+
+    }
+}
+
