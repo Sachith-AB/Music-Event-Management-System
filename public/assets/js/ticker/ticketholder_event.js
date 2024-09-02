@@ -31,9 +31,9 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // Band image functionality
     const bandImages = [
-        "<?= ROOT ?>/assets/images/ticket/band1.jpg",
-        "<?= ROOT ?>/assets/images/ticket/band2.jpg",
-        "<?= ROOT ?>/assets/images/ticket/band3.jpg"
+        `<?= ROOT ?>/assets/images/ticket/band1.jpg`,
+        `<?= ROOT ?>/assets/images/ticket/band2.jpg`,
+        `<?= ROOT ?>/assets/images/ticket/band3.jpeg`
     ];
 
     const bandImageElement = document.querySelector('.band-image img');
@@ -49,12 +49,13 @@ document.addEventListener('DOMContentLoaded', () => {
         setTimeout(() => {
             // Change the image source when the image is hidden
             bandImageElement.src = bandImages[currentIndex];
+            console.log(bandImages[currentIndex])
 
-            // Wait for a tiny delay before making the image visible again
-            setTimeout(() => {
+            // Wait for the image to load before making it visible again
+            bandImageElement.onload = () => {
                 bandImageElement.style.transition = 'opacity 1s ease';
                 bandImageElement.style.opacity = '1';
-            }, 50);
+            };
         }, 1000); // Duration must match the transition duration
     }
 

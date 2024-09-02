@@ -11,7 +11,7 @@
     <!-- Include Font Awesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&family=Sen:wght@400..800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900&family=Sen:wght@400..800&display=swap" rel="stylesheet">
 </head>
 
 <body>
@@ -22,6 +22,8 @@
     <main>
         <!-- Upper Section -->
         <section class="hero-section">
+            <div class="background background-1"></div>
+            <div class="background background-2"></div>
             <div class="overlay"></div>
             <div class="content">
                 <p class="event-date">FEBRUARY 29 2024</p>
@@ -33,6 +35,7 @@
                 </div>
             </div>
         </section>
+
 
         <div class="event-container">
             <!-- Middle Section -->
@@ -113,81 +116,6 @@
                                     </div>
                                 </div>
 
-                                <div class="card">
-                                    <div class="card-image">
-                                        <img src="<?= ROOT ?>/assets/images/ticket/performer1.jpeg" alt="Performer 1">
-                                    </div>
-                                    <div class="card-details">
-                                        <h3>Chandler Bing</h3>
-                                        <div class="social-icons">
-                                            <a href="#"><i class="fas fa-user-circle"></i></a>
-                                            <div class="heart-icon">
-                                                <a href="#" id="heart"><i class="far fa-heart"></i></a>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-
-                                <div class="card">
-                                    <div class="card-image">
-                                        <img src="<?= ROOT ?>/assets/images/ticket/performer1.jpeg" alt="Performer 1">
-                                    </div>
-                                    <div class="card-details">
-                                        <h3>Chandler Bing</h3>
-                                        <div class="social-icons">
-                                            <a href="#"><i class="fas fa-user-circle"></i></a>
-                                            <div class="heart-icon">
-                                                <a href="#" id="heart"><i class="far fa-heart"></i></a>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-
-                                <div class="card">
-                                    <div class="card-image">
-                                        <img src="<?= ROOT ?>/assets/images/ticket/performer1.jpeg" alt="Performer 1">
-                                    </div>
-                                    <div class="card-details">
-                                        <h3>Chandler Bing</h3>
-                                        <div class="social-icons">
-                                            <a href="#"><i class="fas fa-user-circle"></i></a>
-                                            <div class="heart-icon">
-                                                <a href="#" id="heart"><i class="far fa-heart"></i></a>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-
-                                <div class="card">
-                                    <div class="card-image">
-                                        <img src="<?= ROOT ?>/assets/images/ticket/performer1.jpeg" alt="Performer 1">
-                                    </div>
-                                    <div class="card-details">
-                                        <h3>Chandler Bing</h3>
-                                        <div class="social-icons">
-                                            <a href="#"><i class="fas fa-user-circle"></i></a>
-                                            <div class="heart-icon">
-                                                <a href="#" id="heart"><i class="far fa-heart"></i></a>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-
-                                <div class="card">
-                                    <div class="card-image">
-                                        <img src="<?= ROOT ?>/assets/images/ticket/performer1.jpeg" alt="Performer 1">
-                                    </div>
-                                    <div class="card-details">
-                                        <h3>Chandler Bing</h3>
-                                        <div class="social-icons">
-                                            <a href="#"><i class="fas fa-user-circle"></i></a>
-                                            <div class="heart-icon">
-                                                <a href="#" id="heart"><i class="far fa-heart"></i></a>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-
                                 <!-- Add more performer cards here -->
                             </div>
 
@@ -204,7 +132,7 @@
                         </div>
                         <div class="band-info">
                             <h2>One Direction</h2>
-                            <p>A brief description of the band can go here.</p>
+                            <!--<p>A brief description of the band can go here.</p>-->
                         </div>
                     </div>
                 </div>
@@ -215,14 +143,42 @@
                         <p>Price</p>
                         <p><strong>$90 / Ticket</strong></p>
                     </div>
-                    <button class="purchase-btn">Purchase Ticket</button>
+                    <button class="purchase-btn" onclick="goToPurchaseTickets()">Purchase Ticket</button>
                 </div>
             </section>
         </div>
     </main>
+    <script>
+                function goToPurchaseTickets() {
+                    window.location.href = "purchaseticket";
+                }
+            </script>
 
     <!-- JavaScript Files -->
-    <script src="<?= ROOT ?>/assets/js/ticker/ticketholder_event.js"></script>
+    <script>
+        // Pass the image paths from PHP to JavaScript
+        const bandImages = [
+            "<?= ROOT ?>/assets/images/ticket/band1.jpg",
+            "<?= ROOT ?>/assets/images/ticket/band2.jpg",
+            "<?= ROOT ?>/assets/images/ticket/band3.jpeg"
+        ];
+
+        let currentImageIndex = 0;
+
+        function changeBandImage() {
+            const bandImageElement = document.querySelector('.band-image img');
+            currentImageIndex = (currentImageIndex + 1) % bandImages.length;
+            bandImageElement.style.opacity = 0;
+
+            setTimeout(() => {
+                bandImageElement.src = bandImages[currentImageIndex];
+                bandImageElement.style.opacity = 1;
+            }, 1000);
+        }
+
+        // Set interval to change the image every 15 seconds
+        setInterval(changeBandImage, 5000);
+    </script>
 </body>
 
 </html>

@@ -30,4 +30,10 @@ class Ticket {
         $this->view('ticket/ticketholder_event');
        
     }
+
+    public function index5() {
+
+        $this->view('ticket/updateticket');
+       
+    }
 }

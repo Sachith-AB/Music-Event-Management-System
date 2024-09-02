@@ -20,6 +20,7 @@ route('purchaseticket','ticket/Ticket@index');
 route('successfullypaid','ticket/Ticket@index2');
 route('upcommingevent','ticket/Ticket@index3');
 route('ticketevent','ticket/Ticket@index4');
+route('updateticket','ticket/Ticket@index5');
 
 
 
