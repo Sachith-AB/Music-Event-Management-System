@@ -24,4 +24,10 @@ class Ticket {
         $this->view('ticket/upcommingevent');
        
     }
+
+    public function index4() {
+
+        $this->view('ticket/ticketholder_event');
+       
+    }
 }

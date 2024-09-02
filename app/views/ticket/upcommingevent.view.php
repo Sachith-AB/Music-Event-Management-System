@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Musicia - Ticket Purchase Success</title>
     <link rel="stylesheet" href="<?=ROOT?>/assets/css/ticket/ticketstyle.css">
+    <link rel="stylesheet" href="<?=ROOT?>/assets/css/ticket/popupmodal-style.css">
 </head>
 <body>
     <!-- Include Header -->
@@ -83,7 +84,6 @@
     <div class="event-details-container">
 
         <h2>Recommonded Events</h2>
-
         <div class="musicevent-events-container">
             <div class="musicevent-event-card">
                 <div class="musicevent-event-badge">20% OFF</div>

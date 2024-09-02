@@ -1,3 +1,5 @@
+
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -12,14 +14,12 @@
 <body>
 
     <!-- Include Header -->
-    <div class="header">
-        
-    </div>
+    <?php include ('../app/views/components/Header.php'); ?>
     <!-- Main Content -->
     <main>
         <div class="event-details-container">
             <div class="back-link">
-                <a href="#">&#8592;     Purchase Ticket</a> <span class="time-left">Time left: 25:00</span>
+                <a href="#"><i class="fas fa-arrow-left"></i>     Purchase Ticket</a> <span class="time-left">Time left: 25:00</span>
             </div>
             <h1 class="event-title">Rock Revolt: A Fusion of Power and Passion</h1>
             <div class="event-info">
@@ -229,6 +229,32 @@
             <div class="musicevent-event-card">
                 <div class="musicevent-event-badge">Buy 2 get 1 free</div>
                 <img src="<?=ROOT?>/assets/images/ticket/musicevent2.jpeg" alt="Metropolis Marathon" class="musicevent-event-image">
+                <div class="musicevent-event-info">
+                    <div class="musicevent-event-title">Metropolis Marathon</div>
+                    <div class="musicevent-event-details">
+                        <div>📅 Tuesday, June 07 | 06:00 AM</div>
+                        <div>📍 Atlanta</div>
+                    </div>
+                    <div class="musicevent-event-price">From $10</div>
+                </div>
+            </div>
+
+            <div class="musicevent-event-card">
+                <div class="musicevent-event-badge">Buy 2 get 1 free</div>
+                <img src="<?=ROOT?>/assets/images/ticket/musicevent3.jpg" alt="Metropolis Marathon" class="musicevent-event-image">
+                <div class="musicevent-event-info">
+                    <div class="musicevent-event-title">Metropolis Marathon</div>
+                    <div class="musicevent-event-details">
+                        <div>📅 Tuesday, June 07 | 06:00 AM</div>
+                        <div>📍 Atlanta</div>
+                    </div>
+                    <div class="musicevent-event-price">From $10</div>
+                </div>
+            </div>
+
+            <div class="musicevent-event-card">
+                <div class="musicevent-event-badge">Buy 2 get 1 free</div>
+                <img src="<?=ROOT?>/assets/images/ticket/musicevent4.jpg" alt="Metropolis Marathon" class="musicevent-event-image">
                 <div class="musicevent-event-info">
                     <div class="musicevent-event-title">Metropolis Marathon</div>
                     <div class="musicevent-event-details">

@@ -1,29 +1,60 @@
 <?php 
 
 class Signup {
-    
+
     use Controller;
-    use Model;
-
     public function index() {
-
+        
+        $user = new User;
         $data = [];
 
-        
-
-        if($_SERVER['REQUEST_METHOD'] == 'POST') {
-
-            $user = new User;
-            if($user->validUser($_POST)){
-                $user->insert($_POST);
-                redirect('signin');
-            }else {
-                $data['errors'] = $user->errors;
-            }
-    
+        if($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['signUp'])) {
+           $data = $this->userRegistration($user,$_POST);
+            
         }
-        
         
         $this->view('signup',$data);
     }
+
+
+    //All users sign up
+    private function userRegistration($user,$POST){
+        
+        //pass values to variables come from post method
+        $name = $POST['name'];
+        $email = $POST['email'];
+        $password = $POST['password'];
+        $confirm_password = $POST['confirm-password'];
+        
+        //check data validation
+        if($user->validUser($_POST)){
+
+            $arr['email'] = $_POST['email'];
+            $row = $user->first($arr);
+            //show($row);
+
+            //Check email taken or not
+            if($row == 0){
+
+                unset($POST['signUp']); //Remove sign up key before saving
+                unset($POST['confirm-password']); //Remove confirm-password before saving
+                $res = $user->insert($_POST);
+                redirect('signin');
+            }else {
+                $error = "Email is Already Taken";
+                $passData = 'email=' . $_POST['email'] . '&pass=' . $_POST['password'];
+                $errors = 'flag=' . 1 . '&error=' . $error . '&error_no=' . 7 ;
+
+                unset($_POST['signIn']);
+                redirect("signup?$errors&$passData");
+                //echo 'check';
+                exit;
+            }
+        }else{
+
+            //show($user->errors);
+            return $user->errors;
+        }
+    }
 }
+
