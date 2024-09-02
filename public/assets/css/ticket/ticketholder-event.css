@@ -10,10 +10,9 @@ html, body {
 /* hero section */
 .hero-section {
     position: relative;
-    width: 100%; /* Ensure it takes full width */
+    width: 100%;
     height: 400px;
-    background-size: cover;
-    background-position: center;
+    overflow: hidden; /* Prevent content overflow */
     display: flex;
     align-items: center;
     justify-content: center;
@@ -21,10 +20,39 @@ html, body {
     color: #fff;
     margin: 0;
     padding: 0;
-    animation: slide 15s infinite; 
-    transition: transform 1s ease; 
 }
 
+.hero-section .background {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-size: cover;
+    background-position: center;
+    opacity: 0;
+    animation: fade 15s infinite ease-in-out;
+    transition: opacity 1s ease-in-out;
+}
+
+.hero-section .background-1 {
+    background-image: url('https://www.greenlightbooking.com/wp-content/uploads/2016/02/1aug31glb.jpg');
+    animation-delay: 0s;
+}
+
+.hero-section .background-2 {
+    background-image: url('https://media.istockphoto.com/id/1958337090/photo/crowd-is-going-wild-and-dancing-at-music-festival-and-rising-their-hands.webp?b=1&s=170667a&w=0&k=20&c=_knZQ9uwpftIhDE_6WWQ4FhgYQTrPAxQV-4Epe1ajkg=');
+    animation-delay: 7.5s;
+}
+
+@keyframes fade {
+    0%, 100% {
+        opacity: 0;
+    }
+    25%, 75% {
+        opacity: 1;
+    }
+}
 
 .hero-section .overlay {
     position: absolute;
@@ -36,27 +64,12 @@ html, body {
     z-index: 1;
 }
 
-@keyframes slide {
-    0% {
-        background-image: url('https://www.greenlightbooking.com/wp-content/uploads/2016/02/1aug31glb.jpg');
-    }
-    50% {
-        background-image: url('https://www.greenlightbooking.com/wp-content/uploads/2016/02/1aug31glb.jpg');
-    }
-    50.01% {
-        background-image: url('https://media.istockphoto.com/id/1958337090/photo/crowd-is-going-wild-and-dancing-at-music-festival-and-rising-their-hands.webp?b=1&s=170667a&w=0&k=20&c=_knZQ9uwpftIhDE_6WWQ4FhgYQTrPAxQV-4Epe1ajkg='); /* Replace with the second image URL */
-    }
-    100% {
-        background-image: url('https://media.istockphoto.com/id/1958337090/photo/crowd-is-going-wild-and-dancing-at-music-festival-and-rising-their-hands.webp?b=1&s=170667a&w=0&k=20&c=_knZQ9uwpftIhDE_6WWQ4FhgYQTrPAxQV-4Epe1ajkg='); /* Replace with the second image URL */
-    }
-}
-
 .hero-section .content {
     position: relative;
     z-index: 2;
     max-width: 800px;
     padding: 20px;
-    background: rgba(255, 255, 255, 0.8); /* Slightly transparent white background */
+    background: rgba(255, 255, 255, 0.8);
     border-radius: 10px;
 }
 
@@ -101,6 +114,7 @@ html, body {
 .hero-section .btn-blue {
     background-color: #4b6bff;
 }
+
 
 .hero-section .btn-red:hover {
     background-color: #e74343;
@@ -400,59 +414,79 @@ html, body {
     overflow: hidden;
     position: relative;
     background-image: url("https://img.freepik.com/premium-photo/colorful-watercolor-painting-with-word-art-it_610324-184.jpg");
+    opacity: 0;
+    transform: translateX(100%); /* Start from off-screen (right) */
+    animation: slideIn 1s forwards ease-in-out; /* Slide-in animation */
+}
+
+@keyframes slideIn {
+    0% {
+        opacity: 0;
+        transform: translateX(100%);
+    }
+    100% {
+        opacity: 1;
+        transform: translateX(0);
+    }
 }
 
 .band-image {
-    /*width: 50%;
-    height: auto;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    transition: transform 1s ease; /* Smooth transition for image change */
-
     width: 50%;
     height: auto;
     display: flex;
     justify-content: center;
     align-items: center;
     overflow: hidden;
+    transition: transform 0.5s ease-in-out; /* Smooth transition for image scaling */
 }
 
 .band-image img {
-   /* width: 100%;
-    height: auto;
-    border-radius: 10px;
-    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
-    opacity: 1; /* Ensure image is visible by default */
-    /*transition: opacity 1s ease; /* Smooth transition for opacity */
-
     width: 100%;
     height: 250px;
     border-radius: 10px;
     box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
-    opacity: 1; /* Ensure image is visible by default */
-    transition: opacity 1s ease;
+    transition: transform 0.5s ease-in-out; /* Smooth transition for scaling */
+}
+
+.band:hover .band-image img {
+    transform: scale(1.05); /* Slight zoom on hover */
 }
 
 .band-info {
     flex-grow: 1;
     color: black;
     padding-left: 20px; /* Space between image and text */
+    opacity: 0;
+    animation: popIn 0.5s 1s forwards ease-in-out; /* Pop-in effect with delay */
+}
+
+@keyframes popIn {
+    0% {
+        opacity: 0;
+        transform: scale(0.9);
+    }
+    100% {
+        opacity: 1;
+        transform: scale(1);
+    }
 }
 
 .band-info h2 {
     font-size: 2.5rem;
     font-weight: bold;
-    color:#00BDD6FF;
+    color: #00BDD6FF;
     background-color: white;
-    /*background-image: url("https://img.freepik.com/premium-photo/abstract-music-background-with-strokes-colorful-paint-splatters_879736-796.jpg");*/
     padding: 10px 20px;
     border-radius: 10px;
     text-shadow: 2px 2px 5px rgba(115, 98, 230, 0.5); /* Font shadow */
     display: inline-block;
-    /*box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2); /* To create a sticker-like effect */
-    margin: 10px 0; /* Add some margin to separate it from other elements */
+    margin: 10px 0;
     cursor: pointer;
+    transition: transform 0.3s ease-in-out; /* Smooth transition for popping effect */
+}
+
+.band-info h2:hover {
+    transform: scale(1.1); /* Slight pop effect on hover */
 }
 
 .band-info p {
@@ -460,10 +494,6 @@ html, body {
     font-size: 16px;
     line-height: 1.4;
 }
-
-
-
-
 
 
 
