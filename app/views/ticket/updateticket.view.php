@@ -22,23 +22,42 @@
     </div>
     <div id="UpdateTicket">
     <div class="ticket-management-container">
-    <h2>Manage Tickets for [Event Name]</h2>
-    <div class="ticket-type-list">
-        <!-- Repeat this block for each ticket type -->
-        <div class="ticket-type-item">
-            <div class="ticket-info">
-                <h3>VIP Ticket</h3>
-                <p>Price: $150</p>
-                <p>Quantity: 50</p>
+        <div class="eventname">
+            <h2>Manage Tickets for Rockblast</h2>
+        </div>
+
+        <div class="ticket-type-list">
+            <!-- Repeat this block for each ticket type -->
+            <div class="ticket-type-item">
+                <div class="ticket-info">
+                    <h3>VIP Ticket</h3>
+                    <p>Price: $150</p>
+                    <p>Quantity: 50</p>
+                    <p>Sold ticket quantity: 20</p>
+                </div>
+                <div class="ticket-actions">
+                    <button class="update-btn" onclick="openUpdateModal('VIP Ticket')">Update</button>
+                    <button class="delete-btn" onclick="confirmDelete('VIP Ticket')">Delete</button>
+                </div>
             </div>
-            <div class="ticket-actions">
-                <button class="update-btn" onclick="openUpdateModal('VIP Ticket')">Update</button>
-                <button class="delete-btn" onclick="confirmDelete('VIP Ticket')">Delete</button>
+            <!-- Repeat block ends -->
+
+            <div class="ticket-type-item">
+                <div class="ticket-info">
+                    <h3>Normal Ticket</h3>
+                    <p>Price: $150</p>
+                    <p>Quantity: 50</p>
+                    <p>Sold ticket quantity: 20</p>
+                </div>
+                <div class="ticket-actions">
+                    <button class="update-btn" onclick="openUpdateModal('VIP Ticket')">Update</button>
+                    <button class="delete-btn" onclick="confirmDelete('VIP Ticket')">Delete</button>
+                </div>
             </div>
         </div>
-        <!-- Repeat block ends -->
     </div>
 </div>
+
 
 <!-- Update Modal -->
 <div id="updateModal" class="modal">

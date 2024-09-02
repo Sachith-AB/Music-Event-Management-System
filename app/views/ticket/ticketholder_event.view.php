@@ -127,23 +127,34 @@
 
                     <!-- Musical Band Profile -->
                     <div class="band">
+                        <video class="band-video" autoplay muted loop>
+                            <source src="https://pic.pikbest.com/best/video_preview_img/2403/10450261-66038411474cf.jpg!bw700" type="video/mp4">
+                            Your browser does not support the video tag.
+                        </video>
                         <div class="band-image">
                             <img src="<?= ROOT ?>/assets/images/ticket/band1.jpg" alt="Band Image">
                         </div>
                         <div class="band-info">
-                            <h2>One Direction</h2>
-                            <!--<p>A brief description of the band can go here.</p>-->
+                            <span>Performing</span>
+                            <br>
+                            One Direction
                         </div>
                     </div>
                 </div>
 
                 <!-- Ticket Price Section -->
                 <div class="ticket-price">
+                    <p>Ticket Prices</p>
                     <div class="price-info">
-                        <p>Price</p>
-                        <p><strong>$90 / Ticket</strong></p>
+                        <p><strong>Rs90 / Ticket</strong></p>
+                        <button class="purchase-btn" onclick="goToPurchaseTickets()">Purchase Ticket</button>
                     </div>
-                    <button class="purchase-btn" onclick="goToPurchaseTickets()">Purchase Ticket</button>
+
+                    <div class="price-info">
+                        <p><strong>VIP Rs120 / Ticket</strong></p>
+                        <button class="purchase-btn" onclick="goToPurchaseTickets()">Purchase Ticket</button>
+                    </div>
+                    
                 </div>
             </section>
         </div>

@@ -747,23 +747,37 @@ body {
 .ticket-management-container {
     padding: 20px;
     background-color: #f7f9fc;
-    border-radius: 10px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    max-width: 800px;
+    border-radius: 12px;
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
+    max-width: 900px;
     margin: 20px auto;
+    overflow: hidden;
+}
+
+.eventname {
+    background-image: url('https://www.shutterstock.com/image-vector/star-universe-background-stardust-deep-600nw-1481102825.jpg');
+    background-size: cover;
+    background-position: center;
+    padding: 20px;
+    color: #fff;
+    border-radius: 12px;
+    text-align: center;
 }
 
 .ticket-management-container h2 {
-    color: #333;
+    color: #e2dfdf;
     font-family: 'Sen', sans-serif;
     font-weight: 700;
-    margin-bottom: 20px;
+    font-size: 2rem;
+    margin: 0;
 }
 
 .ticket-type-list {
     display: flex;
     flex-direction: column;
     gap: 20px;
+    margin: 20px;
+    
 }
 
 .ticket-type-item {
@@ -773,11 +787,19 @@ body {
     background-color: #fff;
     padding: 15px;
     border-radius: 10px;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    transition: box-shadow 0.3s ease;
+}
+
+.ticket-type-item:hover {
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+    transform: scale(1.05);
+    transition: all 1s ease-in-out;
+
 }
 
 .ticket-info h3 {
-    font-size: 20px;
+    font-size: 22px;
     color: #00BDD6;
     margin-bottom: 5px;
 }
@@ -793,12 +815,14 @@ body {
 }
 
 .update-btn, .delete-btn {
-    padding: 10px 15px;
-    border-radius: 5px;
+    padding: 10px 16px;
+    border-radius: 6px;
     color: #fff;
     cursor: pointer;
-    font-weight: bold;
-    transition: transform 0.3s ease;
+    font-weight: 600;
+    transition: transform 0.3s ease, background-color 0.3s ease;
+    border: none;
+    font-size: 14px;
 }
 
 .update-btn {
@@ -828,7 +852,7 @@ body {
     width: 100%;
     height: 100%;
     overflow: auto;
-    background-color: rgba(0, 0, 0, 0.4);
+    background-color: rgba(0, 0, 0, 0.5);
     padding-top: 60px;
 }
 
@@ -837,10 +861,10 @@ body {
     margin: 5% auto;
     padding: 20px;
     border: 1px solid #888;
-    width: 80%;
+    width: 90%;
     max-width: 500px;
-    border-radius: 10px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    border-radius: 12px;
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
     animation: slideDown 0.4s ease-out;
 }
 
@@ -856,11 +880,10 @@ body {
 
 .modal-content input {
     width: 100%;
-    padding: 10px;
+    padding: 12px;
     margin: 10px 0 20px 0;
-    display: inline-block;
     border: 1px solid #ccc;
-    border-radius: 5px;
+    border-radius: 6px;
     box-sizing: border-box;
 }
 
@@ -869,9 +892,10 @@ body {
     color: white;
     padding: 12px 20px;
     border: none;
-    border-radius: 5px;
+    border-radius: 6px;
     cursor: pointer;
     width: 100%;
+    font-size: 16px;
 }
 
 .save-btn:hover {
@@ -892,6 +916,6 @@ body {
 }
 
 @keyframes slideDown {
-    from {top: -300px; opacity: 0}
-    to {top: 0; opacity: 1}
+    from {top: -50px; opacity: 0;}
+    to {top: 0; opacity: 1;}
 }

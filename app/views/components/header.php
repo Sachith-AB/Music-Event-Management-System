@@ -8,7 +8,7 @@
 </head>
 <body>
 <?php 
-    $id = htmlspecialchars($_GET['id'] ?? $_SESSION['USER']);
+   // $id = htmlspecialchars($_GET['id'] ?? $_SESSION['USER']);
 ?>
 <header>
     <div class="logo">
