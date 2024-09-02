@@ -12,20 +12,20 @@
         <div class="box-container">
 
         <div class="box">
-        <h3>extra links</h3>
-            <a href ="#"><i class="fas fa-angle-right"></i>ask questions</a>
-            <a href ="#"><i class="fas fa-angle-right"></i>about us</a>
-            <a href ="#"><i class="fas fa-angle-right"></i>privacy policy</a>
-            <a href ="#"><i class="fas fa-angle-right"></i>terms of use</a>
+        <h3>EXTRA LINKS</h3>
+            <a href ="#"><i class="fas fa-angle-right"></i>Ask Questions</a>
+            <a href ="#"><i class="fas fa-angle-right"></i>About Us</a>
+            <a href ="#"><i class="fas fa-angle-right"></i>Privacy Policy</a>
+            <a href ="#"><i class="fas fa-angle-right"></i>Terms of Use</a>
         </div>
 
 
             <div class ="box">
-            <h3>follow us</h3>
-                <a href="#"> <i class="fab fa-facebook-f"></i>facebook</a>
-                <a href="#" ><i class="fab fa-twitter"></i>twitter</a>
-                <a href="#" ><i class="fab fa-instagram"></i>instagram</a>
-                <a href="#" ><i class="fab fa-linkedin"></i>linkedin</a>
+            <h3>FOLLOW US</h3>
+                <a href="#"> <i class="fab fa-facebook-f"></i>Facebook</a>
+                <a href="#" ><i class="fab fa-twitter"></i>Twitter</a>
+                <a href="#" ><i class="fab fa-instagram"></i>Instagram</a>
+                <a href="#" ><i class="fab fa-linkedin"></i>Linkedin</a>
             </div>
         </div>
 

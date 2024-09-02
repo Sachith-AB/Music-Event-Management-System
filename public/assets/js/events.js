@@ -52,7 +52,7 @@ function updateEventsForCityAndCategory(city, category) {
 
     const eventsHTML = filteredEvents.map((event, index) => `
         <div class="event-card" style="display: ${index < 3 ? 'block' : 'none'};">
-            <img src="assets/images/${event.title}.png" alt="${event.title}">
+            <img src="assets/images/landing/${event.title}.png" alt="${event.title}">
             <h3>${event.title}</h3>
             <p>${event.date} | ${event.time}</p>
             <p>${event.price}</p>
@@ -85,7 +85,7 @@ function updateUpcoming24HoursEvents() {
 
     const eventsHTML2 = upcomingEvents.map((event, index) => `
         <div class="event-card" style="display: ${index < 3 ? 'block' : 'none'};">
-            <img src="assets/images/${event.title}.png" alt="${event.title}">
+            <img src="assets/images/landing/${event.title}.png" alt="${event.title}">
             <h3>${event.title}</h3>
             <p>${event.date} | ${event.time}</p>
             <p>${event.price}</p>
