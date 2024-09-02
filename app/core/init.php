@@ -1,10 +1,10 @@
 <?php
 
-spl_autoload_register(function($classname){
-     $file= __DIR__. "../app/models/". $classname . '.php';
-     if(file_exists($file)){
-         require $file;
-     }
+spl_autoload_register(function ($classname) {
+
+    require $filename =  "../app/models/" . ucfirst($classname) . ".php";
+    
+
 });
 
 require_once '../app/Provider/Router.php';
