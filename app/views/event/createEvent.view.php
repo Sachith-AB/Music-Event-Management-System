@@ -76,7 +76,7 @@ $_SESSION['last_visit'] = date('Y-m-d H:i:s');
                         <label for="event_name">Name</label>
                         <input type="text" id="event_name" name="event_name" placeholder="Make it catchy and memorable" required>
                     </div>
-                     
+                    
                     <div class="form-group">
                         <label for="event_description">Description</label>
                         <textarea id="event_description" name="event_description" ></textarea>
