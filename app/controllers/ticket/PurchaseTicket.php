@@ -1,6 +1,6 @@
 <?php
 
-class Ticket {
+class Purchaseticket {
 
     use Controller;
     use Model;
