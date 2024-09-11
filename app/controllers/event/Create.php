@@ -1,6 +1,5 @@
 <?php
 
-
 class Create {
 
     use Controller;
@@ -16,6 +15,7 @@ class Create {
 
 
         $this->view('event/createEvent',$data);
+        header("Location: /event/review");
         
 
     }

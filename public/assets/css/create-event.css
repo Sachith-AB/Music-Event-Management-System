@@ -216,23 +216,7 @@ form h2 {
 .remove-button:hover,
 .review-button:hover,
 #search-button:hover {
-    color: #00BDD6FF;
-}
-
-.change-button::after,
-.remove-button::after,
-.review-button::after,
-#search-button::after {
-    content: "";
-    position: absolute;
-    background: black;
-    z-index: -1;
-    left: -50%;
-    right: -50%;
-    top: 0;
-    bottom: 0;
-    transform: skewX(-45deg) scale(0, 1);
-    transition: transform 1s ease;
+    color:black;
 }
 
 
@@ -314,14 +298,6 @@ form h2 {
     cursor: pointer;
 }
 
-#performances input[type="text"] {
-    width: 100%;
-    padding: 10px;
-    margin-bottom: 10px;
-    border-radius: 4px;
-    border: 1px solid #ccc;
-    box-sizing: border-box;
-}
 
 
 /*Location and Time*/

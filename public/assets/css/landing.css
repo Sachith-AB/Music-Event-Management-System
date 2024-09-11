@@ -377,21 +377,9 @@ nav ul li.sign-up {
 }
 
 .view-more-btn:hover {
-    color: #00BDD6FF;
+    color: black;
 }
 
-.view-more-btn::after {
-    content: "";
-    position: absolute;
-    background: black;
-    z-index: -1;
-    left: -50%;
-    right: -50%;
-    top: 0;
-    bottom: 0;
-    transform: skewX(-45deg) scale(0, 1);
-    transition: transform 1s ease;
-}
 
 .category-buttons {
     display: flex;

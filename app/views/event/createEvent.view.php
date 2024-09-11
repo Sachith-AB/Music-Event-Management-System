@@ -42,7 +42,6 @@ $_SESSION['last_visit'] = date('Y-m-d H:i:s');
                     <li><a href="#upload-cover">Upload Cover</a></li>
                     <li><a href="#general-information">General Information</a></li>
                     <li><a href="#location-time">Location and Time</a></li>
-                    <li><a href="#ticket">Ticket</a></li>
                 </ul>
             </div>
 
@@ -57,8 +56,8 @@ $_SESSION['last_visit'] = date('Y-m-d H:i:s');
 
         <!--create main content -->
         <div class="main-content">
-            <form method="POST" enctype="multipart/form-data">
-                <section id="upload-cover">
+            <form  method="POST" enctype="multipart/form-data">
+               <section id="upload-cover">
                     <h2>Upload Cover</h2>
                     <div class="upload-cover">
                         <img src="<?=ROOT?>/assets/images/event/cover.png" alt="Event Cover Image" class="cover-image">
@@ -79,36 +78,14 @@ $_SESSION['last_visit'] = date('Y-m-d H:i:s');
                     
                     <div class="form-group">
                         <label for="event_description">Description</label>
-                        <textarea id="event_description" name="event_description" ></textarea>
+                        <textarea id="event_description" name="description" ></textarea>
                     </div>
 
                     <div class="form-group">
-                        <label for="category">Category</label>
-                        <select id="category" name="category">
-                            <option value="select">select</option>
-                            <option value="indoor">Indoor</option>
-                            <option value="outdoor">Outdoor</option>
-                        </select>
+                        <label for="audience">Audience</label>
+                        <input type="number" id="audience" name="audience" />
                     </div>
 
-                <div class="form-group">
-                    <label for="performances">Performances</label>
-                    <select id="performances" name="performances">
-                        <option value="select">Select</option>
-                        <option value="singer">Singers</option>
-                        <option value="band">Bands</option>
-                        <option value="dj">DJ & Sounds</option>
-                        <option value="stage-supplier">Stage Suppliers</option>
-                        <option value="announcer">Announcers</option>
-                        <option value="decoration">Decorations</option>
-                    </select>
-                </div> 
-
-                <div class="form-group">
-                    <div class="performances">
-                        <button type="button" id="search-button">Search</button>
-                    </div>
-                </div>
                 </section>
                 
 
@@ -117,13 +94,6 @@ $_SESSION['last_visit'] = date('Y-m-d H:i:s');
                     <p>You can choose the location or pinpoint it on the map</p>
 
                     <div class = "location-container">
-                        <div class = "location-inputs">
-                        <div class="form-group">
-                            <label for="address">Address</label>
-                            <input type="text" id="address" name="address" placeholder="Enter the location of the event">
-                        </div>
-                        </div>
-                    
                         <div class="form-group">
                             <label for="city">City</label>
                             <input type="text" id="city" name="city" placeholder="Enter the city">
@@ -142,15 +112,8 @@ $_SESSION['last_visit'] = date('Y-m-d H:i:s');
 
                 <section id="time-ticket">
                     <div class="form-group">
-                        <h2>Time Zone</h2>
-                        <select id="time-zone" name="time-zone">
-                        <option value="SLST">(GMT+05:30) Sri Lanka Standard Time (Sri Lanka)</option>
-                        </select>
-                    </div>
-
-                    <div class="form-group">
                         <lable for = "event-date">Event Date</lable>
-                        <input type="data" id="event-date" name="event_date">
+                        <input type="date" id="event-date" name="eventDate">
                     </div>
 
                     <div class="form-group">
@@ -163,47 +126,6 @@ $_SESSION['last_visit'] = date('Y-m-d H:i:s');
                         <input type="time" id="end-time" name="end_time">
                     </div>
 
-                    <div class="ticket-container">
-                        <h3>Ticket</h3>
-                        <div class="form-group">
-                            <input type="radio" id="paid-ticket" name="ticket_type">
-                            <lable for="paid-ticket">Paid</lable>
-                            <input type="radio" id="free-ticket" name="ticket_type">
-                            <lable for="free-ticket">Free</lable>
-                        </div>
-
-                        <div class="form-group">
-                            <label for = "quantity">Quantity</label>
-                            <input type = "number" id="quantity" name="quantity">
-                        </div>
-
-                        <div class="form-group">
-                            <label for = "price">Price</label>
-                            <input type = "number" id="price" name="price">
-                        </div>
-                    </div>
-
-                    <div class = "sale-date-container">
-                        <h3>Sale Date</h3>
-                        <div class = "form-group">
-                            <label for = "sale-start-date">Start Date</label>
-                            <input type = "date" id="sale-start-date" name="sale_start_date">
-                        </div>
-
-                        <div class = "form-group">
-                            <label for = "sale-start-time">Start Time</label>
-                            <input type = "time" id="sale-start-time" name="sale_start_time">
-                        </div>
-
-                        <div class = "form-group">
-                            <label for = "sale-start-date">End Date</label>
-                            <input type = "date" id="sale-end-date" name="sale_end_date">
-                        </div>
-
-                        <div class = "form-group">
-                            <label for = "sale-start-time">End Time</label>
-                            <input type = "time" id="sale-start-time" name="sale_start_time">
-                        </div>
 
                         <button type="submit" class="review-button" name="submit">Review</button>
                 </section>
