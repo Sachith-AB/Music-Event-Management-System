@@ -9,11 +9,21 @@ route('signup','Signup@index');
 //route for events
 route('create-event', 'event/Create@index');
 
-//Route for tickets
-route('purchaseticket','ticket/Ticket@index');
-route('successfullypaid','ticket/Ticket@index2');
-route('upcommingevent','ticket/Ticket@index3');
-route('ticketevent','ticket/Ticket@index4');
+
+
+
+//Routes for Ticket
+route('create-ticket', 'ticket/TicketController@index');
+route('view-tickets', 'ticket/TicketController@viewTickets');
+
+
+//Route for purchaseticket
+route('purchaseticket','ticket/PurchaseTicket@index');
+route('successfullypaid','ticket/PurchaseTicket@index2');
+route('upcommingevent','ticket/PurchaseTicket@index3');
+route('ticketevent','ticket/PurchaseTicket@index4');
+route('updateticket','ticket/PurchaseTicket@index5');
+
 
 route('request','request/Request@index');
 
