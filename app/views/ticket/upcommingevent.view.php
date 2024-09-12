@@ -5,12 +5,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Musicia - Ticket Purchase Success</title>
     <link rel="stylesheet" href="<?=ROOT?>/assets/css/ticket/ticketstyle.css">
+    <link rel="stylesheet" href="<?=ROOT?>/assets/css/ticket/popupmodal-style.css">
 </head>
 <body>
     <!-- Include Header -->
-    <div class="header">
-
-    </div>
+    <?php include ('../app/views/components/Header.php'); ?>
 
     <div class="upcommingeve-container">
         <div class="upcommingeve-profile">
@@ -23,10 +22,10 @@
         <div class="upcommingeve-tickets">
             <h2>My Tickets</h2>
 
-            <div class="upcommingeve-tabs">
+            <!--<div class="upcommingeve-tabs">
                 <span class="upcommingeve-tab active">Upcoming</span>
                 <span class="upcommingeve-tab">Used</span>
-            </div>
+            </div>-->
 
             <div class="upcommingeve-ticket-card">
                 <div class="upcommingeve-ticket-image">
@@ -83,7 +82,6 @@
     <div class="event-details-container">
 
         <h2>Recommonded Events</h2>
-
         <div class="musicevent-events-container">
             <div class="musicevent-event-card">
                 <div class="musicevent-event-badge">20% OFF</div>

@@ -1,7 +1,10 @@
 <?php
 
-spl_autoload_register(function($classname){
-    require $fileName = "../app/models/".ucfirst($classname).".php";
+spl_autoload_register(function ($classname) {
+
+    require $filename =  "../app/models/" . ucfirst($classname) . ".php";
+    
+
 });
 
 require_once '../app/Provider/Router.php';
