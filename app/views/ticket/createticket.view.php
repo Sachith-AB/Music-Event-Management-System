@@ -1,4 +1,4 @@
-<?php include ('../app/views/components/CreateEventHeader.php'); ?>
+<!-- <?php include ('../app/views/components/CreateEventHeader.php'); ?> -->
 
 <?php
 if (session_status() == PHP_SESSION_NONE) {
@@ -45,6 +45,11 @@ $_SESSION['last_visit'] = date('Y-m-d H:i:s');
                     </div>
 
                     <div class="form-group">
+                        <label for = "quantity">Event Name</label>
+                        <input type = "text" id="event_name" name="event_name">
+                    </div>
+
+                    <div class="form-group">
                         <label for = "quantity">Ticket Type</label>
                         <select id="ticket_type" name="ticket_type" class="form-control">
                             <option value="platinum">Platinum</option>
@@ -59,9 +64,10 @@ $_SESSION['last_visit'] = date('Y-m-d H:i:s');
                     </div>
 
                     <div class="form-group">
-                        <label for = "price">Price</label>
-                        <input type = "number" id="price" name="price">
+                        <label for="price">Price</label>
+                        <input type="number" id="price" name="price">
                     </div>
+
                 </div>
 
                 <div class = "sale-date-container">
@@ -90,6 +96,7 @@ $_SESSION['last_visit'] = date('Y-m-d H:i:s');
                 </div>
             </form>   
         </div>
+        <script src="<?= ROOT ?>/assets/js/ticker/ticket.js"></script>
     </div>
 
     

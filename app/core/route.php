@@ -11,7 +11,10 @@ route('create-event', 'event/Create@index');
 
 
 
+
 //Routes for Ticket
+route('create-ticket', 'ticket/TicketController@index');
+route('view-tickets', 'ticket/TicketController@viewTickets');
 
 
 //Route for purchaseticket
@@ -20,7 +23,7 @@ route('successfullypaid','ticket/PurchaseTicket@index2');
 route('upcommingevent','ticket/PurchaseTicket@index3');
 route('ticketevent','ticket/PurchaseTicket@index4');
 route('updateticket','ticket/PurchaseTicket@index5');
-route('create-ticket', 'ticket/TicketController@index');
+
 
 route('request','request/Request@index');
 

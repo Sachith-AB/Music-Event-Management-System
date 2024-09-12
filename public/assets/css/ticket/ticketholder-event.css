@@ -1,203 +1,226 @@
-/* Reset padding and margin for the body and html */
-html, body {
+/* Basic Styles */
+* {
     margin: 0;
     padding: 0;
-    width: 100%;
-    height: 100%;
-    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    box-sizing: border-box;
 }
 
-/* hero section */
-.hero-section {
+body {
+    font-family: Arial, sans-serif;
+}
+
+.headersection {
     position: relative;
     width: 100%;
-    height: 400px;
-    overflow: hidden; /* Prevent content overflow */
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    text-align: center;
-    color: #fff;
-    margin: 0;
-    padding: 0;
+    height: 100vh; /* Full viewport height */
+    overflow: hidden;
+    color: white;
 }
 
-.hero-section .background {
+.headersection-img {
     position: absolute;
     top: 0;
     left: 0;
     width: 100%;
     height: 100%;
-    background-size: cover;
-    background-position: center;
-    opacity: 0;
-    animation: fade 15s infinite ease-in-out;
-    transition: opacity 1s ease-in-out;
+    object-fit: cover;
+    /* filter: brightness(0.6); Darken the image for better text contrast */
 }
 
-.hero-section .background-1 {
-    background-image: url('https://www.greenlightbooking.com/wp-content/uploads/2016/02/1aug31glb.jpg');
-    animation-delay: 0s;
-}
-
-.hero-section .background-2 {
-    background-image: url('https://media.istockphoto.com/id/1958337090/photo/crowd-is-going-wild-and-dancing-at-music-festival-and-rising-their-hands.webp?b=1&s=170667a&w=0&k=20&c=_knZQ9uwpftIhDE_6WWQ4FhgYQTrPAxQV-4Epe1ajkg=');
-    animation-delay: 7.5s;
-}
-
-@keyframes fade {
-    0%, 100% {
-        opacity: 0;
-    }
-    25%, 75% {
-        opacity: 1;
-    }
-}
-
-.hero-section .overlay {
+/* .overlay {
     position: absolute;
     top: 0;
     left: 0;
-    right: 0;
-    bottom: 0;
-    background-color: rgba(0, 0, 0, 0.5); /* Dark overlay */
-    z-index: 1;
-}
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.3); 
+} */
 
-.hero-section .content {
+.uppersec {
     position: relative;
-    z-index: 2;
-    max-width: 800px;
-    padding: 20px;
-    background: rgba(255, 255, 255, 0.8);
-    border-radius: 10px;
+    z-index: 6;
+    text-align: left;
+    padding: 100px 100px;
 }
 
-.hero-section .event-date {
-    font-size: 14px;
-    margin-bottom: 10px;
-    color: #6b6b6b;
-}
-
-.hero-section .event-title {
-    font-size: 32px;
-    margin-bottom: 10px;
+.eventname {
+    font-size: 3rem;
     font-weight: bold;
-    color: #3a3a3a;
+    color: rgb(49, 47, 47);
 }
 
-.hero-section .event-subtitle {
-    font-size: 16px;
-    margin-bottom: 20px;
-    color: #5a5a5a;
+.highlight {
+    font-size: 3.5rem; /* Adjust size if needed */
+    /*background: linear-gradient(#00BDD6, white); /* Gradient background */
+    /*-webkit-background-clip: text; /* Clip the gradient to the text */
+   /* -moz-background-clip: text; /* For Firefox */
+    background-clip: text; /* Standard */
+    /*color: transparent; /* Hide the actual text color */
+    transition: background 0.5s ease; /* Smooth transition for hover effect */
+    font-weight: bold;
+    color: #00BDD6;
+
 }
 
-.hero-section .buttons {
+.event-details {
+    margin-top: 20px;
+}
+
+.upper {
+    display: flex;
+    justify-content:space-between;
+}
+
+.countdown-timer {
     display: flex;
     justify-content: center;
-    gap: 15px;
+    margin-top: 20px;
+    color: #333;
 }
 
-.hero-section .btn {
-    padding: 10px 20px;
-    border-radius: 5px;
-    text-decoration: none;
-    color: #fff;
+.time-unit {
+    margin: 0 15px;
+    text-align: center;
+}
+
+.time {
+    font-size: 2rem;
     font-weight: bold;
-    transition: background-color 0.3s ease;
+    display: block;
 }
 
-.hero-section .btn-red {
-    background-color: #ff4b4b;
-}
+.lowersec {
+    position: relative;
+    z-index: 10;
+    display: flex; /* Use flexbox for centering */
+    justify-content: center; /* Center horizontally */
+    justify-items: center;
+    align-items: center; /* Center vertically */
+    margin-left: 150px;
 
-.hero-section .btn-blue {
-    background-color: #4b6bff;
-}
-
-
-.hero-section .btn-red:hover {
-    background-color: #e74343;
-}
-
-.hero-section .btn-blue:hover {
-    background-color: #3a5bff;
-}
-
-
-
-
-.event-container {
-    margin: 30px auto;
-    padding-left: 60px;
-    padding-right: 60px;
-}
-
-/* Middle Section */
-.middle-section {
-    display: flex;
-    justify-content: space-between;
-    margin-bottom: 40px;
-}
-
-.info-section {
-    background: #f4f4f4;
-    gap: 20px;
-    width: 75%;
-    border-radius: 10px;
-    align-items: center;
-    justify-content: center;
-    text-align: center;
-
-}
-
-.information{
-    display: flex;
-    justify-content: space-between;
-    padding: 15px;
-}
-
-
-.info-section h2 {
-    font-size: 24px;
-    color:  #00BDD6FF;
-    padding: 10px;
-    display: flex;
-
-}
-/*.timing-location-item {
-    background: #f4f4f4;
-    padding: 20px;
-    border-radius: 10px;
-    text-align: center;
-    flex: 1;
-}
-
-.timing-location-item i {
-    font-size: 24px;
-    color: #6c63ff;
-    margin-bottom: 10px;
-}*/
-
-.map img {
+    /* margin-bottom: 60px;  */
     width: 80%;
-    border-radius: 10px;
-    height: 300px;
+    
 }
 
+.concert-img {
+    max-width: 100%; /* Ensure the image doesn't exceed container width */
+    width: 100%; /* Increased the width for a larger image */
+    height: 350px; /* Maintain aspect ratio */
+    object-fit: cover;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3); /* Add a subtle shadow for better visual effect */
+    justify-content: center; /* Center horizontally */
+    justify-items: center;
+    align-items: center; /* Center vertically */
+    
+}
+
+.eventdetails {
+    padding: 30px;
+    display: flex;
+    height: 500px;
+    gap: 30px;
+}
+.eventimages{
+    width: 50%;
+    height: 100%;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 10px;
+    position: relative;
+    margin: auto;
+}
+.image {
+    position: relative;
+    overflow: hidden;
+    border-radius: 10px;
+}
+img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    border-radius: 10px;
+}
+.overlay-text {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background: white; 
+    padding: 10px 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    font-weight: bold;
+    text-align: center;
+}
+
+/* Custom positions for the images */
+.image1 {
+    grid-column: 1;
+    grid-row: 1;
+    margin-top: 50px;
+    margin-left: 50px;
+}
+
+.image2 {
+    grid-column: 2;
+    grid-row: 1;
+}
+
+.image3 {
+    grid-column: 1;
+    grid-row: 2;
+    margin-bottom: 70px;
+    margin-left: 100px;
+}
+
+.image4 {
+    grid-column: 2;
+    grid-row: 2;
+    margin-right: 30px;
+}
+
+.mid {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 10;
+} 
+
+.details{
+    width: 50%;
+    position: relative;
+    margin: auto;
+    flex-direction: column;
+    justify-content: flex-start; 
+    
+}
+
+.details h2{
+    font-weight: bolder;
+    margin-top: 0; /* Ensure no extra space at the top */
+    padding-top: 10px; /* Optional: Add some padding if needed */
+    font-size: 2rem;
+    margin-left: 30px;
+
+
+}
 .event-item {
     display: flex;
     align-items: center;
-    
+    background-color: #edebf9;;
     border-radius: 10px;
     padding: 20px;
-    width: 35%;
+    width: 80%;
+    margin: 30px;
 }
 
 .event-item .icon {
     width: 40px;  /* Set the width of the icon */
     height: 40px; /* Set the height of the icon */
-    background-color: #d8d1f6; /* Optional: Background color for the icon container */
+    background-color: white; /* Optional: Background color for the icon container */
     padding: 5px;  /* Adjust padding if needed */
     border-radius: 50%; /* Keep the circular shape */
     display: flex;
@@ -219,7 +242,7 @@ html, body {
 .event-item h3 {
     margin-left: 20px;
     font-size: 16px;
-    color: #6a6a6a;
+    color: black;
     margin-bottom: 5px;
 }
 
@@ -228,358 +251,187 @@ html, body {
     font-size: 14px;
     color: #6a6a6a;
 }
-.event-paragraph {
-    text-align: left;
+
+
+
+/* Team Section Styling */
+.team-section {
+    background-color: #f7f7f7;
+    padding: 50px 20px;
+    text-align: center;
+    max-width: 1200px;
+    margin: auto;
+    margin-top: 40PX;
+}
+
+.team-header h1 {
+    font-size: 36px;
+    font-weight: bold;
+    margin-bottom: 20px;
+}
+
+/* .team-header p {
+    max-width: 700px;
+    margin: auto;
+    color: #666;
     font-size: 16px;
-    color: #6a6a6a;
-    margin: 10px;
-}
+} */
 
-
-
-
-
-/*performers profile section*/
-.carousel-container {
-    padding: 60px;
-    width: 80%;
-    max-width: 1080px;
-    position: relative;
-    overflow-x: hidden;
-    
-}
-.carousel-track-container {
+/* Team Grid */
+.team-grid {
     display: flex;
-    width: 100%;
-    max-width: 1100px;
-    
-}
-.card-container {
-    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
     gap: 20px;
-    width: 100%;
-    scroll-behavior: smooth;
-    
+    margin-top: 40px;
 }
 
-.card {
-    flex: 0 0 200px; 
-    position: relative;
-    width: 200px;
-    height: 300px;
-    overflow: hidden;
+.team-member {
+    background: #fff;
     border-radius: 10px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-    cursor: pointer;
-    transition: transform 0.3s ease;
-    display: flex;
-    flex-direction: column;
+    overflow: hidden;
+    width: calc(25% - 20px);
+    position: relative;
+    /* transition: transform 0.3s ease; */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 
-.card:hover {
-    transform: scale(1.2);
+.team-member:hover {
+    transform: scale(1.05);
     transition: all 1s ease-in-out;
 }
 
-.card-image {
-    flex: 1 1 auto; /* Make the image take up the remaining space */
-}
-.card-image img {
+.team-member-image {
     width: 100%;
-    height: 100%;
-    object-fit: cover; /* Ensures the image covers the card */
-    object-position: center; /* Centers the image in the card */
-    border-radius: 10px; 
+    height: 400px; /* Set the desired height for the image area */
+    background-size: cover;
+    background-position: center;
 }
-.arrow{
-    font-size: 120px;
+.team-info {
+    padding: 20px;
+    background: rgba(0, 0, 0, 0.5);
+    color: white;
     position: absolute;
-    top: 50%; /* Position the arrow vertically in the center */
-    transform: translateY(-50%);
-    color: rgb(7, 7, 7);
-    opacity: 0.5;
-    cursor: pointer;
-    z-index: 10; /* Make sure the arrows are above other elements */
-    transition: opacity 0.3s ease;
-}
-
-.left-arrow {
-    left: 0; /* Position the arrow outside of the card container */
-
-}
-
-.right-arrow {
-    right: 0; /* Position the arrow outside of the card container */
-}
-
-.arrow:hover {
-    opacity: 0.5; /* Increase opacity on hover */
-}
-
-.card-details {
-    position: absolute;
-    bottom: 0; /* Position at the bottom */
-    left: 0;
+    bottom: 0;
     width: 100%;
-    background: rgba(0, 0, 0, 0.7);
-    color: #fff;
-    opacity: 0;
-    transition: opacity 0.3s ease;
     text-align: center;
-    padding: 10px 0;
 }
 
-.card:hover .card-details {
-    opacity: 1;
-}
-
-.card-details h3 {
-    margin: 10px 0;
+.team-info h3 {
+    margin: 0;
     font-size: 18px;
+    font-weight: bold;
+}
+
+.team-info p {
+    margin: 5px 0 0;
+    font-size: 14px;
 }
 
 .social-icons {
-    margin-top: 10px;
+    position: absolute;
+    top: 20px;
+    right: 20px;
     display: flex;
-    justify-content: center; /* Centers the icons horizontally */
-    align-items: center;
+    flex-direction: column; /* Stack items vertically */
+    gap: 10px; /* Add spacing between the icons */
 }
+
 
 .social-icons a {
-    margin: 0 5px;
-    color: #00BDD6FF;
-    font-size: 20px;
-    text-decoration: none;
-}
-.heart-icon a {
-    color: #ff0000; /* Default heart color */
-    font-size: 20px;
-    text-decoration: none;
-    transition: color 0.3s ease;
-}
-
-.heart-icon a.hearted {
-    color: #ff0000; /* Color for the hearted state */
-}
-
-.heart-icon a:hover {
-    color: #ff6666; /* Slightly lighter color on hover */
-}
-
-.carousel-controls {
-    position: absolute;
-    padding-top: 60px;
-    left: 20px; /* Position the controls on the left side */
-    display: flex;
-    /*flex-direction: column; /* Stack the arrows vertically */
-    transform: translateY(-50%);
-    pointer-events: none;
-}
-
-.carousel-controls .prev,
-.carousel-controls .next {
-    background-color: rgba(0, 0, 0, 0.5);
-    color: white;
-    font-size: 24px;
-    padding: 10px;
-    cursor: pointer;
+    color: #fff;
+    margin-left: 0;
+    font-size: 16px;
+    background-color: rgba(0, 0, 0, 0.4);
+    padding: 5px;
     border-radius: 50%;
-    pointer-events: all; /* Enable interaction with the buttons */
-    margin-bottom: 10px; /* Add space between the arrows */
-    transition: background-color 0.3s ease;
+    transition: background 0.3s;
 }
 
-.carousel-controls .prev:hover,
-.carousel-controls .next:hover {
-    background-color: rgba(0, 0, 0, 0.7);
+.social-icons a:hover {
+    background-color: #00BDD6FF;
 }
-/*.prev, .next {
-    cursor: pointer;
-    font-size: 24px;
-    background: rgba(0, 0, 0, 0.5);
-    color: white;
-    padding: 10px;
-}*/
-.band {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    padding: 20px;
-    width: 80%;
-    max-width: 800px;
-    margin: 20px auto;
-    border-radius: 10px;
-    overflow: hidden;
-    position: relative;
-    background-image: url('https://pic.pikbest.com/best/video_preview_img/2403/10450261-66038411474cf.jpg!bw700');
+
+
+/* ticket section */
+.ticketbackground {
+    margin: auto;
+    padding: 50px 20px;
+    background-image: url('');
     background-size: cover;
     background-position: center;
-    color: white;
-    z-index: 1;
-    animation: backgroundZoom 10s infinite alternate ease-in-out; /* Apply the animation */
-}
-
-@keyframes backgroundZoom {
-    0% {
-        background-size: 100%; /* Start with the normal size */
-    }
-    100% {
-        background-size: 110%; /* Zoom in the background */
-    }
-}
-
-
-.band-video {
-    display: none; /* Hide the video background if not needed */
-}
-
-.band-image {
-    width: 50%;
-    height: auto;
+    width: 100%;
+    height: 100%;
     display: flex;
     justify-content: center;
     align-items: center;
-    overflow: hidden;
 }
 
-.band-image img {
-    width: 100%;
-    height: 250px;
-    border-radius: 10px;
-    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
-    opacity: 1; 
-    transition: opacity 1s ease;
-}
-
-.band-info {
-    flex-grow: 1;
-    padding-left: 50px; /* Space between image and text */
-    animation: fadeIn 2s ease-out, shine 4s infinite alternate ease-in-out;
-    color: #f0f0f0; /* Light white color */
-    font-size: 2.4rem; /* Increased font size */
-    font-weight: bold;
-    cursor: pointer
-}
-.band-info span{
-    flex-grow: 1;
-    padding-left: 40px; /* Space between image and text */
-    color: #00BDD6FF; /* Light white color */
-    font-size: 2rem; /* Increased font size */
-    font-style: italic;
-    
-}
-
-@keyframes fadeIn {
-    0% {
-        opacity: 0;
-        transform: translateY(20px); /* Slight upward motion */
-    }
-    100% {
-        opacity: 1;
-        transform: translateY(0); 
-    }
-}
-
-@keyframes shine {
-    0% {
-        text-shadow: 0 0 5px rgba(255, 255, 255, 0.5), 
-                     0 0 10px rgba(255, 255, 255, 0.4), 
-                     0 0 15px rgba(255, 255, 255, 0.3);
-    }
-    100% {
-        text-shadow: 0 0 20px rgba(255, 255, 255, 1), 
-                     0 0 30px rgba(255, 255, 255, 0.9), 
-                     0 0 40px rgba(255, 255, 255, 0.8);
-    }
-}
-/* .band-info h2 {
-    font-size: 3rem; /* Increased font size */
-    /*font-weight: bold;
-    color: white; /* Set the text color to pure white */
-    /*padding: 10px 20px;
-    border-radius: 10px;
-    background-color: rgba(0, 0, 0, 0.5); /* Slightly transparent dark background */
-    /*text-shadow: 2px 2px 10px rgba(255, 255, 255, 0.7); /* Initial shadow with a softer look */
-    /*display: inline-block;
-    margin: 10px 0;
-    cursor: pointer;
-} */
-
-
-
-.ticket-price {
-    text-align: center;
-    background: #f4f4f4;
-    padding: 20px;
-    border-radius: 10px;
-    width: 25%;
-    margin-left: 20px;
+.pricing-container {
     display: flex;
-    flex-direction: column; /* Ensure vertical stacking of price-info */
-    
+    justify-content: space-between;
+    width: 80%;
 }
 
-.price-info {
-    background: #cce7f3;
+.pricing-card {
+    background: rgba(255, 255, 255, 0.8);
     border-radius: 10px;
-    padding-top: 10px;
-    padding-bottom: 10px;
-    margin-bottom: 10px; /* Add gap between price-info elements */
-    width: 100%; /* Ensure the price-info elements take full width available */
+    padding: 20px;
+    width: 30%;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    transition: transform 0.3s ease;
 }
 
-.ticket-price p {
-    padding: 10px;
-    font-weight: bold;
-    margin: 0;
+.pricing-card:hover {
+    transform: scale(1.05);
+}
+
+.pricing-card h2 {
+    color: #333;
+}
+
+.price {
     font-size: 24px;
-    color: #00BDD6FF;
+    color: #666;
 }
 
-
-.price-info p:first-child {
-    padding: 10px;
-    font-size: 24px;
-    color: #3a3a3a;
+.pricing-card ul {
+    list-style: none;
+    padding: 0;
 }
 
-.purchase-btn {
-    background: linear-gradient(45deg, #00BDD6FF, #01687c);
-    color: #fff;
-    font-weight: bold;
-    font-size: 18px;
-    padding: 10px 20px;
+.pricing-card ul li {
+    padding: 10px 0;
+    border-bottom: 1px solid #ccc;
+}
+
+.pricing-card button {
+    background-color: #00BDD6FF;
     border: none;
+    padding: 10px;
+    width: 100%;
     border-radius: 5px;
+    color: white;
+    font-size: 16px;
     cursor: pointer;
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    margin-top: 20px;
 }
 
-.purchase-btn:hover {
-    transform: scale(1.1);
-    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
-    background-color: #e74343; /* Change color on hover */
+.pricing-card button:hover {
+    background-color: rgb(3, 169, 191);
 }
 
-.purchase-btn:focus {
-    outline: none;
-    box-shadow: 0 0 0 3px rgba(255, 75, 75, 0.5); /* Red border focus effect */
-}
 
-.purchase-btn::before {
-    content: '🎟️';
-    margin-right: 8px;
-    font-size: 28px;
-    animation: bounce 1s infinite alternate;
-    display: inline-block;
-    vertical-align: middle;
-}
 
-@keyframes bounce {
-    from {
-        transform: translateY(0);
+
+
+/* Responsive Media Queries for better scaling */
+@media (max-width: 768px) {
+    .eventname {
+        font-size: 2rem;
     }
-    to {
-        transform: translateY(-10px);
+
+    .time {
+        font-size: 1.5rem;
     }
 }

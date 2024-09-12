@@ -38,4 +38,24 @@ class Ticket {
 
         return false;  // Validation failed
     }
+
+    public function getEventIdByName($event_name) {
+        $query = "SELECT id FROM events WHERE event_name = ?";
+        $result = $this->query($query, [$event_name]);
+        return $result ? $result[0]->id : null; // Access the first object's id property if result is not false
+    }
+
+    // Method to get tickets by event ID
+    public function getTicketsByEventId($event_id) {
+        $query = "SELECT * FROM tickets WHERE event_id = ?";
+        return $this->query($query, [$event_id]);
+    }
+    
+    
+    //get all rows of the ticket table
+    function getAllTickets(){
+        $query = "SELECT ticket_type, price, quantity FROM tickets";
+        
+        return $this->query($query);
+    }
 }
