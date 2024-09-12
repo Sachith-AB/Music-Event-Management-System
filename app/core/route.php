@@ -15,6 +15,12 @@ route('event-review', 'event/Review@index');
 
 
 
+
+route('request','request/Request@index');
+
+
+route('calender','calender/Calender@index');
+
 //Routes for Ticket
 route('create-ticket', 'ticket/TicketController@index');
 route('view-tickets', 'ticket/TicketController@viewTickets');
@@ -36,3 +42,4 @@ route('update-profile','ticketHolder/UpdateProf@index');
 
 // Route for event planners
 route('event-planner-profile','eventPlanner/Profile@index');
+
