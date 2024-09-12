@@ -39,9 +39,9 @@ class Event {
            $this->errors['city'] = "City is required";
         }
 
-        // if (empty($data['province'])) {
-        //     $this->errors['province'] = "Province is required";
-        // }
+        if (empty($data['province'])) {
+            $this->errors['province'] = "Province is required";
+        }
 
         if (empty($data['eventDate'])) {
             $this->errors['eventDate'] = "Event date is required";
