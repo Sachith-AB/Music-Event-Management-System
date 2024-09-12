@@ -15,9 +15,7 @@
 <body>
 
     <!-- Include Header -->
-    <div class="header">
-
-    </div>
+    <?php include ('../app/views/components/Header.php'); ?>
     <!-- Main Content -->
     <main>
         <div class="event-details-container">
@@ -29,7 +27,7 @@
                     Successful payment!
                 </div>
             </div>
-            <h1 class="event-title">Rock Revolt: A Fusion of Power and Passion</h1>
+            <h1 class="event-title"><span>Rock Revolt</span>: A Fusion of Power and Passion</h1>
             <div class="event-info">
                 <div class="event-item">
                     <div class="icon">
@@ -69,68 +67,63 @@
                     </div>
                 </div>
             </div>
+        </div>
 
-
-            <div class="event-details-container">
-                <!--purchase information-->
-                <div class="contact-header">
-                    <h2>Purchase Information</h2>
+        <div class="event-details-container">
+            <!--purchase information-->
+            <div class="contact-header">
+                <h2>Purchase Information</h2>
+            </div>
+            <div class="input-group">
+                <div class="input-field">
+                    <label for="first-name">Code</label>
+                    <p>#123456789</p>
                 </div>
-                <div class="input-group">
-                    <div class="input-field">
-                        <label for="first-name">Code</label>
-                        <p>#123456789</p>
-                    </div>
-                    <div class="input-field">
-                        <label for="last-name">Date</label>
-                        <p?>June 01,2023</p>
-                    </div>
-                    <div class="input-field">
-                        <label for="last-name">Total</label>
-                        <p>$162</p>
-                    </div>
-                    <div class="input-field">
-                        <label for="last-name">Payment method</label>
-                        <p>Matercard-****3456</p>
-                    </div>
+                <div class="input-field">
+                    <label for="last-name">Date</label>
+                    <p?>June 01,2023</p>
                 </div>
+                <div class="input-field">
+                    <label for="last-name">Total</label>
+                    <p>$162</p>
+                </div>
+                <div class="input-field">
+                    <label for="last-name">Payment method</label>
+                    <p>Matercard-****3456</p>
+                </div>
+            </div>
 
 
                 <!--contact information-->
-                <div class="contact-header">
-                    <h2>Contact Information</h2>
-                </div>
-                <div class="input-group">
-                    <div class="input-field">
-                        <label for="first-name">Fname</label>
-                        <p>Amanda</p>
-                    </div>
-                    <div class="input-field">
-                        <label for="last-name">Lname</label>
-                        <p?>Smith</p>
-                    </div>
-                    <div class="input-field">
-                        <label for="last-name">Email</label>
-                        <p>amanda@gmail.com</p>
-                    </div>
-                    <div class="input-field">
-                        <label for="last-name">Phone number</label>
-                        <p>(724)4546798</p>
-                    </div>
-                </div>
-
-
-
-
-
+            <div class="contact-header">
+                <h2>Contact Information</h2>
             </div>
+            <div class="input-group">
+                <div class="input-field">
+                <label for="first-name">Fname</label>
+                    <p>Amanda</p>
+                </div>
+                <div class="input-field">
+                    <label for="last-name">Lname</label>
+                    <p?>Smith</p>
+                </div>
+                <div class="input-field">
+                    <label for="last-name">Email</label>
+                    <p>amanda@gmail.com</p>
+                </div>
+                <div class="input-field">
+                    <label for="last-name">Phone number</label>
+                    <p>(724)4546798</p>
+                </div>
+            </div>
+        </div>
 
             <!--ticket section-->
 
             <div class="event-details-container">
                 <div class="contact-header">
                     <h3>Ticket (2) total: <span>$162</span></h3>
-                    <a href="#" class="login-link" onclick="openModal()">View Ticket</a>
+                    <a href="#" class="login-link" onclick="openViewTicketModal()">View Ticket</a>
                 </div>
 
 
@@ -210,81 +203,82 @@
     </script>-->
 
 
-
-            <!-- Ticket 1 -->
-            <div class="ticket-details">
-                <div class="ticket-header">
-                    <h3>Ticket 1</h3>
-                </div>
-                <div class="input-group">
-                    <div class="input-field">
-                        <label for="first-name">Fname</label>
-                        <p>Amanda</p>
+            <div class="event-details-container">
+                <!-- Ticket 1 -->
+                <div class="ticket-details">
+                    <div class="ticket-header">
+                        <h3>Ticket 1</h3>
                     </div>
-                    <div class="input-field">
-                        <label for="last-name">Lname</label>
-                        <p?>Smith</p>
-                    </div>
-                    <div class="input-field">
-                        <label for="last-name">Email</label>
-                        <p>amanda@gmail.com</p>
-                    </div>
-                    <div class="input-field">
-                        <label for="last-name">Phone number</label>
-                        <p>(724)4546798</p>
-                    </div>
-                    <div class="input-field">
-                        <div class="qr-code">
-                            <div class="qr-code-part">
-                                <p><strong>Code</strong></p>
-                                <a href="#">MRCE-934912</a>
+                    <div class="input-group">
+                        <div class="input-field">
+                            <label for="first-name">Fname</label>
+                            <p>Amanda</p>
+                        </div>
+                        <div class="input-field">
+                            <label for="last-name">Lname</label>
+                            <p?>Smith</p>
+                        </div>
+                        <div class="input-field">
+                            <label for="last-name">Email</label>
+                            <p>amanda@gmail.com</p>
+                        </div>
+                        <div class="input-field">
+                            <label for="last-name">Phone number</label>
+                            <p>(724)4546798</p>
+                        </div>
+                        <div class="input-field">
+                            <div class="qr-code">
+                                <div class="qr-code-part">
+                                    <p><strong>Code</strong></p>
+                                    <a href="#">MRCE-934912</a>
+                                </div>
+                                <img src="<?= ROOT ?>/assets/images/ticket/QR_code-image.png" alt="QR Code">
                             </div>
-                            <img src="<?= ROOT ?>/assets/images/ticket/QR_code-image.png" alt="QR Code">
                         </div>
                     </div>
                 </div>
-            </div>
 
 
-            <!-- Ticket 2 -->
-            <div class="ticket-details">
-                <div class="ticket-header">
-                    <h3>Ticket 2</h3>
-                </div>
-                <div class="input-group">
-                    <div class="input-field">
-                        <label for="first-name">Fname</label>
-                        <p>Amanda</p>
+                <!-- Ticket 2 -->
+                <div class="ticket-details">
+                    <div class="ticket-header">
+                        <h3>Ticket 2</h3>
                     </div>
-                    <div class="input-field">
-                        <label for="last-name">Lname</label>
-                        <p?>Smith</p>
-                    </div>
-                    <div class="input-field">
-                        <label for="last-name">Email</label>
-                        <p>amanda@gmail.com</p>
-                    </div>
-                    <div class="input-field">
-                        <label for="last-name">Phone number</label>
-                        <p>(724)4546798</p>
-                    </div>
-                    <div class="input-field">
-                        <div class="qr-code">
-                            <div class="qr-code-part">
-                                <p><strong>Code</strong></p>
-                                <a href="#">MRCE-934912</a>
+                    <div class="input-group">
+                        <div class="input-field">
+                            <label for="first-name">Fname</label>
+                            <p>Amanda</p>
+                        </div>
+                        <div class="input-field">
+                            <label for="last-name">Lname</label>
+                            <p?>Smith</p>
+                        </div>
+                        <div class="input-field">
+                            <label for="last-name">Email</label>
+                            <p>amanda@gmail.com</p>
+                        </div>
+                        <div class="input-field">
+                            <label for="last-name">Phone number</label>
+                            <p>(724)4546798</p>
+                        </div>
+                        <div class="input-field">
+                            <div class="qr-code">
+                                <div class="qr-code-part">
+                                    <p><strong>Code</strong></p>
+                                    <a href="#">MRCE-934912</a>
+                                </div>
+                                <img src="<?= ROOT ?>/assets/images/ticket/QR_code-image.png" alt="QR Code">
                             </div>
-                            <img src="<?= ROOT ?>/assets/images/ticket/QR_code-image.png" alt="QR Code">
                         </div>
                     </div>
                 </div>
-            </div>
 
             <!-- Add Ticket Button -->
-            <div class="button-group">
-                <button type="button" class="add-ticket-btn" onclick="goToMyTickets()">Go to my ticket</button>
+            
+                <div class="button-group">
+                    <button type="button" class="add-ticket-btn" onclick="goToMyTickets()">Go to my ticket</button>
+                </div>
             </div>
-
 
             <script>
                 function goToMyTickets() {
@@ -293,41 +287,7 @@
             </script>
 
         </div>
-
-        <!--summary section -->
-        <div class="summary-container" id="summary">
-            <div class="summary-row">
-                <p>2 x</p>
-                <p>$90 / Ticket</p>
-            </div>
-
-            <div class="summary-row">
-                <p>Subtotal</p>
-                <p>$180</p>
-            </div>
-
-            <div class="summary-row">
-                <p>Discount</p>
-                <p>- $18 (10%)</p>
-            </div>
-
-            <div class="summary-total">
-                <p>Total</p>
-                <p>$162</p>
-            </div>
-            <div class="payment-method">
-                <img src="<?= ROOT ?>/assets/images/ticket/mastercard-icon.png" alt="Mastercard">
-                <span>Mastercard **** 5987</span>
-            </div>
-            <button class="pay-now-btn">Pay now</button>
-        </div>
-
-        <script>
-            function showSummary() {
-                document.getElementById('summary').style.display = 'block';
-            }
-        </script>
-
+        
         <!--other event section-->
         <div class="event-details-container">
             <h2>Other events you may like</h2>

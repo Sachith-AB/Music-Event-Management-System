@@ -9,9 +9,7 @@
 </head>
 <body>
     <!-- Include Header -->
-    <div class="header">
-
-    </div>
+    <?php include ('../app/views/components/Header.php'); ?>
 
     <div class="upcommingeve-container">
         <div class="upcommingeve-profile">
@@ -24,10 +22,10 @@
         <div class="upcommingeve-tickets">
             <h2>My Tickets</h2>
 
-            <div class="upcommingeve-tabs">
+            <!--<div class="upcommingeve-tabs">
                 <span class="upcommingeve-tab active">Upcoming</span>
                 <span class="upcommingeve-tab">Used</span>
-            </div>
+            </div>-->
 
             <div class="upcommingeve-ticket-card">
                 <div class="upcommingeve-ticket-image">
