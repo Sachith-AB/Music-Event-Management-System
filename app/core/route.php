@@ -8,6 +8,7 @@ route('signup','Signup@index');
 
 //route for events
 route('create-event', 'event/Create@index');
+route('event-review', 'event/Review@index');
 
 
 
