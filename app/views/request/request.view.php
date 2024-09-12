@@ -17,8 +17,12 @@
 
 
 <body>
+
     
-    <br><br>
+
+    <p>header in here</p>
+    
+    <br>
 
     <div class="search-container">
 
@@ -31,133 +35,145 @@
 
                 </div>
                 
-    </form>
+            </form>
 
     </div>
             
-
     <br>
-    <h1>Requests</h1>
 
+    <div class="container-table">
+
+            <h1>Requests</h1>
+
+            <br>
+
+            <table>
+                <tr>
+                    <th>Event name</th>
+                    <th>Date</th>
+                    <th>Venue</th>
+                    <th>Action</th>
+                    <th>Info</th>
+                </tr>
+                <tr>
+                    <td>JAZZ Night</td>
+                    <td>25th October 2023</td>
+                    <td>Blue Note Jazz Club, NY</td>
+                    <td><button class = "accept">Accept</button> <button class = "reject" >Reject</button></td>
+                    <td><button>Event Page</button></td>
+
+                </tr>
+
+                <tr>
+                    <td>JAZZ Night</td>
+                    <td>25th October 2023</td>
+                    <td>Blue Note Jazz Club, NY</td>
+                    <td><button class = "accept">Accept</button> <button class = "reject">Reject</button></td>
+                    <td><button>Event Page</button></td>
+
+                </tr>
+
+                <tr>
+                    <td>JAZZ Night</td>
+                    <td>25th October 2023</td>
+                    <td>Blue Note Jazz Club, NY</td>
+                    <td><button class = "accept">Accept</button> <button class = "reject">Reject</button></td>
+                    <td><button>Event Page</button></td>
+
+                </tr>
+
+
+                <tr>
+                    <td>JAZZ Night</td>
+                    <td>25th October 2023</td>
+                    <td>Blue Note Jazz Club, NY</td>
+                    <td><button class = "accept">Accept</button> <button class = "reject">Reject</button></td>
+                    <td><button>Event Page</button></td>
+
+                </tr>
+
+                <tr>
+                    <td>JAZZ Night</td>
+                    <td>25th October 2023</td>
+                    <td>Blue Note Jazz Club, NY</td>
+                    <td><button class = "accept">Accept</button> <button class = "reject">Reject</button></td>
+                    <td><button>Event Page</button></td>
+                    
+
+                </tr>
+
+                
+            </table>
+
+
+    </div>
+    
     <br><br>
 
-    <table>
-        <tr>
-            <th>Event name</th>
-            <th>Date</th>
-            <th>Venue</th>
-            <th>Action</th>
-            <th>Info</th>
-        </tr>
-        <tr>
-            <td>JAZZ Night</td>
-            <td>25th October 2023</td>
-            <td>Blue Note Jazz Club, NY</td>
-            <td><button class = "accept">Accept</button> <button class = "reject" >Reject</button></td>
-            <td><button>Event Page</button></td>
 
-        </tr>
+    <div class="container-table">
 
-        <tr>
-            <td>JAZZ Night</td>
-            <td>25th October 2023</td>
-            <td>Blue Note Jazz Club, NY</td>
-            <td><button class = "accept">Accept</button> <button class = "reject">Reject</button></td>
-            <td><button>Event Page</button></td>
-
-        </tr>
-
-        <tr>
-            <td>JAZZ Night</td>
-            <td>25th October 2023</td>
-            <td>Blue Note Jazz Club, NY</td>
-            <td><button class = "accept">Accept</button> <button class = "reject">Reject</button></td>
-            <td><button>Event Page</button></td>
-
-        </tr>
+            <h1>Accepted Events</h1>
+            <br>
 
 
-        <tr>
-            <td>JAZZ Night</td>
-            <td>25th October 2023</td>
-            <td>Blue Note Jazz Club, NY</td>
-            <td><button class = "accept">Accept</button> <button class = "reject">Reject</button></td>
-            <td><button>Event Page</button></td>
+            <table>
+                <tr>
+                    <th>Event name</th>
+                    <th>Date</th>
+                    <th>Venue</th>
+                    <th>Info</th>
+                </tr>
+                <tr>
+                    <td>JAZZ Night</td>
+                    <td>25th October 2023</td>
+                    <td>Blue Note Jazz Club, NY</td>
+                    
+                    <td><button>Event Page</button></td>
 
-        </tr>
+                </tr>
 
-        <tr>
-            <td>JAZZ Night</td>
-            <td>25th October 2023</td>
-            <td>Blue Note Jazz Club, NY</td>
-            <td><button class = "accept">Accept</button> <button class = "reject">Reject</button></td>
-            <td><button>Event Page</button></td>
-            
+                <tr>
+                    <td>JAZZ Night</td>
+                    <td>25th October 2023</td>
+                    <td>Blue Note Jazz Club, NY</td>
+                    
+                    <td><button>Event Page</button></td>
 
-        </tr>
-    </table>
+                </tr>
 
-    <br><br>
+                <tr>
+                    <td>JAZZ Night</td>
+                    <td>25th October 2023</td>
+                    <td>Blue Note Jazz Club, NY</td>
+                    
+                    <td><button>Event Page</button></td>
 
-
-    <h1>Accepted Events</h1>
-    <br><br>
-
-
-    <table>
-        <tr>
-            <th>Event name</th>
-            <th>Date</th>
-            <th>Venue</th>
-            <th>Info</th>
-        </tr>
-        <tr>
-            <td>JAZZ Night</td>
-            <td>25th October 2023</td>
-            <td>Blue Note Jazz Club, NY</td>
-            
-            <td><button>Event Page</button></td>
-
-        </tr>
-
-        <tr>
-            <td>JAZZ Night</td>
-            <td>25th October 2023</td>
-            <td>Blue Note Jazz Club, NY</td>
-            
-            <td><button>Event Page</button></td>
-
-        </tr>
-
-        <tr>
-            <td>JAZZ Night</td>
-            <td>25th October 2023</td>
-            <td>Blue Note Jazz Club, NY</td>
-            
-            <td><button>Event Page</button></td>
-
-        </tr>
+                </tr>
 
 
-        <tr>
-            <td>JAZZ Night</td>
-            <td>25th October 2023</td>
-            <td>Blue Note Jazz Club, NY</td>
-            
-            <td><button>Event Page</button></td>
+                <tr>
+                    <td>JAZZ Night</td>
+                    <td>25th October 2023</td>
+                    <td>Blue Note Jazz Club, NY</td>
+                    
+                    <td><button>Event Page</button></td>
 
-        </tr>
+                </tr>
 
-        <tr>
-            <td>JAZZ Night</td>
-            <td>25th October 2023</td>
-            <td>Blue Note Jazz Club, NY</td>
-            
-            <td><button>Event Page</button></td>
-            
+                <tr>
+                    <td>JAZZ Night</td>
+                    <td>25th October 2023</td>
+                    <td>Blue Note Jazz Club, NY</td>
+                    
+                    <td><button>Event Page</button></td>
+                    
 
-        </tr>
-    </table>
+                </tr>
+            </table>
+    
+    </div>
+
     
     <br><br>
 
