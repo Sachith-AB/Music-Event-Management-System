@@ -9,7 +9,7 @@
         $user = new User;
         
         $data = $this->getData($user);
-        $this->view('home',$data);
+        $this->view('home',$data , true);
 
 
     }
