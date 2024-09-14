@@ -115,7 +115,7 @@
                     <div class="carousel">
                         <div class="images-wrapper">
 
-                            <img src="<?= ROOT ?>/assets/images/sign-in-up/image-2.jpg" class="image img-1 show" alt="">
+                            <img src="<?= ROOT ?>/assets/images/sign-in-up/image-2.jpg" class="image img-1" alt="">
                             <img src="<?= ROOT ?>/assets/images/sign-in-up/image-4.jpg" class="image img-2" alt="">
                             <img src="<?= ROOT ?>/assets/images/sign-in-up/image-3.jpg" class="image img-3" alt="">
                             <img src="<?= ROOT ?>/assets/images/sign-in-up/image-1.jpg" class="image img-4" alt="">

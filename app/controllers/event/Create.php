@@ -17,7 +17,7 @@ class Create {
 
 
         $this->view('event/createEvent',$data);
-        header("Location: /event/review");
+        
         
 
     }
@@ -28,6 +28,7 @@ class Create {
 
             unset($POST['submit']);
             $event->insert($_POST);
+            redirect('event-review');
 
         }else{
             return $event->errors;

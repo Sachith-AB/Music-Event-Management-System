@@ -57,19 +57,7 @@ $_SESSION['last_visit'] = date('Y-m-d H:i:s');
         <!--create main content -->
         <div class="main-content">
 
-            <section id="upload-cover">
-                <h2>Upload Cover</h2>
-                <div class="upload-cover">
-                    <img src="<?=ROOT?>/assets/images/event/cover.png" alt="Event Cover Image" class="cover-image">
-                    <div class="buttons">
-                        <input type="file" name="cover_images" id="cover_image">
-                        <button type="button" class="change-button">Change</button>
-                        <button type="button" class="remove-button">Remove</button>
-                    </div>
-                </div>
-            </section>
-
-            <form  method="POST" enctype="multipart/form-data">
+            <form  method="POST" >
 
                 <section id="general-information">
                     <h2>General Information</h2>
@@ -133,6 +121,21 @@ $_SESSION['last_visit'] = date('Y-m-d H:i:s');
                 </section>
 
             </form>
+
+            <form action="" method="POST" enctype="multipart/form-data">
+                <section id="upload-cover">
+                    <h2>Upload Cover</h2>
+                    <div class="upload-cover">
+                        <img src="<?=ROOT?>/assets/images/event/cover.png" alt="Event Cover Image" class="cover-image">
+                        <div class="buttons">
+                            <input type="file" name="cover_images" id="cover_image">
+                            <button type="button" class="change-button">UPLOAD</button>
+                            <button type="button" class="remove-button">Remove</button>
+                        </div>
+                    </div>
+                </section>
+            </form>
+            
         </div>
     </div>
 
