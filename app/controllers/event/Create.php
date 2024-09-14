@@ -9,10 +9,10 @@ class Create {
         $data = [];
 
         if($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['submit'])){
-            show($_POST);
+            //show($_POST);
 
             $data = $this->create($event,$_POST);
-            show($data);
+            // show($data);
         }
 
 
