@@ -14,7 +14,7 @@ class Signup {
             
         }
         
-        $this->view('signup',$data);
+        $this->view('signup',$data,false);
     }
 
 

@@ -2,21 +2,20 @@
 
 trait Controller {
 
-    // Check if user is logged in
-    public function isLoggedIn($id) {
-        echo $id;
-
-        // If not logged in, redirect to signin page
-        if ($id) {
-            
-            return true;
+    // Check if user is logged in by verifying session
+    public function isLoggedIn() {
+        // Start session if not already started
+        if (session_status() === PHP_SESSION_NONE) {
+            session_start();
         }
-        
+
+        // Check if the session has a user logged in
+        return isset($_SESSION['USER']);
     }
-    public function view($file , $data = [], $requireLogin = false){
+    public function view($file , $data = [], $requireLogin = true){
 
          // If the view requires login, check the session
-        if ($requireLogin && !$this->isLoggedIn($data['id'])) {
+        if ($requireLogin && !$this->isLoggedIn()) {
             // Redirect to the login page if the user is not logged in
             redirect("signin");
             exit;

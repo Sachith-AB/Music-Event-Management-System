@@ -14,7 +14,7 @@ class Signin {
             $data = $this->userLogin($user);
             //show($data);
         }
-        $this->view('signin',$data);
+        $this->view('signin',$data,false);
     }
 
     private function  userLogin($user){
