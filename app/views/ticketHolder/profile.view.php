@@ -1,3 +1,4 @@
+<?php include ('../app/views/components/header.php'); ?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -23,7 +24,7 @@
                 <div class="details">
                     <h2 class="head2"><?php echo $data['name'] ?></h2>
                     <h3 class="head3"><?php echo $data['email'] ?></h3>
-                    <h3 class="head3"><?php echo $data['contact'] ?></h3>
+                    <h3 class="head3"><?php echo $_SESSION["USER"]->contact ?></h3>
                 </div>
                 <div class="tag">
                     <div class="tag-item">24 Purchase</div>

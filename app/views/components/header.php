@@ -12,7 +12,7 @@
 ?>
 <header>
     <div class="logo">
-        <img src = "logo.png" alt = "musicia"> 
+        <img src = "logo.png" alt = "musicia" onclick="goToHome()"> 
     </div>
     <nav>
         <ul>
@@ -46,6 +46,10 @@
 
     function goToProfile() {
         window.location.href = "profile?id=<?php echo $data['id']?>";
+    };
+
+    function goToHome (){
+        window.location.href = "home?id=<?php echo $_SESSION['USER']->id ?>"
     }
 </script>
 </body>
