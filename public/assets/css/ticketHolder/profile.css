@@ -310,6 +310,7 @@
     line-height: 22px; 
     font-weight: 400; 
     color: #171A1FFF; /* neutral-900 */
+    background-color: white;
   }
 
 /* Textbox 29 */
@@ -339,7 +340,6 @@
     right: 12px; 
     width: 16px; 
     height: 16px; 
-    fill: #171A1FFF; /* neutral-900 */
   }
   .textbox svg.left {
     left: 12px; 

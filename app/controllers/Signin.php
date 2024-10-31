@@ -42,6 +42,9 @@ class Signin {
 
                     redirect("home?id=$id");
 
+                    // Set the session start time
+                    $_SESSION['LAST_ACTIVITY'] = time(); // Store the current time
+
                 }else{
                     //echo "error";
                     $error = "Password Invalid";

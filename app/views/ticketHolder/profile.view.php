@@ -41,14 +41,14 @@
             <div class="textbox">
                 <input type="text" name="search" id="search" placeholder="Search">
             </div>
-            <div class="event-detail">
+            <!-- <div class="event-detail">
                 <div>
                     <img class="event-image" src="<?=ROOT?>/assets/images/events/image-1.jpg" alt="event" >
                 </div>
                 <div>
                     <h1>February 20 | 08:00 PM</h1>
                 </div>
-            </div>
+            </div> -->
         </div>
     </div>
 
