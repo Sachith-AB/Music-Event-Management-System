@@ -30,6 +30,8 @@ route('calender','calender/Calender@index');
 //Routes for Ticket
 route('create-ticket', 'ticket/TicketController@index');
 route('view-tickets', 'ticket/TicketController@viewTickets');
+route('update-ticket', 'ticket/TicketController@updateticket');
+route('delete-ticket', 'ticket/TicketController@deleteTicket');
 
 
 //Route for purchaseticket

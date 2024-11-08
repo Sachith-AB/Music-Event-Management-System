@@ -72,7 +72,11 @@ table tr:hover {
 .action-btn {
 
     padding: 10px 20px;
+<<<<<<< HEAD
     background-color:#00BDD6FF;
+=======
+    background-color: rgb(16, 171, 192);
+>>>>>>> 5d08783559a2d758163b5e3006567195d8479907
     color: white;
     border: none;
     border-radius: 5px;
@@ -88,5 +92,9 @@ table tr:hover {
 
 .action-btn:hover:not(.disabled) {
 
+<<<<<<< HEAD
     background-color: #00BDD6FF;
+=======
+    background-color: rgb(16, 171, 192);
+>>>>>>> 5d08783559a2d758163b5e3006567195d8479907
 }

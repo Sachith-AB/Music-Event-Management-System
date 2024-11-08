@@ -77,7 +77,7 @@ th {
 
 .accept:hover {
 
-    background-color: green;
+    background-color: rgb(16, 171, 192);
 }
 
 .search-container {
@@ -120,7 +120,11 @@ th {
 
 button {
 
+<<<<<<< HEAD
     background-color: #00BDD6FF;
+=======
+    background-color:  #00BDD6FF;
+>>>>>>> 5d08783559a2d758163b5e3006567195d8479907
     color: #fff;
     padding: 10px 20px;
     border: none;
@@ -131,6 +135,6 @@ button {
 
 .reject:hover {
 
-    background-color: rgb(194, 19, 19);
+    background-color: rgb(16, 171, 192);
 }
 

@@ -59,4 +59,58 @@ class TicketController {
             return $ticket->errors;
         }
     }
+
+    public function updateTicket() {
+        $ticket = new Ticket;
+        $ticket_id = $_GET['ticket_id'] ?? null;
+        // $event_name = $_GET['event_name'] ?? null;
+        // show($ticket_id);
+        $data = [];
+
+        if ($ticket_id) {
+            // Load the current ticket data to display in the form
+            $data['ticket'] = $ticket->getTicketDetails($ticket_id);
+        }
+        // show($data);
+
+        // Handle form submission for ticket update
+        if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['submit'])) {
+            if ($ticket->validTicket($_POST)) {
+                unset($_POST['submit']);
+                $ticket->update($ticket_id, $_POST);
+                redirect("view-tickets?event_id=" . $_POST['event_id']);
+            } else {
+                $data['errors'] = $ticket->errors;
+            }
+        }
+
+        // Render the update form with the ticket data
+        $this->view('ticket/update-ticket', ['ticket' => $data]);
+    }
+
+    
+    public function deleteTicket()
+{
+    $ticket = new Ticket;
+
+    // Get the ticket ID from POST data
+    $ticket_id = $_POST['ticket_id'] ?? null;
+
+    // Fetch the event ID associated with this ticket
+    $event_id = $ticket->getEventIdByTicketId($ticket_id);
+
+    if ($ticket_id && $event_id) {
+        // Delete the ticket
+        $ticket->delete($ticket_id);
+
+        // Use a redirect function to navigate to the view-tickets page with the event_id
+        redirect("view-tickets?event_id=" . $event_id);
+    } else {
+        echo "Error: Ticket ID not provided or Event ID not found.";
+    }
+}
+
+
+
+    
 }

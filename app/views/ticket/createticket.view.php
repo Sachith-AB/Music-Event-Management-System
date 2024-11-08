@@ -23,7 +23,7 @@ $_SESSION['last_visit'] = date('Y-m-d H:i:s');
     <link rel="stylesheet" href="<?=ROOT?>/assets/css/create-event.css">
 </head>
 <body>
-    
+    <?php show($data) ?>
     <div class="container">
 
             <!--create slide bar -->

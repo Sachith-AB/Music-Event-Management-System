@@ -9,15 +9,15 @@ class Create {
         $data = [];
 
         if($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['submit'])){
-            show($_POST);
+            //show($_POST);
 
             $data = $this->create($event,$_POST);
-            show($data);
+            // show($data);
         }
 
 
         $this->view('event/createEvent',$data);
-        header("Location: /event/review");
+        
         
 
     }
@@ -28,6 +28,7 @@ class Create {
 
             unset($POST['submit']);
             $event->insert($_POST);
+            redirect('event-review');
 
         }else{
             return $event->errors;

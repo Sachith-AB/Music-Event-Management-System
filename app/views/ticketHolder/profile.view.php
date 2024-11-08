@@ -1,3 +1,4 @@
+<?php include ('../app/views/components/header.php'); ?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -15,6 +16,7 @@
     ?>
     <div class="page-content">
         <h1 class="head1">My Profile</h1>
+        
         <div class="all">
             <div class="container">
                 <div class="avatar">
@@ -23,7 +25,7 @@
                 <div class="details">
                     <h2 class="head2"><?php echo $data['name'] ?></h2>
                     <h3 class="head3"><?php echo $data['email'] ?></h3>
-                    <h3 class="head3"><?php echo $data['contact'] ?></h3>
+                    <h3 class="head3"><?php echo $_SESSION["USER"]->contact ?></h3>
                 </div>
                 <div class="tag">
                     <div class="tag-item">24 Purchase</div>
@@ -36,18 +38,18 @@
                 <div class="header-menu-item selected">Upcoming</div>
                 <div class="header-menu-item">Used</div>
             </div>
-            <h3 class="event">4 Event</h3>
+            <h3 class="event">4 Event <?php echo $data['pro_pic']?></h3>
             <div class="textbox">
                 <input type="text" name="search" id="search" placeholder="Search">
             </div>
-            <div class="event-detail">
+            <!-- <div class="event-detail">
                 <div>
                     <img class="event-image" src="<?=ROOT?>/assets/images/events/image-1.jpg" alt="event" >
                 </div>
                 <div>
                     <h1>February 20 | 08:00 PM</h1>
                 </div>
-            </div>
+            </div> -->
         </div>
     </div>
 

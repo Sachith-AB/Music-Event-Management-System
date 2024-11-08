@@ -5,7 +5,7 @@ class Ticket {
 
     protected $table = 'tickets';  // Database table name
     protected $allowedColumns = [
-        '_id', 'event_id', 'ticket_type', 'price', 'quantity', 'sold_quantity',
+        'id', 'event_id', 'ticket_type', 'price', 'quantity', 'sold_quantity',
         'sale_strt_date', 'sale_strt_time', 'sale_end_date', 'sale_end_time',
     ];
 
@@ -58,4 +58,30 @@ class Ticket {
         
         return $this->query($query);
     }
+
+    //get ticket details
+    public function getTicketDetails($ticket_id) {
+        $query = "SELECT * FROM tickets WHERE id = ?";
+        return $this->query($query, [$ticket_id]);
+    }
+
+    public function delete($ticket_id){
+    // Sanitize ticket_id to prevent SQL injection (if not using prepared statements)
+    $ticket_id = intval($ticket_id); // Converts the ticket_id to an integer
+
+    // Directly include ticket_id in the query (note: this approach assumes that ticket_id is sanitized)
+    $query = "DELETE FROM tickets WHERE id = $ticket_id";
+    return $this->query($query);
+    }
+
+    public function getEventIdByTicketId($ticket_id){
+        $query = "SELECT event_id FROM tickets WHERE id = ?";
+    $result = $this->query($query, [$ticket_id]);
+
+    // Check if the result is not empty and return the `event_id` value directly
+    return $result ? $result[0]->event_id : null;
+         
+    }
+
+
 }

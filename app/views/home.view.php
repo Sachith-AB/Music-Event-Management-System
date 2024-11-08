@@ -14,6 +14,7 @@
 
 <body> 
 
+    <div class="block">
     <section id ="treanding" class="trending-events">
         <h1>Discover Unforgettable Experience at</h1>
         <h1 class="highlight">Musicia</h1>
@@ -106,6 +107,7 @@
     </div>
     <div class = "events-container2" id = "events-container2">
         <!--Events Dynamically inserted here -->
+    </div>
     </div>
 
     <script src="<?=ROOT?>/assets/js/events.js"></script> 
