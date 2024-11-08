@@ -46,12 +46,12 @@ $_SESSION['last_visit'] = date('Y-m-d H:i:s');
                         </div>
 
                         <div class="ticket-actions">
-                            <form action="update-ticket.php" method="post">
-                                <input type="hidden" name="ticket_id" value="<?= $ticket->_id ?>">
+                            <form action="update-ticket" method="get">
+                                <input type="hidden" name="ticket_id" value="<?= htmlspecialchars($ticket->id) ?>">
                                 <button class="btn btn-update" type="submit">Update</button>
                             </form>
-                            <form action="delete-ticket.php" method="post" onsubmit="return confirm('Are you sure you want to delete this ticket?');">
-                                <input type="hidden" name="ticket_id" value="<?= $ticket->_id ?>">
+                            <form action="delete-ticket" method="post" onsubmit="return confirm('Are you sure you want to delete this ticket?');">
+                                <input type="hidden" name="ticket_id" value="<?= htmlspecialchars($ticket->id) ?>">
                                 <button class="btn btn-delete" type="submit">Delete</button>
                             </form>
                         </div>
