@@ -16,6 +16,7 @@
     ?>
     <div class="page-content">
         <h1 class="head1">My Profile</h1>
+        
         <div class="all">
             <div class="container">
                 <div class="avatar">
@@ -37,7 +38,7 @@
                 <div class="header-menu-item selected">Upcoming</div>
                 <div class="header-menu-item">Used</div>
             </div>
-            <h3 class="event">4 Event</h3>
+            <h3 class="event">4 Event <?php echo $data['pro_pic']?></h3>
             <div class="textbox">
                 <input type="text" name="search" id="search" placeholder="Search">
             </div>
