@@ -10,7 +10,7 @@
     <main class="page-content">
         <div class="image-container">
             <h1>create a wonderful event</h1>
-            <button class="button">Click Here</button>
+            <button class="button" onclick="goToCreateEvent()">Click Here</button>
         </div>
 
         <p class="title">Upcoming Shows</p>
@@ -66,5 +66,12 @@
             </div>
         </div>
     </main>
+
+    <script>
+        function goToCreateEvent() {
+            window.location.href = "create-event";
+        }
+    </script>
+
 </body>
 </html>

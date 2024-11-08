@@ -23,10 +23,12 @@ class Event {
 
         if (empty($data['event_name'])) {
             $this->errors['event_name'] = "Event name is required";
+            return ;
         }
 
         if (empty($data['description'])) {
             $this->errors['description'] = "Event description is required";
+            return ;
         }
 
 
