@@ -18,26 +18,32 @@
  
   <div id="singerDropdown" class="dropdown-content">
 
-    <?php foreach($data as $singer): ?>
+    <?php if(!empty($data)):?>
+        <?php foreach($data as $singer): ?>
 
-        <div class="singer-item">
-          <img src="<?=ROOT?>/assets/images/user/<?php echo $singer->pro_pic ?>" alt="Singer Profile" class="profile-pic">
-          <p><?php echo $singer->name ?> </p>
-          <button onclick="viewProfile(1)"> Profile</button>
-          <button onclick="requestSinger(1)">Request</button>
-        </div>
+            <div class="singer-item">
+              <img src="<?=ROOT?>/assets/images/user/<?php echo $singer->pro_pic ?>" alt="Singer Profile" class="profile-pic">
+              <p><?php echo $singer->name ?> </p>
+              <button onclick="viewProfile(1)"> Profile</button>
 
-    <?php endforeach; ?>
+              <form method = "POST">
 
-    
+                  <input name="event_id" type = "hidden" value="<?= htmlspecialchars($_GET["id"]) ?>">
+                  <input name="collaborator_id" type = "hidden" value="<?php echo $singer->id ?>" >
+                  <input name="role" type = "hidden" value="<?php echo $singer->user_role ?>">
+                  <button name = "request" type = "submit" >Request</button>
 
-    
-    
-    
+              </form>
+              
+            </div>
 
+        <?php endforeach; ?>
 
+    <?php else: echo "No singers yet"?>
 
+    <?php endif; ?>
 
+  
     <!-- Repeat for additional singers -->
   </div>
 
