@@ -80,7 +80,7 @@ class Ticket {
 
     // Check if the result is not empty and return the `event_id` value directly
     return $result ? $result[0]->event_id : null;
-         
+        
     }
 
 

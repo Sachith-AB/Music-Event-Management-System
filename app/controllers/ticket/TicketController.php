@@ -75,7 +75,9 @@ class TicketController {
 
         // Handle form submission for ticket update
         if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['submit'])) {
+
             if ($ticket->validTicket($_POST)) {
+                
                 unset($_POST['submit']);
                 $ticket->update($ticket_id, $_POST);
                 redirect("view-tickets?event_id=" . $_POST['event_id']);
