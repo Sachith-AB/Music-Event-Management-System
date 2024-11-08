@@ -12,11 +12,17 @@ route('signup','Signup@index');
 route('create-event', 'event/Create@index');
 route('event-review', 'event/Review@index');
 
+//route for event collaborators
+route('singer-profile','eventCollaborator/singerProfile@index');
 
 
 
 
+//route for request
 route('request','request/Request@index');
+
+//route for singerdropdown
+route('singerdropdown','request/Requestdropdown@index');
 
 
 route('calender','calender/Calender@index');
@@ -35,8 +41,6 @@ route('upcommingevent','ticket/PurchaseTicket@index3');
 route('ticketevent','ticket/PurchaseTicket@index4');
 route('updateticket','ticket/PurchaseTicket@index5');
 
-
-route('request','request/Request@index');
 
 // Route for ticket holder
 route('profile','ticketHolder/Profile@index');
