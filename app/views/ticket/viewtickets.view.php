@@ -64,5 +64,16 @@ $_SESSION['last_visit'] = date('Y-m-d H:i:s');
             <p class="last-visit">Last Visit: <?= $last_visit ?></p>
         </div>
     </div>
+
+    <button onclick ="goToRequest()"> Next </button>
+
+    <?php $id = htmlspecialchars($_GET['event_id']); ?>
+
+    <script>
+        function goToRequest() {
+            window.location.href = "singerdropdown?id=<?php echo $id?>";
+        }
+    </script>
+
 </body>
 </html>
