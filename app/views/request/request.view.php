@@ -1,168 +1,183 @@
-<html>
+<!DOCTYPE html>
+<html lang = "en">
 
 <head>
 
-    <title>Request</title>
-
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Musicia - Event Requests</title>
     <link rel="stylesheet" href="<?=ROOT?>/assets/css/request/request.css">
+
+    <!-- icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+
+
 
 </head>
 
-<div class = "head">
 
-    <ul>
-
-        <li ><a href="#">Home</a></li>
-        <li><a href="#">Request</a></li>
-        <li><a href="#">Calender</a>
-        <li><a href="#">Profile</a></li>
-        <li><a href="#">Payment Info</a></li>
-    
-    </ul>
-        
-</div>
-
-<div class = "input" >
-
-    <input class = "search" type="text" placeholder = "Search...">  
-
-</div>
-
-<div class = "main-content" >
-
-
-    <h1>REQUESTS</h1>
+<body>
 
     
-    <div class = "container">
 
-        <div class = "item">
+    <p>header in here</p>
+    
+    <br>
 
-                <img src="https://th.bing.com/th/id/OIP.gx8w1GUUL5uclnleK93M-gHaE9?w=265&h=180&c=7&r=0&o=5&pid=1.7" alt="">
-                <h4>JAZZ Night</h4>
-                
-                <p>Date: Oct 20,2024</p>
-                <p>Location: BlueNote,NY</p>
+    <div class="search-container">
 
-                <button class = "details">
-                    View Details
-                </button>
-  
-                <div class = "confirm">
+            <form action="/search" method = "GET" >
 
-                    <button class = "left" > 
-                        Accept
-                    </button>
+                <div class="search-box">
 
-                    <button class = "right" >
-                        Reject
-                    </button>
-
+                        <span class="icon"><i class="fas fa-search"></i></span>
+                        <input type="text" name = "query" placeholder = "Search....." required>
 
                 </div>
-        </div>
+                
+            </form>
 
-        <div class = "item">
-                <img src="https://th.bing.com/th/id/OIP.iRaLGvQGVuVVrX0kAmc9bgHaE8?w=286&h=189&c=7&r=0&o=5&pid=1.7" alt="">
-                <h4>Rock Fest</h4>
-                <p>Date: Nov 5,2023</p>
-                <p>Location: Madison Square,NY</p>
-
-                <button class = "details">
-                    View Details
-                </button>
-
-
-            <div class = "confirm">
-
-                    <button class = "left" > 
-                        Accept
-                    </button>
-
-                    <button class = "right" >
-                        Reject
-                    </button>
-                    
-
-            </div>
-                    
-        </div>
-
-        <div class = "item">
-    
-            <img src="https://th.bing.com/th/id/OIP._eE2-4mf20TRcIsNqz1EbwHaEK?w=304&h=180&c=7&r=0&o=5&pid=1.7" alt="">
-            <h4>Classical Evening</h4>
-            <p>Date: Dec,13,2024</p>
-            <p>Location: Carneage Hall,NY</p>
-
-            <button class = "details">
-                    View Details
-            </button>
-
-            <div class = "confirm">
-
-                    <button class = "left" > 
-                        Accept
-                    </button>
-
-                    <button class = "right" >
-                        Reject
-                    </button>
-                    
-
-            </div>
-
-        </div>
+    </div>
             
+    <br>
+
+    <div class="container-table">
+
+            <h1>Requests</h1>
+
+            <br>
+
+            <table>
+                <tr>
+                    <th>Event name</th>
+                    <th>Date</th>
+                    <th>Venue</th>
+                    <th>Action</th>
+                    <th>Info</th>
+                </tr>
+                <tr>
+                    <td>JAZZ Night</td>
+                    <td>25th October 2023</td>
+                    <td>Blue Note Jazz Club, NY</td>
+                    <td><button class = "accept">Accept</button> <button class = "reject" >Reject</button></td>
+                    <td><button>Event Page</button></td>
+
+                </tr>
+
+                <tr>
+                    <td>JAZZ Night</td>
+                    <td>25th October 2023</td>
+                    <td>Blue Note Jazz Club, NY</td>
+                    <td><button class = "accept">Accept</button> <button class = "reject">Reject</button></td>
+                    <td><button>Event Page</button></td>
+
+                </tr>
+
+                <tr>
+                    <td>JAZZ Night</td>
+                    <td>25th October 2023</td>
+                    <td>Blue Note Jazz Club, NY</td>
+                    <td><button class = "accept">Accept</button> <button class = "reject">Reject</button></td>
+                    <td><button>Event Page</button></td>
+
+                </tr>
+
+
+                <tr>
+                    <td>JAZZ Night</td>
+                    <td>25th October 2023</td>
+                    <td>Blue Note Jazz Club, NY</td>
+                    <td><button class = "accept">Accept</button> <button class = "reject">Reject</button></td>
+                    <td><button>Event Page</button></td>
+
+                </tr>
+
+                <tr>
+                    <td>JAZZ Night</td>
+                    <td>25th October 2023</td>
+                    <td>Blue Note Jazz Club, NY</td>
+                    <td><button class = "accept">Accept</button> <button class = "reject">Reject</button></td>
+                    <td><button>Event Page</button></td>
+                    
+
+                </tr>
+
+                
+            </table>
+
+
+    </div>
+    
+    <br><br>
+
+
+    <div class="container-table">
+
+            <h1>Accepted Events</h1>
+            <br>
+
+
+            <table>
+                <tr>
+                    <th>Event name</th>
+                    <th>Date</th>
+                    <th>Venue</th>
+                    <th>Info</th>
+                </tr>
+                <tr>
+                    <td>JAZZ Night</td>
+                    <td>25th October 2023</td>
+                    <td>Blue Note Jazz Club, NY</td>
+                    
+                    <td><button>Event Page</button></td>
+
+                </tr>
+
+                <tr>
+                    <td>JAZZ Night</td>
+                    <td>25th October 2023</td>
+                    <td>Blue Note Jazz Club, NY</td>
+                    
+                    <td><button>Event Page</button></td>
+
+                </tr>
+
+                <tr>
+                    <td>JAZZ Night</td>
+                    <td>25th October 2023</td>
+                    <td>Blue Note Jazz Club, NY</td>
+                    
+                    <td><button>Event Page</button></td>
+
+                </tr>
+
+
+                <tr>
+                    <td>JAZZ Night</td>
+                    <td>25th October 2023</td>
+                    <td>Blue Note Jazz Club, NY</td>
+                    
+                    <td><button>Event Page</button></td>
+
+                </tr>
+
+                <tr>
+                    <td>JAZZ Night</td>
+                    <td>25th October 2023</td>
+                    <td>Blue Note Jazz Club, NY</td>
+                    
+                    <td><button>Event Page</button></td>
+                    
+
+                </tr>
+            </table>
+    
     </div>
 
     
-</div>
+    <br><br>
 
-<div class = "rest">
-
-    <h1>ACCEPTED EVENTS</h1>
-
-    <input type="text" placeholder = "Sort by Date...">
-    
-    <div class="container" >
-
-            <div class = "item2">
-                
-
-                <div class = "info" >
-
-                    <h4>JAZZ Night</h4>
-                    <p>Date: 25th October 2024</p>
-                    <p>Venue: BlueNote,Jazz Club,NY</p>
-                    <button>details</button>
-
-                </div>
-
-                <img src="https://th.bing.com/th/id/OIP.gx8w1GUUL5uclnleK93M-gHaE9?w=265&h=180&c=7&r=0&o=5&pid=1.7" alt="">
-                
-            </div>
-
-            <div class = "item2" >
-
-                
-                <div class = "info" >
-                    <h4>Rock Fest</h4>
-                    <p>Date: November 5 2024</p>
-                    <p>Location: Madison Square,NY</p>
-                    <button>details</button>
-                </div>
-                
-                <img src="https://th.bing.com/th/id/OIP.iRaLGvQGVuVVrX0kAmc9bgHaE8?w=286&h=189&c=7&r=0&o=5&pid=1.7" alt="">
+    <p>footer in here</p>
 
 
-            </div>
-
-    </div>
-    
-    
-</div>
-
-
-</html>
-
+</body>

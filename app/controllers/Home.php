@@ -1,16 +1,15 @@
 <?php 
- class Home {
+class Home {
 
     use Controller;
-     
+    
     use Model;
     public function index(){
 
         $user = new User;
         
         $data = $this->getData($user);
-        $this->view('home',$data);
-
+        $this->view('home',$data , false);
 
     }
 

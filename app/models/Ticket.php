@@ -5,7 +5,7 @@ class Ticket {
 
     protected $table = 'tickets';  // Database table name
     protected $allowedColumns = [
-        '_id', 'event_id', 'ticket_type', 'price', 'quantity', 'sold_quantity',
+        'id', 'event_id', 'ticket_type', 'price', 'quantity', 'sold_quantity',
         'sale_strt_date', 'sale_strt_time', 'sale_end_date', 'sale_end_time',
     ];
 

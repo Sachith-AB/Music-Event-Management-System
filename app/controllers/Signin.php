@@ -14,7 +14,7 @@ class Signin {
             $data = $this->userLogin($user);
             //show($data);
         }
-        $this->view('signin',$data);
+        $this->view('signin',$data,false);
     }
 
     private function  userLogin($user){
@@ -33,14 +33,17 @@ class Signin {
                 $checkpassword = password_verify($_POST['password'], $row->password);
 
                 if($checkpassword){
-                    //echo 'check';
+                    
                     unset($row->password);
-                    //session_start();
+                    
+                    session_start();
                     $_SESSION['USER'] = $row;
                     $id = $row->id;
-                    //unset($_SESSION['USER']);
-                    //show($row);
+
                     redirect("home?id=$id");
+
+                    // Set the session start time
+                    $_SESSION['LAST_ACTIVITY'] = time(); // Store the current time
 
                 }else{
                     //echo "error";

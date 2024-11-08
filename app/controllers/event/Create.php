@@ -1,6 +1,5 @@
 <?php
 
-
 class Create {
 
     use Controller;
@@ -9,21 +8,28 @@ class Create {
         $event = new Event;
         $data = [];
 
-        if($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['submit']))
-        {
-            $data = $this -> create($event,$_POST);
+        if($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['submit'])){
+            //show($_POST);
+
+            $data = $this->create($event,$_POST);
+            // show($data);
         }
 
 
         $this->view('event/createEvent',$data);
         
+        
 
     }
 
     private function create($event, $POST){
+
         if($event->validEvent($_POST)){
+
             unset($POST['submit']);
             $event->insert($_POST);
+            redirect('event-review');
+
         }else{
             return $event->errors;
         }

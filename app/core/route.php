@@ -1,5 +1,7 @@
 <?php
 
+
+
 route('home','Home@index');
 
 
@@ -8,9 +10,16 @@ route('signup','Signup@index');
 
 //route for events
 route('create-event', 'event/Create@index');
+route('event-review', 'event/Review@index');
 
 
 
+
+
+route('request','request/Request@index');
+
+
+route('calender','calender/Calender@index');
 
 //Routes for Ticket
 route('create-ticket', 'ticket/TicketController@index');
@@ -35,3 +44,4 @@ route('update-profile','ticketHolder/UpdateProf@index');
 
 // Route for event planners
 route('event-planner-profile','eventPlanner/Profile@index');
+

@@ -1,7 +1,7 @@
 .head1 {
     position: absolute; 
     top: 88px; 
-    left: 129px; 
+    left: 150px; 
     font-family:sans-serif;
     font-size: 32px; 
     line-height: 48px; 
@@ -10,7 +10,7 @@
   }
 
 .container {
-     
+    
     margin-top: 168px; 
     margin-left: 132px;
     width: 340px; 
@@ -28,7 +28,7 @@
 
 /* Avatar 6 */
 .avatar {
-     
+    
     width: 140px; 
     height: 140px; 
     background: #D3C1FAFF; /* primary-200 */
@@ -310,13 +310,14 @@
     line-height: 22px; 
     font-weight: 400; 
     color: #171A1FFF; /* neutral-900 */
+    background-color: white;
   }
 
 /* Textbox 29 */
 .textbox {
     position: absolute; 
     top: 238px; 
-    left: 887px; 
+    left: 840px; 
     opacity: 1; 
   }
   .textbox input {
@@ -339,7 +340,6 @@
     right: 12px; 
     width: 16px; 
     height: 16px; 
-    fill: #171A1FFF; /* neutral-900 */
   }
   .textbox svg.left {
     left: 12px; 
@@ -388,9 +388,9 @@
     
   }
 
-.{
 
-}
+
+
 
   .page-content {
     display: flex;
