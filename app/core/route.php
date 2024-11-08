@@ -18,8 +18,8 @@ route('singer-profile','eventCollaborator/singerProfile@index');
 
 
 
-//route for request
-route('request','request/Request@index');
+//route for requestlist
+route('request','request/Requestview@index');
 
 //route for singerdropdown
 route('singerdropdown','request/Requestdropdown@index');
