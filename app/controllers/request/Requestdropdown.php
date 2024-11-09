@@ -5,7 +5,6 @@ class Requestdropdown {
     use Controller;
     public function index() {
 
-
         $request = new Request;
         $data = [];
 
