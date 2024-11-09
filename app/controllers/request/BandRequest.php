@@ -9,6 +9,12 @@ class BandRequest {
         $request = new Request;
         $data = [];
 
+        if($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['request'])) {
+
+            $this->createRequest($request);
+            
+        }
+
         if($_SERVER['REQUEST_METHOD']=='POST' && isset($_POST['searchBands'])){
             
             
@@ -26,6 +32,14 @@ class BandRequest {
     {
         $data = $request->getUsersByRole('band','profile');
         return $data;
+
+    }
+
+    public function createRequest($request)
+    {
+
+    $res =  $request->insert($_POST);
+    return $res;
 
     }
 
