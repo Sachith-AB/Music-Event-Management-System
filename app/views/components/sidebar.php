@@ -14,7 +14,7 @@
             <li><a href="request-singers?id=<?php echo $id?>" class="menu-link">Singers</a></li>
             <li><a href="request-bands?id=<?php echo $id?>" class="menu-link">Bands</a></li>
             <li><a href="request-sounds?id=<?php echo $id?>" class="menu-link">Sounds</a></li>
-            <li><a href="#" class="menu-link">Decorators</a></li>
+            <li><a href="request-decorators?id=<?php echo $id?>" class="menu-link">Decorators</a></li>
         </ul>
     </aside>
     <script src="<?=ROOT?>/assets/js/request/singerdropdown.js"></script>

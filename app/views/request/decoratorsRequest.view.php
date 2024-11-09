@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="<?=ROOT?>/assets/css/request/singerdropdown.css">
-    <title>Request To Band</title>
+    <title>Request To Decorators</title>
 </head>
 
 <body>
@@ -20,7 +20,7 @@
         <header>
             <form method="POST">
                 <input type="text" name="searchTerm" placeholder="Search..." class="search-bar">
-                <button name="searchBands" value="search" type="submit">SEARCH</button>
+                <button name="searchDecorators" value="search" type="submit">SEARCH</button>
             </form>
         </header>
 
@@ -28,7 +28,7 @@
         <section class="singers-section">
 
         <?php if(empty($data)): ?>
-            <h2 class="p-tag">No Bands Yet...</h2>
+            <h2 class="p-tag">No Decorators Yet...</h2>
         <?php endif ?>
             
             <div class="singers-grid">
