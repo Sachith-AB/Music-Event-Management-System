@@ -3,13 +3,28 @@
 class Requestview {
 
     use Controller;
-    use Model;
 
     public function index()
     {
-        $this->view('request/request');
+        $request = new Request;
+        $data = [];
 
+        $data = $this->displaySingerRequests($request);
+
+        $this->view('request/request', $data);
+        
+
+    }
+
+    public function displaySingerRequests($request)
+    {
+        $data = $request->getSingerRequests();
+
+        return $data;
+        
     }
 
    
 }
+
+

@@ -18,11 +18,21 @@ class Request {
         return ($result = $this->query($query));
     }
 
+    public function getSingerRequests()
+    {
+        $query =   "SELECT e.id, e.event_name, e.eventDate, e.venueID, v.id, v.name, v.location
+                    FROM events e
+                    JOIN requests r ON r.id = e.id AND r.role = 'Singer'
+                    JOIN venues v ON e.venueID = v.id";
+
+        return ($result = $this->query($query));
+    }
+
    
         
         
         
-    }
+}
 
 
 
