@@ -1,59 +1,96 @@
-/* Basic styling for navbar */
-.navbar {
-  display: flex;
-  background-color: #333;
+
+
+/* Content */
+.content {
+  margin-left: 220px;
+  padding: 20px;
+  font-family: sa
+}
+
+/* Search Bar */
+.search-bar {
+  width: 60%;
   padding: 10px;
+  font-size: 16px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
 }
 
-.nav-link {
-  color: white;
-  padding: 10px 15px;
-  text-decoration: none;
+/* Singers Section */
+.singers-section {
+  margin-top: 20px;
 }
 
-.nav-link:hover {
-  background-color: #555;
+.singers-section h2 {
+  font-size: 24px;
+  margin-bottom: 10px;
 }
 
-/* Dropdown styling */
-.dropdown-content {
-  display: none; /* Initially hidden */
-  position: absolute;
-  
-  background-color: white;
-  box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.2);
+.singers-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+}
+
+.singer-card {
+  background-color: #fff;
+  border: 1px solid #ddd;
+  border-radius: 5px;
   padding: 10px;
-  width: 400px;
-}
-
-.singer-item {
-  display: flex;
-  align-items: center;
-  padding: 10px;
-  border-bottom: 1px solid #ccc;
-}
-
-.profile-pic {
-  width: 40px; /* Adjust size as desired */
-  height: 40px;
-  border-radius: 50%; /* Makes the image circular */
-  margin-right: 30px; /* Space between profile pic and singer name */
-  margin-left: 10px;
-  border: 0.5px solid rgb(204, 196, 196);
-}
-
-.singer-item p {
-  width: 150px;
-  margin: 0;
-  font-family: sans-serif;
-}
-
-.singer-item button {
-  margin-left: 10px;
-  padding: 5px 10px;
+  text-align: center;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
   cursor: pointer;
-  background-color: #00BDD6FF;
+}
+
+.singer-card img {
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
+  border-radius: 5px;
+}
+
+.singer-card h3 {
+  margin-top: 10px;
+  font-size: 18px;
+  color: #333;
+}
+
+.singer-card p {
+  color: #666;
+}
+
+.button-wrapper{
+  align-items: center;
+  justify-content: center;
+  display: flex;
+  flex-direction: row;
+  gap: 10px;
+}
+button{
   border: none;
-  border-radius: 4px;
-  color: white;
+  border-radius: 8px;
+  padding: 12px 20px;
+  font-size: 16px;
+  cursor: pointer;
+  transition: background-color 0.3s ease-in-out;
+}
+
+/* Accept Button Styles */
+.profile {
+  background-color: #00BDD6FF; /* Purple color */
+  color: #FFFFFF; /* White text */
+}
+
+.profile:hover {
+  background-color: #00BDD6FF; /* Darker purple on hover */
+}
+
+/* Reject Button Styles */
+.request {
+  background-color: #E6E6E6; /* Light gray color */
+  color: #00BDD6FF; /* Purple text */
+}
+
+.request:hover {
+  background-color: #D9D9D9; /* Slightly darker gray on hover */
 }

@@ -1,15 +1,29 @@
-function toggleDropdown() {
-    const dropdown = document.getElementById("singerDropdown");
-    dropdown.style.display = dropdown.style.display === "none" || dropdown.style.display === "" ? "block" : "none";
-  }
-  
-  function viewProfile(singerId) {
-    // Add functionality to view the profile of the singer with ID `singerId`
-    alert(`Viewing profile for Singer ID: ${singerId}`);
-  }
-  
-  function requestSinger(singerId) {
-    // Add functionality to request the singer with ID `singerId` for the event
-    alert(`Request sent to Singer ID: ${singerId}`);
-  }
-  
+document.addEventListener("DOMContentLoaded", () => {
+  const sidebarMenu = document.getElementById("sidebarMenu");
+  const currentUrl = window.location.href;
+
+  // Function to set the active class based on the current URL
+  const setActiveLink = () => {
+      document.querySelectorAll(".menu-link").forEach(link => {
+          if (link.href === currentUrl) {
+              link.classList.add("active");
+          } else {
+              link.classList.remove("active");
+          }
+      });
+  };
+
+  // Initial active class setup
+  setActiveLink();
+
+  // Add click event to toggle 'active' class
+  sidebarMenu.addEventListener("click", (event) => {
+      if (event.target.tagName === "A") {
+          document.querySelectorAll(".menu-link").forEach(link => link.classList.remove("active"));
+          event.target.classList.add("active");
+      }
+  });
+
+  // Update active link on page load
+  window.addEventListener("load", setActiveLink);
+});
