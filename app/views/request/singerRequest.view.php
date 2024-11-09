@@ -10,7 +10,7 @@
 
 <body>
 
-<?php include ('../app/views/components/sidebar.php'); ?>
+<?php include ('../app/views/components/sidebar.php');  ?>
 
     <!-- Main Content -->
     <div class="content">
@@ -25,51 +25,23 @@
         <section class="singers-section">
             
             <div class="singers-grid">
-                <div class="singer-card">
-                    <img src="https://via.placeholder.com/150" alt="Singer 1">
-                    <h3>Singer 1</h3>
-                    <p>Music Genre</p>
-                </div>
-                <div class="singer-card">
-                    <img src="https://via.placeholder.com/150" alt="Singer 2">
-                    <h3>Singer 2</h3>
-                    <p>Music Genre</p>
-                </div>
-                <div class="singer-card">
-                    <img src="https://via.placeholder.com/150" alt="Singer 3">
-                    <h3>Singer 3</h3>
-                    <p>Music Genre</p>
-                </div>
-                <div class="singer-card">
-                    <img src="https://via.placeholder.com/150" alt="Singer 4">
-                    <h3>Singer 4</h3>
-                    <p>Music Genre</p>
-                </div>
-                <div class="singer-card">
-                    <img src="https://via.placeholder.com/150" alt="Singer 5">
-                    <h3>Singer 5</h3>
-                    <p>Music Genre</p>
-                </div>
-                <div class="singer-card">
-                    <img src="https://via.placeholder.com/150" alt="Singer 6">
-                    <h3>Singer 6</h3>
-                    <p>Music Genre</p>
-                </div>
-                <div class="singer-card">
-                    <img src="https://via.placeholder.com/150" alt="Singer 7">
-                    <h3>Singer 7</h3>
-                    <p>Music Genre</p>
-                </div>
-                <div class="singer-card">
-                    <img src="https://via.placeholder.com/150" alt="Singer 8">
-                    <h3>Singer 8</h3>
-                    <p>Music Genre</p>
-                </div>
-                <div class="singer-card">
-                    <img src="https://via.placeholder.com/150" alt="Singer 9">
-                    <h3>Singer 9</h3>
-                    <p>Music Genre</p>
-                </div>
+                <?php foreach ($data as $singer):?>
+                    <div class="singer-card">
+                        <img src="<?=ROOT?>/assets/images/user/<?php echo $singer->pro_pic ?>" alt="Singer 2">
+                        <h3><?php echo $singer->name ?></h3>
+                        <p>Music Genre</p>
+                        <div class="button-wrapper">
+                            <button class="profile">Profile</button>
+                            <form method = "POST">
+                                <input name="event_id" type = "hidden" value="<?= htmlspecialchars($_GET["id"]) ?>">
+                                <input name="collaborator_id" type = "hidden" value="<?php echo $singer->id ?>" >
+                                <input name="role" type = "hidden" value="<?php echo $singer->user_role ?>">
+                                <button name = "request" type = "submit" class="request">Request</button>
+                            </form>
+                        </div>
+                    </div>
+                <?php endforeach; ?>
+                
             </div>
         </section>
     </div>

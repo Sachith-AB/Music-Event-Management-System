@@ -71,7 +71,7 @@ $_SESSION['last_visit'] = date('Y-m-d H:i:s');
 
     <script>
         function goToRequest() {
-            window.location.href = "singerdropdown?id=<?php echo $id?>";
+            window.location.href = "request-singers?id=<?php echo $id?>";
         }
     </script>
 

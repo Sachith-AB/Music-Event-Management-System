@@ -39,11 +39,13 @@
   padding: 10px;
   text-align: center;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  cursor: pointer;
 }
 
 .singer-card img {
   width: 100%;
-  height: auto;
+  height: 150px;
+  object-fit: cover;
   border-radius: 5px;
 }
 
@@ -55,4 +57,40 @@
 
 .singer-card p {
   color: #666;
+}
+
+.button-wrapper{
+  align-items: center;
+  justify-content: center;
+  display: flex;
+  flex-direction: row;
+  gap: 10px;
+}
+button{
+  border: none;
+  border-radius: 8px;
+  padding: 12px 20px;
+  font-size: 16px;
+  cursor: pointer;
+  transition: background-color 0.3s ease-in-out;
+}
+
+/* Accept Button Styles */
+.profile {
+  background-color: #00BDD6FF; /* Purple color */
+  color: #FFFFFF; /* White text */
+}
+
+.profile:hover {
+  background-color: #00BDD6FF; /* Darker purple on hover */
+}
+
+/* Reject Button Styles */
+.request {
+  background-color: #E6E6E6; /* Light gray color */
+  color: #00BDD6FF; /* Purple text */
+}
+
+.request:hover {
+  background-color: #D9D9D9; /* Slightly darker gray on hover */
 }
