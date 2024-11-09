@@ -15,7 +15,7 @@
     <!-- Main Content -->
     <div class="content">
 
-    <h1>Singers</h1>
+    <h1>Sounds</h1>
         <!-- Search Bar -->
         <header>
             <form method="POST">

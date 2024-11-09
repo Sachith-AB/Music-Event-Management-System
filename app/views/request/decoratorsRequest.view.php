@@ -15,7 +15,7 @@
     <!-- Main Content -->
     <div class="content">
 
-    <h1>Bands</h1>
+    <h1>Decorators</h1>
         <!-- Search Bar -->
         <header>
             <form method="POST">

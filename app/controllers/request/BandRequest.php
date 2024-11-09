@@ -25,7 +25,7 @@ class BandRequest {
             $data = $this->getUsers($request);
         }
 
-        $this->view('request/soundRequest',$data);
+        $this->view('request/bandsRequest',$data);
     }
 
     public function getUsers($request)
