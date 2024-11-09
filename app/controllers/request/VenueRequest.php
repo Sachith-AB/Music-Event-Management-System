@@ -15,7 +15,7 @@ class VenueRequest {
             
         }
 
-        if($_SERVER['REQUEST_METHOD']=='POST' && isset($_POST['searchBands'])){
+        if($_SERVER['REQUEST_METHOD']=='POST' && isset($_POST['searchVenues'])){
             
             
             $data = $this->searchUsers($request);
@@ -25,12 +25,12 @@ class VenueRequest {
             $data = $this->getUsers($request);
         }
 
-        $this->view('request/soundRequest',$data);
+        $this->view('request/venueRequest',$data);
     }
 
     public function getUsers($request)
     {
-        $data = $request->getUsersByRole('sound','profile');
+        $data = $request->getUsersByRole('venue','profile');
         return $data;
 
     }
@@ -45,7 +45,7 @@ class VenueRequest {
 
     public function searchUsers($request){
         
-        $res = $request->searchByTerm($_POST , 'sound' , 'profile');
+        $res = $request->searchByTerm($_POST , 'venue' , 'profile');
         // show($res);
         unset($_POST['searchTerm']);
         unset($_POST['search']);
