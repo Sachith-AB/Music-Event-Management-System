@@ -1,6 +1,6 @@
 <?php
 
-class BandRequest {
+class SoundRequest {
 
     use Controller;
     
@@ -25,12 +25,12 @@ class BandRequest {
             $data = $this->getUsers($request);
         }
 
-        $this->view('request/soundRequest',$data);
+        $this->view('request/bandsRequest',$data);
     }
 
     public function getUsers($request)
     {
-        $data = $request->getUsersByRole('band','profile');
+        $data = $request->getUsersByRole('sound','profile');
         return $data;
 
     }
@@ -45,7 +45,7 @@ class BandRequest {
 
     public function searchUsers($request){
         
-        $res = $request->searchByTerm($_POST , 'band' , 'profile');
+        $res = $request->searchByTerm($_POST , 'sound' , 'profile');
         // show($res);
         unset($_POST['searchTerm']);
         unset($_POST['search']);

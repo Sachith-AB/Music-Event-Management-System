@@ -24,6 +24,7 @@ route('request','request/Requestview@index');
 //route for request
 route('request-singers','request/SingerRequest@index');
 route('request-bands','request/BandRequest@index');
+route('request-sounds','request/SoundRequest@index');
 
 
 route('calender','calender/Calender@index');
