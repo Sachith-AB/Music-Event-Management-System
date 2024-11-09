@@ -1,4 +1,4 @@
-<!-- <?php include ('../app/views/components/CreateEventHeader.php'); ?> -->
+ <?php include ('../app/views/components/CreateEventHeader.php'); ?>
 
 <?php
 if (session_status() == PHP_SESSION_NONE) {
@@ -22,6 +22,11 @@ $_SESSION['last_visit'] = date('Y-m-d H:i:s');
     <title>Create an Event</title>
     <link rel="stylesheet" href="<?=ROOT?>/assets/css/create-event.css">
 </head>
+<?php $error = htmlspecialchars($_GET['error']?? '');
+$error_no = htmlspecialchars($_GET['error_no']?? '');
+$flag = htmlspecialchars($_GET['flag']?? '');
+?>
+
 <body>
     
     <div class="container">
@@ -134,6 +139,28 @@ $_SESSION['last_visit'] = date('Y-m-d H:i:s');
         </div>
     </div>
 
+    <!-- Show error -->
+    <?php if (!empty($data['error'])): ?>
+        <?php 
+            $message = $data['error'];
+            include("../app/views/components/r-message.php")
+        ?>
+
+    <?php elseif($flag == 1): ?>
+        <?php 
+            $message = $error;
+            include("../app/views/components/r-message.php")
+        ?>
+    <?php endif ?>
+
+
+
     <?php include ('../app/views/components/footer.php'); ?>
+
+    <script src="<?=ROOT?>/assets/js/message.js"></script>
+
+    <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+    <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
+    <script src="https://unpkg.com/ionicons@5.5.2/dist/ionicons.js"></script>
 </body>
 </html>
