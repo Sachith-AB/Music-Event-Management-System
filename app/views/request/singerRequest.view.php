@@ -18,7 +18,10 @@
     <h1>Singers</h1>
         <!-- Search Bar -->
         <header>
-            <input type="text" placeholder="Search..." class="search-bar">
+            <form method="POST">
+                <input type="text" name="searchTerm" placeholder="Search..." class="search-bar">
+                <button name="search" value="search" type="submit">SEARCH</button>
+            </form>
         </header>
 
         <!-- Singers Section -->
