@@ -15,14 +15,14 @@ class SingerRequest {
             
         }
 
-        if($_SERVER['REQUEST_METHOD']=='POST' && isset($_POST['search'])){
+        if($_SERVER['REQUEST_METHOD']=='POST' && isset($_POST['searchSingers'])){
             
             
-            $data = $this->searchSingers($request);
+            $data = $this->searchUsers($request);
             // show($data);
             // show($_POST);
         }else{
-            $data = $this->getSingers($request);
+            $data = $this->getUsers($request);
         }
 
         
@@ -33,7 +33,7 @@ class SingerRequest {
     }
 
 
-    public function getSingers($request)
+    public function getUsers($request)
     {
         $data = $request->getUsersByRole('singer','profile');
         return $data;
@@ -48,7 +48,7 @@ class SingerRequest {
 
     }
 
-    public function searchSingers($request){
+    public function searchUsers($request){
         
         $res = $request->searchByTerm($_POST , 'singer' , 'profile');
         // show($res);

@@ -157,41 +157,38 @@ trait Model {
             }
         }
 
-        public function searchByTerm($searchTerm, $role,  $joinTable ) {
+        public function searchByTerm($searchTerm, $role, $joinTable = 'profile') {
             // Sanitize the search term
-            $searchTerm = $searchTerm['searchTerm'];
+            $searchTerm = "%{$searchTerm['searchTerm']}%";
         
-            // Query with dynamic role and search term
-                $query = "SELECT u.id, u.name, u.pro_pic, p.userID, p.user_role
-                    FROM users u
-                    JOIN profile p ON u.id = p.userID
-                    WHERE p.user_role = 'singer'
-                    AND (
-                        u.name LIKE '%$searchTerm%' OR
-                        p.biography LIKE '%$searchTerm%' OR
-                        p.music_genres LIKE '%$searchTerm'OR
-                        p.past_works LIKE '%$searchTerm%' OR
-                        p.services LIKE '%$searchTerm%' OR
-                        p.specializations LIKE '%$searchTerm%' OR
-                        p.equipment LIKE '%$searchTerm%'
-                )";
+            // Query with placeholders for dynamic role and search term
+            $query = "SELECT u.id, u.name, u.pro_pic, p.userID, p.user_role
+                      FROM users u
+                      JOIN $joinTable p ON u.id = p.userID
+                      WHERE p.user_role = :user_role
+                      AND (
+                            u.name LIKE :searchTerm OR
+                            p.biography LIKE :searchTerm OR
+                            p.music_genres LIKE :searchTerm OR
+                            p.past_works LIKE :searchTerm OR
+                            p.services LIKE :searchTerm OR
+                            p.specializations LIKE :searchTerm OR
+                            p.equipment LIKE :searchTerm
+                        )";
         
-            // // Bind the role and search term
-            // $data = [
-            //     'user_role' => $role,
-            //     'searchTerm' => $searchTerm,
-            // ];
+            // Bind the role and search term
+            $data = [
+                'user_role' => $role,
+                'searchTerm' => $searchTerm,
+            ];
         
             // Execute the query and return results
-            $result = $this->query($query);
+            $result = $this->query($query, $data);
         
             // Return an array, either with results or empty
-            if($result){
-                return $result;
-            }else{
-                return [];
-            }
+            return $result ? $result : [];
         }
+        
         
         
 }

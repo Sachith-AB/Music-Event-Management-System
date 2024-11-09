@@ -20,12 +20,16 @@
         <header>
             <form method="POST">
                 <input type="text" name="searchTerm" placeholder="Search..." class="search-bar">
-                <button name="search" value="search" type="submit">SEARCH</button>
+                <button name="searchBands" value="search" type="submit">SEARCH</button>
             </form>
         </header>
 
         <!-- Singers Section -->
         <section class="singers-section">
+
+        <?php if(empty($data)): ?>
+            <h2 class="p-tag">No Bands Yet...</h2>
+        <?php endif ?>
             
             <div class="singers-grid">
                 <?php foreach ($data as $singer):?>
