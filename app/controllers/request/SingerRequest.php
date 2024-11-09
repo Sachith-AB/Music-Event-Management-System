@@ -35,8 +35,7 @@ class SingerRequest {
 
     public function getSingers($request)
     {
-        $data = $request->getSingerDetails();
-
+        $data = $request->getUsersByRole('singer','profile');
         return $data;
 
     }
@@ -51,7 +50,7 @@ class SingerRequest {
 
     public function searchSingers($request){
         
-        $res = $request->searchSingers($_POST);
+        $res = $request->searchByTerm($_POST , 'singer' , 'profile');
         // show($res);
         unset($_POST['searchTerm']);
         unset($_POST['search']);

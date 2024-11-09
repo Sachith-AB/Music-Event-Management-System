@@ -116,7 +116,7 @@ trait Model {
         $data[$id_column] = $id;
         $query = "DELETE FROM $this->table WHERE $id_column = :$id_column";
         $this->query($query,$data);
-        echo $query;
+        //echo $query;
         return false;
     }
 
@@ -136,4 +136,62 @@ trait Model {
 
         return false; // Return false if no result
         }
+
+        public function getUsersByRole($role, $joinTable) {
+
+            $query = "SELECT u.id, u.name, u.pro_pic, p.userID, p.user_role 
+                        FROM users u 
+                        JOIN $joinTable p ON u.id = p.userID 
+                        WHERE p.user_role = :user_role 
+                        LIMIT $this->limit OFFSET $this->offset";
+        
+            // Bind the provided role to the query
+            $data = ['user_role' => $role];
+        
+            $result = $this->query($query, $data);
+        
+            if($result){
+                return $result;
+            }else{
+                return [];
+            }
+        }
+
+        public function searchByTerm($searchTerm, $role,  $joinTable ) {
+            // Sanitize the search term
+            $searchTerm = $searchTerm['searchTerm'];
+        
+            // Query with dynamic role and search term
+                $query = "SELECT u.id, u.name, u.pro_pic, p.userID, p.user_role
+                    FROM users u
+                    JOIN profile p ON u.id = p.userID
+                    WHERE p.user_role = 'singer'
+                    AND (
+                        u.name LIKE '%$searchTerm%' OR
+                        p.biography LIKE '%$searchTerm%' OR
+                        p.music_genres LIKE '%$searchTerm'OR
+                        p.past_works LIKE '%$searchTerm%' OR
+                        p.services LIKE '%$searchTerm%' OR
+                        p.specializations LIKE '%$searchTerm%' OR
+                        p.equipment LIKE '%$searchTerm%'
+                )";
+        
+            // // Bind the role and search term
+            // $data = [
+            //     'user_role' => $role,
+            //     'searchTerm' => $searchTerm,
+            // ];
+        
+            // Execute the query and return results
+            $result = $this->query($query);
+        
+            // Return an array, either with results or empty
+            if($result){
+                return $result;
+            }else{
+                return [];
+            }
+        }
+        
+        
 }

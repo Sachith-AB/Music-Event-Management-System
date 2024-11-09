@@ -12,7 +12,7 @@
 <aside class="sidebar">
         <ul class="sidebar-menu" id="sidebarMenu">
             <li><a href="request-singers?id=<?php echo $id?>" class="menu-link">Singers</a></li>
-            <li><a href="request-bands" class="menu-link">Bands</a></li>
+            <li><a href="request-bands?id=<?php echo $id?>" class="menu-link">Bands</a></li>
             <li><a href="#" class="menu-link">Sounds</a></li>
             <li><a href="#" class="menu-link">Descorators</a></li>
         </ul>
