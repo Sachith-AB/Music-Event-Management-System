@@ -15,7 +15,7 @@ class AnnouncerRequest {
             
         }
 
-        if($_SERVER['REQUEST_METHOD']=='POST' && isset($_POST['searchBands'])){
+        if($_SERVER['REQUEST_METHOD']=='POST' && isset($_POST['searchAnnouncers'])){
             
             
             $data = $this->searchUsers($request);
@@ -30,7 +30,7 @@ class AnnouncerRequest {
 
     public function getUsers($request)
     {
-        $data = $request->getUsersByRole('sound','profile');
+        $data = $request->getUsersByRole('announcer','profile');
         return $data;
 
     }
@@ -45,7 +45,7 @@ class AnnouncerRequest {
 
     public function searchUsers($request){
         
-        $res = $request->searchByTerm($_POST , 'sound' , 'profile');
+        $res = $request->searchByTerm($_POST , 'announcer' , 'profile');
         // show($res);
         unset($_POST['searchTerm']);
         unset($_POST['search']);
