@@ -26,6 +26,9 @@ route('request-singers','request/SingerRequest@index');
 route('request-bands','request/BandRequest@index');
 route('request-sounds','request/SoundRequest@index');
 route('request-decorators','request/DecoratorsRequest@index');
+route('request-stages','request/StageRequest@index');
+route('request-announcers','request/AnnouncerRequest@index');
+route('request-venues','request/VenueRequest@index');
 
 
 route('calender','calender/Calender@index');

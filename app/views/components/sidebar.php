@@ -15,6 +15,9 @@
             <li><a href="request-bands?id=<?php echo $id?>" class="menu-link">Bands</a></li>
             <li><a href="request-sounds?id=<?php echo $id?>" class="menu-link">Sounds</a></li>
             <li><a href="request-decorators?id=<?php echo $id?>" class="menu-link">Decorators</a></li>
+            <li><a href="request-stages?id=<?php echo $id?>" class="menu-link">Stages</a></li>
+            <li><a href="request-announcers?id=<?php echo $id?>" class="menu-link">Announcers</a></li>
+            <li><a href="request-venues?id=<?php echo $id?>" class="menu-link">Venues</a></li>
         </ul>
     </aside>
     <script src="<?=ROOT?>/assets/js/request/singerdropdown.js"></script>
