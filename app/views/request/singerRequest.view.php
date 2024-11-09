@@ -2,23 +2,15 @@
 <html lang="en">
 
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="stylesheet" href="<?=ROOT?>/assets/css/request/singerdropdown.css">
-  <title>Event Planner Dashboard</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="<?=ROOT?>/assets/css/request/singerdropdown.css">
+    <title>Event Planner Dashboard</title>
 </head>
 
 <body>
 
-      <!-- Sidebar -->
-    <aside class="sidebar">
-        <ul class="sidebar-menu" id="sidebarMenu">
-            <li><a href="request-singers" class="menu-link">Singers</a></li>
-            <li><a href="request-bands" class="menu-link">Bands</a></li>
-            <li><a href="#" class="menu-link">Sounds</a></li>
-            <li><a href="#" class="menu-link">Descorators</a></li>
-        </ul>
-    </aside>
+<?php include ('../app/views/components/sidebar.php'); ?>
 
     <!-- Main Content -->
     <div class="content">

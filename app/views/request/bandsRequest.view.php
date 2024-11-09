@@ -6,6 +6,7 @@
     <title>Document</title>
 </head>
 <body>
+<?php include ('../app/views/components/sidebar.php'); ?>
     <div>band request</div>
 </body>
 </html>
