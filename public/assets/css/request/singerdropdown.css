@@ -1,59 +1,99 @@
-/* Basic styling for navbar */
-.navbar {
+/* Sidebar */
+.sidebar {
+  width: 200px;
+  background-color: #f0f0f0;
+  padding-top: 20px;
+  position: fixed;
+  height: 100vh;
   display: flex;
-  background-color: #333;
-  padding: 10px;
-}
-
-.nav-link {
-  color: white;
-  padding: 10px 15px;
-  text-decoration: none;
-}
-
-.nav-link:hover {
-  background-color: #555;
-}
-
-/* Dropdown styling */
-.dropdown-content {
-  display: none; /* Initially hidden */
-  position: absolute;
-  
-  background-color: white;
-  box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.2);
-  padding: 10px;
-  width: 400px;
-}
-
-.singer-item {
-  display: flex;
+  flex-direction: column;
   align-items: center;
-  padding: 10px;
-  border-bottom: 1px solid #ccc;
-}
-
-.profile-pic {
-  width: 40px; /* Adjust size as desired */
-  height: 40px;
-  border-radius: 50%; /* Makes the image circular */
-  margin-right: 30px; /* Space between profile pic and singer name */
-  margin-left: 10px;
-  border: 0.5px solid rgb(204, 196, 196);
-}
-
-.singer-item p {
-  width: 150px;
-  margin: 0;
   font-family: sans-serif;
+  border-radius: 5px;
 }
 
-.singer-item button {
-  margin-left: 10px;
-  padding: 5px 10px;
-  cursor: pointer;
+.sidebar-menu {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  width: 100%;
+  border-radius: 5px;
+}
+
+.sidebar-menu li {
+  width: 100%;
+  border-radius: 5px;
+}
+
+.sidebar-menu li a {
+  display: block;
+  padding: 15px;
+  text-decoration: none;
+  color: #333;
+  text-align: center;
+  font-weight: bold;
+  margin-top: 2%;
+}
+
+.sidebar-menu li a.active,
+.sidebar-menu li a:hover {
   background-color: #00BDD6FF;
-  border: none;
-  border-radius: 4px;
-  color: white;
+  color: #fff;
+}
+
+/* Content */
+.content {
+  margin-left: 220px;
+  padding: 20px;
+  font-family: sa
+}
+
+/* Search Bar */
+.search-bar {
+  width: 60%;
+  padding: 10px;
+  font-size: 16px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+
+/* Singers Section */
+.singers-section {
+  margin-top: 20px;
+}
+
+.singers-section h2 {
+  font-size: 24px;
+  margin-bottom: 10px;
+}
+
+.singers-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+}
+
+.singer-card {
+  background-color: #fff;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  padding: 10px;
+  text-align: center;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.singer-card img {
+  width: 100%;
+  height: auto;
+  border-radius: 5px;
+}
+
+.singer-card h3 {
+  margin-top: 10px;
+  font-size: 18px;
+  color: #333;
+}
+
+.singer-card p {
+  color: #666;
 }

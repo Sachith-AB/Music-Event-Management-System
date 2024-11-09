@@ -21,8 +21,9 @@ route('singer-profile','eventCollaborator/singerProfile@index');
 //route for requestlist
 route('request','request/Requestview@index');
 
-//route for singerdropdown
-route('singerdropdown','request/Requestdropdown@index');
+//route for request
+route('request-singers','request/SingerRequest@index');
+route('request-bands','request/BandRequest@index');
 
 
 route('calender','calender/Calender@index');

@@ -1,6 +1,6 @@
 <?php 
 
-class Requestdropdown {
+class SingerRequest {
 
     use Controller;
     public function index() {
@@ -16,7 +16,7 @@ class Requestdropdown {
         }
 
         $data = $this->getSingers($request);
-        $this->view('request/singerdropdown', $data);
+        $this->view('request/singerRequest', $data);
 
        
         // show($data);
