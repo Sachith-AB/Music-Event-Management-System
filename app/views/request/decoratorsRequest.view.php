@@ -1,3 +1,4 @@
+<?php include ('../app/views/components/header.php'); ?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -17,12 +18,12 @@
 
     <h1>Decorators</h1>
         <!-- Search Bar -->
-        <header>
-            <form method="POST">
+        <div>
+            <form method="POST" class="search">
                 <input type="text" name="searchTerm" placeholder="Search..." class="search-bar">
                 <button name="searchDecorators" value="search" type="submit">SEARCH</button>
             </form>
-        </header>
+        </div>
 
         <!-- Singers Section -->
         <section class="singers-section">

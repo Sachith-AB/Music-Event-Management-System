@@ -12,6 +12,7 @@
 
     $success = htmlspecialchars($_GET['msg'] ?? '');
     $flag = htmlspecialchars($_GET['flag'] ?? 0);
+    //show($_SESSION['USER'])
     
     ?>
     <div class="page-content">
@@ -20,12 +21,12 @@
         <div class="all">
             <div class="container">
                 <div class="avatar">
-                    <img src="<?=ROOT?>/assets/images/user/<?php echo $data['pro_pic'] ?>" alt="user image">
+                    <img src="<?=ROOT?>/assets/images/user/<?php echo $_SESSION['USER']->pro_pic ?>" alt="user image">
                 </div>
                 <div class="details">
-                    <h2 class="head2"><?php echo $data['name'] ?></h2>
-                    <h3 class="head3"><?php echo $data['email'] ?></h3>
-                    <h3 class="head3"><?php echo $_SESSION["USER"]->contact ?></h3>
+                    <h2 class="head2"><?php echo $_SESSION['USER']->name ?></h2>
+                    <h3 class="head3"><?php echo $_SESSION['USER']->email ?></h3>
+                    <h3 class="head3"><?php  echo $_SESSION['USER']->contact ?></h3>
                 </div>
                 <div class="tag">
                     <div class="tag-item">24 Purchase</div>
