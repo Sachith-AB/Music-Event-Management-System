@@ -99,6 +99,39 @@ class Event {
         $result = $this->query($query);
         return $result ? $result : [];
     }
+
+    public function getAllEventData($id) {
+        $res['event'] = $this->firstById($id);
+        $user = new User;
+        
+        // Step 1: Split the performers string into an array of IDs
+        $performerIds = explode(',', $res['event']->performers);
+        
+        // Step 2: Initialize an array to store performer data
+        $res['performers'] = [];
+    
+        // Step 3: Loop through each ID and fetch data for each performer
+        foreach ($performerIds as $performerId) {
+            $res['performers'][] = $user->firstById(trim($performerId));
+        }
+
+        $res['tickets'] = [];
+
+        $query = "SELECT * FROM tickets WHERE event_id = '$id'";
+        
+        
+        $result = $this->query($query);
+        $res['tickets']=$result;
+
+        $query_2 = "SELECT * FROM venues WHERE event_id = '$id'";
+        $result_2 = $this->query($query_2);
+        $res['venue'] = $result_2;
+        
+
+    //show($res);
+        return $res;
+    }
+    
     
 
 

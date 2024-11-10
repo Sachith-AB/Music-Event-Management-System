@@ -49,10 +49,15 @@
                     </label>
                 </div>
                 <button class="apply-btn" type="submit" value="apply" name="apply">Apply</button>
-                <?php show($_POST) ?>
+                
             </form>
+
+            <?php if(empty($data)): ?>
+                    <h2>NO EVENTS YET</h2>
+                <?php else:?>
             
             <main class="event-list">
+            
                 <?php 
                     // Limit events to 3 if showMore is false
                     $maxEvents = $showMore ? count($data) : 3;
@@ -63,8 +68,8 @@
                         $eventsDisplayed++;
                 ?>
 
-                <div class="event-card">
-                    <img src="<?=ROOT?>/assets/images/landing/One Mic.png" alt="Event 2">
+                <div class="event-card" onclick="window.location.href='view-event?id=<?= $event->id ?>'">
+                    <img src="<?=ROOT?>/assets/images/events/<?php echo $event->cover_images?>" alt="Event 2">
                     <div class="event-info">
                         <h3><?php echo $event->event_name ?></h3>
                         <p class="date">📅 <?php echo $event->eventDate ?> | <?php echo $event->start_time ?></p>
@@ -94,6 +99,7 @@
                         <?php endif; ?>
                     </form>
             </main>
+            <?php endif ?>
         </div>
     </div>
     <script>
@@ -132,6 +138,9 @@
                 }
             }
 
+            function goToEventPage($event){
+                window.location.href = window.location.href = "ticketevent?id=<?php $event->id?>";;
+            }
             
         
         </script>
