@@ -1,16 +1,25 @@
 /* Sidebar */
 .sidebar {
-    width: 200px;
+    /* width: 200px;
     background-color: #f0f0f0;
     padding-top: 20px;
     position: fixed;
     height: 100vh;
     display: flex;
     flex-direction: column;
-    align-items: last baseline;
+    align-items: center;
     font-family: sans-serif;
     border-radius: 5px;
-    box-shadow:  0 4px 8px rgba(0, 0, 0, 0.5);
+    box-shadow:  0 4px 8px rgba(0, 0, 0, 0.5); */
+    width: 250px;
+    height: 100vh;
+    background-color: #f0f0f0;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    margin-right: 20px;
+    font-family: sans-serif;
   }
   
   .sidebar-menu {
@@ -34,10 +43,14 @@
     text-align: center;
     font-weight: bold;
     margin-top: 2%;
+    border-radius: 5px;
+  }
+  .sidebar-menu li a:hover {
+    background-color: rgb(192, 226, 231);
+    color: #fff;
   }
   
-  .sidebar-menu li a.active,
-  .sidebar-menu li a:hover {
+  .sidebar-menu li a.active{
     background-color: #00BDD6FF;
     color: #fff;
   }
