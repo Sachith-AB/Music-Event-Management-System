@@ -16,7 +16,7 @@
     </div>
     <nav>
         <ul>
-            <li><a href="#treanding">Explore</a></li>
+            <li><a href="search">Explore</a></li>
             <li><a href="#new-events">Upcoming Events</a></li>
             <?php if($_SESSION['USER']): ?>
                 <img class="image" onclick="goToProfile()" src="<?=ROOT?>/assets/images/user/<?php echo $_SESSION['USER']->pro_pic ?>" alt="user profile">

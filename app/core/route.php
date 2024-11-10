@@ -3,6 +3,7 @@
 
 
 route('home','Home@index');
+route('search','Search@index');
 
 
 route('signin','Signin@index');
