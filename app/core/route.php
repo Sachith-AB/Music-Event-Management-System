@@ -54,5 +54,8 @@ route('update-profile','ticketHolder/UpdateProf@index');
 
 // Route for event planners
 route('event-planner-profile','eventPlanner/Profile@index');
-route('event-planner-dashboard','eventPlanner/Dashboard@index');
+route('event-planner-overview','eventPlanner/Dashboard@index');
+route('event-planner-createdevents','eventPlanner/Dashboard@createdevent');
+route('event-planner-dashprofile','eventPlanner/Dashboard@profile');
+route('event-planner-payment','eventPlanner/Dashboard@payment');
 
