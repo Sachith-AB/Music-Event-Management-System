@@ -137,5 +137,22 @@ trait Model {
         return false; // Return false if no result
         }
 
+        public function firstByEventName($event_name) {
+
+            $query = "SELECT * FROM $this->table WHERE event_name= :event_name";
+    
+            $data = ['event_name' => $event_name];
+    
+            // Execute the query
+            $result = $this->query($query, $data);
+    
+            // Check if a result is found
+            if ($result) {
+                return $result[0]; // Return the first result
+            }
+    
+            return false; // Return false if no result
+            }
+    
         
 }

@@ -12,7 +12,9 @@ class Event {
         'province',
         'eventDate',
         'start_time',
-        'end_time'
+        'end_time',
+        'pricing',
+        'type'
     ];
 
     public function validEvent($data) {
@@ -72,6 +74,15 @@ class Event {
             $this->errors['end_time'] = "End time must be after start time";
         }
 
+        // Pricing validation
+        if (empty($data['pricing'])) {
+            $this->errors['pricing'] = "Pricing is required";
+        } 
+
+        // Type validation
+        if (empty($data['type'])) {
+            $this->errors['type'] = "Event type is required";
+        }
         
         if (empty($this->errors)) {
             return true;

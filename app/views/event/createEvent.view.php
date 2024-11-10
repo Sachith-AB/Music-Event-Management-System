@@ -47,6 +47,7 @@ $flag = htmlspecialchars($_GET['flag']?? '');
                     <li><a href="#upload-cover">Upload Cover</a></li>
                     <li><a href="#general-information">General Information</a></li>
                     <li><a href="#location-time">Location and Time</a></li>
+                    <li><a href="#pricing-type">Pricing and Type</a></li>
                 </ul>
             </div>
 
@@ -131,6 +132,30 @@ $flag = htmlspecialchars($_GET['flag']?? '');
                         <input type="time" id="end-time" name="end_time">
                     </div>
 
+
+                     <!-- Pricing Options -->
+                     <div class="form-group">
+                        <label>Pricing</label>
+                        <div class="radio-group">
+                            <input type="radio" id="free" name="pricing" value="free" required>
+                            <label for="free">Free</label>
+                            <input type="radio" id="paid" name="pricing" value="paid" required>
+                            <label for="paid">Paid</label>
+                        </div>
+                    </div>
+
+                    <!-- Type Options -->
+                    <div class="form-group">
+                        <label>Type</label>
+                        <div class="radio-group">
+                            <input type="radio" id="indoor" name="type" value="indoor" required>
+                            <label for="indoor">Indoor</label>
+                            <input type="radio" id="outdoor" name="type" value="outdoor" required>
+                            <label for="outdoor">Outdoor</label>
+                        </div>
+                    </div>
+
+                    
 
                         <button type="submit" class="review-button" name="submit">Review</button>
                 </section>

@@ -14,6 +14,9 @@ $province = $_SESSION['event_data']['province'] ?? 'N/A';
 $eventDate = $_SESSION['event_data']['eventDate'] ?? 'N/A';
 $start_time = $_SESSION['event_data']['start_time'] ?? 'N/A';
 $end_time = $_SESSION['event_data']['end_time'] ?? 'N/A';
+$pricing = $_SESSION['event_data']['pricing'] ?? 'N/A';
+$type = $_SESSION['event_data']['type'] ?? 'N/A';
+
 
 // Track last visit time
 if (isset($_SESSION['last_visit'])) {
@@ -53,6 +56,7 @@ $_SESSION['last_visit'] = date('Y-m-d H:i:s');
                     <li><a href="#event-header">Event Header</a></li>
                     <li><a href="#general-information">General Information</a></li>
                     <li><a href="#location-time">Location and Time</a></li>
+                    <li><a href="#pricing-type">Pricing and Type</a></li>
                 </ul>
             </div>
 
@@ -91,6 +95,14 @@ $_SESSION['last_visit'] = date('Y-m-d H:i:s');
                 <p class = "event-time"><strong>End Time:</strong> <?php echo $data ['end_time'] ?></p>
             </section>
 
+
+            <!-- Pricing and Type Section -->
+            <section id="pricing-type">
+                <h2>Pricing and Type</h2>
+                <p><strong>Pricing:</strong> <?php echo $data['pricing']; ?></p>
+                <p><strong>Type:</strong> <?php echo $data['type']; ?></p>
+            </section>
+
             <section id="review-publish">
                 <h2>Review and Publish</h2>
                 <lable class = "switch">
@@ -111,7 +123,7 @@ $_SESSION['last_visit'] = date('Y-m-d H:i:s');
             </section>
             
             <div class ="action-buttons">
-                <button class = "change-button">Save Draft</button>
+                <button class = "change-button" >Save Draft</button>
                 <button class = "change-button">Update</button>
                 <button class = "remove-button">Delete</button>
                 <button class = "publish-button">Publish</button>
