@@ -101,6 +101,7 @@ class Event {
     }
 
     public function getAllEventData($id) {
+        $res['event']=[];
         $res['event'] = $this->firstById($id);
         $user = new User;
         

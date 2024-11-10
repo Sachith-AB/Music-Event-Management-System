@@ -41,8 +41,8 @@
                 </div>
 
                 <script>
-                    // Set the date and time for the event (YYYY-MM-DD HH:MM:SS format)
-                    const eventDate = new Date("2024-12-31T18:00:00");
+                    // Pass the PHP date to JavaScript
+                    const eventDate = new Date("<?php echo $data['event']->start_time; ?>");
 
                     // Function to update the countdown timer
                     function updateCountdown() {
@@ -78,6 +78,7 @@
                     // Initial call to display countdown right away
                     updateCountdown();
                 </script>
+
 
             </div>
         </div>
