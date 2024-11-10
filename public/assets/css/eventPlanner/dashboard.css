@@ -1,11 +1,16 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Arial, sans-serif;
+}
 .dash-container {
     display: flex;
     margin: 20px auto;
     padding: 40px;
 }
 /* /* Content */
-.content {
-    /* margin-left: 220px; */
+/* .content {
     padding: 20px;
     font-family: sa;
     background-color: #f0f0f0;
@@ -76,14 +81,7 @@
 }
 
 .view-more {
-    /* display: inline-block;
-    margin-top: 5px;
-    font-size: 18px;
-    color: #00BDD6FF;
-    text-decoration: none;
-    margin-left: 0  */
-
-    
+   
     float: right;
     margin-bottom: 20px;
     color: #00aaff;
@@ -111,4 +109,200 @@
     transform: scale(1.05);
     cursor: pointer;
     box-shadow: black;
+} */
+.dashboard {
+    width: 80%;
+    max-width: 1200px;
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.header h1 {
+    font-size: 24px;
+}
+
+
+
+.stats {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 20px;
+}
+
+.stat-item {
+    width: 22%;
+    display: flex;
+    flex-direction: column; /* Stacks children vertically */
+    align-items: center;
+    justify-content: center; /* Centers the icon and text */
+    text-align: center;
+    padding: 10px;
+    border-radius: 8px;
+    background: #f0f0f0
+
+}
+.dolar-icon {
+    width: 40px;  /* Set the width of the icon */
+    height: 40px; /* Set the height of the icon */
+    background-color: #00BDD6FF; /* Optional: Background color for the icon container */
+    padding: 8px;  /* Adjust padding if needed */
+    border-radius: 50%; /* Keep the circular shape */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 6px;
+    /* margin-bottom: 10px; */
+}
+.dolar-icon i {
+    font-size: 30px; /* Adjust size */
+    color: white;  /* Adjust color */
+}
+
+.dolaricon img {
+    width: 100%;  /* Scale the image to fit within the container */
+    height: 100%; /* Scale the image to fit within the container */
+    object-fit: contain; /* Maintain the aspect ratio of the image */
+}
+
+.dolar-h2 {
+    font-size: 24px;
+    margin-bottom: 5px;
+    color: #00BDD6FF;
+}
+.ticket-icon {
+    width: 40px;  /* Set the width of the icon */
+    height: 40px; /* Set the height of the icon */
+    background-color: #8353E2FF; /* Optional: Background color for the icon container */
+    padding: 8px;  /* Adjust padding if needed */
+    border-radius: 50%; /* Keep the circular shape */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 6px;
+    /* margin-bottom: 10px; */
+}
+.ticket-icon i {
+    font-size: 30px; /* Adjust size */
+    color: white;  /* Adjust color */
+}
+
+.ticket img {
+    width: 100%;  /* Scale the image to fit within the container */
+    height: 100%; /* Scale the image to fit within the container */
+    object-fit: contain; /* Maintain the aspect ratio of the image */
+}
+.ticket-h2 {
+    font-size: 24px;
+    margin-bottom: 5px;
+    color: #8353E2FF;
+}
+.viewer-icon {
+    width: 40px;  /* Set the width of the icon */
+    height: 40px; /* Set the height of the icon */
+    background-color: #4069E5FF; /* Optional: Background color for the icon container */
+    padding: 8px;  /* Adjust padding if needed */
+    border-radius: 50%; /* Keep the circular shape */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 6px;
+    /* margin-bottom: 10px; */
+}
+.viewer-icon i {
+    font-size: 30px; /* Adjust size */
+    color: white;  /* Adjust color */
+}
+
+.viewer img {
+    width: 100%;  /* Scale the image to fit within the container */
+    height: 100%; /* Scale the image to fit within the container */
+    object-fit: contain; /* Maintain the aspect ratio of the image */
+}
+.viewer-h2 {
+    font-size: 24px;
+    margin-bottom: 5px;
+    color: #4069E5FF;
+}
+.share-icon {
+    width: 40px;  /* Set the width of the icon */
+    height: 40px; /* Set the height of the icon */
+    background-color: #ED7D2DFF; /* Optional: Background color for the icon container */
+    padding: 8px;  /* Adjust padding if needed */
+    border-radius: 50%; /* Keep the circular shape */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 6px;
+    /* margin-bottom: 10px; */
+}
+.share-icon i {
+    font-size: 30px; /* Adjust size */
+    color: white;  /* Adjust color */
+}
+
+.share img {
+    width: 100%;  /* Scale the image to fit within the container */
+    height: 100%; /* Scale the image to fit within the container */
+    object-fit: contain; /* Maintain the aspect ratio of the image */
+}
+.share-h2 {
+    font-size: 24px;
+    margin-bottom: 5px;
+    color: #ED7D2DFF;
+}
+
+
+
+
+.section {
+    margin-bottom: 20px;
+}
+
+.section h3 {
+    margin-bottom: 10px;
+    font-size: 18px;
+    color: #555;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+table th, table td {
+    padding: 10px;
+    text-align: left;
+    border-bottom: 1px solid #e0e0e0;
+}
+.event-info{
+    display: flex;
+    align-items: center; 
+    gap: 8px;
+}
+.eventimage {
+    width: 80px; 
+    height: 53px; 
+    border-radius: 4px; /* border-m */
+  }
+
+.table .tag {
+    display: inline-block;
+    background-color: #ffde00;
+    color: #333;
+    padding: 2px 6px;
+    border-radius: 4px;
+    font-size: 12px;
+}
+
+.purchases .tag {
+    color: #ff0000;
 }
