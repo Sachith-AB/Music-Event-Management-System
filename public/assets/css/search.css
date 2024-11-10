@@ -157,8 +157,31 @@ h1 {
     background-color: #ff6666;
 }
 
-.tag.new {
+.pricing{
+
+    background-color: #00BDD6;
+    color: white;
+    padding: 3px 8px;
+    border-radius: 12px;
+    font-size: 18px;
+    display: inline-block;
+    margin-top: 5px;
+}
+
+.paid {
     background-color: #ffa500;
+}
+
+.free {
+    background-color: #2bff00;
+}
+
+.outdoor {
+    background-color: #ff0077;
+}
+
+.indoor {
+    background-color: #0088ff;
 }
 
 .view-more {

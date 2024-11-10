@@ -61,4 +61,46 @@ class Event {
         return false;
     }
 
+    public function searchEventByName($searchTerm){
+
+        $searchName = $searchTerm['name'] ?? "";
+       
+        
+        $id = $searchTerm['location']?? '';
+        
+        $query = "SELECT * FROM events WHERE event_name LIKE '%$searchName%' OR venueID = '$id'";
+        $result = $this->query($query);
+        // if($result){
+        //     return $result;
+        // }else{
+        //     return [];
+        // }
+        //show($result);
+        return $result ? $result : [];
+
+    }
+
+    public function filterEvents($searchTerm) {
+        $searchType = $searchTerm['type'] ?? "";
+        $searchPricing = $searchTerm['pricing'] ?? "";
+    
+        // Start building the query
+        $query = "SELECT * FROM events WHERE 1=1";  // The 1=1 acts as a placeholder to make appending conditions easier
+    
+        // Add conditions only if they are not empty
+        if (!empty($searchType)) {
+            $query .= " AND type LIKE '%$searchType%'";
+        }
+        
+        if (!empty($searchPricing)) {
+            $query .= " AND pricing LIKE '%$searchPricing%'";
+        }
+    
+        $result = $this->query($query);
+        return $result ? $result : [];
+    }
+    
+
+
+
 }
