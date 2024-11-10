@@ -1,0 +1,114 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Arial, sans-serif;
+}
+.dash-container {
+    display: flex;
+    margin: 20px auto;
+    padding: 40px;
+}
+/* /* Content */
+
+
+.content {
+    width: 80%;
+    max-width: 1200px;
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  }
+  .content-hearder {
+    font-size: 24px;
+    font-weight: bolder;
+    margin: 10px;
+  }
+  
+  .events-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    padding-left: 50px;
+    gap: 5px;
+    margin: 15px 0;
+    
+
+
+}
+.event-card {
+    position: relative;
+    flex: 1 1 calc(33.333% - 20px);
+    width: 20%;
+    background-color: #f0f0f0;
+    margin: 2px;
+    padding: 5px;
+    border-radius: 3px;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+    transition: transform 0.3s ease;
+    text-align: center;
+}
+
+.event-status-process {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    background-color: #00aaff;
+    color: white;
+    padding: 5px 10px;
+    border-radius: 5px;
+    font-size: 12px;
+}
+.event-status-scheduled {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    background-color: green;
+    color: white;
+    padding: 5px 10px;
+    border-radius: 5px;
+    font-size: 12px;
+}
+
+.event-status-completed {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    background-color: yellow;
+    color: black;
+    padding: 5px 10px;
+    border-radius: 5px;
+    font-size: 12px;
+}
+
+.view-more {
+   
+    float: right;
+    margin-bottom: 20px;
+    color: #00aaff;
+    font-weight: bold;
+    text-decoration: none;
+    padding-right: 5px;
+}
+
+
+    .view-more:hover {
+        text-decoration: underline;
+    }
+
+
+.event-card img {
+    width: 100%;
+    height: auto;
+    border-radius: 1px;
+    max-height: 200px;
+    object-fit: contain;
+    margin-bottom: 15px;
+}
+
+.event-card:hover {
+    transform: scale(1.05);
+    cursor: pointer;
+    box-shadow: black;
+} 
