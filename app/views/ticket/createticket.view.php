@@ -10,7 +10,7 @@
     <link rel="stylesheet" href="<?=ROOT?>/assets/css/create-event.css">
 </head>
 <body>
-    <?php show($data) ?>
+    
     <div class="container">
 
             <!--create slide bar -->

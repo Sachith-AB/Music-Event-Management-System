@@ -13,11 +13,11 @@
     
 <aside class="sidebar">
         <ul class="sidebar-menu" id="sidebarMenu">
-            <li><a href="event-planner-overview" class="menu-link"><i class="fas fa-chart-line"></i>   Overview</a></li>
-            <li><a href="event-planner-createdevents" class="menu-link"><i class="fas fa-calendar-check"></i>   Created Events</a></li>
-            <li><a href="event-planner-dashprofile" class="menu-link"><i class="fas fa-user"></i>   Profile</a></li>
-            <li><a href="event-planner-payment" class="menu-link"><i class="fas fa-wallet"></i>   Payments</a></li>
-           
+            <li><a href="event-planner-dashboard" class="menu-link"><i class="fas fa-chart-line"></i>   Dashboard</a></li>
+            <li><a href="event-planner-calendar" class="menu-link"><i class="fas fa-calendar-alt"></i>   Calendar</a></li>
+            <li><a href="event-planner-myevents" class="menu-link"><i class="fas fa-list"></i>   My Events</a></li>
+            <li><a href="event-planner-payment" class="menu-link"><i class="fas fa-wallet"></i>   Payment</a></li>
+            <li><a href="event-planner-messages" class="menu-link"><i class="fas fa-comment-dots"></i>   Messages</a></li>
         </ul>
     </aside>
     <script src="<?=ROOT?>/assets/js/request/singerdropdown.js"></script>

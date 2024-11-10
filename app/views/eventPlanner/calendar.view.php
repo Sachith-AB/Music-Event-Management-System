@@ -3,20 +3,17 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Event planner dashboard</title>
     <link rel="stylesheet" href="<?=ROOT?>/assets/css/eventPlanner/dashboard.css">
 </head>
 <body>
     <!-- Include Header -->
     
-
     <div class="dash-container">
         <!-- Sidebar -->
         <?php include ('../app/views/components/eventPlanner/dashsidebar.php');  ?>
         
-        <div class="content">
-
-        </div>
+        
         
     </div>
 
