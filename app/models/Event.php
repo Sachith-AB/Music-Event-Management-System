@@ -61,4 +61,38 @@ class Event {
         return false;
     }
 
+    //get events details for eventplanner dashboard which are created by him
+    public function getEventsByUserId($userId) {
+        $query = "SELECT 
+                events.*,
+                IFNULL(ticket_totals.total_quantity, 0) AS total_quantity,
+                IFNULL(sold_data.sold_quantity, 0) AS sold_quantity,
+                IFNULL(sold_data.total_revenue, 0) AS total_revenue
+            FROM events
+            LEFT JOIN (
+                -- Subquery to get total quantity for each event
+                SELECT tickets.event_id, SUM(tickets.quantity) AS total_quantity
+                FROM tickets
+                GROUP BY tickets.event_id
+            ) AS ticket_totals ON events.id = ticket_totals.event_id
+            LEFT JOIN (
+                -- Subquery to get sold quantity and total revenue for each event
+                SELECT tickets.event_id, SUM(buyticket.ticket_quantity) AS sold_quantity, SUM(tickets.price * buyticket.ticket_quantity) AS total_revenue
+                FROM buyticket
+                JOIN tickets ON buyticket.ticket_id = tickets.id
+                GROUP BY tickets.event_id
+            ) AS sold_data ON events.id = sold_data.event_id
+            WHERE events.createdBy = ?
+        ";
+        $result = $this->query($query, [$userId]);
+
+        // Return the result array, or an empty array if no results are found
+        return $result ?: [];
+    }
+
+
+    
+
+
 }
+

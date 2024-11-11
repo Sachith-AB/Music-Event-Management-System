@@ -76,7 +76,7 @@ class Ticket {
 
     public function getEventIdByTicketId($ticket_id){
         $query = "SELECT event_id FROM tickets WHERE id = ?";
-    $result = $this->query($query, [$ticket_id]);
+        $result = $this->query($query, [$ticket_id]);
 
     // Check if the result is not empty and return the `event_id` value directly
     return $result ? $result[0]->event_id : null;
