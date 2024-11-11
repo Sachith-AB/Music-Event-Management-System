@@ -3,6 +3,8 @@
 class Request {
     use Model;
 
+   
+
     protected $table = 'requests'; //database table name
     protected $allowedColumns = [
         'id','event_id','collaborator_id','Status','role',
@@ -18,11 +20,12 @@ class Request {
         return ($result = $this->query($query));
     }
 
-    public function getSingerRequests()
+
+    public function getSingerRequests($user_id)
     {
-        $query =   "SELECT e.id, e.event_name, e.eventDate, e.venueID, v.id, v.name, v.location
+        $query =   "SELECT e.id AS event_id, e.event_name, e.eventDate, e.venueID, v.id AS venue_id, v.name AS venue_name, v.location
                     FROM events e
-                    JOIN requests r ON r.id = e.id AND r.role = 'Singer'
+                    JOIN requests r ON r.event_id = e.id AND r.role = 'Singer' AND r.collaborator_id = $user_id  
                     JOIN venues v ON e.venueID = v.id";
 
         return ($result = $this->query($query));

@@ -62,7 +62,7 @@
                         <tr>
                             <td><?php echo $request->event_name?></td>
                             <td><?php echo $request->eventDate?></td>
-                            <td><?php echo $request->name?>,<?php echo $request->location?></td>
+                            <td><?php echo $request->venue_name?>,<?php echo $request->location?></td>
                             <td><button class = "accept">Accept</button> <button class = "reject" >Reject</button></td>
                             <td><button>Event Page</button></td>
 
