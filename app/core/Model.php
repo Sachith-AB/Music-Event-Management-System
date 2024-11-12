@@ -189,6 +189,17 @@ trait Model {
             return $result ? $result : [];
         }
 
+
+        public function getExistingRequests($id , $role)
+        {
+            $query = "SELECT * FROM requests WHERE event_id = $id AND role = '$role'";
+            
+             // Execute the query and return results
+            $result = $this->query($query);
+        
+             // Return an array, either with results or empty
+            return $result ? $result : [];
+
         public function getExistingRequests($id)
         {
             $query = "SELECT * FROM requests WHERE event_id = $id ";
@@ -197,7 +208,7 @@ trait Model {
              $result = $this->query($query);
         
              // Return an array, either with results or empty
-             return $result ? $result : [];
+
 
         }
         

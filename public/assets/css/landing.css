@@ -110,6 +110,10 @@ nav ul li.sign-up {
     border-radius: 70px;
     cursor: pointer;
 }
+
+.sign-up{
+    cursor: pointer;
+}
 /*header end*/
 
 /*footer*/

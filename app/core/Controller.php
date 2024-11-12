@@ -18,7 +18,7 @@ trait Controller {
                 session_destroy();  // Destroy the session
                 
                 // Redirect to the login page
-                redirect('signin');
+                redirect('home');
                 exit();
             }
 
@@ -36,7 +36,7 @@ trait Controller {
          // If the view requires login, check the session
         if ($requireLogin && !$this->isLoggedIn()) {
             // Redirect to the login page if the user is not logged in
-            redirect("signin");
+            redirect("home");
             exit;
         }
 
