@@ -69,9 +69,9 @@ class AnnouncerRequest {
 
         //show($result);
 
-        echo($id);
+        //echo($id);
 
-        $result = $request->getExistingRequests($id);
+        //$result = $request->getExistingRequests($id);
 
        // show($result);
 

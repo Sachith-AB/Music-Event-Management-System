@@ -26,10 +26,12 @@
     $pass = htmlspecialchars($_GET['pass'] ?? '');
     $flag = htmlspecialchars($_GET['flag'] ?? 2);
     $error = htmlspecialchars($_GET['error']?? '');
+    $role = htmlspecialchars($_GET['role']?? '');
     // echo $email;
     // echo $pass;
     // echo $flag;
     // echo $error;
+    //echo $role;
 ?>
     <!-- loading page -->
     
@@ -92,6 +94,7 @@
                                         <ion-icon name="eye-outline" id="c-toggleIcon"></ion-icon>
                                     </a>
                                 </div>
+                                <input type="hidden" name="role"  id="role" value="<?php echo $role ?>" >
                                 <input type="submit" name="signUp" value="SignUp" class="sign-btn" id="sign-up-btn">
                                 <!-- <button type="submit" name="signUp" value="SignUp" class="sign-btn" id="sign-up-btn">SignUp</button> -->
 
