@@ -188,6 +188,18 @@ trait Model {
             // Return an array, either with results or empty
             return $result ? $result : [];
         }
+
+        public function getExistingRequests($id)
+        {
+            $query = "SELECT * FROM requests WHERE event_id = $id ";
+            
+             // Execute the query and return results
+             $result = $this->query($query);
+        
+             // Return an array, either with results or empty
+             return $result ? $result : [];
+
+        }
         
         
         
