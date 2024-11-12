@@ -7,12 +7,13 @@ trait Controller {
         // Start session if not already started
         if (session_status() === PHP_SESSION_NONE) {
             session_start();
+
         }
 
         // Check if session exists
         if (isset($_SESSION['USER'])) {
             // Check if the session has expired (1 hour = 3600 seconds)
-            if (isset($_SESSION['LAST_ACTIVITY']) && (time() - $_SESSION['LAST_ACTIVITY'] > 3600)) {
+            if (isset($_SESSION['LAST_ACTIVITY']) && (time() - $_SESSION['LAST_ACTIVITY'] > 60)) {
                 // If more than 1 hour has passed, destroy the session
                 session_unset();    // Unset session variables
                 session_destroy();  // Destroy the session
