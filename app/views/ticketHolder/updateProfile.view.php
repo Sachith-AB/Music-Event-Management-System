@@ -7,6 +7,7 @@
     <title>Update Profile</title>
 </head>
 <body>
+    <!-- <header><?php include ('../app/views/components/header.php'); ?></header> -->
     <?php 
         $flag = htmlspecialchars($_GET['flag'] ?? 0);
         $error = htmlspecialchars($_GET['msg'] ?? '');
@@ -27,7 +28,7 @@
                     </div>
                 </div>
 
-                <form  method="POST" enctype="multipart/form-data">
+                <form  method="POST" enctype="multipart/form-data" class="image-form">
                     <div class="input-wrap">
                         <input type="file" name="pro_pic" id="fileInput">
                         <button type="submit" class="button" id="customButton" name="uploadImage">Upload File</button>

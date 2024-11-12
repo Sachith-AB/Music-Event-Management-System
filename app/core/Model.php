@@ -163,10 +163,10 @@ trait Model {
         
             // Query with placeholders for dynamic role and search term
             $query = "SELECT u.id, u.name, u.pro_pic, p.userID, p.user_role
-                      FROM users u
-                      JOIN $joinTable p ON u.id = p.userID
-                      WHERE p.user_role = :user_role
-                      AND (
+                        FROM users u
+                        JOIN $joinTable p ON u.id = p.userID
+                        WHERE p.user_role = :user_role
+                        AND (
                             u.name LIKE :searchTerm OR
                             p.biography LIKE :searchTerm OR
                             p.music_genres LIKE :searchTerm OR

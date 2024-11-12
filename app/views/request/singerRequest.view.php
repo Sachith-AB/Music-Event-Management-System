@@ -1,3 +1,4 @@
+<?php include ('../app/views/components/header.php'); ?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -10,19 +11,21 @@
 
 <body>
 
-<?php include ('../app/views/components/sidebar.php');  ?>
+    
+        <?php include ('../app/views/components/sidebar.php');  ?>
+    
 
     <!-- Main Content -->
     <div class="content">
 
     <h1>Singers</h1>
         <!-- Search Bar -->
-        <header>
-            <form method="POST">
+        <div>
+            <form method="POST" class="search">
                 <input type="text" name="searchTerm" placeholder="Search..." class="search-bar">
                 <button name="searchSingers" value="search" type="submit">SEARCH</button>
             </form>
-        </header>
+        </div>
 
         <!-- Singers Section -->
         <section class="singers-section">

@@ -3,6 +3,7 @@
 
 
 route('home','Home@index');
+route('search','Search@index');
 
 
 route('signin','Signin@index');
@@ -11,6 +12,7 @@ route('signup','Signup@index');
 //route for events
 route('create-event', 'event/Create@index');
 route('event-review', 'event/Review@index');
+route('view-event','event/ViewEvent@index');
 
 //route for event collaborators
 route('singer-profile','eventCollaborator/singerProfile@index');

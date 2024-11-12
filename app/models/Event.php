@@ -61,6 +61,7 @@ class Event {
         return false;
     }
 
+
     //get events details for eventplanner dashboard which are created by him
     public function getEventsByUserId($userId) {
         $query = "SELECT 
@@ -90,9 +91,90 @@ class Event {
         return $result ?: [];
     }
 
+    public function searchEventByName($searchTerm){
+
+        $searchName = $searchTerm['name'] ?? "";
+       
+        
+        $id = $searchTerm['location']?? '';
+        
+        $query = "SELECT * FROM events WHERE event_name LIKE '%$searchName%' OR venueID = '$id'";
+        $result = $this->query($query);
+        // if($result){
+        //     return $result;
+        // }else{
+        //     return [];
+        // }
+        //show($result);
+        return $result ? $result : [];
+
+    }
+
+    public function filterEvents($searchTerm) {
+        $searchType = $searchTerm['type'] ?? "";
+        $searchPricing = $searchTerm['pricing'] ?? "";
+    
+        // Start building the query
+        $query = "SELECT * FROM events WHERE 1=1";  // The 1=1 acts as a placeholder to make appending conditions easier
+    
+        // Add conditions only if they are not empty
+        if (!empty($searchType)) {
+            $query .= " AND type LIKE '%$searchType%'";
+        }
+        
+        if (!empty($searchPricing)) {
+            $query .= " AND pricing LIKE '%$searchPricing%'";
+        }
+    
+        $result = $this->query($query);
+        return $result ? $result : [];
+    }
+
+    public function getAllEventData($id) {
+        $res['event']=[];
+        $res['event'] = $this->firstById($id);
+        $user = new User;
+        
+        // Step 1: Split the performers string into an array of IDs
+        $performerIds = explode(',', $res['event']->performers);
+        
+        // Step 2: Initialize an array to store performer data
+        $res['performers'] = [];
+    
+        // Step 3: Loop through each ID and fetch data for each performer
+        foreach ($performerIds as $performerId) {
+            $res['performers'][] = $user->firstById(trim($performerId));
+        }
+
+        $res['tickets'] = [];
+
+        $query = "SELECT * FROM tickets WHERE event_id = '$id'";
+        
+        
+        $result = $this->query($query);
+        $res['tickets']=$result;
+
+        $query_2 = "SELECT * FROM venues WHERE event_id = '$id'";
+        $result_2 = $this->query($query_2);
+        $res['venue'] = $result_2;
+        
+
+    //show($res);
+        return $res;
+    }
+
 
     
 
 
 }
+
+
+    
+    
+    
+
+
+
+
 

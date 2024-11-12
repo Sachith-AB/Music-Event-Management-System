@@ -16,9 +16,9 @@
     </div>
     <nav>
         <ul>
-            <li><a href="#treanding">Explore</a></li>
+            <li><a href="search">Explore</a></li>
             <li><a href="#new-events">Upcoming Events</a></li>
-            <?php if($id != 0): ?>
+            <?php if($_SESSION['USER']): ?>
                 <img class="image" onclick="goToProfile()" src="<?=ROOT?>/assets/images/user/<?php echo $_SESSION['USER']->pro_pic ?>" alt="user profile">
             <?php else: ?>
                 <li><a href="signup" class="sign-up">Sign Up</a></li>
@@ -45,7 +45,7 @@
     });
 
     function goToProfile() {
-        window.location.href = "profile?id=<?php echo $data['id']?>";
+        window.location.href = "profile?id=<?php echo $_SESSION['USER']->id ?>";
     };
 
     function goToHome (){
