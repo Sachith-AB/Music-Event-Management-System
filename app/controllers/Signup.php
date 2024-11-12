@@ -11,6 +11,7 @@ class Signup {
 
         if($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['signUp'])) {
             $data = $this->userRegistration($user,$_POST);
+            //show($_POST);
             
         }
         

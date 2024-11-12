@@ -23,11 +23,23 @@
             <?php if($_SESSION['USER']): ?>
                 <img class="image" onclick="goToProfile()" src="<?=ROOT?>/assets/images/user/<?php echo $_SESSION['USER']->pro_pic ?>" alt="user profile">
             <?php else: ?>
-                <li><a href="signup" class="sign-up">Sign Up</a></li>
+                <li><a href="signin" class="sign-up">Sign In</a></li>
+                <li><a class="sign-up" onclick="openModal()">Sign Up</a></li>
             <?php endif ?>
         </ul>
     </nav>
 </header>
+
+    <!-- Modal Overlay -->
+    <div class="modal-overlay" id="modalOverlay">
+        <div class="modal">
+            <button class="close-btn" onclick="closeModal()">×</button>
+            <h2>Select Your Role</h2>
+            <a href="signup?role=planner" class="role-btn">Event Planner</a>
+            <a href="signup?role=collaborator" class="role-btn">Collaborator</a>
+            <a href="signup?role=holder" class="role-btn">Common User</a>
+        </div>
+    </div>
 
 <script>
     document.querySelectorAll('nav ul li a').forEach(link => {
@@ -53,6 +65,17 @@
     function goToHome (){
         window.location.href = "home"
     }
+
+    // Function to open the modal
+    function openModal() {
+        document.getElementById('modalOverlay').style.display = 'flex';
+    }
+
+    // Function to close the modal
+    function closeModal() {
+        document.getElementById('modalOverlay').style.display = 'none';
+    }
+
 </script>
 </body>
 </html>
