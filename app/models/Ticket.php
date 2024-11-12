@@ -22,9 +22,9 @@ class Ticket {
         }
 
         // Validate price if the ticket is paid
-        if ($data['ticket_type'] === 'paid' && (empty($data['price']) || !is_numeric($data['price']))) {
-            $this->errors['price'] = "Price is required for paid tickets and must be a valid number.";
-        }
+        // if ($data['ticket_type'] === 'paid' && (empty($data['price']) || !is_numeric($data['price']))) {
+        //     $this->errors['price'] = "Price is required for paid tickets and must be a valid number.";
+        // }
 
         // Validate sale dates and times
         if (empty($data['sale_strt_date']) || empty($data['sale_end_date'])) {
@@ -80,7 +80,7 @@ class Ticket {
 
     // Check if the result is not empty and return the `event_id` value directly
     return $result ? $result[0]->event_id : null;
-         
+        
     }
 
 

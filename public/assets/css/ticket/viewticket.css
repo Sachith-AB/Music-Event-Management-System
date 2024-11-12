@@ -1,4 +1,4 @@
-/* Ticket card styling */
+/* Ticket card styling
 .ticket-card {
     background-color: #f9f9f9;
     border: 1px solid #ddd;
@@ -9,10 +9,190 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
+} */
+
+.ticket-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    padding-left: 50px;
+    gap: 5px;
+    margin: 15px 0;
+    font-family: sans-serif;
+    
+
+
+}
+.ticket-card {
+    position: relative;
+    display: flex;
+    /* flex-direction: column; */
+    align-items: center;
+    justify-content: center;
+    width: 60%;
+    height: 180px;
+    background: linear-gradient(145deg, #e6e6e6, #ffffff);
+    border-radius: 15px;
+    margin: 20px;
+    padding: 10px;
+    box-shadow: 4px 4px 10px rgba(0, 0, 0, 0.2);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    overflow: hidden;
+
+    /* position: relative; */
+    /* flex: 1 1 calc(33.333% - 20px); */
+    /* display: flex;
+    width: 75%;
+    height: 150px;
+    background-color: #f0f0f0;
+    margin: 20px;
+    padding: 5px;
+    border-radius: 5px;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+    transition: transform 0.3s ease;
+    text-align: center;
+    font-family: sans-serif; */
 }
 
-/* Ticket info styling */
+.ticket-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 6px 6px 15px rgba(0, 0, 0, 0.3);
+}
+
+.icon-container, .ticket-details {
+    width: 50%; /* Allocate half of the width */
+    /* display: flex; */
+    align-items: center;
+    justify-content: center;
+    font-family: sans-serif;
+}
+/* .icon {
+    width: 120px;
+    height: 120px;
+    background-color: white;
+    padding: 15px;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-left: 10px;  
+} */
+/* Example gradient for Silver ticket */
+.silver-card {
+    background: white;
+    width: 120px;
+    height: 120px;
+    padding: 15px;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-left: 10px;
+}
+
+.gold-card {
+    background: white;
+    width: 120px;
+    height: 120px;
+    padding: 15px;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-left: 10px;
+}
+
+.platinum-card {
+    background: white;
+    width: 120px;
+    height: 120px;
+    padding: 15px;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-left: 10px;
+}
+
+/* .icon i {
+    font-size: 70px;
+    color: rgba(255, 255, 255, 0.8);
+} */
+
+
+.platinum-card i {
+    font-size: 70px;
+    color: #E5E4E2;
+}
+.gold-card i{
+    font-size: 70px;
+    color: #FFD700;
+}
+.silver-card i{
+    font-size: 70px;
+    color: #C0C0C0;
+}
+
 .ticket-info {
+    text-align: left;
+    padding: 15px; 
+    /* justify-content: center;
+    align-items: centers; */
+    font-family: sans-serif;
+    display: flex;
+    flex-direction: column;
+
+}
+.ticket-type{
+    font-size: 22px;
+    font-weight: bold;
+    color: #555;
+    margin: 10px;
+}
+.ticket-price, .ticket-quantity {
+    font-size: 16px;
+    color: #777;
+    margin-top: 5px;
+}
+
+.ticket-actions {
+    display: flex;
+    gap: 10px;
+    cursor: pointer;
+    padding: 8px 12px;
+    border: none;
+    border-radius: 20px;
+    font-size: 14px;
+    color: #fff;
+    transition: background 0.3s ease;
+    
+}
+.btn {
+    padding: 8px 12px;
+    border: none;
+    border-radius: 20px;
+    cursor: pointer;
+    font-size: 14px;
+    color: #fff;
+    transition: background 0.3s ease;
+}
+
+
+.btn-update {
+    background: linear-gradient(45deg, #4CAF50, #66bb6a);
+}
+
+.btn-delete {
+    background: linear-gradient(45deg, #e91e63, #f06292);
+}
+
+.btn:hover {
+    opacity: 0.9;
+}
+
+
+/* Ticket info styling */
+/* .ticket-info {
     display: flex;
     flex-direction: column;
 }
@@ -27,10 +207,10 @@
     font-size: 14px;
     color: #555;
     margin-top: 5px;
-}
+} */
 
 /* Action buttons */
-.ticket-actions {
+/* .ticket-actions {
     display: flex;
     gap: 10px;
 }
@@ -46,19 +226,19 @@
 
 .btn-update {
     background-color: #4CAF50;
-}
+} */
 
-.btn-delete {
+/* .btn-delete {
     background-color: #e91e63;
 }
 
 .btn-update:hover, .btn-delete:hover {
     opacity: 0.9;
-}
+} */
 
 /* Styling for last visit */
-.last-visit {
+/* .last-visit {
     margin-top: 20px;
     font-style: italic;
     color: #777;
-}
+} */

@@ -9,9 +9,30 @@ class TicketController {
         $ticket = new Ticket;  // Ticket model instance
         $data = [];
 
-        // Handle form submission
-        if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['submit'])) {
-            $data = $this->createTicket($ticket, $_POST);  // Pass form data to the createTicket method
+        if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+            // Check which button was clicked
+            if (isset($_POST['add_another'])) {
+                // Process for adding another ticket type
+                $this->createTicket($ticket, $_POST);  // Store event data in session
+                $_SESSION['event_data'] = [
+                    'event_id' => $_POST['event_id'],
+                    'event_name' => $_POST['event_name'],
+                    'sale_strt_date' => $_POST['sale_strt_date'],
+                    'sale_strt_time' => $_POST['sale_strt_time'],
+                    'sale_end_date' => $_POST['sale_end_date'],
+                    'sale_end_time' => $_POST['sale_end_time'],
+                    'created_ticket_types' => $_SESSION['event_data']['created_ticket_types'] ?? []
+                ];
+                $_SESSION['event_data']['created_ticket_types'][] = $_POST['ticket_type'];
+                redirect("create-ticket");  // Reload the same page to add another ticket type
+            } elseif (isset($_POST['submit'])) {
+                // Process for reviewing tickets
+                $data = $this->createTicket($ticket, $_POST); // Store event data in session
+                // show($_SESSION['event_data']);
+                $event_id = $_SESSION['event_data']['event_id'];
+                unset($_SESSION['event_data']);
+                redirect("view-tickets?event_id=" . $event_id);  // Redirect to viewTickets
+            }
         }
 
         $this->view('ticket/createticket', $data);  // Render view with any data (including errors)
@@ -52,8 +73,10 @@ class TicketController {
         // Validate event/ticket data
         if ($ticket->validTicket($POST)) {
             unset($POST['submit']);  // Remove the submit key
+            unset($POST['add_another']);
             $ticket->insert($POST); // Insert data into the tickets table
-            redirect("view-tickets?event_id=" . $event_id);
+            $_SESSION['event_data']['event_id'] = $event_id;
+            return ['success' => "Ticket successfully created"];
         } else {
             // If validation fails, return errors
             return $ticket->errors;
@@ -75,7 +98,9 @@ class TicketController {
 
         // Handle form submission for ticket update
         if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['submit'])) {
+
             if ($ticket->validTicket($_POST)) {
+                
                 unset($_POST['submit']);
                 $ticket->update($ticket_id, $_POST);
                 redirect("view-tickets?event_id=" . $_POST['event_id']);

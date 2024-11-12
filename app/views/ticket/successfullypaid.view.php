@@ -15,7 +15,7 @@
 <body>
 
     <!-- Include Header -->
-    <?php include ('../app/views/components/Header.php'); ?>
+    
     <!-- Main Content -->
     <main>
         <div class="event-details-container">
