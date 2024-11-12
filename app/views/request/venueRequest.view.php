@@ -1,3 +1,4 @@
+<?php include ('../app/views/components/header.php'); ?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -5,7 +6,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="<?=ROOT?>/assets/css/request/singerdropdown.css">
-    <title>Request To Stage</title>
+    <title>Request To Venue</title>
 </head>
 
 <body>
@@ -17,12 +18,12 @@
 
     <h1>Venues</h1>
         <!-- Search Bar -->
-        <header>
-            <form method="POST">
+        <div >
+            <form method="POST" class="search">
                 <input type="text" name="searchTerm" placeholder="Search..." class="search-bar">
                 <button name="searchVenues" value="search" type="submit">SEARCH</button>
             </form>
-        </header>
+        </div>
 
         <!-- Singers Section -->
         <section class="singers-section">

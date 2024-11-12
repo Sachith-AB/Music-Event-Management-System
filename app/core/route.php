@@ -3,6 +3,7 @@
 
 
 route('home','Home@index');
+route('search','Search@index');
 
 
 route('signin','Signin@index');
@@ -11,6 +12,7 @@ route('signup','Signup@index');
 //route for events
 route('create-event', 'event/Create@index');
 route('event-review', 'event/Review@index');
+route('view-event','event/ViewEvent@index');
 
 //route for event collaborators
 route('singer-profile','eventCollaborator/singerProfile@index');
@@ -42,10 +44,10 @@ route('delete-ticket', 'ticket/TicketController@deleteTicket');
 
 //Route for purchaseticket
 route('purchaseticket','ticket/PurchaseTicket@index');
-route('successfullypaid','ticket/PurchaseTicket@index2');
-route('upcommingevent','ticket/PurchaseTicket@index3');
+route('successfullypaid','ticket/Successfullypaid@index');
+route('upcommingevent','ticket/UpcomingEvents@index');
 route('ticketevent','ticket/PurchaseTicket@index4');
-route('updateticket','ticket/PurchaseTicket@index5');
+
 
 
 // Route for ticket holder
