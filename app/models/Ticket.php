@@ -83,5 +83,28 @@ class Ticket {
         
     }
 
+    public function getTicketAndEventDetails($ticket_id) {
+        $query = "SELECT 
+                    tickets.id AS ticket_id, 
+                    tickets.ticket_type AS ticket_type, 
+                    tickets.price AS ticket_price, 
+                    tickets.quantity AS ticket_quantity,
+                    events.id AS event_id, 
+                    events.event_name AS event_name, 
+                    events.description AS event_description,
+                    events.start_time AS event_date, 
+                    events.city AS event_city,
+                    events.province AS event_province
+                  FROM 
+                    tickets 
+                  JOIN 
+                    events ON tickets.event_id = events.id
+                  WHERE 
+                    tickets.id = :ticket_id";
+
+        $params = ['ticket_id' => $ticket_id];
+        return $this->query($query, $params);
+    }
+
 
 }

@@ -2,6 +2,11 @@
 
 class Buyticket {
     use Model;
+    protected $table = 'buyticket';  // Database table name
+    protected $allowedColumns = [
+        'id', 'user_id', 'ticket_id', 'buyer_Fname', 'buyer_Lname', 'buyer_phoneNo',
+        'buyer_email', 'event_id', 'ticket_quantity', 'buy_time',
+    ];
 
 
     public function getEventBuyers($userId) {

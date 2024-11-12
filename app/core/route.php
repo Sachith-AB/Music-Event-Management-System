@@ -44,10 +44,10 @@ route('delete-ticket', 'ticket/TicketController@deleteTicket');
 
 //Route for purchaseticket
 route('purchaseticket','ticket/PurchaseTicket@index');
-route('successfullypaid','ticket/PurchaseTicket@index2');
-route('upcommingevent','ticket/PurchaseTicket@index3');
+route('successfullypaid','ticket/Successfullypaid@index');
+route('upcommingevent','ticket/UpcomingEvents@index');
 route('ticketevent','ticket/PurchaseTicket@index4');
-route('updateticket','ticket/PurchaseTicket@index5');
+
 
 
 // Route for ticket holder

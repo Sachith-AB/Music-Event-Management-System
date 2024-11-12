@@ -91,6 +91,14 @@ class Event {
         return $result ?: [];
     }
 
+    public function getRecentEvents($limit = 4) {
+        // Directly inject the $limit value into the query
+        $query = "SELECT * FROM events ORDER BY eventDate DESC LIMIT $limit";
+    
+        return $this->query($query);
+    }
+    
+
     public function searchEventByName($searchTerm){
 
         $searchName = $searchTerm['name'] ?? "";
