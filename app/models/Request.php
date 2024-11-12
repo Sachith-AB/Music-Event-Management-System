@@ -2,6 +2,9 @@
 
 class Request {
     use Model;
+    
+
+   
 
     protected $table = 'requests'; //database table name
     protected $allowedColumns = [
@@ -15,9 +18,31 @@ class Request {
     //         JOIN profile p ON u.id = p.userID
     //         WHERE p.user_role = 'singer'";
 
-    //     $result = $this->query($query);
-    //     return $result;
-    // }
+
+
+    public function getSingerRequests($user_id)
+    {
+        $event = new Event;        
+
+        $query =   "SELECT e.id AS event_id, e.event_name, e.eventDate, e.venueID, v.id AS venue_id, v.name AS venue_name, v.location
+                    FROM events e
+                    JOIN requests r ON r.event_id = e.id AND r.Status ='pending' AND r.collaborator_id = $user_id  
+                    JOIN venues v ON e.venueID = v.id";
+
+        $result = $this->query($query);
+
+        return $result;
+
+        
+
+    }
+
+    
+
+   
+
+       
+    
 
     // public function searchSingers($searchTerm) {
 
@@ -44,10 +69,11 @@ class Request {
     //     return $result;
     // }
     
+
         
         
         
-    }
+}
 
 
 
