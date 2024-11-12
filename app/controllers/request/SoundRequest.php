@@ -15,7 +15,7 @@ class SoundRequest {
             
         }
 
-        if($_SERVER['REQUEST_METHOD']=='POST' && isset($_POST['searchBands'])){
+        if($_SERVER['REQUEST_METHOD']=='POST' && isset($_POST['searchSounds'])){
             
             
             $data = $this->searchUsers($request);

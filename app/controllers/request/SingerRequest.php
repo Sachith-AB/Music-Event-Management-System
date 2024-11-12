@@ -19,7 +19,7 @@ class SingerRequest {
             
             
             $data = $this->searchUsers($request);
-            // show($data);
+            //show($data);
             // show($_POST);
         }else{
             $data = $this->getUsers($request);
@@ -51,7 +51,7 @@ class SingerRequest {
     public function searchUsers($request){
         
         $res = $request->searchByTerm($_POST , 'singer' , 'profile');
-        // show($res);
+        //show($_POST);
         unset($_POST['searchTerm']);
         unset($_POST['search']);
         return $res;
