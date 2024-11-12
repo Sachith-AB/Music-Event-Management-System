@@ -11,144 +11,75 @@
     
     <div class="dash-container">
         <!-- Sidebar -->
-        <?php include ('../app/views/components/eventPlanner/dashsidebar.php');  ?>
-        
-        <div class="content">
-            <h2 class="content-hearder">Newly Created Events</h2>
-            <div class="events-container">
-                <div class="event-card">
-                    <div class="event-status-process">processing</div>
-                    <img src="<?=ROOT?>/assets/images/ticket/musicevent1.jpg" alt="Musical Fusion Festival">
-                    <div>
-                        <div>Musical Fusion Festival</div>
-                        <div>
-                            <div>📅 Monday, June 06 | 06:00 PM</div>
-                            <div>📍 New York, NY</div>
-                        </div>
-                        <div>From LKR80</div>
-                    </div>
+        <?php include ('../app/views/components/eventPlanner/dashsidebar.php'); ?>
+
+        <?php if (!empty($events)): ?>
+            <div class="content">
+                <!-- Processing Events Section -->
+                <h2 class="content-header">Newly Created Events (Processing)</h2>
+                <div class="events-container">
+                    <?php foreach ($events as $event): ?>
+                        <?php if ($event->status == 'processing'): ?>
+                            <div class="event-card">
+                                <div class="event-status-process">Processing</div>
+                                <img src="<?= htmlspecialchars($event->cover_images) ?>" alt="<?= htmlspecialchars($event->event_name) ?>">
+                                <div>
+                                    <div><?= htmlspecialchars($event->event_name) ?></div>
+                                    <div>
+                                        <div>📅 <?= htmlspecialchars(date("l, F d | h:i A", strtotime($event->start_time))) ?></div>
+                                        <div>📍 <?= htmlspecialchars($event->city) ?>, <?= htmlspecialchars($event->province) ?></div>
+                                    </div>
+                                </div>
+                            </div>
+                        <?php endif; ?>
+                    <?php endforeach; ?>
                 </div>
 
-                <div class="event-card">
-                    <div class="event-status-process">processing</div>
-                    <img src="<?=ROOT?>/assets/images/ticket/musicevent1.jpg" alt="Musical Fusion Festival">
-                    <div>
-                        <div>Musical Fusion Festival</div>
-                        <div>
-                            <div>📅 Monday, June 06 | 06:00 PM</div>
-                            <div>📍 New York, NY</div>
-                        </div>
-                        <div>From LKR80</div>
-                    </div>
+                <!-- Scheduled Events Section -->
+                <h2 class="content-header">Upcoming Events (Scheduled)</h2>
+                <div class="events-container">
+                    <?php foreach ($events as $event): ?>
+                        <?php if ($event->status == 'scheduled'): ?>
+                            <div class="event-card">
+                                <div class="event-status-scheduled">Scheduled</div>
+                                <img src="<?= htmlspecialchars($event->cover_images) ?>" alt="<?= htmlspecialchars($event->event_name) ?>">
+                                <div>
+                                    <div><?= htmlspecialchars($event->event_name) ?></div>
+                                    <div>
+                                        <div>📅 <?= htmlspecialchars(date("l, F d | h:i A", strtotime($event->start_time))) ?></div>
+                                        <div>📍 <?= htmlspecialchars($event->city) ?>, <?= htmlspecialchars($event->province) ?></div>
+                                    </div>
+                                </div>
+                            </div>
+                        <?php endif; ?>
+                    <?php endforeach; ?>
                 </div>
 
-                <div class="event-card">
-                    <div class="event-status-process">processing</div>
-                    <img src="<?=ROOT?>/assets/images/ticket/musicevent1.jpg" alt="Musical Fusion Festival">
-                    <div>
-                        <div>Musical Fusion Festival</div>
-                        <div>
-                            <div>📅 Monday, June 06 | 06:00 PM</div>
-                            <div>📍 New York, NY</div>
-                        </div>
-                        <div >From LKR80</div>
-                    </div>
+                <!-- Completed Events Section -->
+                <h2 class="content-header">Already Held Events (Completed)</h2>
+                <div class="events-container">
+                    <?php foreach ($events as $event): ?>
+                        <?php if ($event->status == 'completed'): ?>
+                            <div class="event-card">
+                                <div class="event-status-completed">Completed</div>
+                                <img src="<?= htmlspecialchars($event->cover_images) ?>" alt="<?= htmlspecialchars($event->event_name) ?>">
+                                <div>
+                                    <div><?= htmlspecialchars($event->event_name) ?></div>
+                                    <div>
+                                        <div>📅 <?= htmlspecialchars(date("l, F d | h:i A", strtotime($event->start_time))) ?></div>
+                                        <div>📍 <?= htmlspecialchars($event->city) ?>, <?= htmlspecialchars($event->province) ?></div>
+                                    </div>
+                                </div>
+                            </div>
+                        <?php endif; ?>
+                    <?php endforeach; ?>
                 </div>
-            
             </div>
-            <a href="#" class="view-more">View more</a>
-            <br/>
-            <h2 class="content-hearder">Upcoming Events</h2>
-            <div class="events-container">
-                <div class="event-card">
-                    <div class="event-status-scheduled">scheduled</div>
-                    <img src="<?=ROOT?>/assets/images/ticket/musicevent3.jpg" alt="Musical Fusion Festival">
-                    <div>
-                        <div>Musical Fusion Festival</div>
-                        <div>
-                            <div>📅 Monday, June 06 | 06:00 PM</div>
-                            <div>📍 New York, NY</div>
-                        </div>
-                        <div>From LKR80</div>
-                    </div>
-                </div>
-
-                <div class="event-card">
-                    <div class="event-status-scheduled">scheduled</div>
-                    <img src="<?=ROOT?>/assets/images/ticket/musicevent3.jpg" alt="Musical Fusion Festival">
-                    <div>
-                        <div>Musical Fusion Festival</div>
-                        <div>
-                            <div>📅 Monday, June 06 | 06:00 PM</div>
-                            <div>📍 New York, NY</div>
-                        </div>
-                        <div>From LKR80</div>
-                    </div>
-                </div>
-
-                <div class="event-card">
-                    <div class="event-status-scheduled">scheduled</div>
-                    <img src="<?=ROOT?>/assets/images/ticket/musicevent3.jpg" alt="Musical Fusion Festival">
-                    <div>
-                        <div>Musical Fusion Festival</div>
-                        <div>
-                            <div>📅 Monday, June 06 | 06:00 PM</div>
-                            <div>📍 New York, NY</div>
-                        </div>
-                        <div >From LKR80</div>
-                    </div>
-                </div>
-            
-            </div>
-            <a href="#" class="view-more">View more</a>
-            <br/>
-
-            <h2 class="content-hearder">Already hold Events</h2>
-            <div class="events-container">
-                <div class="event-card">
-                    <div class="event-status-completed">completed</div>
-                    <img src="<?=ROOT?>/assets/images/ticket/musicevent3.jpg" alt="Musical Fusion Festival">
-                    <div>
-                        <div>Musical Fusion Festival</div>
-                        <div>
-                            <div>📅 Monday, June 06 | 06:00 PM</div>
-                            <div>📍 New York, NY</div>
-                        </div>
-                        <div>From LKR80</div>
-                    </div>
-                </div>
-                
-                <div class="event-card">
-                    <div class="event-status-completed">completed</div>
-                    <img src="<?=ROOT?>/assets/images/ticket/musicevent3.jpg" alt="Musical Fusion Festival">
-                    <div>
-                        <div>Musical Fusion Festival</div>
-                        <div>
-                            <div>📅 Monday, June 06 | 06:00 PM</div>
-                            <div>📍 New York, NY</div>
-                        </div>
-                        <div>From LKR80</div>
-                    </div>
-                </div>
-
-                <div class="event-card">
-                    <div class="event-status-completed">completed</div>
-                    <img src="<?=ROOT?>/assets/images/ticket/musicevent3.jpg" alt="Musical Fusion Festival">
-                    <div>
-                        <div>Musical Fusion Festival</div>
-                        <div>
-                            <div>📅 Monday, June 06 | 06:00 PM</div>
-                            <div>📍 New York, NY</div>
-                        </div>
-                        <div >From LKR80</div>
-                    </div>
-                </div>
-            
-            </div>
-        </div>
-        
-    </div>
+        <?php else: ?>
+            <p>No events created yet.</p>
+        <?php endif; ?>
 
     <script src="<?=ROOT?>/assets/js/eventPlanner.js"></script>
+
 </body>
 </html>

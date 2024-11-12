@@ -62,15 +62,24 @@ class AnnouncerRequest {
     public function getExistingRequest($request)
     {
         $id = htmlspecialchars($_GET['id']);
+
         //echo($id);
 
         $result = $request->getExistingRequests($id,'announcer');
 
         //show($result);
 
+        echo($id);
+
+        $result = $request->getExistingRequests($id);
+
+       // show($result);
+
+
         return $result;
 
     }
+
 
     public function deleteRequest($request){
 
@@ -78,5 +87,6 @@ class AnnouncerRequest {
         $request->delete($_POST['req_id']);
         unset($_POST);
     }
+
 
 }

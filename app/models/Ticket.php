@@ -76,11 +76,34 @@ class Ticket {
 
     public function getEventIdByTicketId($ticket_id){
         $query = "SELECT event_id FROM tickets WHERE id = ?";
-    $result = $this->query($query, [$ticket_id]);
+        $result = $this->query($query, [$ticket_id]);
 
     // Check if the result is not empty and return the `event_id` value directly
     return $result ? $result[0]->event_id : null;
         
+    }
+
+    public function getTicketAndEventDetails($ticket_id) {
+        $query = "SELECT 
+                    tickets.id AS ticket_id, 
+                    tickets.ticket_type AS ticket_type, 
+                    tickets.price AS ticket_price, 
+                    tickets.quantity AS ticket_quantity,
+                    events.id AS event_id, 
+                    events.event_name AS event_name, 
+                    events.description AS event_description,
+                    events.start_time AS event_date, 
+                    events.city AS event_city,
+                    events.province AS event_province
+                  FROM 
+                    tickets 
+                  JOIN 
+                    events ON tickets.event_id = events.id
+                  WHERE 
+                    tickets.id = :ticket_id";
+
+        $params = ['ticket_id' => $ticket_id];
+        return $this->query($query, $params);
     }
 
 
