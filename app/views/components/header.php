@@ -8,7 +8,9 @@
 </head>
 <body>
 <?php 
-   // $id = htmlspecialchars($_GET['id'] ?? $_SESSION['USER']);
+    if (!isset($_SESSION['USER'])) {
+        $_SESSION['USER'] = null;
+    }
 ?>
 <header>
     <div class="logo">
@@ -45,11 +47,11 @@
     });
 
     function goToProfile() {
-        window.location.href = "profile?id=<?php echo $_SESSION['USER']->id ?>";
+        window.location.href = "profile";
     };
 
     function goToHome (){
-        window.location.href = "home?id=<?php echo $_SESSION['USER']->id ?>"
+        window.location.href = "home"
     }
 </script>
 </body>
