@@ -176,6 +176,7 @@ body {
 
 .ticket-selection {
     display: flex;
+    
     justify-content: space-between;
     align-items: center;
     margin-bottom: 20px;
@@ -183,6 +184,67 @@ body {
     border: 1px solid #d1d1d1;
     border-radius: 8px;
 }
+.ticket-selection .available{
+    flex-direction: column;
+    padding-inline: 25px;
+}
+
+.getticket{
+    font-size: 16px;
+    font-weight: 500;
+    color:black;
+}
+
+/* Container for the ticket quantity buttons */
+.ticket-quantity {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 18px;
+}
+
+/* Styling the input to look cleaner */
+.ticket-quantity input {
+    width: 50px;
+    text-align: center;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    font-size: 18px;
+    font-weight: bold;
+    background-color: #f9f9f9;
+    color: #333;
+    padding: 5px;
+}
+
+/* Button styles */
+.increase-btn, .decrease-btn {
+    background-color: #00aaff;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    width: 35px;
+    height: 35px;
+    font-size: 20px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+/* Hover effect for buttons */
+.increase-btn:hover, .decrease-btn:hover {
+    background-color: #008ecc;
+}
+
+/* Add a subtle shadow for the buttons */
+.increase-btn, .decrease-btn {
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+}
+
+/* Button press effect */
+.increase-btn:active, .decrease-btn:active {
+    transform: scale(0.95);
+}
+
 
 .ticket-selection .price p {
     font-size: 16px;
