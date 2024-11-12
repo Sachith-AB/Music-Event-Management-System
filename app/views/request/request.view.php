@@ -55,52 +55,21 @@
                     <th>Action</th>
                     <th>Info</th>
                 </tr>
-                <tr>
-                    <td>JAZZ Night</td>
-                    <td>25th October 2023</td>
-                    <td>Blue Note Jazz Club, NY</td>
-                    <td><button class = "accept">Accept</button> <button class = "reject" >Reject</button></td>
-                    <td><button>Event Page</button></td>
 
-                </tr>
+                <?php if(!empty($data)): ?>
 
-                <tr>
-                    <td>JAZZ Night</td>
-                    <td>25th October 2023</td>
-                    <td>Blue Note Jazz Club, NY</td>
-                    <td><button class = "accept">Accept</button> <button class = "reject">Reject</button></td>
-                    <td><button>Event Page</button></td>
+                    <?php foreach( $data as $request):?>
+                        <tr>
+                            <td><?php echo $request->event_name?></td>
+                            <td><?php echo $request->eventDate?></td>
+                            <td><?php echo $request->venue_name?>,<?php echo $request->location?></td>
+                            <td><button class = "accept">Accept</button> <button class = "reject" >Reject</button></td>
+                            <td><button>Event Page</button></td>
 
-                </tr>
+                        </tr>
+                    <?php endforeach; ?>
 
-                <tr>
-                    <td>JAZZ Night</td>
-                    <td>25th October 2023</td>
-                    <td>Blue Note Jazz Club, NY</td>
-                    <td><button class = "accept">Accept</button> <button class = "reject">Reject</button></td>
-                    <td><button>Event Page</button></td>
-
-                </tr>
-
-
-                <tr>
-                    <td>JAZZ Night</td>
-                    <td>25th October 2023</td>
-                    <td>Blue Note Jazz Club, NY</td>
-                    <td><button class = "accept">Accept</button> <button class = "reject">Reject</button></td>
-                    <td><button>Event Page</button></td>
-
-                </tr>
-
-                <tr>
-                    <td>JAZZ Night</td>
-                    <td>25th October 2023</td>
-                    <td>Blue Note Jazz Club, NY</td>
-                    <td><button class = "accept">Accept</button> <button class = "reject">Reject</button></td>
-                    <td><button>Event Page</button></td>
-                    
-
-                </tr>
+                <?php endif; ?>
 
                 
             </table>

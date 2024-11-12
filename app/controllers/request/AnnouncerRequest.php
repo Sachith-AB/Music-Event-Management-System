@@ -18,12 +18,14 @@ class AnnouncerRequest {
         if($_SERVER['REQUEST_METHOD']=='POST' && isset($_POST['searchAnnouncers'])){
             
             
-            $data = $this->searchUsers($request);
+            $data['users'] = $this->searchUsers($request);
             // show($data);
             // show($_POST);
         }else{
-            $data = $this->getUsers($request);
+            $data['users'] = $this->getUsers($request);
         }
+
+        $data['requests'] = $this->getExistingRequest($request);
 
         $this->view('request/announcerRequest',$data);
     }
@@ -51,5 +53,18 @@ class AnnouncerRequest {
         unset($_POST['search']);
         return $res;
     }   
+
+    public function getExistingRequest($request)
+    {
+        $id = htmlspecialchars($_GET['id']);
+        echo($id);
+
+        $result = $request->getExistingRequests($id);
+
+        show($result);
+
+        return $result;
+
+    }
 
 }
