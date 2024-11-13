@@ -11,6 +11,7 @@
     if (!isset($_SESSION['USER'])) {
         $_SESSION['USER'] = null;
     }
+    //show($_SESSION["USER"]);
 ?>
 <header>
     <div class="logo">
@@ -36,7 +37,7 @@
             <button class="close-btn" onclick="closeModal()">×</button>
             <h2>Select Your Role</h2>
             <a href="signup?role=planner" class="role-btn">Event Planner</a>
-            <a href="signup?role=collaborator" class="role-btn">Collaborator</a>
+            <a href="signup?role=colloborator" class="role-btn">Collaborator</a>
             <a href="signup?role=holder" class="role-btn">Common User</a>
         </div>
     </div>
@@ -63,7 +64,7 @@
     };
 
     function goToHome (){
-        window.location.href = "home"
+        window.location.href = "home?id=<?php echo $_SESSION['USER']->id ?>"
     }
 
     // Function to open the modal
