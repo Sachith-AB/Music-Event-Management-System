@@ -8,11 +8,11 @@
     <link rel="stylesheet" href="<?=ROOT?>/assets/css/ticketHolder/profile.css">
 </head>
 <body>
-    <?php $id = $data['id'];
+    <?php //$id = $_SESSION['USER']->id;
 
     $success = htmlspecialchars($_GET['msg'] ?? '');
     $flag = htmlspecialchars($_GET['flag'] ?? 0);
-    //show($_SESSION['USER'])
+    //show($_SESSION['USER']);
     
     ?>
     <div class="page-content">
@@ -33,13 +33,13 @@
                     <div class="tag-item">4 Following</div>
                     <div class="tag-item">10 Likes</div>
                 </div>
-                <a href="update-profile?id=<?php echo $data['id']?>" class="button" type="button">Update Profile</a>
+                <a href="update-profile" class="button" type="button">Update Profile</a>
             </div>
             <div class="header-menu">
                 <div class="header-menu-item selected">Upcoming</div>
                 <div class="header-menu-item">Used</div>
             </div>
-            <h3 class="event">4 Event <?php echo $data['pro_pic']?></h3>
+            <h3 class="event">4 Event <?php echo ''?></h3>
             <div class="textbox">
                 <input type="text" name="search" id="search" placeholder="Search">
             </div>

@@ -13,7 +13,7 @@ trait Controller {
         // Check if session exists
         if (isset($_SESSION['USER'])) {
             // Check if the session has expired (1 hour = 3600 seconds)
-            if (isset($_SESSION['LAST_ACTIVITY']) && (time() - $_SESSION['LAST_ACTIVITY'] > 60)) {
+            if (isset($_SESSION['LAST_ACTIVITY']) && (time() - $_SESSION['LAST_ACTIVITY'] > 3600)) {
                 // If more than 1 hour has passed, destroy the session
                 session_unset();    // Unset session variables
                 session_destroy();  // Destroy the session
