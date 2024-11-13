@@ -12,7 +12,11 @@ class AnnouncerRequest {
         if($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['request'])) {
 
             $this->createRequest($request);
-            
+        }
+        
+        if($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['deleteRequest'])){
+
+            $this->deleteRequest($request);
         }
 
         if($_SERVER['REQUEST_METHOD']=='POST' && isset($_POST['searchAnnouncers'])){
@@ -41,7 +45,8 @@ class AnnouncerRequest {
     {
 
     $res =  $request->insert($_POST);
-    return $res;
+    unset($_POST);
+    //return $res;
 
     }
 
@@ -57,14 +62,31 @@ class AnnouncerRequest {
     public function getExistingRequest($request)
     {
         $id = htmlspecialchars($_GET['id']);
-        echo($id);
 
-        $result = $request->getExistingRequests($id);
+        //echo($id);
 
-        show($result);
+        $result = $request->getExistingRequests($id,'announcer');
+
+        //show($result);
+
+        //echo($id);
+
+        //$result = $request->getExistingRequests($id);
+
+       // show($result);
+
 
         return $result;
 
     }
+
+
+    public function deleteRequest($request){
+
+        //show($_POST['req_id']);
+        $request->delete($_POST['req_id']);
+        unset($_POST);
+    }
+
 
 }

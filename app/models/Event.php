@@ -141,18 +141,29 @@ class Event {
     public function getAllEventData($id) {
         $res['event']=[];
         $res['event'] = $this->firstById($id);
+        $request = new Request;
         $user = new User;
         
-        // Step 1: Split the performers string into an array of IDs
-        $performerIds = explode(',', $res['event']->performers);
+        // // Step 1: Split the performers string into an array of IDs
+        // $performerIds = explode(',', $res['event']->performers);
         
         // Step 2: Initialize an array to store performer data
         $res['performers'] = [];
+        
     
         // Step 3: Loop through each ID and fetch data for each performer
-        foreach ($performerIds as $performerId) {
-            $res['performers'][] = $user->firstById(trim($performerId));
+        // foreach ($performerIds as $performerId) {
+        //     $res['performers'][] = $user->firstById(trim($performerId));
+        // }
+        $query_1 = "SELECT * FROM requests WHERE event_id = $id AND (role ='singer' OR role = 'band' OR role='announcer') ";
+        $result_1 = $this->query($query_1);
+        //show($result_1);
+
+        foreach($result_1 as $performer){
+            $res['performers'][]=$user->firstById($performer->collaborator_id);
         }
+        //show($res['performers']);
+
 
         $res['tickets'] = [];
 
@@ -167,8 +178,8 @@ class Event {
         $res['venue'] = $result_2;
         
 
-    //show($res);
-        return $res;
+    show($res);
+        return $res ? $res : [];
     }
 
 

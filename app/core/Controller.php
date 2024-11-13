@@ -7,6 +7,7 @@ trait Controller {
         // Start session if not already started
         if (session_status() === PHP_SESSION_NONE) {
             session_start();
+
         }
 
         // Check if session exists
@@ -18,7 +19,7 @@ trait Controller {
                 session_destroy();  // Destroy the session
                 
                 // Redirect to the login page
-                redirect('signin');
+                redirect('home');
                 exit();
             }
 
@@ -36,7 +37,7 @@ trait Controller {
          // If the view requires login, check the session
         if ($requireLogin && !$this->isLoggedIn()) {
             // Redirect to the login page if the user is not logged in
-            redirect("signin");
+            redirect("home");
             exit;
         }
 

@@ -29,7 +29,8 @@ class Buyticket {
         ";
     
         // Execute the query using the logged-in user ID
-        return $this->query($query, [$userId]);
+        $result =  $this->query($query, [$userId]);
+        return $result ? $result : [];
     }
 
     public function getLatestInsertedId() {

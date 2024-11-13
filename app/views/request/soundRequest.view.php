@@ -21,7 +21,7 @@
         <div>
             <form method="POST" class="search">
                 <input type="text" name="searchTerm" placeholder="Search..." class="search-bar">
-                <button name="searchSingers" value="search" type="submit">SEARCH</button>
+                <button name="searchSounds" value="search" type="submit">SEARCH</button>
             </form>
         </div>
 
