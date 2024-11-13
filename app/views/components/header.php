@@ -22,6 +22,11 @@
             <li><a href="search">Explore</a></li>
             <li><a href="#new-events">Upcoming Events</a></li>
             <?php if($_SESSION['USER']): ?>
+                <?php if($_SESSION['USER']->role == 'planner'): ?>
+                    <li><a href="event-planner-dashboard">Dashboard</a></li>
+                <?php else: ?>
+                    <li><a href="event-colloborator-dashboard">Dashboard</a></li>
+                <?Php endif ?>
                 <img class="image" onclick="goToProfile()" src="<?=ROOT?>/assets/images/user/<?php echo $_SESSION['USER']->pro_pic ?>" alt="user profile">
             <?php else: ?>
                 <li><a href="signin" class="sign-up">Sign In</a></li>
@@ -64,7 +69,7 @@
     };
 
     function goToHome (){
-        window.location.href = "home?id=<?php echo $_SESSION['USER']->id ?>"
+        window.location.href = "home"
     }
 
     // Function to open the modal

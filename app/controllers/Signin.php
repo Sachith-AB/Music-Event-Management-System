@@ -40,7 +40,7 @@ class Signin {
                     $_SESSION['USER'] = $row;
                     $id = $row->id;
 
-                    redirect("home?id=$id");
+                    redirect("home");
 
                     // Set the session start time
                     $_SESSION['LAST_ACTIVITY'] = time(); // Store the current time

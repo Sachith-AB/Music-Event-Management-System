@@ -14,6 +14,22 @@
 
 <body> 
 
+<?php 
+
+    //Get the pass data from URL for sign in part
+    //To handle Errors
+    $email = htmlspecialchars($_GET['email'] ?? '');
+    $pass = htmlspecialchars($_GET['pass'] ?? '');
+    $flag = htmlspecialchars($_GET['flag'] ?? 2);
+    $error = htmlspecialchars($_GET['error']?? '');
+    $role = htmlspecialchars($_GET['role']?? '');
+    // echo $email;
+    // echo $pass;
+    // echo $flag;
+    // echo $error;
+    //echo $role;
+?>
+
     <div class="block">
     <section id ="treanding" class="trending-events">
         <h1>Discover Unforgettable Experience at</h1>
@@ -111,7 +127,24 @@
     </div>
 
     <script src="<?=ROOT?>/assets/js/events.js"></script> 
+    <!-- Show error -->
+    <?php if (!empty($data['error'])): ?>
+            <?php 
+                $message = $data['error'];
+                include("../app/views/components/r-message.php")
+            ?>
 
+        <?php elseif($flag == 1): ?>
+            <?php 
+                $message = $error;
+                include("../app/views/components/r-message.php")
+            ?>
+        <?php endif ?>
+
+        <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+        <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
+        <script src="https://unpkg.com/ionicons@5.5.2/dist/ionicons.js"></script>
+        <script src="<?=ROOT?>/assets/js/message.js"></script>
 
 </body>
 </html>
