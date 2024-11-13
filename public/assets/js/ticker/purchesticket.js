@@ -1,6 +1,23 @@
 function openModal() {
     const modal = document.getElementById('summaryModal');
+    const ticketCount = parseInt(document.getElementById('ticketCount').value);
+    
     if (modal) {
+        // Populate modal with purchase summary
+        const pricePerTicket = ticketDetails.price;
+        const ticketType = ticketDetails.type;
+        const subtotal = ticketCount * pricePerTicket;
+        const discount = 0; // 10% discount
+        const total = subtotal - discount;
+
+        // Update modal content
+        document.getElementById('ticketCountDisplay').textContent = `${ticketCount} x`;
+        document.getElementById('ticketTypeDisplay').textContent = `LKR ${pricePerTicket} / ${ticketType} Ticket`;
+        document.getElementById('subtotalDisplay').textContent = `LKR ${subtotal}`;
+        document.getElementById('discountDisplay').textContent = `- LKR ${discount}`;
+        document.getElementById('totalDisplay').textContent = `LKR ${total}`;
+
+        // Display modal
         modal.style.display = 'flex';
     } else {
         console.error("Modal element with id 'summaryModal' not found.");
@@ -16,6 +33,7 @@ function closeModal() {
     }
 }
 
+
 function increaseQuantity() {
     const ticketCount = document.getElementById('ticketCount');
     let value = parseInt(ticketCount.value);
@@ -29,3 +47,5 @@ function decreaseQuantity() {
         ticketCount.value = value - 1;
     }
 }
+
+
