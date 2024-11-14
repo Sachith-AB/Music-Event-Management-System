@@ -16,6 +16,7 @@ route('view-event','event/ViewEvent@index');
 
 //route for event collaborators
 route('singer-profile','eventCollaborator/singerProfile@index');
+route('singer-dashboard','eventCollaborator/SingerDashboard@index');
 
 
 
