@@ -24,11 +24,13 @@ class Event {
         //Event name validation
         if (empty($data['event_name'])) {
             $this->errors['event_name'] = "Event name is required";
+            return ;
         }
 
         //Description validation
         if (empty($data['description'])) {
             $this->errors['description'] = "Event description is required";
+            return ;
         }
 
         //Audience validation 
@@ -92,19 +94,4 @@ class Event {
         return false;
     }
 
-
-        //Helper function to validate date format
-        private function isValidDate($date) {
-            $d = DateTime::createFromFormat('Y-m-d', $date);
-            return $d && $d->format('Y-m-d') === $date;
-        }
-        
-
-        //Helper function to validate time format
-        private function isValidTime($time){
-            $t = DateTime::createFromFormat('H:i', $time);
-            return $t && $t->format('H:i') === $time;
-        }
-
-
-    }
+}

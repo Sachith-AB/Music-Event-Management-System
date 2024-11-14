@@ -11,10 +11,11 @@ class Signup {
 
         if($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['signUp'])) {
             $data = $this->userRegistration($user,$_POST);
+            //show($_POST);
             
         }
         
-        $this->view('signup',$data);
+        $this->view('signup',$data,false);
     }
 
 
@@ -29,7 +30,9 @@ class Signup {
         //check data validation
         if($user->validUser($_POST)){
 
+            
             $arr['email'] = $_POST['email'];
+            // To check email is taken or not
             $row = $user->first($arr);
             //show($row);
 
@@ -45,8 +48,8 @@ class Signup {
                 $passData = 'email=' . $_POST['email'] . '&pass=' . $_POST['password'];
                 $errors = 'flag=' . 1 . '&error=' . $error . '&error_no=' . 7 ;
 
-                unset($_POST['signIn']);
-                redirect("signup?$errors&$passData");
+                unset($_POST['signUp']);
+                redirect("home?$errors&$passData");
                 //echo 'check';
                 exit;
             }

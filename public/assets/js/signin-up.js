@@ -34,28 +34,28 @@ function togglePasswordVisibility(passwordId, IconId) {
     if (passwordField.type === "password") {
         toggleIcon.setAttribute("name", "eye-off-outline");
         passwordField.type = "text";
-      } else {
-        passwordField.type = "password";
-        toggleIcon.setAttribute("name", "eye-outline");
-      }
+    } else {
+            passwordField.type = "password";
+            toggleIcon.setAttribute("name", "eye-outline");
+    }
 }
 
 // image slider & bullet navigation
 let index = 0;
 
 function moveSlider() {
-  index = (index % images.length) + 1;
+    index = (index % images.length) + 1;
 
-  let currentImage = document.querySelector(`.img-${index}`);
-  images.forEach((img) => img.classList.remove("show"));
-  currentImage.classList.add("show");
+    let currentImage = document.querySelector(`.img-${index}`);
+    images.forEach((img) => img.classList.remove("show"));
+    currentImage.classList.add("show");
 
-  const textSlider = document.querySelector(".text-group");
-  textSlider.style.transform = `translateY(${-(index - 1) * 2.2}rem)`;
+    const textSlider = document.querySelector(".text-group");
+    textSlider.style.transform = `translateY(${-(index - 1) * 2.2}rem)`;
 
-  let currentBullet = document.querySelector(`.bull-${index}`);
-  bullets.forEach((bull) => bull.classList.remove("active"));
-  currentBullet.classList.add("active");
+    let currentBullet = document.querySelector(`.bull-${index}`);
+    bullets.forEach((bull) => bull.classList.remove("active"));
+    currentBullet.classList.add("active");
 }
 
 setInterval(moveSlider, 2000);

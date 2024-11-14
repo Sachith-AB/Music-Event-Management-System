@@ -1,0 +1,136 @@
+
+/* .sidebar{
+  margin-top: 50px;
+  background-color: white;
+  box-shadow:  0 4px 8px rgba(0, 0, 0, 0.2);
+} */
+/* Content */
+.content {
+  margin-left: 220px;
+  padding: 20px;
+  font-family: sans-serif;
+  margin-top: 50px;
+}
+
+.search {
+  display: flex;
+  flex-direction: row;
+  gap: 3px;
+}
+
+/* Search Bar */
+.search-bar {
+  width: 60%;
+  padding: 10px;
+  font-size: 16px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+
+/* Singers Section */
+.singers-section {
+  margin-top: 20px;
+}
+
+.singers-section h2 {
+  font-size: 24px;
+  margin-bottom: 10px;
+}
+
+.singers-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+}
+
+.singer-card {
+  background-color: #fff;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  padding: 10px;
+  text-align: center;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
+  cursor: pointer;
+}
+
+.singer-card img {
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
+  border-radius: 5px;
+}
+
+.singer-card h3 {
+  margin-top: 10px;
+  font-size: 18px;
+  color: #333;
+}
+
+.singer-card p {
+  color: #666;
+}
+
+.button-wrapper{
+  align-items: center;
+  justify-content: center;
+  display: flex;
+  flex-direction: row;
+  gap: 10px;
+}
+button{
+  border: none;
+  border-radius: 8px;
+  padding: 12px 20px;
+  font-size: 16px;
+  cursor: pointer;
+  transition: background-color 0.3s ease-in-out;
+}
+
+/* Accept Button Styles */
+.profile {
+  background-color: #00BDD6FF; /* Purple color */
+  color: #FFFFFF; /* White text */
+}
+
+.profile:hover {
+  background-color: #00BDD6FF; /* Darker purple on hover */
+}
+
+/* Base Button Styles */
+.request {
+  background-color: #E6E6E6; /* Light gray color */
+  color: #00BDD6FF; /* Primary color for text */
+  border: none;
+  padding: 10px 20px;
+  border-radius: 5px;
+  cursor: pointer;
+  /* //font-weight: bold; */
+  transition: background-color 0.3s ease;
+}
+
+/* Hover Effect for Request Button */
+.request:hover {
+  background-color: #D9D9D9; /* Darker gray on hover */
+}
+
+/* Cancel Request Button Styles */
+.cancel-request {
+  background-color: #FFCDD2; /* Light red background */
+  color: #D32F2F; /* Darker red text */
+}
+
+.cancel-request:hover {
+  background-color: #FF8A80; /* Darker red on hover */
+}
+
+/* Accepted Button Styles */
+.accepted {
+  background-color: #C8E6C9; /* Light green background */
+  color: #388E3C; /* Dark green text */
+  cursor: default;
+}
+
+.accepted:disabled {
+  opacity: 0.8;
+}
+

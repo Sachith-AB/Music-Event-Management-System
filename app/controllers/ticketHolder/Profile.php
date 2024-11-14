@@ -20,11 +20,12 @@ class Profile {
 
     public function profile($user){
 
-        $id = htmlspecialchars($_GET['id']);
+        $id = $_SESSION['USER']->id ?? 0;
         //echo $id;
 
         $row = $user->firstById($id);
         $data = json_decode(json_encode($row),true);
+        $_SESSION['USER'] = $row;
         //show($data) ;
         return $data;
         //show($row);

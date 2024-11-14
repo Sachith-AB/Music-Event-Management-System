@@ -21,14 +21,17 @@
 <?php 
 
     //Get the pass data from URL for sign in part
+    //To handle Errors
     $email = htmlspecialchars($_GET['email'] ?? '');
     $pass = htmlspecialchars($_GET['pass'] ?? '');
     $flag = htmlspecialchars($_GET['flag'] ?? 2);
     $error = htmlspecialchars($_GET['error']?? '');
+    $role = htmlspecialchars($_GET['role']?? '');
     // echo $email;
     // echo $pass;
     // echo $flag;
     // echo $error;
+    //echo $role;
 ?>
     <!-- loading page -->
     
@@ -91,6 +94,7 @@
                                         <ion-icon name="eye-outline" id="c-toggleIcon"></ion-icon>
                                     </a>
                                 </div>
+                                <input type="hidden" name="role"  id="role" value="<?php echo $role ?>" >
                                 <input type="submit" name="signUp" value="SignUp" class="sign-btn" id="sign-up-btn">
                                 <!-- <button type="submit" name="signUp" value="SignUp" class="sign-btn" id="sign-up-btn">SignUp</button> -->
 
@@ -115,7 +119,7 @@
                     <div class="carousel">
                         <div class="images-wrapper">
 
-                            <img src="<?= ROOT ?>/assets/images/sign-in-up/image-2.jpg" class="image img-1 show" alt="">
+                            <img src="<?= ROOT ?>/assets/images/sign-in-up/image-2.jpg" class="image img-1" alt="">
                             <img src="<?= ROOT ?>/assets/images/sign-in-up/image-4.jpg" class="image img-2" alt="">
                             <img src="<?= ROOT ?>/assets/images/sign-in-up/image-3.jpg" class="image img-3" alt="">
                             <img src="<?= ROOT ?>/assets/images/sign-in-up/image-1.jpg" class="image img-4" alt="">
@@ -148,7 +152,7 @@
         </main>
     </div>
 
-    <!-- Show error -->
+    <!-- Show error
     <?php if (!empty($data['error'])): ?>
         <?php 
             $message = $data['error'];
@@ -160,7 +164,7 @@
             $message = $error;
             include("../app/views/components/r-message.php")
         ?>
-    <?php endif ?>
+    <?php endif ?> -->
 
     <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
     <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>

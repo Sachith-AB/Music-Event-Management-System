@@ -14,7 +14,7 @@ class Signin {
             $data = $this->userLogin($user);
             //show($data);
         }
-        $this->view('signin',$data);
+        $this->view('signin',$data,false);
     }
 
     private function  userLogin($user){
@@ -40,7 +40,10 @@ class Signin {
                     $_SESSION['USER'] = $row;
                     $id = $row->id;
 
-                    redirect("home?id=$id");
+                    redirect("home");
+
+                    // Set the session start time
+                    $_SESSION['LAST_ACTIVITY'] = time(); // Store the current time
 
                 }else{
                     //echo "error";

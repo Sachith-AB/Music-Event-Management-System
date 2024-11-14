@@ -28,7 +28,7 @@ $flag = htmlspecialchars($_GET['flag']?? '');
 ?>
 
 <body>
-    
+    <!-- <?php show($data)  ?> -->
     <div class="container">
 
             <!--create slide bar -->
@@ -62,18 +62,8 @@ $flag = htmlspecialchars($_GET['flag']?? '');
 
         <!--create main content -->
         <div class="main-content">
-            <form  method="POST" enctype="multipart/form-data">
-               <section id="upload-cover">
-                    <h2>Upload Cover</h2>
-                    <div class="upload-cover">
-                        <img src="<?=ROOT?>/assets/images/event/cover.png" alt="Event Cover Image" class="cover-image">
-                        <div class="buttons">
-                            <input type="file" name="cover_image" id="cover_image">
-                            <button type="button" class="change-button">Change</button>
-                            <button type="button" class="remove-button">Remove</button>
-                        </div>
-                    </div>
-                </section>
+
+            <form  method="POST" >
 
                 <section id="general-information">
                     <h2>General Information</h2>
@@ -161,6 +151,21 @@ $flag = htmlspecialchars($_GET['flag']?? '');
                 </section>
 
             </form>
+
+            <form action="" method="POST" enctype="multipart/form-data">
+                <section id="upload-cover">
+                    <h2>Upload Cover</h2>
+                    <div class="upload-cover">
+                        <img src="<?=ROOT?>/assets/images/event/cover.png" alt="Event Cover Image" class="cover-image">
+                        <div class="buttons">
+                            <input type="file" name="cover_images" id="cover_image">
+                            <button type="button" class="change-button">UPLOAD</button>
+                            <button type="button" class="remove-button">Remove</button>
+                        </div>
+                    </div>
+                </section>
+            </form>
+            
         </div>
     </div>
 

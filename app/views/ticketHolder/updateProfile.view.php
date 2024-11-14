@@ -3,10 +3,11 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-     <link rel="stylesheet" href="<?=ROOT?>/assets/css/ticketHolder/updateProfile.css"> 
+    <link rel="stylesheet" href="<?=ROOT?>/assets/css/ticketHolder/updateProfile.css"> 
     <title>Update Profile</title>
 </head>
 <body>
+    
     <?php 
         $flag = htmlspecialchars($_GET['flag'] ?? 0);
         $error = htmlspecialchars($_GET['msg'] ?? '');
@@ -18,7 +19,7 @@
             <div class="">
                 <div class="image">
                     <div class="avatar">
-                        <img src="<?=ROOT?>/assets/images/user/<?php echo $data['pro_pic'] ?>" alt="pro pic">
+                        <img src="<?=ROOT?>/assets/images/user/<?php echo $_SESSION['USER']->pro_pic ?>" alt="pro pic">
                     </div>
                     <div>
                         <p class="p1">Upload your photo</p>
@@ -27,7 +28,7 @@
                     </div>
                 </div>
 
-                <form  method="POST" enctype="multipart/form-data">
+                <form  method="POST" enctype="multipart/form-data" class="image-form">
                     <div class="input-wrap">
                         <input type="file" name="pro_pic" id="fileInput">
                         <button type="submit" class="button" id="customButton" name="uploadImage">Upload File</button>
@@ -39,17 +40,17 @@
 
                         <div class="input-wrap">
                             <!-- <label for="Name">Name</label> -->
-                            <input name="name" type="text" placeholder="Name" value="<?php echo $data['name'] ?>">
+                            <input name="name" type="text" placeholder="Name" value="<?php echo $_SESSION['USER']->name ?>">
                         </div>
 
                         <div class="input-wrap">
                             <!-- <label for="Email">Email</label> -->
-                            <input name="email" type="email" placeholder="Email" value="<?php echo $data['email'] ?>">
+                            <input name="email" type="email" placeholder="Email" value="<?php echo $_SESSION['USER']->email ?>">
                         </div>
 
                         <div class="input-wrap">
                             <!-- <label for="contact">Contact</label> -->
-                            <input name="contact" type="text" placeholder="Contact" value="<?php echo $data['contact'] ?>">
+                            <input name="contact" type="text" placeholder="Contact" value="<?php echo $_SESSION['USER']->contact ?>">
                         </div>
 
                         <div class="button-wrap">
