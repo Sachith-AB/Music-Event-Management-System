@@ -33,7 +33,25 @@
         <?php endif ?>
             
             <div class="singers-grid">
-                <?php foreach ($data as $singer):?>
+                <?php foreach ($data['users'] as $singer):?>
+
+
+                <?php
+                    
+                    //initialize variable to store request status of collaborator
+                    $requestStatus = null;
+
+                    //loop through requests available to find the one that matches this collaborator
+                    foreach($data['request'] as $request)
+                    {
+                        if($request->collaborator_id == $singer->id)
+                        {
+                            $requestStatus = $request->Status;
+                            break;// Exit loop once the matching request is found
+                        }
+                    }
+                ?>
+
                     <div class="singer-card">
                         <img src="<?=ROOT?>/assets/images/user/<?php echo $singer->pro_pic ?>" alt="Singer 2">
                         <h3><?php echo $singer->name ?></h3>
@@ -44,7 +62,24 @@
                                 <input name="event_id" type = "hidden" value="<?= htmlspecialchars($_GET["id"]) ?>">
                                 <input name="collaborator_id" type = "hidden" value="<?php echo $singer->id ?>" >
                                 <input name="role" type = "hidden" value="<?php echo $singer->user_role ?>">
-                                <button name = "request" type = "submit" class="request">Request</button>
+                                <input name="Status" type = "hidden" value = "pending">
+                                <input name="req_id" type="hidden" value = "<?php echo isset($request->id)? $request->id : 0; ?>">
+
+                                <?php if($requestStatus=== null):?>
+                                    <!-- Show "Request" button if no request exists for this singer -->
+                                    <button name = "request" type = "submit" class="request">Request</button>
+
+                                <?php elseif($requestStatus=== 'pending'):?>
+                                    <!-- Show "Cancel Request" button if the request is pending -->
+                                    <button name = "deleteRequest" type = "submit" class="cancel-request">Cancel Request</button>
+
+                                <?php elseif($requestStatus === 'accepted'):?>
+                                    <!-- Show "Accepted" button (disabled) if the request is accepted -->
+                                    <button name = "request" type = "submit" class="accepted" disabled>Accepted</button>
+                                
+                                <?php endif ?>
+                                
+                                
                             </form>
                         </div>
                     </div>

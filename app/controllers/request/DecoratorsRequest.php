@@ -15,15 +15,23 @@ class DecoratorsRequest {
             
         }
 
+        if($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['deleteRequest'])){
+
+            $this->deleteRequest($request);
+        }
+
         if($_SERVER['REQUEST_METHOD']=='POST' && isset($_POST['searchDecorators'])){
             
             
-            $data = $this->searchUsers($request);
+            $data['users'] = $this->searchUsers($request);
             // show($data);
             // show($_POST);
         }else{
-            $data = $this->getUsers($request);
+            $data['users'] = $this->getUsers($request);
         }
+
+
+        $data['requests'] = $this->getExistingRequest($request);
 
         
         $this->view('request/decoratorsRequest', $data);
@@ -57,6 +65,21 @@ class DecoratorsRequest {
         return $res;
     }   
 
+    public function getExistingRequest($request)
+    {
+        $id = htmlspecialchars($_GET['id']);
+
+        $result = $request->getExistingRequests($id,'decorator');
+
+        return $result;
+    }
+
+    public function deleteRequest($request){
+
+        //show($_POST['req_id']);
+        $request->delete($_POST['req_id']);
+        unset($_POST);
+    }
 
 
 

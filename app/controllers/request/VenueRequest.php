@@ -15,15 +15,22 @@ class VenueRequest {
             
         }
 
+        if($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['deleteRequest'])){
+
+            $this->deleteRequest($request);
+        }
+
         if($_SERVER['REQUEST_METHOD']=='POST' && isset($_POST['searchVenues'])){
             
-            
-            $data = $this->searchUsers($request);
+            $data['users'] = $this->searchUsers($request);
             // show($data);
             // show($_POST);
         }else{
-            $data = $this->getUsers($request);
+            $data['users'] = $this->getUsers($request);
         }
+
+        $data['requests'] = $this->getExistingRequest($request);
+
 
         $this->view('request/venueRequest',$data);
     }
@@ -51,5 +58,35 @@ class VenueRequest {
         unset($_POST['search']);
         return $res;
     }   
+
+
+    public function getExistingRequest($request)
+    {
+        $id = htmlspecialchars($_GET['id']);
+
+        //echo($id);
+
+        $result = $request->getExistingRequests($id,'venue');
+
+        //show($result);
+
+        //echo($id);
+
+        //$result = $request->getExistingRequests($id);
+
+       // show($result);
+
+
+        return $result;
+
+    }
+
+
+    public function deleteRequest($request){
+
+        //show($_POST['req_id']);
+        $request->delete($_POST['req_id']);
+        unset($_POST);
+    }
 
 }
