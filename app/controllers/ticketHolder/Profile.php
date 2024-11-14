@@ -20,7 +20,7 @@ class Profile {
 
     public function profile($user){
 
-        $id = htmlspecialchars($_GET['id']);
+        $id = $_SESSION['USER']->id ?? 0;
         //echo $id;
 
         $row = $user->firstById($id);
