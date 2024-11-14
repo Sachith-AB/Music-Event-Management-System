@@ -15,15 +15,22 @@ class BandRequest {
             
         }
 
+        if($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['deleteRequest'])){
+
+            $this->deleteRequest($request);
+        }
+
         if($_SERVER['REQUEST_METHOD']=='POST' && isset($_POST['searchBands'])){
             
             
-            $data = $this->searchUsers($request);
+            $data['users'] = $this->searchUsers($request);
             // show($data);
             // show($_POST);
         }else{
-            $data = $this->getUsers($request);
+            $data['users'] = $this->getUsers($request);
         }
+
+        $data['request'] = $this->getExistingRequest($request);
 
         $this->view('request/bandsRequest',$data);
     }
@@ -51,5 +58,21 @@ class BandRequest {
         unset($_POST['search']);
         return $res;
     }   
+
+    public function getExistingRequest($request)
+    {
+
+        $id = htmlspecialchars($_GET['id']);
+
+        $result = $request->getExistingRequests($id,'band');
+
+        return $result;
+    }
+
+    public function deleteRequest($request)
+    {
+        $request->delete($_POST['req_id']);
+        unset($_POST);
+    }
 
 }
