@@ -90,6 +90,15 @@ $_SESSION['last_visit'] = date('Y-m-d H:i:s');
                     <button type="submit" name="update">Publish</button>
                 </div>
             </form>
+
+
+            <form  method="post" enctype="multipart/form-data">
+                <label for="images">Upload Images:</label>
+                <input type="file" id="images" name="cover_images" accept="image/*" multiple>
+                <input type="hidden" name="event_id" value="<?php echo $data['id'] ?>">
+                <button type="submit" name="upload">Upload</button>
+            </form>
+
         </div>
         </div>
     </div>

@@ -1,4 +1,4 @@
- <?php include ('../app/views/components/CreateEventHeader.php'); ?>
+ <!-- <?php include ('../app/views/components/CreateEventHeader.php'); ?> -->
 
 <?php
 if (session_status() == PHP_SESSION_NONE) {
@@ -67,6 +67,7 @@ $flag = htmlspecialchars($_GET['flag']?? '');
 
                 <section id="general-information">
                     <h2>General Information</h2>
+
                     <div class="form-group">
                         <label for="event_name">Name</label>
                         <input type="text" id="event_name" name="event_name" placeholder="Make it catchy and memorable" required>
@@ -152,7 +153,7 @@ $flag = htmlspecialchars($_GET['flag']?? '');
 
             </form>
 
-            <form action="" method="POST" enctype="multipart/form-data">
+            <!-- <form action="" method="POST" enctype="multipart/form-data">
                 <section id="upload-cover">
                     <h2>Upload Cover</h2>
                     <div class="upload-cover">
@@ -164,7 +165,9 @@ $flag = htmlspecialchars($_GET['flag']?? '');
                         </div>
                     </div>
                 </section>
-            </form>
+            </form> -->
+
+            
             
         </div>
     </div>

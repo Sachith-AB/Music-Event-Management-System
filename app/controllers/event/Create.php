@@ -18,6 +18,7 @@ class Create {
         }
 
 
+
         $this->view('event/createEvent',$data);
 
         
@@ -49,4 +50,6 @@ class Create {
         }
 
     }
+
+    
 }
