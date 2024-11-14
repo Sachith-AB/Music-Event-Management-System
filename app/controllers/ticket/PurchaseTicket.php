@@ -54,7 +54,10 @@ class Purchaseticket {
                     'buy_time' => date('Y-m-d H:i:s'),
                 ];
             
-                $this->createPurchase($purchaseData, $buyticket);
+                $this->createPurchase($purchaseData, $buyticket, $data);
+                $latestpurchaseid = $buyticket->getLatestInsertedId();
+        
+                redirect("successfullypaid?purchase_id=$latestpurchaseid");
             }
             
 
@@ -76,9 +79,17 @@ class Purchaseticket {
     public function createPurchase($purchaseData,$buyticket)
     {
 
-    $res =  $buyticket->insert($purchaseData);
-    return $res;
+        $result = $buyticket->insert($purchaseData);
+        show($result);
 
+       
+            // If the purchase was successful, decrease the ticket quantity
+        $ticket = new Ticket();
+        $ticket->decreaseQuantity($purchaseData['ticket_id'], $purchaseData['ticket_quantity']);
+      
+        
+        
+        return $result;
     }
 
 
