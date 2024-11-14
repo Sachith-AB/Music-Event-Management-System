@@ -1,4 +1,4 @@
-<!-- <?php include ('../app/views/components/CreateEventHeader.php'); ?> -->
+ <!-- <?php include ('../app/views/components/CreateEventHeader.php'); ?> -->
 
 <?php
 if (session_status() == PHP_SESSION_NONE) {
@@ -22,6 +22,11 @@ $_SESSION['last_visit'] = date('Y-m-d H:i:s');
     <title>Create an Event</title>
     <link rel="stylesheet" href="<?=ROOT?>/assets/css/create-event.css">
 </head>
+<?php $error = htmlspecialchars($_GET['error']?? '');
+$error_no = htmlspecialchars($_GET['error_no']?? '');
+$flag = htmlspecialchars($_GET['flag']?? '');
+?>
+
 <body>
     <!-- <?php show($data)  ?> -->
     <div class="container">
@@ -42,6 +47,7 @@ $_SESSION['last_visit'] = date('Y-m-d H:i:s');
                     <li><a href="#upload-cover">Upload Cover</a></li>
                     <li><a href="#general-information">General Information</a></li>
                     <li><a href="#location-time">Location and Time</a></li>
+                    <li><a href="#pricing-type">Pricing and Type</a></li>
                 </ul>
             </div>
 
@@ -61,6 +67,7 @@ $_SESSION['last_visit'] = date('Y-m-d H:i:s');
 
                 <section id="general-information">
                     <h2>General Information</h2>
+
                     <div class="form-group">
                         <label for="event_name">Name</label>
                         <input type="text" id="event_name" name="event_name" placeholder="Make it catchy and memorable" required>
@@ -117,12 +124,36 @@ $_SESSION['last_visit'] = date('Y-m-d H:i:s');
                     </div>
 
 
+                     <!-- Pricing Options -->
+                     <div class="form-group">
+                        <label>Pricing</label>
+                        <div class="radio-group">
+                            <input type="radio" id="free" name="pricing" value="free" required>
+                            <label for="free">Free</label>
+                            <input type="radio" id="paid" name="pricing" value="paid" required>
+                            <label for="paid">Paid</label>
+                        </div>
+                    </div>
+
+                    <!-- Type Options -->
+                    <div class="form-group">
+                        <label>Type</label>
+                        <div class="radio-group">
+                            <input type="radio" id="indoor" name="type" value="indoor" required>
+                            <label for="indoor">Indoor</label>
+                            <input type="radio" id="outdoor" name="type" value="outdoor" required>
+                            <label for="outdoor">Outdoor</label>
+                        </div>
+                    </div>
+
+                    
+
                         <button type="submit" class="review-button" name="submit">Review</button>
                 </section>
 
             </form>
 
-            <form action="" method="POST" enctype="multipart/form-data">
+            <!-- <form action="" method="POST" enctype="multipart/form-data">
                 <section id="upload-cover">
                     <h2>Upload Cover</h2>
                     <div class="upload-cover">
@@ -134,11 +165,35 @@ $_SESSION['last_visit'] = date('Y-m-d H:i:s');
                         </div>
                     </div>
                 </section>
-            </form>
+            </form> -->
+
+            
             
         </div>
     </div>
 
+    <!-- Show error -->
+    <?php if (!empty($data['error'])): ?>
+        <?php 
+            $message = $data['error'];
+            include("../app/views/components/r-message.php")
+        ?>
+
+    <?php elseif($flag == 1): ?>
+        <?php 
+            $message = $error;
+            include("../app/views/components/r-message.php")
+        ?>
+    <?php endif ?>
+
+
+
     <?php include ('../app/views/components/footer.php'); ?>
+
+    <script src="<?=ROOT?>/assets/js/message.js"></script>
+
+    <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+    <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
+    <script src="https://unpkg.com/ionicons@5.5.2/dist/ionicons.js"></script>
 </body>
 </html>
