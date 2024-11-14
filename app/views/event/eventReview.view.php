@@ -105,32 +105,24 @@ $_SESSION['last_visit'] = date('Y-m-d H:i:s');
 
             <section id="review-publish">
                 <h2>Review and Publish</h2>
-                <lable class = "switch">
-                    <input type = "checknox" >
-                    <span class = "slider round"></span>
-                </lable>
-                <p>Set the publishing time to ensure that your event appears to the website at the designated time</p>
-                <div class = "publish-date-time">
-                    <div class = "form-group">
-                        <lable for = "publish-date">Publish Date</lable>
-                        <input type = "date" id = "publish-date" name = "publish-date">
-                    </div>
-                    <div class = "form-group">
-                        <lable for = "publish-time">Publish Time</lable>
-                        <input type = "time" id = "publish-time" name = "publish-time">
-                    </div>
-                </div>
+                <p>Review the event details and publish the event</p>
             </section>
             
             <div class ="action-buttons">
                 <button class = "change-button" >Save Draft</button>
-                <button class = "change-button">Update</button>
+                <button class = "change-button" onclick="goUpdate()">Update</button>
                 <button class = "remove-button">Delete</button>
-                <button class = "publish-button">Publish</button>
+                <button class = "publish-button" name="submit">Publish</button>
             </div>
         </div>
     </div>
 
     <?php include ('../app/views/components/footer.php'); ?>
+
+    <script>
+        function goUpdate(){
+            window.location.href = "event-update?event_name=<?php echo $data['event_name']?>";
+        }
+    </script>
 </body>
 </html>

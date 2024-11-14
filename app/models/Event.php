@@ -105,4 +105,6 @@ class Event {
             $t = DateTime::createFromFormat('H:i', $time);
             return $t && $t->format('H:i') === $time;
         }
+
+
     }

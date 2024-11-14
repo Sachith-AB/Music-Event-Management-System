@@ -15,16 +15,10 @@ class Update {
         $row = $event->firstByEventName($event_name);
         //show($row);
 
-        // if($_SERVER['REQUEST_METHOD'] === 'POST'  && $_FILES['city']['event_date'] != ''){
-            
-        //     unset($_POST['uploadImage']);
-        //     $this->uploadImage($user,$_FILES,$id);
-        // }
-
         if($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['update'])){
             
-            $this->updateDetail($event,$_POST,$event_name);
-            //show($_POST);
+            $this->updateDetail($event);
+            show($_POST);
         }
         $data = $this->getData($row);
         $this->view('event/updateEvent',$data);
@@ -36,18 +30,20 @@ class Update {
         return $data;
     }
 
-    public function updateDetail($event,$POST,$event_name) {
+    public function updateDetail($event) {
 
+        $event_name = $_POST['event_name'];
         //Pass message
-        $msg = "Event Details updated Succesfully";
+        $msg = "Event updated Succesfully";
         $success = 'flag=' . 2 . '&msg=' . $msg . '&success_no=' . 1;
 
         //Update event
-        $res = $event->update($event_name,$POST);
+        $event->update($_POST['event_id'], $_POST);
         unset($POST['update']);
 
-        //Redirect to event review page
-        redirect("event-review?event_name=$event_name&$success");
+        
+        redirect("event-review?event_name=$event_name");
     }
 
 }
+

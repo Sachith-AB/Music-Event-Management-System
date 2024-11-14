@@ -34,6 +34,33 @@ body, html {
     align-items: center;
 }
 
+
+/* Container for the pop-up content */
+.container {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 90%;
+    max-width: 700px;
+    background-color: #f9f9f9;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    padding: 20px;
+}
+
+/*Inner pop-up level */
+.popup {
+    max-width: 1000px;
+    background-color: #fff;
+    border-radius: 10px;
+    padding: 70px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    z-index: 1500; 
+    position: relative;
+}
+
+
 /* Center the heading text */
 .head1 {
     font-size: 2em;
@@ -57,27 +84,18 @@ body, html {
 
 #customButton {
     padding: 10px 20px;
-    margin: 0.1em;
-    background: #00BDD6FF; 
+    background-color: #00BDD6;
     color: white;
     border: none;
     border-radius: 5px;
     font-size: 15px;
     cursor: pointer;
-    margin-right: 45px;
-    position: relative;
-    overflow: hidden;
-    z-index: 1;
-    transition: color 1s ease;
-    margin-top: 20px;
-}
-
-#customButton:hover::after{
-    transform: skewX(-45deg) scale(1, 1);
+    transition: background-color 0.3s, color 0.3s;
 }
 
 #customButton:hover {
-    color:black;
+    background-color: #007B91;
+    color: #fff;
 }
 
 /* Form Styling */
@@ -87,29 +105,32 @@ body, html {
     width: 100%;
 }
 
+.input-wrap label {
+    font-size: 1.1em;
+    color: #333;
+    margin-bottom: 5px;
+    text-align: left;
+    width: 100%;
+}
+
 .input-wrap input[type="text"],
-.input-wrap input[type="audience"],
-.input-wrap input[type="city"],
-.input-wrap input[type="province"],
-.input-wrap input[type="eventDate"],
-.input-wrap input[type="start_time"],
-.input-wrap input[type="end_time"] {
+.input-wrap input[type="number"],
+.input-wrap input[type="date"],
+.input-wrap input[type="time"] {
     width: 100%;
     padding: 10px;
     border: 1px solid #ddd;
     border-radius: 4px;
     font-size: 1em;
     margin-top: 5px;
+    transition: border-color 0.3s;
 }
 
 .input-wrap input[type="text"]:focus,
-.input-wrap input[type="audience"]:focus,
-.input-wrap input[type="city"]:focus,
-.input-wrap input[type="province"]:focus,
-.input-wrap input[type="eventDate"]:focus,
-.input-wrap input[type="start_time"]:focus,
-.input-wrap input[type="end_time"]:focus {
-    border-color: #00BDD6FF ;
+.input-wrap input[type="number"]:focus,
+.input-wrap input[type="date"]:focus,
+.input-wrap input[type="time"]:focus {
+    border-color: #00BDD6;
     outline: none;
 }
 
@@ -164,4 +185,3 @@ body, html {
 .button-wrap button[type="submit"]:hover {
     color:black;
 }
-
