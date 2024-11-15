@@ -32,6 +32,24 @@ class Buyticket {
         $result =  $this->query($query, [$userId]);
         return $result ? $result : [];
     }
+
+    public function getLatestInsertedId() {
+        $query = "SELECT MAX(id) AS last_insert_id FROM buyticket";
+        $result = $this->query($query); // Run the query, assuming query() is a method available in your model
+        return $result[0]->last_insert_id;
+    }
+
+    public function getPurchaseDetails($purchase_id){
+        $query = "SELECT * from buyticket WHERE id=?";
+        return $this->query($query, [$purchase_id]);
+    
+    }
+
+    public function getAllPurchasedEvents($userId){
+        $query = "SELECT * from buyticket WHERE user_id=?";
+        return $this->query($query, [$userId]);
+    }
+
     
 
 }

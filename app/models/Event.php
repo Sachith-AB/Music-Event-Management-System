@@ -12,7 +12,8 @@ class Event {
         'province',
         'eventDate',
         'start_time',
-        'end_time'
+        'end_time',
+        'cover_images',
     ];
 
     public function validEvent($data) {
@@ -187,13 +188,3 @@ class Event {
 
 
 }
-
-
-    
-    
-    
-
-
-
-
-

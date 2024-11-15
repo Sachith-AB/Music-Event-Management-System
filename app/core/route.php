@@ -1,13 +1,17 @@
 <?php
 
 
-
 route('home','Home@index');
 route('search','Search@index');
 
 
 route('signin','Signin@index');
 route('signup','Signup@index');
+
+
+route('create-event', 'event/Create@index');  // Route to handle event creation
+route('event-review', 'event/Review@index');  // Route to view event details
+route('event-update', 'event/Update@index');  // Route to update event details
 
 //route for events
 route('create-event', 'event/Create@index');
@@ -16,6 +20,8 @@ route('view-event','event/ViewEvent@index');
 
 //route for event collaborators
 route('singer-profile','eventCollaborator/singerProfile@index');
+route('singer-dashboard','eventCollaborator/SingerDashboard@index');
+
 
 
 
