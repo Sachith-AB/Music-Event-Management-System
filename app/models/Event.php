@@ -38,7 +38,7 @@ class Event {
 
 
         if (empty($data['city'])) {
-           $this->errors['city'] = "City is required";
+            $this->errors['city'] = "City is required";
         }
 
         if (empty($data['province'])) {
