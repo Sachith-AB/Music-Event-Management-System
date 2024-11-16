@@ -45,7 +45,7 @@ $_SESSION['last_visit'] = date('Y-m-d H:i:s');
                 <p class = "event-description"> <?php echo $data['description'] ?></p>
             </section>
 
-            <input type="hidden" name="event_id" value="<?php echo $data['id'] ?>">
+            
             
             <section id="validation">
                 <h2>Are you sure you want to delete this event?</h2>
@@ -53,7 +53,10 @@ $_SESSION['last_visit'] = date('Y-m-d H:i:s');
 
             <div class ="action-buttons">
                 <button onclick="goBack()">No</button>
-                <button type="submit" name="delete">Yes</button>
+                <form method = "POST">
+                    <input type="hidden" name="event_id" value="<?php echo $data['id'] ?>">
+                    <button type="submit" name="delete">Yes</button>
+                </form>
             </div>
         </div>
     </div>

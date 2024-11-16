@@ -26,7 +26,6 @@ class Delete {
     public function deleteEvent($event) {
         // Validate event ID
         if (!isset($_POST['event_id']) || empty($_POST['event_id'])) {
-            echo "Error: Event ID is missing.";
             return;
         }
     
