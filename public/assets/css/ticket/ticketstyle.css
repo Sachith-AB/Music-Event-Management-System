@@ -744,7 +744,7 @@ body {
 }
 
 .upcommingeve-ticket-card:hover{
-    transform: scale(1.1);
+    transform: scale(1.03);
     transition: all 1s ease-in-out;
     opacity: 1.5;
     cursor: pointer;  

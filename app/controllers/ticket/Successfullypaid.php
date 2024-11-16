@@ -6,6 +6,20 @@ class Successfullypaid {
     use Model;
     public function index() {
 
-        $this->view('ticket/successfullypaid');
+        $buyticket = new Buyticket();
+
+        $purchase_id = isset($_GET['purchase_id']) ? $_GET['purchase_id'] : null;
+        $purchaseDetails = $buyticket->getPurchaseDetails($purchase_id);
+        show($purchaseDetails);
+
+        $ticket = new Ticket();
+        $eventAndTicketDetails = $ticket->getTicketAndEventDetails($purchaseDetails[0]->ticket_id);
+        show($eventAndTicketDetails);
+
+        $event = new Event();
+        $recevtevents = $event->getRecentEvents(4);
+
+
+        $this->view('ticket/successfullypaid', ['purchaseDetails' => $purchaseDetails, 'eventAndTicketDetails'=> $eventAndTicketDetails,'recentevents' => $recevtevents]);
     }
 }
