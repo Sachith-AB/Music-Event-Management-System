@@ -1,4 +1,4 @@
-/* General reset */
+/* General Reset */
 * {
     margin: 0;
     padding: 0;
@@ -6,111 +6,53 @@
     font-family: Arial, sans-serif;
 }
 
+/* Body and Container */
 body, html {
     height: 100%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
     background-color: #f9f9f9;
-}
-
-.container {
     display: flex;
     justify-content: center;
     align-items: center;
-    min-height: 100vh;
-    width: 100%;
 }
 
-.event-content {
-    width: 100%;
-    max-width: 600px;
-    background-color: #fff;
-    border-radius: 8px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    padding: 20px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-}
-
-
-/* Container for the pop-up content */
 .container {
-    position: relative;
-    display: flex;
-    justify-content: center;
-    align-items: center;
     width: 90%;
     max-width: 700px;
-    background-color: #f9f9f9;
-    border-radius: 8px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
     padding: 20px;
+    background-color: #ffffff;
+    border-radius: 8px;
+    box-shadow: 0 0 15px rgba(0, 128, 255, 0.5);
+    padding-top: 20px;
 }
 
-/*Inner pop-up level */
+/* Popup */
 .popup {
-    max-width: 1000px;
+    width: 100%;
+    padding: 40px;
     background-color: #fff;
-    border-radius: 10px;
-    padding: 70px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-    z-index: 1500; 
-    position: relative;
+    border-radius: 8px;
+    box-shadow: 0 0 15px rgba(0, 128, 255, 0.5); 
 }
 
-
-/* Center the heading text */
+/* Header */
 .head1 {
     font-size: 2em;
     font-weight: bold;
-    color: #333;
-    margin-bottom: 20px;
+    color: #6f6e77;
     text-align: center;
+    margin-bottom: 20px;
 }
 
-/* Image Upload Section */
+/* Input Fields */
 .input-wrap {
     margin-bottom: 20px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-}
-
-.input-wrap input[type="file"] {
-    display: none;
-}
-
-#customButton {
-    padding: 10px 20px;
-    background-color: #00BDD6;
-    color: white;
-    border: none;
-    border-radius: 5px;
-    font-size: 15px;
-    cursor: pointer;
-    transition: background-color 0.3s, color 0.3s;
-}
-
-#customButton:hover {
-    background-color: #007B91;
-    color: #fff;
-}
-
-/* Form Styling */
-.form {
-    display: flex;
-    flex-direction: column;
-    width: 100%;
 }
 
 .input-wrap label {
+    display: block;
     font-size: 1.1em;
     color: #333;
     margin-bottom: 5px;
-    text-align: left;
-    width: 100%;
 }
 
 .input-wrap input[type="text"],
@@ -122,20 +64,15 @@ body, html {
     border: 1px solid #ddd;
     border-radius: 4px;
     font-size: 1em;
-    margin-top: 5px;
-    transition: border-color 0.3s;
+    transition: box-shadow 0.3s;
 }
 
 .input-wrap input[type="text"]:focus,
 .input-wrap input[type="number"]:focus,
 .input-wrap input[type="date"]:focus,
 .input-wrap input[type="time"]:focus {
-    border-color: #00BDD6;
+    box-shadow: 0 0 8px rgba(0, 128, 255, 0.6); 
     outline: none;
-}
-
-.form .input-wrap input::placeholder {
-    color: #999;
 }
 
 /* Button Styling */
@@ -158,6 +95,23 @@ body, html {
     z-index: 1;
     transition: color 1s ease;
     margin-top: 20px;
+}
+
+
+.upload-button{
+    padding: 10px 15px;
+    margin: 0.1em;
+    background: rgb(10, 10, 10); 
+    color: #00BDD6FF;
+    border: none;
+    border-radius: 5px;
+    font-size: 10px;
+    cursor: pointer;
+    margin-right: 45px;
+    position: relative;
+    overflow: hidden;
+    z-index: 1;
+    transition: color 1s ease;
 }
 
 .button-wrap button[type="button"] {
