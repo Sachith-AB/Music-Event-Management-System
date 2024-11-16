@@ -152,17 +152,33 @@ $flag = htmlspecialchars($_GET['flag']?? '');
                                 <input type="radio" id="outdoor" name="type" value="outdoor" required>
                                 <label for="outdoor">Outoor</label>
                             </div>
+
+                        </div>
+                        </div>
+
+
+                    </section>
+
                     </div>
                 </div>
 
 
                 </section>
 
-                    
 
-                        <button type="submit" class="review-button" name="submit">Review</button>
+                    
+                </section>
+
+                <section>
+                    <h2>Do you want upload images?</h2>
+                    <button class = "upload-button" onclick="goUpdate()">Yes</button>
                 </section>
                 
+
+                <button type="submit" class="review-button" name="submit">Review</button>
+                
+
+
 
             </form>
 
