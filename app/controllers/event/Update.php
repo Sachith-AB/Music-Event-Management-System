@@ -56,7 +56,7 @@ class Update {
     //     $id = $_POST['event_id'];
     //     $event_name = htmlspecialchars($_GET['event_name']);
     //     $imageNames = [];
-    
+
     //     // Check if files are single or multiple
     //     if (is_array($FILES['cover_images']['name'])) {
             
@@ -71,6 +71,22 @@ class Update {
     //         $errors = [$FILES['cover_images']['error']];
     //         $sizes = [$FILES['cover_images']['size']];
     //     }
+
+        // Check if files are single or multiple
+        // if (is_array($FILES['cover_images']['name'])) {
+        //     // Multiple files uploaded
+        //     $fileNames = $FILES['cover_images']['name'];
+        //     $tmpNames = $FILES['cover_images']['tmp_name'];
+        //     $errors = $FILES['cover_images']['error'];
+        //     $sizes = $FILES['cover_images']['size'];
+        // } else {
+        //     // Single file uploaded, normalize to arrays
+        //     $fileNames = [$FILES['cover_images']['name']];
+        //     $tmpNames = [$FILES['cover_images']['tmp_name']];
+        //     $errors = [$FILES['cover_images']['error']];
+        //     $sizes = [$FILES['cover_images']['size']];
+        // }
+
     
     //     // Process each file
     //     foreach ($fileNames as $index => $imageName) {

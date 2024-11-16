@@ -153,11 +153,19 @@ $flag = htmlspecialchars($_GET['flag']?? '');
                                 <input type="radio" id="outdoor" name="type" value="outdoor" required>
                                 <label for="outdoor">Outoor</label>
                             </div>
+
                         </div>
                         </div>
 
 
                     </section>
+
+                    </div>
+                </div>
+
+
+                </section>
+
 
                     
                 </section>
@@ -167,9 +175,13 @@ $flag = htmlspecialchars($_GET['flag']?? '');
                     <button class = "upload-button">Yes</button>
                 </section>
                 
+
                 <section id="review-publish">
                     <button type="submit" class="review-button" name="submit">Review</button>
                 </section>
+
+
+
 
             </form>
 
