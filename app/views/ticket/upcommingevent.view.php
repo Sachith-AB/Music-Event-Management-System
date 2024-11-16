@@ -9,7 +9,7 @@
 </head>
 <body>
     <!-- Include Header -->
-    <?php include ('../app/views/components/Header.php'); ?>
+    
 
     <?php if (!empty($pro_pic)&&!empty($username)&&!empty($email)&&!empty($combinedTickets)): ?>
         <div class="upcommingeve-container">
