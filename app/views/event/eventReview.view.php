@@ -71,7 +71,7 @@ $_SESSION['last_visit'] = date('Y-m-d H:i:s');
         <!-- Main Content -->
         <div class="main-content">
             <section id="event-header">
-                <h2>Event Header</h2>
+                <h1 >Event Header</h1>
                 <div class="event-cover">
                     <img src="<?=ROOT?>/assets/images/event/cover.png" alt="Event Cover Image" class="cover-image">
                     <div class="event-info">
@@ -107,12 +107,17 @@ $_SESSION['last_visit'] = date('Y-m-d H:i:s');
                 <h2>Review and Publish</h2>
                 <p>Review the event details and publish the event</p>
             </section>
+
+            <section>
+                <h2>Do you want upload images?</h2>
+                <button class = "upload-button" onclick="goUpdate()">Yes</button>
+            </section>
             
             <div class ="action-buttons">
                 <button class = "change-button" >Save Draft</button>
                 <button class = "change-button" onclick="goUpdate()">Update</button>
-                <button class = "remove-button">Delete</button>
-                <button class = "publish-button" name="submit">Publish</button>
+                <button class = "remove-button" onclick="goDelete()">Delete</button>
+                <button class = "publish-button" name="submit">Next</button>
             </div>
         </div>
     </div>
@@ -122,6 +127,10 @@ $_SESSION['last_visit'] = date('Y-m-d H:i:s');
     <script>
         function goUpdate(){
             window.location.href = "event-update?event_name=<?php echo $data['event_name']?>";
+        }
+
+        function goDelete(){
+            window.location.href = "event-delete?event_name=<?php echo $data['event_name']?>";
         }
     </script>
 </body>
