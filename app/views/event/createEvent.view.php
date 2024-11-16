@@ -48,6 +48,7 @@ $flag = htmlspecialchars($_GET['flag']?? '');
                     <li><a href="#general-information">General Information</a></li>
                     <li><a href="#location-time">Location and Time</a></li>
                     <li><a href="#pricing-type">Pricing and Type</a></li>
+                    <li><a href="#review-publish">Review and Publish</a></li>
                 </ul>
             </div>
 
@@ -163,11 +164,12 @@ $flag = htmlspecialchars($_GET['flag']?? '');
 
                 <section>
                     <h2>Do you want upload images?</h2>
-                    <button class = "upload-button" onclick="goUpdate()">Yes</button>
+                    <button class = "upload-button">Yes</button>
                 </section>
                 
-                <button type="submit" class="review-button" name="submit">Review</button>
-                
+                <section id="review-publish">
+                    <button type="submit" class="review-button" name="submit">Review</button>
+                </section>
 
             </form>
 
