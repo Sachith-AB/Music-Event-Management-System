@@ -108,7 +108,13 @@ $_SESSION['last_visit'] = date('Y-m-d H:i:s');
                 <p>Review the event details and publish the event</p>
             </section>
 
-            
+
+
+            <section>
+                <h2>Do you want upload images?</h2>
+                <button class = "upload-button" onclick="goUpdate()">Yes</button>
+            </section>
+
             
             <div class ="action-buttons">
                 <button class = "change-button" >Save Draft</button>

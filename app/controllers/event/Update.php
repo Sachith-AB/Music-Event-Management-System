@@ -59,7 +59,7 @@ class Update {
     
         // Check if files are single or multiple
         if (is_array($FILES['cover_images']['name'])) {
-            
+            // Multiple files uploaded
             $fileNames = $FILES['cover_images']['name'];
             $tmpNames = $FILES['cover_images']['tmp_name'];
             $errors = $FILES['cover_images']['error'];
