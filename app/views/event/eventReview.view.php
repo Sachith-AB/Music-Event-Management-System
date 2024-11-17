@@ -120,7 +120,7 @@ $_SESSION['last_visit'] = date('Y-m-d H:i:s');
                 <button class = "change-button" >Save Draft</button>
                 <button class = "change-button" onclick="goUpdate()">Update</button>
                 <button class = "remove-button" onclick="goDelete()">Delete</button>
-                <button class = "publish-button" name="submit">Next</button>
+                <button class = "publish-button" onclick="goTicket()">Next</button>
             </div>
         </div>
     </div>
@@ -134,6 +134,10 @@ $_SESSION['last_visit'] = date('Y-m-d H:i:s');
 
         function goDelete(){
             window.location.href = "event-delete?event_name=<?php echo $data['event_name']?>";
+        }
+
+        function goTicket(){
+            window.location.href = "create-ticket?event_id=<?php echo $data['id']?>";
         }
     </script>
 </body>

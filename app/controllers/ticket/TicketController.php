@@ -59,12 +59,12 @@ class TicketController {
 
     private function createTicket($ticket, $POST) {
         // First, get the event_id for the given event name
-        $eventName = $POST['event_name'];  // Ensure you have an input named 'event_name' in your form
-        $event_id = $ticket->getEventIdByName($eventName);
-
+        // $eventName = $POST['event_name'];  // Ensure you have an input named 'event_name' in your form
+        // $event_id = $ticket->getEventIdByName($eventName);
+        $event_id = isset($_GET['event_id']) ? $_GET['event_id'] : null;
         if (!$event_id) {
             // Handle the error if no event is found
-            return ['error' => "No event found with the name $eventName"];
+            return ['error' => "No event found with the $event_id"];
         }
 
         // Include event_id in the POST data
