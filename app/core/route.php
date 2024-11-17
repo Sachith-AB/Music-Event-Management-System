@@ -12,6 +12,7 @@ route('signup','Signup@index');
 route('create-event', 'event/Create@index');  // Route to handle event creation
 route('event-review', 'event/Review@index');  // Route to view event details
 route('event-update', 'event/Update@index');  // Route to update event details
+route('event-delete', 'event/Delete@index');  // Route to delete event details
 
 //route for events
 route('create-event', 'event/Create@index');

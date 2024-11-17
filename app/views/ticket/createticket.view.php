@@ -31,12 +31,12 @@
                         <lable for="free-ticket">Free</lable>
                     </div> -->
 
-                    <div class="form-group">
+                    <!-- <div class="form-group">
                         <label for="event_name">Event Name</label>
                         <input type="text" id="event_name" name="event_name" 
                             value="<?= $_SESSION['event_data']['event_name'] ?? '' ?>" 
                             <?= isset($_SESSION['event_data']) ? 'readonly' : '' ?>>
-                    </div>
+                    </div> -->
 
                     <div class = "form-group">
                         <label for="sale-strt-date">Sale Start Date</label>

@@ -1,4 +1,4 @@
- <!-- <?php include ('../app/views/components/CreateEventHeader.php'); ?> -->
+<?php include ('../app/views/components/CreateEventHeader.php'); ?>
 
 <?php
 if (session_status() == PHP_SESSION_NONE) {
@@ -109,7 +109,7 @@ $flag = htmlspecialchars($_GET['flag']?? '');
 
                 <section id="time-ticket">
                     <div class="form-group">
-                        <lable for = "event-date">Event Date</lable>
+                        <label for = "event-date">Event Date</label>
                         <input type="date" id="event-date" name="eventDate">
                     </div>
 
@@ -125,47 +125,63 @@ $flag = htmlspecialchars($_GET['flag']?? '');
 
 
                      <!-- Pricing Options -->
-                     <div class="form-group">
+                    <section id="pricing-type">
+                        <h2>Pricing and Type</h2>
+                        <div class="form-group">
                         <label>Pricing</label>
                         <div class="radio-group">
-                            <input type="radio" id="free" name="pricing" value="free" required>
-                            <label for="free">Free</label>
-                            <input type="radio" id="paid" name="pricing" value="paid" required>
-                            <label for="paid">Paid</label>
+                            <div class="radio-item">
+                                <input type="radio" id="free" name="pricing" value="free" required>
+                                <label for="free">Free</label>
+                            </div>
+                             <div class="radio-item">
+                                <input type="radio" id="paid" name="pricing" value="paid" required>
+                                <label for="paid">Paid</label>
+                            </div>
                         </div>
-                    </div>
+                        </div>
 
-                    <!-- Type Options -->
-                    <div class="form-group">
+                        <div class="form-group">
                         <label>Type</label>
                         <div class="radio-group">
-                            <input type="radio" id="indoor" name="type" value="indoor" required>
-                            <label for="indoor">Indoor</label>
-                            <input type="radio" id="outdoor" name="type" value="outdoor" required>
-                            <label for="outdoor">Outdoor</label>
+                            <div class="radio-item">
+                                <input type="radio" id="indoor" name="type" value="indoor" required>
+                                <label for="free">Indoor</label>
+                            </div>
+                            <div class="radio-item">
+                                <input type="radio" id="outdoor" name="type" value="outdoor" required>
+                                <label for="outdoor">Outoor</label>
+                            </div>
+
                         </div>
+                        </div>
+
+
+                    </section>
+
                     </div>
+                </div>
+
+
+                </section>
+
 
                     
-
-                        <button type="submit" class="review-button" name="submit">Review</button>
                 </section>
+
+                <section>
+                    <h2>Do you want upload images?</h2>
+                    <button class = "upload-button" onclick="goUpdate()">Yes</button>
+                </section>
+                
+
+                <button type="submit" class="review-button" name="submit">Review</button>
+                
+
+
 
             </form>
 
-            <!-- <form action="" method="POST" enctype="multipart/form-data">
-                <section id="upload-cover">
-                    <h2>Upload Cover</h2>
-                    <div class="upload-cover">
-                        <img src="<?=ROOT?>/assets/images/event/cover.png" alt="Event Cover Image" class="cover-image">
-                        <div class="buttons">
-                            <input type="file" name="cover_images" id="cover_image">
-                            <button type="button" class="change-button">UPLOAD</button>
-                            <button type="button" class="remove-button">Remove</button>
-                        </div>
-                    </div>
-                </section>
-            </form> -->
 
             
             
@@ -188,7 +204,7 @@ $flag = htmlspecialchars($_GET['flag']?? '');
 
 
 
-    <?php include ('../app/views/components/footer.php'); ?>
+<?php include ('../app/views/components/footer.php'); ?>
 
     <script src="<?=ROOT?>/assets/js/message.js"></script>
 

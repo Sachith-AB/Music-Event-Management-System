@@ -145,14 +145,15 @@
             <!-- <p>Cupidatat sunt excepteur ipsum non. Ex consectetur amet eu commodo incididunt elit incididunt aliqua aliqua irure elit minim voluptate. Sit est nisi labore eiusmod et ad. Anim quis anim adipisicing quis cillum id ullamco officia do culpa voluptate exercitation nisi.</p> -->
         </div>
 
-        <div class="team-grid">
-        <div class="slider-container">
-            <div class="slider-wrapper">
-                <?php foreach($data['performers'] as $index => $performer): ?>
-                    <div class="team-member" data-index="<?= $index ?>">
-                        <img class="team-member-image" src="<?=ROOT?>/assets/images/user/<?php echo $performer->pro_pic ?>" alt="<?= $performer->name ?>">
+        <div class="team-grid-scrollable">
+            <div class="team-grid">
+                <?php foreach($data['performers'] as $perfotmer): ?>
+                    <div class="team-member">
+                        <img class="team-member-image" src="<?=ROOT?>/assets/images/user/<?php echo $perfotmer->pro_pic?>" alt="Selina Valencia">
                         <div class="team-info">
-                            <h3><?php echo $performer->name ?></h3>
+                            <h3><?php echo $perfotmer->name ?></h3>
+                            
+
                         </div>
                         <div class="social-icons">
                             <a href="#"><i class="fab fa-facebook-f"></i></a>
@@ -161,9 +162,9 @@
                             <a href="#"><i class="fab fa-linkedin-in"></i></a>
                         </div>
                     </div>
-                <?php endforeach; ?>
+
+                <?php endforeach ?>
             </div>
-        </div>
 
         </div>
     </section>
