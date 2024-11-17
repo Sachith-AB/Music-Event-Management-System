@@ -63,7 +63,6 @@ $_SESSION['last_visit'] = date('Y-m-d H:i:s');
                     <button type="submit" name="delete">Yes</button>
                 </form>
 
-                <button type="submit" name="delete">Yes</button>
 
             </div>
         </div>

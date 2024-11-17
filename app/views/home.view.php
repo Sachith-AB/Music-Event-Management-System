@@ -8,10 +8,6 @@
     <link rel="stylesheet" href="<?=ROOT?>/assets/css/landing.css">
 </head>
 
-
-
-
-
 <body> 
 
 <?php 

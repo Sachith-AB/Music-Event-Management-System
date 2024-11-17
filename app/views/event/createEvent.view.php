@@ -156,38 +156,25 @@ $flag = htmlspecialchars($_GET['flag']?? '');
 
                         </div>
                         </div>
+                    </section>
 
 
+                    <section>
+                        <h2>Do you want upload images?</h2>
+                        <button class = "upload-button">Yes</button>
+                    </section>
+
+                    <section id="review-publish">
+                        <button type="submit" class="review-button" name="submit">Review</button>
                     </section>
 
                     </div>
                 </div>
-
-
                 </section>
 
+            </section>
 
-                    
-                </section>
-
-                <section>
-                    <h2>Do you want upload images?</h2>
-                    <button class = "upload-button">Yes</button>
-                </section>
-                
-
-                <section id="review-publish">
-                    <button type="submit" class="review-button" name="submit">Review</button>
-                </section>
-
-
-
-
-            </form>
-
-
-            
-            
+        </form>
         </div>
     </div>
 
