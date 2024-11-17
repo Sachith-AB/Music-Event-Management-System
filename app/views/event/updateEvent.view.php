@@ -36,20 +36,19 @@ $_SESSION['last_visit'] = date('Y-m-d H:i:s');
         <div class="event-content">
             <h1 class="head1">Edit Event</h1>
             
-            <!-- Event Image Upload Section -->
-            <form method="POST" enctype="multipart/form-data">
-                <!-- <div class="input-wrap">
-                    <input type="file" name="event_pic" id="fileInput">
-                    <button type="submit" class="button" id="customButton" name="uploadImage">Upload File</button>
-                </div> -->
-            </form>
+            
 
             <!-- Event Details Form -->
             <form method="POST" class="form">
 
-            <div class="input-wrap">
+                <div class="input-wrap">
                     <label for = "event_name">Event Name</label>
                     <input name="event_name" type="text" placeholder="EventName" value="<?php echo $data['event_name'] ?>">
+                </div>
+
+                <div class="input-wrap">
+                    <label for="description">Description</label>
+                    <input name="description" type="text" placeholder="Description" value="<?php echo $data['description'] ?>">
                 </div>
 
                 <div class="input-wrap">
@@ -87,17 +86,22 @@ $_SESSION['last_visit'] = date('Y-m-d H:i:s');
                 <!-- Action Buttons -->
                 <div class="button-wrap">
                     <button type="button" onclick="goBack()">Cancel</button>
-                    <button type="submit" name="update">Publish</button>
+                    <button type="submit" name="update">Done</button>
                 </div>
             </form>
 
 
             <form  method="post" enctype="multipart/form-data">
+                <div class="input-wrap">
                 <label for="images">Upload Images:</label>
                 <input type="file" id="images" name="cover_images" accept="image/*" multiple>
                 <input type="hidden" name="event_id" value="<?php echo $data['id'] ?>">
-                <button type="submit" name="upload">Upload</button>
+                <button class="upload-button" type="submit" name="upload">Upload</button>
+                </div>
             </form>
+
+
+            
 
         </div>
         </div>

@@ -14,6 +14,8 @@ class Event {
         'start_time',
         'end_time',
         'cover_images',
+        'pricing',
+        'type'
     ];
 
     public function validEvent($data) {
