@@ -226,13 +226,13 @@
                     <?php endfor; ?>
                 
                     <div class="button-group">
-                        <button type="button" class="add-ticket-btn" onclick="goToMyTickets()">Go to my ticket</button>
+                        <button type="button" class="add-ticket-btn" onclick="goToMyTickets()">Go to profile</button>
                     </div>
                 </div>
 
                 <script>
                     function goToMyTickets() {
-                        window.location.href = "upcommingevent";
+                        window.location.href = "profile";
                     }
                 </script>
 

@@ -8,13 +8,15 @@
     font-weight: 700; 
     color: #171A1FFF; /* neutral-900 */
   }
-
+.all{
+  display: flex;
+}
 .container {
     
-    margin-top: 168px; 
-    margin-left: 132px;
+    margin-top: 40px; 
+    margin-left: 122px;
     width: 340px; 
-    height: 409px; 
+    height: 600px; 
     background: #FAFAFBFF; /* neutral-100 */
     border-radius: 4px; /* border-m */
     display: flex;
@@ -25,6 +27,11 @@
     align-items: center;
     
   }
+  .container h2 {
+    margin-bottom: 20px;
+    font-size: 24px;
+  }
+  
 
 /* Avatar 6 */
 .avatar {
@@ -388,15 +395,89 @@
     
   }
 
-
-
-
-
   .page-content {
     display: flex;
     flex-direction: column; /* Default: column layout */
     gap: 20px;
 }
+
+
+
+
+
+
+/*my ticket section*/
+
+.upcommingeve-tickets {
+  width: 60%;
+  margin-top: 40px; 
+  margin-left: 20px;
+  background-color: #FAFAFBFF;
+  padding: 20px;
+  border-radius: 4px;
+
+
+
+  
+}
+
+.upcommingeve-tickets h2 {
+  margin-bottom: 20px;
+  font-size: 24px;
+}
+
+.upcommingeve-ticket-card {
+  display: flex;
+  margin-bottom: 20px;
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+}
+
+.upcommingeve-ticket-card:hover{
+  transform: scale(1.03);
+  transition: all 1s ease-in-out;
+  opacity: 1.5;
+  cursor: pointer;  
+  box-shadow:  0 0 30px rgba(0, 0, 0, 0.2);
+}
+
+.upcommingeve-ticket-image {
+  width: 30%;
+  background-color: #f0f0f0;
+}
+
+.upcommingeve-ticket-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.upcommingeve-ticket-info {
+  padding: 20px;
+  width: 70%;
+  background-color: #fff;
+}
+
+.upcommingeve-ticket-info h3 {
+  margin: 0;
+  font-size: 20px;
+  margin-bottom: 10px;
+}
+
+.upcommingeve-ticket-info p {
+  margin: 5px 0;
+  color: #777;
+}
+
+.upcommingeve-ticket-meta {
+  margin-top: 30px;
+  font-size: 16px;
+  font-weight: bolder;
+  color:#00BDD6FF;
+
+}
+
 
 @media (max-width: 768px) {
     .page-content {
