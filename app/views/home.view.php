@@ -8,10 +8,6 @@
     <link rel="stylesheet" href="<?=ROOT?>/assets/css/landing.css">
 </head>
 
-
-
-
-
 <body> 
 
 <?php 
@@ -87,8 +83,7 @@
         </div>
     </section>
 
-
-
+    
     <!--Event Browsing-->
     <div id="new-events">
         <div class="events-selection">
