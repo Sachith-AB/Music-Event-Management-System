@@ -87,8 +87,8 @@ class Event {
             $this->errors['error_no'] = 8;
         } else {
             // Convert times to DateTime objects for comparison
-            $startTime = DateTime::createFromFormat('H:i', $data['start_time']);
-            $endTime = DateTime::createFromFormat('H:i', $data['end_time']);
+            $startTime = $data['start_time'] ;//DateTime::createFromFormat('H:i', $data['start_time']);
+            $endTime = $data['end_time']; //DateTime::createFromFormat('H:i', $data['end_time']);
         
             if (!$startTime || !$endTime) {
                 $this->errors['flag'] = true;

@@ -116,10 +116,10 @@ $_SESSION['last_visit'] = date('Y-m-d H:i:s');
 
 
 
-            <section>
+            <!-- <section>
                 <h2>Do you want upload images?</h2>
                 <button class = "upload-button" onclick="goUpdate()">Yes</button>
-            </section>
+            </section> -->
 
             
             <div class ="action-buttons">

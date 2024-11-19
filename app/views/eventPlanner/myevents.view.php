@@ -22,7 +22,7 @@
                         <?php if ($event->status == 'processing'): ?>
                             <div class="event-card">
                                 <div class="event-status-process">Processing</div>
-                                <img src="<?= htmlspecialchars($event->cover_images) ?>" alt="<?= htmlspecialchars($event->event_name) ?>">
+                                <img src="<?=ROOT?>/assets/images/events/<?php echo htmlspecialchars($event->cover_images)?> " alt="<?= htmlspecialchars($event->event_name) ?>">
                                 <div>
                                     <div><?= htmlspecialchars($event->event_name) ?></div>
                                     <div>
