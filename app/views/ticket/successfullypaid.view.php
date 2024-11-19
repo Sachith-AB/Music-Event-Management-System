@@ -187,43 +187,48 @@
 
                 <div class="event-details-container">
                     <?php
-                    // Loop through the ticket quantity and display each ticket
                     for ($i = 0; $i < $purchaseDetails[0]->ticket_quantity; $i++) :
+                        $qrData = [
+                            'ticket_number' => $eventAndTicketDetails[0]->ticket_quantity+($i + 1),
+                            'event_name' => $eventAndTicketDetails[0]->event_name,
+                            'buyer_email' => $purchaseDetails[0]->buyer_email
+                        ];
+                        $qrCodeUrl = "https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=" . urlencode(json_encode($qrData));
                     ?>
-                        <!-- Ticket 1 -->
                         <div class="ticket-details">
                             <div class="ticket-header">
                                 <h3>Ticket <?= $i + 1 ?></h3>
                             </div>
                             <div class="input-group">
                                 <div class="input-field">
-                                    <label for="first-name">Fname</label>
+                                    <label>Fname</label>
                                     <p><?= htmlspecialchars($purchaseDetails[0]->buyer_Fname) ?></p>
                                 </div>
                                 <div class="input-field">
-                                    <label for="last-name">Lname</label>
-                                    <p?><?= htmlspecialchars($purchaseDetails[0]->buyer_Lname) ?></p>
+                                    <label>Lname</label>
+                                    <p><?= htmlspecialchars($purchaseDetails[0]->buyer_Lname) ?></p>
                                 </div>
                                 <div class="input-field">
-                                    <label for="last-name">Email</label>
+                                    <label>Email</label>
                                     <p><?= htmlspecialchars($purchaseDetails[0]->buyer_email) ?></p>
                                 </div>
                                 <div class="input-field">
-                                    <label for="last-name">Phone number</label>
+                                    <label>Phone number</label>
                                     <p><?= htmlspecialchars($purchaseDetails[0]->buyer_phoneNo) ?></p>
                                 </div>
                                 <div class="input-field">
                                     <div class="qr-code">
-                                        <div class="qr-code-part">
-                                            <p><strong>Code</strong></p>
-                                            <a href="#">MRCE-934912</a>
+                                        <p><strong>Code</strong></p>
+                                        <!-- <a href="#"><?= htmlspecialchars($uniqueCode) ?></a> -->
+                                        <div id="imgBox">
+                                            <img class="qr-code-img" src="<?= $qrCodeUrl ?>" alt="QR Code for Ticket <?= $i + 1 ?>" />
                                         </div>
-                                        <img src="<?= ROOT ?>/assets/images/ticket/QR_code-image.png" alt="QR Code">
                                     </div>
                                 </div>
                             </div>
                         </div>
                     <?php endfor; ?>
+
                 
                     <div class="button-group">
                         <button type="button" class="add-ticket-btn" onclick="goToMyTickets()">Go to profile</button>
