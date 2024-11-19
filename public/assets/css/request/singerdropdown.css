@@ -134,3 +134,14 @@ button{
   opacity: 0.8;
 }
 
+/* Rejected Button Styles */
+.rejected {
+  background-color: #FFCDD2; /* Light red background */
+  color:  #D32F2F; /* Darker red text */
+  cursor: default;
+}
+
+.rejected:disabled {
+  opacity: 0.8;
+}
+

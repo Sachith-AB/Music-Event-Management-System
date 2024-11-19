@@ -72,6 +72,11 @@
                                 <?php elseif ($requestStatus === 'accepted'): ?>
                                     <!-- Show "Accepted" button (disabled) if the request is accepted -->
                                     <button name="request" type="submit" class="accepted" disabled>Accepted</button>
+
+                                <?php elseif ($requestStatus === 'rejected'): ?>
+                                    <!-- Show "Rejected" button (disabled) if the request is rejected -->
+                                    <button name="request" type="submit" class="rejected" disabled>Rejected</button>
+                            
                                 <?php endif ?>
 
                             </form>
