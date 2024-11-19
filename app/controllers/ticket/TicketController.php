@@ -14,6 +14,7 @@ class TicketController {
             if (isset($_POST['add_another'])) {
                 // Process for adding another ticket type
                 $this->createTicket($ticket, $_POST);  // Store event data in session
+                $event_id = $_SESSION['event_data']['event_id'];
                 $_SESSION['event_data'] = [
                     'event_id' => $_POST['event_id'],
                     'event_name' => $_POST['event_name'],
@@ -24,7 +25,7 @@ class TicketController {
                     'created_ticket_types' => $_SESSION['event_data']['created_ticket_types'] ?? []
                 ];
                 $_SESSION['event_data']['created_ticket_types'][] = $_POST['ticket_type'];
-                redirect("create-ticket");  // Reload the same page to add another ticket type
+                redirect("create-ticket?event_id=" . $event_id);  // Reload the same page to add another ticket type
             } elseif (isset($_POST['submit'])) {
                 // Process for reviewing tickets
                 $data = $this->createTicket($ticket, $_POST); // Store event data in session

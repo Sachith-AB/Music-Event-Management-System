@@ -23,7 +23,6 @@ class UpcomingEvents {
 
         $ticket = new Ticket();
 
-        $ticket = new Ticket();
 
         // Create a combined array of ticket and event details
         $combinedTickets = [];
