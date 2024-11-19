@@ -91,14 +91,14 @@ $_SESSION['last_visit'] = date('Y-m-d H:i:s');
             </form>
 
 
-            <form  method="post" enctype="multipart/form-data">
+            <!-- <form  method="post" enctype="multipart/form-data">
                 <div class="input-wrap">
                 <label for="images">Upload Images:</label>
                 <input type="file" id="images" name="cover_images" accept="image/*" multiple>
                 <input type="hidden" name="event_id" value="<?php echo $data['id'] ?>">
                 <button class="upload-button" type="submit" name="upload">Upload</button>
                 </div>
-            </form>
+            </form> -->
 
 
             

@@ -48,6 +48,7 @@ $flag = htmlspecialchars($_GET['flag']?? '');
                     <li><a href="#general-information">General Information</a></li>
                     <li><a href="#location-time">Location and Time</a></li>
                     <li><a href="#pricing-type">Pricing and Type</a></li>
+                    <li><a href="#review-publish">Review and Publish</a></li>
                 </ul>
             </div>
 
@@ -63,7 +64,7 @@ $flag = htmlspecialchars($_GET['flag']?? '');
         <!--create main content -->
         <div class="main-content">
 
-            <form  method="POST" >
+            <form  method="POST" enctype="multipart/form-data" >
 
                 <section id="general-information">
                     <h2>General Information</h2>
@@ -155,36 +156,28 @@ $flag = htmlspecialchars($_GET['flag']?? '');
 
                         </div>
                         </div>
+                    </section>
 
 
+                    <section>
+                        <h2>Do you want upload images?</h2>
+                        <label for="images">Upload Images:</label>
+                        <input type="file" id="images" name="cover_images" accept="image/*" multiple>
+                        <input type="hidden" name="event_id" value="<?php echo $data['id'] ?? ''; ?>">
+
+                    </section>
+
+                    <section id="review-publish">
+                        <button type="submit" class="review-button" name="submit">Review</button>
                     </section>
 
                     </div>
                 </div>
-
-
                 </section>
 
+            </section>
 
-                    
-                </section>
-
-                <section>
-                    <h2>Do you want upload images?</h2>
-                    <button class = "upload-button" onclick="goUpdate()">Yes</button>
-                </section>
-                
-
-                <button type="submit" class="review-button" name="submit">Review</button>
-                
-
-
-
-            </form>
-
-
-            
-            
+        </form>
         </div>
     </div>
 
