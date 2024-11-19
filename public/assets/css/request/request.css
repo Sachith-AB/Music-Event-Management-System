@@ -54,7 +54,7 @@ table tr:hover {
 th {
     border-bottom: 1px solid #dddddd; /* Adds border only to the bottom of the heading row */
     font-size: 16px;
-    padding: 14px;
+    padding: 14px 14px;
     text-align: center;
    
     background-color: #f4f4f4;
@@ -65,20 +65,70 @@ th {
  td {
     border-bottom: 1px solid #dddddd;
     font-size: 14px ;
-    padding: 12px;
+    padding: 12px 15px;
     text-align: center;
+    font-weight: 550;
+    /* white-space: nowrap; /* Prevents text from wrapping */
+    /* overflow: hidden; Clips overflowing text */
+    /* text-overflow: ellipsis; Adds ellipsis to clipped text */
+    /* word-wrap: break-word; Allows breaking words if necessary */ 
 }
 
 
+td:nth-child(1) {
 
-
-
-
-
-.accept:hover {
-
-    background-color: rgb(16, 171, 192);
+    width: 70px;
+  
 }
+
+td:nth-child(2) {
+
+    width: 130px;
+}
+
+td:nth-child(3) {
+
+    width: 90px;
+}
+
+td:nth-child(4) {
+
+    width: 100px;
+}
+
+td:nth-child(5) {
+
+    width: 150px;
+}
+
+/* .second td:nth-child(6) {
+
+    width: 60px;
+}
+
+.second td:nth-child(7) {
+
+    width: 500px;
+}
+
+td:nth-child(8) {
+
+    width: 90px;
+}
+
+td:nth-child(9) {
+
+    width: 100px;
+} */
+
+
+form {
+
+    display: inline;
+    
+}
+
+
 
 .search-container {
 
@@ -120,9 +170,6 @@ th {
 
 button {
 
-
-    background-color:  #00BDD6FF;
-
     color: #fff;
     padding: 10px 20px;
     border: none;
@@ -131,8 +178,34 @@ button {
     font-size: 14px;
 }
 
+.accept {
+
+    background-color: #40b146;
+}
+
+.accept:hover {
+
+    background-color: #1d751f;
+}
+
+.reject {
+
+    background-color: #e93a74;
+}
+
 .reject:hover {
 
-    background-color: rgb(16, 171, 192);
+    background-color: #f10856;
+}
+
+
+.cover-image {
+
+    height: 40px;
+    width: 10px;
+    margin-right: 0;
+    border-radius: 2px;
+    border: 1px solid black;
+
 }
 
