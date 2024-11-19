@@ -83,8 +83,7 @@
         </div>
     </section>
 
-
-
+    
     <!--Event Browsing-->
     <div id="new-events">
         <div class="events-selection">

@@ -64,7 +64,7 @@ $flag = htmlspecialchars($_GET['flag']?? '');
         <!--create main content -->
         <div class="main-content">
 
-            <form  method="POST" >
+            <form  method="POST" enctype="multipart/form-data" >
 
                 <section id="general-information">
                     <h2>General Information</h2>
@@ -161,7 +161,10 @@ $flag = htmlspecialchars($_GET['flag']?? '');
 
                     <section>
                         <h2>Do you want upload images?</h2>
-                        <button class = "upload-button">Yes</button>
+                        <label for="images">Upload Images:</label>
+                        <input type="file" id="images" name="cover_images" accept="image/*" multiple>
+                        <input type="hidden" name="event_id" value="<?php echo $data['id'] ?? ''; ?>">
+
                     </section>
 
                     <section id="review-publish">
