@@ -105,7 +105,7 @@ class Event {
     public function searchEventByName($searchTerm){
 
         $searchName = $searchTerm['name'] ?? "";
-       
+    
         
         $id = $searchTerm['location']?? '';
         
@@ -142,6 +142,7 @@ class Event {
     }
 
     public function getAllEventData($id) {
+
         $res['event']=[];
         $res['event'] = $this->firstById($id);
         $request = new Request;
@@ -181,7 +182,7 @@ class Event {
         $res['venue'] = $result_2;
         
 
-    show($res);
+    //show($res);
         return $res ? $res : [];
     }
 
