@@ -14,6 +14,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900&family=Sen:wght@400..800&display=swap" rel="stylesheet">
 </head>
 
+
 <body>
     <!-- headersection -->
     <div class="headersection">
@@ -131,7 +132,7 @@
                 </div>
                 <div>
                     <h3>Place</h3>
-                    <p><?php echo $data['venue'][0]->name ?><br><?php echo $data['venue'][0]->location ?></p>
+                    <p><?php echo $data['event']->address ?><br></p>
                 </div>
             </div>
 
@@ -147,23 +148,25 @@
 
         <div class="team-grid-scrollable">
             <div class="team-grid">
-                <?php foreach($data['performers'] as $perfotmer): ?>
-                    <div class="team-member">
-                        <img class="team-member-image" src="<?=ROOT?>/assets/images/user/<?php echo $perfotmer->pro_pic?>" alt="Selina Valencia">
-                        <div class="team-info">
-                            <h3><?php echo $perfotmer->name ?></h3>
-                            
+                <?php if(!empty($data['performers'])): ?>
+                    <?php foreach($data['performers'] as $perfotmer): ?>
+                        <div class="team-member">
+                            <img class="team-member-image" src="<?=ROOT?>/assets/images/user/<?php echo $perfotmer->pro_pic?>" alt="Selina Valencia">
+                            <div class="team-info">
+                                <h3><?php echo $perfotmer->name ?></h3>
+                                
 
+                            </div>
+                            <div class="social-icons">
+                                <a href="#"><i class="fab fa-facebook-f"></i></a>
+                                <a href="#"><i class="fab fa-twitter"></i></a>
+                                <a href="#"><i class="fab fa-instagram"></i></a>
+                                <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                            </div>
                         </div>
-                        <div class="social-icons">
-                            <a href="#"><i class="fab fa-facebook-f"></i></a>
-                            <a href="#"><i class="fab fa-twitter"></i></a>
-                            <a href="#"><i class="fab fa-instagram"></i></a>
-                            <a href="#"><i class="fab fa-linkedin-in"></i></a>
-                        </div>
-                    </div>
 
-                <?php endforeach ?>
+                    <?php endforeach ?>
+                <?php endif ?>
             </div>
 
         </div>
@@ -173,7 +176,8 @@
     <!-- ticket section -->
     <div class="ticketbackground">
         <div class="pricing-container">
-            <?php foreach($data['tickets'] as $ticket): ?>
+            <?php if(!empty($data['tickets'])): ?>
+                <?php foreach($data['tickets'] as $ticket): ?>
                 <div class="pricing-card">
                 <h2>
                     <?php if($ticket->ticket_type == "SILVER"): ?>
@@ -215,6 +219,8 @@
                 <button onclick="window.location.href='purchaseticket?id=<?= $ticket->id ?>'">Buy Ticket Now</button>
                 </div>
             <?php endforeach ?>
+            <?php endif ?>
+            
             
             <script>
                 document.addEventListener("DOMContentLoaded", function () {

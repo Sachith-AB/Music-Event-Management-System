@@ -16,8 +16,8 @@ route('event-delete', 'event/Delete@index');
 route('view-event','event/ViewEvent@index');
 
 //route for event collaborators
-route('singer-profile','eventCollaborator/singerProfile@index');
-route('singer-dashboard','eventCollaborator/SingerDashboard@index');
+route('colloborator-profile','eventCollaborator/singerProfile@index');
+route('colloborator-dashboard','eventCollaborator/SingerDashboard@index');
 
 
 
