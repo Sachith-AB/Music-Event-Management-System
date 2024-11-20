@@ -25,9 +25,12 @@
                 <?php if($_SESSION['USER']->role == 'planner'): ?>
                     <li><a href="event-planner-dashboard">Dashboard</a></li>
                 <?php else: ?>
-                    <li><a href="event-colloborator-dashboard">Dashboard</a></li>
+                    <li><a href="colloborator-dashboard">Dashboard</a></li>
                 <?Php endif ?>
-                <img class="image" onclick="goToProfile()" src="<?=ROOT?>/assets/images/user/<?php echo $_SESSION['USER']->pro_pic ?>" alt="user profile">
+                <?php
+                // Determine the appropriate function to call based on the user's role
+                $onClickFunction = $_SESSION['USER']->role === 'collaborator' ? 'goToColloboratorProfile()' : 'goToProfile()'?>
+                <img class="image" onclick="<?= $onClickFunction ?>"  src="<?=ROOT?>/assets/images/user/<?php echo $_SESSION['USER']->pro_pic ?>" alt="user profile">
             <?php else: ?>
                 <li><a href="signin" class="sign-up">Sign In</a></li>
                 <li><a class="sign-up" onclick="openModal()">Sign Up</a></li>
@@ -67,6 +70,10 @@
     function goToProfile() {
         window.location.href = "profile";
     };
+
+    function goToColloboratorProfile(){
+        window.location.href = "colloborator-profile"
+    }
 
     function goToHome (){
         window.location.href = "home"
