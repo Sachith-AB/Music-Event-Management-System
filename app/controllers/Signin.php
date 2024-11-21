@@ -32,7 +32,7 @@ class Signin {
                 //echo 'check';
                 $checkpassword = password_verify($_POST['password'], $row->password);
 
-                if(!$checkpassword){
+                if($checkpassword){
                     
                     unset($row->password);
                     
