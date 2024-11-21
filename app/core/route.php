@@ -69,3 +69,10 @@ route('event-planner-myevents','eventPlanner/EventPlannerMyEvents@index');
 route('event-planner-payment','eventPlanner/EventPlannerPayment@index');
 route('event-planner-messages','eventPlanner/EventPlannerMessage@index');
 
+
+//Route for Admin
+route('admin-dashboard','admin/AdminDashboard@index');
+route('admin-eventplanners','admin/EventPlanners@index');
+route('admin-eventcollaborators','admin/EventCollaborators@index');
+route('admin-ticketholders','admin/TicketHolders@index');
+
