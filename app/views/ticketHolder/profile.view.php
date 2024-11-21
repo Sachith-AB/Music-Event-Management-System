@@ -63,7 +63,7 @@
                             <div class="upcommingeve-ticket-info">
                                 <h3><?= htmlspecialchars($event[0]->event_name) ?>: <?= htmlspecialchars($event[0]->event_description) ?></h3>
                                 <p>📅 <?= htmlspecialchars(date("l, F d | h:i A", strtotime($event[0]->event_date))) ?></p>
-                                <p>📍 <?= htmlspecialchars($event[0]->event_city) ?>, <?= htmlspecialchars($event[0]->event_province) ?></p>
+                                <p>📍 <?= htmlspecialchars($event[0]->address) ?></p>
                                 <div class="upcommingeve-ticket-meta"><?= htmlspecialchars($event['ticket_quantity']) ?> Tickets - LKR<?= htmlspecialchars($event['ticket_quantity'] * $event[0]->ticket_price) ?></div>
                             </div>
                         </div>

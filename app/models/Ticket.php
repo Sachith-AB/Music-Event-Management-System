@@ -94,15 +94,13 @@ class Ticket {
                     events.description AS event_description,
                     events.start_time AS event_date, 
                     events.end_time AS event_endtime,
-                    events.city AS event_city,
-                    events.province AS event_province
-                  FROM 
-                    tickets 
-                  JOIN 
-                    events ON tickets.event_id = events.id
-                  WHERE 
-                    tickets.id = :ticket_id";
-
+                    events.address AS address
+                    FROM 
+                        tickets 
+                    JOIN 
+                        events ON tickets.event_id = events.id
+                    WHERE 
+                        tickets.id = :ticket_id";
         $params = ['ticket_id' => $ticket_id];
         return $this->query($query, $params);
     }
@@ -110,10 +108,10 @@ class Ticket {
 
     public function decreaseQuantity($ticket_id, $ticket_quantity) {
         $query = "UPDATE tickets 
-                  SET sold_quantity = sold_quantity + :ticket_quantity, 
-                      quantity = quantity - :ticket_quantity 
-                  WHERE id = :ticket_id AND quantity >= :ticket_quantity";
-    
+                    SET sold_quantity = sold_quantity + :ticket_quantity, 
+                        quantity = quantity - :ticket_quantity 
+                    WHERE id = :ticket_id AND quantity >= :ticket_quantity";
+        
         $params = [
             'ticket_quantity' => $ticket_quantity,
             'ticket_id' => $ticket_id

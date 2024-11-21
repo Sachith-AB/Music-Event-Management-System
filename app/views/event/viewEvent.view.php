@@ -13,7 +13,8 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900&family=Sen:wght@400..800&display=swap" rel="stylesheet">
 </head>
-<!-- <?php show($data) ?> -->
+
+
 <body>
     <!-- headersection -->
     <div class="headersection">
@@ -131,7 +132,7 @@
                 </div>
                 <div>
                     <h3>Place</h3>
-                    <p><?php echo $data['venue'][0]->name ?><br><?php echo $data['venue'][0]->location ?></p>
+                    <p><?php echo $data['event']->address ?><br></p>
                 </div>
             </div>
 
@@ -144,24 +145,30 @@
             <h1>Meet the performers</h1>
             <!-- <p>Cupidatat sunt excepteur ipsum non. Ex consectetur amet eu commodo incididunt elit incididunt aliqua aliqua irure elit minim voluptate. Sit est nisi labore eiusmod et ad. Anim quis anim adipisicing quis cillum id ullamco officia do culpa voluptate exercitation nisi.</p> -->
         </div>
+
         <div class="team-grid-scrollable">
             <div class="team-grid">
-                <?php foreach($data['performers'] as $perfotmer): ?>
-                    <div class="team-member">
-                        <img class="team-member-image" src="<?=ROOT?>/assets/images/user/<?php echo $perfotmer->pro_pic?>" alt="Selina Valencia">
-                        <div class="team-info">
-                            <h3><?php echo $perfotmer->name ?></h3>
-                            
+                <?php if(!empty($data['performers'])): ?>
+                    <?php foreach($data['performers'] as $perfotmer): ?>
+                        <div class="team-member">
+                            <img class="team-member-image" src="<?=ROOT?>/assets/images/user/<?php echo $perfotmer->pro_pic?>" alt="Selina Valencia">
+                            <div class="team-info">
+                                <h3><?php echo $perfotmer->name ?></h3>
+                                
+
+                            </div>
+                            <div class="social-icons">
+                                <a href="#"><i class="fab fa-facebook-f"></i></a>
+                                <a href="#"><i class="fab fa-twitter"></i></a>
+                                <a href="#"><i class="fab fa-instagram"></i></a>
+                                <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                            </div>
                         </div>
-                        <div class="social-icons">
-                            <a href="#"><i class="fab fa-facebook-f"></i></a>
-                            <a href="#"><i class="fab fa-twitter"></i></a>
-                            <a href="#"><i class="fab fa-instagram"></i></a>
-                            <a href="#"><i class="fab fa-linkedin-in"></i></a>
-                        </div>
-                    </div>
-                <?php endforeach ?>
+
+                    <?php endforeach ?>
+                <?php endif ?>
             </div>
+
         </div>
     </section>
     
@@ -169,7 +176,8 @@
     <!-- ticket section -->
     <div class="ticketbackground">
         <div class="pricing-container">
-            <?php foreach($data['tickets'] as $ticket): ?>
+            <?php if(!empty($data['tickets'])): ?>
+                <?php foreach($data['tickets'] as $ticket): ?>
                 <div class="pricing-card">
                 <h2>
                     <?php if($ticket->ticket_type == "SILVER"): ?>
@@ -211,12 +219,38 @@
                 <button onclick="window.location.href='purchaseticket?id=<?= $ticket->id ?>'">Buy Ticket Now</button>
                 </div>
             <?php endforeach ?>
+            <?php endif ?>
+            
             
             <script>
-                function goToTickets() {
-                    window.location.href = "purchaseticket";
+                document.addEventListener("DOMContentLoaded", function () {
+                const sliderWrapper = document.querySelector(".slider-wrapper");
+                const teamMembers = document.querySelectorAll(".team-member");
+                const totalPerformers = teamMembers.length;
+                const visibleCount = 4; // Show 4 performers at a time
+                let currentIndex = 0;
+
+                function updateSliderPosition() {
+                    // Calculate the amount to shift for each slide (based on performer width and visible count)
+                    const shiftAmount = -100 * currentIndex;
+                    sliderWrapper.style.transform = `translateX(${shiftAmount}%)`;
                 }
-            </script>
+
+                function startSlider() {
+                    setInterval(() => {
+                        // Increment the current index by the number of visible performers
+                        currentIndex = (currentIndex + 1) % Math.ceil(totalPerformers / visibleCount);
+                        updateSliderPosition();
+                    }, 3000); // Change interval time in milliseconds
+                }
+
+                // Initialize slider styles and start sliding
+                sliderWrapper.style.width = `${(totalPerformers / visibleCount) * 100}%`;
+                teamMembers.forEach(member => member.style.width = `${100 / visibleCount}%`);
+                startSlider();
+                });
+
+            </script>
         </div>
     </div>
 </body>
