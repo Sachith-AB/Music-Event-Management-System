@@ -209,7 +209,7 @@ class Event {
         $query = "SELECT * FROM tickets WHERE event_id = '$id'";
         
         $result = $this->query($query);
-        if(empty($result)){
+        if(!empty($result)){
             $res['tickets']=$result;
         }
         
