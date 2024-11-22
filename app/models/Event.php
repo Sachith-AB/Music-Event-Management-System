@@ -15,7 +15,9 @@ class Event {
         'end_time',
         'cover_images',
         'pricing',
-        'type'
+        'type',
+        'createdBy',
+        'address'
     ];
 
     public function validEvent($data) {
@@ -46,17 +48,17 @@ class Event {
         }
 
 
-        if (empty($data['city'])) {
-            $this->errors['flag'] = true;
-            $this->errors['error'] = "City is required";
-            $this->errors['error_no'] = 4;
-        }
+        // if (empty($data['city'])) {
+        //     $this->errors['flag'] = true;
+        //     $this->errors['error'] = "City is required";
+        //     $this->errors['error_no'] = 4;
+        // }
 
-        if (empty($data['province'])) {
-            $this->errors['flag'] = true;
-            $this->errors['error'] = "Province is required";
-            $this->errors['error_no'] = 5;
-        }
+        // if (empty($data['province'])) {
+        //     $this->errors['flag'] = true;
+        //     $this->errors['error'] = "Province is required";
+        //     $this->errors['error_no'] = 5;
+        // }
 
         if (empty($data['eventDate'])) {
             $this->errors['flag'] = true;
