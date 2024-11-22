@@ -230,10 +230,22 @@
                         </div>
                     <?php endfor; ?>
 
+                    <form id="purchaseForm" method="POST">
+                        <input type="hidden" name="first-name" value= "<?php echo $purchaseDetails[0]->buyer_Fname ?>" />
+                        <input type="hidden" name="last-name" value= "<?php echo $purchaseDetails[0]->buyer_Lname ?>" />
+                        <input type="hidden" name="ticketCount" value= "<?php echo $purchaseDetails[0]->ticket_quantity?>" />
+                        <input type="hidden" name="eventname" value= "<?php echo $eventAndTicketDetails[0]->event_name ?>" />
+                        <input type="hidden" name="eventdate" value= "<?php echo $eventAndTicketDetails[0]->event_date?>" />
+                        <input type="hidden" name="address" value= "<?php echo $eventAndTicketDetails[0]->event_city ?? ""?>" />
+                        <!-- <?php echo$_SESSION['USER']->email?> -->
+                        <input type="hidden" name ="email" value = "<?php echo$_SESSION['USER']->email?>"/>
+
                 
                     <div class="button-group">
                         <button type="button" class="add-ticket-btn" onclick="goToMyTickets()">Go to profile</button>
+                        <button type="submit" class="pay-now-btn" name="submit">Send Email for Ticket</button>
                     </div>
+                    </form>
                 </div>
 
                 <script>
