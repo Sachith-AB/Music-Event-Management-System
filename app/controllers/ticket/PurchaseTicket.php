@@ -11,11 +11,6 @@ class Purchaseticket {
         $ticket_id = isset($_GET['id']) ? $_GET['id'] : null;
 
         if ($ticket_id) {
-            if (!$this->isLoggedIn()) {
-                redirect('signin');
-                exit();
-            }
-    
             // Assuming $_SESSION['USER'] holds the logged-in user's details, including ID
             $userId = $_SESSION['USER']->id;
 
@@ -73,20 +68,14 @@ class Purchaseticket {
             echo "Ticket ID not specified in the URL.";
         }
         
-       
     }
 
     public function createPurchase($purchaseData,$buyticket)
     {
-
         $result = $buyticket->insert($purchaseData);
-        show($result);
-
-       
-            // If the purchase was successful, decrease the ticket quantity
+        // If the purchase was successful, decrease the ticket quantity
         $ticket = new Ticket();
         $ticket->decreaseQuantity($purchaseData['ticket_id'], $purchaseData['ticket_quantity']);
-      
         
         
         return $result;

@@ -11,7 +11,6 @@
     <!-- Include Font Awesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
 </head>
-<body>
 
     <!-- Include Header -->
     
@@ -37,7 +36,7 @@
                         </div>
                         <div>
                             <h3>Place</h3>
-                            <p><?= htmlspecialchars($ticketdetails[0]->event_city) ?><br><?= htmlspecialchars($ticketdetails[0]->event_province) ?></p>
+                            <p><?= htmlspecialchars($ticketdetails[0]->address) ?></p>
                         </div>
                     </div>
                 </div>
@@ -137,7 +136,6 @@
                             <p>Total</p>
                             <p id="totalDisplay"></p>
                         </div>
-<?php echo $_SESSION['USER']->email ?>
                         <!-- Payment Method -->
                         <div class="payment-method">
                             <img src="<?=ROOT?>/assets/images/ticket/mastercard-icon.png" alt="Mastercard">
@@ -173,12 +171,12 @@
                     <?php foreach ($recentevents as $event): ?>
                         <div class="musicevent-event-card">
                             <!-- <div class="musicevent-event-badge">20% OFF</div> -->
-                            <img src=<?= htmlspecialchars($event->cover_images) ?> alt="Musical Fusion Festival" class="musicevent-event-image">
+                            <img src='<?=ROOT?>/assets/images/events/<?php echo $event->cover_images?>' alt="Musical Fusion Festival" class="musicevent-event-image">
                             <div class="musicevent-event-info">
                                 <div class="musicevent-event-title"><?= htmlspecialchars($event->event_name) ?></div>
                                 <div class="musicevent-event-details">
                                     <div>📅 <?= htmlspecialchars(date("l, F d | h:i A", strtotime($event->start_time))) ?></div>
-                                    <div>📍 <?= htmlspecialchars($event->city) ?>, <?= htmlspecialchars($event->province) ?></div>
+                                    <div>📍 <?= htmlspecialchars($event->address) ?></div>
                                 </div>
                                 <!-- <div class="musicevent-event-price">From $80</div> -->
                             </div>

@@ -54,7 +54,7 @@
                     <div class="form-warp">
                         <form class="sign-up-form" id="signupForm" method="POST">
                             <div class="logo">
-                                <img src="<?= ROOT ?>/assets/images/logo.JPG" alt="company_logo">
+                                <img src= "<?=ROOT?>/assets/images/logo/logo.png" alt="company_logo">
                                 <!-- <h4>Amoral</h4> -->
                                 <span>
                                     <a href="<?= ROOT ?>/home">

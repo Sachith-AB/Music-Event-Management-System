@@ -15,7 +15,7 @@
 ?>
 <header>
     <div class="logo">
-        <img src = "logo.png" alt = "musicia" onclick="goToHome()"> 
+        <img src = "<?=ROOT?>/assets/images/logo/logo.png" alt = "musicia" onclick="goToHome()"> 
     </div>
     <nav>
         <ul>
