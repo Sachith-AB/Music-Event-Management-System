@@ -13,7 +13,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900&family=Sen:wght@400..800&display=swap" rel="stylesheet">
 </head>
-
+<?php show($data) ?>
 
 <body>
     <!-- headersection -->
@@ -93,7 +93,7 @@
     </div>
 
     <!-- eventdetails section -->
-     <div class="eventdetails">
+    <div class="eventdetails">
         <!-- image section -->
         <div class="eventimages">
             <div class="image image1">
