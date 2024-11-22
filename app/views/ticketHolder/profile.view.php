@@ -69,6 +69,10 @@
                         </div>
                     <?php endforeach; ?>
                 </div>
+            <?php else: ?>
+                <div class="purchase-text">
+                    No tickets have been purchased yet...
+                </div>
             <?php endif; ?>
         </div>
     </div>

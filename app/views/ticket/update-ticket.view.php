@@ -1,4 +1,4 @@
-<!-- <?php include ('../app/views/components/CreateEventHeader.php'); ?> -->
+<?php include ('../app/views/components/header.php'); ?>
 
 <?php
 if (session_status() == PHP_SESSION_NONE) {
