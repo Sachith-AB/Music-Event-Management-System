@@ -12,7 +12,6 @@ if(isset($_SESSION['last_visit'])){
 }
 
 $_SESSION['last_visit'] = date('Y-m-d H:i:s');
-show($_POST);
 ?>
 
 <!DOCTYPE html>
@@ -29,7 +28,8 @@ show($_POST);
     <?php
     $error = htmlspecialchars($_GET['error'] ?? '');
     $error_no = htmlspecialchars($_GET['error_no'] ?? '');
-    $flag = htmlspecialchars($_GET['flag'] ?? '');
+    $flag = htmlspecialchars($_GET['flag'] ?? 0);
+    show($data);
     ?>
     <div class="container">
         <!-- Sidebar -->
@@ -60,7 +60,7 @@ show($_POST);
                     <h2>General Information</h2>
                     <div class="form-group">
                         <label for="event_name">Name</label>
-                        <input type="text" id="event_name" name="event_name" placeholder="Make it catchy and memorable" required>
+                        <input type="text" id="event_name" name="event_name" placeholder="Make it catchy and memorable">
                     </div>
                     <div class="form-group">
                         <label for="event_description">Description</label>
@@ -69,11 +69,11 @@ show($_POST);
                 </section>
 
                 <section id="location-time">
-                    <h2>Location and Time</h2>
+                    <h2>Location</h2>
                     <p>You can choose the location or pinpoint it on the map</p>
 
                     <div class="search-container">
-                        <input type="text" id="address" placeholder="Search for a location" name="address"/>
+                        <input type="text" id="address" placeholder="Search for a location" class="search" name="address"/>
                         <button type="button" id="search-button">Search</button>
                     </div>
 
@@ -87,9 +87,9 @@ show($_POST);
         </div>
     </div>
 
-    <?php if (!empty($error)): ?>
+    <?php if (!empty($data['error'])): ?>
         <?php 
-            $message = $error;
+            $message = $data['error'];
             include("../app/views/components/r-message.php");
         ?>
     <?php elseif($flag == 1): ?>
