@@ -29,7 +29,6 @@ $_SESSION['last_visit'] = date('Y-m-d H:i:s');
     $error = htmlspecialchars($_GET['error'] ?? '');
     $error_no = htmlspecialchars($_GET['error_no'] ?? '');
     $flag = htmlspecialchars($_GET['flag'] ?? 0);
-    show($data);
     ?>
     <div class="container">
         <!-- Sidebar -->
