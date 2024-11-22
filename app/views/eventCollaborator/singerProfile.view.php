@@ -1,3 +1,4 @@
+<?php include ('../app/views/components/header.php'); ?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -7,6 +8,13 @@
   <link rel="stylesheet" href="<?=ROOT?>/assets/css/eventCollaborators/singerProfile.css">
 </head>
 <body>
+  <?php //$id = $_SESSION['USER']->id;
+
+  $success = htmlspecialchars($_GET['msg'] ?? '');
+  $flag = htmlspecialchars($_GET['flag'] ?? 0);
+  //show($_SESSION['USER']);
+
+  ?>
   <div class="dash-container">
     <?php include ('../app/views/components/collaborator/singersidebar.php');  ?>
       <div class="dashboard">
@@ -73,26 +81,54 @@
         <!-- Section for updating Profile Information -->
         <div class="update-profile-info">
           <h2>Update Profile Information</h2><br/>
-            <form method="POST" enctype="multipart/form-data">
-              <img src="<?=ROOT?>/assets/images/ticket/profilepic-icon.jpg" alt="Profile Picture" class="profile-picture">
+            <!-- <form method="POST" enctype="multipart/form-data"> -->
+              <img src="<?=ROOT?>/assets/images/user/<?php echo $_SESSION['USER']->pro_pic ?>" alt="Profile Picture" class="profile-picture">
               <br/>
               <div class="input-group">
                 <label for="name">Username:</label>
-                <input type="text" name="name" id="name" value="" required>
+                <div class="input-text"><?php echo $_SESSION['USER']->name ?></div>
               </div>
-              <div class="input-group">
+              <!-- <div class="input-group">
                 <label for="password">Password:</label>
                 <input name="password" id="password"></input>
-              </div>
+              </div> -->
               <div class="input-group">
                 <label for="email">Email:</label>
-                <input name="email" id="email"></input>
+                <div class="input-text"><?php echo $_SESSION['USER']->email ?></div>
+                
               </div>
-              <button type="submit">Update Profile</button>
-            </form>
+              <a href="colloborator-updateprofile" class="button" type="button">Update Profile</a>
+            <!-- </form> -->
           </div>
         </div>
       </div>
   </div>
+  <?php if($flag == 2):?>
+        <?php
+            $message = $success;
+            include ("../app/views/components/s-message.php")
+            ?>
+    <?php  endif ?>
+
+    <script>
+        const menuItems = document.querySelectorAll('.header-menu-item');
+        
+        menuItems.forEach(item => {
+            item.addEventListener('click', function() {
+                // Remove 'selected' class from all items
+                menuItems.forEach(i => i.classList.remove('selected'));
+                
+                // Add 'selected' class to the clicked item
+                this.classList.add('selected');
+            });
+        });
+    </script>
+
+    <script src="<?=ROOT?>/assets/js/message.js"></script>
+
+    <!-- Ionicons Scripts -->
+    <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+    <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
+    
 </body>
 </html>

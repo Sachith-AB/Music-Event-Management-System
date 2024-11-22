@@ -15,16 +15,9 @@ class Profile {
         $data = $this->profile($user);
         //show( $data);
 
-        $id = $_SESSION['USER']->id ?? 0;
-        $buyticket = new Buyticket();
-        $mytickets = $buyticket->getAllPurchasedEvents($id);
-        $ticket = new Ticket();
-        $combinedTickets = [];
-        foreach ($mytickets as $myticket) {
-            $ticket_id = $myticket->ticket_id; 
-            $eventDetail = $ticket->getTicketAndEventDetails($ticket_id); 
-            $combinedTickets[] = array_merge((array)$myticket, (array)$eventDetail);
-        }
+        $combinedTickets=$this->purchasedetails();
+
+        
 
         $this->view('ticketHolder/profile',['data'=>$data,'combinedTickets'=>$combinedTickets]);
         
@@ -43,5 +36,23 @@ class Profile {
 
         return $data;
         //show($row);
+    }
+
+    public function purchasedetails(){
+
+        $buyticket = new Buyticket();
+        $ticket = new Ticket();
+
+        $id = $_SESSION['USER']->id ?? 0;
+
+        $mytickets = $buyticket->getAllPurchasedEvents($id);
+        $combinedTickets = [];
+        foreach ($mytickets as $myticket) {
+            $ticket_id = $myticket->ticket_id; 
+            $eventDetail = $ticket->getTicketAndEventDetails($ticket_id); 
+            $combinedTickets[] = array_merge((array)$myticket, (array)$eventDetail);
+        }
+        return $combinedTickets;
+
     }
 }
