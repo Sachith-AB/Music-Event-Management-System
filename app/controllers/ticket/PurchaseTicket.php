@@ -1,14 +1,23 @@
 <?php
 
+
+
 class Purchaseticket {
 
     use Controller;
     use Model;
+
     public function index() {
 
         $buyticket = new Buyticket();
 
         $ticket_id = isset($_GET['id']) ? $_GET['id'] : null;
+
+        // if($_SERVER['REQUEST_METHOD']==="POST" && isset ($_POST["submit"])){
+        //     $this->sendEmail();
+        //     show($_POST);
+
+        // }
 
         if ($ticket_id) {
             // Assuming $_SESSION['USER'] holds the logged-in user's details, including ID
@@ -80,6 +89,5 @@ class Purchaseticket {
         
         return $result;
     }
-
-
+    
 }   

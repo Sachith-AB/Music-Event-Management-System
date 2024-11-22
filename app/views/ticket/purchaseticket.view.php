@@ -141,8 +141,9 @@
                             <img src="<?=ROOT?>/assets/images/ticket/mastercard-icon.png" alt="Mastercard">
                             <span>Mastercard **** 5987</span>
                         </div>
-                        <button type="submit" class="pay-now-btn" name="submit">Pay now</button>
 
+                        <button type="submit" class="pay-now-btn" name="submit">Pay now</button>
+                        
 
                         <script>
                             function confirmPurchase() {
