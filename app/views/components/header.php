@@ -24,7 +24,8 @@
             <?php if($_SESSION['USER']): ?>
                 <?php if($_SESSION['USER']->role == 'planner'): ?>
                     <li><a href="event-planner-dashboard">Dashboard</a></li>
-                <?php else: ?>
+                <?Php endif ?>    
+                <?php if($_SESSION['USER']->role == 'collaborator'): ?>
                     <li><a href="colloborator-dashboard">Dashboard</a></li>
                 <?Php endif ?>
                 <?php
