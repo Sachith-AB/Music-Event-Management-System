@@ -71,18 +71,6 @@ $_SESSION['last_visit'] = date('Y-m-d H:i:s');
                     </div>
                 </section>
 
-                <section id="location-time">
-                    <h2>Location</h2>
-                    <p>You can choose the location or pinpoint it on the map</p>
-
-                    <div class="search-container">
-                        <input type="text" id="address" placeholder="Search for a location" class="search" name="address"/>
-                        <button type="button" id="search-button">Search</button>
-                    </div>
-
-                    <div id="map" style="height: 400px;"></div>
-                </section>
-
                 <section id="time-ticket">
                     <h2>Date and Time</h2>
                     <div class="form-group">
@@ -109,7 +97,7 @@ $_SESSION['last_visit'] = date('Y-m-d H:i:s');
                                 <input type="radio" id="free" name="pricing" value="free" required>
                                 <label for="free">Free</label>
                             </div>
-                             <div class="radio-item">
+                            <div class="radio-item">
                                 <input type="radio" id="paid" name="pricing" value="paid" required>
                                 <label for="paid">Paid</label>
                             </div>
@@ -133,15 +121,20 @@ $_SESSION['last_visit'] = date('Y-m-d H:i:s');
 
 
                     </section>
-                    <section>
-                        <h2>Do you want upload images?</h2>
-                        <button class = "upload-button" onclick="goUpdate()">Yes</button>
-                    </section>
-                    
+                    <section id="location-time">
+                        <h2>Location</h2>
+                        <p>You can choose the location or pinpoint it on the map</p>
 
-                <section id="review-publish">
+                        <div class="search-container">
+                            <input type="text" id="address" placeholder="Search for a location" class="search" name="address"/>
+                            <button type="button" id="search-button">Search</button>
+                        </div>
+
+                        <div id="map" style="height: 400px;"></div>
+                    </section>
+                    <section id="review-publish">
                     <button type="submit" class="review-button" name="submit">Review</button>
-                </section>
+                    </section>
             </form>
         </div>
     </div>

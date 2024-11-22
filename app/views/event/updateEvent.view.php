@@ -6,8 +6,7 @@ if (session_status() == PHP_SESSION_NONE) {
 // Retrieve event data from session
 $event_name = $_SESSION['event_data']['event_name'] ?? '';
 $audience = $_SESSION['event_data']['audience'] ?? '';
-$city = $_SESSION['event_data']['city'] ?? '';
-$province = $_SESSION['event_data']['province'] ?? '';
+$address = $_SESSION['event_data']['address'] ?? '';
 $eventDate = $_SESSION['event_data']['eventDate'] ?? '';
 $start_time = $_SESSION['event_data']['start_time'] ?? '';
 $end_time = $_SESSION['event_data']['end_time'] ?? '';
@@ -58,12 +57,7 @@ $_SESSION['last_visit'] = date('Y-m-d H:i:s');
 
                 <div class="input-wrap">
                     <label for = "city">City</label>
-                    <input name="city" type="text" placeholder="City" value="<?php echo $data['city'] ?>">
-                </div>
-
-                <div class="input-wrap">
-                    <label for="province">Province</label>
-                    <input name="province" type="text" placeholder="Province" value="<?php echo $data ['province'] ?>">
+                    <input name="address" type="text" placeholder="City" value="<?php echo $data['address'] ?>">
                 </div>
 
                 <div class="input-wrap">
