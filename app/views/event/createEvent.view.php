@@ -73,7 +73,7 @@ show($_POST);
                     <p>You can choose the location or pinpoint it on the map</p>
 
                     <div class="search-container">
-                        <input type="text" id="search-input" placeholder="Search for a location" name="address"/>
+                        <input type="text" id="address" placeholder="Search for a location" name="address"/>
                         <button type="button" id="search-button">Search</button>
                     </div>
 
@@ -113,7 +113,16 @@ show($_POST);
         }).addTo(map);
 
         // Marker
-        var marker = L.marker([6.9271, 79.8612]).addTo(map);
+        var marker = L.marker([6.9271, 79.8612],{draggable : true}).addTo(map);
+
+        // When the marker is dragged, update the address
+        marker.on('dragend', function (event) {
+                var lat = event.target.getLatLng().lat;
+                var lon = event.target.getLatLng().lng;
+                
+                // Fetch the address using Nominatim API based on the new position
+                getAddress(lat, lon);
+            });
 
         // Function to search location
         function searchLocation(query) {
@@ -126,7 +135,7 @@ show($_POST);
                         var result = data[0];
                         var lat = parseFloat(result.lat);
                         var lon = parseFloat(result.lon);
-                        document.getElementById('search-input').value = result.display_name
+                        document.getElementById('address').value = result.display_name
 
                         // Update map view and marker
                         map.setView([lat, lon], 13);
@@ -142,6 +151,23 @@ show($_POST);
                 });
         }
 
+        function getAddress(lat, lon) {
+            var url = `https://nominatim.openstreetmap.org/reverse?format=json&lat=${lat}&lon=${lon}`;
+
+            fetch(url)
+                .then(response => response.json())
+                .then(data => {
+                    if (data && data.display_name) {
+                        console.log(data)
+                        document.getElementById('address').value = data.display_name; // Set the address in hidden input
+                    }
+                })
+                .catch(error => {
+                    console.error("Error:", error);
+                    alert("Error occurred while fetching the address.");
+                });
+        }
+
         // Event listener for search
         document.getElementById("search-button").addEventListener("click", function () {
             var query = document.getElementById("search-input").value;
@@ -151,6 +177,7 @@ show($_POST);
                 alert("Please enter a location to search.");
             }
         });
+        window.onload = initMap;
     </script>
 </body>
 </html>
