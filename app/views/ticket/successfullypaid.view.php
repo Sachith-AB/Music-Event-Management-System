@@ -38,7 +38,7 @@
                         Successful payment!
                     </div>
                 </div>
-                <h1 class="event-title"><span><?= htmlspecialchars($eventAndTicketDetails[0]->event_name) ?></span><?= htmlspecialchars($eventAndTicketDetails[0]->event_description) ?></h1>
+                <h1 class="event-title"><span><?= htmlspecialchars($eventAndTicketDetails[0]->event_name) ?></span>  <?= htmlspecialchars($eventAndTicketDetails[0]->event_description) ?></h1>
                 <div class="event-info">
                     <div class="event-item">
                         <div class="icon">
@@ -65,7 +65,7 @@
                         </div>
                         <div>
                             <h3>Place</h3>
-                            <p><?= htmlspecialchars($eventAndTicketDetails[0]->event_city) ?><br><?= htmlspecialchars($eventAndTicketDetails[0]->event_province) ?></p>
+                            <p><?= htmlspecialchars($eventAndTicketDetails[0]->address) ?></p>
                         </div>
                     </div>
                     <div class="event-item">
@@ -111,11 +111,11 @@
                 </div>
                 <div class="input-group">
                     <div class="input-field">
-                    <label for="first-name">Fname</label>
+                    <label for="first-name">First Name</label>
                         <p><?= htmlspecialchars($purchaseDetails[0]->buyer_Fname) ?></p>
                     </div>
                     <div class="input-field">
-                        <label for="last-name">Lname</label>
+                        <label for="last-name">Last Name</label>
                         <p?><?= htmlspecialchars($purchaseDetails[0]->buyer_Lname) ?></p>
                     </div>
                     <div class="input-field">
@@ -135,40 +135,6 @@
                     <div class="contact-header">
                         <h3>Ticket (<?= htmlspecialchars($purchaseDetails[0]->ticket_quantity) ?>) total: <span>LKR <?= htmlspecialchars($purchaseDetails[0]->ticket_quantity * $eventAndTicketDetails[0]->ticket_price) ?></span></h3>
                         <a href="#" class="login-link" onclick="openViewTicketModal()">View Ticket</a>
-                    </div>
-                    <!--modal foe ticket view button-->
-                    <div id="ticketModal" class="modal">
-                        <div class="modal-content">
-                            <span class="close" onclick="closeViewTicketModal()">&times;</span>
-                            <?php
-                            // Loop through the ticket quantity and display each ticket
-                            for ($i = 0; $i < $purchaseDetails[0]->ticket_quantity; $i++) :
-                            ?>
-                                <div class="digiticket">
-                                    <div class="digiticket-left">
-                                        <div class="digiticket-qr-code">
-                                            <img src="<?= ROOT ?>/assets/images/ticket/QR_code-image.png" alt="QR Code">
-                                        </div>
-                                        <div class="digiticket-qr-code-part">
-                                            <p><strong>Code</strong></p>
-                                            <a href="#">MRCE-934912<?= $i + 1 ?></a> <!-- Adjust ticket code if needed -->
-                                        </div>
-                                    </div>
-                                    <div class="digiticket-right">
-                                        <div class="digiticket-content">
-                                            <h1 class="digievent-title"><?= htmlspecialchars($eventAndTicketDetails[0]->event_name) ?></h1>
-                                            <p class="digievent-subtitle"><?= htmlspecialchars($eventAndTicketDetails[0]->event_description) ?></p>
-                                            <p class="digievent-date"><?= htmlspecialchars(date("l, F d, Y h:i A", strtotime($eventAndTicketDetails[0]->event_date))) ?> / at <?= htmlspecialchars($eventAndTicketDetails[0]->event_city) ?></p>
-                                            <div class="digiticket-price">
-                                                <p class="price-label">Public Ticket</p>
-                                                <p class="price-value"><?= htmlspecialchars($eventAndTicketDetails[0]->ticket_price) ?> LKR</p>
-                                                <p class="price-desc">One ticket for one person.</p>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            <?php endfor; ?>
-                        </div>
                     </div>
 
                     <script src="<?= ROOT ?>/assets/js/ticker/ticket-popup.js"></script>
@@ -194,19 +160,18 @@
                             'event_name' => $eventAndTicketDetails[0]->event_name,
                             'buyer_email' => $purchaseDetails[0]->buyer_email
                         ];
-                        $qrCodeUrl = "https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=" . urlencode(json_encode($qrData));
-                    ?>
+                        $qrCodeUrl = "https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=" . urlencode(json_encode($qrData));?>
                         <div class="ticket-details">
                             <div class="ticket-header">
                                 <h3>Ticket <?= $i + 1 ?></h3>
                             </div>
                             <div class="input-group">
                                 <div class="input-field">
-                                    <label>Fname</label>
+                                    <label>First Name</label>
                                     <p><?= htmlspecialchars($purchaseDetails[0]->buyer_Fname) ?></p>
                                 </div>
                                 <div class="input-field">
-                                    <label>Lname</label>
+                                    <label>Last Name</label>
                                     <p><?= htmlspecialchars($purchaseDetails[0]->buyer_Lname) ?></p>
                                 </div>
                                 <div class="input-field">
@@ -228,6 +193,36 @@
                                 </div>
                             </div>
                         </div>
+                        <!--modal foe ticket view button-->
+                        <div id="ticketModal" class="modal">
+                                <div class="modal-content">
+                                    <span class="close" onclick="closeViewTicketModal()">&times;</span>
+                                        <div class="digiticket">
+                                            <div class="digiticket-left">
+                                                <div class="digiticket-qr-code">
+                                                    <img src="<?= $qrCodeUrl ?>" alt="QR Code">
+                                                </div>
+                                                <div class="digiticket-qr-code-part">
+                                                    <p><strong>Code</strong></p>
+                                                    <a href="<?= $qrCodeUrl ?>">Download</a> <!-- Adjust ticket code if needed -->
+                                                </div>
+                                            </div>
+                                            <div class="digiticket-right">
+                                                <div class="digiticket-content">
+                                                    <h1 class="digievent-title"><?= htmlspecialchars($eventAndTicketDetails[0]->event_name) ?></h1>
+                                                    <p class="digievent-subtitle"><?= htmlspecialchars($eventAndTicketDetails[0]->event_description) ?></p>
+                                                    <p class="digievent-date"><?= htmlspecialchars(date("l, F d, Y h:i A", strtotime($eventAndTicketDetails[0]->event_date))) ?> / at <?= htmlspecialchars($eventAndTicketDetails[0]->address) ?></p>
+                                                    <div class="digiticket-price">
+                                                        <p class="price-label">Public Ticket</p>
+                                                        <p class="price-value"><?= htmlspecialchars($eventAndTicketDetails[0]->ticket_price) ?> LKR</p>
+                                                        <p class="price-desc">One ticket for one person.</p>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                </div>
+                        </div>
+
                     <?php endfor; ?>
 
                 
@@ -235,7 +230,6 @@
                         <button type="button" class="add-ticket-btn" onclick="goToMyTickets()">Go to profile</button>
                     </div>
                 </div>
-
                 <script>
                     function goToMyTickets() {
                         window.location.href = "profile";
@@ -245,19 +239,18 @@
             </div>
             
             <!--other event section-->
-           
             <h2>Other events you may like</h2>
             <?php if (!empty($recentevents)): ?>
                 <div class="musicevent-events-container">
                     <?php foreach ($recentevents as $event): ?>
                         <div class="musicevent-event-card">
                             <!-- <div class="musicevent-event-badge">20% OFF</div> -->
-                            <img src=<?= htmlspecialchars($event->cover_images) ?> alt="Musical Fusion Festival" class="musicevent-event-image">
+                            <img src='<?=ROOT?>/assets/images/events/<?php echo $event->cover_images?>'alt="Musical Fusion Festival" class="musicevent-event-image">
                             <div class="musicevent-event-info">
                                 <div class="musicevent-event-title"><?= htmlspecialchars($event->event_name) ?></div>
                                 <div class="musicevent-event-details">
                                     <div>📅 <?= htmlspecialchars(date("l, F d | h:i A", strtotime($event->start_time))) ?></div>
-                                    <div>📍 <?= htmlspecialchars($event->city) ?>, <?= htmlspecialchars($event->province) ?></div>
+                                    <div>📍 <?= htmlspecialchars($event->address) ?></div>
                                 </div>
                                 <!-- <div class="musicevent-event-price">From $80</div> -->
                             </div>
