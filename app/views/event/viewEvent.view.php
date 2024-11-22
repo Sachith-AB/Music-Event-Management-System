@@ -12,9 +12,8 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900&family=Sen:wght@400..800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
 </head>
-<?php show($data) ?>
-
 <body>
     <!-- headersection -->
     <div class="headersection">
@@ -113,7 +112,7 @@
             </div>
 
         </div>
-         <!-- details section -->
+        <!-- details section -->
         <div class="details">
             <h2>Welcome to <?php echo $data['event']->event_name ?> <br/> You can join the event</h2>
             <div class="event-item">
@@ -132,10 +131,10 @@
                 </div>
                 <div>
                     <h3>Place</h3>
-                    <p><?php echo $data['event']->address ?><br></p>
+                    <p id="address"><?php echo $data['event']->address ?><br></p>
                 </div>
+                <div id="map" class="map" style="height: 200px; width: 500px;"></div>
             </div>
-
         </div>
 
      </div>
@@ -221,35 +220,48 @@
             <?php endforeach ?>
             <?php endif ?>
             
-            
+            <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
             <script>
-                document.addEventListener("DOMContentLoaded", function () {
-                const sliderWrapper = document.querySelector(".slider-wrapper");
-                const teamMembers = document.querySelectorAll(".team-member");
-                const totalPerformers = teamMembers.length;
-                const visibleCount = 4; // Show 4 performers at a time
-                let currentIndex = 0;
-
-                function updateSliderPosition() {
-                    // Calculate the amount to shift for each slide (based on performer width and visible count)
-                    const shiftAmount = -100 * currentIndex;
-                    sliderWrapper.style.transform = `translateX(${shiftAmount}%)`;
+                var query = document.getElementById("address").textContent.trim();
+                console.log(query)
+                if (query.trim() !== "") {
+                    displayEventLocation(query);
+                } else {
+                    alert("Please enter a location to search.");
                 }
 
-                function startSlider() {
-                    setInterval(() => {
-                        // Increment the current index by the number of visible performers
-                        currentIndex = (currentIndex + 1) % Math.ceil(totalPerformers / visibleCount);
-                        updateSliderPosition();
-                    }, 3000); // Change interval time in milliseconds
-                }
+                function displayEventLocation(address) {
+                // Fetch latitude and longitude from the address
+                var url = `https://nominatim.openstreetmap.org/search?format=json&q=${encodeURIComponent(address)}`;
+                
+                fetch(url)
+                    .then(response => response.json())
+                    .then(data => {
+                        if (data.length > 0) {
+                            var lat = parseFloat(data[0].lat);
+                            var lon = parseFloat(data[0].lon);
+                            var displayName = data[0].display_name;
 
-                // Initialize slider styles and start sliding
-                sliderWrapper.style.width = `${(totalPerformers / visibleCount) * 100}%`;
-                teamMembers.forEach(member => member.style.width = `${100 / visibleCount}%`);
-                startSlider();
-                });
+                            // Initialize the map at the location
+                            var map = L.map('map').setView([lat, lon], 13);
 
+                            // Add OpenStreetMap tiles
+                            L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+                                maxZoom: 19,
+                                attribution: '© OpenStreetMap'
+                            }).addTo(map);
+
+                            // Add a marker to the map
+                            var marker = L.marker([lat, lon]).addTo(map);
+                            marker.bindPopup(displayName).openPopup();
+                        } else {
+                            console.error("Location not found");
+                        }
+                    })
+                    .catch(error => {
+                        console.error("Error fetching location:", error);
+                    });
+            }
             </script>
         </div>
     </div>

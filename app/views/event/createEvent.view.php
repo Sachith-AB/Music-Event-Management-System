@@ -170,7 +170,7 @@ $_SESSION['last_visit'] = date('Y-m-d H:i:s');
 
         // Event listener for search
         document.getElementById("search-button").addEventListener("click", function () {
-            var query = document.getElementById("search-input").value;
+            var query = document.getElementById("address").value;
             if (query.trim() !== "") {
                 searchLocation(query);
             } else {

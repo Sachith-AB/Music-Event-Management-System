@@ -137,7 +137,7 @@
                             <p>Total</p>
                             <p id="totalDisplay"></p>
                         </div>
-
+<?php echo $_SESSION['USER']->email ?>
                         <!-- Payment Method -->
                         <div class="payment-method">
                             <img src="<?=ROOT?>/assets/images/ticket/mastercard-icon.png" alt="Mastercard">
