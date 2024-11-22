@@ -24,14 +24,14 @@
 
 
 .update-login-info {
-  width: 48%;
+  width: 60%;
 }
 .update-profile-info{
-  width: 48%;
+  width: 38%;
   background-color: #f0f0f0;
   padding: 10px;
   border-radius: 4px;
-  height: 500px;
+  height: 400px;
 }
 
 .headersection {
@@ -256,6 +256,11 @@ h3 {
   display: block;
   font-size: 1em;
 }
+.input-text{
+  color: #00BDD6;
+  font-size: 1em;
+  font-weight: bold;
+}
 
 .input-group input {
   width: 100%;
@@ -263,16 +268,44 @@ h3 {
   border-radius: 4px;
 }
 
-button {
-  padding: 10px 20px;
-  font-size: 1em;
-  background-color: #00BDD6;
-  color: white;
-  border: none;
-  cursor: pointer;
-  border-radius: 4px;
+/* Button 55 */
+.button { 
+  margin-top: 20px;
+  margin-left: 50px;
+  width: 292px; 
+  height: 44px; 
+  padding: 0 16px; 
+  display: flex; 
+  align-items: center; 
+  justify-content: center; 
+  font-family: sans-serif; 
+  font-size: 16px; 
+  line-height: 26px; 
+  font-weight: 400; 
+  color: #FFFFFFFF; /* white */
+  background: #00BDD6FF; /* primary-500 */
+  opacity: 1; 
+  border: none; 
+  border-radius: 4px; /* border-m */
+  gap: 6px; 
+  text-decoration: none;
 }
-
-button:hover {
-  background-color: #009bbd;
+.button .icon {
+  width: 20px; 
+  height: 20px; 
+  fill: #FFFFFFFF; /* white */
+}
+/* Hover */
+.button:hover {
+  color: #FFFFFFFF; /* white */
+  background: rgb(16, 171, 192); /* primary-600 */
+}
+/* Pressed */
+.button:hover:active {
+  transform: scale(1.1); /* Increase size by 10% */
+  transition: transform 0.2s ease-in-out;
+}
+/* Disabled */
+.button:disabled {
+  opacity: 0.4; 
 }

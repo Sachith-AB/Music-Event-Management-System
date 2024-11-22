@@ -477,6 +477,15 @@
   color:#00BDD6FF;
 
 }
+.purchase-text{
+  margin-left: 20px;
+  margin-top: 50px;
+  font-size: 18px;
+  font-weight: bolder;
+  color:#00BDD6FF;
+
+
+}
 
 
 @media (max-width: 768px) {
