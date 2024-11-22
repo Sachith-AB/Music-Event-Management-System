@@ -65,6 +65,10 @@ $_SESSION['last_visit'] = date('Y-m-d H:i:s');
                         <label for="event_description">Description</label>
                         <textarea id="event_description" name="description"></textarea>
                     </div>
+                    <div class="form-group">
+                        <label for="audience">Audience</label>
+                        <input type="number" id="audience" name="audience" />
+                    </div>
                 </section>
 
                 <section id="location-time">
@@ -78,6 +82,62 @@ $_SESSION['last_visit'] = date('Y-m-d H:i:s');
 
                     <div id="map" style="height: 400px;"></div>
                 </section>
+
+                <section id="time-ticket">
+                    <h2>Date and Time</h2>
+                    <div class="form-group">
+                        <label for = "event-date">Event Date</label>
+                        <input type="date" id="event-date" name="eventDate">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="start-time">Start Time</label>
+                        <input type="time" id="start-time" name="start_time">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="end-time">End Time</label>
+                        <input type="time" id="end-time" name="end_time">
+                    </div>
+                </section>
+                <section id="pricing-type">
+                        <h2>Pricing and Type</h2>
+                        <div class="form-group">
+                        <label>Pricing</label>
+                        <div class="radio-group">
+                            <div class="radio-item">
+                                <input type="radio" id="free" name="pricing" value="free" required>
+                                <label for="free">Free</label>
+                            </div>
+                             <div class="radio-item">
+                                <input type="radio" id="paid" name="pricing" value="paid" required>
+                                <label for="paid">Paid</label>
+                            </div>
+                        </div>
+                        </div>
+
+                        <div class="form-group">
+                        <label>Type</label>
+                        <div class="radio-group">
+                            <div class="radio-item">
+                                <input type="radio" id="indoor" name="type" value="indoor" required>
+                                <label for="free">Indoor</label>
+                            </div>
+                            <div class="radio-item">
+                                <input type="radio" id="outdoor" name="type" value="outdoor" required>
+                                <label for="outdoor">Outoor</label>
+                            </div>
+
+                        </div>
+                        </div>
+
+
+                    </section>
+                    <section>
+                        <h2>Do you want upload images?</h2>
+                        <button class = "upload-button" onclick="goUpdate()">Yes</button>
+                    </section>
+                    
 
                 <section id="review-publish">
                     <button type="submit" class="review-button" name="submit">Review</button>
