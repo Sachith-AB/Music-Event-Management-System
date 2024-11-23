@@ -104,7 +104,7 @@ class TicketController {
                 
                 unset($_POST['submit']);
                 $ticket->update($ticket_id, $_POST);
-                redirect("view-tickets?event_id=" . $_POST['event_id']);
+                redirect("view-tickets?event_id=".$_POST['event_id']);
             } else {
                 $data['errors'] = $ticket->errors;
             }

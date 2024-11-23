@@ -187,10 +187,6 @@ trait Model {
                         AND (
                             u.name LIKE :searchTerm OR
                             p.biography LIKE :searchTerm OR
-                            p.music_genres LIKE :searchTerm OR
-                            p.past_works LIKE :searchTerm OR
-                            p.services LIKE :searchTerm OR
-                            p.specializations LIKE :searchTerm OR
                             p.equipment LIKE :searchTerm
                         )";
         

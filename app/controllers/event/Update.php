@@ -22,10 +22,10 @@ class Update {
         }
 
         
-        if($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['upload'])){
-            $this->uploadImages($event,$_FILES);
-            show($_FILES);
-        }
+        // if($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['upload'])){
+        //     $this->uploadImages($event,$_FILES);
+        //     show($_FILES);
+        // }
 
         $data = $this->getData($row);
         $this->view('event/updateEvent',$data);

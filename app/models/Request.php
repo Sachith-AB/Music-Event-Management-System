@@ -24,10 +24,10 @@ class Request {
     {
         $event = new Event;        
 
-        $query =   "SELECT e.id AS event_id, e.event_name, e.eventDate, e.venueID, e.cover_images, v.id AS venue_id, v.name AS venue_name, v.location, r.id AS request_id
-                    FROM events e
-                    JOIN requests r ON r.event_id = e.id AND r.Status ='pending' AND r.collaborator_id = $user_id  
-                    JOIN venues v ON e.venueID = v.id";
+        $query = "SELECT e.id AS event_id, e.event_name, e.eventDate, e.cover_images,e.address, r.id AS request_id
+            FROM events e
+            JOIN requests r ON r.event_id = e.id AND r.Status = 'pending' AND r.collaborator_id = $user_id";
+
 
         $result = $this->query($query);
 
@@ -40,10 +40,9 @@ class Request {
     public function getAcceptedRequests($user_id)
     {
 
-        $query =  "SELECT e.id AS event_id, e.event_name, e.eventDate, e.venueID, e.cover_images, v.id AS venue_id, v.name AS venue_name, v.location, r.id AS request_id
-                    FROM events e
-                    JOIN requests r ON r.event_id = e.id AND r.Status ='accepted' AND r.collaborator_id = $user_id  
-                    JOIN venues v ON e.venueID = v.id";
+        $query = "SELECT e.id AS event_id, e.event_name, e.eventDate, e.cover_images,e.address, r.id AS request_id
+            FROM events e
+            JOIN requests r ON r.event_id = e.id AND r.Status = 'accepted' AND r.collaborator_id = $user_id";
 
             
             $result = $this->query($query);

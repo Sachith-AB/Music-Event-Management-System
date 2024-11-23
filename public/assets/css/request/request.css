@@ -201,8 +201,8 @@ button {
 
 .cover-image {
 
-    height: 40px;
-    width: 10px;
+    height: 100px;
+    width: 200px;
     margin-right: 0;
     border-radius: 2px;
     border: 1px solid black;

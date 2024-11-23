@@ -14,8 +14,8 @@
     //show($_SESSION["USER"]);
 ?>
 <header>
-    <div class="logo">
-        <img src = "logo.png" alt = "musicia" onclick="goToHome()"> 
+    <div class="logo-image">
+        <img src = "<?=ROOT?>/assets/images/logo/logo.png" alt = "musicia" onclick="goToHome()"> 
     </div>
     <nav>
         <ul>
