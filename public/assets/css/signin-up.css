@@ -237,13 +237,12 @@ label {
   transition: 0.5s ease-in-out;
 }
 
+.sign-btn:hover::after {
+  transform: skewX(-45deg) scale(1, 1);
+}
+
 .sign-btn:hover {
-  /* background-color: white; */
-  /* color: black; */
-  cursor: pointer;
-  background-color: rgb(20, 203, 227);
-  /* box-shadow: 0 0px 10px 5px rgb(168, 165, 165); */
-  /* box-shadow: 0 60px 40px -30px rgb(0, 0, 0, 0.27); */
+  color: black;
 }
 
 .text {

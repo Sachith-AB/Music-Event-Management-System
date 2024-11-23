@@ -242,10 +242,13 @@
     height: 20px; 
     fill: #FFFFFFFF; /* white */
   }
-  /* Hover */
+  
+  .button :hover::after {
+    transform: skewX(-45deg) scale(1, 1);
+  }
+
   .button:hover {
-    color: #FFFFFFFF; /* white */
-    background: rgb(16, 171, 192); /* primary-600 */
+  color: black;
   }
   /* Pressed */
   .button:hover:active {
