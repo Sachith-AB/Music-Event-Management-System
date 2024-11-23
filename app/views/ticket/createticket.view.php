@@ -1,43 +1,21 @@
 <?php include ('../app/views/components/header.php'); ?>
-
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Create an Event</title>
-    <link rel="stylesheet" href="<?=ROOT?>/assets/css/create-event.css">
+    <link rel="stylesheet" href="<?=ROOT?>/assets/css/ticket/createticket.css">
 </head>
 <body>
     
     <div class="container">
 
-            <!--create slide bar -->
-        <div class="sidebar">
-            
-        </div>
-
-
         <!--create main content -->
         <div class="main-content">
             <form id="createticket" method="POST">
                 <div class="ticket-container">
-                    <h3>Ticket</h3>
-                    <!-- <div class="form-group">
-                        <input type="radio" id="paid-ticket" name="ticket_type" value="paid">
-                        <lable for="paid-ticket">Paid</lable>
-                        <input type="radio" id="free-ticket" name="ticket_type" value="free">
-                        <lable for="free-ticket">Free</lable>
-                    </div> -->
-
-                    <!-- <div class="form-group">
-                        <label for="event_name">Event Name</label>
-                        <input type="text" id="event_name" name="event_name" 
-                            value="<?= $_SESSION['event_data']['event_name'] ?? '' ?>" 
-                            <?= isset($_SESSION['event_data']) ? 'readonly' : '' ?>>
-                    </div> -->
-
+                    <h3>Create Tickets for Your Event</h3>
                     <div class = "form-group">
                         <label for="sale-strt-date">Sale Start Date</label>
                         <input type="date" id="sale-strt-date" name="sale_strt_date" 
@@ -68,15 +46,16 @@
 
                     <div class="form-group">
                         <label for="ticket_type">Ticket Type</label>
-                        <select id="ticket_type" name="ticket_type">
-                            <?php
-                                $ticketTypes = ['platinum', 'gold', 'silver'];
-                                foreach ($ticketTypes as $type) {
-                                    $disabled = in_array($type, $_SESSION['event_data']['created_ticket_types'] ?? []) ? 'disabled' : '';
-                                    echo "<option value='$type' $disabled>" . ucfirst($type) . "</option>";
-                                }
-                            ?>
-                        </select>
+                        <input type="TEXT" id="type" name="ticket_type">
+                    </div>
+
+                    <div class="form-group">
+                        <label>Opportunities</label>
+                        <div id="opportunity-container">
+                            <!-- Default input field -->
+                            <input type="text" name="restrictions[]" class="opportunity-input" >
+                        </div>
+                        <button type="button" id="add-opportunity" class="review-button">Add More Opportunities</button>
                     </div>
 
                     <div class="form-group">
@@ -88,9 +67,11 @@
                         <label for="price">Price</label>
                         <input type="number" id="price" name="price">
                     </div>
-
-                    <button type="submit" class="review-button" name="add_another">Add Another Type of Ticket</button>
-                    <button type="submit" class="review-button" name="submit">Review</button>
+                    <div class="form-buttons">
+                        <button type="submit" class="review-button" name="add_another">Add Another Type of Ticket</button>
+                        <button type="submit" class="review-button" name="submit">Review</button>
+                    </div>
+                    
                 </div>
             </form>   
         </div>
