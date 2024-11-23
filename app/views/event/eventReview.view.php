@@ -80,9 +80,9 @@ $_SESSION['last_visit'] = date('Y-m-d H:i:s');
                         <img src="<?=ROOT?>/assets/images/events/4.jpg" class="event-image">
                         <img src="<?=ROOT?>/assets/images/events/5.jpg" class="event-image">
                     </div>
-                    <div class="event-info">
-                        <h2 id = "event title"><?php echo $data['event_name'] ?></h2>
-                        <p><?php echo $data['description'] ?></p>
+                    <div class="event-name-desc">
+                        <h2  id = "event title" ><?php echo $data['event_name'] ?></h2>
+                        <p class="event-description"><?php echo $data['description'] ?></p>
                     </div>
                 
             </section>
