@@ -35,7 +35,7 @@
 
                     loadingScreen.style.display = "none"; // Remove loading screen
                     pageContent.classList.add("loaded"); // Unblur the content
-                }, 2000); // 2000 milliseconds = 2 seconds
+                }, 1000); // 2000 milliseconds = 2 seconds
             });
         });
     </script>
