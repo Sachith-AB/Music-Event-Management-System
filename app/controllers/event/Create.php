@@ -11,10 +11,10 @@ class Create {
 
 
         if($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['submit'])){
-            //show($_POST);
+            // show($_POST);
 
             $data = $this->create($event,$_POST);
-            // show($data);
+            //  show($data);
         }
 
 
@@ -35,7 +35,7 @@ class Create {
                 unset($POST['submit']); //remove submit key from POST array
                 $event->insert($_POST);
                 //show($event_name);
-                //show ($_POST);
+                show ($_POST);
                 redirect("event-review?event_name=$event_name");
 
 

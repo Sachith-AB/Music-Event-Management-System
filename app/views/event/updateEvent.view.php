@@ -56,10 +56,11 @@ $_SESSION['last_visit'] = date('Y-m-d H:i:s');
                 </div>
 
                 <div class="input-wrap">
-                    <label for = "city">City</label>
-                    <input name="address" type="text" placeholder="City" value="<?php echo $data['address'] ?>">
+                    <label for = "city">Address</label>
+                    <input name="address" type="text" placeholder="address" value="<?php echo $data['address'] ?>">
                 </div>
 
+                
                 <div class="input-wrap">
                     <label for="eventDate">Event Date</label>
                     <input name="eventDate" type="date" value="<?php echo $data ['eventDate'] ?>" required>
@@ -67,12 +68,12 @@ $_SESSION['last_visit'] = date('Y-m-d H:i:s');
 
                 <div class="input-wrap">
                     <label for="start_time">Start Time</label>
-                    <input name="start_time" type="time" value="<?php echo $data ['start_time'] ?>">
+                    <input name="start_time" type="time" value="<?php echo date('H:i', strtotime($data['start_time'])); ?>">
                 </div>
 
                 <div class="input-wrap">
                     <label for="end_time">End Time</label>
-                    <input name="end_time" type="time" value="<?php echo $data ['end_time'] ?>">
+                    <input name="start_time" type="time" value="<?php echo date('H:i', strtotime($data['end_time'])); ?>">
                 </div>
 
                 <input type="hidden" name="event_id" value="<?php echo $data['id'] ?>">

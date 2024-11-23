@@ -80,13 +80,19 @@ $_SESSION['last_visit'] = date('Y-m-d H:i:s');
 
                     <div class="form-group">
                         <label for="start-time">Start Time</label>
-                        <input type="time" id="start-time" name="start_time">
+                        <input type="time" id="start-time" name="starttime">
                     </div>
 
                     <div class="form-group">
                         <label for="end-time">End Time</label>
-                        <input type="time" id="end-time" name="end_time">
+                        <input type="time" id="end-time" name="endtime">
                     </div>
+
+                    <input type="hidden" name="createdBy" value="<?= isset($_SESSION['USER']->id) ? $_SESSION['USER']->id : 0 ?>"/>
+
+                    <input type="hidden" id="hidden-start-time" name="start_time">
+                    <input type="hidden" id="hidden-end-time" name="end_time">
+                    <script src="<?= ROOT ?>/assets/js/event/createEvent.js"></script>
                 </section>
                 <section id="pricing-type">
                         <h2>Pricing and Type</h2>

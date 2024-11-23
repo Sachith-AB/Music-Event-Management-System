@@ -6,7 +6,7 @@ class Ticket {
     protected $table = 'tickets';  // Database table name
     protected $allowedColumns = [
         'id', 'event_id', 'ticket_type', 'price', 'quantity', 'sold_quantity',
-        'sale_strt_date', 'sale_strt_time', 'sale_end_date', 'sale_end_time',
+        'sale_strt_date', 'sale_strt_time', 'sale_end_date', 'sale_end_time','restrictions'
     ];
 
     public function validTicket($data) {

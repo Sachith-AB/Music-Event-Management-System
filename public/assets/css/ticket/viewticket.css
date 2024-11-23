@@ -31,7 +31,7 @@
     justify-content: center;
     width: 60%;
     height: 180px;
-    background: linear-gradient(145deg, #e6e6e6, #ffffff);
+    background: linear-gradient(145deg, rgb(235, 241, 242), #00BDD6FF);
     border-radius: 15px;
     margin: 20px;
     padding: 10px;
@@ -53,6 +53,53 @@
     text-align: center;
     font-family: sans-serif; */
 }
+.ticket-icon {
+    position: relative;
+    width: 120px;
+    height: 60px;
+    background: linear-gradient(145deg, #0066ff, #000000);
+    border-radius: 10px;
+    box-shadow: 4px 4px 20px rgba(0, 0, 255, 0.5), -4px -4px 20px rgba(0, 0, 0, 0.5);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    cursor: pointer;
+}
+
+.ticket-icon:hover {
+    transform: scale(1.1);
+    box-shadow: 6px 6px 25px rgba(0, 0, 255, 0.6), -6px -6px 25px rgba(0, 0, 0, 0.6);
+}
+
+.ticket-icon::before, 
+.ticket-icon::after {
+    content: '';
+    position: absolute;
+    width: 20px;
+    height: 20px;
+    background: #ffffff;
+    border-radius: 50%;
+    top: 50%;
+    transform: translateY(-50%);
+    box-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
+}
+
+.ticket-icon::before {
+    left: -10px;
+}
+
+.ticket-icon::after {
+    right: -10px;
+}
+
+.icon-text {
+    font-size: 2rem;
+    color: #ffffff;
+    text-shadow: 0px 2px 5px rgba(0, 0, 0, 0.5);
+}
+
 
 .ticket-card:hover {
     transform: translateY(-10px);
@@ -128,9 +175,9 @@
     font-size: 70px;
     color: #FFD700;
 }
-.silver-card i{
-    font-size: 70px;
-    color: #C0C0C0;
+.silver-card span{
+    font-size: 90px;
+    color: #3d3939;
 }
 
 .ticket-info {
@@ -145,14 +192,15 @@
 }
 .ticket-type{
     font-size: 22px;
-    font-weight: bold;
-    color: #555;
+    font-weight: bolder;
+    color: rgb(72, 70, 70);
     margin: 10px;
 }
 .ticket-price, .ticket-quantity {
     font-size: 16px;
-    color: #777;
+    color: #6f6c6c;
     margin-top: 5px;
+    font-weight: bold;
 }
 
 .ticket-actions {
@@ -183,7 +231,7 @@
 }
 
 .btn-delete {
-    background: linear-gradient(45deg, #e91e63, #f06292);
+    background: linear-gradient(45deg, #ff4d4d, #d93636);
 }
 
 .btn:hover {
