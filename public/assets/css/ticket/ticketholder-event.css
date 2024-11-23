@@ -429,8 +429,13 @@ img {
     margin-top: 20px;
 }
 
+
+.pricing-card button:hover::after {
+    transform: skewX(-45deg) scale(1, 1);
+}
+
 .pricing-card button:hover {
-    background-color: rgb(3, 169, 191);
+    color: black;
 }
 
 
