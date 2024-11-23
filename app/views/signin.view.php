@@ -34,7 +34,7 @@
             display: flex;
         }
     </style>
-
+    <?php include ('../app/views/components/loading.php'); ?>
     <div class="page-content">
         <main>
             <div class="box">
@@ -42,7 +42,7 @@
                     <div class="form-warp">
                         <!-- Sign-In Form -->
                         <form method="POST" class="sign-in-form" id="signinForm">
-                            <div class="logo">
+                            <div class="logo-image">
                                 <img src="<?=ROOT?>/assets/images/logo/logo.png" alt="company_logo">
                                 <span>
                                     <a href="<?= ROOT ?>/home">
