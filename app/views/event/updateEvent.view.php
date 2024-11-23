@@ -6,8 +6,7 @@ if (session_status() == PHP_SESSION_NONE) {
 // Retrieve event data from session
 $event_name = $_SESSION['event_data']['event_name'] ?? '';
 $audience = $_SESSION['event_data']['audience'] ?? '';
-$city = $_SESSION['event_data']['city'] ?? '';
-$province = $_SESSION['event_data']['province'] ?? '';
+$address = $_SESSION['event_data']['address'] ?? '';
 $eventDate = $_SESSION['event_data']['eventDate'] ?? '';
 $start_time = $_SESSION['event_data']['start_time'] ?? '';
 $end_time = $_SESSION['event_data']['end_time'] ?? '';

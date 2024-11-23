@@ -152,11 +152,8 @@ class Event {
     public function searchEventByName($searchTerm){
 
         $searchName = $searchTerm['name'] ?? "";
-    
         
-        $id = $searchTerm['location']?? '';
-        
-        $query = "SELECT * FROM events WHERE event_name LIKE '%$searchName%' OR venueID = '$id'";
+        $query = "SELECT * FROM events WHERE event_name LIKE '%$searchName%'";
         $result = $this->query($query);
         // if($result){
         //     return $result;
@@ -195,7 +192,7 @@ class Event {
         $user = new User;
         
         $res['performers'] = [];
-        $query_1 = "SELECT * FROM requests WHERE event_id = $id AND (role ='singer' OR role = 'band' OR role='announcer') ";
+        $query_1 = "SELECT * FROM requests WHERE event_id = $id AND (role ='singer' OR role = 'band' OR role='announcer') AND Status = 'accepted' ";
         $result_1 = $this->query($query_1);
 
         if(!empty($result_1)){

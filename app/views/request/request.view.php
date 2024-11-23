@@ -17,23 +17,12 @@
 
 
 <body>
-
-    
-
-    <p>header in here</p>
     
     <br>
 
     <div class="search-container">
 
             <form action="/search" method = "GET" >
-
-                <div class="search-box">
-
-                        <span class="icon"><i class="fas fa-search"></i></span>
-                        <input type="text" name = "query" placeholder = "Search....." required>
-
-                </div>
                 
             </form>
 
@@ -49,12 +38,11 @@
 
             <table>
                 <tr>
-                    <th>Page</th>                   
+                    <th>Cover Image</th>                   
                     <th>Event name</th>
                     <th>Date</th>
                     <th>Venue</th>
                     <th>Action</th>
-                   
                 </tr>
 
                 <?php if(!empty($data['requests'])): ?>
@@ -64,7 +52,7 @@
                             <td><img class="cover-image" src ="<?=ROOT?>/assets/images/events/<?php echo $request->cover_images ?> " alt="cover image"/></td>
                             <td><?php echo $request->event_name?></td>
                             <td><?php echo $request->eventDate?></td>
-                            <td><?php echo $request->venue_name?>,<?php echo $request->location?></td>
+                            <td><?php echo $request->address?></td>
 
                             <td>
 
@@ -83,9 +71,6 @@
 
                                 </form>
                             </td>
-
-                            
-                           
 
                         </tr>
                     <?php endforeach; ?>
@@ -109,7 +94,7 @@
 
             <table class="second" >
                 <tr>
-                    <th>Page</th> 
+                    <th>Cover Image</th> 
                     <th>Event name</th>
                     <th>Date</th>
                     <th>Venue</th>
@@ -123,7 +108,7 @@
                             <td> <img class="cover-image"  src="<?=ROOT?>/assets/images/events/<?php echo $request->cover_images ?> " alt="cover image"></td>
                             <td><?php echo $request->event_name?></td>
                             <td><?php echo $request->eventDate?></td>
-                            <td><?php echo $request->venue_name?>,<?php echo $request->location?></td>
+                            <td><?php echo $request->address?></td>
                             
                         </tr>
                     <?php endforeach; ?>

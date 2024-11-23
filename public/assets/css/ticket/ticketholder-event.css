@@ -215,6 +215,7 @@ img {
     padding: 20px;
     width: 80%;
     margin: 30px;
+    gap: 20px;
 }
 
 .event-item .icon {
@@ -448,5 +449,8 @@ img {
 
     .time {
         font-size: 1.5rem;
+    }
+    .map{
+        display: none;
     }
 }

@@ -8,6 +8,7 @@
 </head>
 <body>
     <?php 
+    include ('../app/views/components/loading.php');
     // Set default value for showMore if not set
     $showMore = isset($_POST['showMore']) ? $_POST['showMore'] == 'true' : false; 
     ?>

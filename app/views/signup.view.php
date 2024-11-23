@@ -17,7 +17,7 @@
 </head>
 
 <body>
-
+<?php include ('../app/views/components/loading.php'); ?>
 <?php 
 
     //Get the pass data from URL for sign in part
@@ -53,8 +53,8 @@
                 <div class="inner-box">
                     <div class="form-warp">
                         <form class="sign-up-form" id="signupForm" method="POST">
-                            <div class="logo">
-                                <img src="<?= ROOT ?>/assets/images/logo.JPG" alt="company_logo">
+                            <div class="logo-image">
+                                <img src= "<?=ROOT?>/assets/images/logo/logo.png" alt="company_logo">
                                 <!-- <h4>Amoral</h4> -->
                                 <span>
                                     <a href="<?= ROOT ?>/home">
