@@ -196,7 +196,7 @@
     </main>
 
     <!-- Include Footer -->
-    <div class="footer">
+    <?php include ('../app/views/components/footer.php'); ?>
         
     </div>
 

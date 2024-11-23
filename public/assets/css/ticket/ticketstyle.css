@@ -339,7 +339,7 @@ body {
     margin-top: 20px; /* Add some space above the buttons */
 }
 
-.add-ticket-btn, .next-btn {
+.add-ticket-btn, .next-btn, .pay-now-btn {
     padding: 10px 20px;
     border: none;
     background-color: #00BDD6FF; /* Green background color */
@@ -350,10 +350,13 @@ body {
     transition: background-color 0.3s; /* Smooth background color transition */
 }
 
-.add-ticket-btn:hover, .next-btn:hover {
-    background-color: #00BDD6FF; /* Slightly darker green on hover */
+.add-ticket-btn:hover, .next-btn:hover, .pay-now-btn:hover {
+    color: black; /* Slightly darker green on hover */
 }
 
+.add-ticket-btn:hover::after, .next-btn:hover::after, .pay-now-btn.next-btn:hover::after {
+    transform: skewX(-45deg) scale(1, 1); /* Slightly darker green on hover */
+}
 
 
 #summaryModal {
@@ -442,14 +445,14 @@ body {
     border-radius: 5px;
     font-size: 16px;
     cursor: pointer;
-    
-
-   
-  
-    
 }
+
+.summary-container .pay-now-btn:hover ::after {
+    transform: skewX(-45deg) scale(1, 1);
+}
+
 .summary-container .pay-now-btn:hover {
-    background-color:#007BFF;
+    color: black;
 }
 
 
@@ -527,8 +530,13 @@ body {
     text-decoration: none;
 }
 
-.view-more:hover {
-    text-decoration: underline;
+
+.view-more-btn:hover::after {
+    transform: skewX(-45deg) scale(1, 1);
+}
+
+.view-more-btn:hover {
+    color: black;
 }
 
 

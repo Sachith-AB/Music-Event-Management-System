@@ -270,7 +270,7 @@
                     <?php endforeach; ?>
                 </div>
             
-                <a href="#" class="view-more">View more</a>
+                <!-- <a href="#" class="view-more">View more</a> -->
             <?php else: ?>
                 <p>No events created yet.</p>
             <?php endif; ?>
@@ -280,7 +280,7 @@
     </main>
 
     <!-- Include Footer -->
-    <div class="footer">
+    <?php include ('../app/views/components/footer.php'); ?>
 
     </div>
 
