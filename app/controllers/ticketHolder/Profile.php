@@ -17,6 +17,10 @@ class Profile {
 
         $combinedTickets=$this->purchasedetails();
 
+        if($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['logOut'])){
+            $this->logOut();
+        }
+
         
 
         $this->view('ticketHolder/profile',['data'=>$data,'combinedTickets'=>$combinedTickets]);
@@ -54,5 +58,10 @@ class Profile {
         }
         return $combinedTickets;
 
+    }
+
+    private function logOut(){
+        session_unset(); // Unset all session variables
+        session_destroy(); // Destroy the session
     }
 }

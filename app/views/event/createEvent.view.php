@@ -136,7 +136,7 @@ $_SESSION['last_visit'] = date('Y-m-d H:i:s');
                             <button type="button" id="search-button">Search</button>
                         </div>
 
-                        <div id="map" style="height: 400px;"></div>
+                        <div id="map" class="map" style="height: 400px;"></div>
                     </section>
                     <section id="review-publish">
                     <button type="submit" class="review-button" name="submit">Review</button>
