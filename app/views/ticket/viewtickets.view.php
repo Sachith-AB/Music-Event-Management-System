@@ -79,6 +79,7 @@ $_SESSION['last_visit'] = date('Y-m-d H:i:s');
                 <p>No tickets available.</p>
             <?php endif; ?>
 
+            <button class="next-button" onclick ="goToBack()"> Back </button>
             <button class="next-button" onclick ="goToRequest()"> Next </button>
 
         </div>
@@ -90,6 +91,10 @@ $_SESSION['last_visit'] = date('Y-m-d H:i:s');
     <script>
         function goToRequest() {
             window.location.href = "request-singers?id=<?php echo $id?>";
+        }
+
+        function goToBack() {
+            window.location.href = "create-ticket?id=<?php echo $id?>";
         }
     </script>
 
