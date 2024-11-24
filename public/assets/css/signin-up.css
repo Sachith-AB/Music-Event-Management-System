@@ -235,6 +235,7 @@ label {
   margin-bottom: 1rem;
   margin-top: 1rem;
   transition: 0.5s ease-in-out;
+  transition: color 1s ease;
 }
 
 .sign-btn:hover::after {

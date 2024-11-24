@@ -170,6 +170,7 @@ body, html {
     transition: background-color 0.3s ease;
     background-color: #00BDD6FF;
     color: black;
+    transition: color 1s ease;
 }
 .wishlist-btn {
     padding: 8px 16px;
@@ -295,6 +296,7 @@ body, html {
     font-size: 15px;
     cursor: pointer;
     margin-top: 10px;
+    transition: color 1s ease;
 }
 
 .event-card button:hover::after {

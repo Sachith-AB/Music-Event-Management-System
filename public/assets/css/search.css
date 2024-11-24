@@ -49,6 +49,7 @@ h1 {
     cursor: pointer;
     transition: color 1s ease;
     border-radius: 4px;
+    transition: color 1s ease;
 }
 
 .search-bar button:hover::after {
@@ -100,6 +101,7 @@ h1 {
     width: 100%;
     transition: color 1s ease;
     border-radius: 4px;
+    transition: color 1s ease;
 }
 
 .apply-btn:hover::after {
@@ -210,6 +212,7 @@ h1 {
     border-radius: 4px;
     cursor: pointer;
     align-self: center;
+    margin-top: 20px;
     transition: color 1s ease;
 }
 

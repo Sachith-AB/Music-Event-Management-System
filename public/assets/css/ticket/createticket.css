@@ -1,5 +1,5 @@
 body {
-    font-family: 'Arial', sans-serif;
+    font-family:sans-serif;
     background-color: #f4f9fc;
     margin: 0;
     padding: 0;
@@ -99,7 +99,7 @@ button.review-button {
     border: none;
     border-radius: 5px;
     cursor: pointer;
-    transition: all 0.3s;
+    transition: color 1s ease;
 }
 
 button.review-button:hover {
@@ -119,7 +119,7 @@ button.review-button:hover {
     border: none;
     border-radius: 5px;
     cursor: pointer;
-    transition: all 0.3s;
+    transition: color 1s ease;
 }
 .next-button:hover {
     color: black;
