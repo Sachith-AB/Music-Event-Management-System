@@ -64,18 +64,22 @@ $_SESSION['last_visit'] = date('Y-m-d H:i:s');
                     
                     <div class="input-wrap">
                         <label for="eventDate">Event Date</label>
-                        <input name="eventDate" type="date" value="<?php echo $data ['eventDate'] ?>" required>
+                        <input name="eventDate" id="event-date" type="date" value="<?php echo $data ['eventDate'] ?>" required>
                     </div>
 
                     <div class="input-wrap">
                         <label for="start_time">Start Time</label>
-                        <input name="start_time" type="time" value="<?php echo date('H:i', strtotime($data['start_time'])); ?>">
+                        <input id="start-time" name="starttime" type="time" value="<?php echo date('H:i', strtotime($data['start_time'])); ?>">
                     </div>
 
                     <div class="input-wrap">
                         <label for="end_time">End Time</label>
-                        <input name="start_time" type="time" value="<?php echo date('H:i', strtotime($data['end_time'])); ?>">
+                        <input name="endtime" id="end-time" type="time" value="<?php echo date('H:i', strtotime($data['end_time'])); ?>">
                     </div>
+
+                    <input type="hidden" id="hidden-start-time" name="start_time">
+                    <input type="hidden" id="hidden-end-time" name="end_time">
+                    <script src="<?= ROOT ?>/assets/js/event/createEvent.js"></script>
 
                     <input type="hidden" name="event_id" value="<?php echo $data['id'] ?>">
 
