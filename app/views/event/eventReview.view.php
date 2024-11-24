@@ -96,8 +96,8 @@ $_SESSION['last_visit'] = date('Y-m-d H:i:s');
                 <h2>Location and Time</h2>
                 <p class = "event-city"><strong>Address:</strong> <?php echo $data  ['address'] ?></p>
                 <p class = "event-date"><strong>Event Date:</strong> <?php echo $data ['eventDate'] ?></p>
-                <p class = "event-time"><strong>Start Time:</strong> <?php echo $data ['start_time'] ?></p>
-                <p class = "event-time"><strong>End Time:</strong> <?php echo $data ['end_time'] ?></p>
+                <p class = "event-time"><strong>Start Time:</strong> <?php echo date('H:i', strtotime($data['start_time'])); ?></p>
+                <p class = "event-time"><strong>End Time:</strong> <?php echo date('H:i', strtotime($data['end_time'])); ?></p>
             </section>
 
 
