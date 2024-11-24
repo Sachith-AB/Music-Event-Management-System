@@ -14,7 +14,8 @@
     <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900&family=Sen:wght@400..800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
 </head>
-<body>
+<bo>
+    <?php include ('../app/views/components/loading.php'); ?>
     <!-- headersection -->
     <div class="headersection">
         <img src="<?=ROOT?>/assets/images/ticket/ticketevent-bg.jpg" alt="Musical Fusion Festival" class="headersection-img">
@@ -137,7 +138,7 @@
             </div>
         </div>
 
-     </div>
+    </div>
     <!-- performers section -->
     <section class="team-section">
         <div class="team-header">
@@ -226,10 +227,7 @@
                 console.log(query)
                 if (query.trim() !== "") {
                     displayEventLocation(query);
-                } else {
-                    alert("Please enter a location to search.");
                 }
-
                 function displayEventLocation(address) {
                 // Fetch latitude and longitude from the address
                 var url = `https://nominatim.openstreetmap.org/search?format=json&q=${encodeURIComponent(address)}`;

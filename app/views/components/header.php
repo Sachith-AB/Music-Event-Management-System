@@ -19,7 +19,8 @@
     </div>
     <nav>
         <ul>
-            <li><a onclick="goToHome()">Home</a></li>
+            <li><a href="home">Home</a></li>
+            <li><a href="search">Explore</a></li>
             <li><a href="#new-events">Upcoming Events</a></li>
             <?php if($_SESSION['USER']): ?>
                 <?php if($_SESSION['USER']->role == 'planner'): ?>

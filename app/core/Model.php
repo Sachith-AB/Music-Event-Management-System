@@ -157,11 +157,11 @@ trait Model {
     
         public function getUsersByRole($role, $joinTable) {
 
-            $query = "SELECT u.id, u.name, u.pro_pic, p.userID, p.user_role 
+            $query = "SELECT u.id, u.name, u.pro_pic, p.userID, p.user_role , p.music_genres
                         FROM users u 
                         JOIN $joinTable p ON u.id = p.userID 
                         WHERE p.user_role = :user_role 
-                        LIMIT $this->limit OFFSET $this->offset";
+                        ";
         
             // Bind the provided role to the query
             $data = ['user_role' => $role];
@@ -180,12 +180,13 @@ trait Model {
             $searchTerm = "%{$searchTerm['searchTerm']}%";
         
             // Query with placeholders for dynamic role and search term
-            $query = "SELECT u.id, u.name, u.pro_pic, p.userID, p.user_role
+            $query = "SELECT u.id, u.name, u.pro_pic, p.userID, p.user_role , p.music_genres
                         FROM users u
                         JOIN $joinTable p ON u.id = p.userID
                         WHERE p.user_role = :user_role
                         AND (
                             u.name LIKE :searchTerm OR
+                            p.music_genres LIKE :searchTerm OR
                             p.biography LIKE :searchTerm OR
                             p.equipment LIKE :searchTerm
                         )";

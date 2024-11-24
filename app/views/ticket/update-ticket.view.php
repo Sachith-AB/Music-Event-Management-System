@@ -84,24 +84,23 @@ $_SESSION['last_visit'] = date('Y-m-d H:i:s');
                             <input type="time" id="sale-end-time" name="sale_end_time" value="<?= htmlspecialchars($ticket['ticket'][0]->sale_end_time) ?>">
                         </div>
 
-                        <div class="opportunity-container">
-                            <h3>Restrictions</h3>
-                            <?php if (!empty($restrictions)): ?>
-                                <div id="opportunity-container">
-                                    <?php foreach($restrictions as $restriction): ?>
-                                        <input type="text" name="restrictions[]" class="opportunity-input" value="<?= htmlspecialchars($restriction) ?>" >
-                                    <?php endforeach; ?>
-                                </div>
-                                
-                            <?php else: ?>
-                                <p>No restrictions defined. Add new restrictions below:</p>
-                            <?php endif; ?>
-                            <button type="button" id="add-opportunity" class="review-button">Add More Opportunities</button>
-                            
+                        <div class="button-container">
+                            <div class="opportunity-container">
+                                <h3>Restrictions</h3>
+                                <?php if (!empty($restrictions)): ?>
+                                    <div id="opportunity-container">
+                                        <?php foreach($restrictions as $restriction): ?>
+                                            <input type="text" name="restrictions[]" class="opportunity-input" value="<?= htmlspecialchars($restriction) ?>" >
+                                        <?php endforeach; ?>
+                                    </div>
+                                    
+                                <?php else: ?>
+                                    <p>No restrictions defined. Add new restrictions below:</p>
+                                <?php endif; ?>
+                                <button type="button" id="add-opportunity" class="review-button">Add More Opportunities</button>
+                            </div>
+                            <button type="submit" class="review-button" name="submit">Review</button>
                         </div>
-
-
-                        <button type="submit" class="review-button" name="submit">Review</button>
                     </div>
 
                 </form>
