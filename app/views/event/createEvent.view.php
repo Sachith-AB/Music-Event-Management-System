@@ -200,12 +200,12 @@ $_SESSION['last_visit'] = date('Y-m-d H:i:s');
                         marker.setLatLng([lat, lon]);
                         marker.bindPopup(result.display_name).openPopup();
                     } else {
-                        alert("Location not found!");
+                        //alert("Location not found!");
                     }
                 })
                 .catch(error => {
                     console.error("Error:", error);
-                    alert("Error occurred while searching location.");
+                    //alert("Error occurred while searching location.");
                 });
         }
 
@@ -222,7 +222,7 @@ $_SESSION['last_visit'] = date('Y-m-d H:i:s');
                 })
                 .catch(error => {
                     console.error("Error:", error);
-                    alert("Error occurred while fetching the address.");
+                    //alert("Error occurred while fetching the address.");
                 });
         }
 
