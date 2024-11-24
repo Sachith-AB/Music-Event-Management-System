@@ -222,7 +222,7 @@
     cursor: pointer;
     font-size: 14px;
     color: #fff;
-    transition: background 0.3s ease;
+    transition: color 1s ease;
 }
 
 

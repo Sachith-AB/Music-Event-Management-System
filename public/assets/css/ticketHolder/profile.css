@@ -236,6 +236,7 @@
     border-radius: 4px; /* border-m */
     gap: 6px; 
     text-decoration: none;
+    transition: color 1s ease;
   }
   .button .icon {
     width: 20px; 
