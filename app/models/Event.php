@@ -155,12 +155,6 @@ class Event {
         
         $query = "SELECT * FROM events WHERE event_name LIKE '%$searchName%'";
         $result = $this->query($query);
-        // if($result){
-        //     return $result;
-        // }else{
-        //     return [];
-        // }
-        //show($result);
         return $result ? $result : [];
 
     }
@@ -211,7 +205,7 @@ class Event {
         if(!empty($result)){
             $res['tickets']=$result;
         }
-        
+        show($res);
         return $res ? $res : [];
     }
 

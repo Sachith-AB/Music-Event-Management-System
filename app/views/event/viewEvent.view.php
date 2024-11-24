@@ -227,10 +227,7 @@
                 console.log(query)
                 if (query.trim() !== "") {
                     displayEventLocation(query);
-                } else {
-                    alert("Please enter a location to search.");
                 }
-
                 function displayEventLocation(address) {
                 // Fetch latitude and longitude from the address
                 var url = `https://nominatim.openstreetmap.org/search?format=json&q=${encodeURIComponent(address)}`;

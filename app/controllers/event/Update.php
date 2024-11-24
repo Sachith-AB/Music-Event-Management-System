@@ -14,12 +14,11 @@ class Update {
         $event_name = htmlspecialchars($_GET['event_name']);
         $row = $event->firstByEventName($event_name);
 
+
         if($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['update'])){
             
             $this->updateDetail($event);
         }
-
-        
         // if($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['upload'])){
         //     $this->uploadImages($event,$_FILES);
         //     show($_FILES);
@@ -136,8 +135,6 @@ class Update {
     //     // Redirect to event review page
     //     redirect("event-review?event_name=$event_name");
     // }
-    
-    
     
 }
 
