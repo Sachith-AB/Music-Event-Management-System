@@ -26,7 +26,7 @@
                     <li><a href="event-planner-dashboard">Dashboard</a></li>
                 <?Php endif ?>    
                 <?php if($_SESSION['USER']->role == 'collaborator'): ?>
-                    <li><a href="colloborator-dashboard">Dashboard</a></li>
+                    <li><a href="colloborator-dashboard?id=<?= $_SESSION['USER']->id ?>">Dashboard</a></li>
                 <?Php endif ?>
                 <?php
                 // Determine the appropriate function to call based on the user's role
