@@ -27,7 +27,7 @@
                     <li><a href="event-planner-dashboard">Dashboard</a></li>
                 <?Php endif ?>    
                 <?php if($_SESSION['USER']->role == 'collaborator'): ?>
-                    <li><a href="colloborator-dashboard">Dashboard</a></li>
+                    <li><a href="colloborator-dashboard?id=<?= $_SESSION['USER']->id ?>">Dashboard</a></li>
                 <?Php endif ?>
                 <?php
                 // Determine the appropriate function to call based on the user's role
@@ -47,7 +47,7 @@
             <button class="close-btn" onclick="closeModal()">×</button>
             <h2>Select Your Role</h2>
             <a href="signup?role=planner" class="role-btn">Event Planner</a>
-            <a href="signup?role=colloborator" class="role-btn">Collaborator</a>
+            <a href="signup?role=collaborator" class="role-btn">Collaborator</a>
             <a href="signup?role=holder" class="role-btn">Common User</a>
         </div>
     </div>
