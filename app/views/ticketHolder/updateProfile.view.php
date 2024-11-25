@@ -58,6 +58,36 @@
                             <button type="sumbit" name="update">Save profile</button>
                         </div>
                     </form>
+                    <div class="change-password-container">
+                        <h1 class="head1">Change Password</h1>
+                        <form>
+                            <div class="input-wrap">
+                                <!-- <label for="Email">Email</label> -->
+                                <input name="password" type="password" placeholder="Enter Password" id="password">
+                                <a href="#"  onclick="togglePasswordVisibility('password','toggleIcon')">
+                                    <ion-icon name="eye-outline" id="toggleIcon"></ion-icon>
+                                </a>
+                            </div>
+                            <div class="input-wrap">
+                                <!-- <label for="Email">Email</label> -->
+                                <input name="n-password" type="password" placeholder="Enter New Password" id="s-password">
+                                <a href="#"  onclick="togglePasswordVisibility('s-password','s-toggleIcon')">
+                                    <ion-icon name="eye-outline" id="s-toggleIcon"></ion-icon>
+                                </a>
+                            </div>
+                            <div class="input-wrap">
+                                <!-- <label for="Email">Email</label> -->
+                                <input name="c-password" type="password" placeholder="Confirm Password" id="c-password">
+                                <a href="#" onclick="togglePasswordVisibility('c-password','c-toggleIcon')">
+                                    <ion-icon name="eye-outline" id="c-toggleIcon"></ion-icon>
+                                </a>
+                            </div>
+                            <div class="button-wrap">
+                                <button type="button" >Forgot Password</button>
+                                <button type="sumbit" name="change-password">Change Password</button>
+                            </div>
+                        </form>
+                    </div>
                 </div>
             </div>
         </div>
@@ -81,6 +111,8 @@
     <!-- Ionicons Scripts -->
     <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
     <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
+
+    <script src="<?=ROOT?>/assets/js/signin-up.js"></script>
 
 </body>
 </html>
