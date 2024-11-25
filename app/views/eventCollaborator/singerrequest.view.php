@@ -21,15 +21,17 @@
             <div class="container-table">
                 <h1>Requests</h1>
                 <br>
-                <table>
-                    <tr>
-                        <th>Cover Image</th>                   
-                        <th>Event name</th>
-                        <th>Date</th>
-                        <th>Venue</th>
-                        <th>Action</th>
-                    </tr>
-
+                <table class="rtable">
+                    <thead>
+                        <tr>
+                            <th>Cover Image</th>                   
+                            <th>Event name</th>
+                            <th>Date</th>
+                            <th>Venue</th>
+                            <th>Action</th>
+                        </tr>
+                    </thead>
+                    <tbody>
                     <?php if(!empty($data['requests'])): ?>
                         <?php foreach( $data['requests'] as $request):?>
                             <tr>
@@ -59,33 +61,40 @@
                             </tr>
                         <?php endforeach; ?>
                     <?php endif; ?>
+                    </tbody>
+
+                    
                 </table>
             </div>
             <br><br>
             <div class="container-table">
             <h1>Accepted Events</h1>
             <br>
-            <table class="second" >
-                <tr>
-                    <th>Cover Image</th> 
-                    <th>Event name</th>
-                    <th>Date</th>
-                    <th>Venue</th>
-                    
-                </tr>
-                <?php if(!empty($data['accepted'])): ?>
-
-                    <?php foreach($data['accepted'] as $request): ?>
-
+            <table class="rtable" class="second" >
+                <thead>
                     <tr>
-                        <td> <img class="cover-image"  src="<?=ROOT?>/assets/images/events/<?php echo $request->cover_images ?> " alt="cover image"></td>
-                        <td><?php echo $request->event_name?></td>
-                        <td><?php echo $request->eventDate?></td>
-                        <td><?php echo $request->address?></td>
+                        <th>Cover Image</th> 
+                        <th>Event name</th>
+                        <th>Date</th>
+                        <th>Venue</th>
+                        
                     </tr>
-                    <?php endforeach; ?>
+                </thead>
+                <tbody>
+                    <?php if(!empty($data['accepted'])): ?>
 
-                <?php endif; ?>
+                        <?php foreach($data['accepted'] as $request): ?>
+
+                        <tr>
+                            <td> <img class="cover-image"  src="<?=ROOT?>/assets/images/events/<?php echo $request->cover_images ?> " alt="cover image"></td>
+                            <td><?php echo $request->event_name?></td>
+                            <td><?php echo $request->eventDate?></td>
+                            <td><?php echo $request->address?></td>
+                        </tr>
+                        <?php endforeach; ?>
+
+                    <?php endif; ?>
+                </tbody>
             </table>
         </div>
         <br><br>
