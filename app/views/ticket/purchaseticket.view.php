@@ -1,4 +1,4 @@
-
+<?php include ('../app/views/components/header.php'); ?>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -11,7 +11,6 @@
     <!-- Include Font Awesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
 </head>
-<body>
 
     <!-- Include Header -->
     
@@ -37,14 +36,14 @@
                         </div>
                         <div>
                             <h3>Place</h3>
-                            <p><?= htmlspecialchars($ticketdetails[0]->event_city) ?><br><?= htmlspecialchars($ticketdetails[0]->event_province) ?></p>
+                            <p><?= htmlspecialchars($ticketdetails[0]->address) ?></p>
                         </div>
                     </div>
                 </div>
             </div>
 
             <div class="form-line"></div>
-            <form method="POST">
+            <form id="purchaseForm" method="POST">
             <!-- Contact section -->
                 <div class="event-details-container">
                     <div class="contact-header">
@@ -99,57 +98,72 @@
                             </div>
                         </div>
                     </div>
-                    <button type="submit" class="next-btn" name="submit">Next</button>
-                </div>
-            </form>
+                    <button type="button" class="next-btn" onclick="openModal()">Next</button>
 
+
+                </div>
+            
+
+                <script>
+                    const ticketDetails = <?= json_encode([
+                        'quantity' => $ticketdetails[0]->ticket_quantity,
+                        'price' => $ticketdetails[0]->ticket_price,
+                        'type' => $ticketdetails[0]->ticket_type,
+                        // Add any other details as needed
+                    ]) ?>;
+                </script>
+
+
+            <!--summary section -->
+                <div id="summaryModal" style="display: none;"> <!-- Initially hidden -->
+                    <div class="summary-container">
+                        <span class="close" onclick="closeModal()">&times;</span>
+                        
+                        <!-- Ticket Summary -->
+                        <div class="summary-row">
+                            <p><span id="ticketCountDisplay"></span></p>
+                            <p id="ticketTypeDisplay"></p>
+                        </div>
+                        <div class="summary-row">
+                            <p>Subtotal</p>
+                            <p id="subtotalDisplay"></p>
+                        </div>
+                        <div class="summary-row">
+                            <p>Discount</p>
+                            <p id="discountDisplay"></p>
+                        </div>
+                        <div class="summary-total">
+                            <p>Total</p>
+                            <p id="totalDisplay"></p>
+                        </div>
+                        <!-- Payment Method -->
+                        <div class="payment-method">
+                            <img src="<?=ROOT?>/assets/images/ticket/mastercard-icon.png" alt="Mastercard">
+                            <span>Mastercard **** 5987</span>
+                        </div>
+
+                        <button type="submit" class="pay-now-btn" name="submit">Pay now</button>
+                        
+
+                        <script>
+                            function confirmPurchase() {
+                                document.getElementById("purchaseForm").submit(); // This submits the form
+                            }
+                        </script>
+                    </div>
+                </div>
+
+                <script src="<?= ROOT ?>/assets/js/ticker/purchesticket.js"></script>
+                <script>
+                    function goToSuccessfullypaid() {
+                        window.location.href = "successfullypaid?id";
+                    }
+                </script>
+            </form>
+            
         <?php else: ?>
             <p>No events created yet.</p>
         <?php endif; ?>
-
-        <!--summary section -->
-        <div id="summaryModal">
-            <div class="summary-container">
-                <span class="close" onclick="closeModal()">&times;</span>
-                <div class="summary-row">
-                    <p>2 x</p>
-                    <p>$90 / Ticket</p>
-                </div>
-
-                <div class="summary-row">
-                    <p>Subtotal</p>
-                    <p>$180</p>
-                </div>
-
-                <div class="summary-row">
-                    <p>Discount</p>
-                    <p>- $18 (10%)</p>
-                </div>
-
-                <div class="summary-total">
-                    <p>Total</p>
-                    <p>$162</p>
-                </div>
-                <div class="payment-method">
-                    <img src="<?=ROOT?>/assets/images/ticket/mastercard-icon.png" alt="Mastercard">
-                    <span>Mastercard **** 5987</span>
-                </div>
-                <button class="pay-now-btn" onclick="goToMyTickets()">Pay now</button>
-
-                <!--add script to go go successfullypaid page-->
-                <script>
-                    function goToMyTickets() {
-                        const modal = document.getElementById('summaryModal');
-                        if (modal) {
-                            modal.remove(); // Remove the modal from the DOM
-                        }
-                        window.location.href = "successfullypaid";
-                    }
-                </script>
-            </div>
-        </div>
-        <script src="<?= ROOT ?>/assets/js/ticker/purchesticket.js"></script>
-
         <!--other event section-->
         <!-- <div class="event-details-container"> -->
             <h2>Other events you may like</h2>
@@ -158,12 +172,12 @@
                     <?php foreach ($recentevents as $event): ?>
                         <div class="musicevent-event-card">
                             <!-- <div class="musicevent-event-badge">20% OFF</div> -->
-                            <img src=<?= htmlspecialchars($event->cover_images) ?> alt="Musical Fusion Festival" class="musicevent-event-image">
+                            <img src='<?=ROOT?>/assets/images/events/<?php echo $event->cover_images?>' alt="Musical Fusion Festival" class="musicevent-event-image">
                             <div class="musicevent-event-info">
                                 <div class="musicevent-event-title"><?= htmlspecialchars($event->event_name) ?></div>
                                 <div class="musicevent-event-details">
                                     <div>📅 <?= htmlspecialchars(date("l, F d | h:i A", strtotime($event->start_time))) ?></div>
-                                    <div>📍 <?= htmlspecialchars($event->city) ?>, <?= htmlspecialchars($event->province) ?></div>
+                                    <div>📍 <?= htmlspecialchars($event->address) ?></div>
                                 </div>
                                 <!-- <div class="musicevent-event-price">From $80</div> -->
                             </div>
@@ -182,7 +196,7 @@
     </main>
 
     <!-- Include Footer -->
-    <div class="footer">
+    <?php include ('../app/views/components/footer.php'); ?>
         
     </div>
 

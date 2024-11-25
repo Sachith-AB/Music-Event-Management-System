@@ -1,0 +1,183 @@
+/* General Reset
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Arial','sans-serif';
+    
+} */
+
+/* Body and Container */
+body {
+    height: 100%;
+    background-color: #f4f9fc;
+    display: flex;
+    background-color: #f4f9fc;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column; /* Allow vertical stacking */
+    align-items: center;
+    justify-content: flex-start; /* Adjust positioning to start from the top */
+}
+
+.container {
+    margin-top: 60px; /* Adjusted to ensure it moves further below the header */
+    position: relative;
+    width: 100%;
+    max-width: 900px;
+    height: auto; 
+}
+
+/* Popup */
+.popup {
+    /* width: 100%;
+    padding: 40px;
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 0 15px rgba(0, 128, 255, 0.5);  */
+    position: relative;
+    width: 100%;
+    max-width: 900px;
+    background-color: #ffffff;
+    border-radius: 10px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+    padding: 30px;
+    margin-bottom: 40px;
+}
+
+/* Header */
+.head1 {
+    font-size: 2em;
+    font-weight: bold;
+    color: #00BDD6FF;
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+/* Input Fields */
+.input-wrap {
+    margin-bottom: 20px;
+}
+
+.input-wrap label {
+    display: block;
+    font-size: 1.1em;
+    color: #333;
+    margin-bottom: 5px;
+}
+
+.input-wrap input[type="text"],
+.input-wrap input[type="number"],
+.input-wrap input[type="date"],
+.input-wrap input[type="time"] {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    font-size: 1em;
+    transition: box-shadow 0.3s;
+}
+
+.input-wrap input[type="text"]:focus,
+.input-wrap input[type="number"]:focus,
+.input-wrap input[type="date"]:focus,
+.input-wrap input[type="time"]:focus {
+    box-shadow: 0 0 8px rgba(0, 128, 255, 0.6); 
+    outline: none;
+}
+
+/* Button Styling */
+.button-wrap {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 20px;
+}
+
+.search-container{
+    display: flex;
+    flex-direction: row;
+    gap: 2px;
+}
+
+.search-button{
+    padding: 10px 20px;
+    margin: 0.1em;
+    border: none;
+    border-radius: 5px;
+    font-size: 15px;
+    cursor: pointer;
+    
+    position: relative;
+    overflow: hidden;
+    z-index: 1;
+    transition: color 1s ease;
+    color: white;
+    background-color: #00BDD6FF;
+}
+
+.search-button:hover{
+    color: black;
+}
+
+.search-button:hover::after{
+    transform: skewX(-45deg) scale(1, 1);
+}
+
+.button-wrap button {
+    padding: 10px 20px;
+    margin: 0.1em;
+    border: none;
+    border-radius: 5px;
+    font-size: 15px;
+    cursor: pointer;
+    margin-right: 45px;
+    position: relative;
+    overflow: hidden;
+    z-index: 1;
+    transition: color 1s ease;
+    margin-top: 20px;
+}
+
+
+.upload-button{
+    padding: 10px 15px;
+    margin: 0.1em;
+    background: rgb(10, 10, 10); 
+    color: #00BDD6FF;
+    border: none;
+    border-radius: 5px;
+    font-size: 10px;
+    cursor: pointer;
+    margin-right: 45px;
+    position: relative;
+    overflow: hidden;
+    z-index: 1;
+    transition: color 1s ease;
+}
+
+.button-wrap button[type="button"] {
+    background: #00BDD6FF; 
+    color: white;
+}
+
+.button-wrap button[type="button"]:hover::after{
+    transform: skewX(-45deg) scale(1, 1);
+}
+
+.button-wrap button[type="button"]:hover {
+    color:rgb(197, 0, 0);
+}
+
+.button-wrap button[type="submit"] {
+    background: #00BDD6FF; 
+    color: white;
+}
+
+.button-wrap button[type="submit"]:hover::after{
+    transform: skewX(-45deg) scale(1, 1);
+}
+
+.button-wrap button[type="submit"]:hover {
+    color:black;
+}

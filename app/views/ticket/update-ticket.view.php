@@ -1,4 +1,4 @@
-<!-- <?php include ('../app/views/components/CreateEventHeader.php'); ?> -->
+<?php include ('../app/views/components/header.php'); ?>
 
 <?php
 if (session_status() == PHP_SESSION_NONE) {
@@ -20,7 +20,7 @@ $_SESSION['last_visit'] = date('Y-m-d H:i:s');
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Create an Event</title>
-    <link rel="stylesheet" href="<?=ROOT?>/assets/css/create-event.css">
+    <link rel="stylesheet" href="<?=ROOT?>/assets/css/ticket/createticket.css">
 </head>
 <body>
     
@@ -84,8 +84,25 @@ $_SESSION['last_visit'] = date('Y-m-d H:i:s');
                             <input type="time" id="sale-end-time" name="sale_end_time" value="<?= htmlspecialchars($ticket['ticket'][0]->sale_end_time) ?>">
                         </div>
 
-                        <button type="submit" class="review-button" name="submit">Review</button>
+                        <div class="button-container">
+                            <div class="opportunity-container">
+                                <h3>Restrictions</h3>
+                                <?php if (!empty($restrictions)): ?>
+                                    <div id="opportunity-container">
+                                        <?php foreach($restrictions as $restriction): ?>
+                                            <input type="text" name="restrictions[]" class="opportunity-input" value="<?= htmlspecialchars($restriction) ?>" >
+                                        <?php endforeach; ?>
+                                    </div>
+                                    
+                                <?php else: ?>
+                                    <p>No restrictions defined. Add new restrictions below:</p>
+                                <?php endif; ?>
+                                <button type="button" id="add-opportunity" class="review-button">Add More Opportunities</button>
+                            </div>
+                            <button type="submit" class="review-button" name="submit">Review</button>
+                        </div>
                     </div>
+
                 </form>
             <?php else: ?>
                 <p>No ticket data available to display.</p>

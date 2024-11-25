@@ -1,3 +1,4 @@
+<?php include ('../app/views/components/header.php'); ?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -13,7 +14,7 @@
         <!-- Sidebar -->
         <?php include ('../app/views/components/eventPlanner/dashsidebar.php'); ?>
 
-        <?php if (!empty($events)): ?>
+        <?php if (!empty($events)):?>
             <div class="content">
                 <!-- Processing Events Section -->
                 <h2 class="content-header">Newly Created Events (Processing)</h2>
@@ -22,12 +23,12 @@
                         <?php if ($event->status == 'processing'): ?>
                             <div class="event-card">
                                 <div class="event-status-process">Processing</div>
-                                <img src="<?= htmlspecialchars($event->cover_images) ?>" alt="<?= htmlspecialchars($event->event_name) ?>">
+                                <img src="<?=ROOT?>/assets/images/events/<?php echo htmlspecialchars($event->cover_images)?> " alt="<?= htmlspecialchars($event->event_name) ?>">
                                 <div>
                                     <div><?= htmlspecialchars($event->event_name) ?></div>
                                     <div>
                                         <div>📅 <?= htmlspecialchars(date("l, F d | h:i A", strtotime($event->start_time))) ?></div>
-                                        <div>📍 <?= htmlspecialchars($event->city) ?>, <?= htmlspecialchars($event->province) ?></div>
+                                        <div>📍 <?= htmlspecialchars($event->address)?></div>
                                     </div>
                                 </div>
                             </div>
@@ -42,12 +43,12 @@
                         <?php if ($event->status == 'scheduled'): ?>
                             <div class="event-card">
                                 <div class="event-status-scheduled">Scheduled</div>
-                                <img src="<?= htmlspecialchars($event->cover_images) ?>" alt="<?= htmlspecialchars($event->event_name) ?>">
+                                <img src="<?=ROOT?>/assets/images/events/<?php echo htmlspecialchars($event->cover_images)?>" alt="<?= htmlspecialchars($event->event_name) ?>">
                                 <div>
                                     <div><?= htmlspecialchars($event->event_name) ?></div>
                                     <div>
                                         <div>📅 <?= htmlspecialchars(date("l, F d | h:i A", strtotime($event->start_time))) ?></div>
-                                        <div>📍 <?= htmlspecialchars($event->city) ?>, <?= htmlspecialchars($event->province) ?></div>
+                                        <div>📍 <?= htmlspecialchars($event->address) ?></div>
                                     </div>
                                 </div>
                             </div>
@@ -62,12 +63,12 @@
                         <?php if ($event->status == 'completed'): ?>
                             <div class="event-card">
                                 <div class="event-status-completed">Completed</div>
-                                <img src="<?= htmlspecialchars($event->cover_images) ?>" alt="<?= htmlspecialchars($event->event_name) ?>">
+                                <img src="<?=ROOT?>/assets/images/events/<?php echo htmlspecialchars($event->cover_images)?>" alt="<?= htmlspecialchars($event->event_name) ?>">
                                 <div>
                                     <div><?= htmlspecialchars($event->event_name) ?></div>
                                     <div>
                                         <div>📅 <?= htmlspecialchars(date("l, F d | h:i A", strtotime($event->start_time))) ?></div>
-                                        <div>📍 <?= htmlspecialchars($event->city) ?>, <?= htmlspecialchars($event->province) ?></div>
+                                        <div>📍 <?= htmlspecialchars($event->address) ?></div>
                                     </div>
                                 </div>
                             </div>

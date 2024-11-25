@@ -7,7 +7,7 @@
     <title>Update Profile</title>
 </head>
 <body>
-    
+<?php include ('../app/views/components/loading.php'); ?>
     <?php 
         $flag = htmlspecialchars($_GET['flag'] ?? 0);
         $error = htmlspecialchars($_GET['msg'] ?? '');

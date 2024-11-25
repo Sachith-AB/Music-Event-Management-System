@@ -83,10 +83,15 @@ body {
     cursor: pointer;
     font-weight: 500;
     margin-top: 10px;
+    transition: color 1s ease;
+}
+
+.button :hover::after {
+    transform: skewX(-45deg) scale(1, 1);
 }
 
 .button:hover {
-    background-color: rgb(16, 171, 192); /* Darker on hover */
+    color: black;
 }
 
 .form {
@@ -134,11 +139,16 @@ button {
     border-radius: 4px;
     font-weight: 600;
     cursor: pointer;
+    transition: color 1s ease;
     /* margin-right: 10px; */
 }
 
+.button:hover::after {
+    transform: skewX(-45deg) scale(1, 1);
+}
+
 button:hover {
-    background-color: rgb(16, 171, 192);
+    color: black;
 }
 
 /* Cancel button styling */
@@ -149,6 +159,7 @@ button:nth-child(1) {
 
 button:nth-child(1):hover {
     background-color: #c2c2c2;
+    color: black;
 }
 
 .button-wrap{

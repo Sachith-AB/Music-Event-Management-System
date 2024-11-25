@@ -13,7 +13,9 @@ class TicketController {
             // Check which button was clicked
             if (isset($_POST['add_another'])) {
                 // Process for adding another ticket type
+                show($_POST);
                 $this->createTicket($ticket, $_POST);  // Store event data in session
+                $event_id = $_SESSION['event_data']['event_id'];
                 $_SESSION['event_data'] = [
                     'event_id' => $_POST['event_id'],
                     'event_name' => $_POST['event_name'],
@@ -24,7 +26,8 @@ class TicketController {
                     'created_ticket_types' => $_SESSION['event_data']['created_ticket_types'] ?? []
                 ];
                 $_SESSION['event_data']['created_ticket_types'][] = $_POST['ticket_type'];
-                redirect("create-ticket");  // Reload the same page to add another ticket type
+                
+                redirect("create-ticket?event_id=" . $event_id);  // Reload the same page to add another ticket type
             } elseif (isset($_POST['submit'])) {
                 // Process for reviewing tickets
                 $data = $this->createTicket($ticket, $_POST); // Store event data in session
@@ -59,16 +62,20 @@ class TicketController {
 
     private function createTicket($ticket, $POST) {
         // First, get the event_id for the given event name
-        $eventName = $POST['event_name'];  // Ensure you have an input named 'event_name' in your form
-        $event_id = $ticket->getEventIdByName($eventName);
-
+        // $eventName = $POST['event_name'];  // Ensure you have an input named 'event_name' in your form
+        // $event_id = $ticket->getEventIdByName($eventName);
+        $event_id = isset($_GET['event_id']) ? $_GET['event_id'] : null;
         if (!$event_id) {
             // Handle the error if no event is found
-            return ['error' => "No event found with the name $eventName"];
+            return ['error' => "No event found with the $event_id"];
         }
 
         // Include event_id in the POST data
         $POST['event_id'] = $event_id;
+
+        if (isset($POST['restrictions']) && is_array($POST['restrictions'])) {
+            $POST['restrictions'] = json_encode($POST['restrictions']);
+        }
         
         // Validate event/ticket data
         if ($ticket->validTicket($POST)) {
@@ -86,32 +93,55 @@ class TicketController {
     public function updateTicket() {
         $ticket = new Ticket;
         $ticket_id = $_GET['ticket_id'] ?? null;
-        // $event_name = $_GET['event_name'] ?? null;
-        // show($ticket_id);
         $data = [];
-
+    
         if ($ticket_id) {
             // Load the current ticket data to display in the form
             $data['ticket'] = $ticket->getTicketDetails($ticket_id);
+            // show($data['ticket'][0]);
+    
+            if (!empty($data['ticket']) && is_array($data['ticket'])) {
+                $ticket_details = $data['ticket'][0]; // Assuming ticket details are stored in the first element
+                
+                // show($ticket_details->restrictions);  // To debug and see ticket data
+                
+                // Check if 'restrictions' are set in the ticket data and decode it if it exists
+                if (isset($ticket_details->restrictions)) {
+                    // Decode the JSON restrictions into a PHP array
+                    $data['restrictions'] = json_decode($ticket_details->restrictions, true);
+                } else {
+                    // If no restrictions, set an empty array
+                    $data['restrictions'] = [];
+                }
+            } else {
+                // If no ticket data is returned
+                $data['ticket'] = null;
+                $data['restrictions'] = [];
+            }
+        
         }
-        // show($data);
-
+    
         // Handle form submission for ticket update
         if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['submit'])) {
-
+            if (isset($_POST['restrictions']) && is_array($_POST['restrictions'])) {
+                $_POST['restrictions'] = json_encode($_POST['restrictions']);
+            }
+    
             if ($ticket->validTicket($_POST)) {
-                
-                unset($_POST['submit']);
+                unset($_POST['submit']); // Remove the submit key
+    
+                // Update the ticket
                 $ticket->update($ticket_id, $_POST);
-                redirect("view-tickets?event_id=" . $_POST['event_id']);
+                redirect("view-tickets?event_id=".$_POST['event_id']);
             } else {
                 $data['errors'] = $ticket->errors;
             }
         }
-
+    
         // Render the update form with the ticket data
-        $this->view('ticket/update-ticket', ['ticket' => $data]);
+        $this->view('ticket/update-ticket', ['ticket' => $data, 'restrictions' => $data['restrictions']]);
     }
+    
 
     
     public function deleteTicket()

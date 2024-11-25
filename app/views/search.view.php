@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -8,6 +9,7 @@
 </head>
 <body>
     <?php 
+    include ('../app/views/components/loading.php');
     // Set default value for showMore if not set
     $showMore = isset($_POST['showMore']) ? $_POST['showMore'] == 'true' : false; 
     ?>
@@ -16,7 +18,7 @@
             <h1>Search Event</h1>
             <form method="POST" class="search-bar">
                 <input type="text" name="name" placeholder="Rock">
-                <input type="text" name="location" placeholder="New York, NY">
+                <input type="text" name="location" placeholder="Colombo, Sri Lanka">
                 <button type="submit" name="searchEvents" value="search">Search</button>
             </form>
         </header>
@@ -73,7 +75,7 @@
                     <div class="event-info">
                         <h3><?php echo $event->event_name ?></h3>
                         <p class="date">📅 <?php echo $event->eventDate ?> | <?php echo $event->start_time ?></p>
-                        <p class="location">📍 New York, NY</p>
+                        <p class="location">📍 Colombo, Sri Lanka</p>
                         <?php if($event->pricing == 'paid'):?>
                             <span class="pricing paid"><?php echo "PAID" ?></span> 
                         <?php else:?>
@@ -147,3 +149,5 @@
 
 </body>
 </html>
+
+

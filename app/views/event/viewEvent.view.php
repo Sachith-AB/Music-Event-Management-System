@@ -12,9 +12,10 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900&family=Sen:wght@400..800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
 </head>
-<!-- <?php show($data) ?> -->
-<body>
+<bo>
+    <?php include ('../app/views/components/loading.php'); ?>
     <!-- headersection -->
     <div class="headersection">
         <img src="<?=ROOT?>/assets/images/ticket/ticketevent-bg.jpg" alt="Musical Fusion Festival" class="headersection-img">
@@ -92,7 +93,7 @@
     </div>
 
     <!-- eventdetails section -->
-     <div class="eventdetails">
+    <div class="eventdetails">
         <!-- image section -->
         <div class="eventimages">
             <div class="image image1">
@@ -112,7 +113,7 @@
             </div>
 
         </div>
-         <!-- details section -->
+        <!-- details section -->
         <div class="details">
             <h2>Welcome to <?php echo $data['event']->event_name ?> <br/> You can join the event</h2>
             <div class="event-item">
@@ -131,13 +132,13 @@
                 </div>
                 <div>
                     <h3>Place</h3>
-                    <p><?php echo $data['venue'][0]->name ?><br><?php echo $data['venue'][0]->location ?></p>
+                    <p id="address"><?php echo $data['event']->address ?><br></p>
                 </div>
+                <div id="map" class="map" style="height: 200px; width: 500px;"></div>
             </div>
-
         </div>
 
-     </div>
+    </div>
     <!-- performers section -->
     <section class="team-section">
         <div class="team-header">
@@ -145,22 +146,29 @@
             <!-- <p>Cupidatat sunt excepteur ipsum non. Ex consectetur amet eu commodo incididunt elit incididunt aliqua aliqua irure elit minim voluptate. Sit est nisi labore eiusmod et ad. Anim quis anim adipisicing quis cillum id ullamco officia do culpa voluptate exercitation nisi.</p> -->
         </div>
 
-        <div class="team-grid">
-            <?php foreach($data['performers'] as $perfotmer): ?>
-                <div class="team-member">
-                    <img class="team-member-image" src="<?=ROOT?>/assets/images/user/<?php echo $perfotmer->pro_pic?>" alt="Selina Valencia">
-                    <div class="team-info">
-                        <h3><?php echo $perfotmer->name ?></h3>
-                        
-                    </div>
-                    <div class="social-icons">
-                        <a href="#"><i class="fab fa-facebook-f"></i></a>
-                        <a href="#"><i class="fab fa-twitter"></i></a>
-                        <a href="#"><i class="fab fa-instagram"></i></a>
-                        <a href="#"><i class="fab fa-linkedin-in"></i></a>
-                    </div>
-                </div>
-            <?php endforeach ?>
+        <div class="team-grid-scrollable">
+            <div class="team-grid">
+                <?php if(!empty($data['performers'])): ?>
+                    <?php foreach($data['performers'] as $perfotmer): ?>
+                        <div class="team-member">
+                            <img class="team-member-image" src="<?=ROOT?>/assets/images/user/<?php echo $perfotmer->pro_pic?>" alt="Selina Valencia">
+                            <div class="team-info">
+                                <h3><?php echo $perfotmer->name ?></h3>
+                                
+
+                            </div>
+                            <div class="social-icons">
+                                <a href="#"><i class="fab fa-facebook-f"></i></a>
+                                <a href="#"><i class="fab fa-twitter"></i></a>
+                                <a href="#"><i class="fab fa-instagram"></i></a>
+                                <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                            </div>
+                        </div>
+
+                    <?php endforeach ?>
+                <?php endif ?>
+            </div>
+
         </div>
     </section>
     
@@ -168,7 +176,8 @@
     <!-- ticket section -->
     <div class="ticketbackground">
         <div class="pricing-container">
-            <?php foreach($data['tickets'] as $ticket): ?>
+            <?php if(!empty($data['tickets'])): ?>
+                <?php foreach($data['tickets'] as $ticket): ?>
                 <div class="pricing-card">
                 <h2>
                     <?php if($ticket->ticket_type == "SILVER"): ?>
@@ -210,12 +219,48 @@
                 <button onclick="window.location.href='purchaseticket?id=<?= $ticket->id ?>'">Buy Ticket Now</button>
                 </div>
             <?php endforeach ?>
+            <?php endif ?>
             
+            <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
             <script>
-                function goToTickets() {
-                    window.location.href = "purchaseticket";
+                var query = document.getElementById("address").textContent.trim();
+                console.log(query)
+                if (query.trim() !== "") {
+                    displayEventLocation(query);
                 }
-            </script>
+                function displayEventLocation(address) {
+                // Fetch latitude and longitude from the address
+                var url = `https://nominatim.openstreetmap.org/search?format=json&q=${encodeURIComponent(address)}`;
+                
+                fetch(url)
+                    .then(response => response.json())
+                    .then(data => {
+                        if (data.length > 0) {
+                            var lat = parseFloat(data[0].lat);
+                            var lon = parseFloat(data[0].lon);
+                            var displayName = data[0].display_name;
+
+                            // Initialize the map at the location
+                            var map = L.map('map').setView([lat, lon], 13);
+
+                            // Add OpenStreetMap tiles
+                            L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+                                maxZoom: 19,
+                                attribution: '© OpenStreetMap'
+                            }).addTo(map);
+
+                            // Add a marker to the map
+                            var marker = L.marker([lat, lon]).addTo(map);
+                            marker.bindPopup(displayName).openPopup();
+                        } else {
+                            console.error("Location not found");
+                        }
+                    })
+                    .catch(error => {
+                        console.error("Error fetching location:", error);
+                    });
+            }
+            </script>
         </div>
     </div>
 </body>

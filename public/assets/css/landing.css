@@ -37,7 +37,7 @@ header {
     
 }
 
-.logo img {
+.logo-image img {
     max-height: 50px; 
     cursor: pointer;
 }
@@ -72,6 +72,7 @@ nav ul li a {
 
 nav ul li a:hover {
     color: #00BDD6FF;
+    cursor: pointer;
 }
 
 nav ul li a::after {
@@ -476,7 +477,7 @@ nav ul li.sign-up {
     padding: 10px 20px;
     border-radius: 5px;
     cursor: pointer;
-    transition: all 0.3s ease;
+    transition: all 1s ease;
 }
 
 .category-buttons button:hover {

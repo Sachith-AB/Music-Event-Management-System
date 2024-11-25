@@ -18,9 +18,10 @@
     <!-- Main Content -->
     <div class="content">
 
-    <h1>Singers</h1>
+    
         <!-- Search Bar -->
-        <div>
+        <div class="header">
+            <h1>Singers</h1>
             <form method="POST" class="search">
                 <input type="text" name="searchTerm" placeholder="Search..." class="search-bar">
                 <button name="searchSingers" value="search" type="submit">SEARCH</button>
@@ -55,7 +56,7 @@
                     <div class="singer-card">
                         <img src="<?=ROOT?>/assets/images/user/<?php echo $singer->pro_pic ?>" alt="Singer 2">
                         <h3><?php echo $singer->name ?></h3>
-                        <p>Music Genre</p>
+                        <p><?php echo $singer->music_genres ?></p>
                         <div class="button-wrapper">
                             <button class="profile">Profile</button>
                             <form method = "POST">

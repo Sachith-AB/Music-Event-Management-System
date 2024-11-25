@@ -1,0 +1,74 @@
+/* Reset body and html styles */
+body, html {
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    height: 100%;
+    font-family: Arial, sans-serif;
+}
+
+/* Loading Screen */
+#loading-screen {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(255, 255, 255, 0.9); /* Semi-transparent white */
+    display: flex;
+    align-items: center; /* Vertically center content */
+    justify-content: center; /* Horizontally center content */
+    z-index: 9999; /* Ensure it stays above other elements */
+}
+
+/* Logo Container */
+.logo-container {
+    display: flex;
+    justify-content: center; /* Center the spinner horizontally */
+    align-items: center; /* Center the spinner vertically */
+    position: relative; /* Needed to position logo over spinner */
+}
+
+/* Rotating Spinner */
+.spinner {
+    position: relative; /* Allow positioning of logo inside */
+    width: 120px; /* Adjust size of the spinner */
+    height: 120px;
+    border: 5px solid transparent;
+    border-top: 5px solid #00BDD6FF; /* Change spinner color */
+    border-radius: 50%;
+    animation: spin 1.5s linear infinite; /* Apply spinning animation only to the spinner's border */
+}
+
+/* System Logo */
+.logo {
+    position: absolute;
+    width: 200px; /* Adjust size of logo */
+    height: auto;
+    display: block; /* Ensures the logo is treated as a block element */
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%); /* Center the logo inside the spinner */
+    z-index: 1; /* Ensure logo is above spinner */
+    pointer-events: none; /* Prevent the logo from interfering with spinner animation */
+}
+
+/* Spinner Animation (only affects the spinner border) */
+@keyframes spin {
+    0% {
+        transform: rotate(0deg); /* Spinner starts at 0deg */
+    }
+    100% {
+        transform: rotate(360deg); /* Spinner completes a 360-degree rotation */
+    }
+}
+
+/* Blur effect for page content */
+#page-content {
+    filter: blur(5px);
+    transition: filter 0.3s ease-in-out;
+}
+
+#page-content.loaded {
+    filter: none;
+}

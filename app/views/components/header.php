@@ -14,20 +14,25 @@
     //show($_SESSION["USER"]);
 ?>
 <header>
-    <div class="logo">
-        <img src = "logo.png" alt = "musicia" onclick="goToHome()"> 
+    <div class="logo-image">
+        <img src = "<?=ROOT?>/assets/images/logo/logo.png" alt = "musicia" onclick="goToHome()"> 
     </div>
     <nav>
         <ul>
+            <li><a href="home">Home</a></li>
             <li><a href="search">Explore</a></li>
             <li><a href="#new-events">Upcoming Events</a></li>
             <?php if($_SESSION['USER']): ?>
                 <?php if($_SESSION['USER']->role == 'planner'): ?>
                     <li><a href="event-planner-dashboard">Dashboard</a></li>
-                <?php else: ?>
-                    <li><a href="event-colloborator-dashboard">Dashboard</a></li>
+                <?Php endif ?>    
+                <?php if($_SESSION['USER']->role == 'collaborator'): ?>
+                    <li><a href="colloborator-dashboard?id=<?= $_SESSION['USER']->id ?>">Dashboard</a></li>
                 <?Php endif ?>
-                <img class="image" onclick="goToProfile()" src="<?=ROOT?>/assets/images/user/<?php echo $_SESSION['USER']->pro_pic ?>" alt="user profile">
+                <?php
+                // Determine the appropriate function to call based on the user's role
+                $onClickFunction = $_SESSION['USER']->role === 'collaborator' ? 'goToColloboratorProfile()' : 'goToProfile()'?>
+                <img class="image" onclick="<?= $onClickFunction ?>"  src="<?=ROOT?>/assets/images/user/<?php echo $_SESSION['USER']->pro_pic ?>" alt="user profile">
             <?php else: ?>
                 <li><a href="signin" class="sign-up">Sign In</a></li>
                 <li><a class="sign-up" onclick="openModal()">Sign Up</a></li>
@@ -42,7 +47,7 @@
             <button class="close-btn" onclick="closeModal()">×</button>
             <h2>Select Your Role</h2>
             <a href="signup?role=planner" class="role-btn">Event Planner</a>
-            <a href="signup?role=colloborator" class="role-btn">Collaborator</a>
+            <a href="signup?role=collaborator" class="role-btn">Collaborator</a>
             <a href="signup?role=holder" class="role-btn">Common User</a>
         </div>
     </div>
@@ -67,6 +72,10 @@
     function goToProfile() {
         window.location.href = "profile";
     };
+
+    function goToColloboratorProfile(){
+        window.location.href = "colloborator-profile"
+    }
 
     function goToHome (){
         window.location.href = "home"

@@ -7,15 +7,9 @@
     <title>Explore Events</title>
     <link rel="stylesheet" href="<?=ROOT?>/assets/css/landing.css">
 </head>
-
-
-
-
-
 <body> 
-
 <?php 
-
+    include ('../app/views/components/loading.php');
     //Get the pass data from URL for sign in part
     //To handle Errors
     $email = htmlspecialchars($_GET['email'] ?? '');
@@ -87,8 +81,7 @@
         </div>
     </section>
 
-
-
+    
     <!--Event Browsing-->
     <div id="new-events">
         <div class="events-selection">

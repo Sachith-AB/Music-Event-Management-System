@@ -12,7 +12,12 @@ class Event {
         'province',
         'eventDate',
         'start_time',
-        'end_time'
+        'end_time',
+        'cover_images',
+        'pricing',
+        'type',
+        'createdBy',
+        'address'
     ];
 
     public function validEvent($data) {
@@ -22,35 +27,80 @@ class Event {
         //flage mean errors include
 
         if (empty($data['event_name'])) {
-            $this->errors['event_name'] = "Event name is required";
+            $this->errors['flag'] = true;
+            $this->errors['error'] = "Event name is required";
+            $this->errors['error_no'] = 1;
             return ;
         }
 
         if (empty($data['description'])) {
-            $this->errors['description'] = "Event description is required";
+            $this->errors['flag'] = true;
+            $this->errors['error'] = "Event description is required";
+            $this->errors['error_no'] = 2;
             return ;
         }
 
 
         if (empty($data['audience'])) {
-            $this->errors['audience'] = "Audience is required";
+            $this->errors['flag'] = true;
+            $this->errors['error'] = "Audience is required";
+            $this->errors['error_no'] = 3;
         }
 
 
-        if (empty($data['city'])) {
-           $this->errors['city'] = "City is required";
-        }
+        // if (empty($data['city'])) {
+        //     $this->errors['flag'] = true;
+        //     $this->errors['error'] = "City is required";
+        //     $this->errors['error_no'] = 4;
+        // }
 
-        if (empty($data['province'])) {
-            $this->errors['province'] = "Province is required";
-        }
+        // if (empty($data['province'])) {
+        //     $this->errors['flag'] = true;
+        //     $this->errors['error'] = "Province is required";
+        //     $this->errors['error_no'] = 5;
+        // }
 
         if (empty($data['eventDate'])) {
-            $this->errors['eventDate'] = "Event date is required";
+            $this->errors['flag'] = true;
+            $this->errors['error'] = "Event date is required";
+        } else {
+            // Convert the event date to a timestamp
+            $eventDate = DateTime::createFromFormat('Y-m-d', $data['eventDate']);
+            $today = new DateTime('today'); // Today's date
+        
+            if (!$eventDate) {
+                // Invalid date format
+                $this->errors['error'] = "Invalid date format. Please use YYYY-MM-DD.";
+            } elseif ($eventDate <= $today) {
+                // Event date must be in the future
+                $this->errors['flag'] = true;
+			    $this->errors['error'] = "Event date must be in the future";
+			    $this->errors['error_no'] = 6;
+            }
         }
-
+        
         if (empty($data['start_time'])) {
-        $this->errors['start_time'] = "Start time is required";
+            $this->errors['flag'] = true;
+            $this->errors['error'] = "Start time is required";
+            $this->errors['error_no'] = 7;
+        } elseif (empty($data['end_time'])) {
+            $this->errors['flag'] = true;
+            $this->errors['error'] = "End time is required";
+            $this->errors['error_no'] = 8;
+        } else {
+            // Convert times to DateTime objects for comparison
+            $startTime = $data['start_time'] ;//DateTime::createFromFormat('H:i', $data['start_time']);
+            $endTime = $data['end_time']; //DateTime::createFromFormat('H:i', $data['end_time']);
+        
+            if (!$startTime || !$endTime) {
+                $this->errors['flag'] = true;
+                $this->errors['error'] = "Invalid time format. Use HH:MM.";
+                $this->errors['error_no'] = 9;
+            } elseif ($startTime >= $endTime) {
+                $this->errors['flag'] = true;
+                $this->errors['error'] = "Start time must be earlier than the end time";
+                $this->errors['error_no'] = 10;
+            }
         }
 
 
@@ -102,18 +152,9 @@ class Event {
     public function searchEventByName($searchTerm){
 
         $searchName = $searchTerm['name'] ?? "";
-       
         
-        $id = $searchTerm['location']?? '';
-        
-        $query = "SELECT * FROM events WHERE event_name LIKE '%$searchName%' OR venueID = '$id'";
+        $query = "SELECT * FROM events WHERE event_name LIKE '%$searchName%'";
         $result = $this->query($query);
-        // if($result){
-        //     return $result;
-        // }else{
-        //     return [];
-        // }
-        //show($result);
         return $result ? $result : [];
 
     }
@@ -139,46 +180,32 @@ class Event {
     }
 
     public function getAllEventData($id) {
+
         $res['event']=[];
         $res['event'] = $this->firstById($id);
-        $request = new Request;
         $user = new User;
         
-        // // Step 1: Split the performers string into an array of IDs
-        // $performerIds = explode(',', $res['event']->performers);
-        
-        // Step 2: Initialize an array to store performer data
         $res['performers'] = [];
-        
-    
-        // Step 3: Loop through each ID and fetch data for each performer
-        // foreach ($performerIds as $performerId) {
-        //     $res['performers'][] = $user->firstById(trim($performerId));
-        // }
-        $query_1 = "SELECT * FROM requests WHERE event_id = $id AND (role ='singer' OR role = 'band' OR role='announcer') ";
+        $query_1 = "SELECT * FROM requests WHERE event_id = $id AND (role ='singer' OR role = 'band' OR role='announcer') AND Status = 'accepted' ";
         $result_1 = $this->query($query_1);
-        //show($result_1);
 
-        foreach($result_1 as $performer){
-            $res['performers'][]=$user->firstById($performer->collaborator_id);
+        if(!empty($result_1)){
+            foreach($result_1 as $performer){
+                $res['performers'][]=$user->firstById($performer->collaborator_id);
+            }
         }
-        //show($res['performers']);
+        
 
 
         $res['tickets'] = [];
 
         $query = "SELECT * FROM tickets WHERE event_id = '$id'";
         
-        
         $result = $this->query($query);
-        $res['tickets']=$result;
-
-        $query_2 = "SELECT * FROM venues WHERE event_id = '$id'";
-        $result_2 = $this->query($query_2);
-        $res['venue'] = $result_2;
-        
-
-    show($res);
+        if(!empty($result)){
+            $res['tickets']=$result;
+        }
+        show($res);
         return $res ? $res : [];
     }
 
@@ -187,13 +214,3 @@ class Event {
 
 
 }
-
-
-    
-    
-    
-
-
-
-
-

@@ -110,43 +110,43 @@ form.sign-up-form {
   opacity: 0;
   pointer-events: none;
 }
-.logo {
+.logo-image {
   display: flex;
   align-items: center;
 }
-.logo img {
-  width: 50px;
+.logo-image img {
+  width: 100px;
   margin-right: 0.3rem;
   position: relative;
   top: -5px;
 }
 
-.logo h4 {
+.logo-image h4 {
   font-size: 1.3rem;
   margin-top: -9px;
   letter-spacing: -0.5px;
   color: #151111;
 }
-.logo span a {
+.logo-image span a {
   /* margin-right: 100px; */
   display: flex;
   color: #00BDD6FF;
   font-weight: 600;
   margin-bottom: 11px;
 }
-.logo span ion-icon {
+.logo-image span ion-icon {
   font-weight: 600;
   margin-top: 3px;
   font-size: 1.2rem;
 }
-.logo span {
+.logo-image span {
   display: inline-flex;
   font-size: 1.0rem;
   margin-left: auto;
   letter-spacing: -0.5px;
 
 }
-.logo span a:hover {
+.logo-image span a:hover {
   color: #00BDD6FF;
   cursor: pointer;
   text-decoration: underline;
@@ -235,15 +235,15 @@ label {
   margin-bottom: 1rem;
   margin-top: 1rem;
   transition: 0.5s ease-in-out;
+  transition: color 1s ease;
+}
+
+.sign-btn:hover::after {
+  transform: skewX(-45deg) scale(1, 1);
 }
 
 .sign-btn:hover {
-  /* background-color: white; */
-  /* color: black; */
-  cursor: pointer;
-  background-color: rgb(20, 203, 227);
-  /* box-shadow: 0 0px 10px 5px rgb(168, 165, 165); */
-  /* box-shadow: 0 60px 40px -30px rgb(0, 0, 0, 0.27); */
+  color: black;
 }
 
 .text {

@@ -1,21 +1,25 @@
 <?php
 
+
+
 class Purchaseticket {
 
     use Controller;
     use Model;
+
     public function index() {
 
         $buyticket = new Buyticket();
 
         $ticket_id = isset($_GET['id']) ? $_GET['id'] : null;
 
+        // if($_SERVER['REQUEST_METHOD']==="POST" && isset ($_POST["submit"])){
+        //     $this->sendEmail();
+        //     show($_POST);
+
+        // }
+
         if ($ticket_id) {
-            if (!$this->isLoggedIn()) {
-                redirect('signin');
-                exit();
-            }
-    
             // Assuming $_SESSION['USER'] holds the logged-in user's details, including ID
             $userId = $_SESSION['USER']->id;
 
@@ -54,7 +58,10 @@ class Purchaseticket {
                     'buy_time' => date('Y-m-d H:i:s'),
                 ];
             
-                $this->createPurchase($purchaseData, $buyticket);
+                $this->createPurchase($purchaseData, $buyticket, $data);
+                $latestpurchaseid = $buyticket->getLatestInsertedId();
+        
+                redirect("successfullypaid?purchase_id=$latestpurchaseid");
             }
             
 
@@ -70,16 +77,17 @@ class Purchaseticket {
             echo "Ticket ID not specified in the URL.";
         }
         
-       
     }
 
     public function createPurchase($purchaseData,$buyticket)
     {
-
-    $res =  $buyticket->insert($purchaseData);
-    return $res;
-
+        $result = $buyticket->insert($purchaseData);
+        // If the purchase was successful, decrease the ticket quantity
+        $ticket = new Ticket();
+        $ticket->decreaseQuantity($purchaseData['ticket_id'], $purchaseData['ticket_quantity']);
+        
+        
+        return $result;
     }
-
-
+    
 }   
