@@ -11,6 +11,7 @@
     <?php 
         $flag = htmlspecialchars($_GET['flag'] ?? 0);
         $error = htmlspecialchars($_GET['msg'] ?? '');
+        show($data);
     ?>
     <div class="">
         <div class="page-content">
@@ -60,23 +61,20 @@
                     </form>
                     <div class="change-password-container">
                         <h1 class="head1">Change Password</h1>
-                        <form>
+                        <form method="POST">
                             <div class="input-wrap">
-                                <!-- <label for="Email">Email</label> -->
                                 <input name="password" type="password" placeholder="Enter Password" id="password">
                                 <a href="#"  onclick="togglePasswordVisibility('password','toggleIcon')">
                                     <ion-icon name="eye-outline" id="toggleIcon"></ion-icon>
                                 </a>
                             </div>
                             <div class="input-wrap">
-                                <!-- <label for="Email">Email</label> -->
                                 <input name="n-password" type="password" placeholder="Enter New Password" id="s-password">
                                 <a href="#"  onclick="togglePasswordVisibility('s-password','s-toggleIcon')">
                                     <ion-icon name="eye-outline" id="s-toggleIcon"></ion-icon>
                                 </a>
                             </div>
                             <div class="input-wrap">
-                                <!-- <label for="Email">Email</label> -->
                                 <input name="c-password" type="password" placeholder="Confirm Password" id="c-password">
                                 <a href="#" onclick="togglePasswordVisibility('c-password','c-toggleIcon')">
                                     <ion-icon name="eye-outline" id="c-toggleIcon"></ion-icon>
