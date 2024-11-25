@@ -34,12 +34,14 @@
                 <div class="profile-section">
                     <!-- Left Section -->
                     <div class="profile-left">
-                        <div class="about-me">
-                            <h2>About <?php if (($profiledata['profile']['user_role'] === 'singer' || $profiledata['profile']['user_role'] === 'announcer')): ?>me<?php else: ?>us<?php endif; ?></h2>
-                            <p>
-                                <?php echo $profiledata['profile']['biography'] ?>
-                            </p>   
-                        </div>
+                        <?php if (!empty($profiledata['profile']['biography'])):?>
+                            <div class="about-me">
+                                <h2>About <?php if (($profiledata['profile']['user_role'] === 'singer' || $profiledata['profile']['user_role'] === 'announcer')): ?>me<?php else: ?>us<?php endif; ?></h2>
+                                <p>
+                                    <?php echo $profiledata['profile']['biography'] ?>
+                                </p>   
+                            </div>
+                        <?php endif; ?>
                         <br/>
                         <?php if (!empty($profiledata['past_works'])): ?>
                             <div class="experience">
