@@ -72,8 +72,11 @@
                   </ul>
                 <?php endif; ?>
                 <div class="profile-experience">
-                  <input type="text" name="experience" placeholder="Add a new experience">
-                  <button class="add-button">Add this experience</button>
+                  <form method="POST" action="add-experience">
+                    <input type="text" name="experience" placeholder="Add a new experience">
+                    <button class="add-button" name="add_experience">Add this experience</button>
+                  </form>
+                  
                 </div>
               </div>
 
@@ -88,8 +91,11 @@
                   </ul>
                 <?php endif; ?>
                 <div class="profile-experience">
-                  <input type="text" name="service" placeholder="Add a new service">
-                  <button class="add-button">Add this service</button>
+                  <form method="POST">
+                    <input type="text" name="service" placeholder="Add a new service">
+                    <button class="add-button" name="add_service">Add this service</button>
+                  </form>
+                  
                 </div>
               </div>
             </div>

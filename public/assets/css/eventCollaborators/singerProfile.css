@@ -226,6 +226,9 @@ h3 {
 .profile-experience{
   display: flex;
 }
+.profile-service{
+  display: flex;
+}
 
 .profile-experience input{
   width: 100%;

@@ -9,9 +9,11 @@ class SingerProfile {
     {
         $user = new User;
         $profile = new Profile;
+        $pastwork = new Pastworks;
+        $service = new Services;
 
-        $userId = htmlspecialchars($_GET['id']);
-
+        // $userId = htmlspecialchars($_GET['id']);
+        $userId = $_SESSION['USER']->id;
         $data = $this->profile($user);
         // show( $data);
 
@@ -23,6 +25,20 @@ class SingerProfile {
             // show($_POST);
             $this->profileDetails($profile,$userId, $_POST);
         }
+
+        if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['add_experience'])) {
+            // show($_POST);
+            $this->addExperince($pastwork,$userId, $_POST);
+        }
+
+        if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['add_service'])) {
+            // show($_POST);
+            $this->addService($service,$userId, $_POST);
+        }
+
+
+
+
         $this->view('eventCollaborator/singerProfile',['data'=>$data,'profiledata'=>$profiledata]);
 
     }
@@ -53,6 +69,28 @@ class SingerProfile {
             $profile->insert($POST);
         }
         redirect("colloborator-dashboard?id=" . $userId);
+    }
+
+    public function addExperince($pastwork,$userId, $postData){
+        $experience = htmlspecialchars($postData['experience']);
+        $data = [
+            'user_id' => $userId,
+            'past_work' => $experience
+        ];
+        // show($data);
+        $pastwork->insert($data);
+
+    }
+
+    public function addService($service,$userId, $serivceData){
+        $serviceDetails = htmlspecialchars($serivceData['service']);
+        $data = [
+            'user_id' => $userId,
+            'service' => $serviceDetails
+        ];
+        // show($data);
+        $service->insert($data);
+
     }
     
    
