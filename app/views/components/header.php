@@ -47,7 +47,7 @@
             <button class="close-btn" onclick="closeModal()">×</button>
             <h2>Select Your Role</h2>
             <a href="signup?role=planner" class="role-btn">Event Planner</a>
-            <a href="signup?role=colloborator" class="role-btn">Collaborator</a>
+            <a href="signup?role=collaborator" class="role-btn">Collaborator</a>
             <a href="signup?role=holder" class="role-btn">Common User</a>
         </div>
     </div>
