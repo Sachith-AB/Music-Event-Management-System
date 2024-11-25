@@ -11,7 +11,6 @@
     <?php 
         $flag = htmlspecialchars($_GET['flag'] ?? 0);
         $error = htmlspecialchars($_GET['msg'] ?? '');
-        show($data);
     ?>
     <div class="">
         <div class="page-content">
@@ -97,14 +96,18 @@
             include ("../app/views/components/r-message.php");
         ?>
     <?php  endif ?>
-
+    
+    <?php if(!empty($data)): ?>
+        <?php
+            $message = $data['error'];
+            include ("../app/views/components/r-message.php");
+        ?>
+    <?php  endif ?>
     <script>
         function goToProfile() {
-            window.location.href = "profile?id=<?php echo $data['id']?>";
+            window.location.href = "profile";
         }
     </script>
-
-    <script src="<?=ROOT?>/assets/js/message.js"></script>
 
     <!-- Ionicons Scripts -->
     <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>

@@ -135,11 +135,12 @@ class UpdateProf {
                 show($_POST);
                 $user->update($id,$_POST);
                 unset($_POST);
-                echo "good";
             }else{
                 unset($_POST);
-                $error = 'Password Invalid';
-                echo $error;
+                $msg = 'Password Invalid';
+                $flag = 1;
+                $errors = 'msg='.$msg.'&flag='.$flag;
+                redirect("update-profile?$errors");
             }
         }else{
             return $user->errors;
