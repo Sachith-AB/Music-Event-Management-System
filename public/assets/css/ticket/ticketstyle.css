@@ -331,6 +331,7 @@ body {
     cursor: pointer;
     font-size: 14px;
     width: 100%;
+    transition: color 1s ease;
 }
 
 .button-group {
@@ -348,6 +349,7 @@ body {
     cursor: pointer;
     border-radius: 5px; /* Rounded corners */
     transition: background-color 0.3s; /* Smooth background color transition */
+    transition: color 1s ease;
 }
 
 .add-ticket-btn:hover, .next-btn:hover, .pay-now-btn:hover {
@@ -528,6 +530,7 @@ body {
     font-size: 14px;
     color: #00BDD6FF;
     text-decoration: none;
+    transition: color 1s ease;
 }
 
 
@@ -714,6 +717,7 @@ body {
     border-radius: 25px;
     cursor: pointer;
     font-size: 14px;
+    transition: color 1s ease;
 }
 
 .upcommingeve-tickets {
@@ -890,9 +894,9 @@ body {
     color: #fff;
     cursor: pointer;
     font-weight: 600;
-    transition: transform 0.3s ease, background-color 0.3s ease;
     border: none;
     font-size: 14px;
+    transition: color 1s ease;
 }
 
 .update-btn {
@@ -966,6 +970,7 @@ body {
     cursor: pointer;
     width: 100%;
     font-size: 16px;
+    transition: color 1s ease;
 }
 
 .save-btn:hover {

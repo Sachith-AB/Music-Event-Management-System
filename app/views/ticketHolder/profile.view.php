@@ -8,6 +8,7 @@
     <link rel="stylesheet" href="<?=ROOT?>/assets/css/ticketHolder/profile.css">
 </head>
 <body>
+    <?php include ('../app/views/components/loading.php'); ?>
     <?php //$id = $_SESSION['USER']->id;
 
     $success = htmlspecialchars($_GET['msg'] ?? '');
@@ -34,24 +35,11 @@
                     <div class="tag-item">4 Following</div>
                     <div class="tag-item">10 Likes</div>
                 </div>
-                <a href="update-profile" class="button" type="button">Update Profile</a>
+                <form class="buttons" method="POST">
+                    <button onclick="goToUpdate()" class="button button-1" type="button">Update</button>
+                    <button class="button button-2" type="submit" name="logOut">Sign out</button>
+                </form>
             </div>
-            <!-- <div class="header-menu">
-                <div class="header-menu-item selected">Upcoming</div>
-                <div class="header-menu-item">Used</div>
-            </div>
-            <h3 class="event">4 Event <?php echo ''?></h3>
-            <div class="textbox">
-                <input type="text" name="search" id="search" placeholder="Search">
-            </div> -->
-            <!-- <div class="event-detail">
-                <div>
-                    <img class="event-image" src="<?=ROOT?>/assets/images/events/image-1.jpg" alt="event" >
-                </div>
-                <div>
-                    <h1>February 20 | 08:00 PM</h1>
-                </div>
-            </div> -->
             <?php if (!empty($combinedTickets)): ?>
                 <div class="upcommingeve-tickets">
                     <h2>My Tickets</h2>
@@ -96,6 +84,10 @@
                 this.classList.add('selected');
             });
         });
+
+        function goToUpdate(){
+            window.location.href = 'update-profile';
+        }
     </script>
 
     <script src="<?=ROOT?>/assets/js/message.js"></script>

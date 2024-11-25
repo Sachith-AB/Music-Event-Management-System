@@ -111,8 +111,6 @@
 
 /* Tag 28 */
 .tag {
-    
-     
     width: 250px; 
     height: 28px; 
     display: flex; 
@@ -216,10 +214,17 @@
     background: #F5F1FEFF; /* primary-100 */
   }
 
+.buttons{
+  display: flex;
+  flex-direction: row;
+  gap: 5px;
+
+}
+
 /* Button 55 */
 .button { 
     margin-top: 20px;
-    width: 292px; 
+    width: 100px; 
     height: 44px; 
     padding: 0 16px; 
     display: flex; 
@@ -230,12 +235,13 @@
     line-height: 26px; 
     font-weight: 400; 
     color: #FFFFFFFF; /* white */
-    background: #00BDD6FF; /* primary-500 */
     opacity: 1; 
     border: none; 
     border-radius: 4px; /* border-m */
     gap: 6px; 
     text-decoration: none;
+    cursor: pointer;
+    transition: color 1s ease;
   }
   .button .icon {
     width: 20px; 
@@ -252,12 +258,18 @@
   }
   /* Pressed */
   .button:hover:active {
-    transform: scale(1.1); /* Increase size by 10% */
     transition: transform 0.2s ease-in-out;
   }
   /* Disabled */
   .button:disabled {
     opacity: 0.4; 
+  }
+
+  .button-1{
+    background: #00BDD6FF; /* primary-500 */
+  }
+  .button-2{
+    background: #e93a74; /* primary-500 */
   }
 
   /* Header Menu 7 */

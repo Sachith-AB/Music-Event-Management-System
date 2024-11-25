@@ -83,6 +83,7 @@ body {
     cursor: pointer;
     font-weight: 500;
     margin-top: 10px;
+    transition: color 1s ease;
 }
 
 .button :hover::after {
@@ -138,6 +139,7 @@ button {
     border-radius: 4px;
     font-weight: 600;
     cursor: pointer;
+    transition: color 1s ease;
     /* margin-right: 10px; */
 }
 
