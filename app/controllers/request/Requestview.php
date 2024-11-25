@@ -30,7 +30,7 @@ class Requestview {
         $data['requests'] = $this->displaySingerRequests($request,$user_id);
 
         $data['accepted'] = $this->displayAcceptedRequests($request,$user_id);
-        // show($data['accepted']);
+        // show($data['accepted']);                                                                                                                                                                                                                                         
 
         $this->view('request/request', $data);
         
