@@ -39,6 +39,18 @@
     transition: transform 0.3s ease;
     text-align: center;
 }
+.event-card-link {
+    text-decoration: none;
+    color: inherit; /* Ensure text color does not change on hover */
+    display: block; /* Makes the entire card clickable */
+}
+
+/*.event-card-link:hover .event-card {
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2); /* Adds hover effect for the card */
+    /* transform: scale(1.02); Slightly enlarges the card */
+    /* transition: all 0.3s ease; Smooth hover transition */
+/* } */
+
 
 .event-card img {
     width: 100%;
