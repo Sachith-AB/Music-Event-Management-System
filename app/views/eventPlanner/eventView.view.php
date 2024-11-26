@@ -9,7 +9,7 @@
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 </head>
 <body>
-    < class="container">
+    <div class="container">
         <!-- Event Details -->
         <div class="section">
             <div class="left-section">

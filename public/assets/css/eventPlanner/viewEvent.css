@@ -333,8 +333,9 @@
     gap: 6px;
     text-decoration: none;
     transition: color 1s ease;
-    margin-left: 1200px;
+    margin-left: 1100px;
     margin-bottom: 20px;
+    margin-right: 20px;
     right: 20px; /* Adjust right distance as needed */
 }
 
