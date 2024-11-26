@@ -1,0 +1,78 @@
+/* General Styles */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f4f4f9;
+    color: #333;
+}
+
+.container {
+    max-width: 900px;
+    margin: 20px auto;
+    padding: 20px;
+    background: white;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+/* Calendar Styles */
+.calendar {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.calendar-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    max-width: 400px;
+}
+
+.calendar-header h2 {
+    margin: 0;
+}
+
+.calendar-grid {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    gap: 10px;
+    width: 100%;
+    max-width: 400px;
+    margin-top: 20px;
+}
+
+.calendar-grid div {
+    width: 100%;
+    padding: 20px;
+    background: #eaeaea;
+    text-align: center;
+    border-radius: 4px;
+    position: relative;
+    cursor: pointer;
+}
+
+.calendar-grid .has-event {
+    background: #00bdd6;
+    color: white;
+}
+
+/* Event List Styles */
+.event-list {
+    margin-top: 20px;
+}
+
+.event-list ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+.event-list li {
+    padding: 10px;
+    background: #f9f9f9;
+    margin-bottom: 10px;
+    border-left: 4px solid #00bdd6;
+}
