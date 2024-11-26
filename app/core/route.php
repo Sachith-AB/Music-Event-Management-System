@@ -66,6 +66,7 @@ route('event-planner-calendar','eventPlanner/EventPlannerCalendar@index');
 route('event-planner-myevents','eventPlanner/EventPlannerMyEvents@index');
 route('event-planner-payment','eventPlanner/EventPlannerPayment@index');
 route('event-planner-messages','eventPlanner/EventPlannerMessage@index');
+route('event-planner-viewEvent','eventPlanner/EventPlannerViewEvent@index');
 
 
 //Route for Admin
