@@ -9,7 +9,7 @@
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 </head>
 <body>
-    <div class="container">
+    < class="container">
         <!-- Event Details -->
         <div class="section">
             <div class="left-section">
@@ -265,7 +265,10 @@
             </table>
             <button class="addbutton">Add More Requests</button>
         </div>
-
+        
+        <button class="finishbutton">Move to Scheduled</button>
+        
+        
     </div>
 </body>
 </html>
