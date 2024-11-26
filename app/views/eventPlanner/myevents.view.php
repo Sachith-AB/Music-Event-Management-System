@@ -21,17 +21,21 @@
                 <div class="events-container">
                     <?php foreach ($events as $event): ?>
                         <?php if ($event->status == 'processing'): ?>
-                            <div class="event-card">
-                                <div class="event-status-process">Processing</div>
-                                <img src="<?=ROOT?>/assets/images/events/<?php echo htmlspecialchars($event->cover_images)?> " alt="<?= htmlspecialchars($event->event_name) ?>">
-                                <div>
-                                    <div><?= htmlspecialchars($event->event_name) ?></div>
-                                    <div>
-                                        <div>📅 <?= htmlspecialchars(date("l, F d | h:i A", strtotime($event->start_time))) ?></div>
-                                        <div>📍 <?= htmlspecialchars($event->address)?></div>
-                                    </div>
+                           
+                                <div class="event-card">
+                                    <a href="<?=ROOT?>/event-planner-viewEvent?id=<?= htmlspecialchars($event->id) ?>" class="event-card-link">
+                                        <div class="event-status-process">Processing</div>
+                                        <img src="<?=ROOT?>/assets/images/events/<?php echo htmlspecialchars($event->cover_images)?> " alt="<?= htmlspecialchars($event->event_name) ?>">
+                                        <div>
+                                            <div><?= htmlspecialchars($event->event_name) ?></div>
+                                            <div>
+                                                <div>📅 <?= htmlspecialchars(date("l, F d | h:i A", strtotime($event->start_time))) ?></div>
+                                                <div>📍 <?= htmlspecialchars($event->address)?></div>
+                                            </div>
+                                        </div>
+                                    </a>
                                 </div>
-                            </div>
+                            
                         <?php endif; ?>
                     <?php endforeach; ?>
                 </div>
