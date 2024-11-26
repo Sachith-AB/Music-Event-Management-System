@@ -30,6 +30,7 @@ $_SESSION['last_visit'] = date('Y-m-d H:i:s');
     $error_no = htmlspecialchars($_GET['error_no'] ?? '');
     $flag = htmlspecialchars($_GET['flag'] ?? 0);
     ?>
+    <?php include ('../app/views/components/loading.php'); ?>
     <div class="container">
         <!-- Sidebar -->
         <div class="sidebar">

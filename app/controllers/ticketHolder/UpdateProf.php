@@ -143,6 +143,7 @@ class UpdateProf {
                 redirect("update-profile?$errors");
             }
         }else{
+            unset($_POST);
             return $user->errors;
         }
     }

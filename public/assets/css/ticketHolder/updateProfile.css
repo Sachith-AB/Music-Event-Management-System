@@ -17,12 +17,14 @@ body {
     width: 1000px;
     /* text-align: center; */
     margin-right: 3px;
+    
 }
 
 @media screen and (max-width: 1024px) {
     .page-content {
         width: 600px; /* Adjust width for tablet size screens */
         margin-right: 3px;
+        
     }
 }
 
