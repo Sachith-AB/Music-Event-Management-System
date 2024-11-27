@@ -1,3 +1,4 @@
+<?php include ('../app/views/components/header.php'); ?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -10,6 +11,7 @@
     <?php $eventJson = json_encode($data);
     ?>
 <body>
+    <?php include ('../app/views/components/loading.php'); ?>
     <div class="dash-container">
     <?php include ('../app/views/components/collaborator/singersidebar.php'); ?>
         <div class="dashboard">
