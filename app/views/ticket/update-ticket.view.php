@@ -23,6 +23,7 @@ $_SESSION['last_visit'] = date('Y-m-d H:i:s');
     <link rel="stylesheet" href="<?=ROOT?>/assets/css/ticket/createticket.css">
 </head>
 <body>
+<?php include ('../app/views/components/loading.php'); ?>
     
     <div class="container">
 

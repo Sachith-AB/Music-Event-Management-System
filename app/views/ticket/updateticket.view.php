@@ -15,6 +15,7 @@
 </head>
 
 <body>
+<?php include ('../app/views/components/loading.php'); ?>
     <!-- Include Header -->
     <?php include ('../app/views/components/Header.php'); ?>
 
