@@ -76,3 +76,25 @@ body {
     margin-bottom: 10px;
     border-left: 4px solid #00bdd6;
 }
+
+.has-event {
+    background-color: #00BDD6;
+    color: white;
+    border-radius: 50%;
+    cursor: pointer;
+}
+
+.has-event:hover {
+    background-color: #007a9f;
+    transform: scale(1.1);
+}
+
+.event-list li {
+    margin: 10px 0;
+}
+.today {
+    background-color: #FFDDC1; /* Light pink for today's date */
+    font-weight: bold;
+    border-radius: 50%;
+}
+

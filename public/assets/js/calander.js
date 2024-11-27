@@ -2,17 +2,15 @@
 const calendarGrid = document.querySelector(".calendar-grid");
 const currentMonthEl = document.getElementById("currentMonth");
 const eventList = document.getElementById("eventList");
+const eventN = document.getElementById("events").value;
+const events = JSON.parse(eventN); // Convert JSON to object
+console.log(events);
+
 
 // Get today's date
 const today = new Date();
 let currentMonth = today.getMonth();
 let currentYear = today.getFullYear();
-
-// Example events data (you'll fetch this from the database in a real app)
-const events = [
-    { date: "2024-12-01", description: "Performance at XYZ Event" },
-    { date: "2024-12-05", description: "Rehearsal for ABC Show" },
-];
 
 // Function to populate the calendar
 function populateCalendar(month, year) {
@@ -21,28 +19,36 @@ function populateCalendar(month, year) {
     const firstDay = new Date(year, month, 1).getDay(); // Day of the week for 1st day
     const daysInMonth = new Date(year, month + 1, 0).getDate(); // Total days in month
 
+    const todayDate = new Date().toISOString().split("T")[0]; 
+
     // Add empty cells for days before the first day of the month
     for (let i = 0; i < firstDay; i++) {
         const emptyCell = document.createElement("div");
         calendarGrid.appendChild(emptyCell);
     }
 
-    // Add days of the month
+
     for (let day = 1; day <= daysInMonth; day++) {
         const cell = document.createElement("div");
-        const cellDate = new Date(year, month, day).toISOString().split("T")[0];
-
+        const cellDate = `${year}-${String(month + 1).padStart(2, '0')}-${String(day).padStart(2, '0')}`;
+    
         cell.textContent = day;
 
+        if (cellDate === todayDate) {
+            cell.classList.add("today"); // Add a class for today's date
+            cell.style.backgroundColor = "#FFDDC1"; // Example color for highlighting today's date
+        }
+    
         // Highlight if there's an event
-        const event = events.find(e => e.date === cellDate);
+        const event = events.find(e => e.eventDate === cellDate);
         if (event) {
             cell.classList.add("has-event");
             cell.addEventListener("click", () => showEventDetails(event));
         }
-
+    
         calendarGrid.appendChild(cell);
     }
+    
 
     // Update current month display
     const monthNames = [
@@ -60,9 +66,12 @@ function showEventDetails(event) {
 // Function to list events
 function populateEventList() {
     eventList.innerHTML = ""; // Clear existing events
+
+    events.sort((a,b)=> new Date (a.eventDate) - new Date(b.eventDate));
+
     events.forEach(event => {
         const listItem = document.createElement("li");
-        listItem.textContent = `${event.date}: ${event.description}`;
+        listItem.textContent = `${event.start_time} ${event.event_name}: ${event.description}`;
         eventList.appendChild(listItem);
     });
 }

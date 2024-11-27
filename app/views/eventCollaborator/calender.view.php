@@ -6,6 +6,8 @@
     <title>Calendar and Notifications</title>
     <link rel="stylesheet" href="<?=ROOT?>/assets/css/eventCollaborators/calender.css">
 </head>
+    <?php $eventJson = json_encode($data);
+    ?>
 <body>
     <div class="container">
         <h1>My Calendar</h1>
@@ -16,7 +18,7 @@
                 <button id="nextMonth">▶</button>
             </div>
             <div class="calendar-grid">
-                <!-- Calendar days will be populated here dynamically -->
+                <input type="hidden" id="events" value='<?php echo $eventJson ?>'>
             </div>
         </div>
 
