@@ -95,6 +95,17 @@
             $message = $error;
             include ("../app/views/components/r-message.php");
         ?>
+    <?php elseif($flag == 2):?>
+        <?php
+            $message = $error;
+            include ("../app/views/components/s-message.php");
+        ?>
+    <?php  endif ?>
+    <?php if(!empty($data)): ?>
+        <?php
+            $message = $data['error'];
+            include ("../app/views/components/r-message.php");
+        ?>
     <?php  endif ?>
 
     <script>

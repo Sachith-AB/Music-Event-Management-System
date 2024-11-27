@@ -9,11 +9,9 @@ class SingerUpdateProf {
 
         $user = new User;
         $data = [];
-        $success = '';
 
         $id = $_SESSION['USER']->id;
         $row = $user->firstById($id);
-        //show($row);
 
         if($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['uploadImage']) && $_FILES['pro_pic']['name'] != ''){
             
@@ -24,16 +22,13 @@ class SingerUpdateProf {
         if($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['update'])){
             
             $this->updateDetail($user,$_POST,$id);
-            //show($_POST);
         }
-        $data = $this->getData($row);
+
+        if($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['change-password'])){
+            
+            $data = $this->changePassword($user,$id);
+        }
         $this->view('eventCollaborator/updateProfile',$data);
-    }
-
-    public function getData($row) {
-
-        $data = json_decode(json_encode($row),true);
-        return $data;
     }
 
     public function updateDetail($user,$POST,$id) {
@@ -119,6 +114,34 @@ class SingerUpdateProf {
                     redirect("colloborator-updateprofile?id=$id&$error");
                     exit;
             }
+        }
+    }
+
+    private function changePassword($user,$id){
+        $row = $user->firstById($id);
+
+        if($user->changePassword($_POST)){
+            unset($_POST['c-password']);
+            $row = $user->firstById($id);
+
+            $checkpassword = password_verify($_POST['password'], $row->password);
+            
+            if($checkpassword){
+                $password = $_POST['n-password'];
+                $hash = password_hash($password, PASSWORD_BCRYPT);
+                $_POST['password'] = $hash;
+                $user->update($id,$_POST);
+                unset($_POST);
+            }else{
+                unset($_POST);
+                $msg = 'Password Invalid';
+                $flag = 1;
+                $errors = 'msg='.$msg.'&flag='.$flag;
+                redirect("update-profile?$errors");
+            }
+        }else{
+            unset($_POST);
+            return $user->errors;
         }
     }
 }

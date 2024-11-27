@@ -132,9 +132,12 @@ class UpdateProf {
                 $password = $_POST['n-password'];
                 $hash = password_hash($password, PASSWORD_BCRYPT);
                 $_POST['password'] = $hash;
-                show($_POST);
                 $user->update($id,$_POST);
                 unset($_POST);
+                $msg = 'Password Changed';
+                $flag = 2;
+                $errors = 'msg='.$msg.'&flag='.$flag;
+                redirect("update-profile?$errors");
             }else{
                 unset($_POST);
                 $msg = 'Password Invalid';
