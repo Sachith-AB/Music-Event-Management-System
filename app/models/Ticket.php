@@ -92,6 +92,7 @@ class Ticket {
                     events.id AS event_id, 
                     events.event_name AS event_name, 
                     events.description AS event_description,
+                    events.cover_images AS event_images,
                     events.start_time AS event_date, 
                     events.end_time AS event_endtime,
                     events.address AS address

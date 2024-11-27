@@ -56,6 +56,7 @@ class Profile {
             $eventDetail = $ticket->getTicketAndEventDetails($ticket_id); 
             $combinedTickets[] = array_merge((array)$myticket, (array)$eventDetail);
         }
+        // show($combinedTickets);
         return $combinedTickets;
 
     }
