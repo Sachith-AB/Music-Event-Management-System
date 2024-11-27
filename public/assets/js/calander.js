@@ -58,9 +58,27 @@ function populateCalendar(month, year) {
     currentMonthEl.textContent = `${monthNames[month]} ${year}`;
 }
 
-// Function to show event details
+// Function to show event details in a modal
 function showEventDetails(event) {
-    alert(`Event: ${event.description}\nDate: ${event.date}`);
+
+    const ROOT = "http://localhost/Music-Event-Management-System/public";
+
+    document.getElementById("eventName").textContent = event.event_name;
+    document.getElementById("eventDescription").textContent = event.description;
+    document.getElementById("eventDate").textContent = event.eventDate;
+    const eventImage = document.getElementById("eventImage"); 
+    eventImage.src = `${ROOT}/assets/images/events/${event.cover_images}`;
+    eventImage.style.display = "block";
+
+    // Show the modal
+    const modal = document.getElementById("eventModal");
+    modal.style.display = "block";
+
+    // Close the modal when the close button is clicked
+    document.getElementById("closeModal").addEventListener("click", () => {
+    const modal = document.getElementById("eventModal");
+    modal.style.display = "none"; // Hide the modal
+});
 }
 
 // Function to list events
