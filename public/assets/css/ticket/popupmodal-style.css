@@ -1,0 +1,144 @@
+
+/* Modal styles */
+.modal {
+    display: none; /* Hidden by default */
+    position: fixed;
+    z-index: 1000;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5); /* Black background with opacity */
+    justify-content: center;
+    align-items: center;
+}
+
+.modal-content {
+    background-color: #bebaba;
+    border-radius: 10px;
+    padding: 20px;
+    width: 700px;
+    max-width: 90%;
+    position: relative;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+    display: flex;
+    flex-direction: column;
+    
+    
+
+}
+
+.digiticket {
+    display: flex;
+    width: 100%; /* Make the ticket full width of its container */
+    height: 200px;
+    background-color: #fff;
+    color: #333;
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    margin-bottom: 20px;
+    
+}
+
+.digiticket-left {
+    background-color:#eaeaea;
+    padding: 10px;
+    width: 150px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+/*.digiticket-qr-code{
+    background:  #fff;
+}*/
+
+.digiticket-qr-code img{
+    height: 50px;
+    width: 50px;
+}
+
+.digiticket-qr-code-part a {
+    color: #00BDD6FF;
+    font-weight: bold;
+    text-decoration: none;
+    margin-top: 5px;
+}
+
+.digiticket-qr-code-part p {
+    color: #333;
+    
+}
+
+
+
+
+.digiticket-right {
+    position: relative;
+    width: 600px;
+    padding: 20px;
+    background-image: url('https://www.eventbrite.co.uk/blog/wp-content/uploads/2022/06/How-to-Promote-Your-Gigs-768x512.jpg'); /* Background image path */
+    background-size: cover;
+    background-position: center;
+}
+
+.digiticket-content {
+    position: relative;
+    z-index: 2;
+    background: rgba(201, 198, 198, 0.7);
+    padding: 20px;
+    border-radius: 10px;
+}
+
+.digiticket-right::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(51, 51, 51, 0.5);
+    z-index: 1;
+}
+
+.digievent-title {
+    font-size: 24px;
+    margin: 0;
+    color: #333; 
+    text-transform: uppercase;
+}
+
+.digievent-subtitle {
+    font-size: 14px;
+    margin: 5px 0;
+    color: #4b4848; 
+}
+
+.digievent-date {
+    font-size: 12px;
+    margin: 10px 0;
+    color: #4b4848; 
+}
+
+.digiticket-price {
+    margin-top: 20px;
+}
+
+.digiticket-price .price-label {
+    font-size: 16px;
+    margin-bottom: 2px;
+    color: #4b4848; 
+}
+
+.digiticket-price .price-value {
+    font-size: 16px;
+    font-weight: bold;
+    color: #00BDD6FF;
+}
+
+.digiticket-price .price-desc {
+    font-size: 12px;
+    color: #666;
+}

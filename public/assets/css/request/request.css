@@ -1,0 +1,212 @@
+ body h1 {
+    margin-left: 40px;
+    
+}
+
+body {
+
+    background-color:  #f9f9f9;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    font-family: sans-serif;
+
+}
+
+
+.container-table {
+
+    width: 90%;
+    background-color: #ffffff;
+    padding: 20px;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+    border-radius: 10px;
+    margin: 20px 0px;
+
+
+}
+
+
+table {
+
+    width: 95%;
+    border-collapse: collapse;
+    margin-bottom: 40px;
+    margin-left: 40px;
+    margin-right: 40px;
+    font-family: sans-serif;
+    
+    
+    text-align: center;
+    
+
+}
+
+table tr:hover {
+
+    background-color: #f1f1f1;
+}
+
+
+ 
+
+th {
+    border-bottom: 1px solid #dddddd; /* Adds border only to the bottom of the heading row */
+    font-size: 16px;
+    padding: 14px 14px;
+    text-align: center;
+   
+    background-color: #f4f4f4;
+
+}
+
+
+ td {
+    border-bottom: 1px solid #dddddd;
+    font-size: 14px ;
+    padding: 12px 15px;
+    text-align: center;
+    font-weight: 550;
+    /* white-space: nowrap; /* Prevents text from wrapping */
+    /* overflow: hidden; Clips overflowing text */
+    /* text-overflow: ellipsis; Adds ellipsis to clipped text */
+    /* word-wrap: break-word; Allows breaking words if necessary */ 
+}
+
+
+td:nth-child(1) {
+
+    width: 70px;
+  
+}
+
+td:nth-child(2) {
+
+    width: 130px;
+}
+
+td:nth-child(3) {
+
+    width: 90px;
+}
+
+td:nth-child(4) {
+
+    width: 100px;
+}
+
+td:nth-child(5) {
+
+    width: 150px;
+}
+
+/* .second td:nth-child(6) {
+
+    width: 60px;
+}
+
+.second td:nth-child(7) {
+
+    width: 500px;
+}
+
+td:nth-child(8) {
+
+    width: 90px;
+}
+
+td:nth-child(9) {
+
+    width: 100px;
+} */
+
+
+form {
+
+    display: inline;
+    
+}
+
+
+
+.search-container {
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+    
+
+}
+
+.search-box {
+
+    position: relative;
+    width: 400px;
+    
+
+}
+
+.search-box .icon {
+
+    position: absolute;
+    top: 50%;
+    left: 10px;
+    transform: translateY(-50%);
+    color: #aaa;
+}
+
+
+.search-box input[type = "text"] {
+
+    width: 100%;
+    padding: 10px 10px 10px 35px;
+    border: 1px solid #a39d9d;
+    border-radius: 4px;
+    font-size: 16px;
+}
+
+button {
+
+    color: #fff;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 14px;
+    transition: color 1s ease;
+}
+
+.accept {
+
+    background-color: #40b146;
+}
+
+.accept:hover {
+
+    background-color: #1d751f;
+}
+
+.reject {
+
+    background-color: #e93a74;
+}
+
+.reject:hover {
+
+    background-color: #f10856;
+}
+
+
+.cover-image {
+
+    height: 100px;
+    width: 200px;
+    margin-right: 0;
+    border-radius: 2px;
+    border: 1px solid black;
+
+}
+
