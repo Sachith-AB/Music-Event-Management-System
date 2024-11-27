@@ -22,8 +22,8 @@ class SingerProfile {
         // show($profiledata);
 
         if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['submit'])) {
-            // show($_POST);
-            $this->profileDetails($profile,$userId, $_POST);
+            show($_POST);
+            //$this->profileDetails($profile,$userId, $_POST);
         }
 
         if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['add_experience'])) {
