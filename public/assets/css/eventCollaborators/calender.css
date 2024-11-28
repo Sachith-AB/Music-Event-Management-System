@@ -69,8 +69,13 @@ body {
     cursor: pointer;
 }
 
-.calendar-grid .has-event {
+.calendar-grid .process-event {
     background: #00bdd6;
+    color: white;
+}
+
+.calendar-grid .has-event {
+    background: #39e86d;
     color: white;
 }
 
@@ -91,25 +96,25 @@ body {
     border-left: 4px solid #00bdd6;
 }
 
-.has-event {
+.process-event {
     background-color: #00BDD6;
     color: white;
     border-radius: 50%;
     cursor: pointer;
 }
 
-.has-event:hover {
+.process-event:hover {
     background-color: #007a9f;
     transform: scale(1.1);
 }
-.process-event{
+.has-event{
     background-color: #00BDD6;
-    color: white;
+    color: rgb(206, 27, 27);
     border-radius: 50%;
     cursor: pointer;
 }
-.process-event:hover {
-    background-color: #3ce06d;
+.has-event:hover {
+    background-color: #36c561;
     transform: scale(1.1);
 }
 .event-list li {
