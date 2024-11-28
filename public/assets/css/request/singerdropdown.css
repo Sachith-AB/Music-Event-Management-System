@@ -44,10 +44,11 @@
 .search-bar {
   width: 60%;
   padding: 10px;
-  font-size: 16px;
+  font-size: 10px;
   border: 1px solid #ccc;
   outline-color: #00BDD6FF;
   border-radius: 5px;
+  height: 10px;
 }
 
 /* Singers Section */

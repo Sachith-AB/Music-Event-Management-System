@@ -153,7 +153,10 @@
           <label for="email">Email:</label>
           <div class="input-text"><?php echo $_SESSION['USER']->email ?? 'N/A'; ?></div>
         </div>
-        <a href="colloborator-updateprofile" class="button" type="button">Update Profile</a>
+        <form method="POST"  class='buttons'>
+          <a href="colloborator-updateprofile" class="button button-1" type="button">Update Profile</a>
+          <button  class="button button-2" name="signOut" type="submit">Sign Out</button>
+        </form>
       </div>
     </div>
   </div>

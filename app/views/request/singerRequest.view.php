@@ -18,10 +18,10 @@
     <!-- Main Content -->
     <div class="content">
 
-    
+    <h1>Singers</h1>
         <!-- Search Bar -->
         <div class="header">
-            <h1>Singers</h1>
+            
             <form method="POST" class="search">
                 <input type="text" name="searchTerm" placeholder="Search..." class="search-bar">
                 <button name="searchSingers" value="search" type="submit">SEARCH</button>

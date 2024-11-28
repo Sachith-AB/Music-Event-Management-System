@@ -110,7 +110,7 @@
 
     <script>
         function goToProfile() {
-            window.location.href = "profile?id=<?php echo $data['id']?>";
+            window.location.href = "colloborator-profile";
         }
     </script>
 
