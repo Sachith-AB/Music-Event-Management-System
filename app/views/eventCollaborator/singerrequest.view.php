@@ -39,7 +39,7 @@
                                 <td><img class="cover-image" src ="<?=ROOT?>/assets/images/events/<?php echo $request->cover_images ?> " alt="cover image"/></td>
                                 <td><?php echo $request->event_name?></td>
                                 <td><?php echo $request->eventDate?></td>
-                                <td><?php echo $request->address?></td>
+                                <td class="truncate-text"><?php echo $request->address?></td>
 
                                 <td>
 
@@ -90,7 +90,7 @@
                             <td> <img class="cover-image"  src="<?=ROOT?>/assets/images/events/<?php echo $request->cover_images ?> " alt="cover image"></td>
                             <td><?php echo $request->event_name?></td>
                             <td><?php echo $request->eventDate?></td>
-                            <td><?php echo $request->address?></td>
+                            <td class="truncate-text"><?php echo $request->address?></td>
                         </tr>
                         <?php endforeach; ?>
 
