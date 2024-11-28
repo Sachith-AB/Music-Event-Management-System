@@ -18,9 +18,15 @@
     <!-- Main Content -->
     <div class="content">
 
+<<<<<<< HEAD
     <h1>Singers</h1>
         <!-- Search Bar -->
         <div class="header">
+=======
+        <h1>Singers</h1>
+        <!-- Search Bar -->
+        <div >
+>>>>>>> 26503b2d790e11a1e7ef6e7ece8f54e41340de31
             
             <form method="POST" class="search">
                 <input type="text" name="searchTerm" placeholder="Search..." class="search-bar">

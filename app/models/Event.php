@@ -17,7 +17,8 @@ class Event {
         'pricing',
         'type',
         'createdBy',
-        'address'
+        'address',
+        'status'
     ];
 
     public function validEvent($data) {
@@ -220,6 +221,7 @@ class Event {
         if(!empty($result)){
             $res['tickets']=$result;
         }
+
         return $res ? $res : [];
     }
 

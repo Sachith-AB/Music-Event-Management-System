@@ -75,9 +75,21 @@ class Request {
     return $result;
 }
 
-  public function getAcceptedEvents($id){
+public function getCollaboratorRequests($eventId)
+    {
+        $query = "SELECT u.id, u.pro_pic, u.name, r.Status 
+                  FROM requests r
+                  JOIN users u ON r.collaborator_id = u.id
+                  WHERE r.event_id = $eventId";
 
-    $query = "SELECT events.* 
+        $result = $this->query($query);
+
+        return $result;
+
+    }
+
+public function getAcceptedEvents($id){
+  $query = "SELECT events.* 
         FROM events 
         INNER JOIN requests 
         ON events.id = requests.event_id 
