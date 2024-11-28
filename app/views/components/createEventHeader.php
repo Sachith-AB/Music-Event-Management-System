@@ -8,8 +8,8 @@
 </head>
 <body>
 <header>
-    <div class="logo">
-        <img src = "logo.png" alt = "musicia"> 
+    <div class="logo-image">
+        <img src = "<?=ROOT?>/assets/images/logo/logo.png" alt = "musicia" onclick="goToHome()"> 
     </div>
     <nav>
         <ul>

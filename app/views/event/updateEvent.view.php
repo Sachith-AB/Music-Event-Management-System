@@ -10,6 +10,8 @@ $address = $_SESSION['event_data']['address'] ?? '';
 $eventDate = $_SESSION['event_data']['eventDate'] ?? '';
 $start_time = $_SESSION['event_data']['start_time'] ?? '';
 $end_time = $_SESSION['event_data']['end_time'] ?? '';
+$pricing = $_SESSION['event_data']['pricing'] ?? '';
+$type = $_SESSION['event_data']['type'] ?? '';
 
 // Track last visit time
 $last_visit = $_SESSION['last_visit'] ?? "This is my first visit";
@@ -67,7 +69,7 @@ $_SESSION['last_visit'] = date('Y-m-d H:i:s');
 
                     <div id="map" class="map" style="height: 400px;"></div>
 
-                    
+                    <br>
                     <div class="input-wrap">
                         <label for="eventDate">Event Date</label>
                         <input name="eventDate" id="event-date" type="date" value="<?php echo $data ['eventDate'] ?>" required>
@@ -81,6 +83,35 @@ $_SESSION['last_visit'] = date('Y-m-d H:i:s');
                     <div class="input-wrap">
                         <label for="end_time">End Time</label>
                         <input name="endtime" id="end-time" type="time" value="<?php echo date('H:i', strtotime($data['end_time'])); ?>">
+                    </div>
+
+                    <div class="input-wrap">
+                        <label>Pricing</label>
+                        <div class="radio-group">
+                            <div class="radio-item">
+                                <input type="radio" id="free" name="pricing" value="free" <?php echo $data['pricing'] == 'free' ? 'checked' : ''; ?>>
+                                <label for="free">Free</label>
+                            </div>
+                            <div class="radio-item">
+                                <input type="radio" id="paid" name="pricing" value="paid" <?php echo $data['pricing'] == 'paid' ? 'checked' : ''; ?>>
+                                <label for="paid">Paid</label>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="input-wrap">
+                        <label>Type</label>
+                        <div class="radio-group">
+                            <div class="radio-item">
+                                <input type="radio" id="indoor" name="type" value="indoor" <?php echo $data['type'] == 'indoor' ? 'checked' : ''; ?>>
+                                <label for="free">Indoor</label>
+                            </div>
+                            <div class="radio-item">
+                                <input type="radio" id="outdoor" name="type" value="outdoor" <?php echo $data['type'] == 'outdoor' ? 'checked' : ''; ?>>
+                                <label for="outdoor">Outoor</label>
+                            </div>
+
+                        </div>
                     </div>
 
                     <input type="hidden" id="hidden-start-time" name="start_time">

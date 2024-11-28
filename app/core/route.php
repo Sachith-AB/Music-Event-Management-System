@@ -20,6 +20,9 @@ route('colloborator-profile','eventCollaborator/singerProfile@index');
 route('colloborator-dashboard','eventCollaborator/SingerDashboard@index');
 route('colloborator-request','eventCollaborator/SingerRequest@index');
 route('colloborator-updateprofile','eventCollaborator/SingerUpdateProf@index');
+route('colloborator-events','eventCollaborator/SingerEvents@index');
+route('colloborator-payments','eventCollaborator/SingerPayments@index');
+
 
 
 

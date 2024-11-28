@@ -181,3 +181,32 @@ body {
 .button-wrap button[type="submit"]:hover {
     color:black;
 }
+
+
+
+
+.radio-group {
+    display: flex;
+    gap: 20px; 
+    align-items: center;
+    margin-top: 8px;
+}
+
+.radio-item {
+    display: flex;
+    align-items: center;
+    gap: 5px; 
+}
+
+.radio-group input[type="radio"] {
+    margin: 0;
+    accent-color: #00BDD6FF; 
+}
+
+.radio-group label {
+    font-size: 1em;
+    color: #333;
+    cursor: pointer;
+    font-weight: normal; 
+}
+
