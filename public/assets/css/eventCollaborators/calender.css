@@ -102,7 +102,16 @@ body {
     background-color: #007a9f;
     transform: scale(1.1);
 }
-
+.process-event{
+    background-color: #00BDD6;
+    color: white;
+    border-radius: 50%;
+    cursor: pointer;
+}
+.process-event:hover {
+    background-color: #3ce06d;
+    transform: scale(1.1);
+}
 .event-list li {
     margin: 10px 0;
 }

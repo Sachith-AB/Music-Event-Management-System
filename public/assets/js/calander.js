@@ -4,8 +4,6 @@ const currentMonthEl = document.getElementById("currentMonth");
 const eventList = document.getElementById("eventList");
 const eventN = document.getElementById("events").value;
 const events = JSON.parse(eventN); // Convert JSON to object
-console.log(events);
-
 
 // Get today's date
 const today = new Date();
@@ -35,14 +33,18 @@ function populateCalendar(month, year) {
         cell.textContent = day;
 
         if (cellDate === todayDate) {
-            cell.classList.add("today"); // Add a class for today's date
-            cell.style.backgroundColor = "#FFDDC1"; // Example color for highlighting today's date
+            cell.classList.add("today"); 
+            cell.style.backgroundColor = "#FFDDC1"; 
         }
     
         // Highlight if there's an event
         const event = events.find(e => e.eventDate === cellDate);
         if (event) {
-            cell.classList.add("has-event");
+            if(event.status === 'scheduled'){
+                cell.classList.add("has-event");
+            }else{
+                cell.classList.add("process-event");
+            }
             cell.addEventListener("click", () => showEventDetails(event));
         }
     
