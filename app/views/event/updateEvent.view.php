@@ -10,6 +10,8 @@ $address = $_SESSION['event_data']['address'] ?? '';
 $eventDate = $_SESSION['event_data']['eventDate'] ?? '';
 $start_time = $_SESSION['event_data']['start_time'] ?? '';
 $end_time = $_SESSION['event_data']['end_time'] ?? '';
+$pricing = $_SESSION['event_data']['pricing'] ?? '';
+$type = $_SESSION['event_data']['type'] ?? '';
 
 // Track last visit time
 $last_visit = $_SESSION['last_visit'] ?? "This is my first visit";

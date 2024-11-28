@@ -48,18 +48,6 @@ class Event {
         }
 
 
-        // if (empty($data['city'])) {
-        //     $this->errors['flag'] = true;
-        //     $this->errors['error'] = "City is required";
-        //     $this->errors['error_no'] = 4;
-        // }
-
-        // if (empty($data['province'])) {
-        //     $this->errors['flag'] = true;
-        //     $this->errors['error'] = "Province is required";
-        //     $this->errors['error_no'] = 5;
-        // }
-
         if (empty($data['eventDate'])) {
             $this->errors['flag'] = true;
             $this->errors['error'] = "Event date is required";
@@ -76,6 +64,33 @@ class Event {
                 $this->errors['flag'] = true;
 			    $this->errors['error'] = "Event date must be in the future";
 			    $this->errors['error_no'] = 6;
+            }
+        }
+
+        if (empty($data['eventEndDate'])) {
+            $this->errors['flag'] = true;
+            $this->errors['error'] = "Event date is required";
+        } else {
+            // Convert the event date to a timestamp
+            $eventEndDate = DateTime::createFromFormat('Y-m-d', $data['eventEndDate']);
+            $today = new DateTime('today'); // Today's date
+        
+            if (!$eventEndDate) {
+                // Invalid date format
+                $this->errors['error'] = "Invalid date format. Please use YYYY-MM-DD.";
+            } elseif ($eventEndDate <= $today) {
+                // Event date must be in the future
+                $this->errors['flag'] = true;
+			    $this->errors['error'] = "Event date must be in the future";
+			    $this->errors['error_no'] = 6;
+            }
+        }
+
+        if (!empty($data['eventDate']) && !empty($data['eventEndDate']) && isset($eventDate, $eventEndDate)) {
+            if ($eventDate > $eventEndDate) {
+                $this->errors['flag'] = true;
+                $this->errors['error'] = "Event date must be before or equal to the event end date.";
+                $this->errors['error_no'] = 7;
             }
         }
         
@@ -95,12 +110,12 @@ class Event {
             if (!$startTime || !$endTime) {
                 $this->errors['flag'] = true;
                 $this->errors['error'] = "Invalid time format. Use HH:MM.";
-                $this->errors['error_no'] = 9;
-            } elseif ($startTime >= $endTime) {
-                $this->errors['flag'] = true;
-                $this->errors['error'] = "Start time must be earlier than the end time";
-                $this->errors['error_no'] = 10;
-            }
+                $this->errors['error_no'] = 9;}
+            // } elseif ($startTime<= $endTime) {
+            //     $this->errors['flag'] = true;
+            //     $this->errors['error'] = "Start time must be earlier than the end time";
+            //     $this->errors['error_no'] = 10;
+            // }      
         }
 
 
