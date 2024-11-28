@@ -242,7 +242,7 @@ $_SESSION['last_visit'] = date('Y-m-d H:i:s');
             if (query.trim() !== "") {
                 searchLocation(query);
             } else {
-                alert("Please enter a location to search.");
+                //alert("Please enter a location to search.");
             }
         });
         window.onload = initMap;
