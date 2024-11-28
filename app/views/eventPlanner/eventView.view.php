@@ -38,8 +38,6 @@
         
         </div>
 
-       
-
         <!-- Ticket Details -->
         <div class="sectionR">
             <h1 class="event-name">Tickets</h1>
@@ -94,7 +92,6 @@
                     </div>
                 </div>
 
-               
 
             <?php endif; ?>
         </div>
