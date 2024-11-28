@@ -10,24 +10,15 @@
 </head>
 
 <body>
-
-    
         <?php include ('../app/views/components/sidebar.php');  ?>
+        <?php include ('../app/views/components/loading.php');?>
     
-
     <!-- Main Content -->
     <div class="content">
 
-<<<<<<< HEAD
-    <h1>Singers</h1>
-        <!-- Search Bar -->
-        <div class="header">
-=======
         <h1>Singers</h1>
         <!-- Search Bar -->
         <div >
->>>>>>> 26503b2d790e11a1e7ef6e7ece8f54e41340de31
-            
             <form method="POST" class="search">
                 <input type="text" name="searchTerm" placeholder="Search..." class="search-bar">
                 <button name="searchSingers" value="search" type="submit">SEARCH</button>

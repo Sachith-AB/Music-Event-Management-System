@@ -17,7 +17,7 @@
 
 
 <body>
-    
+<?php include ('../app/views/components/loading.php');?>
     <br>
 
     <div class="search-container">

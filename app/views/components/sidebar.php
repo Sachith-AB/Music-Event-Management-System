@@ -19,7 +19,6 @@
             <li><a href="request-decorators?id=<?php echo $id?>" class="menu-link"><i class="fas fa-paint-brush"></i>  Decorators</a></li>
             <li><a href="request-stages?id=<?php echo $id?>" class="menu-link"><i class="fas fa-theater-masks"></i>  Stages</a></li>
             <li><a href="request-announcers?id=<?php echo $id?>" class="menu-link"><i class="fas fa-bullhorn"></i>  Announcers</a></li>
-            <li><a href="request-venues?id=<?php echo $id?>" class="menu-link"><i class="fas fa-building"></i>  Venues</a></li>
         </ul>
     </aside>
     <script src="<?=ROOT?>/assets/js/request/singerdropdown.js"></script>
