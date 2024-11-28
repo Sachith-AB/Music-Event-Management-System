@@ -10,7 +10,7 @@
 </head>
 
 <body>
-
+<?php include ('../app/views/components/loading.php');?>
 <?php include ('../app/views/components/sidebar.php');  ?>
 
     <!-- Main Content -->

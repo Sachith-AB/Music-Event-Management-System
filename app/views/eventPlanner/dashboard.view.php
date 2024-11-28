@@ -8,8 +8,8 @@
     <link rel="stylesheet" href="<?=ROOT?>/assets/css/eventPlanner/dashboard.css">
 </head>
 <body>
-    <!-- Include Header -->
     
+    <?php include ('../app/views/components/loading.php');  ?>
     <div class="dash-container">
         <!-- Sidebar -->
         <?php include ('../app/views/components/eventPlanner/dashsidebar.php');  ?>
@@ -67,7 +67,7 @@
                                 <tr>
                                     <td>
                                         <div class="event-info">
-                                            <img class="eventimage" src=<?= htmlspecialchars($event->cover_images) ?> alt="Event Image">
+                                            <img class="eventimage" src='<?=ROOT?>/assets/images/events/<?php echo esc($event->cover_images) ?>' alt="Event Image">
                                             <?= htmlspecialchars($event->event_name) ?>
                                         </div>
                                     </td>

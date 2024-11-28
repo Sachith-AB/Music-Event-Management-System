@@ -9,6 +9,7 @@
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 </head>
 <body>
+<?php include ('../app/views/components/loading.php');?>
     <div class="container">
         <!-- Event Details -->
         <div class="section">
@@ -36,8 +37,6 @@
         <?php endif; ?>    
         
         </div>
-
-       
 
         <!-- Ticket Details -->
         <div class="sectionR">
@@ -93,7 +92,6 @@
                     </div>
                 </div>
 
-               
 
             <?php endif; ?>
         </div>

@@ -30,6 +30,7 @@ $_SESSION['last_visit'] = date('Y-m-d H:i:s');
     $error_no = htmlspecialchars($_GET['error_no'] ?? '');
     $flag = htmlspecialchars($_GET['flag'] ?? 0);
     ?>
+    <?php include ('../app/views/components/loading.php'); ?>
     <div class="container">
         <!-- Sidebar -->
         <div class="sidebar">
@@ -241,7 +242,7 @@ $_SESSION['last_visit'] = date('Y-m-d H:i:s');
             if (query.trim() !== "") {
                 searchLocation(query);
             } else {
-                alert("Please enter a location to search.");
+                //alert("Please enter a location to search.");
             }
         });
         window.onload = initMap;

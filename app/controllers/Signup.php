@@ -41,7 +41,7 @@ class Signup {
 
                 unset($POST['signUp']); //Remove sign up key before saving
                 unset($POST['confirm-password']); //Remove confirm-password before saving
-                $res = $user->insert($_POST);
+                $user->insert($_POST);
                 redirect('signin');
             }else {
                 $error = "Email is Already Taken";
@@ -50,7 +50,6 @@ class Signup {
 
                 unset($_POST['signUp']);
                 redirect("home?$errors&$passData");
-                //echo 'check';
                 exit;
             }
         }else{

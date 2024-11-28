@@ -83,7 +83,6 @@ class AnnouncerRequest {
 
     public function deleteRequest($request){
 
-        //show($_POST['req_id']);
         $request->delete($_POST['req_id']);
         unset($_POST);
     }

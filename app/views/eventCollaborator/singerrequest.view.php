@@ -2,17 +2,18 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Settings Page</title>
-  <link rel="stylesheet" href="<?=ROOT?>/assets/css/eventCollaborators/singerrequest.css">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Settings Page</title>
+<link rel="stylesheet" href="<?=ROOT?>/assets/css/eventCollaborators/singerrequest.css">
 </head>
 <body>
-  <?php 
+<?php include ('../app/views/components/loading.php'); ?>
+    <?php 
   // Capture success message and flag from GET request if available
-  $success = htmlspecialchars($_GET['msg'] ?? '');
-  $flag = htmlspecialchars($_GET['flag'] ?? 0);
-  ?>
+    $success = htmlspecialchars($_GET['msg'] ?? '');
+    $flag = htmlspecialchars($_GET['flag'] ?? 0);
+    ?>
 
     <div class="dash-container">
         <!-- Include sidebar for navigation -->
@@ -38,7 +39,7 @@
                                 <td><img class="cover-image" src ="<?=ROOT?>/assets/images/events/<?php echo $request->cover_images ?> " alt="cover image"/></td>
                                 <td><?php echo $request->event_name?></td>
                                 <td><?php echo $request->eventDate?></td>
-                                <td><?php echo $request->address?></td>
+                                <td class="truncate-text"><?php echo $request->address?></td>
 
                                 <td>
 
@@ -89,7 +90,7 @@
                             <td> <img class="cover-image"  src="<?=ROOT?>/assets/images/events/<?php echo $request->cover_images ?> " alt="cover image"></td>
                             <td><?php echo $request->event_name?></td>
                             <td><?php echo $request->eventDate?></td>
-                            <td><?php echo $request->address?></td>
+                            <td class="truncate-text"><?php echo $request->address?></td>
                         </tr>
                         <?php endforeach; ?>
 

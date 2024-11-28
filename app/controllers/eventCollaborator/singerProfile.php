@@ -22,8 +22,8 @@ class SingerProfile {
         // show($profiledata);
 
         if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['submit'])) {
-            // show($_POST);
-            $this->profileDetails($profile,$userId, $_POST);
+            show($_POST);
+            //$this->profileDetails($profile,$userId, $_POST);
         }
 
         if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['add_experience'])) {
@@ -34,6 +34,10 @@ class SingerProfile {
         if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['add_service'])) {
             // show($_POST);
             $this->addService($service,$userId, $_POST);
+        }
+
+        if($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['signOut'])){
+            $this->logOut();
         }
 
 
@@ -92,6 +96,8 @@ class SingerProfile {
         $service->insert($data);
 
     }
-    
-   
+    private function logOut(){
+        session_unset(); // Unset all session variables
+        session_destroy(); // Destroy the session
+    }
 }

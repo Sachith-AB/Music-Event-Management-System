@@ -8,6 +8,7 @@
   <link rel="stylesheet" href="<?=ROOT?>/assets/css/eventCollaborators/singerProfile.css">
 </head>
 <body>
+<?php include ('../app/views/components/loading.php'); ?>
   <?php 
   // Capture success message and flag from GET request if available
   $success = htmlspecialchars($_GET['msg'] ?? '');
@@ -152,7 +153,10 @@
           <label for="email">Email:</label>
           <div class="input-text"><?php echo $_SESSION['USER']->email ?? 'N/A'; ?></div>
         </div>
-        <a href="colloborator-updateprofile" class="button" type="button">Update Profile</a>
+        <form method="POST"  class='buttons'>
+          <a href="colloborator-updateprofile" class="button button-1" type="button">Update Profile</a>
+          <button  class="button button-2" name="signOut" type="submit">Sign Out</button>
+        </form>
       </div>
     </div>
   </div>

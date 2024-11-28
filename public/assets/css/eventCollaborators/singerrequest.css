@@ -169,3 +169,21 @@ td:nth-child(4) {
     width: auto;
 }
 
+.truncate-text {
+    max-width: 150px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+.read-more {
+    color: #007bff;
+    text-decoration: underline;
+    cursor: pointer;
+    font-size: 14px;
+}
+
+.read-more:hover {
+    color: #0056b3;
+}
+
+

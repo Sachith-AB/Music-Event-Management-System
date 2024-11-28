@@ -8,8 +8,7 @@
     <link rel="stylesheet" href="<?=ROOT?>/assets/css/eventCollaborators\singerdashboard.css">
 </head>
 <body>
-    <!-- Include Header -->
-    
+<?php include ('../app/views/components/loading.php'); ?>
     <div class="dash-container">
         <!-- Sidebar -->
         <?php include ('../app/views/components/collaborator/singersidebar.php');  ?>

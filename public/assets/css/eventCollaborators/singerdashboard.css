@@ -235,6 +235,10 @@ a:hover {
     font-size: 20px;
 }
 
+.social-icon i:hover{
+    color: #333;
+}
+
 .events-container {
     display: flex;
     flex-wrap: wrap;

@@ -10,18 +10,15 @@
 </head>
 
 <body>
-
-    
         <?php include ('../app/views/components/sidebar.php');  ?>
+        <?php include ('../app/views/components/loading.php');?>
     
-
     <!-- Main Content -->
     <div class="content">
 
         <h1>Singers</h1>
         <!-- Search Bar -->
         <div >
-            
             <form method="POST" class="search">
                 <input type="text" name="searchTerm" placeholder="Search..." class="search-bar">
                 <button name="searchSingers" value="search" type="submit">SEARCH</button>
