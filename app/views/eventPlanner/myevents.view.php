@@ -14,6 +14,8 @@
     <div class="dash-container">
         <!-- Sidebar -->
         <?php include ('../app/views/components/eventPlanner/dashsidebar.php'); ?>
+        <?php include ('../app/views/components/loading.php'); ?>
+
 
         <?php if (!empty($events)):?>
             <div class="content">
@@ -22,7 +24,6 @@
                 <div class="events-container">
                     <?php foreach ($events as $event): ?>
                         <?php if ($event->status == 'processing'): ?>
-                           
                                 <div class="event-card">
                                     <a href="<?=ROOT?>/event-planner-viewEvent?id=<?= htmlspecialchars($event->id) ?>" class="event-card-link">
                                         <div class="event-status-process">Processing</div>

@@ -9,8 +9,10 @@ class ViewEvent{
         $data =[];
         $event = new Event;
         $data = $this->getEventData($event);
+        // show($data);
 
         $this->view('event/viewEvent',$data);
+       
     }
 
     public function getEventData($event){

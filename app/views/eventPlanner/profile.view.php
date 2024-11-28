@@ -8,7 +8,7 @@
     <link rel="stylesheet" href="<?=ROOT?>/assets/css/eventPlanner/profile.css">
 </head>
 <body>
-<?php include ('../app/views/components/loading.php'); ?>
+<?php include ('../app/views/components/loading.php');?>
     <main class="page-content">
         <div class="image-container">
             <h1>create a wonderful event</h1>
