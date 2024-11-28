@@ -22,11 +22,17 @@
 
 .search {
   display: flex;
-  flex-direction: row;
+  align-items: center;
+  /* flex-direction: row; */
   gap: 12px;
+ 
 }
 
 .search button {
+  padding: 8px 16px;
+  font-size: 16px;
+  margin-bottom: 21px;
+  cursor: pointer;
   background-color: #00BDD6FF;
   color: white;
   transition: color 1s ease;
@@ -42,9 +48,10 @@
 
 /* Search Bar */
 .search-bar {
+  /* flex: 1; */
   width: 20%;
-  height: 20px;
-  padding: 0px 10px;
+  height: 16px;
+  padding: 8px;
   font-size: 16px;
   border: 1px solid #ccc;
   outline-color: #00BDD6FF;
