@@ -70,6 +70,10 @@ $_SESSION['last_visit'] = date('Y-m-d H:i:s');
                         <label for="audience">Audience</label>
                         <input type="number" id="audience" name="audience" />
                     </div>
+                    <div class="form-group">
+                        <label for="coverImage">Cover Image</label>
+                        <input type="file" id="coverImage" name="coverImage" accept="image/*">
+                    </div>
                 </section>
 
                 <section id="time-ticket">
@@ -82,6 +86,11 @@ $_SESSION['last_visit'] = date('Y-m-d H:i:s');
                     <div class="form-group">
                         <label for="start-time">Start Time</label>
                         <input type="time" id="start-time" name="starttime">
+                    </div>
+
+                    <div class="form-group">
+                        <label for = "event-date">Event End Date</label>
+                        <input type="date" id="event-date" name="eventEndDate">
                     </div>
 
                     <div class="form-group">

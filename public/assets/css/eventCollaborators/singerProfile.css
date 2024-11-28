@@ -344,9 +344,7 @@ h3 {
   background: rgb(8, 70, 78); /* Lighten on hover */
 }
 
-.add-button:active {
-  transform: scale(1.1); /* Slightly increase size when pressed */
-}
+
 
 .button .icon {
   width: 20px; 
@@ -354,20 +352,13 @@ h3 {
   fill: #FFFFFFFF; /* white */
 }
 
-.button:hover ::after{
-  transform: skew(-45deg) scale(1,1);
-}
 
 /* Hover */
 .button:hover {
   color:black;
 
 }
-/* Pressed */
-.button:hover:active {
-  transform: scale(1.1); /* Increase size by 10% */
-  transition: transform 0.2s ease-in-out;
-}
+
 /* Disabled */
 .button:disabled {
   opacity: 0.4; 

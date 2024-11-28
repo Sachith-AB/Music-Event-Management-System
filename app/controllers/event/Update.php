@@ -13,6 +13,7 @@ class Update {
 
         $event_name = htmlspecialchars($_GET['event_name']);
         $row = $event->firstByEventName($event_name);
+        // show($row);
 
 
         if($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['update'])){

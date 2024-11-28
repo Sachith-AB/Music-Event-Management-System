@@ -72,14 +72,15 @@ $_SESSION['last_visit'] = date('Y-m-d H:i:s');
         <div class="main-content">
             <section id="event-header">
                 <h1 >Event Header</h1>
-                    <!-- <img src="<?=ROOT?>/assets/images/event/cover.png" alt="Event Cover Image" class="cover-image"> -->
-                    <div class="image-scroll-container">
+                    <img src="<?=ROOT?>/assets/images/events/1.jpg" alt="Event Cover Image" class="cover-image">
+                    <!-- <div class="image-scroll-container">
+
                         <img src="<?=ROOT?>/assets/images/events/1.jpg" alt="Event Image 1" class="event-image">
                         <img src="<?=ROOT?>/assets/images/events/2.jpg" class="event-image">
                         <img src="<?=ROOT?>/assets/images/events/3.jpg" class="event-image">
                         <img src="<?=ROOT?>/assets/images/events/4.jpg" class="event-image">
                         <img src="<?=ROOT?>/assets/images/events/5.jpg" class="event-image">
-                    </div>
+                    </div> -->
                     <div class="event-name-desc">
                         <h2  id = "event title" ><?php echo $data['event_name'] ?></h2>
                         <p class="event-description"><?php echo $data['description'] ?></p>
