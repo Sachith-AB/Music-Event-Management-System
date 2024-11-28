@@ -205,7 +205,7 @@ class Event {
         if(!empty($result)){
             $res['tickets']=$result;
         }
-        show($res);
+        // show($res);
         return $res ? $res : [];
     }
 

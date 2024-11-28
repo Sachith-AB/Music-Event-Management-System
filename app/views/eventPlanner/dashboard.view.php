@@ -68,7 +68,7 @@
                                 <tr>
                                     <td>
                                         <div class="event-info">
-                                            <img class="eventimage" src=<?= htmlspecialchars($event->cover_images) ?> alt="Event Image">
+                                            <img class="eventimage" src="<?=ROOT?>/assets/images/events/<?= htmlspecialchars($event->cover_images) ?>" alt="Event Image">
                                             <?= htmlspecialchars($event->event_name) ?>
                                         </div>
                                     </td>
