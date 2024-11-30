@@ -13,6 +13,7 @@
 </head>
 
     <!-- Include Header -->
+    <?php include ('../app/views/components/loading.php'); ?>
     
     <!-- Main Content -->
     <main>

@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -12,6 +13,7 @@
         $flag = htmlspecialchars($_GET['flag'] ?? 0);
         $error = htmlspecialchars($_GET['msg'] ?? '');
     ?>
+    <?php include ('../app/views/components/loading.php'); ?>
     <div class="">
         <div class="page-content">
             <h1 class="head1">Edit profile</h1>

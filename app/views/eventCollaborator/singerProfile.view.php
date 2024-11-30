@@ -14,6 +14,7 @@
   $success = htmlspecialchars($_GET['msg'] ?? '');
   $flag = htmlspecialchars($_GET['flag'] ?? 0);
   ?>
+  <?php include ('../app/views/components/loading.php'); ?>
 
   <div class="dash-container">
     <!-- Include sidebar for navigation -->

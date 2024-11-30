@@ -9,6 +9,7 @@
 </head>
 <body>
     <!-- Include Header -->
+    <?php include ('../app/views/components/loading.php'); ?>
     
     <div class="dash-container">
         <!-- Sidebar -->
