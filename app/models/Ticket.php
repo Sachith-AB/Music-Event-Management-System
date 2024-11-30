@@ -15,11 +15,50 @@ class Ticket {
         
 
         // Validate quantity
+        if (empty($data['sale_strt_date'])) {
+			$this->errors['flag'] = true;
+			$this->errors['error'] = "Sale Start Date is Required ";
+			$this->errors['error_no'] = 1;
+			return;
+		}
+        if (empty($data['sale_strt_time'])) {
+			$this->errors['flag'] = true;
+			$this->errors['error'] = "Sale Start Time is Required ";
+			$this->errors['error_no'] = 1;
+			return;
+		}
+        if (empty($data['sale_end_date'])) {
+			$this->errors['flag'] = true;
+			$this->errors['error'] = "Sale End Date is Required ";
+			$this->errors['error_no'] = 1;
+			return;
+		}
+        if (empty($data['sale_end_time'])) {
+			$this->errors['flag'] = true;
+			$this->errors['error'] = "Sale End Time is Required ";
+			$this->errors['error_no'] = 1;
+			return;
+		}
+        if (empty($data['ticket_type'])) {
+			$this->errors['flag'] = true;
+			$this->errors['error'] = "Ticket Type is Required ";
+			$this->errors['error_no'] = 1;
+			return;
+		}
         if (empty($data['quantity'])) {
-            $this->errors['quantity'] = "Quantity is required.";
-        } elseif (!is_numeric($data['quantity']) || $data['quantity'] <= 0) {
-            $this->errors['quantity'] = "Quantity must be a positive number.";
-        }
+			$this->errors['flag'] = true;
+			$this->errors['error'] = "Quantity is Required ";
+			$this->errors['error_no'] = 1;
+			return;
+		}
+        if (empty($data['price'])) {
+			$this->errors['flag'] = true;
+			$this->errors['error'] = "Price is Required ";
+			$this->errors['error_no'] = 1;
+			return;
+		}
+        
+        
 
         // Validate price if the ticket is paid
         // if ($data['ticket_type'] === 'paid' && (empty($data['price']) || !is_numeric($data['price']))) {
@@ -27,9 +66,9 @@ class Ticket {
         // }
 
         // Validate sale dates and times
-        if (empty($data['sale_strt_date']) || empty($data['sale_end_date'])) {
-            $this->errors['sale_dates'] = "Both start and end sale dates are required.";
-        }
+        // if (empty($data['sale_strt_date']) || empty($data['sale_end_date'])) {
+        //     $this->errors['sale_dates'] = "Both start and end sale dates are required.";
+        // }
 
         // Return true if no errors, otherwise return false and keep the errors
         if (empty($this->errors)) {

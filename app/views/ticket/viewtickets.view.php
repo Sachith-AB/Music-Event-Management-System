@@ -95,7 +95,7 @@ $_SESSION['last_visit'] = date('Y-m-d H:i:s');
         }
 
         function goToBack() {
-            window.location.href = "create-ticket?id=<?php echo $id?>";
+            window.location.href = "create-ticket?event_id=<?php echo $id?>";
         }
     </script>
 
