@@ -12,7 +12,7 @@
 <body>
 
 <?php include ('../app/views/components/sidebar.php');  ?>
-
+<?php include ('../app/views/components/loading.php');?>
     <!-- Main Content -->
     <div class="content">
 

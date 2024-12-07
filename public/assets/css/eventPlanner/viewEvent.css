@@ -14,7 +14,6 @@
     display: flex;
     flex-direction: column;
     gap: 20px;
-   
 }
 
 .section {
@@ -44,10 +43,7 @@
     background-color: #fff;
     border-radius: 8px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-
-
     padding: 40px;
-   
     width: 100%;
     max-width: 1400px;
 
@@ -122,21 +118,22 @@
     gap: 6px; 
     text-decoration: none;
     transition: color 1s ease;
-  }
+    cursor: pointer;
+}
 
-  .addbutton:hover {
+    .addbutton:hover {
     color: black;
-  }
+}
 
-  .ticket-name{
+.ticket-name{
     font-weight: bolder; /* Makes the text bold */
     /* font-style: italic;  */
     color: rgb(9, 149, 167); /* Sets the text color to gray */
     font-size: 19px; 
-  }
+}
 
 
-  .team-grid-scrollable {
+.team-grid-scrollable {
     overflow-x: auto; /* Enables horizontal scrolling */
     white-space: nowrap; /* Prevents wrapping of elements to the next line */
     
@@ -307,10 +304,7 @@
 }
 
 .button-container{
- 
-        align-items: flex-end;
- 
-    
+    align-items: flex-end;
 }
 
 .finishbutton {
@@ -337,6 +331,7 @@
     margin-bottom: 20px;
     margin-right: 20px;
     right: 20px; /* Adjust right distance as needed */
+    cursor: pointer;
 }
 
 .finishbutton:hover{

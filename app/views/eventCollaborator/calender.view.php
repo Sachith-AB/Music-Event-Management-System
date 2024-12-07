@@ -11,9 +11,9 @@
     <?php $eventJson = json_encode($data);
     ?>
 <body>
-<?php include ('../app/views/components/loading.php'); ?>
+    <?php include ('../app/views/components/loading.php'); ?>
     <div class="dash-container">
-    <?php include ('../app/views/components/eventPlanner/dashsidebar.php'); ?>
+    <?php include ('../app/views/components/collaborator/singersidebar.php'); ?>
         <div class="dashboard">
             <div class="container">
                 <h1>My Calendar</h1>

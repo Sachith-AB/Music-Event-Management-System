@@ -8,6 +8,7 @@
     <link rel="stylesheet" href="<?=ROOT?>/assets/css/eventPlanner/dashboard.css">
 </head>
 <body>
+<?php include ('../app/views/components/loading.php');?>
     <!-- Include Header -->
     
     <div class="dash-container">

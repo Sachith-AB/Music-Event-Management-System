@@ -9,6 +9,7 @@
     <link rel="stylesheet" href="<?=ROOT?>/assets/css/ticket/popupmodal-style.css">
 </head>
 <body>
+<?php include ('../app/views/components/loading.php'); ?>
     <!-- Include Header -->
     <?php include ('../app/views/components/Header.php'); ?>
 

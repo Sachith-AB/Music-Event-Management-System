@@ -46,6 +46,8 @@ class Update {
         $event->update($_POST['event_id'], $_POST);
         unset($POST['update']);
 
+        // show($_POST);
+
         
         redirect("event-review?event_name=$event_name");
     }

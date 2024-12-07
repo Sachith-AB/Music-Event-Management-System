@@ -1,3 +1,4 @@
+<?php include ('../app/views/components/header.php'); ?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -224,7 +225,6 @@
             <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
             <script>
                 var query = document.getElementById("address").textContent.trim();
-                console.log(query)
                 if (query.trim() !== "") {
                     displayEventLocation(query);
                 }

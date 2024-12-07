@@ -1,4 +1,4 @@
-<?php include ('../app/views/components/header.php'); ?>
+<!-- <?php include ('../app/views/components/header.php'); ?> -->
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -8,6 +8,9 @@
     <link rel="stylesheet" href="<?=ROOT?>/assets/css/ticket/createticket.css">
 </head>
 <body>
+<?php include ('../app/views/components/loading.php');
+
+?>
     
     
     <div class="container">
@@ -19,30 +22,22 @@
                     <h3>Create Tickets for Your Event</h3>
                     <div class = "form-group">
                         <label for="sale-strt-date">Sale Start Date</label>
-                        <input type="date" id="sale-strt-date" name="sale_strt_date" 
-                            value="<?= $_SESSION['event_data']['sale_strt_date'] ?? '' ?>" 
-                            <?= isset($_SESSION['event_data']) ? 'readonly' : '' ?>>
+                        <input type="date" id="sale-strt-date" name="sale_strt_date">
                     </div>
 
                     <div class = "form-group">
                         <label for="sale-strt-time">Sale Start Time</label>
-                        <input type="time" id="sale-strt-time" name="sale_strt_time" 
-                            value="<?= $_SESSION['event_data']['sale_strt_time'] ?? '' ?>" 
-                            <?= isset($_SESSION['event_data']) ? 'readonly' : '' ?>>
+                        <input type="time" id="sale-strt-time" name="sale_strt_time" >
                     </div>
 
                     <div class = "form-group">
                         <label for="sale-end-date">Sale End Date</label>
-                        <input type="date" id="sale-end-date" name="sale_end_date" 
-                            value="<?= $_SESSION['event_data']['sale_end_date'] ?? '' ?>" 
-                            <?= isset($_SESSION['event_data']) ? 'readonly' : '' ?>>
+                        <input type="date" id="sale-end-date" name="sale_end_date">
                     </div>
 
                     <div class = "form-group">
                         <label for="sale-end-time">Sale End Time</label>
-                        <input type="time" id="sale-end-time" name="sale_end_time" 
-                            value="<?= $_SESSION['event_data']['sale_end_time'] ?? '' ?>" 
-                            <?= isset($_SESSION['event_data']) ? 'readonly' : '' ?>>
+                        <input type="time" id="sale-end-time" name="sale_end_time">
                     </div>
 
                     <div class="form-group">
@@ -78,7 +73,17 @@
         </div>
         <script src="<?= ROOT ?>/assets/js/ticker/ticket.js"></script>
     </div>
+<?php if(!empty($data)): ?>
+    <?php 
+        $message = $data['error'];
+        include("../app/views/components/r-message.php")
+    ?>
+<?php endif ?>
+<script src="<?=ROOT?>/assets/js/signin-up.js"></script>
+<script src="<?=ROOT?>/assets/js/message.js"></script>
 
-    
+<script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+    <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
+    <script src="https://unpkg.com/ionicons@5.5.2/dist/ionicons.js"></script>
 </body>
 </html>
