@@ -7,7 +7,7 @@ class EventDetails {
 
     public function index()
     {
-        
+        $sender_id = $_GET['sender_id'] ?? null;
         $data =[];
         $event = new Event;
         $user=new User;
@@ -17,8 +17,10 @@ class EventDetails {
 
         $array['id'] = htmlspecialchars($data['event']->createdBy);
         $eventplanner = $user->first($array);
+        // show($_SESSION['USER']);
         // show($eventplanner);
-        $this->view('eventCollaborator/eventDetails',['data'=>$data,'eventplanner'=>$eventplanner]);
+        $userrole = $_SESSION['USER']->role;
+        $this->view('eventCollaborator/eventDetails',['data'=>$data,'eventplanner'=>$eventplanner,'userrole'=>$userrole]);
 
     }
 

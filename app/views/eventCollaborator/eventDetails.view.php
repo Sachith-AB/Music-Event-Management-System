@@ -106,130 +106,112 @@
 
     <!-- JavaScript for Chat Functionality -->
     <script>
+
+    const userRole = "<?php echo $_SESSION['USER']->role; ?>";
+    
     document.addEventListener('DOMContentLoaded', function () {
-        const chatContainer = document.getElementById('chatContainer');
-        const messageInput = document.getElementById('messageInput');
-        const sendMessageBtn = document.getElementById('sendMessage');
+    const chatContainer = document.getElementById('chatContainer');
+    const messageInput = document.getElementById('messageInput');
+    const sendMessageBtn = document.getElementById('sendMessage');
 
-        // Event listeners for sending messages
-        sendMessageBtn.addEventListener('click', sendMessage);
-        messageInput.addEventListener('keypress', function (e) {
-            if (e.key === 'Enter') {
-                sendMessage();
-            }
-        });
+    // Parse URL parameters to get sender_id and event_id
+    const urlParams = new URLSearchParams(window.location.search);
+    const senderId = urlParams.get('sender_id'); // Extract sender_id from URL
+    const eventId = urlParams.get('event_id');  // Extract event_id from URL
 
-        // Load messages initially
-        loadMessages();
-
-        // Fetch messages every 5 seconds
-        setInterval(loadMessages, 5000);
-
-        function sendMessage() {
-    const messageText = messageInput.value.trim();
-    if (messageText) {
-        const eventId = <?= json_encode($data['event']->id) ?>;
-        const eventPlanner = <?= json_encode($eventplanner->id) ?>;
-        const sender = <?= json_encode($_SESSION['USER']->id) ?>;
-
-        // Send message to the backend
-        fetch('send-message', {
-            method: 'POST',
-            headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify({
-                event_id: eventId,
-                event_planner: eventPlanner,
-                sender: sender,
-                message: messageText
-            })
-        })
-        .then(response => {
-            return response.text(); // get the raw text first to check for any HTML errors
-        })
-        .then(text => {
-            try {
-                const data = JSON.parse(text); // Try to parse the response as JSON
-                if (data.status === 'success') {
-                    loadMessages(); // Reload messages from the server
-                } else {
-                    console.error(data.message);
-                }
-            } catch (e) {
-                console.error("Failed to parse JSON:", text); // If not JSON, log the raw response
-            }
-        })
-        .catch(error => console.error('Error sending message:', error));
-
-        // Clear input
-        messageInput.value = '';
+    if (!senderId || !eventId) {
+        console.error('Missing sender_id or event_id in URL');
+        return;
     }
-}
 
-
-        function loadMessages() {
-    const eventId = <?= $data['event']->id ?>; // Replace with PHP-generated event ID
-    const sender_id = <?= $_SESSION['USER']->id ?>;
-
-    // Fetch messages from the backend
-    fetch(`get-messages?event_id=${eventId}&sender_id=${sender_id}`)
-        .then(response => response.json())
-        .then(messages => {
-            chatContainer.innerHTML = ''; // Clear current messages
-
-            // Ensure messages is an array before using forEach
-            if (Array.isArray(messages)) {
-                messages.forEach(message => {
-                    const messageDiv = document.createElement('div');
-                    messageDiv.classList.add('chat-message');
-                    messageDiv.innerHTML = `
-                        <p>${message.message}</p>
-                        <small class="text-xs text-gray-500">${new Date(message.timestamp).toLocaleTimeString()}</small>
-                    `;
-                    chatContainer.appendChild(messageDiv);
-                });
-            } else {
-                console.error('Expected an array of messages but got:', messages);
-            }
-
-            // Scroll to bottom
-            chatContainer.scrollTop = chatContainer.scrollHeight;
-        })
-        .catch(error => console.error('Error loading messages:', error));
-}
-function loadMessages() {
-    const eventId = <?= $data['event']->id ?>; // Replace with PHP-generated event ID
-    const sender_id = <?= $_SESSION['USER']->id ?>;
-
-
-    // Fetch messages from the backend
-    fetch(`get-messages?event_id=${eventId}&sender_id=${sender_id}`)
-        .then(response => response.json())
-        .then(messages => {
-            chatContainer.innerHTML = ''; // Clear current messages
-
-            // Ensure messages is an array before using forEach
-            if (Array.isArray(messages)) {
-                messages.forEach(message => {
-                    const messageDiv = document.createElement('div');
-                    messageDiv.classList.add('chat-message');
-                    messageDiv.innerHTML = `
-                        <p>${message.message}</p>
-                        <small class="text-xs text-gray-500">${new Date(message.timestamp).toLocaleTimeString()}</small>
-                    `;
-                    chatContainer.appendChild(messageDiv);
-                });
-            } else {
-                console.error('Expected an array of messages but got:', messages);
-            }
-
-            // Scroll to bottom
-            chatContainer.scrollTop = chatContainer.scrollHeight;
-        })
-        .catch(error => console.error('Error loading messages:', error));
-}
-
+    // Event listeners for sending messages
+    sendMessageBtn.addEventListener('click', sendMessage);
+    messageInput.addEventListener('keypress', function (e) {
+        if (e.key === 'Enter') {
+            sendMessage();
+        }
     });
-</script>
+
+    // Load messages initially
+    loadMessages();
+
+    // Fetch messages every 5 seconds
+    setInterval(loadMessages, 5000);
+
+    function sendMessage() {
+        const messageText = messageInput.value.trim();
+        if (messageText) {
+            const eventPlanner = <?= json_encode($eventplanner->id) ?>;
+            let mstatus;
+            if (userRole === "collaborator") {
+                mstatus = "message";
+            } else if (userRole === "planner") {
+                mstatus = "reply";
+            }
+
+            // Send message to the backend
+            fetch('send-message', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({
+                    event_id: eventId,
+                    event_planner: eventPlanner,
+                    sender: senderId,
+                    message: messageText,
+                    status: mstatus
+                    
+                })
+            })
+                .then(response => response.json())
+                .then(data => {
+                    if (data.status === 'success') {
+                        loadMessages(); // Reload messages from the server
+                    } else {
+                        console.error(data.message);
+                    }
+                })
+                .catch(error => console.error('Error sending message:', error));
+
+            // Clear input
+            messageInput.value = '';
+        }
+    }
+
+    function loadMessages() {
+        // Fetch messages from the backend
+        const userRole = "<?php echo $_SESSION['USER']->role; ?>";
+        fetch(`get-messages?event_id=${eventId}&sender_id=${senderId}`)
+            .then(response => response.json())
+            .then(messages => {
+                chatContainer.innerHTML = ''; // Clear current messages
+
+                if (Array.isArray(messages)) {
+                    messages.forEach(message => {
+                        const messageDiv = document.createElement('div');
+                        if (message.status == "message") {
+                            messageDiv.classList.add('chat-message'); // For collaborators
+                        } else if (message.status == "reply") {
+                            messageDiv.classList.add('chat-reply'); // For event planners
+                        }
+                        messageDiv.innerHTML = `
+                            <p>${message.message}</p>
+                            <small class="text-xs text-gray-500">${new Date(message.timestamp).toLocaleTimeString()}</small>
+                        `;
+                        chatContainer.appendChild(messageDiv);
+                    });
+                } else {
+                    console.error('Expected an array of messages but got:', messages);
+                }
+
+                // Scroll to bottom
+                chatContainer.scrollTop = chatContainer.scrollHeight;
+            })
+            .catch(error => console.error('Error loading messages:', error));
+    }
+});
+
+     </script>
+
 
 </body>
 </html>

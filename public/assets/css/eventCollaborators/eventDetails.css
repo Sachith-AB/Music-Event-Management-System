@@ -167,8 +167,22 @@ body {
     text-align: right; /* text-right */
     margin-left: auto; /* ml-auto */
 }
+.chat-reply {
+    margin-bottom: 0.5rem; /* mb-2 */
+    padding: 0.5rem; /* p-2 */
+    border-radius: 0.5rem; /* rounded-lg */
+    max-width: 100%; /* max-w-full */
+    background-color: #d1fae5;/* bg-blue-100 */
+    text-align: right; /* text-right */
+    margin-left: auto; /* ml-auto */
+}
 
 .chat-message small {
+    font-size: 0.75rem; /* text-xs */
+    color: #6b7280; /* text-gray-500 */
+}
+
+.chat-reply small {
     font-size: 0.75rem; /* text-xs */
     color: #6b7280; /* text-gray-500 */
 }

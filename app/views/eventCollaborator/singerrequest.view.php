@@ -36,7 +36,7 @@
                     <?php if(!empty($data['requests'])): ?>
                         
                         <?php foreach( $data['requests'] as $request):?>
-                            <tr onclick="viewEventDetails(<?php echo $request->event_id; ?>)">
+                            <tr onclick="viewEventDetails(<?php echo $request->event_id; ?>,<?php echo $_SESSION['USER']->id; ?>)">
                                 <td><img class="cover-image" src ="<?=ROOT?>/assets/images/events/<?php echo $request->cover_images ?> " alt="cover image"/></td>
                                 <td><?php echo $request->event_name?></td>
                                 <td><?php echo $request->eventDate?></td>

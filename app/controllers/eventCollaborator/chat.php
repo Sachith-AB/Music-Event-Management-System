@@ -27,6 +27,7 @@ class Chat {
                 'event_planner' => htmlspecialchars($input['event_planner'] ?? ''),
                 'sender' => htmlspecialchars($input['sender'] ?? ''),
                 'message' => htmlspecialchars($input['message'] ?? ''),
+                'status' => htmlspecialchars($input['status'] ?? ''),
             ];
 
             // Validate and save message
