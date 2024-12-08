@@ -68,8 +68,8 @@
                     
                 </table>
                 <script>
-                    function viewEventDetails(eventId) {
-                        window.location.href = `collaborator-eventdetails?event_id=${eventId}`;
+                    function viewEventDetails(eventId,sender_id) {
+                        window.location.href = `collaborator-eventdetails?event_id=${eventId}&sender_id=${sender_id}`;
                     }
                 </script>
             </div>
@@ -92,7 +92,7 @@
 
                         <?php foreach($data['accepted'] as $request): ?>
 
-                        <tr>
+                        <tr onclick="viewEventDetails(<?php echo $request->event_id; ?>,<?php echo $_SESSION['USER']->id; ?>)">
                             <td> <img class="cover-image"  src="<?=ROOT?>/assets/images/events/<?php echo $request->cover_images ?> " alt="cover image"></td>
                             <td><?php echo $request->event_name?></td>
                             <td><?php echo $request->eventDate?></td>

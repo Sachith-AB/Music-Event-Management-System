@@ -106,42 +106,130 @@
 
     <!-- JavaScript for Chat Functionality -->
     <script>
-        document.addEventListener('DOMContentLoaded', function() {
-            const chatContainer = document.getElementById('chatContainer');
-            const messageInput = document.getElementById('messageInput');
-            const sendMessageBtn = document.getElementById('sendMessage');
+    document.addEventListener('DOMContentLoaded', function () {
+        const chatContainer = document.getElementById('chatContainer');
+        const messageInput = document.getElementById('messageInput');
+        const sendMessageBtn = document.getElementById('sendMessage');
 
-            sendMessageBtn.addEventListener('click', sendMessage);
-            messageInput.addEventListener('keypress', function(e) {
-                if (e.key === 'Enter') {
-                    sendMessage();
-                }
-            });
-
-            function sendMessage() {
-                const messageText = messageInput.value.trim();
-                if (messageText) {
-                    // Create message element
-                    const messageDiv = document.createElement('div');
-                    messageDiv.classList.add(
-                        'chat-message'
-                    );
-                    
-                    const timestamp = new Date().toLocaleTimeString();
-                    messageDiv.innerHTML = `
-                        <p>${messageText}</p>
-                        <small class="text-xs text-gray-500">${timestamp}</small>
-                    `;
-
-                    // Append message to chat container
-                    chatContainer.appendChild(messageDiv);
-
-                    // Clear input and scroll to bottom
-                    messageInput.value = '';
-                    chatContainer.scrollTop = chatContainer.scrollHeight;
-                }
+        // Event listeners for sending messages
+        sendMessageBtn.addEventListener('click', sendMessage);
+        messageInput.addEventListener('keypress', function (e) {
+            if (e.key === 'Enter') {
+                sendMessage();
             }
         });
-    </script>
+
+        // Load messages initially
+        loadMessages();
+
+        // Fetch messages every 5 seconds
+        setInterval(loadMessages, 5000);
+
+        function sendMessage() {
+    const messageText = messageInput.value.trim();
+    if (messageText) {
+        const eventId = <?= json_encode($data['event']->id) ?>;
+        const eventPlanner = <?= json_encode($eventplanner->id) ?>;
+        const sender = <?= json_encode($_SESSION['USER']->id) ?>;
+
+        // Send message to the backend
+        fetch('send-message', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({
+                event_id: eventId,
+                event_planner: eventPlanner,
+                sender: sender,
+                message: messageText
+            })
+        })
+        .then(response => {
+            return response.text(); // get the raw text first to check for any HTML errors
+        })
+        .then(text => {
+            try {
+                const data = JSON.parse(text); // Try to parse the response as JSON
+                if (data.status === 'success') {
+                    loadMessages(); // Reload messages from the server
+                } else {
+                    console.error(data.message);
+                }
+            } catch (e) {
+                console.error("Failed to parse JSON:", text); // If not JSON, log the raw response
+            }
+        })
+        .catch(error => console.error('Error sending message:', error));
+
+        // Clear input
+        messageInput.value = '';
+    }
+}
+
+
+        function loadMessages() {
+    const eventId = <?= $data['event']->id ?>; // Replace with PHP-generated event ID
+    const sender_id = <?= $_SESSION['USER']->id ?>;
+
+    // Fetch messages from the backend
+    fetch(`get-messages?event_id=${eventId}&sender_id=${sender_id}`)
+        .then(response => response.json())
+        .then(messages => {
+            chatContainer.innerHTML = ''; // Clear current messages
+
+            // Ensure messages is an array before using forEach
+            if (Array.isArray(messages)) {
+                messages.forEach(message => {
+                    const messageDiv = document.createElement('div');
+                    messageDiv.classList.add('chat-message');
+                    messageDiv.innerHTML = `
+                        <p>${message.message}</p>
+                        <small class="text-xs text-gray-500">${new Date(message.timestamp).toLocaleTimeString()}</small>
+                    `;
+                    chatContainer.appendChild(messageDiv);
+                });
+            } else {
+                console.error('Expected an array of messages but got:', messages);
+            }
+
+            // Scroll to bottom
+            chatContainer.scrollTop = chatContainer.scrollHeight;
+        })
+        .catch(error => console.error('Error loading messages:', error));
+}
+function loadMessages() {
+    const eventId = <?= $data['event']->id ?>; // Replace with PHP-generated event ID
+    const sender_id = <?= $_SESSION['USER']->id ?>;
+
+
+    // Fetch messages from the backend
+    fetch(`get-messages?event_id=${eventId}&sender_id=${sender_id}`)
+        .then(response => response.json())
+        .then(messages => {
+            chatContainer.innerHTML = ''; // Clear current messages
+
+            // Ensure messages is an array before using forEach
+            if (Array.isArray(messages)) {
+                messages.forEach(message => {
+                    const messageDiv = document.createElement('div');
+                    messageDiv.classList.add('chat-message');
+                    messageDiv.innerHTML = `
+                        <p>${message.message}</p>
+                        <small class="text-xs text-gray-500">${new Date(message.timestamp).toLocaleTimeString()}</small>
+                    `;
+                    chatContainer.appendChild(messageDiv);
+                });
+            } else {
+                console.error('Expected an array of messages but got:', messages);
+            }
+
+            // Scroll to bottom
+            chatContainer.scrollTop = chatContainer.scrollHeight;
+        })
+        .catch(error => console.error('Error loading messages:', error));
+}
+
+    });
+</script>
+
 </body>
 </html>

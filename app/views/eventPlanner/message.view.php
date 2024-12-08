@@ -14,6 +14,9 @@
     <div class="dash-container">
         <!-- Sidebar -->
         <?php include ('../app/views/components/eventPlanner/dashsidebar.php');  ?>
+        <div class="dashboard">
+
+        </div>
         
         
         
