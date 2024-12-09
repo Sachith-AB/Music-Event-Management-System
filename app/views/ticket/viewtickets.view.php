@@ -14,7 +14,7 @@ if(isset($_SESSION['last_visit'])){
 
 $_SESSION['last_visit'] = date('Y-m-d H:i:s');
 ?>
-
+<?php $id = htmlspecialchars($_GET['event_id']); ?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -27,6 +27,7 @@ $_SESSION['last_visit'] = date('Y-m-d H:i:s');
 
 </head>
 <body>
+<?php include ('../app/views/components/loading.php'); ?>
     <div class="container">
 
         <!--create slide bar -->
@@ -84,9 +85,6 @@ $_SESSION['last_visit'] = date('Y-m-d H:i:s');
 
         </div>
     </div>
-
-    
-    <?php $id = htmlspecialchars($_GET['event_id']); ?>
 
     <script>
         function goToRequest() {
