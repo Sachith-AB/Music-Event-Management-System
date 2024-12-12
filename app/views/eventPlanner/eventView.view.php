@@ -31,7 +31,8 @@
                     <p><strong>Type:</strong> <?php echo $data['event']->type ?></p>
                     <p><strong>Location:</strong> <?php echo $data['event']->address ?></p>
                 </div>
-                <button class="addbutton">Update</button>
+                <button class="change-button" onclick = "goUpdate()">Update</button>
+                <button class = "remove-button" onclick="goDelete()">Draft</button>
             </div>
 
         <?php endif; ?>    
@@ -163,7 +164,15 @@
             <button class="finishbutton" name ="schedule" type = "submit"  >Move to Scheduled</button>
         </form>
         
-        
+        <script>
+            function goUpdate(){
+                window.location.href = "<?=ROOT?>/processing-event-update?event_id=<?php echo $data['event']->id?>";
+            }
+
+            function goDelete(){
+            window.location.href = "<?=ROOT?>/processing-event-delete?event_id=<?php echo $data['event']->id?>";
+        }
+        </script>
         
     </div>
 </body>

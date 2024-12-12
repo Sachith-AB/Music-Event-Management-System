@@ -14,6 +14,8 @@ route('event-review', 'event/Review@index');
 route('event-update', 'event/Update@index');  
 route('event-delete', 'event/Delete@index');  
 route('view-event','event/ViewEvent@index');
+route('processing-event-update','event/ProcessingEventUpdate@index');
+route('processing-event-delete','event/ProcessingEventDelete@index');
 
 //route for event collaborators
 route('colloborator-profile','eventCollaborator/singerProfile@index');
