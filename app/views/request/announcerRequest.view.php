@@ -52,7 +52,8 @@
         <h3><?php echo $singer->name ?></h3>
         <p>Music Genre</p>
         <div class="button-wrapper">
-            <button class="profile">View</button>
+            <a href="collaborator-viewprofile?id=<?php echo $singer->id ?>" class="profile">Profile</a>
+            <!-- <button class="profile">View</button> -->
             <form method="POST">
                 <input name="event_id" type="hidden" value="<?= htmlspecialchars($_GET["id"]) ?>">
                 <input name="collaborator_id" type="hidden" value="<?php echo $singer->id ?>">
