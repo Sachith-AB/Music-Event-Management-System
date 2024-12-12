@@ -90,3 +90,13 @@
 .action-btn.delete:hover {
     background-color: #d93636;
 }
+
+a {
+    text-decoration: none;
+    color: #fff;
+}
+
+.button-section {
+    display: flex;
+    gap: 5px;
+}
