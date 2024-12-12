@@ -65,7 +65,7 @@
                                             <td><?php echo $singer->email ?></td>
                                             <td><?php echo $singer->contact ?></td>
                                             <td>
-                                                <button class="action-btn view">View</button>
+                                                <button class="action-btn view"><a href="<?=ROOT?>/collaborator-viewprofile?id=<?php echo $singer->user_id?>">View</a></button>
                                                 <button class="action-btn delete">Delete</button>
                                             </td>
                                         </tr>
@@ -118,7 +118,7 @@
                                                 <td><?php echo $band->email ?></td>
                                                 <td><?php echo $band->contact ?></td>
                                                 <td>
-                                                    <button class="action-btn view">View</button>
+                                                    <button class="action-btn view"><a href="<?=ROOT?>/collaborator-viewprofile?id=<?php echo $band->user_id?>">View</a></button>
                                                     <button class="action-btn delete">Delete</button>
                                                 </td>
                                             </tr>
@@ -168,7 +168,7 @@
                                                 <td><?php echo $sound->email ?></td>
                                                 <td><?php echo $sound->contact ?></td>
                                                 <td>
-                                                    <button class="action-btn view">View</button>
+                                                    <button class="action-btn view"><a href="<?=ROOT?>/collaborator-viewprofile?id=<?php echo $sound->user_id?>">View</a></button>
                                                     <button class="action-btn delete">Delete</button>
                                                 </td>
                                             </tr>
@@ -218,7 +218,7 @@
                                                 <td><?php echo $decorator->email ?></td>
                                                 <td><?php echo $decorator->contact ?></td>
                                                 <td>
-                                                    <button class="action-btn view">View</button>
+                                                    <button class="action-btn view"><a href="<?=ROOT?>/collaborator-viewprofile?id=<?php echo $decorator->user_id?>">View</a></button>
                                                     <button class="action-btn delete">Delete</button>
                                                 </td>
                                             </tr>
@@ -269,7 +269,7 @@
                                             <td><?php echo $stage->email ?></td>
                                             <td><?php echo $stage->contact ?></td>
                                             <td>
-                                                <button class="action-btn view">View</button>
+                                                <button class="action-btn view"><a href="<?=ROOT?>/collaborator-viewprofile?id=<?php echo $stage->user_id?>">View</a></button>
                                                 <button class="action-btn delete">Delete</button>
                                             </td>
                                         </tr>
@@ -319,7 +319,7 @@
                                             <td><?php echo $announcer->email ?></td>
                                             <td><?php echo $announcer->contact ?></td>
                                             <td>
-                                                <button class="action-btn view">View</button>
+                                                <button class="action-btn view"><a href="<?=ROOT?>/collaborator-viewprofile?id=<?php echo $announcer->user_id?>">View</a></button>
                                                 <button class="action-btn delete">Delete</button>
                                             </td>
                                         </tr>

@@ -11,7 +11,7 @@ class EventCollaborators {
         $data = [];
 
         $data = $this->DisplayCollaborators($event);
-        show($data);
+        // show($data);
         
         $this->view('admin/collaborators', $data);
 
