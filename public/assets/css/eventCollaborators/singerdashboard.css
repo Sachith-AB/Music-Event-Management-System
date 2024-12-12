@@ -10,6 +10,15 @@
     margin: 20px auto;
     padding: 40px;
 }
+.view-container {
+    display: flex;
+    margin: 20px auto;
+    padding: 40px;
+    align-items: center;
+    justify-content: center; /* Horizontally center content within the flex container */
+    height: 100vh; /* Ensure the container takes the full height of the viewport */
+    box-sizing: border-box;
+}
 
 .dashboard {
     width: 80%;

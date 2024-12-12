@@ -1,4 +1,7 @@
-<?php include ('../app/views/components/header.php'); ?>
+<?php 
+    $backPath = ROOT.'/event-planner-dashboard';
+    include ('../app/views/components/header.php'); 
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -9,12 +12,12 @@
 </head>
 <body>
     <!-- Include Header -->
-    <?php include ('../app/views/components/loading.php'); ?>
+  
     
     <div class="dash-container">
         <!-- Sidebar -->
         <?php include ('../app/views/components/eventPlanner/dashsidebar.php'); ?>
-        <?php include ('../app/views/components/loading.php'); ?>
+        
 
 
         <?php if (!empty($events)):?>
@@ -48,15 +51,16 @@
                     <?php foreach ($events as $event): ?>
                         <?php if ($event->status == 'scheduled'): ?>
                             <div class="event-card">
-                                <div class="event-status-scheduled">Scheduled</div>
-                                <img src="<?=ROOT?>/assets/images/events/<?php echo htmlspecialchars($event->cover_images)?>" alt="<?= htmlspecialchars($event->event_name) ?>">
-                                <div>
-                                    <div><?= htmlspecialchars($event->event_name) ?></div>
+                                
+                                    <div class="event-status-scheduled">Scheduled</div>
+                                    <img src="<?=ROOT?>/assets/images/events/<?php echo htmlspecialchars($event->cover_images)?>" alt="<?= htmlspecialchars($event->event_name) ?>">
                                     <div>
-                                        <div>📅 <?= htmlspecialchars(date("l, F d | h:i A", strtotime($event->start_time))) ?></div>
-                                        <div>📍 <?= htmlspecialchars($event->address) ?></div>
+                                        <div><?= htmlspecialchars($event->event_name) ?></div>
+                                        <div>
+                                            <div>📅 <?= htmlspecialchars(date("l, F d | h:i A", strtotime($event->start_time))) ?></div>
+                                            <div>📍 <?= htmlspecialchars($event->address) ?></div>
+                                        </div>
                                     </div>
-                                </div>
                             </div>
                         <?php endif; ?>
                     <?php endforeach; ?>

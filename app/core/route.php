@@ -14,6 +14,8 @@ route('event-review', 'event/Review@index');
 route('event-update', 'event/Update@index');  
 route('event-delete', 'event/Delete@index');  
 route('view-event','event/ViewEvent@index');
+route('processing-event-update','event/ProcessingEventUpdate@index');
+route('processing-event-delete','event/ProcessingEventDelete@index');
 
 //route for event collaborators
 route('colloborator-profile','eventCollaborator/singerProfile@index');
@@ -23,6 +25,10 @@ route('colloborator-updateprofile','eventCollaborator/SingerUpdateProf@index');
 route('colloborator-calendar','eventCollaborator/Calender@index');
 route('colloborator-events','eventCollaborator/SingerEvents@index');
 route('colloborator-payments','eventCollaborator/SingerPayments@index');
+route('collaborator-viewprofile','eventCollaborator/ViewProfile@index');
+route('collaborator-eventdetails','eventCollaborator/EventDetails@index');
+route('send-message','eventCollaborator/Chat@sendMessage');
+route('get-messages','eventCollaborator/Chat@getMessages');
 
 
 
@@ -72,6 +78,7 @@ route('event-planner-myevents','eventPlanner/EventPlannerMyEvents@index');
 route('event-planner-payment','eventPlanner/EventPlannerPayment@index');
 route('event-planner-messages','eventPlanner/EventPlannerMessage@index');
 route('event-planner-viewEvent','eventPlanner/EventPlannerViewEvent@index');
+route('get-event-messages','eventPlanner/EventPlannerMessage@index');
 
 
 //Route for Admin
