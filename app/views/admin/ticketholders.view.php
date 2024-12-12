@@ -26,76 +26,28 @@
                     </tr>
                 </thead>
                 <tbody>
-                    <tr>
-                        <td>1</td>
-                        <td>John Doe</td>
-                        <td>johndoe@example.com</td>
-                        <td>0760000000</td>
-                        <td>
-                            <button class="action-btn view">View</button>
-                            <button class="action-btn delete">Delete</button>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>2</td>
-                        <td>Jane Smith</td>
-                        <td>janesmith@example.com</td>
-                        <td>0760000000</td>
-                        <td>
-                            <button class="action-btn view">View</button>
-                            <button class="action-btn delete">Delete</button>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>3</td>
-                        <td>Jane Smith</td>
-                        <td>janesmith@example.com</td>
-                        <td>0760000000</td>
-                        <td>
-                            <button class="action-btn view">View</button>
-                            <button class="action-btn delete">Delete</button>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>4</td>
-                        <td>Jane Smith</td>
-                        <td>janesmith@example.com</td>
-                        <td>0760000000</td>
-                        <td>
-                            <button class="action-btn view">View</button>
-                            <button class="action-btn delete">Delete</button>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>5</td>
-                        <td>Jane Smith</td>
-                        <td>janesmith@example.com</td>
-                        <td>0760000000</td>
-                        <td>
-                            <button class="action-btn view">View</button>
-                            <button class="action-btn delete">Delete</button>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>6</td>
-                        <td>Jane Smith</td>
-                        <td>janesmith@example.com</td>
-                        <td>0760000000</td>
-                        <td>
-                            <button class="action-btn view">View</button>
-                            <button class="action-btn delete">Delete</button>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>7</td>
-                        <td>Jane Smith</td>
-                        <td>janesmith@example.com</td>
-                        <td>0760000000</td>
-                        <td>
-                            <button class="action-btn view">View</button>
-                            <button class="action-btn delete">Delete</button>
-                        </td>
-                    </tr>
+
+                    <?php if(!empty($data)): ?>
+
+                        <?php foreach($data as $holder): ?>
+                            <?php if($holder->role == "holder"): ?>
+
+                                <tr>
+                                    <td><?php echo $holder->id ?></td>
+                                    <td><?php echo $holder->name ?></td>
+                                    <td><?php echo $holder->email ?></td>
+                                    <td><?php echo $holder->contact ?></td>
+                                    <td>
+                                        <button class="action-btn view">View</button>
+                                        <button class="action-btn delete">Delete</button>
+                                    </td>
+                                </tr>
+
+                            <?php endif; ?>
+                        <?php endforeach; ?>
+
+                    <?php endif; ?>
+               
                 </tbody>
             </table>
         </div>

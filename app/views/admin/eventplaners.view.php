@@ -26,79 +26,46 @@
                     </tr>
                 </thead>
                 <tbody>
-                    <tr>
-                        <td>1</td>
-                        <td>John Doe</td>
-                        <td>johndoe@example.com</td>
-                        <td>0760000000</td>
-                        <td>
-                            <button class="action-btn view">View</button>
-                            <button class="action-btn delete">Delete</button>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>2</td>
-                        <td>Jane Smith</td>
-                        <td>janesmith@example.com</td>
-                        <td>0760000000</td>
-                        <td>
-                            <button class="action-btn view">View</button>
-                            <button class="action-btn delete">Delete</button>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>2</td>
-                        <td>Jane Smith</td>
-                        <td>janesmith@example.com</td>
-                        <td>0760000000</td>
-                        <td>
-                            <button class="action-btn view">View</button>
-                            <button class="action-btn delete">Delete</button>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>2</td>
-                        <td>Jane Smith</td>
-                        <td>janesmith@example.com</td>
-                        <td>0760000000</td>
-                        <td>
-                            <button class="action-btn view">View</button>
-                            <button class="action-btn delete">Delete</button>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>2</td>
-                        <td>Jane Smith</td>
-                        <td>janesmith@example.com</td>
-                        <td>0760000000</td>
-                        <td>
-                            <button class="action-btn view">View</button>
-                            <button class="action-btn delete">Delete</button>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>2</td>
-                        <td>Jane Smith</td>
-                        <td>janesmith@example.com</td>
-                        <td>0760000000</td>
-                        <td>
-                            <button class="action-btn view">View</button>
-                            <button class="action-btn delete">Delete</button>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>2</td>
-                        <td>Jane Smith</td>
-                        <td>janesmith@example.com</td>
-                        <td>0760000000</td>
-                        <td>
-                            <button class="action-btn view">View</button>
-                            <button class="action-btn delete">Delete</button>
-                        </td>
-                    </tr>
+
+                <?php if(!empty($data)): ?>
+
+                    <?php foreach($data as $planner): ?>
+
+                        <?php if($planner->role == 'planner'): ?>
+
+                                <tr>
+                                    <td><?php echo $planner->id ?></td>
+                                    <td><?php echo $planner->name ?></td>
+                                    <td><?php echo $planner->email ?></td>
+                                    <td><?php echo $planner->contact ?></td>
+                                    <td>
+                                        <div class = "button-section">
+                                            <form action="<?=ROOT?>/admin-vieweventplanner" method = "POST">
+                                                <input type = "hidden" name ="user_id" value = "<?php echo $planner->id ?>">
+                                                <button class="action-btn view" type = "submit" >View</button>
+                                            </form>
+                                             
+
+                                                <button class="action-btn delete">Delete</button>
+                                        </div> 
+                                    </td>
+                                </tr>
+
+                        <?php endif; ?>
+
+                    <?php endforeach; ?>
+
+                <?php endif; ?>
+                      
                 </tbody>
             </table>
         </div>
     </div>
 </body>
 </html>
+
+<!-- <script>
+    document.querySelector('.action-btn view').addEventListener('click', () => {
+        windows.location.href = "<?=ROOT?>/event-planner-profile?id=<?php echo $planner->id ?>";
+    });
+</script> -->

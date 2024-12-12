@@ -79,4 +79,5 @@ route('admin-dashboard','admin/AdminDashboard@index');
 route('admin-eventplanners','admin/EventPlanners@index');
 route('admin-eventcollaborators','admin/EventCollaborators@index');
 route('admin-ticketholders','admin/TicketHolders@index');
+route('admin-vieweventplanner','admin/ViewEventPlanner@index');
 

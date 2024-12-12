@@ -8,6 +8,7 @@
     display: flex;
     margin: 20px auto;
     padding: 40px;
+    width: 100%;
 }
 /* /* Content */
 /* .content {
@@ -111,8 +112,8 @@
     box-shadow: black;
 } */
 .dashboard {
-    width: 80%;
-    max-width: 1200px;
+    width: 100%;
+    max-width: 2000px;
     background-color: #fff;
     padding: 20px;
     border-radius: 8px;
