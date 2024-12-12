@@ -53,54 +53,23 @@
         </div>
 
         <!-- <script>
-            let offset = 6;
+            const viewMoreBtn = document.querySelector('.view-more-events');
+            let currentItem = 6;
 
-            $(document).on('click', '.view-more-events', function(e){
-                e.preventDefault();
+            viewMoreBtn.onclick = () => {
+                let cards = [...document.querySelectorAll('.event-card')];
+                for( var i = currentItem; i < currentItem + 6; i++){
+                    cards[i];
+                }
+                
+                currentItem += 6;
 
-                $.ajax ({
-                    url: 'Event.php',
-                    type: 'GET',
-                    data: { offset: offset},
-                    success: function(response) {
-                        const events = JSON.parse(response);
+                if(currentItem >= cards.length){
+                    viewMoreBtn.style.display = 'none';
+                }
 
-                        if(events.length > 0) {
-                            events.forEach( event => {
-                                $('.event-container').append(`
-                                    <div class = "event-card">
-                                       <img src="<?=ROOT?>/assets/images/events/<?php echo $event->cover_images ?>" alt="Event Image">
-                                            <div>
-                                                <div><?php echo $event->event_name?></div>
-                                                <div>
-                                                    <div>📅 <?php echo $event->eventDate?> | <?php echo $event->start_time?> </div>
-                                                    <div>📍 Location:  <?php echo $event->address?> </div>
-                                                    <div>👤 Created By: <?php echo $event->name ?> </div>
-                                                </div>
-                                            </div>
-                                        <div class="event-card-icons">
-                                            <a href="#"><i class="fas fa-eye"></i></a>
-                                            <a href="#"><i class="fas fa-trash"></i></a>
-                                        </div>
-                                    </div>
-                                    ` );
-
-                            });
-
-                            offset += events.length;
-
-                        } else {
-
-                            $('.view-more-events').text('No more events to display').prop('disabled', true);
-                        }
-                    }
-
-                });
-
-            });
-
+            }
         </script> -->
-
 
         <h2 class="content-header"><br>Already Held Events</h2>
         <div class="events-container">
