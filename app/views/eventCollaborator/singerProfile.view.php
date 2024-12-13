@@ -8,12 +8,13 @@
   <link rel="stylesheet" href="<?=ROOT?>/assets/css/eventCollaborators/singerProfile.css">
 </head>
 <body>
-<?php include ('../app/views/components/loading.php'); ?>
+
   <?php 
   // Capture success message and flag from GET request if available
   $success = htmlspecialchars($_GET['msg'] ?? '');
   $flag = htmlspecialchars($_GET['flag'] ?? 0);
   ?>
+ 
 
   <div class="dash-container">
     <!-- Include sidebar for navigation -->

@@ -46,7 +46,7 @@
                     <?php foreach ($combinedTickets as $event): ?>
                         <div class="upcommingeve-ticket-card">
                             <div class="upcommingeve-ticket-image">
-                                <img src="<?=ROOT?>/assets/images/ticket/musicevent1.jpg" alt="Event Image">
+                                <img src="<?=ROOT?>/assets/images/events/<?= htmlspecialchars($event[0]->event_images) ?>" alt="Event Image">
                             </div>
                             <div class="upcommingeve-ticket-info">
                                 <h3><?= htmlspecialchars($event[0]->event_name) ?>: <?= htmlspecialchars($event[0]->event_description) ?></h3>

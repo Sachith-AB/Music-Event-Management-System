@@ -24,6 +24,7 @@ $_SESSION['last_visit'] = date('Y-m-d H:i:s');
 </head>
 <body>
 <?php include ('../app/views/components/loading.php'); ?>
+
     <div class="container">
 
             <!--create slide bar -->

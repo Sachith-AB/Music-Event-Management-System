@@ -61,10 +61,12 @@ h1 {
 .rtable tbody tr {
     background-color: #fff;
     transition: background-color 0.3s ease;
+    cursor: pointer;
 }
 
 .rtable tbody tr:hover {
     background-color: #f1f8fa;
+    cursor: pointer;
 }
 
 .rtable td, .rtable th {

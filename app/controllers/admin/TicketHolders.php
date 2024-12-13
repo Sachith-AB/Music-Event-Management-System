@@ -7,8 +7,19 @@ class TicketHolders {
 
     public function index()
     {
-        $this->view('admin/ticketholders');
+        $event = new Event;
+        $data = [];
 
+        $data = $this->getHolderDetails($event);
+        // show($data);
+        $this->view('admin/ticketholders', $data);
+
+    }
+
+    public function getHolderDetails($event)
+    {
+        $res = $event->getUsers();
+        return $res;
     }
 
    
