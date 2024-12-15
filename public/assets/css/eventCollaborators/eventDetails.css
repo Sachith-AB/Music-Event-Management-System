@@ -173,7 +173,7 @@ body {
     border-radius: 0.5rem; /* rounded-lg */
     max-width: 100%; /* max-w-full */
     background-color: #d1fae5;/* bg-blue-100 */
-    text-align: right; /* text-right */
+    text-align: left; /* text-right */
     margin-left: auto; /* ml-auto */
 }
 
