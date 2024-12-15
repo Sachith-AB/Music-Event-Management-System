@@ -1,0 +1,40 @@
+/* General Reset */
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background-color: #f8f9fa;
+    color: #333;
+}
+
+/* Container for the entire layout */
+.container {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 30px;
+    padding: 20px;
+    max-width: 1200px;
+    margin: 60px auto;
+}
+
+/* Section Styling */
+.chart-section {
+    background-color: #ffffff;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    text-align: center;
+}
+
+/* Titles Styling */
+.section-title {
+    font-size: 1.5rem;
+    color: #00BDD6FF;
+    margin-bottom: 20px;
+}
+
+/* Chart Container Styling */
+canvas {
+    max-width: 100%;
+    height: auto;
+}

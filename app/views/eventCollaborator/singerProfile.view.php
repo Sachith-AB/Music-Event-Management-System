@@ -16,6 +16,9 @@
   ?>
 
 
+
+ 
+
   <div class="dash-container">
     <!-- Include sidebar for navigation -->
     <?php include ('../app/views/components/collaborator/singersidebar.php'); ?>

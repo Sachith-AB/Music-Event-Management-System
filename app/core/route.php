@@ -25,6 +25,10 @@ route('colloborator-updateprofile','eventCollaborator/SingerUpdateProf@index');
 route('colloborator-calendar','eventCollaborator/Calender@index');
 route('colloborator-events','eventCollaborator/SingerEvents@index');
 route('colloborator-payments','eventCollaborator/SingerPayments@index');
+route('collaborator-viewprofile','eventCollaborator/ViewProfile@index');
+route('collaborator-eventdetails','eventCollaborator/EventDetails@index');
+route('send-message','eventCollaborator/Chat@sendMessage');
+route('get-messages','eventCollaborator/Chat@getMessages');
 
 
 
@@ -74,6 +78,8 @@ route('event-planner-myevents','eventPlanner/EventPlannerMyEvents@index');
 route('event-planner-payment','eventPlanner/EventPlannerPayment@index');
 route('event-planner-messages','eventPlanner/EventPlannerMessage@index');
 route('event-planner-viewEvent','eventPlanner/EventPlannerViewEvent@index');
+route('event-planner-scheduledEvent','eventPlanner/EventPlannerScheduledEvent@index');
+route('get-event-messages','eventPlanner/EventPlannerMessage@index');
 
 
 //Route for Admin
@@ -81,4 +87,5 @@ route('admin-dashboard','admin/AdminDashboard@index');
 route('admin-eventplanners','admin/EventPlanners@index');
 route('admin-eventcollaborators','admin/EventCollaborators@index');
 route('admin-ticketholders','admin/TicketHolders@index');
+route('admin-vieweventplanner','admin/ViewEventPlanner@index');
 

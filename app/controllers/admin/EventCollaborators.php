@@ -7,8 +7,20 @@ class EventCollaborators {
 
     public function index()
     {
-        $this->view('admin/collaborators');
+        $event = new Event;
+        $data = [];
 
+        $data = $this->DisplayCollaborators($event);
+        // show($data);
+        
+        $this->view('admin/collaborators', $data);
+
+    }
+
+    public function DisplayCollaborators($event)
+    {
+        $res = $event->getAllCollaborators();
+        return $res;
     }
 
    
