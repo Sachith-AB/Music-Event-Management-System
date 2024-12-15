@@ -12,7 +12,6 @@ class ViewEvent{
         // show($data);
 
         $this->view('event/viewEvent',$data);
-       
     }
 
     public function getEventData($event){

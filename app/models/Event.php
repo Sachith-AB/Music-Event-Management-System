@@ -63,8 +63,8 @@ class Event {
             } elseif ($eventDate <= $today) {
                 // Event date must be in the future
                 $this->errors['flag'] = true;
-		        $this->errors['error'] = "Event date must be in the future";
-			    $this->errors['error_no'] = 6;
+                $this->errors['error'] = "Event date must be in the future";
+                $this->errors['error_no'] = 6;
             }
         }
 
@@ -82,8 +82,8 @@ class Event {
             } elseif ($eventEndDate <= $today) {
                 // Event date must be in the future
                 $this->errors['flag'] = true;
-			    $this->errors['error'] = "Event date must be in the future";
-			    $this->errors['error_no'] = 6;
+                $this->errors['error'] = "Event date must be in the future";
+                $this->errors['error_no'] = 6;
             }
         }
 

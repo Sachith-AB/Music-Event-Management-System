@@ -261,6 +261,7 @@
                     });
             }
             </script>
+            <?php include ('../app/views/components/review.php'); ?>
         </div>
     </div>
 </body>

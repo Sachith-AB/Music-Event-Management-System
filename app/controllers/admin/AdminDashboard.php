@@ -29,8 +29,8 @@ class AdminDashboard {
     //    $offset = isset($_GET['offset']) ? intval($_GET['offset']) : 0;
     //    $limit = 6;
     
-       $res = $event->getUpcomingEvents();
-       return $res;
+        $res = $event->getUpcomingEvents();
+        return $res;
 
     }
 
@@ -40,6 +40,4 @@ class AdminDashboard {
         $res = $event->getAlreadyHeldEvents();
         return $res;
     }
-
-   
 }
