@@ -90,6 +90,20 @@ class Profile {
         return $data;
     }
 
+    public function getUsersByRole($role, $joinTable = 'profile', $additionalFilters = []) {
+        $query = "SELECT u.id, u.name, u.pro_pic, p.userID, p.user_role, p.music_genres
+                  FROM users u
+                  JOIN $joinTable p ON u.id = p.userID
+                  WHERE p.user_role = :user_role";
+    
+        foreach ($additionalFilters as $column => $value) {
+            $query .= " AND $column = :$column";
+        }
+    
+        $data = array_merge(['user_role' => $role], $additionalFilters);
+        return $this->query($query, $data) ?: [];
+    }
+    
 
     public function checkIfUserExists($userId) {
         $query = "SELECT * FROM profile WHERE userID = :userId LIMIT 1";
