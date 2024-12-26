@@ -15,11 +15,7 @@
     //show($_SESSION["USER"]);
 ?>
 <header>
-    <nav>
-        <ul>
-            <li><a href = "#" onclick = "history.back()"> Back </a></li>
-        </ul>
-    </nav>
+    
     <div class="logo-image">
         <img src = "<?=ROOT?>/assets/images/logo/logo.png" alt = "musicia" onclick="goToHome()"> 
     </div>
