@@ -8,7 +8,9 @@ class EventPlannerScheduledEvent {
     public function index() {
         $ticket = new Ticket;
         $event = new Event;
+
         $payment = new Payment;
+
         $data = [];
         $event_id = htmlspecialchars($_GET['id']); // Get event ID from the URL
 
@@ -17,7 +19,11 @@ class EventPlannerScheduledEvent {
 
         if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['update'])) {
             $event_id = htmlspecialchars($_GET['id']);
+
             //show($event_id);
+
+            show($event_id);
+
             show($_POST);
             $this->updateDetail($event,$event_id);
         }
@@ -56,7 +62,13 @@ class EventPlannerScheduledEvent {
             return $value !== null;
         });
     
+
         
+
+        // Debugging: Show the data being sent to the update method
+        show($filteredData);
+    
+
         // Check if there's data to update
         if (!empty($filteredData)) {
             $event->update($event_id, $filteredData);

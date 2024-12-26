@@ -79,8 +79,13 @@
 
 
 
+
         <!-- <input type="hidden" id="hidden-start-time" name="starttime">
         <input type="hidden" id="hidden-end-time" name="endtime"> -->
+
+        <input type="hidden" id="hidden-start-time" name="starttime">
+        <input type="hidden" id="hidden-end-time" name="endtime">
+
         <input type="hidden" id="hidden-event-id" name="id" value="<?= $data['id']; ?>">
 
         <script src="<?= ROOT ?>/assets/js/event/processingEventUpdate.js"></script>
@@ -99,9 +104,12 @@
             window.history.back();
         }
 
+
         function go() {
             window.location.href = "event-payment?id=<?php echo $data['id']?>";
         }
+
+
     </script>
     
     <div class="container">
@@ -130,7 +138,10 @@
                     Keep track of payments made to your event collaborators, including performers, suppliers, and other key contributors. Ensure smooth operations with accurate records!
                 </p>
                 <div class="collaborator-buttons">
-                    <button type = "submit" class="btn btn-primary" onclick="go()">Yes, Record Payments</a>
+       <button type = "submit" class="btn btn-primary" onclick="go()">Yes, Record Payments</a>
+
+                    <button type = "submit" class="btn btn-primary">Yes, Record Payments</a>
+
                     <button class="btn btn-secondary" onclick="goBack()">No, Continue Without Payments</button>
                 </div>
             </div>
