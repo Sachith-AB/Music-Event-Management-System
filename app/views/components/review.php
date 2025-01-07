@@ -1,27 +1,43 @@
-<div class="review-section">
+<form method="post" class="review-section">
     <h2>Leave Your Review</h2>
 
     <!-- Star Rating -->
     <div class="star-rating">
-        <span class="star" data-value="1">&#9733;</span>
-        <span class="star" data-value="2">&#9733;</span>
-        <span class="star" data-value="3">&#9733;</span>
-        <span class="star" data-value="4">&#9733;</span>
-        <span class="star" data-value="5">&#9733;</span>
+        <label>
+            <input type="radio" name="rating" value="1" hidden>
+            <span class="star" data-value="1">&#9733;</span>
+        </label>
+        <label>
+            <input type="radio" name="rating" value="2" hidden>
+            <span class="star" data-value="2">&#9733;</span>
+        </label>
+        <label>
+            <input type="radio" name="rating" value="3" hidden>
+            <span class="star" data-value="3">&#9733;</span>
+        </label>
+        <label>
+            <input type="radio" name="rating" value="4" hidden>
+            <span class="star" data-value="4">&#9733;</span>
+        </label>
+        <label>
+            <input type="radio" name="rating" value="5" hidden>
+            <span class="star" data-value="5">&#9733;</span>
+        </label>
     </div>
 
     <!-- Comment Box -->
-    <textarea id="review-comment" placeholder="Write your comments here..."></textarea>
+    <textarea id="review-comment" name="comment" placeholder="Write your comments here..."></textarea>
 
     <!-- Submit Button -->
-    <button id="submit-review">Submit Review</button>
+    <button id="submit-review" name="review" type="submit">Submit Review</button>
 
     <!-- Display Reviews -->
     <div class="reviews-display">
         <h3>Recent Reviews</h3>
         <ul id="reviews-list"></ul>
     </div>
-</div>
+</form>
+
 
 <style>
     /* Review Section */
@@ -134,33 +150,6 @@
         });
     }
 
-        // Handle submit
-        submitButton.addEventListener('click', () => {
-            const comment = commentBox.value.trim();
-
-            if (selectedRating === 0) {
-                alert('Please select a star rating!');
-                return;
-            }
-
-            if (!comment) {
-                alert('Please add a comment!');
-                return;
-            }
-
-            // Add review to the list
-            const reviewItem = document.createElement('li');
-            reviewItem.innerHTML = `
-                <strong>Rating: ${'★'.repeat(selectedRating)}${'☆'.repeat(5 - selectedRating)}</strong>
-                <p>${comment}</p>
-            `;
-            reviewsList.appendChild(reviewItem);
-
-            // Reset form
-            selectedRating = 0;
-            updateStarColors(0);
-            commentBox.value = '';
-        });
-    });
+});
 
 </script>

@@ -8,15 +8,30 @@ class ViewEvent{
 
         $data =[];
         $event = new Event;
-        $data = $this->getEventData($event);
-        // show($data);
+        $rating = new Rating;
+        $id = htmlspecialchars($_GET['id']);
+
+        $data = $this->getEventData($event,$id);
+        
+        
+        if($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['review'])){
+            $this->reivewEvent($rating,$id);
+        }
 
         $this->view('event/viewEvent',$data);
     }
 
-    public function getEventData($event){
-        $id = htmlspecialchars($_GET['id']);
+    public function getEventData($event,$id){
+        
         $res = $event->getAllEventData($id);
         return $res;
+    }
+
+    private function reivewEvent($rating,$id){
+        $_POST['event_id'] = $id;
+        $_POST['user_id'] = $_SESSION['USER']->id;
+        show($_POST);
+        $rating->insert($_POST);
+
     }
 }

@@ -1,4 +1,4 @@
-<?php include ('../app/views/components/header.php'); ?>
+<!-- <?php include ('../app/views/components/header.php'); ?> -->
 <!DOCTYPE html>
 <html lang="en">
 
@@ -261,6 +261,7 @@
                     });
             }
             </script>
+            <!-- reviw to event -->
             <?php include ('../app/views/components/review.php'); ?>
         </div>
     </div>

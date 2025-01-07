@@ -18,7 +18,7 @@ class Event {
         'type',
         'createdBy',
         'address',
-        'status'
+        'status',
     ];
 
     public function validEvent($data) {
