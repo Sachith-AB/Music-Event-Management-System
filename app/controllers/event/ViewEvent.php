@@ -30,7 +30,6 @@ class ViewEvent{
     private function reivewEvent($rating,$id){
         $_POST['event_id'] = $id;
         $_POST['user_id'] = $_SESSION['USER']->id;
-        show($_POST);
         $rating->insert($_POST);
 
     }
