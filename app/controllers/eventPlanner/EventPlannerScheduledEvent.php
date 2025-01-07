@@ -8,14 +8,14 @@ class EventPlannerScheduledEvent {
     public function index() {
         $ticket = new Ticket;
         $event = new Event;
-
+        $user = new User;
         $payment = new Payment;
 
         $data = [];
         $event_id = htmlspecialchars($_GET['id']); // Get event ID from the URL
 
         $row = $event->firstById($event_id);
-       // show($row);
+       //show($row);
 
         if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['update'])) {
             $event_id = htmlspecialchars($_GET['id']);
@@ -24,7 +24,7 @@ class EventPlannerScheduledEvent {
 
             show($event_id);
 
-            show($_POST);
+            //show($_POST);
             $this->updateDetail($event,$event_id);
         }
 
@@ -32,7 +32,9 @@ class EventPlannerScheduledEvent {
 
         // Fetch income and ticket count progress
         $income_data = $this->ticketIncome($ticket, $event_id);
+        //show($income_data);
         $ticket_count_data = $this->getAllTicketCount($ticket, $event_id);
+        //show($ticket_count_data);
 
         // Combine all data to pass to the view
         $data2= array_merge($income_data, $ticket_count_data);
@@ -43,6 +45,7 @@ class EventPlannerScheduledEvent {
 
     public function getData($row) {
         $data = json_decode(json_encode($row), true);
+        //show($data);
         return $data;
     }
 
@@ -121,4 +124,6 @@ class EventPlannerScheduledEvent {
             'sold_tickets' => $sold_tickets,
         ];
     }
+
+    
 }
