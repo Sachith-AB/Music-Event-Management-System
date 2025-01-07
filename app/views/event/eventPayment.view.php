@@ -5,6 +5,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Performer Payments</title>
     <link rel="stylesheet" href="<?=ROOT?>/assets/css/payment.css">
+    <link rel="stylesheet" href="<?=ROOT?>/assets/css/eventPlanner/scheduledEvent.css">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="<?= ROOT ?>/assets/js/eventplanner/payment.js" defer></script>
 </head>
 <body>
     <section class="team-section">
@@ -42,6 +46,19 @@
         </div>
         <button class="done-btn" onclick="goBack()">Done</button>
     </section>
+
+    <div class="container1" style="justify-content: center;">
+    <div class="chart-section">
+        <h2 class="section-title">Total Payment</h2>
+        <!--<pre><?php echo htmlspecialchars(json_encode($total_cost, JSON_PRETTY_PRINT)); ?></pre>--->
+        <canvas id="paymentChart" 
+            data-user_id='<?= json_encode($user_id) ?>' 
+            data-total_cost='<?= json_encode($total_cost) ?>'>
+        </canvas>
+
+        </div>
+        
+    </div>
 
     <script>
         

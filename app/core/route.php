@@ -17,6 +17,7 @@ route('view-event','event/ViewEvent@index');
 route('processing-event-update','event/ProcessingEventUpdate@index');
 route('processing-event-delete','event/ProcessingEventDelete@index');
 route('event-payment','event/EventPayment@index');
+route('event-view-payment','event/ViewEventPayment@index');
 
 //route for event collaborators
 route('colloborator-profile','eventCollaborator/singerProfile@index');
@@ -30,6 +31,7 @@ route('collaborator-viewprofile','eventCollaborator/ViewProfile@index');
 route('collaborator-eventdetails','eventCollaborator/EventDetails@index');
 route('send-message','eventCollaborator/Chat@sendMessage');
 route('get-messages','eventCollaborator/Chat@getMessages');
+
 
 
 
