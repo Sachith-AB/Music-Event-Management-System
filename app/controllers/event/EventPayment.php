@@ -62,8 +62,8 @@ class EventPayment {
         $user_id = [];
         $total_cost = [];
         foreach ($total_payment as $record) {
-            $user_id[] = $record->name; // Ensure valid user_id
-            $total_cost[] = $record->total_payment; // Ensure valid total_payment
+            $user_id[] = $record->name; 
+            $total_cost[] = $record->total_payment; 
         }
     
         return ['total_cost' => $total_cost, 'user_id' => $user_id];

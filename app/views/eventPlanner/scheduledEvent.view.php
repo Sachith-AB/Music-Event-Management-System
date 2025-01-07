@@ -128,6 +128,7 @@
                 data-sold='<?= json_encode($sold_tickets) ?>'></canvas>
         </div>
 
+        
     </div>
 
     <div class="event-details-box">
