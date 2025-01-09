@@ -8,6 +8,7 @@ class AdminDashboard {
     public function index()
     {
         $event = new Event;
+        $deletedEvent = new Deletedevents;
         $data = [];
 
         $data['upcoming'] = $this->displayUpcomingEvents($event);
@@ -18,10 +19,17 @@ class AdminDashboard {
 
         // echo json_encode($data['upcoming']);
 
+        if($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['delete'])){
+
+            
+            $this->deleteEvent($event,$deletedEvent);
+        }
+
 
         $this->view('admin/admindashboard',$data);
 
     }
+
 
 
     public function displayUpcomingEvents($event)
@@ -40,6 +48,21 @@ class AdminDashboard {
         $res = $event->getAlreadyHeldEvents();
         return $res;
     }
+
+
+    private function deleteEvent($event,$deletedEvent) {
+
+        $data = $event->firstById($_POST['event_id']);
+        $data = json_decode(json_encode($data),true);
+        $data['event_id'] = $data['id'];
+        // show($data);
+
+        $deletedEvent->insert($data);
+        $event->delete($_POST['event_id']);
+        redirect('admin-dashboard');
+    }
+
+    
 
    
 }
