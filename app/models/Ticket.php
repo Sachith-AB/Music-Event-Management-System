@@ -159,6 +159,33 @@ class Ticket {
     
         return $this->query($query, $params);
     }
+
+
+    public function getTicketIncomeOverTime($event_id) {
+        $query = "SELECT 
+                      DATE(buy_time) AS purchase_date, 
+                      SUM(t.price * b.ticket_quantity) AS total_income 
+                  FROM buyticket b
+                  JOIN tickets t ON b.ticket_id = t.id
+                  WHERE b.event_id = :event_id
+                  GROUP BY DATE(buy_time)
+                  ORDER BY purchase_date";
+    
+        $params = ['event_id' => $event_id]; // Bind event ID
+        $result = $this->query($query, $params);
+        return $result ? $result : [];
+    }
+    public function getPurchasedTicketCounts($event_id) {
+        $query = "SELECT ticket_type, price, quantity, sold_quantity 
+                  FROM tickets 
+                  WHERE event_id = :event_id";
+    
+        $params = ['event_id' => $event_id];
+        return $this->query($query, $params);
+    }
+    
+
+
     
 
 }

@@ -4,7 +4,6 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Settings Page</title>
 <link rel="stylesheet" href="<?=ROOT?>/assets/css/eventCollaborators/singerrequest.css">
 </head>
 <body>

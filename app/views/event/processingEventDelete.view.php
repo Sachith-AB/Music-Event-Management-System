@@ -24,60 +24,60 @@ $_SESSION['last_visit'] = date('Y-m-d H:i:s');
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Review Event</title>
     <link rel="stylesheet" href="<?=ROOT?>/assets/css/eventDelete.css">
 </head>
-<?php $event_name = htmlspecialchars($_GET['event_name']?? '');
-//show ($data);
-?>
+
+
 <body>
-         <!-- Main Content -->
-        <div class="main-content">
-            <section id="event-header">
-                <div class="event-cover">
-                    <div class="event-info">
-                        <h2 id = "event title"><?php echo $data['event_name'] ?></h2>
+    <div class="main-container">
+                <?php if (isset($data['id'])): ?>
+                    <div class="event-details">
+                        <section id="event-header">
+                            <div class="event-cover">
+                                <div class = "event-info">
+                                    <h2 id="event title"><?= htmlspecialchars($data['event_name']); ?></h2>
+                                </div>
+                            </div>
+                        </section>
+
+                        <section id = "general-information">
+                            <p><strong>Description:</strong> <?= htmlspecialchars($data['description']); ?></p>
+                            <p><strong>Audience:</strong> <?= htmlspecialchars($data['audience']); ?></p>
+                            <p><strong>Location:</strong> <?= htmlspecialchars($data['address']) ?></p>
+                            <p><strong>Date:</strong> <?= htmlspecialchars($data['eventDate']); ?></p>
+                            <p><strong>Start Time:</strong> <?= htmlspecialchars($data['start_time']); ?></p>
+                            <p><strong>End Time:</strong> <?= htmlspecialchars($data['end_time']); ?></p>
+                            <p><strong>Status:</strong> <?= htmlspecialchars($data['status']); ?></p>
+                        </section>
                     </div>
-                </div>
-            </section>
 
-            <section id="general-information">
-                <p class = "event-description"> <?php echo $data['description'] ?></p>
-            </section>
+                    <section id="validation">
+                        <h2>Are you sure you want to delete this event?</h2>
+                    </section>
 
+                    <div class ="action-buttons">
+                        <button onclick="goBack()">No</button>
 
-            
+                        <form method="POST">
+                            <input type="hidden" name="id" value="<?php echo htmlspecialchars($data['id']); ?>">
+                            <button type="submit" name="delete">Yes</button>
+                        </form>
 
-            <input type="hidden" name="event_id" value="<?php echo $data['id'] ?>">
-
-            
-            <section id="validation">
-                <h2>Are you sure you want to delete this event?</h2>
-            </section>
-
-            <div class ="action-buttons">
-                <button onclick="goBack()">No</button>
-
-                <form method = "POST">
-                    <input type="hidden" name="event_id" value="<?php echo $data['id'] ?>">
-                    <button type="submit" name="delete">Yes</button>
-                </form>
+                    </div>
 
 
-            </div>
-        </div>
+                <?php else: ?>
+                    <p>Event details not found. Please try again.</p>
+                <?php endif; ?>
     </div>
 
 
     <script>
-       function goBack() {
-            const eventName = "<?= htmlspecialchars($data['event_name']) ?>";
-            if (eventName) {
-                window.location.href = `event-review?event_name=${eventName}`;
-            } else {
-                window.history.back();
-            }
+        function goBack() {
+            window.location.href = "event-planner-viewEvent?id=<?php echo $data['id']?>";
+            window.history.back();
         }
     </script>
+
 </body>
 </html>
