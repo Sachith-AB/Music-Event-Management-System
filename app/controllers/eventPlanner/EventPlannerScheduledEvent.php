@@ -32,6 +32,7 @@ class EventPlannerScheduledEvent {
 
         // Fetch income and ticket count progress
         $income_data = $this->ticketIncome($ticket, $event_id);
+        show($income_data);
         $ticket_count_data = $this->getAllTicketCount($ticket, $event_id);
 
         // Combine all data to pass to the view

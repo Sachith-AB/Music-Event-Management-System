@@ -117,7 +117,8 @@
             <h2 class="section-title">Income Over Time</h2>
             <canvas id="incomeChart" 
                 data-dates='<?= json_encode($dates) ?>' 
-                data-incomes='<?= json_encode($incomes) ?>'></canvas>
+                data-incomes='<?= json_encode($incomes) ?>'>
+            </canvas>
         </div>
 
         <div class="chart-section">
