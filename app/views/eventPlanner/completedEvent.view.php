@@ -22,10 +22,11 @@
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <script src="<?= ROOT ?>/assets/js/eventplanner/complete.js" defer></script>
-
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
 </head>
 <body>
 
+<div class = "pdf-container">
     <div class="container">
 
         <div class = "left-section">
@@ -63,6 +64,7 @@
 
     </div>
 
+
     <div class="financial-summary">
         <table class="financial-table">
             <thead>
@@ -90,7 +92,6 @@
 
     <br>
     <br>
-    <br>
 
     <div class="ticket-summary">
         <table>
@@ -109,6 +110,10 @@
             </tbody>
         </table>
     </div>
+
+    <br>
+    <br>
+ 
 
     <section class="team-section">
         <h1>Performers' Payment Information</h1>
@@ -133,13 +138,36 @@
                     <?php endif ?>
                 </tbody>
             </table>
+
             
         </div>
+
+
     </section>
+
+    </div>
     
+    <button class = "print-button" onclick="print()"><i class="fa-solid fa-download"></i></button>
 
 
-
+    <script>
+        function print() {
+            const pdfContainer = document.querySelector('.pdf-container'); // Select the pdf-container
+            const newWindow = window.open('', '_blank'); // Open a new window
+            newWindow.document.write('<html><head><title>Musicial - Event Report</title>');
+            newWindow.document.write('<link rel="stylesheet" href="<?= ROOT ?>/assets/css/eventplanner/completed.css">'); // Include your CSS
+            newWindow.document.write('</head><body>');
+            newWindow.document.write(pdfContainer.innerHTML); // Write the content of pdf-container
+            newWindow.document.write('</body></html>');
+            newWindow.document.close(); // Close the document
+            
+            // Wait for the new window to load before printing
+            newWindow.onload = function() {
+                newWindow.print(); // Trigger the print dialog
+                newWindow.close(); // Close the new window after printing
+            };
+        }
+    </script>
     
 
 </body>
