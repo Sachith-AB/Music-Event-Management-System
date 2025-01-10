@@ -129,6 +129,7 @@
                 data-sold='<?= json_encode($sold_tickets) ?>'></canvas>
         </div>
 
+        
     </div>
 
     <div class="event-details-box">
@@ -139,9 +140,7 @@
                     Keep track of payments made to your event collaborators, including performers, suppliers, and other key contributors. Ensure smooth operations with accurate records!
                 </p>
                 <div class="collaborator-buttons">
-       <button type = "submit" class="btn btn-primary" onclick="go()">Yes, Record Payments</a>
-
-                    <button type = "submit" class="btn btn-primary">Yes, Record Payments</a>
+                    <button type = "submit" class="btn btn-primary" onclick="go()">Yes, Record Payments</a>
 
                     <button class="btn btn-secondary" onclick="goBack()">No, Continue Without Payments</button>
                 </div>

@@ -3,6 +3,9 @@ body {
     margin: 0;
     padding: 0;
     background-color: #f4f7f6;
+    align-items: center;
+    justify-content: center;
+    
 }
 
 .team-section {
@@ -131,4 +134,15 @@ tr:hover {
     background-color: #fff;
     border-radius: 8px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.container1 {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 30px;
+    padding: 220px;
+    max-width: 1200px;
+    background-color: #ffffff; /* Optional: Background color */
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Optional: Box shadow for a modern look */
+    border-radius: 10px; /* Optional: Rounded corners */
 }

@@ -64,3 +64,4 @@ new Chart(ticketCtx, {
         }
     }
 });
+
