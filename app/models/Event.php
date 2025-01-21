@@ -231,7 +231,7 @@ class Event {
 
         $query = "SELECT e.id AS event_id,e.event_name,e.eventDate,e.start_time,e.address,e.createdBy,e.cover_images,u.id AS user_id,u.name AS user_name from events e
                   JOIN users u on e.createdBy = u.id
-                  WHERE is_delete = '0' AND e.eventDate > CURRENT_DATE
+                  WHERE e.is_delete = '0' AND e.eventDate > CURRENT_DATE
                   ";
 
         $result = $this->query($query);
@@ -243,7 +243,7 @@ class Event {
 
         $query = "SELECT e.id AS event_id,e.event_name,e.eventDate,e.start_time,e.address,e.createdBy,e.cover_images,u.id AS user_id,u.name AS user_name from events e
                   JOIN users u on e.createdBy = u.id
-                  WHERE is_delete = '0' AND e.eventDate < CURRENT_DATE
+                  WHERE e.is_delete = '0' AND e.eventDate < CURRENT_DATE
                   ";
 
         $result = $this->query($query);
@@ -252,7 +252,7 @@ class Event {
 
     public function getUsers()
     {
-        $query = "SELECT id,name,email,contact,role from users";
+        $query = "SELECT id,name,email,contact,role from users WHERE is_delete = '0'";
 
         $result = $this->query($query);
         return $result;
@@ -263,7 +263,7 @@ class Event {
         $query = "SELECT u.id as user_id,u.name as user_name,u.email,u.contact,u.role,p.userID,p.user_role 
                   from users u 
                   join profile p on u.id = p.userID
-                  WHERE u.role = 'collaborator'";
+                  WHERE u.is_delete = '0' AND u.role = 'collaborator'";
 
         $result = $this->query($query);
         return $result;
