@@ -149,17 +149,18 @@ class Event {
                 JOIN tickets ON buyticket.ticket_id = tickets.id
                 GROUP BY tickets.event_id
             ) AS sold_data ON events.id = sold_data.event_id
-            WHERE events.createdBy = ?
+            WHERE events.createdBy = ? AND events.is_delete = '0'
         ";
         $result = $this->query($query, [$userId]);
-
+    
         // Return the result array, or an empty array if no results are found
         return $result ?: [];
     }
+    
 
     public function getRecentEvents($limit = 4) {
         // Directly inject the $limit value into the query
-        $query = "SELECT * FROM events ORDER BY eventDate DESC LIMIT $limit";
+        $query = "SELECT * FROM events WHERE is_delete = '0' ORDER BY eventDate DESC LIMIT $limit";
     
         return $this->query($query);
     }
@@ -169,7 +170,7 @@ class Event {
 
         $searchName = $searchTerm['name'] ?? "";
         
-        $query = "SELECT * FROM events WHERE event_name LIKE '%$searchName%'";
+        $query = "SELECT * FROM events WHERE is_delete = '0' AND event_name LIKE '%$searchName%'";
         $result = $this->query($query);
         return $result ? $result : [];
 
@@ -180,7 +181,7 @@ class Event {
         $searchPricing = $searchTerm['pricing'] ?? "";
     
         // Start building the query
-        $query = "SELECT * FROM events WHERE 1=1";  // The 1=1 acts as a placeholder to make appending conditions easier
+        $query = "SELECT * FROM events WHERE is_delete = '0' AND 1=1";  // The 1=1 acts as a placeholder to make appending conditions easier
     
         // Add conditions only if they are not empty
         if (!empty($searchType)) {
@@ -230,7 +231,7 @@ class Event {
 
         $query = "SELECT e.id AS event_id,e.event_name,e.eventDate,e.start_time,e.address,e.createdBy,e.cover_images,u.id AS user_id,u.name AS user_name from events e
                   JOIN users u on e.createdBy = u.id
-                  WHERE e.eventDate > CURRENT_DATE
+                  WHERE e.is_delete = '0' AND e.eventDate > CURRENT_DATE
                   ";
 
         $result = $this->query($query);
@@ -242,7 +243,7 @@ class Event {
 
         $query = "SELECT e.id AS event_id,e.event_name,e.eventDate,e.start_time,e.address,e.createdBy,e.cover_images,u.id AS user_id,u.name AS user_name from events e
                   JOIN users u on e.createdBy = u.id
-                  WHERE e.eventDate < CURRENT_DATE
+                  WHERE e.is_delete = '0' AND e.eventDate < CURRENT_DATE
                   ";
 
         $result = $this->query($query);
@@ -251,7 +252,7 @@ class Event {
 
     public function getUsers()
     {
-        $query = "SELECT id,name,email,contact,role from users";
+        $query = "SELECT id,name,email,contact,role from users WHERE is_delete = '0'";
 
         $result = $this->query($query);
         return $result;
@@ -262,7 +263,7 @@ class Event {
         $query = "SELECT u.id as user_id,u.name as user_name,u.email,u.contact,u.role,p.userID,p.user_role 
                   from users u 
                   join profile p on u.id = p.userID
-                  WHERE u.role = 'collaborator'";
+                  WHERE u.is_delete = '0' AND u.role = 'collaborator'";
 
         $result = $this->query($query);
         return $result;

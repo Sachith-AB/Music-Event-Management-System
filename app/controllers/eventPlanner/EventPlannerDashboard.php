@@ -20,9 +20,9 @@ class EventPlannerDashboard {
         $eventModel = new Event(); // Assuming Event model exists
         $userEvents = $eventModel->getEventsByUserId($userId);
         
-        /*usort($userEvents, function($a, $b) {
-            return strtotime($b->createdAt) - strtotime($a->createdAt);
-        });*/
+        // usort($userEvents, function($a, $b) {
+        //     return strtotime($b->createdAt) - strtotime($a->createdAt);
+        // });
 
         $totalRevenue = 0;
         $totalTicketsSold = 0;
