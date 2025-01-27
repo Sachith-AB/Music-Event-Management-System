@@ -18,6 +18,8 @@
     ?>
     <div class="page-content">
         <h1 class="head1">My Profile</h1>
+        
+        
         <div class="all">
             <div class="container">
                 <h2>My Profile</h2>
@@ -39,17 +41,22 @@
                     <button class="button button-2" type="submit" name="logOut">Sign out</button>
                 </form>
             </div>
-            <div class="header-menu">
-                <div class="header-menu-item selected">Upcoming</div>
-                <div class="header-menu-item">Used</div>
-            </div>
-            <h3 class="event">4 Event</h3>
-            <div class="textbox">
-                <input type="text" name="search" id="search" placeholder="Search">
-            </div>
-            <!-- <div class="event-detail">
-                <div>
-                    <img class="event-image" src="<?=ROOT?>/assets/images/events/image-1.jpg" alt="event" >
+            <?php if (!empty($combinedTickets)): ?>
+                <div class="upcommingeve-tickets">
+                    <h2>My Tickets</h2>
+                    <?php foreach ($combinedTickets as $event): ?>
+                        <div class="upcommingeve-ticket-card">
+                            <div class="upcommingeve-ticket-image">
+                                <img src="<?=ROOT?>/assets/images/events/<?= htmlspecialchars($event[0]->event_images) ?>" alt="Event Image">
+                            </div>
+                            <div class="upcommingeve-ticket-info">
+                                <h3><?= htmlspecialchars($event[0]->event_name) ?>: <?= htmlspecialchars($event[0]->event_description) ?></h3>
+                                <p>📅 <?= htmlspecialchars(date("l, F d | h:i A", strtotime($event[0]->event_date))) ?></p>
+                                <p>📍 <?= htmlspecialchars($event[0]->address) ?></p>
+                                <div class="upcommingeve-ticket-meta"><?= htmlspecialchars($event['ticket_quantity']) ?> Tickets - LKR<?= htmlspecialchars($event['ticket_quantity'] * $event[0]->ticket_price) ?></div>
+                            </div>
+                        </div>
+                    <?php endforeach; ?>
                 </div>
             <?php else: ?>
                 <div class="purchase-text">
