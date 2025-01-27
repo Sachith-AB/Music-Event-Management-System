@@ -116,7 +116,7 @@ trait Model {
         $data[$id_column] = $id;
         $query = "DELETE FROM $this->table WHERE $id_column = :$id_column";
         $this->query($query,$data);
-        echo $query;
+        //echo $query;
         return false;
     }
 
@@ -136,4 +136,86 @@ trait Model {
 
         return false; // Return false if no result
         }
+
+
+        public function firstByEventName($event_name) {
+
+            $query = "SELECT * FROM $this->table WHERE event_name= :event_name";
+    
+            $data = ['event_name' => $event_name];
+    
+            // Execute the query
+            $result = $this->query($query, $data);
+    
+            // Check if a result is found
+            if ($result) {
+                return $result[0]; // Return the first result
+            }
+    
+            return false; // Return false if no result
+            }
+    
+        public function getUsersByRole($role, $joinTable) {
+
+            $query = "SELECT u.id, u.name, u.pro_pic, p.userID, p.user_role , p.music_genres
+                        FROM users u 
+                        JOIN $joinTable p ON u.id = p.userID 
+                        WHERE p.user_role = :user_role 
+                        ";
+        
+            // Bind the provided role to the query
+            $data = ['user_role' => $role];
+        
+            $result = $this->query($query, $data);
+        
+            if($result){
+                return $result;
+            }else{
+                return [];
+            }
+        }
+
+        public function searchByTerm($searchTerm, $role, $joinTable = 'profile') {
+            // Sanitize the search term
+            $searchTerm = "%{$searchTerm['searchTerm']}%";
+        
+            // Query with placeholders for dynamic role and search term
+            $query = "SELECT u.id, u.name, u.pro_pic, p.userID, p.user_role , p.music_genres
+                        FROM users u
+                        JOIN $joinTable p ON u.id = p.userID
+                        WHERE p.user_role = :user_role
+                        AND (
+                            u.name LIKE :searchTerm OR
+                            p.music_genres LIKE :searchTerm OR
+                            p.biography LIKE :searchTerm OR
+                            p.equipment LIKE :searchTerm
+                        )";
+        
+            // Bind the role and search term
+            $data = [
+                'user_role' => $role,
+                'searchTerm' => $searchTerm,
+            ];
+        
+            // Execute the query and return results
+            $result = $this->query($query, $data);
+        
+            // Return an array, either with results or empty
+            return $result ? $result : [];
+        }
+
+
+        public function getExistingRequests($id, $role)
+{
+    // Prepare the query with placeholders
+    $query = "SELECT * FROM requests WHERE event_id = :id AND role = :role";
+
+    // Execute the query and return results using the query method
+    $result = $this->query($query, [':id' => $id, ':role' => $role]);
+
+    // Return an array with results, or an empty array if no results
+    return $result ?: [];
+}
+
+        
 }

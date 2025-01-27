@@ -43,7 +43,7 @@
     border-radius: 10px; 
     border: none; /* Removing default button border */
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Adding a subtle shadow */
-    transition: background-color 0.3s ease, transform 0.3s ease; /* Smooth hover effects */
+    transition: transform 1s ease; /* Smooth hover effects */
 }
 
 /* Hover effect for better interaction */

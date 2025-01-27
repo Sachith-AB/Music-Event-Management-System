@@ -11,7 +11,7 @@
     <link href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css" rel="stylesheet">
 
     <link rel="stylesheet" href="<?= ROOT ?>/assets/css/toast.css">
-    <link rel="icon" href="<?= ROOT ?>/assets/images/amoral_1.ico">
+    <link rel="icon" type="image/png" href="<?=ROOT?>/assets/images/logo/logo.png">
 </head>
 
 <body>
@@ -34,7 +34,6 @@
             display: flex;
         }
     </style>
-
     <div class="page-content">
         <main>
             <div class="box">
@@ -42,8 +41,8 @@
                     <div class="form-warp">
                         <!-- Sign-In Form -->
                         <form method="POST" class="sign-in-form" id="signinForm">
-                            <div class="logo">
-                                <img src="<?= ROOT ?>/assets/images/" alt="company_logo">
+                            <div class="logo-image">
+                                <img src="<?=ROOT?>/assets/images/logo/logo.png" alt="company_logo">
                                 <span>
                                     <a href="<?= ROOT ?>/home">
                                         <ion-icon name="chevron-back-outline"></ion-icon>

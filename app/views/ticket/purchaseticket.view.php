@@ -1,4 +1,4 @@
-
+<?php include ('../app/views/components/header.php'); ?>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -11,272 +11,193 @@
     <!-- Include Font Awesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
 </head>
-<body>
 
     <!-- Include Header -->
-    <?php include ('../app/views/components/Header.php'); ?>
+    <?php include ('../app/views/components/loading.php'); ?>
+    
     <!-- Main Content -->
     <main>
-        <div class="event-details-container">
-            <div class="back-link">
-                <a href="#"><i class="fas fa-arrow-left"></i>     Purchase Ticket</a> <span class="time-left">Time left: 25:00</span>
-            </div>
-            <h1 class="event-title"><span>Rock Revolt</span>: A Fusion of Power and Passion</h1>
-            <div class="event-info">
-                <div class="event-item">
-                    <div class="icon">
-                        <i class="fas fa-calendar-alt"></i>
+        <?php if (!empty($ticketdetails)): ?>
+            <div class="event-details-container">
+                <h1 class="event-title"><span><?= htmlspecialchars($ticketdetails[0]->event_name) ?></span>: <?= htmlspecialchars($ticketdetails[0]->event_description) ?></h1>
+                <div class="event-info">
+                    <div class="event-item">
+                        <div class="icon">
+                            <i class="fas fa-calendar-alt"></i>
+                        </div>
+                        <div>
+                            <h3>Date and Time</h3>
+                            <p><?= htmlspecialchars(date("l, F d", strtotime($ticketdetails[0]->event_date))) ?><br /><?= htmlspecialchars(date("h:i A", strtotime($ticketdetails[0]->event_date))) ?></p>
+                        </div>
                     </div>
-                    <div>
-                        <h3>Date and Time</h3>
-                        <p>Saturday, February 20<br>08:00 PM</p>
-                    </div>
-                </div>
 
-                <div class="event-item">
-                    <div class="icon">
-                        <i class="fas fa-map-marker-alt"></i>
+                    <div class="event-item">
+                        <div class="icon">
+                            <i class="fas fa-map-marker-alt"></i>
+                        </div>
+                        <div>
+                            <h3>Place</h3>
+                            <p><?= htmlspecialchars($ticketdetails[0]->address) ?></p>
+                        </div>
                     </div>
-                    <div>
-                        <h3>Place</h3>
-                        <p>Central Park, New York, NY<br>United States</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <div class="form-line"></div>
-
-
-        <!--contact section-->
-        <div class="event-details-container">
-            <div class="contact-header">
-                <h2>Contact information</h2>
-                <a href="#" class="login-link">Log in</a>
-            </div>
-            <form>
-                <div class="input-group">
-                    <div class="input-field">
-                        <label for="first-name">First name</label>
-                        <input type="text" id="first-name" placeholder="Amanda" required>
-                    </div>
-                    <div class="input-field">
-                        <label for="last-name">Last name</label>
-                        <input type="text" id="last-name" placeholder="Smith" required>
-                    </div>
-                </div>
-
-                <div class="input-group">
-                    <div class="input-field">
-                        <label for="email">Email</label>
-                        <input type="email" id="email" placeholder="Amanda@email.com" required>
-                    </div>
-                    <div class="input-field">
-                        <label for="phone">Phone number</label>
-                        <input type="tel" id="phone" placeholder="(724) 651-7073" required>
-                    </div>
-                </div>
-
-                <div class="checkbox-group">
-                    <label><input type="checkbox" checked> Keep me updated on this event</label>
-                    <label><input type="checkbox" checked> I agree with the <a href="#">Terms of Use</a> & <a href="#">Privacy Policy</a></label>
-                </div>
-            </form>
-        </div>  
-    
-    <!--ticket section-->
-
-        <div class="event-details-container">
-            <h2>Ticket</h2>
-        
-            <!-- Ticket Selection -->
-            <div class="ticket-selection">
-                <div class="price">
-                    <p>$90 / Ticket</p>
-                </div>
-                <div class="quantity">
-                    <input type="radio" name="ticket-quantity" id="one-ticket">
-                    <label for="one-ticket">1</label>
-                    <input type="radio" name="ticket-quantity" id="two-tickets" checked>
-                    <label for="two-tickets">2</label>
                 </div>
             </div>
-        
-            <!-- Ticket 1 -->
-            <div class="ticket-details">
-                <div>
-                    <div class="ticket-header">
-                        <h3>Ticket 1</h3>
-                        <label><input type="checkbox"> Same contact information</label>
+
+            <div class="form-line"></div>
+            <form id="purchaseForm" method="POST">
+            <!-- Contact section -->
+                <div class="event-details-container">
+                    <div class="contact-header">
+                        <h2>Contact information</h2>
                     </div>
+
                     <div class="input-group">
                         <div class="input-field">
-                            <label for="first-name-1">First name</label>
-                            <input type="text" id="first-name-1" placeholder="Amanda">
+                            <label for="first-name">First name</label>
+                            <input type="text" id="first-name" name="first-name" placeholder="" required>
                         </div>
                         <div class="input-field">
-                            <label for="last-name-1">Last name</label>
-                            <input type="text" id="last-name-1" placeholder="Smith">
+                            <label for="last-name">Last name</label>
+                            <input type="text" id="last-name" name="last-name" placeholder="" required>
                         </div>
                     </div>
+
                     <div class="input-group">
                         <div class="input-field">
-                            <label for="email-1">Email</label>
-                            <input type="email" id="email-1" placeholder="Amanda@email.com">
+                            <label for="email">Email</label>
+                            <input type="email" id="email" name="email" placeholder="" required>
                         </div>
                         <div class="input-field">
-                            <label for="phone-1">Phone number</label>
-                            <input type="tel" id="phone-1" placeholder="(724) 651-7073">
+                            <label for="phone">Phone number</label>
+                            <input type="tel" id="phone" name="phone" placeholder="" required>
                         </div>
+                    </div>
+                    <div class="checkbox-group">
+                        <label><input type="checkbox" name="updates" checked> Keep me updated on this event</label>
+                        <label><input type="checkbox" name="agree" checked> I agree with the <a href="#">Terms of Use</a> & <a href="#">Privacy Policy</a></label>
                     </div>
                 </div>
-            </div>
-        
-        <!-- Ticket 2 -->
-            <div class="ticket-details">
-                <div>
-                    <div class="ticket-header">
-                        <h3>Ticket 2</h3>
+
+                <!-- Ticket section -->
+                <div class="event-details-container">
+                    <h2>Ticket</h2>
+                    <div class="ticket-selection">
+                        <div class="available">
+                            <div class="price">
+                                <p>LKR <?= htmlspecialchars($ticketdetails[0]->ticket_price) ?> / <?= htmlspecialchars($ticketdetails[0]->ticket_type) ?> Ticket</p>
+                            </div>
+                            <div class="ticket-header">
+                                <h3><?= htmlspecialchars($ticketdetails[0]->ticket_quantity) ?> Tickets Available</h3>
+                            </div>
+                        </div>
+                        <div class="available">
+                            <p class="getticket">Get Tickets</p>
+                            <div class="ticket-quantity">
+                                <button type="button" class="decrease-btn" onclick="decreaseQuantity()">-</button>
+                                <input type="number" id="ticketCount" name="ticketCount" value="1" min="1" readonly>
+                                <button type="button" class="increase-btn" onclick="increaseQuantity()">+</button>
+                            </div>
+                        </div>
                     </div>
-                    <div class="input-group">
-                        <div class="input-field">
-                            <label for="first-name-2">First name</label>
-                            <input type="text" id="first-name-2" placeholder="Charles">
+                    <button type="button" class="next-btn" onclick="openModal()">Next</button>
+
+
+                </div>
+            
+
+                <script>
+                    const ticketDetails = <?= json_encode([
+                        'quantity' => $ticketdetails[0]->ticket_quantity,
+                        'price' => $ticketdetails[0]->ticket_price,
+                        'type' => $ticketdetails[0]->ticket_type,
+                        // Add any other details as needed
+                    ]) ?>;
+                </script>
+
+
+            <!--summary section -->
+                <div id="summaryModal" style="display: none;"> <!-- Initially hidden -->
+                    <div class="summary-container">
+                        <span class="close" onclick="closeModal()">&times;</span>
+                        
+                        <!-- Ticket Summary -->
+                        <div class="summary-row">
+                            <p><span id="ticketCountDisplay"></span></p>
+                            <p id="ticketTypeDisplay"></p>
                         </div>
-                        <div class="input-field">
-                            <label for="last-name-2">Last name</label>
-                            <input type="text" id="last-name-2" placeholder="Sanchez">
+                        <div class="summary-row">
+                            <p>Subtotal</p>
+                            <p id="subtotalDisplay"></p>
                         </div>
-                    </div>
-                    <div class="input-group">
-                        <div class="input-field">
-                            <label for="email-2">Email</label>
-                            <input type="email" id="email-2" placeholder="Charles@email.com">
+                        <div class="summary-row">
+                            <p>Discount</p>
+                            <p id="discountDisplay"></p>
                         </div>
-                        <div class="input-field">
-                            <label for="phone-2">Phone number</label>
-                            <input type="tel" id="phone-2" placeholder="(570) 775-9922">
+                        <div class="summary-total">
+                            <p>Total</p>
+                            <p id="totalDisplay"></p>
                         </div>
+                        <!-- Payment Method -->
+                        <div class="payment-method">
+                            <img src="<?=ROOT?>/assets/images/ticket/mastercard-icon.png" alt="Mastercard">
+                            <span>Mastercard **** 5987</span>
+                        </div>
+
+                        <button type="submit" class="pay-now-btn" name="submit">Pay now</button>
+                        
+
+                        <script>
+                            function confirmPurchase() {
+                                document.getElementById("purchaseForm").submit(); // This submits the form
+                            }
+                        </script>
                     </div>
                 </div>
-            </div>
 
-        <!-- Add Ticket Button -->
-            <div class="button-group">
-                <button type="button" class="add-ticket-btn">+ Add Ticket</button>
-                <button type="button" class="next-btn" onclick="openModal()">Next</button>
-            </div>
-    </div>
-
-    <!--summary section -->
-    <div id="summaryModal">
-        <div class="summary-container">
-            <span class="close" onclick="closeModal()">&times;</span>
-            <div class="summary-row">
-                <p>2 x</p>
-                <p>$90 / Ticket</p>
-            </div>
-
-            <div class="summary-row">
-                <p>Subtotal</p>
-                <p>$180</p>
-            </div>
-
-            <div class="summary-row">
-                <p>Discount</p>
-                <p>- $18 (10%)</p>
-            </div>
-
-            <div class="summary-total">
-                <p>Total</p>
-                <p>$162</p>
-            </div>
-            <div class="payment-method">
-                <img src="<?=ROOT?>/assets/images/ticket/mastercard-icon.png" alt="Mastercard">
-                <span>Mastercard **** 5987</span>
-            </div>
-            <button class="pay-now-btn" onclick="goToMyTickets()">Pay now</button>
-
-            <!--add script to go go successfullypaid page-->
-            <script>
-                function goToMyTickets() {
-                    const modal = document.getElementById('summaryModal');
-                    if (modal) {
-                        modal.remove(); // Remove the modal from the DOM
+                <script src="<?= ROOT ?>/assets/js/ticker/purchesticket.js"></script>
+                <script>
+                    function goToSuccessfullypaid() {
+                        window.location.href = "successfullypaid?id";
                     }
-                    window.location.href = "successfullypaid";
-                }
-            </script>
-        </div>
-    </div>
-    <script src="<?= ROOT ?>/assets/js/ticker/purchesticket.js"></script>
-
-    <!--other event section-->
-    <div class="event-details-container">
-        <h2>Other events you may like</h2>
-
-        <div class="musicevent-events-container">
-            <div class="musicevent-event-card">
-                <div class="musicevent-event-badge">20% OFF</div>
-                <img src="<?=ROOT?>/assets/images/ticket/musicevent1.jpg" alt="Musical Fusion Festival" class="musicevent-event-image">
-                <div class="musicevent-event-info">
-                    <div class="musicevent-event-title">Musical Fusion Festival</div>
-                    <div class="musicevent-event-details">
-                        <div>📅 Monday, June 06 | 06:00 PM</div>
-                        <div>📍 New York, NY</div>
-                    </div>
-                    <div class="musicevent-event-price">From $80</div>
+                </script>
+            </form>
+            
+        <?php else: ?>
+            <p>No events created yet.</p>
+        <?php endif; ?>
+        <!--other event section-->
+        <!-- <div class="event-details-container"> -->
+            <h2>Other events you may like</h2>
+            <?php if (!empty($recentevents)): ?>
+                <div class="musicevent-events-container">
+                    <?php foreach ($recentevents as $event): ?>
+                        <div class="musicevent-event-card">
+                            <!-- <div class="musicevent-event-badge">20% OFF</div> -->
+                            <img src='<?=ROOT?>/assets/images/events/<?php echo $event->cover_images?>' alt="Musical Fusion Festival" class="musicevent-event-image">
+                            <div class="musicevent-event-info">
+                                <div class="musicevent-event-title"><?= htmlspecialchars($event->event_name) ?></div>
+                                <div class="musicevent-event-details">
+                                    <div>📅 <?= htmlspecialchars(date("l, F d | h:i A", strtotime($event->start_time))) ?></div>
+                                    <div>📍 <?= htmlspecialchars($event->address) ?></div>
+                                </div>
+                                <!-- <div class="musicevent-event-price">From $80</div> -->
+                            </div>
+                        </div>
+                    <?php endforeach; ?>
                 </div>
-            </div>
+            
+                <a href="#" class="view-more">View more</a>
+            <?php else: ?>
+                <p>No events created yet.</p>
+            <?php endif; ?>
 
-            <div class="musicevent-event-card">
-                <div class="musicevent-event-badge">Buy 2 get 1 free</div>
-                <img src="<?=ROOT?>/assets/images/ticket/musicevent2.jpeg" alt="Metropolis Marathon" class="musicevent-event-image">
-                <div class="musicevent-event-info">
-                    <div class="musicevent-event-title">Metropolis Marathon</div>
-                    <div class="musicevent-event-details">
-                        <div>📅 Tuesday, June 07 | 06:00 AM</div>
-                        <div>📍 Atlanta</div>
-                    </div>
-                    <div class="musicevent-event-price">From $10</div>
-                </div>
-            </div>
-
-            <div class="musicevent-event-card">
-                <div class="musicevent-event-badge">Buy 2 get 1 free</div>
-                <img src="<?=ROOT?>/assets/images/ticket/musicevent3.jpg" alt="Metropolis Marathon" class="musicevent-event-image">
-                <div class="musicevent-event-info">
-                    <div class="musicevent-event-title">Metropolis Marathon</div>
-                    <div class="musicevent-event-details">
-                        <div>📅 Tuesday, June 07 | 06:00 AM</div>
-                        <div>📍 Atlanta</div>
-                    </div>
-                    <div class="musicevent-event-price">From $10</div>
-                </div>
-            </div>
-
-            <div class="musicevent-event-card">
-                <div class="musicevent-event-badge">Buy 2 get 1 free</div>
-                <img src="<?=ROOT?>/assets/images/ticket/musicevent4.jpg" alt="Metropolis Marathon" class="musicevent-event-image">
-                <div class="musicevent-event-info">
-                    <div class="musicevent-event-title">Metropolis Marathon</div>
-                    <div class="musicevent-event-details">
-                        <div>📅 Tuesday, June 07 | 06:00 AM</div>
-                        <div>📍 Atlanta</div>
-                    </div>
-                    <div class="musicevent-event-price">From $10</div>
-                </div>
-            </div>
-        </div>
-
-        <a href="#" class="view-more">View more</a>
-    </div>
+        <!-- </div> -->
 
             
     </main>
 
     <!-- Include Footer -->
-    <div class="footer">
+    <?php include ('../app/views/components/footer.php'); ?>
         
     </div>
 

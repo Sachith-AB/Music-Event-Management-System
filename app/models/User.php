@@ -9,7 +9,8 @@ class User {
         'email',
         'password',
         'contact',
-        'pro_pic'
+        'pro_pic',
+		'role'
     ];
 
     public function validUser($data) {
@@ -64,7 +65,6 @@ class User {
 			$password = $_POST['password'];
 			$hash = password_hash($password, PASSWORD_BCRYPT);
 			$_POST['password'] = $hash;
-			//echo $_POST['password'];
 			
             return true;
 		} else {
@@ -92,8 +92,6 @@ class User {
 			return;
 		}
 
-		else if($data['email'])
-
 		// is empty password 
 		if (empty($data['password'])) {
 			$this->errors['flag'] = true;
@@ -101,11 +99,46 @@ class User {
 			$this->errors['error_no'] = 3;
 			return;
 		}	
-
+		show($this->errors);
 		if (empty($this->errors)) {
 			return true;
 		} else {
 			return false;
 		}
+	}
+
+	public function changePassword($data){
+		$this->errors = [];
+
+		if(empty($data['password'])){
+			$this->errors['flag'] = true;
+			$this->errors['error'] = "Password is Required ";
+			$this->errors['error_no'] = 1;
+			return;
+		}
+		if(empty($data['n-password'])){
+			$this->errors['flag'] = true;
+			$this->errors['error'] = "New Password is Required ";
+			$this->errors['error_no'] = 2;
+			return;
+		}
+		if(empty($data['c-password'])){
+			$this->errors['flag'] = true;
+			$this->errors['error'] = "Confirm Password is Required ";
+			$this->errors['error_no'] = 3;
+			return;
+		}else if ($data['n-password'] != $data['c-password']) {
+			$this->errors['flag'] = true;
+			$this->errors['error'] = "Passwords does not match ";
+			$this->errors['error_no'] = 4;
+			return;
+		}
+
+		if(empty($this->errors)){
+			return true;
+		}else{
+			return false;
+		}
+
 	}
 }

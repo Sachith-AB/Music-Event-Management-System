@@ -1,0 +1,206 @@
+    /* .sidebar{
+    margin-top: 50px;
+    background-color: white;
+    box-shadow:  0 4px 8px rgba(0, 0, 0, 0.2);
+    } */
+    /* Content */
+    .content {
+        margin-left: 220px;
+        padding: 20px;
+        font-family: sans-serif;
+        margin-top: 50px;
+    }
+    
+    .header{
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        gap: 5px;
+        height: 50px;
+    }
+    
+    .search {
+        display: flex;
+        align-items: center;
+        /* flex-direction: row; */
+        gap: 12px;
+    
+    }
+    
+    .search button {
+        padding: 8px 16px;
+        font-size: 16px;
+        margin-bottom: 21px;
+        cursor: pointer;
+        background-color: #00BDD6FF;
+        color: white;
+        transition: color 1s ease;
+    }
+    
+    .search button:hover {
+        color: black;
+    }
+    
+    .search button:hover::after {
+        transform: skewX(-45deg) scale(1, 1);
+    }
+    
+    /* Search Bar */
+    .search-bar {
+        /* flex: 1; */
+        width: 20%;
+        height: 16px;
+        padding: 8px;
+        font-size: 16px;
+        border: 1px solid #ccc;
+        outline-color: #00BDD6FF;
+        border-radius: 5px;
+    }
+    
+    /* Singers Section */
+    .singers-section {
+        margin-top: 20px;
+    }
+    
+    .singers-section h2 {
+        font-size: 24px;
+        margin-bottom: 10px;
+    }
+    
+    .singers-grid {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 20px;
+    }
+    
+    .singer-card {
+        background-color: #fff;
+        border: 1px solid #ddd;
+        border-radius: 5px;
+        padding: 10px;
+        text-align: center;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
+        cursor: pointer;
+    }
+    
+    .singer-card img {
+        width: 100%;
+        height: 200px;
+        object-fit: cover;
+        border-radius: 5px;
+    }
+    
+    .singer-card h3 {
+        margin-top: 10px;
+        font-size: 18px;
+        color: #333;
+    }
+    
+    .singer-card p {
+        color: #666;
+    }
+    
+    .button-wrapper{
+        align-items: center;
+        justify-content: center;
+        display: flex;
+        flex-direction: row;
+        gap: 10px;
+    }
+    button{
+        padding: 10px 20px;
+        margin: 0.1em;
+        background: #00BDD6FF; 
+        color: white;
+        border: none;
+        border-radius: 5px;
+        font-size: 15px;
+        cursor: pointer;
+        margin-right: 45px;
+        position: relative;
+        overflow: hidden;
+        z-index: 1;
+        transition: color 1s ease;
+        margin-top: 20px;
+    }
+    
+    button:hover::after{
+        transform: skewX(-45deg) scale(1, 1);
+    }
+    
+    button:hover {
+        color:black;
+    }
+    
+    /* Accept Button Styles */
+    .profile, .request {
+        padding: 10px 20px;
+        margin: 0.1em;
+        background: #00BDD6FF; 
+        color: white;
+        border: none;
+        border-radius: 5px;
+        font-size: 15px;
+        cursor: pointer;
+        margin-right: 45px;
+        position: relative;
+        overflow: hidden;
+        z-index: 1;
+        transition: color 1s ease;
+        margin-top: 20px;
+        text-decoration: none;
+        
+    }
+    
+    .profile:hover::after{
+        transform: skewX(-45deg) scale(1, 1);
+    }
+    .profile:hover {
+        color:black;
+    }
+    
+    /* Base Button Styles */
+    .request {
+        background-color: #88a0aa;
+    }
+    
+    .request:hover::after{
+        transform: skewX(-45deg) scale(1, 1);
+    }
+    
+    /* Hover Effect for Request Button */
+    .request:hover {
+        color: black; 
+    }
+    
+    /* Cancel Request Button Styles */
+    .cancel-request {
+        background-color: #FFCDD2; /* Light red background */
+        color: white; 
+    }
+    
+    .cancel-request:hover {
+        color: #D32F2F;
+    }
+    
+    /* Accepted Button Styles */
+    .accepted {
+        background-color: #C8E6C9; /* Light green background */
+        color: #388E3C; /* Dark green text */
+        cursor: default;
+    }
+    
+    .accepted:disabled {
+        opacity: 0.8;
+    }
+    
+    /* Rejected Button Styles */
+    .rejected {
+        background-color: #FFCDD2; /* Light red background */
+        color:  #D32F2F; /* Darker red text */
+        cursor: default;
+    }
+    
+    .rejected:disabled {
+        opacity: 0.8;
+    }

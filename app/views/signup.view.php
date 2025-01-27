@@ -2,11 +2,12 @@
 <html lang="en">
 
 <head>
-  <!-- <meta http-equiv="refresh" content="1">  -->
+    <!-- <meta http-equiv="refresh" content="1">  -->
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Musicia Signup</title>
     <link rel="stylesheet" href="<?= ROOT ?>/assets/css/signin-up.css">
+    <link rel="icon" type="image/png" href="<?=ROOT?>/assets/images/logo/logo.png">
 
 
 
@@ -17,7 +18,6 @@
 </head>
 
 <body>
-
 <?php 
 
     //Get the pass data from URL for sign in part
@@ -26,10 +26,12 @@
     $pass = htmlspecialchars($_GET['pass'] ?? '');
     $flag = htmlspecialchars($_GET['flag'] ?? 2);
     $error = htmlspecialchars($_GET['error']?? '');
+    $role = htmlspecialchars($_GET['role']?? '');
     // echo $email;
     // echo $pass;
     // echo $flag;
     // echo $error;
+    //echo $role;
 ?>
     <!-- loading page -->
     
@@ -51,8 +53,8 @@
                 <div class="inner-box">
                     <div class="form-warp">
                         <form class="sign-up-form" id="signupForm" method="POST">
-                            <div class="logo">
-                                <img src="<?= ROOT ?>/assets/images/logo.JPG" alt="company_logo">
+                            <div class="logo-image">
+                                <img src= "<?=ROOT?>/assets/images/logo/logo.png" alt="company_logo">
                                 <!-- <h4>Amoral</h4> -->
                                 <span>
                                     <a href="<?= ROOT ?>/home">
@@ -92,6 +94,7 @@
                                         <ion-icon name="eye-outline" id="c-toggleIcon"></ion-icon>
                                     </a>
                                 </div>
+                                <input type="hidden" name="role"  id="role" value="<?php echo $role ?>" >
                                 <input type="submit" name="signUp" value="SignUp" class="sign-btn" id="sign-up-btn">
                                 <!-- <button type="submit" name="signUp" value="SignUp" class="sign-btn" id="sign-up-btn">SignUp</button> -->
 
@@ -149,7 +152,7 @@
         </main>
     </div>
 
-    <!-- Show error -->
+    <!-- Show error
     <?php if (!empty($data['error'])): ?>
         <?php 
             $message = $data['error'];
@@ -161,7 +164,7 @@
             $message = $error;
             include("../app/views/components/r-message.php")
         ?>
-    <?php endif ?>
+    <?php endif ?> -->
 
     <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
     <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>

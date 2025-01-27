@@ -17,12 +17,14 @@ body {
     width: 1000px;
     /* text-align: center; */
     margin-right: 3px;
+    
 }
 
 @media screen and (max-width: 1024px) {
     .page-content {
         width: 600px; /* Adjust width for tablet size screens */
         margin-right: 3px;
+        
     }
 }
 
@@ -83,10 +85,15 @@ body {
     cursor: pointer;
     font-weight: 500;
     margin-top: 10px;
+    transition: color 1s ease;
+}
+
+.button :hover::after {
+    transform: skewX(-45deg) scale(1, 1);
 }
 
 .button:hover {
-    background-color: rgb(16, 171, 192); /* Darker on hover */
+    color: black;
 }
 
 .form {
@@ -96,6 +103,7 @@ body {
 .input-wrap {
     margin-bottom: 20px;
     text-align: left;
+    position: relative;
 }
 
 label {
@@ -134,11 +142,16 @@ button {
     border-radius: 4px;
     font-weight: 600;
     cursor: pointer;
+    transition: color 1s ease;
     /* margin-right: 10px; */
 }
 
+.button:hover::after {
+    transform: skewX(-45deg) scale(1, 1);
+}
+
 button:hover {
-    background-color: rgb(16, 171, 192);
+    color: black;
 }
 
 /* Cancel button styling */
@@ -149,6 +162,7 @@ button:nth-child(1) {
 
 button:nth-child(1):hover {
     background-color: #c2c2c2;
+    color: black;
 }
 
 .button-wrap{
@@ -157,6 +171,22 @@ button:nth-child(1):hover {
     /* justify-content: right; */
     gap: 4px;
 }
+
+.input-wrap a {
+    position: absolute;
+    top: 50%;
+    right: 100px;
+    transform: translateY(-50%);
+    text-decoration: none;
+    color: gray; /* Set the icon color */
+    font-size: 20px; /* Adjust as needed */
+    cursor: pointer;
+}
+
+.change-password-container{
+    margin-top: 20px;
+}
+
 
 /* Media query for mobile phones */
 @media screen and (max-width: 768px) {
@@ -181,6 +211,10 @@ button:nth-child(1):hover {
         /* margin-bottom: 20px; */
         text-align: center;
         /* justify-content: right; */
+    }
+
+    .input-wrap a {
+        right: 20px;
     }
 
     .button-wrap {

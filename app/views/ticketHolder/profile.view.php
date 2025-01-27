@@ -8,37 +8,42 @@
     <link rel="stylesheet" href="<?=ROOT?>/assets/css/ticketHolder/profile.css">
 </head>
 <body>
-    <?php $id = $data['id'];
+    <?php include ('../app/views/components/loading.php'); ?>
+    <?php //$id = $_SESSION['USER']->id;
 
     $success = htmlspecialchars($_GET['msg'] ?? '');
     $flag = htmlspecialchars($_GET['flag'] ?? 0);
+    //show($_SESSION['USER']);
     
     ?>
     <div class="page-content">
         <h1 class="head1">My Profile</h1>
-        
         <div class="all">
             <div class="container">
+                <h2>My Profile</h2>
                 <div class="avatar">
-                    <img src="<?=ROOT?>/assets/images/user/<?php echo $data['pro_pic'] ?>" alt="user image">
+                    <img src="<?=ROOT?>/assets/images/user/<?php echo $_SESSION['USER']->pro_pic ?>" alt="user image">
                 </div>
                 <div class="details">
-                    <h2 class="head2"><?php echo $data['name'] ?></h2>
-                    <h3 class="head3"><?php echo $data['email'] ?></h3>
-                    <h3 class="head3"><?php echo $_SESSION["USER"]->contact ?></h3>
+                    <h2 class="head2"><?php echo $_SESSION['USER']->name ?></h2>
+                    <h3 class="head3"><?php echo $_SESSION['USER']->email ?></h3>
+                    <h3 class="head3"><?php  echo $_SESSION['USER']->contact ?></h3>
                 </div>
                 <div class="tag">
                     <div class="tag-item">24 Purchase</div>
                     <div class="tag-item">4 Following</div>
                     <div class="tag-item">10 Likes</div>
                 </div>
-                <a href="update-profile?id=<?php echo $data['id']?>" class="button" type="button">Update Profile</a>
+                <form class="buttons" method="POST">
+                    <button onclick="goToUpdate()" class="button button-1" type="button">Update</button>
+                    <button class="button button-2" type="submit" name="logOut">Sign out</button>
+                </form>
             </div>
             <div class="header-menu">
                 <div class="header-menu-item selected">Upcoming</div>
                 <div class="header-menu-item">Used</div>
             </div>
-            <h3 class="event">4 Event <?php echo $data['pro_pic']?></h3>
+            <h3 class="event">4 Event</h3>
             <div class="textbox">
                 <input type="text" name="search" id="search" placeholder="Search">
             </div>
@@ -46,10 +51,11 @@
                 <div>
                     <img class="event-image" src="<?=ROOT?>/assets/images/events/image-1.jpg" alt="event" >
                 </div>
-                <div>
-                    <h1>February 20 | 08:00 PM</h1>
+            <?php else: ?>
+                <div class="purchase-text">
+                    No tickets have been purchased yet...
                 </div>
-            </div> -->
+            <?php endif; ?>
         </div>
     </div>
 
@@ -72,6 +78,10 @@
                 this.classList.add('selected');
             });
         });
+
+        function goToUpdate(){
+            window.location.href = 'update-profile';
+        }
     </script>
 
     <script src="<?=ROOT?>/assets/js/message.js"></script>

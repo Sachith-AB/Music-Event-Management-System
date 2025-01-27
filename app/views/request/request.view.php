@@ -17,23 +17,12 @@
 
 
 <body>
-
-    
-
-    <p>header in here</p>
-    
+<?php include ('../app/views/components/loading.php');?>
     <br>
 
     <div class="search-container">
 
             <form action="/search" method = "GET" >
-
-                <div class="search-box">
-
-                        <span class="icon"><i class="fas fa-search"></i></span>
-                        <input type="text" name = "query" placeholder = "Search....." required>
-
-                </div>
                 
             </form>
 
@@ -49,58 +38,44 @@
 
             <table>
                 <tr>
+                    <th>Cover Image</th>                   
                     <th>Event name</th>
                     <th>Date</th>
                     <th>Venue</th>
                     <th>Action</th>
-                    <th>Info</th>
-                </tr>
-                <tr>
-                    <td>JAZZ Night</td>
-                    <td>25th October 2023</td>
-                    <td>Blue Note Jazz Club, NY</td>
-                    <td><button class = "accept">Accept</button> <button class = "reject" >Reject</button></td>
-                    <td><button>Event Page</button></td>
-
                 </tr>
 
-                <tr>
-                    <td>JAZZ Night</td>
-                    <td>25th October 2023</td>
-                    <td>Blue Note Jazz Club, NY</td>
-                    <td><button class = "accept">Accept</button> <button class = "reject">Reject</button></td>
-                    <td><button>Event Page</button></td>
+                <?php if(!empty($data['requests'])): ?>
 
-                </tr>
+                    <?php foreach( $data['requests'] as $request):?>
+                        <tr>
+                            <td><img class="cover-image" src ="<?=ROOT?>/assets/images/events/<?php echo $request->cover_images ?> " alt="cover image"/></td>
+                            <td><?php echo $request->event_name?></td>
+                            <td><?php echo $request->eventDate?></td>
+                            <td><?php echo $request->address?></td>
 
-                <tr>
-                    <td>JAZZ Night</td>
-                    <td>25th October 2023</td>
-                    <td>Blue Note Jazz Club, NY</td>
-                    <td><button class = "accept">Accept</button> <button class = "reject">Reject</button></td>
-                    <td><button>Event Page</button></td>
+                            <td>
 
-                </tr>
+                                <form method = "POST" >
+                                    <input type="hidden" name ="req_id" value = "<?php echo isset($request->request_id) ? $request->request_id : 0;?>">
+                                    <input type="hidden" name ="Status" value = "accepted">
+                                    <button name = "accept" type = "submit"  class = "accept">Accept</button>
 
+                                </form>
+                                
 
-                <tr>
-                    <td>JAZZ Night</td>
-                    <td>25th October 2023</td>
-                    <td>Blue Note Jazz Club, NY</td>
-                    <td><button class = "accept">Accept</button> <button class = "reject">Reject</button></td>
-                    <td><button>Event Page</button></td>
+                                <form method = "POST" >
+                                    <input type="hidden" name ="req_id" value = "<?php echo isset($request->request_id) ? $request->request_id : 0;?>">
+                                    <input type="hidden" name ="Status" value = "rejected">
+                                    <button name = "reject" type = "submit"  class = "reject">Reject</button>
 
-                </tr>
+                                </form>
+                            </td>
 
-                <tr>
-                    <td>JAZZ Night</td>
-                    <td>25th October 2023</td>
-                    <td>Blue Note Jazz Club, NY</td>
-                    <td><button class = "accept">Accept</button> <button class = "reject">Reject</button></td>
-                    <td><button>Event Page</button></td>
-                    
+                        </tr>
+                    <?php endforeach; ?>
 
-                </tr>
+                <?php endif; ?>
 
                 
             </table>
@@ -117,59 +92,29 @@
             <br>
 
 
-            <table>
+            <table class="second" >
                 <tr>
+                    <th>Cover Image</th> 
                     <th>Event name</th>
                     <th>Date</th>
                     <th>Venue</th>
-                    <th>Info</th>
-                </tr>
-                <tr>
-                    <td>JAZZ Night</td>
-                    <td>25th October 2023</td>
-                    <td>Blue Note Jazz Club, NY</td>
                     
-                    <td><button>Event Page</button></td>
-
                 </tr>
+                <?php if(!empty($data['accepted'])): ?>
 
-                <tr>
-                    <td>JAZZ Night</td>
-                    <td>25th October 2023</td>
-                    <td>Blue Note Jazz Club, NY</td>
-                    
-                    <td><button>Event Page</button></td>
+                    <?php foreach($data['accepted'] as $request): ?>
 
-                </tr>
+                        <tr>
+                            <td> <img class="cover-image"  src="<?=ROOT?>/assets/images/events/<?php echo $request->cover_images ?> " alt="cover image"></td>
+                            <td><?php echo $request->event_name?></td>
+                            <td><?php echo $request->eventDate?></td>
+                            <td><?php echo $request->address?></td>
+                            
+                        </tr>
+                    <?php endforeach; ?>
 
-                <tr>
-                    <td>JAZZ Night</td>
-                    <td>25th October 2023</td>
-                    <td>Blue Note Jazz Club, NY</td>
-                    
-                    <td><button>Event Page</button></td>
+                <?php endif; ?>
 
-                </tr>
-
-
-                <tr>
-                    <td>JAZZ Night</td>
-                    <td>25th October 2023</td>
-                    <td>Blue Note Jazz Club, NY</td>
-                    
-                    <td><button>Event Page</button></td>
-
-                </tr>
-
-                <tr>
-                    <td>JAZZ Night</td>
-                    <td>25th October 2023</td>
-                    <td>Blue Note Jazz Club, NY</td>
-                    
-                    <td><button>Event Page</button></td>
-                    
-
-                </tr>
             </table>
     
     </div>

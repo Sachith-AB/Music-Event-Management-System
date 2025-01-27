@@ -1,3 +1,6 @@
+<?php include ('../app/views/components/header.php'); ?>
+<!DOCTYPE html>
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -12,6 +15,7 @@
 </head>
 
 <body>
+<?php include ('../app/views/components/loading.php'); ?>
     <!-- Include Header -->
     <?php include ('../app/views/components/Header.php'); ?>
 
@@ -85,3 +89,4 @@
 
     
 </body>
+</html>

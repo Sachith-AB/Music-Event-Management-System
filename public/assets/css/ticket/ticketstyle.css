@@ -8,7 +8,7 @@ body {
 
 .event-details-container {
     
-    margin: 30px auto;
+    margin: 100px auto;
     padding-left: 60px;
     padding-right: 60px;
     
@@ -176,6 +176,7 @@ body {
 
 .ticket-selection {
     display: flex;
+    
     justify-content: space-between;
     align-items: center;
     margin-bottom: 20px;
@@ -183,6 +184,67 @@ body {
     border: 1px solid #d1d1d1;
     border-radius: 8px;
 }
+.ticket-selection .available{
+    flex-direction: column;
+    padding-inline: 25px;
+}
+
+.getticket{
+    font-size: 16px;
+    font-weight: 500;
+    color:black;
+}
+
+/* Container for the ticket quantity buttons */
+.ticket-quantity {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 18px;
+}
+
+/* Styling the input to look cleaner */
+.ticket-quantity input {
+    width: 50px;
+    text-align: center;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    font-size: 18px;
+    font-weight: bold;
+    background-color: #f9f9f9;
+    color: #333;
+    padding: 5px;
+}
+
+/* Button styles */
+.increase-btn, .decrease-btn {
+    background-color: #00aaff;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    width: 35px;
+    height: 35px;
+    font-size: 20px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+/* Hover effect for buttons */
+.increase-btn:hover, .decrease-btn:hover {
+    background-color: #008ecc;
+}
+
+/* Add a subtle shadow for the buttons */
+.increase-btn, .decrease-btn {
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+}
+
+/* Button press effect */
+.increase-btn:active, .decrease-btn:active {
+    transform: scale(0.95);
+}
+
 
 .ticket-selection .price p {
     font-size: 16px;
@@ -269,6 +331,7 @@ body {
     cursor: pointer;
     font-size: 14px;
     width: 100%;
+    transition: color 1s ease;
 }
 
 .button-group {
@@ -277,7 +340,7 @@ body {
     margin-top: 20px; /* Add some space above the buttons */
 }
 
-.add-ticket-btn, .next-btn {
+.add-ticket-btn, .next-btn, .pay-now-btn {
     padding: 10px 20px;
     border: none;
     background-color: #00BDD6FF; /* Green background color */
@@ -286,12 +349,16 @@ body {
     cursor: pointer;
     border-radius: 5px; /* Rounded corners */
     transition: background-color 0.3s; /* Smooth background color transition */
+    transition: color 1s ease;
 }
 
-.add-ticket-btn:hover, .next-btn:hover {
-    background-color: #00BDD6FF; /* Slightly darker green on hover */
+.add-ticket-btn:hover, .next-btn:hover, .pay-now-btn:hover {
+    color: black; /* Slightly darker green on hover */
 }
 
+.add-ticket-btn:hover::after, .next-btn:hover::after, .pay-now-btn.next-btn:hover::after {
+    transform: skewX(-45deg) scale(1, 1); /* Slightly darker green on hover */
+}
 
 
 #summaryModal {
@@ -380,14 +447,14 @@ body {
     border-radius: 5px;
     font-size: 16px;
     cursor: pointer;
-    
-
-   
-  
-    
 }
+
+.summary-container .pay-now-btn:hover ::after {
+    transform: skewX(-45deg) scale(1, 1);
+}
+
 .summary-container .pay-now-btn:hover {
-    background-color:#007BFF;
+    color: black;
 }
 
 
@@ -463,10 +530,16 @@ body {
     font-size: 14px;
     color: #00BDD6FF;
     text-decoration: none;
+    transition: color 1s ease;
 }
 
-.view-more:hover {
-    text-decoration: underline;
+
+.view-more-btn:hover::after {
+    transform: skewX(-45deg) scale(1, 1);
+}
+
+.view-more-btn:hover {
+    color: black;
 }
 
 
@@ -586,7 +659,7 @@ body {
     flex-direction: column;
 }
 
-.qr-code img {
+.qr-code-img {
     height: 60px;
     width: 60px;
 }
@@ -644,6 +717,7 @@ body {
     border-radius: 25px;
     cursor: pointer;
     font-size: 14px;
+    transition: color 1s ease;
 }
 
 .upcommingeve-tickets {
@@ -682,7 +756,7 @@ body {
 }
 
 .upcommingeve-ticket-card:hover{
-    transform: scale(1.1);
+    transform: scale(1.03);
     transition: all 1s ease-in-out;
     opacity: 1.5;
     cursor: pointer;  
@@ -820,9 +894,9 @@ body {
     color: #fff;
     cursor: pointer;
     font-weight: 600;
-    transition: transform 0.3s ease, background-color 0.3s ease;
     border: none;
     font-size: 14px;
+    transition: color 1s ease;
 }
 
 .update-btn {
@@ -896,6 +970,7 @@ body {
     cursor: pointer;
     width: 100%;
     font-size: 16px;
+    transition: color 1s ease;
 }
 
 .save-btn:hover {

@@ -1,4 +1,5 @@
-<!DOCTYPE html>
+
+<?php include ('../app/views/components/header.php'); ?><!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -7,6 +8,7 @@
     <link rel="stylesheet" href="<?=ROOT?>/assets/css/eventPlanner/profile.css">
 </head>
 <body>
+<?php include ('../app/views/components/loading.php');?>
     <main class="page-content">
         <div class="image-container">
             <h1>create a wonderful event</h1>

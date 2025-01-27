@@ -11,6 +11,7 @@ class Signup {
 
         if($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['signUp'])) {
             $data = $this->userRegistration($user,$_POST);
+            //show($_POST);
             
         }
         
@@ -40,7 +41,7 @@ class Signup {
 
                 unset($POST['signUp']); //Remove sign up key before saving
                 unset($POST['confirm-password']); //Remove confirm-password before saving
-                $res = $user->insert($_POST);
+                $user->insert($_POST);
                 redirect('signin');
             }else {
                 $error = "Email is Already Taken";
@@ -48,8 +49,7 @@ class Signup {
                 $errors = 'flag=' . 1 . '&error=' . $error . '&error_no=' . 7 ;
 
                 unset($_POST['signUp']);
-                redirect("signup?$errors&$passData");
-                //echo 'check';
+                redirect("home?$errors&$passData");
                 exit;
             }
         }else{
