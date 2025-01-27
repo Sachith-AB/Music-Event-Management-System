@@ -162,6 +162,48 @@
                 </div>
             <?php endif; ?>
 
+
+
+
+            <!-- Comments Section -->
+            <?php if (!empty($commentsForUser)): ?>
+                <h2 class="comments-h2">Comments</h2>
+                <div class="comments-container">
+                    <!-- Comment Input -->
+                    <?php if($_SESSION['USER']->id != $_GET['id']): ?>
+                        <form id="addcomments" method="POST">
+                            <div class="add-comment">
+                                <img src="<?=ROOT?>/assets/images/user/<?php echo $_SESSION['USER']->pro_pic ?>" alt="User Avatar" class="comment-avatar">
+                                <input type="hidden" name="receiver_id" value="<?php echo $_GET['id'] ?>"/>
+                                <input type="hidden" name="sender_id" value="<?php echo $_SESSION['USER']->id ?>"/>
+                                <textarea class="comment-input" name="content" placeholder="Add a comment..."></textarea>
+                                <button name="add_comment" class="post-comment-btn">Submit</button>
+                            </div>
+                        </from>
+                    <?php endif;?>
+
+                    <!-- Comments -->
+                    <?php foreach ($commentsForUser as $comment): ?>
+                        <div class="comment">
+                            <img src="<?=ROOT?>/assets/images/user/<?php echo $comment->sender_pro_pic ?>" alt="User Avatar" class="comment-avatar">
+                            <div class="comment-content">
+                                <div class="comment-header">
+                                    <span class="comment-author"><?php echo $comment->sender_name ?></span>
+                                    <span class="comment-date"><?= date('jS F Y, H:i A', strtotime($comment->created_at)) ?></span>
+                                </div>
+                                <p class="comment-text"><?php echo htmlspecialchars($comment->content) ?></p>
+                                <!-- <div class="comment-actions">
+                                    <button class="like-btn">👍 <?php echo $comment->num_likes ?></button>
+                                    
+                                </div> -->
+                            </div>
+                        </div>
+                    <?php endforeach; ?>
+                    
+                </div>
+            <?php endif; ?>
+
+
         </div>
     </div>
 </body>

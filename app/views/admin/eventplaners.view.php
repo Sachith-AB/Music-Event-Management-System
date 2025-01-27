@@ -1,4 +1,4 @@
-<?php include ('../app/views/components/header.php'); ?>
+<?php include ('../app/views/components/header.php'); ?> 
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -45,8 +45,11 @@
                                                 <button class="action-btn view" type = "submit" >View</button>
                                             </form>
                                              
-
-                                                <button class="action-btn delete">Delete</button>
+                                            <form method = "POST">
+                                                <input type = "hidden" name = "user_id" value = "<?php echo $planner->id ?>">
+                                                <button name = "delete" class="action-btn delete" type = "submit" >Delete</button>
+                                            </form>
+                                                
                                         </div> 
                                     </td>
                                 </tr>

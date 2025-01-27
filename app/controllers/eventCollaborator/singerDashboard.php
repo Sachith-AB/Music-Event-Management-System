@@ -10,6 +10,7 @@ class SingerDashboard {
         $user = new User;
         $profile = new Profile;
         $request = new Request;
+        $commnets = new Comment;
         $data = [];
 
 
@@ -20,14 +21,17 @@ class SingerDashboard {
         // show($userdata);
 
         $profiledata = $profile -> getUserDetails($userId);
-        // show($profiledata);
+        //show($profiledata);
 
         $upcomingEvents = $request->getUpcomingEvents($userId,3);
-        // show($upcomingEvents);
+        //show($upcomingEvents);
+
+        $commentsForUser = $commnets->getCommnet($userId);
+        // show($commentsForUser);
 
 
 
-        $this->view('eventCollaborator/singerdashboard',['userdata'=>$userdata,'profiledata'=>$profiledata, 'upcomingEvents'=>$upcomingEvents]);
+        $this->view('eventCollaborator/singerdashboard',['userdata'=>$userdata,'profiledata'=>$profiledata, 'upcomingEvents'=>$upcomingEvents, 'commentsForUser'=>$commentsForUser]);
 
     }
 

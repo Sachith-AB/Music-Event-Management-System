@@ -1,0 +1,239 @@
+/* General Reset */
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background-color: #f8f9fa;
+    color: #333;
+}
+
+/* Container for the entire layout */
+.container {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 30px;
+    padding: 20px;
+    max-width: 1200px;
+    margin: 60px auto;
+}
+
+/* Section Styling */
+.chart-section {
+    background-color: #ffffff;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    text-align: center;
+}
+
+/* Titles Styling */
+.section-title {
+    font-size: 1.5rem;
+    color: #00BDD6FF;
+    margin-bottom: 20px;
+}
+
+/* Chart Container Styling */
+canvas {
+    max-width: 100%;
+    height: auto;
+}
+/* Box container */
+.event-details-box {
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    padding: 20px;
+    background-color: #f9f9f9;
+    max-width: 600px;
+    margin: 20px auto;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* Title styling */
+.event-title {
+    color: #00BDD6FF;
+    text-align: center;
+    font-size: 24px;
+    margin-bottom: 20px;
+}
+
+/* Form labels and inputs */
+.input-wrap {
+    margin-bottom: 15px;
+}
+
+label {
+    display: block;
+    font-size: 16px;
+    font-weight: bold;
+    color: #000;
+    margin-bottom: 5px;
+}
+
+.event-detail {
+    font-size: 16px;
+    color: #848484;
+    background-color: #f1f1f1;
+    padding: 8px;
+    border-radius: 4px;
+    border: 1px solid #ddd;
+}
+
+input[type="date"],
+input[type="time"] {
+    font-size: 16px;
+    color: #272a2a;
+    background-color: #f1f1f1;
+    padding: 8px;
+    border-radius: 4px;
+    border: 1px solid #ddd;
+    width: 100%;
+}
+
+/* Radio buttons */
+.radio-group {
+    display: flex;
+    gap: 20px;
+}
+
+.radio-item label {
+    font-size: 16px;
+    color: #000;
+}
+
+/* Buttons */
+.button-wrap {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 20px;
+}
+
+button {
+    padding: 10px 15px;
+    margin: 0.1em;
+    background: rgb(10, 10, 10); 
+    color: #00BDD6FF;
+    border: none;
+    border-radius: 5px;
+    font-size: 10px;
+    cursor: pointer;
+    margin-right: 45px;
+    position: relative;
+    overflow: hidden;
+    z-index: 1;
+    transition: color 1s ease;
+}
+
+button[type="button"] {
+    background: #00BDD6FF; 
+    color: white;
+}
+
+button[type="submit"] {
+    background: #00BDD6FF; 
+    color: white;
+}
+
+button[type="button"]:hover::after{
+    transform: skewX(-45deg) scale(1, 1);
+}
+
+
+button[type="button"]:hover{
+    color: #000;
+}
+
+button[type="submit"]:hover::after{
+    transform: skewX(-45deg) scale(1, 1);
+}
+
+button[type="submit"]:hover {
+    color:black;
+}
+
+
+/* Required Field Star */
+.required {
+    color: red;
+    font-weight: bold;
+}
+
+/* Note Styling */
+.note {
+    font-size: 14px;
+    color: #555;
+    margin-top: 10px;
+    font-style: italic;
+}
+
+.collaborator-section {
+    padding: 20px;
+    background-color: #f9f9f9;
+    border-radius: 10px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    margin-top: 20px;
+    text-align: center;
+}
+
+.collaborator-box {
+    max-width: 600px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+.collaborator-title {
+    font-size: 1.5rem;
+    color: #00BDD6FF;
+    margin-bottom: 10px;
+}
+
+.collaborator-text {
+    font-size: 1rem;
+    margin-bottom: 20px;
+    color: #555;
+}
+
+.collaborator-buttons {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+}
+
+.btn {
+    text-decoration: none;
+    padding: 10px 20px;
+    font-size: 1rem;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.btn-primary {
+    background-color: #00BDD6FF;
+    color: white;
+    border: none;
+    transition: background-color 0.3s;
+}
+
+.btn-primary::after{
+    transform: skewX(-45deg) scale(1, 1);
+}
+
+.btn-primary:hover {
+    color:black;
+}
+
+.btn-secondary {
+    background-color: #00BDD6FF ;
+    color: white;
+    border: none;
+    transition: background-color 0.3s;
+}
+
+.btn-secondary:hover {
+   color: rgb(224, 104, 104);
+}
+
+
+.btn-secondary::after{
+    transform: skewX(-45deg) scale(1, 1);
+}
