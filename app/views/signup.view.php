@@ -21,6 +21,7 @@
 <?php 
 
     //Get the pass data from URL for sign in part
+    //To handle Errors
     $email = htmlspecialchars($_GET['email'] ?? '');
     $pass = htmlspecialchars($_GET['pass'] ?? '');
     $flag = htmlspecialchars($_GET['flag'] ?? 2);

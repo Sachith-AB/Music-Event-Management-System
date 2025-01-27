@@ -29,7 +29,9 @@ class Signup {
         //check data validation
         if($user->validUser($_POST)){
 
+            
             $arr['email'] = $_POST['email'];
+            // To check email is taken or not
             $row = $user->first($arr);
             //show($row);
 
@@ -45,7 +47,7 @@ class Signup {
                 $passData = 'email=' . $_POST['email'] . '&pass=' . $_POST['password'];
                 $errors = 'flag=' . 1 . '&error=' . $error . '&error_no=' . 7 ;
 
-                unset($_POST['signIn']);
+                unset($_POST['signUp']);
                 redirect("signup?$errors&$passData");
                 //echo 'check';
                 exit;
