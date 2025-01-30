@@ -61,7 +61,7 @@ class Purchaseticket {
                 $this->createPurchase($purchaseData, $buyticket, $data);
                 $latestpurchaseid = $buyticket->getLatestInsertedId();
         
-                redirect("successfullypaid?purchase_id=$latestpurchaseid");
+                redirect("successfullypaid?purchase_id=$latestpurchaseid&email=$email");
             }
             
 
