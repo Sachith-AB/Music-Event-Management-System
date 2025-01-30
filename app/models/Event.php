@@ -223,6 +223,7 @@ class Event {
         }
         return $res ? $res : [];
     }
+    
 
     public function getUpcomingEvents()
     {
