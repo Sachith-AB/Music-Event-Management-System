@@ -20,6 +20,7 @@ class Successfullypaid {
 
         $purchase_id = isset($_GET['purchase_id']) ? $_GET['purchase_id'] : null;
         $purchaseDetails = $buyticket->getPurchaseDetails($purchase_id);
+        $buyticket->changePaymentStatus($purchase_id);
 
         $ticket = new Ticket();
         $eventAndTicketDetails = $ticket->getTicketAndEventDetails($purchaseDetails[0]->ticket_id);

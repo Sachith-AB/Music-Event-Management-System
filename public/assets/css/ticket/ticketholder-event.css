@@ -7,6 +7,7 @@
 
 body {
     font-family: Arial, sans-serif;
+    padding-top: 70px;
 }
 
 .headersection {
@@ -40,7 +41,7 @@ body {
     position: relative;
     z-index: 6;
     text-align: left;
-    padding: 100px 100px;
+    padding: 30px 100px;
 }
 
 .eventname {
@@ -442,6 +443,29 @@ img {
 }
 
 
+.fail-message {
+    display: flex;
+    align-items: center;
+    background-color: #ffe6e6; /* Light red background color */
+    color: #d9534f; /* Red text color */
+    border: 2px solid #d9534f; /* Red border */
+    border-radius: 5px; /* Rounded corners */
+    padding: 10px 20px; /* Padding inside the box */
+    margin: 20px 0; /* Margin around the box */
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Subtle shadow for a 3D effect */
+}
+
+.fail-icon {
+    font-size: 24px; /* Larger size for the icon */
+    margin-right: 10px; /* Space between the icon and text */
+    color: #d9534f; /* Matching the text color */
+}
+
+.fail-text {
+    font-size: 18px; /* Font size for the text */
+    font-weight: bold; /* Bold text */
+    color: #a94442; /* Slightly darker red for contrast */
+}
 
 
 
