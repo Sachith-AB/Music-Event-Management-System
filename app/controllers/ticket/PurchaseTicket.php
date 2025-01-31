@@ -115,7 +115,10 @@ class Purchaseticket {
 
 
         
+
                 //redirect("successfullypaid?purchase_id=$latestpurchaseid");
+                //redirect("successfullypaid?purchase_id=$latestpurchaseid&email=$email");
+
             }
             $event = new Event();
             $recevtevents = $event->getRecentEvents(4);
