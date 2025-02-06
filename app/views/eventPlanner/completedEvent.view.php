@@ -27,144 +27,136 @@
 <body>
 
 <div class = "pdf-container">
-    <div class="container">
-
-        <div class = "left-section">
-            <img src="<?=ROOT?>/assets/images/events/<?php echo $data['event']->cover_images ?>" alt="Event Cover" class="cover-image">
+<div class="container">
+    <div class="left-section">
+        <h1>Event Details</h1>
+        <div class="details">
+            <div class="event-detail">
+                <h3>Event Name:</h3>
+                <p><?= htmlspecialchars($data['event']->event_name); ?></p>
+            </div>
+            <div class="event-detail">
+                <h3>Event Audience:</h3>
+                <p><?= htmlspecialchars($data['event']->audience); ?></p>
+            </div>
+            <div class="event-detail">
+                <h3>Event Date:</h3>
+                <p><?= htmlspecialchars($data['event']->eventDate); ?></p>
+            </div>
+            <div class="event-detail">
+                <h3>Event Address:</h3>
+                <p><?= htmlspecialchars($data['event']->address); ?></p>
+            </div>
+            <div class="event-detail">
+                <h3>Event Type:</h3>
+                <p><?= htmlspecialchars($data['event']->type); ?></p>
+            </div>
+            
+            <div class="event-detail">
+                <h3>Performers:</h3>
+                <div>
+                    <?php if(!empty($data['performers'])): ?>
+                        <?php foreach($data['performers'] as $performer): ?>
+                            <p><?php echo htmlspecialchars($performer->name); ?></p>
+                        <?php endforeach; ?>
+                    <?php endif; ?>
+                </div>
+            </div>
         </div>
-
-        <div class = "right-section">
-            <div class = "details">
-                <label for="event-name">Event Name:</label>
-                <div class="event-detail"><?= htmlspecialchars($data['event']->event_name); ?></div>
-                <div class = "event-description"><?= htmlspecialchars($data['event']->description); ?></div>
-            </div>
-
-            <div class = "details">
-                <label for = "audience">Audience:</label>
-                <div class="event-detail"><?= htmlspecialchars($data['event']->audience); ?></div>
-            </div>
-
-            <div class = "details">
-                <label for = "address">Address:</label>
-                <div class="event-detail"><?= htmlspecialchars($data['event']->address); ?></div>
-            </div>
-
-            <div class = "details">
-                <label for = "eventDate">Date:</label>
-                <div class="event-detail"><?= htmlspecialchars($data['event']->eventDate); ?></div>
-            </div>
-
-            <div class = "details">
-                <label for = "type">Type:</label>
-                <div class="event-detail"><?= htmlspecialchars($data['event']->type); ?></div>
-            </div>
-    
-        </div>
-
     </div>
 
 
-    <div class="financial-summary">
-        <table class="financial-table">
-            <thead>
-                <tr>
-                    <th>Financial Summary</th>
-                    <th>Amount (Rs.)</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr>
-                    <td>Total Income</td>
-                    <td class="amount"><?= number_format(htmlspecialchars($total_income), 2); ?></td>
-                </tr>
-                <tr>
-                    <td>Total Cost</td>
-                    <td class="amount"><?= number_format(htmlspecialchars($total_cost), 2); ?></td>
-                </tr>
-                <tr class="total-row">
-                    <td>Total Profit</td>
-                    <td class="amount"><?= number_format(htmlspecialchars($total_income - $total_cost), 2); ?></td>
-                </tr>
-            </tbody>
-        </table>
-    </div>
-
-    <br>
-    <br>
-
-    <div class="ticket-summary">
+    <div class = "ticket-summary">
+        <h1>Ticket Summary</h1>
         <table>
-            <tbody>
-                <tr>
-                    <th>Ticket Summary</th>
-                </tr>
-                <tr>
-                    <td>Total Tickets</td>
-                    <td class="amount"><?= htmlspecialchars($total_tickets); ?></td>
-                </tr>
-                <tr>
-                    <td>Sold Tickets</td>
-                    <td class="amount"><?= htmlspecialchars($sold_tickets); ?></td>
-                </tr>
-            </tbody>
+            <tr> 
+                <th>Ticket Type</th>
+                <th>Quantity</th>
+                <th>Sold Quantity</th>
+            </tr>
+            <?php if(!empty($data['ticket_types'])): ?>
+                <?php foreach($data['ticket_types'] as $ticket): ?>
+                    <tr>
+                        <td><?= htmlspecialchars($ticket['type']); ?></td>
+                        <td ><?= htmlspecialchars($ticket['quantity']); ?></td>
+                        <td><?= htmlspecialchars($ticket['sold_quantity']); ?></td>
+                    </tr>
+                <?php endforeach; ?>
+            <?php endif; ?>
         </table>
     </div>
 
-    <br>
-    <br>
+    <div class="income-summary">
+        <h1>Income Summary</h1>
+        <table>
+            <tr>
+                <th>Date</th>
+                <th class="text-right"> Income</th>
+            </tr>
+            <?php if(!empty($data['record'])): ?>
+                <?php foreach($data['record'] as $record): ?>
+                    <tr>
+                        <td><?= htmlspecialchars($record->purchase_date); ?></td>
+                        <td class="text-right"><?= htmlspecialchars($record->total_income); ?></td>
+                    </tr>
+                <?php endforeach; ?>
+            <?php endif; ?>
+            <tr>
+                <td>Total</td>
+                <td class="text-right">LKR <?= htmlspecialchars($data['total_income']); ?></td>
+            </tr>
+        </table>
+    </div>
+
+    <div class="income-summary">
+        <h1>Payment Summary</h1>
+        <table>
+            <tr>
+                <th>Performer's Name</th>
+                <th>Payment</th>
+            </tr>
+            <?php if(!empty($data['record1'])): ?>
+                <?php foreach($data['record1'] as $record1): ?>
+                    <tr>
+                        <td><?= htmlspecialchars($record1->name); ?></td>
+                        <td class="text-right"><?= htmlspecialchars($record1->total_payment); ?></td>
+                    </tr>
+                <?php endforeach; ?>
+            <?php endif; ?>
+            <tr>
+                <td>Total</td>
+                <td class="text-right">LKR <?= htmlspecialchars($data['total_cost']); ?></td>
+            </tr>
+        </table>
+    </div>
+
+    <div class =  "balance report-look">
+        <h3>Balance</h3>
+        <p>LKR<?= htmlspecialchars(floatval($data['total_income']) - floatval($data['total_cost'])); ?></p>
+    </div>  
+</div>
+</div>
  
 
-    <section class="team-section">
-        <h1>Performers' Payment Information</h1>
-        <div>
-            <table>
-                <tbody>
 
-                    <?php if (!empty($data['performers'])): ?>
-                        <?php foreach ($data['performers'] as $performer): ?>
-
-                            <tr>
-                                <td>
-                                    <img src="<?=ROOT?>/assets/images/user/<?php echo $performer->pro_pic ?>" alt="Performer" class="performer-image">
-                                    <span><?php echo $performer->name ?></span>
-                                </td>
-                            </tr>
-                        <?php endforeach ?>
-                    <?php else: ?>
-                        <tr>
-                            <td colspan="2">No performers found.</td>
-                        </tr>
-                    <?php endif ?>
-                </tbody>
-            </table>
-
-            
-        </div>
-
-
-    </section>
-
-    </div>
-    
     <button class = "print-button" onclick="print()"><i class="fa-solid fa-download"></i></button>
 
 
     <script>
         function print() {
-            const pdfContainer = document.querySelector('.pdf-container'); // Select the pdf-container
-            const newWindow = window.open('', '_blank'); // Open a new window
+            const pdfContainer = document.querySelector('.pdf-container'); 
+            const newWindow = window.open('', '_blank'); 
             newWindow.document.write('<html><head><title>Musicial - Event Report</title>');
-            newWindow.document.write('<link rel="stylesheet" href="<?= ROOT ?>/assets/css/eventplanner/completed.css">'); // Include your CSS
+            newWindow.document.write('<link rel="stylesheet" href="<?= ROOT ?>/assets/css/eventplanner/completed.css">'); 
             newWindow.document.write('</head><body>');
-            newWindow.document.write(pdfContainer.innerHTML); // Write the content of pdf-container
+            newWindow.document.write(pdfContainer.innerHTML);
             newWindow.document.write('</body></html>');
-            newWindow.document.close(); // Close the document
+            newWindow.document.close(); 
             
-            // Wait for the new window to load before printing
+            
             newWindow.onload = function() {
-                newWindow.print(); // Trigger the print dialog
-                newWindow.close(); // Close the new window after printing
+                newWindow.print(); 
+                newWindow.close(); 
             };
         }
     </script>

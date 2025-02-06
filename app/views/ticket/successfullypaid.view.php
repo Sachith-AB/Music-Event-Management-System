@@ -1,4 +1,4 @@
-<?php include ('../app/views/components/header.php'); ?>
+<!-- <?php include ('../app/views/components/header.php'); ?> -->
 <!DOCTYPE html>
 <html lang="en">
 
@@ -14,7 +14,9 @@
 </head>
 
 <body>
-<?php include ('../app/views/components/loading.php'); ?>
+<!-- <?php include ('../app/views/components/loading.php'); ?> -->
+<?php $email = htmlspecialchars($_GET['email']) ; ?>
+
 
     <!-- Include Header -->
     
@@ -233,8 +235,7 @@
                         <input type="hidden" name="eventname" value= "<?php echo $eventAndTicketDetails[0]->event_name ?>" />
                         <input type="hidden" name="eventdate" value= "<?php echo $eventAndTicketDetails[0]->event_date?>" />
                         <input type="hidden" name="address" value= "<?php echo $eventAndTicketDetails[0]->event_city ?? ""?>" />
-                        <!-- <?php echo$_SESSION['USER']->email?> -->
-                        <input type="hidden" name ="email" value = "<?php echo$_SESSION['USER']->email?>"/>
+                        <input type="hidden" name ="email" value = "<?php echo $email?>"/>
 
                 
                     <div class="button-group">

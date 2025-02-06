@@ -66,6 +66,7 @@ route('delete-ticket', 'ticket/TicketController@deleteTicket');
 
 //Route for purchaseticket
 route('purchaseticket','ticket/PurchaseTicket@index');
+route('payment-failure','ticket/PaymentFailure@index');
 route('successfullypaid','ticket/Successfullypaid@index');
 route('upcommingevent','ticket/UpcomingEvents@index');
 route('ticketevent','ticket/PurchaseTicket@index4');
