@@ -97,16 +97,16 @@
     <div class="eventdetails">
         <!-- image section -->
         <div class="eventimages">
-            <div class="image image1">
+            <div class="image1">
                 <img src="<?=ROOT?>/assets/images/ticket/musicevent1.jpg" alt="Image 1" class="img">
             </div>
-            <div class="image image2">
+            <div class="image2">
                 <img src="<?=ROOT?>/assets/images/ticket/musicevent2.jpeg" alt="Image 2" class="img">
             </div>
-            <div class="image image3">
+            <div class="image3">
                 <img src="<?=ROOT?>/assets/images/ticket/musicevent3.jpg" alt="Image 3" class="img">
             </div>
-            <div class="image image4">
+            <div class="image4">
                 <img src="<?=ROOT?>/assets/images/ticket/musicevent4.jpg" alt="Image 4" class="img">
             </div>
             <div class="mid">
