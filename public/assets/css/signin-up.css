@@ -1,4 +1,59 @@
 @import url("https://fonts.googleapis.com/css2?family=Great+Vibes&family=Imperial+Script&family=Poppins:wght@100;200;300;400;500;600;700;800&family=Roboto:ital,wght@0,400;1,100&family=Ubuntu:wght@300;400;500;700&display=swap");
+/* Slide-in animation for form */
+@keyframes slideIn {
+  0% {
+      transform: translateX(100%);
+      opacity: 0;
+  }
+  100% {
+      transform: translateX(0);
+      opacity: 1;
+  }
+}
+
+/* Slide-out animation for form */
+@keyframes slideOut {
+  0% {
+      transform: translateX(0);
+      opacity: 1;
+  }
+  100% {
+      transform: translateX(-100%);
+      opacity: 0;
+  }
+}
+
+/* Fade-in effect for input fields */
+@keyframes fadeIn {
+  from {
+      opacity: 0;
+  }
+  to {
+      opacity: 1;
+  }
+}
+
+/* Add animations to the form */
+.sign-in-form, .sign-up-form {
+  animation: fadeIn 0.5s ease-in-out;
+}
+
+.page-content.animate-in {
+  animation: slideIn 0.5s ease-in-out forwards;
+}
+
+.page-content.animate-out {
+  animation: slideOut 0.5s ease-in-out forwards;
+}
+
+/* Add these classes dynamically with JavaScript */
+.slide-out-left {
+  animation: slideOutLeft 0.6s ease forwards;
+}
+
+.slide-out-right {
+  animation: slideOutRight 0.6s ease forwards;
+}
 
 
 *,
