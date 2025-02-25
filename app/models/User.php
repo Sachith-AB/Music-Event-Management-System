@@ -11,7 +11,8 @@ class User {
         'contact',
         'pro_pic',
 		'role',
-		'is_delete'
+		'is_delete',
+		'is_admin'
     ];
 
     public function validUser($data) {

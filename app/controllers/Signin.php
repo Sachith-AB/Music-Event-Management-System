@@ -25,7 +25,9 @@ class Signin {
 
             $row = $user->first($arr);
             
-            if($row){
+            // Proceed if $row exists and is_delete is '0'
+            if ($row && $row->is_delete == '0')
+            {
                 //row->is_delete
                 $checkpassword = password_verify($_POST['password'], $row->password);
 
@@ -36,9 +38,19 @@ class Signin {
                     session_start();
                     $_SESSION['USER'] = $row;
                     $id = $row->id;
-//ADMIN CHECK TO REDIRECT
-                    redirect("home");
 
+                    //ADMIN CHECK TO REDIRECT
+                    if($row->is_admin == 1)
+                    {
+                        redirect("admin-dashboard");
+                    }
+
+                    else 
+                    {
+                        redirect("home");
+                    }
+
+                    
                     // Set the session start time
                     $_SESSION['LAST_ACTIVITY'] = time(); // Store the current time
 
