@@ -1,4 +1,4 @@
-
+<?php include ('../app/views/components/header.php'); ?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -14,14 +14,14 @@
     $showMore = isset($_POST['showMore']) ? $_POST['showMore'] == 'true' : false; 
     ?>
     <div class="container">
-        <header>
+        <div class="search-container">
             <h1>Search Event</h1>
             <form method="POST" class="search-bar">
                 <input type="text" name="name" placeholder="Rock">
                 <input type="text" name="location" placeholder="Colombo, Sri Lanka">
                 <button type="submit" name="searchEvents" value="search">Search</button>
             </form>
-        </header>
+        </div>
         <div class="content">
             <form class="filter" method="POST">
                 <h3>Filter</h3>

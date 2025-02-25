@@ -8,11 +8,7 @@
     <link rel="stylesheet" href="<?=ROOT?>/assets/css/ticket/createticket.css">
 </head>
 <body>
-<?php include ('../app/views/components/loading.php');
 
-?>
-    
-    
     <div class="container">
 
         <!--create main content -->

@@ -18,7 +18,6 @@
 </head>
 
 <body>
-<?php include ('../app/views/components/loading.php'); ?>
 <?php 
 
     //Get the pass data from URL for sign in part

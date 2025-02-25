@@ -8,6 +8,7 @@
     <title>Musicia - Ticket Purchase Success</title>
     
     <link rel="stylesheet" href="<?= ROOT ?>/assets/css/ticket/ticketholder-event.css">
+    
 
     <!-- Include Font Awesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
@@ -15,8 +16,15 @@
     <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900&family=Sen:wght@400..800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
 </head>
-<bo>
-    <?php include ('../app/views/components/loading.php'); ?>
+<body>
+    <div class="fail-message">
+        <div class="fail-icon">
+            &#10060;
+        </div>
+        <div class="fail-text">
+            Payment Failure!
+        </div>
+    </div>
     <!-- headersection -->
     <div class="headersection">
         <img src="<?=ROOT?>/assets/images/ticket/ticketevent-bg.jpg" alt="Musical Fusion Festival" class="headersection-img">
@@ -261,8 +269,6 @@
                     });
             }
             </script>
-            <!-- reviw to event -->
-            <?php include ('../app/views/components/review.php'); ?>
         </div>
     </div>
 </body>
