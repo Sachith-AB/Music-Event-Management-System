@@ -19,6 +19,7 @@ class Event {
         'createdBy',
         'address',
         'status',
+        'is_delete'
     ];
 
     public function validEvent($data) {

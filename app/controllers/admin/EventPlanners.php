@@ -7,7 +7,7 @@ class EventPlanners {
 
     public function index()
     {
-        $deletedusers = new Deletedusers;
+        
         $user = new User;
         $event = new Event;
         $data = [];
@@ -18,7 +18,7 @@ class EventPlanners {
         if($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['delete'])){
 
             // show($_POST);
-            $this->deleteUsers($user,$deletedusers);
+            $this->deleteUsers($user);
         }
 
         $this->view('admin/eventplaners', $data);
@@ -31,15 +31,20 @@ class EventPlanners {
         return $res;
     }
 
-    public function deleteUsers($user,$deletedusers)
+    public function deleteUsers($user)
     {
-        $data = $user->firstById($_POST['user_id']);
-        $data = json_decode(json_encode($data),true);
-        $data['user_id'] = $data['id'];
-        // show($data);
-        $deletedusers->insert($data);
+        $id = $_POST['user_id'];
+        $user->update($id, $_POST);
 
-        $user->delete($_POST['user_id']);
+        // $data = $user->firstById($_POST['user_id']);
+        // $data = json_decode(json_encode($data),true);
+        // $data['user_id'] = $data['id'];
+        // // show($data);
+        // $deletedusers->insert($data);
+
+        // $user->delete($_POST['user_id']);
+
+        // redirect('admin-eventplanners');
 
 
 

@@ -1,0 +1,115 @@
+
+body {
+
+    font-family: Arial, sans-serif;
+}
+
+
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+th, td {
+    border-bottom: 1px solid  #f0e8e8;
+    padding: 10px;
+    width: 700px;
+    text-align: center;
+    /* font-size: 17px; */
+}
+
+
+th {
+    background-color: #f8f9fa;
+    font-size: 18px;
+    font-weight: bold;
+}
+
+td {
+    font-size: 16px;
+}
+
+
+h3 {
+    font-size: 22px;
+    font-weight: bold;
+}
+
+h1 {
+    margin-left: 100px;
+    margin-top: 100px;
+    font-size: 40px;
+    color: #00BDD6FF;
+}
+
+h2 {
+    margin-left: 110px;
+    margin-bottom: 0px;
+    font-size: 25;
+}
+
+
+
+.Table-section {
+
+    display: flex;
+    flex-direction: column; 
+    margin-left: 170px;
+    margin-right: 170px;
+    justify-content: center; /* Centers horizontally */
+    align-items: center;
+    margin-top: 60px;
+    margin-bottom: 80px;
+    /* border: 2px solid black; */
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    border-radius: 10px;
+    padding: 15px;
+}
+
+.collaborator-table  {
+    width: 800px;
+    margin-top: 40px;
+    margin-bottom: 50px;
+    /* border: 2px solid black; */
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    border-radius: 10px;
+    padding: 5px 20px 28px 20px;
+}
+
+.all-table {
+
+    width: 800px;
+    margin-top: 40px;
+    margin-bottom: 40px;
+    /* border: 2px solid black; */
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    border-radius: 10px;
+    padding: 28px 20px 28px 20px;
+
+}
+
+.print-button{
+    
+    display: block;
+    margin: 0 auto;
+    padding: 10px 20px;
+    background: #00BDD6FF; 
+    color: white;
+    border: none;
+    border-radius: 5px;
+    font-size: 15px;
+    cursor: pointer;
+    position: relative;
+    overflow: hidden;
+    z-index: 1;
+    transition: color 1s ease;
+    margin-top: 20px;
+    
+}
+
+.print-button:hover::after{
+
+    transform: skewX(-45deg) scale(1, 1);
+    
+}

@@ -33,6 +33,7 @@ route('colloborator-events','eventCollaborator/SingerEvents@index');
 route('colloborator-payments','eventCollaborator/SingerPayments@index');
 route('collaborator-viewprofile','eventCollaborator/ViewProfile@index');
 route('collaborator-eventdetails','eventCollaborator/EventDetails@index');
+route('collaborator-report','eventCollaborator/collaboratorReport@index');
 route('send-message','eventCollaborator/Chat@sendMessage');
 route('get-messages','eventCollaborator/Chat@getMessages');
 

@@ -7,11 +7,18 @@ class EventCollaborators {
 
     public function index()
     {
+        $user = new User;
         $event = new Event;
         $data = [];
 
         $data = $this->DisplayCollaborators($event);
         // show($data);
+
+        if($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['delete'])){
+
+            $this->DeleteCollaborators($user);
+
+        }
         
         $this->view('admin/collaborators', $data);
 
@@ -21,6 +28,13 @@ class EventCollaborators {
     {
         $res = $event->getAllCollaborators();
         return $res;
+    }
+
+    public function DeleteCollaborators($user)
+    {
+        $id = $_POST['user_id'];
+        $user->update($id, $_POST);
+        // redirect('admin-eventCollaborators');
     }
 
    
