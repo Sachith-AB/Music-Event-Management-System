@@ -10,7 +10,8 @@ class User {
         'password',
         'contact',
         'pro_pic',
-		'role'
+		'role',
+		'is_delete'
     ];
 
     public function validUser($data) {

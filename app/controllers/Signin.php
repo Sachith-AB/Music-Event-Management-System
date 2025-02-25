@@ -24,8 +24,9 @@ class Signin {
             $arr['email'] = $_POST['email'];
 
             $row = $user->first($arr);
+            
             if($row){
-
+                //row->is_delete
                 $checkpassword = password_verify($_POST['password'], $row->password);
 
                 if($checkpassword){
@@ -35,7 +36,7 @@ class Signin {
                     session_start();
                     $_SESSION['USER'] = $row;
                     $id = $row->id;
-
+//ADMIN CHECK TO REDIRECT
                     redirect("home");
 
                     // Set the session start time
