@@ -12,7 +12,8 @@ class User {
         'pro_pic',
 		'role',
 		'is_delete',
-		'is_admin'
+		'is_admin',
+		'registered_at'
     ];
 
     public function validUser($data) {
@@ -142,5 +143,29 @@ class User {
 			return false;
 		}
 
+	}
+
+
+	public function getTotalUsers(){
+		$query = "SELECT role, 
+    			COUNT(*) AS user_count FROM users
+				GROUP BY role
+				ORDER BY user_count DESC";
+
+		$result = $this->query($query);
+		//show($result);
+		return $result;
+	}
+
+	public function getTotalUsersByMonth(){
+		$query = "SELECT role,YEAR(registered_at) AS reg_year, MONTHNAME(registered_at) AS reg_month,
+    	COUNT(*) AS registration_count
+		FROM users
+		GROUP BY role, YEAR(registered_at), MONTH(registered_at)
+		ORDER BY registration_count DESC
+		LIMIT 5;";
+
+		$result = $this->query($query);
+		return $result;
 	}
 }

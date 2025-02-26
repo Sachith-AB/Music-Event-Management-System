@@ -333,7 +333,7 @@ class Event {
                     WHERE e.is_delete = '0' 
                     AND e.eventDate < CURRENT_DATE
                     GROUP BY e.id, e.event_name, e.eventDate, planner.id, planner.name
-                    ORDER BY total_income DESC, total_sold_tickets DESC;";
+                    ORDER BY total_income DESC, total_sold_tickets DESC";
      
         $result = $this->query($query);
          return $result ? $result : [];
