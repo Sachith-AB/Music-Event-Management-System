@@ -37,6 +37,7 @@
 
                                     <form  method="post">
                                         <input type = 'hidden' name = 'event_id' value = "<?php echo $event->event_id ?>" >
+                                        <input type = 'hidden' name = 'is_delete' value = "1" >
                                         <button name = 'delete' type = 'submit' ><i class="fas fa-trash"></i></button>
                                     </form>
                                     
@@ -96,7 +97,7 @@
                         </div>
                         <div class="event-card-icons">
                             <a href="<?=ROOT?>/view-event?id=<?php echo $event->event_id ?>" > <i class="fas fa-eye"></i></a>
-                            <a href="#"><i class="fas fa-trash"></i></a>
+                            
                         </div>
                     </div>
 

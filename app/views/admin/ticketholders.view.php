@@ -37,10 +37,19 @@
                                     <td><?php echo $holder->name ?></td>
                                     <td><?php echo $holder->email ?></td>
                                     <td><?php echo $holder->contact ?></td>
+
                                     <td>
+
                                         <button class="action-btn view">View</button>
-                                        <button class="action-btn delete">Delete</button>
+
+                                            <form  method="post">
+                                                        <input type = 'hidden' name = 'user_id' value = "<?php echo $holder->id ?>" >
+                                                        <input type = 'hidden' name = 'is_delete' value = "1" >
+                                                        <button class="action-btn delete" name = 'delete' type = 'submit' >Delete</button>    
+                                            </form>
+
                                     </td>
+
                                 </tr>
 
                             <?php endif; ?>

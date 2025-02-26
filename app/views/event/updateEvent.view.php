@@ -33,7 +33,7 @@ $_SESSION['last_visit'] = date('Y-m-d H:i:s');
         $flag = htmlspecialchars($_GET['flag'] ?? 0);
         $error = htmlspecialchars($_GET['msg'] ?? '');
     ?>
-
+    <?php include ('../app/views/components/loading.php'); ?>
     <div class="container">
         <div class = "popup">
             <div class="event-content">

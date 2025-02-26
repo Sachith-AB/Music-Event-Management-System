@@ -39,6 +39,7 @@ $_SESSION['last_visit'] = date('Y-m-d H:i:s');
 //show ($data);
 ?>
 <body>
+<?php include ('../app/views/components/loading.php'); ?>
     <div class="container">
         <!-- Sidebar -->
         <div class="sidebar">

@@ -7,11 +7,18 @@ class TicketHolders {
 
     public function index()
     {
+        $user = new User;
         $event = new Event;
         $data = [];
 
         $data = $this->getHolderDetails($event);
         // show($data);
+
+        if($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['delete'])){
+
+            $this->deleteHolders($user);
+        }
+
         $this->view('admin/ticketholders', $data);
 
     }
@@ -22,5 +29,14 @@ class TicketHolders {
         return $res;
     }
 
+    public function deleteHolders($user)
+    {
+        $id = $_POST['user_id'];
+        
+        $user->update($id, $_POST);
+
+        // redirect('admin-ticketholders');
+
+    }
    
 }

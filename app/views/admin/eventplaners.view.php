@@ -47,6 +47,7 @@
                                              
                                             <form method = "POST">
                                                 <input type = "hidden" name = "user_id" value = "<?php echo $planner->id ?>">
+                                                <input type = "hidden" name = "is_delete" value = '1' >
                                                 <button name = "delete" class="action-btn delete" type = "submit" >Delete</button>
                                             </form>
                                                 

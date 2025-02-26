@@ -33,6 +33,7 @@ route('colloborator-events','eventCollaborator/SingerEvents@index');
 route('colloborator-payments','eventCollaborator/SingerPayments@index');
 route('collaborator-viewprofile','eventCollaborator/ViewProfile@index');
 route('collaborator-eventdetails','eventCollaborator/EventDetails@index');
+route('collaborator-report','eventCollaborator/collaboratorReport@index');
 route('send-message','eventCollaborator/Chat@sendMessage');
 route('get-messages','eventCollaborator/Chat@getMessages');
 
@@ -66,6 +67,7 @@ route('delete-ticket', 'ticket/TicketController@deleteTicket');
 
 //Route for purchaseticket
 route('purchaseticket','ticket/PurchaseTicket@index');
+route('payment-failure','ticket/PaymentFailure@index');
 route('successfullypaid','ticket/Successfullypaid@index');
 route('upcommingevent','ticket/UpcomingEvents@index');
 route('ticketevent','ticket/PurchaseTicket@index4');

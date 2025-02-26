@@ -81,7 +81,7 @@
                 </div>
 
 
-                <div class="section purchases">
+                <!-- <div class="section purchases">
                     <h3>Recent purchases</h3>
                     <table>
                         <thead>
@@ -107,7 +107,7 @@
                             <?php endforeach; ?>
                         </tbody>
                     </table>
-                </div>
+                </div> -->
             </div>
         <?php else: ?>
             <p>No events created yet.</p>

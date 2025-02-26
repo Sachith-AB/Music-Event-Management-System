@@ -66,7 +66,14 @@
                                             <td><?php echo $singer->contact ?></td>
                                             <td>
                                                 <button class="action-btn view"><a href="<?=ROOT?>/collaborator-viewprofile?id=<?php echo $singer->user_id?>">View</a></button>
-                                                <button class="action-btn delete">Delete</button>
+
+                                                <form  method="post">
+                                                    <input type = 'hidden' name = 'user_id' value = "<?php echo $singer->user_id ?>" >
+                                                    <input type = 'hidden' name = 'is_delete' value = "1" >
+                                                    <button class="action-btn delete" name = 'delete' type = 'submit' >Delete</button>
+                                                    
+                                                </form>
+                                                
                                             </td>
                                         </tr>
 
@@ -119,7 +126,14 @@
                                                 <td><?php echo $band->contact ?></td>
                                                 <td>
                                                     <button class="action-btn view"><a href="<?=ROOT?>/collaborator-viewprofile?id=<?php echo $band->user_id?>">View</a></button>
-                                                    <button class="action-btn delete">Delete</button>
+                                                    
+                                                    <form  method="post">
+                                                        <input type = 'hidden' name = 'user_id' value = "<?php echo $band->user_id ?>" >
+                                                        <input type = 'hidden' name = 'is_delete' value = "1" >
+                                                        <button class="action-btn delete" name = 'delete' type = 'submit' >Delete</button>
+                                                        
+                                                    </form>
+
                                                 </td>
                                             </tr>
 
@@ -169,7 +183,13 @@
                                                 <td><?php echo $sound->contact ?></td>
                                                 <td>
                                                     <button class="action-btn view"><a href="<?=ROOT?>/collaborator-viewprofile?id=<?php echo $sound->user_id?>">View</a></button>
-                                                    <button class="action-btn delete">Delete</button>
+                                                    
+                                                    <form  method="post">
+                                                        <input type = 'hidden' name = 'user_id' value = "<?php echo $sound->user_id ?>" >
+                                                        <input type = 'hidden' name = 'is_delete' value = "1" >
+                                                        <button class="action-btn delete" name = 'delete' type = 'submit' >Delete</button>
+                                                        
+                                                    </form>
                                                 </td>
                                             </tr>
 
@@ -219,7 +239,13 @@
                                                 <td><?php echo $decorator->contact ?></td>
                                                 <td>
                                                     <button class="action-btn view"><a href="<?=ROOT?>/collaborator-viewprofile?id=<?php echo $decorator->user_id?>">View</a></button>
-                                                    <button class="action-btn delete">Delete</button>
+
+                                                    <form  method="post">
+                                                        <input type = 'hidden' name = 'user_id' value = "<?php echo $decorator->user_id ?>" >
+                                                        <input type = 'hidden' name = 'is_delete' value = "1" >
+                                                        <button class="action-btn delete" name = 'delete' type = 'submit' >Delete</button>
+                                                        
+                                                    </form>
                                                 </td>
                                             </tr>
 
@@ -270,7 +296,12 @@
                                             <td><?php echo $stage->contact ?></td>
                                             <td>
                                                 <button class="action-btn view"><a href="<?=ROOT?>/collaborator-viewprofile?id=<?php echo $stage->user_id?>">View</a></button>
-                                                <button class="action-btn delete">Delete</button>
+                                                <form  method="post">
+                                                    <input type = 'hidden' name = 'user_id' value = "<?php echo $stage->user_id ?>" >
+                                                    <input type = 'hidden' name = 'is_delete' value = "1" >
+                                                    <button class="action-btn delete" name = 'delete' type = 'submit' >Delete</button>
+                                                    
+                                                </form>
                                             </td>
                                         </tr>
 
@@ -320,7 +351,13 @@
                                             <td><?php echo $announcer->contact ?></td>
                                             <td>
                                                 <button class="action-btn view"><a href="<?=ROOT?>/collaborator-viewprofile?id=<?php echo $announcer->user_id?>">View</a></button>
-                                                <button class="action-btn delete">Delete</button>
+
+                                                <form  method="post">
+                                                    <input type = 'hidden' name = 'user_id' value = "<?php echo $announcer->user_id ?>" >
+                                                    <input type = 'hidden' name = 'is_delete' value = "1" >
+                                                    <button class="action-btn delete" name = 'delete' type = 'submit' >Delete</button>
+                                                    
+                                                </form>
                                             </td>
                                         </tr>
 

@@ -34,7 +34,6 @@
             display: flex;
         }
     </style>
-    <?php include ('../app/views/components/loading.php'); ?>
     <div class="page-content">
         <main>
             <div class="box">
