@@ -100,4 +100,5 @@ route('admin-eventplanners','admin/EventPlanners@index');
 route('admin-eventcollaborators','admin/EventCollaborators@index');
 route('admin-ticketholders','admin/TicketHolders@index');
 route('admin-vieweventplanner','admin/ViewEventPlanner@index');
-
+route('admin-event-report','admin/AdminEventReport@index');
+route('admin-ticket-report','admin/AdminTicketReport@index');
