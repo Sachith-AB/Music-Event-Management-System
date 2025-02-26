@@ -21,7 +21,7 @@
 
     <h2>Event Requests by Collaborator</h2>
 
-    <div class="Table-section">
+    <!-- <div class="Table-section"> -->
 
         <div class="collaborator-table">
             <h3>Singers</h3>
@@ -321,11 +321,11 @@
             </table>
         </div>
 
-    </div>
+    <!-- </div> -->
 
     <h1>Top Requested Collaborators</h1>
 
-        <div class="Table-section">
+        <!-- <div class="Table-section"> -->
 
             <div class="all-table">
                 <table>
@@ -372,7 +372,7 @@
                 </table>
 
             </div>
-        </div>
+        <!-- </div> -->
 
 </div>
 
@@ -384,7 +384,7 @@
                 const pdfContainer = document.querySelector('.pdf-container'); 
                 const newWindow = window.open('', '_blank'); 
                 newWindow.document.write('<html><head><title> Event Collaborator Report</title>');
-                newWindow.document.write('<link rel="stylesheet" href="<?= ROOT ?>/assets/css/eventCollaborators/report.css">'); 
+                newWindow.document.write('<link rel="stylesheet" href="http://localhost/Music-Event-Management-System/public/assets/css/eventCollaborators/report.css">'); 
                 newWindow.document.write('</head><body>');
                 newWindow.document.write(pdfContainer.innerHTML);
                 newWindow.document.write('</body></html>');
