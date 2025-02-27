@@ -1,0 +1,137 @@
+/* General page styling */
+body {
+    font-family: 'Helvetica', Arial, sans-serif;
+    margin: 0;
+    padding: 25px;
+    background-color: #f8f9fb;
+    color: #1a1a1a;
+    line-height: 1.6;
+}
+
+/* Main title */
+h1 {
+    text-align: center;
+    color: #1f2a44;
+    font-size: 30px;
+    margin-bottom: 40px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+/* Section headings */
+h2 {
+    color: #2c3e50;
+    font-size: 24px;
+    margin-top: 50px;
+    margin-bottom: 20px;
+    padding-bottom: 8px;
+    border-bottom: 3px solid #000000;
+    display: inline-block;
+    font-weight: 500;
+}
+
+/* Table styling */
+table {
+    width: 100%;
+    border-collapse: collapse;
+    background-color: #ffffff;
+    border: 1px solid #d1d5db;
+    margin-bottom: 40px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+}
+
+/* Table headers and cells */
+th, td {
+    padding: 14px 18px;
+    text-align: left;
+    border-bottom: 1px solid #e2e8f0;
+}
+
+/* Table headers */
+th {
+    background-color: #000000;
+    color: #ffffff;
+    font-weight: 600;
+    font-size: 13px;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+/* Table data cells */
+td {
+    font-size: 14px;
+    color: #333333;
+}
+
+/* Alternating row colors */
+tr:nth-child(even) {
+    background-color: #f7fafc;
+}
+
+/* Hover effect for interactivity */
+tr:hover {
+    background-color: #edf2f7;
+    transition: background-color 0.2s ease-in-out;
+}
+
+/* No-data message */
+p {
+    color: #6b7280;
+    font-style: italic;
+    font-size: 14px;
+    margin: 15px 0;
+    text-align: center;
+}
+
+/* Right-align currency columns */
+.currency {
+    text-align: right;
+}
+
+/* Highlight profit/loss */
+.highlight {
+    font-weight: 700;
+    color: #c0392b; /* Deep red for emphasis */
+}
+
+
+
+.print-button{
+    display: block;
+    margin: 0 auto;
+    padding: 10px 20px;
+    background: #000000; 
+    color: white;
+    border: none;
+    border-radius: 5px;
+    font-size: 15px;
+    cursor: pointer;
+    position: relative;
+    overflow: hidden;
+    z-index: 1;
+    transition: color 1s ease;
+    margin-top: 20px;
+    
+}
+
+/* Ensure tables are printable */
+@media print {
+    body {
+        padding: 10px;
+        background-color: #ffffff;
+    }
+    table {
+        box-shadow: none;
+        border: 1px solid #000000;
+    }
+    th, td {
+        border: 1px solid #000000;
+    }
+    h1, h2 {
+        color: #000000;
+    }
+    tr:hover {
+        background-color: inherit;
+    }
+}

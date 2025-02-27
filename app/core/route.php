@@ -33,6 +33,7 @@ route('colloborator-events','eventCollaborator/SingerEvents@index');
 route('colloborator-payments','eventCollaborator/SingerPayments@index');
 route('collaborator-viewprofile','eventCollaborator/ViewProfile@index');
 route('collaborator-eventdetails','eventCollaborator/EventDetails@index');
+route('collaborator-report','eventCollaborator/collaboratorReport@index');
 route('send-message','eventCollaborator/Chat@sendMessage');
 route('get-messages','eventCollaborator/Chat@getMessages');
 
@@ -99,4 +100,6 @@ route('admin-eventplanners','admin/EventPlanners@index');
 route('admin-eventcollaborators','admin/EventCollaborators@index');
 route('admin-ticketholders','admin/TicketHolders@index');
 route('admin-vieweventplanner','admin/ViewEventPlanner@index');
-
+route('admin-event-report','admin/AdminEventReport@index');
+route('admin-ticket-report','admin/AdminTicketReport@index');
+route('admin-user-report','admin/AdminUserReport@index');

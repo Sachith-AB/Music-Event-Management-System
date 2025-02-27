@@ -247,6 +247,8 @@
                     });
             }
             </script>
+            <!-- reviw to event -->
+            <?php include ('../app/views/components/review.php'); ?>
         </div>
     </div>
 </body>

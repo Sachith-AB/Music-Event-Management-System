@@ -60,4 +60,43 @@ function moveSlider() {
 
 setInterval(moveSlider, 2000);
 
+document.addEventListener("DOMContentLoaded", () => {
+    const toggleLinks = document.querySelectorAll('.toggle');
+    const pageContent = document.querySelector('.page-content');
+    const signInForm = document.querySelector('.sign-in-form');
+    const signUpForm = document.querySelector('.sign-up-form');
+    const signInBtn = document.querySelector('#sign-in-btn');
+    const signUpBtn = document.querySelector('#sign-up-btn');
+
+    // Toggle animation between Sign-In and Sign-Up forms
+    toggleLinks.forEach(link => {
+        link.addEventListener('click', (e) => {
+            e.preventDefault();
+            if (pageContent.classList.contains('animate-in')) {
+                pageContent.classList.replace('animate-in', 'animate-out');
+            } else {
+                pageContent.classList.replace('animate-out', 'animate-in');
+            }
+
+            setTimeout(() => {
+                window.location.href = link.getAttribute('href');
+            }, 500); // Match animation duration
+        });
+    });
+
+    // Add animation when filling inputs
+    document.querySelectorAll('.input-field').forEach(input => {
+        input.addEventListener('focus', () => {
+            input.parentElement.style.animation = 'fadeIn 0.3s ease-in-out';
+        });
+    });
+
+    // Add animation when clicking Sign-In or Sign-Up button
+    [signInBtn, signUpBtn].forEach(btn => {
+        btn.addEventListener('click', () => {
+            pageContent.classList.add('animate-out');
+        });
+    });
+});
+
 

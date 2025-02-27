@@ -28,10 +28,10 @@ $_SESSION['last_visit'] = date('Y-m-d H:i:s');
     <link rel="stylesheet" href="<?=ROOT?>/assets/css/eventDelete.css">
 </head>
 <?php $event_name = htmlspecialchars($_GET['event_name']?? '');
-//show ($data);
 ?>
 <body>
-         <!-- Main Content -->
+<?php include ('../app/views/components/loading.php'); ?>
+    <!-- Main Content -->
         <div class="main-content">
             <section id="event-header">
                 <div class="event-cover">
