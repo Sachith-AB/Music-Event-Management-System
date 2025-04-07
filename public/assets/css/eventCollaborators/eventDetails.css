@@ -18,18 +18,18 @@ body {
     max-width: 80%;
 }
 .gradient-header {
-    background: linear-gradient(to right, #3b82f6, #8b5cf6);
-    color: white;
+    color: black;
     padding-left: 1.5rem;
     padding-right: 1.5rem;
-    padding-top: 1.5rem;
-    padding-bottom: 1.5rem;
+    padding-top: 10px;
+    padding-bottom: 10px;
 }
 .title{
     font-size: 2.25rem; /* 36px */
     line-height: 2.5rem; /* 40px */
     font-weight: 700;
     margin-bottom: 0.5rem;
+    color: #00BDD6FF;
 }
 .eventplanner{
     display: flex;
@@ -66,6 +66,25 @@ body {
 
 .min-h-screen{
     margin-top: 70px;
+    position: relative;
+    z-index: 6;
+    color: black;
+    padding: 0px 30px;
+}
+.uppersec {
+    position: relative;
+    z-index: 6;
+    text-align: left;
+    padding: 80px 100px;
+}
+.headersection-img {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    /* filter: brightness(0.6); Darken the image for better text contrast */
 }
 
 .card-style {
@@ -93,6 +112,9 @@ body {
 .flex-center-space {
     display: flex; /* flex */
     align-items: center; /* items-center */
+}
+.flex-center-space i {
+    color: #00BDD6FF;
 }
 
 .flex-center-space > *:not(:last-child) {

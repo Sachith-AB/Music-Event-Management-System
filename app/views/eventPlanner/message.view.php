@@ -20,7 +20,10 @@
                     <div class="message-card">
                         <div class="card-header">
                             <h3><?= htmlspecialchars($event->event_name) ?></h3>
-                            <p>Collaborator: <?= htmlspecialchars($event->collaborator_name) ?></p>
+                            <div class="col_details">
+                                <img src="<?=ROOT?>/assets/images/user/<?= htmlspecialchars($event->collaborator_pic) ?>" alt="User Avatar" class="comment-avatar">
+                                <p><?= htmlspecialchars($event->collaborator_name) ?></p>
+                            </div>
                         </div>
                         <div class="card-body">
                             <p>Last Message: <?= date('M d, Y H:i', strtotime($event->last_message_time)) ?></p>

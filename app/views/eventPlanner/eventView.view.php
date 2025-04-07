@@ -49,7 +49,7 @@
 
                 <div class="team-grid-scrollable">
                     <div class="team-grid">
-
+                        <?php show($data['tickets']) ?>
                         <?php foreach ($data['tickets'] as $ticket ): ?>
                             <div class="team-member">
                                 <div class="update-icon material-icons">edit</div>
