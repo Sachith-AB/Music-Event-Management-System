@@ -91,16 +91,15 @@
                                         <span><?php echo $ticket->quantity ?></span>
                                     </p>
                                 </div>
-
                             </div>
-
-                        <?php endforeach; ?>
-                            
+                        <?php endforeach; ?>       
                     </div>
                 </div>
-
-
             <?php endif; ?>
+            <!-- button to go ticket pages -->
+            <a href = "<?=ROOT?>/create-ticket?event_id=<?php echo $data['event']->id?>" style="text-decoration: none;" >
+                    <button class="addbutton">Add Another Ticket</button>
+            </a>
         </div>
 
         <!-- Request section -->
