@@ -1,11 +1,21 @@
-    /* .sidebar{
-    margin-top: 50px;
-    background-color: white;
-    box-shadow:  0 4px 8px rgba(0, 0, 0, 0.2);
-    } */
-    /* Content */
+ .req-container {
+        display: flex;
+        width: 100%;
+        padding: 40px 20px;
+        margin: 0;
+        box-sizing: border-box;
+    }
+    
+    .dashboard {
+        width: 80%;
+        max-width: 2000px;
+        background-color: #fff;
+        padding: 20px;
+        border-radius: 8px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    }
+    
     .content {
-        margin-left: 220px;
         padding: 20px;
         font-family: sans-serif;
         margin-top: 50px;
@@ -69,11 +79,13 @@
     
     .singers-grid {
         display: grid;
-        grid-template-columns: repeat(3, 1fr);
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
         gap: 20px;
     }
     
     .singer-card {
+        width: 300px;
+        height: 350px;
         background-color: #fff;
         border: 1px solid #ddd;
         border-radius: 5px;
