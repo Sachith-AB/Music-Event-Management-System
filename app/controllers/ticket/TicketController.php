@@ -107,14 +107,16 @@ class TicketController {
         }
     
         // Handle form submission for ticket update
-        if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['submit'])) {
+        if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['update'])) {
+            
             if (isset($_POST['restrictions']) && is_array($_POST['restrictions'])) {
                 $_POST['restrictions'] = json_encode($_POST['restrictions']);
+                //show($_POST);
             }
     
             if ($ticket->validTicket($_POST)) {
-                unset($_POST['submit']); // Remove the submit key
-    
+                unset($_POST['update']); // Remove the submit key
+                //show($_POST);
                 // Update the ticket
                 $ticket->update($ticket_id, $_POST);
                 redirect("view-tickets?event_id=".$_POST['event_id']);

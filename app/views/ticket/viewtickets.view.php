@@ -79,6 +79,16 @@ $_SESSION['last_visit'] = date('Y-m-d H:i:s');
                 <p>No tickets available.</p>
             <?php endif; ?>
 
+
+
+            <div class="card">
+                <div class="img-box">
+                    <img src="" alt
+
+                </div>
+
+            </div>
+
             <button class="next-button" onclick ="goToBack()"> Back </button>
             <button class="next-button" onclick ="goToRequest()"> Next </button>
 

@@ -121,7 +121,7 @@
     cursor: pointer;
 }
 
-    .addbutton:hover {
+.addbutton:hover {
     color: black;
 }
 
@@ -207,8 +207,11 @@
 
 
 .ticket-details {
+    overflow-x: auto;
+    scrollbar-width: none; /* Firefox */
+    -ms-overflow-style: none;
     min-width: 200px;
-    height: auto; /* Adjust height automatically based on content */
+    height: 250px; /* Adjust height automatically based on content */
     background-color: #fff;
     border-radius: 10px;
     position: relative;
@@ -218,6 +221,10 @@
     line-height: 1.4; /* Set line-height for readability */
 }
 
+/* Chrome, Edge, Safari */
+.ticket-details::-webkit-scrollbar {
+    display: none;
+}
 .ticket-details p {
     font-size: 14px;
     margin: 0 0 5px; /* Add spacing between paragraphs */
@@ -375,4 +382,9 @@
 
 .change-button {
     background: #00BDD6FF; 
+}
+.collaborator-de{
+    align-items: center;
+    display: flex;
+    gap: 10px;
 }

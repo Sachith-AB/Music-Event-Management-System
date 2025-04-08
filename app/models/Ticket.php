@@ -39,12 +39,12 @@ class Ticket {
 			$this->errors['error_no'] = 1;
 			return;
 		}
-        if (empty($data['ticket_type'])) {
-			$this->errors['flag'] = true;
-			$this->errors['error'] = "Ticket Type is Required ";
-			$this->errors['error_no'] = 1;
-			return;
-		}
+        // if (empty($data['ticket_type'])) {
+		// 	$this->errors['flag'] = true;
+		// 	$this->errors['error'] = "Ticket Type is Required ";
+		// 	$this->errors['error_no'] = 1;
+		// 	return;
+		// }
         if (empty($data['quantity'])) {
 			$this->errors['flag'] = true;
 			$this->errors['error'] = "Quantity is Required ";
