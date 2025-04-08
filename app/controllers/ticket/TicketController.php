@@ -136,12 +136,14 @@ class TicketController {
     $ticket = new Ticket;
 
     // Get the ticket ID from POST data
-    $ticket_id = $_POST['ticket_id'] ?? null;
+    $ticket_id = htmlspecialchars($_GET['ticket_id']?? null);
 
+    $data = $ticket->getTicketAndEventDetails($ticket_id);
+    show($data);
     // Fetch the event ID associated with this ticket
     $event_id = $ticket->getEventIdByTicketId($ticket_id);
 
-    if ($ticket_id && $event_id) {
+    if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['delete'])) {
         // Delete the ticket
         $ticket->delete($ticket_id);
 
@@ -150,6 +152,7 @@ class TicketController {
     } else {
         echo "Error: Ticket ID not provided or Event ID not found.";
     }
+    $this->view('ticket/deleteticket', $data);
 }
 
 
