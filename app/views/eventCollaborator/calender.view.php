@@ -24,7 +24,7 @@
                         <button id="nextMonth">▶</button>
                     </div>
                     <div class="calendar-grid">
-                        <input type="hidden" id="events" value='<?php echo $eventJson ?>'>
+                    <script id="events" type="application/json"><?= $eventJson ?></script>
                     </div>
                 </div>
 
