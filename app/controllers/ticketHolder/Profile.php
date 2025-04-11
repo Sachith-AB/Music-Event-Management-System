@@ -17,13 +17,17 @@ class Profile {
 
         $combinedTickets=$this->purchasedetails();
 
+        $ticketcount = $this->getticketcount($combinedTickets);
+
+        //  show($combinedTickets);
+
         if($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['logOut'])){
             $this->logOut();
         }
 
         
 
-        $this->view('ticketHolder/profile',['data'=>$data,'combinedTickets'=>$combinedTickets]);
+        $this->view('ticketHolder/profile',['data'=>$data,'combinedTickets'=>$combinedTickets,'ticketcount'=>$ticketcount]);
         
     }
 
@@ -64,5 +68,20 @@ class Profile {
     private function logOut(){
         session_unset(); // Unset all session variables
         session_destroy(); // Destroy the session
+    }
+
+    public function getticketcount($combinedTickets){
+
+        $totalPurchase = 0;
+        $uniqueEvents = [];
+        $totalPrice = 0;
+        foreach($combinedTickets as $event){
+            $totalPurchase += $event['ticket_quantity'];
+            $uniqueEvents[$event[0]->event_id] = true;
+            $totalPrice += $event['ticket_quantity'] * $event[0]->ticket_price;
+        }
+        $totalEvents = count($uniqueEvents);
+
+        return [$totalEvents,$totalPurchase, $totalPrice];
     }
 }

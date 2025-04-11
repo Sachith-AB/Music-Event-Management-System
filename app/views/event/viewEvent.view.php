@@ -97,16 +97,16 @@
     <div class="eventdetails">
         <!-- image section -->
         <div class="eventimages">
-            <div class="image image1">
+            <div class="image1">
                 <img src="<?=ROOT?>/assets/images/ticket/musicevent1.jpg" alt="Image 1" class="img">
             </div>
-            <div class="image image2">
+            <div class="image2">
                 <img src="<?=ROOT?>/assets/images/ticket/musicevent2.jpeg" alt="Image 2" class="img">
             </div>
-            <div class="image image3">
+            <div class="image3">
                 <img src="<?=ROOT?>/assets/images/ticket/musicevent3.jpg" alt="Image 3" class="img">
             </div>
-            <div class="image image4">
+            <div class="image4">
                 <img src="<?=ROOT?>/assets/images/ticket/musicevent4.jpg" alt="Image 4" class="img">
             </div>
             <div class="mid">
@@ -176,52 +176,38 @@
 
     <!-- ticket section -->
     <div class="ticketbackground">
-        <div class="pricing-container">
-            <?php if(!empty($data['tickets'])): ?>
+        <div class="team-grid-scrollable">
+            <div class="team-grid">
+        
                 <?php foreach($data['tickets'] as $ticket): ?>
-                <div class="pricing-card">
-                <h2>
-                    <?php if($ticket->ticket_type == "SILVER"): ?>
-                        <i class="fas fa-ticket-alt"></i>
-                    <?php elseif($ticket->ticket_type == "GOLD"): ?>
-                        <i class="fas fa-medal"></i>
-                    <?php  else: ?>
-                        <i class="fas fa-gem"></i>
-                    <?php endif ?>
-                    <?php echo $ticket->ticket_type?>
-                </h2>
-                <p class="price"><?php echo $ticket->price?></p>
-                <?php if($ticket->ticket_type == "SILVER"): ?>
-                    <ul>
-                        <li>Access to general seating area</li>
-                        <li>Free snacks during breaks</li>
-                        <li><span class="not-included">❌</span> Priority entrance</li>
-                        <li><span class="not-included">❌</span> Backstage access</li>
-                        <li><span class="not-included">❌</span> Meet and greet with performers</li>
-                    </ul>
-                    <?php elseif($ticket->ticket_type == "GOLD"): ?>
+                        <!-- ticket card -->
+                    <div class="pricing-card">
+                        <h2>
+                            <?php echo $ticket->ticket_type?>
+                        </h2>
+                        <p class="price"><?php echo $ticket->price?></p>
+                        
                         <ul>
-                            <li>Access to priority seating area</li>
-                            <li>Free snacks and beverages</li>
-                            <li>✅ Priority entrance</li>
-                            <li><span class="not-included">❌</span> Backstage access</li>
-                            <li><span class="not-included">❌</span> Meet and greet with performers</li>
+                            <?php 
+                            // Decode restrictions safely
+                            $restrictions = json_decode($ticket->restrictions, true);
+                            
+                            // Check if decoding was successful and it's an array
+                            if (is_array($restrictions)): 
+                                foreach ($restrictions as $feature): ?>
+                                    <li>✅ <?= htmlspecialchars($feature) ?></li>
+                                <?php endforeach; 
+                            else: ?>
+                                <li>No restrictions listed</li>
+                            <?php endif; ?>
                         </ul>
-                    <?php  else: ?>
-                        <ul>
-                            <li>Access to VIP seating area</li>
-                            <li>All-inclusive food and beverage</li>
-                            <li>✅ Priority entrance</li>
-                            <li>✅ Backstage access</li>
-                            <li>✅ Meet and greet with performers</li>
-                        </ul>
-                    <?php endif ?>
+                            
+                    
+                        <button onclick="window.location.href='purchaseticket?id=<?= $ticket->id ?>'">Buy Ticket Now</button>
+                    </div>
+                <?php endforeach ?>
                 
-                <button onclick="window.location.href='purchaseticket?id=<?= $ticket->id ?>'">Buy Ticket Now</button>
-                </div>
-            <?php endforeach ?>
-            <?php endif ?>
-            
+            </div>    
             <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
             <script>
                 var query = document.getElementById("address").textContent.trim();

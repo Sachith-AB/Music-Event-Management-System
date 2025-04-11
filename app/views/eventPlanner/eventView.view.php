@@ -49,10 +49,10 @@
 
                 <div class="team-grid-scrollable">
                     <div class="team-grid">
-
+                        
                         <?php foreach ($data['tickets'] as $ticket ): ?>
                             <div class="team-member">
-                                <div class="update-icon material-icons">edit</div>
+                                <div class="update-icon material-icons" onclick="goUpdateTicket(<?php echo $ticket->id  ?>)">edit</div>
                                 <h2 class="ticket-name"><?php echo $ticket->ticket_type  ?></h2>
                                 <div class="ticket-price">
                                     <span class="price-label">Price:</span>
@@ -64,13 +64,19 @@
                                     </div>
                                 </div>
                                 <div class="ticket-details">
+                                <?php $restrictions = json_decode($ticket->restrictions); ?>
                                     <p>
                                         <strong>Opportunities:</strong>
-                                        <ul>
-                                            <li>Access to VIP lounge</li>
-                                            <li>Free drinks</li>
-                                            <li>Priority entry</li>
-                                        </ul>
+                                        <?php if (!empty($restrictions)): ?>
+                                            <ul>
+                                                <?php foreach ($restrictions as $opo): ?>
+                                                    <li><?= htmlspecialchars($opo) ?></li>
+                                                <?php endforeach; ?>
+                                            </ul>
+                                        <?php else: ?>
+                                            <p>No opportunities</p>
+                                        <?php endif; ?>
+
                                     </p>
                                     <p>
                                         <strong>Sale Start:</strong>
@@ -85,29 +91,24 @@
                                         <span><?php echo $ticket->quantity ?></span>
                                     </p>
                                 </div>
-
                             </div>
-
-                        <?php endforeach; ?>
-                            
+                        <?php endforeach; ?>       
                     </div>
                 </div>
-
-
             <?php endif; ?>
+            <!-- button to go ticket pages -->
+            <a href = "<?=ROOT?>/create-ticket?event_id=<?php echo $data['event']->id?>" style="text-decoration: none;" >
+                    <button class="addbutton">Add Another Ticket</button>
+            </a>
         </div>
 
-
-
-        <!-- Request section -->
         <!-- Request section -->
         <div class="sectionR">
             <h1 class="event-name">Request Status</h1>
             <table class="request-table">
                 <thead>
                     <tr>
-                        <th>Profile Picture</th>
-                        <th>Name</th>
+                        <th>Event collaborator</th>
                         <th>Status</th>
                     </tr>
                 </thead>
@@ -120,24 +121,21 @@
                             <!-- Example row for collaborator request -->
                             <?php if($request->Status  == "pending"): ?>
                                 <tr>
-                                    <td><img src="<?=ROOT?>/assets/images/user/<?php echo $request->pro_pic ?>" alt="Collaborator 1" class="profile-pic"></td>
-                                    <td><?php echo $request->name ?></td>
+                                    <td class="collaborator-de"><img src="<?=ROOT?>/assets/images/user/<?php echo $request->pro_pic ?>" alt="Collaborator 1" class="profile-pic"><?php echo $request->name ?></td>
                                     <td class="status pending"><?php echo $request->Status ?></td>
                                 </tr>
                             <?php endif; ?>
 
                             <?php if($request->Status  == "accepted"): ?>
                                 <tr>
-                                    <td><img src="<?=ROOT?>/assets/images/user/<?php echo $request->pro_pic ?>" alt="Collaborator 2" class="profile-pic"></td>
-                                    <td><?php echo $request->name ?></td>
+                                    <td class="collaborator-de"><img src="<?=ROOT?>/assets/images/user/<?php echo $request->pro_pic ?>" alt="Collaborator 2" class="profile-pic"><?php echo $request->name ?></td>
                                     <td class="status accepted"><?php echo $request->Status ?></td>
                                 </tr>
                             <?php endif; ?>
 
                             <?php if($request->Status  == "rejected"): ?>
                                 <tr>
-                                    <td><img src="<?=ROOT?>/assets/images/user/<?php echo $request->pro_pic ?>" alt="Collaborator 3" class="profile-pic"></td>
-                                    <td><?php echo $request->name ?></td>
+                                    <td class="collaborator-de"><img src="<?=ROOT?>/assets/images/user/<?php echo $request->pro_pic ?>" alt="Collaborator 3" class="profile-pic"><?php echo $request->name ?></td>
                                     <td class="status rejected"><?php echo $request->Status ?></td>
                                 </tr>
                             <?php endif; ?>
@@ -171,7 +169,11 @@
 
             function goDelete(){
             window.location.href = "<?=ROOT?>/processing-event-delete?event_id=<?php echo $data['event']->id?>";
-        }
+            }
+
+            function goUpdateTicket(id){
+                window.location.href = "<?=ROOT?>/update-ticket?ticket_id="+id;
+            }
         </script>
         
     </div>

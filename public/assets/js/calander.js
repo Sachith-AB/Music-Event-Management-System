@@ -2,8 +2,10 @@
 const calendarGrid = document.querySelector(".calendar-grid");
 const currentMonthEl = document.getElementById("currentMonth");
 const eventList = document.getElementById("eventList");
-const eventN = document.getElementById("events").value;
-const events = JSON.parse(eventN); // Convert JSON to object
+const eventN = document.getElementById("events")?.textContent?.trim();
+const events = eventN ? JSON.parse(eventN) : [];
+
+
 
 // Get today's date
 const today = new Date();

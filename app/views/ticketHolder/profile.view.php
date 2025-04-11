@@ -32,9 +32,9 @@
                     <h3 class="head3"><?php  echo $_SESSION['USER']->contact ?></h3>
                 </div>
                 <div class="tag">
-                    <div class="tag-item">24 Purchase</div>
-                    <div class="tag-item">4 Following</div>
-                    <div class="tag-item">10 Likes</div>
+                    <div class="tag-item"><?= htmlspecialchars($ticketcount[0]) ?> events</div>
+                    <div class="tag-item"><?= htmlspecialchars($ticketcount[1]) ?> tickets</div>
+                    <div class="tag-item"><?= htmlspecialchars($ticketcount[2]) ?> price</div>
                 </div>
                 <form class="buttons" method="POST">
                     <button onclick="goToUpdate()" class="button button-1" type="button">Update</button>
@@ -45,17 +45,20 @@
                 <div class="upcommingeve-tickets">
                     <h2>My Tickets</h2>
                     <?php foreach ($combinedTickets as $event): ?>
-                        <div class="upcommingeve-ticket-card">
-                            <div class="upcommingeve-ticket-image">
-                                <img src="<?=ROOT?>/assets/images/events/<?= htmlspecialchars($event[0]->event_images) ?>" alt="Event Image">
+                        <a href="<?=ROOT?>/view-event?id=<?= htmlspecialchars($event[0]->event_id) ?>" class="event-card-link">
+                            <div class="upcommingeve-ticket-card">
+                                <div class="event-status-process"><?= htmlspecialchars($event[0]->ticket_type) ?> - LKR<?= htmlspecialchars($event[0]->ticket_price) ?></div>
+                                <div class="upcommingeve-ticket-image">
+                                    <img src="<?=ROOT?>/assets/images/events/<?= htmlspecialchars($event[0]->event_images) ?>" alt="Event Image">
+                                </div>
+                                <div class="upcommingeve-ticket-info">
+                                    <h3><?= htmlspecialchars($event[0]->event_name) ?>: <?= htmlspecialchars($event[0]->event_description) ?></h3>
+                                    <p>📅 <?= htmlspecialchars(date("l, F d | h:i A", strtotime($event[0]->event_date))) ?></p>
+                                    <p>📍 <?= htmlspecialchars($event[0]->address) ?></p>
+                                    <div class="upcommingeve-ticket-meta"><?= htmlspecialchars($event['ticket_quantity']) ?> Tickets - LKR<?= htmlspecialchars($event['ticket_quantity'] * $event[0]->ticket_price) ?></div>
+                                </div>
                             </div>
-                            <div class="upcommingeve-ticket-info">
-                                <h3><?= htmlspecialchars($event[0]->event_name) ?>: <?= htmlspecialchars($event[0]->event_description) ?></h3>
-                                <p>📅 <?= htmlspecialchars(date("l, F d | h:i A", strtotime($event[0]->event_date))) ?></p>
-                                <p>📍 <?= htmlspecialchars($event[0]->address) ?></p>
-                                <div class="upcommingeve-ticket-meta"><?= htmlspecialchars($event['ticket_quantity']) ?> Tickets - LKR<?= htmlspecialchars($event['ticket_quantity'] * $event[0]->ticket_price) ?></div>
-                            </div>
-                        </div>
+                        </a>
                     <?php endforeach; ?>
                 </div>
             <?php else: ?>
