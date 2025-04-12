@@ -54,14 +54,27 @@ class Profile {
         $id = $_SESSION['USER']->id ?? 0;
 
         $mytickets = $buyticket->getAllPurchasedEvents($id);
-        $combinedTickets = [];
+        $upcomingTickets = [];
+        $pastTickets = [];
         foreach ($mytickets as $myticket) {
             $ticket_id = $myticket->ticket_id; 
             $eventDetail = $ticket->getTicketAndEventDetails($ticket_id); 
-            $combinedTickets[] = array_merge((array)$myticket, (array)$eventDetail);
+
+            if($eventDetail && isset($eventDetail->event_date)){
+                $combined = array_merge((array)$myticket, (array)$eventDetail);
+
+                $eventDate = $eventDetail[0]->event_date;
+            if (strtotime($eventDate) >= strtotime(date('Y-m-d'))) {
+                $upcomingTickets[] = $combined;
+            } else {
+                $pastTickets[] = $combined;
+            }
+            }
+
+            
         }
-        // show($combinedTickets);
-        return $combinedTickets;
+         
+        return $upcomingTickets;
 
     }
 

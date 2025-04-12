@@ -65,7 +65,7 @@ class Purchaseticket {
 
                 // Redirect to PayHere
                 $merchantId = '1229373';
-                $returnUrl = ROOT . '/successfullypaid?purchase_id='.$latestpurchaseid;
+                $returnUrl = ROOT . '/successfullypaid?purchase_id=' . $latestpurchaseid . '&email=' . $email;
                 $cancelUrl = ROOT . '/payment-failure?id='.$eventId;
                 $notifyUrl = ROOT . '/PaymentNotify';
                 $merchant_secret='MTk2MTI2MTY0MzQ3ODM5NjY0MzU0ODYwNjE5OTEzODAzMTkzOTc=';
