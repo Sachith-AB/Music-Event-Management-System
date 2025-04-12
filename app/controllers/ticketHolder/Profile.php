@@ -15,9 +15,11 @@ class Profile {
         $data = $this->profile($user);
         //show( $data);
 
-        $combinedTickets=$this->purchasedetails();
+        $tickets=$this->purchasedetails();
+        $upcomingTickets = $tickets['upcoming'];
+        $pastTickets = $tickets['past'];
 
-        $ticketcount = $this->getticketcount($combinedTickets);
+        $ticketcount = $this->getticketcount(array_merge($upcomingTickets,$pastTickets));
 
         //  show($combinedTickets);
 
@@ -27,7 +29,7 @@ class Profile {
 
         
 
-        $this->view('ticketHolder/profile',['data'=>$data,'combinedTickets'=>$combinedTickets,'ticketcount'=>$ticketcount]);
+        $this->view('ticketHolder/profile',['data'=>$data,'upcomingTickets'=>$upcomingTickets,'pastTickets'=>$pastTickets,'ticketcount'=>$ticketcount]);
         
     }
 
@@ -59,11 +61,12 @@ class Profile {
         foreach ($mytickets as $myticket) {
             $ticket_id = $myticket->ticket_id; 
             $eventDetail = $ticket->getTicketAndEventDetails($ticket_id); 
-
-            if($eventDetail && isset($eventDetail->event_date)){
+            // show($eventDetail);
+            if($eventDetail && isset($eventDetail[0]->event_date)){
                 $combined = array_merge((array)$myticket, (array)$eventDetail);
 
                 $eventDate = $eventDetail[0]->event_date;
+                // show($eventDetail);
             if (strtotime($eventDate) >= strtotime(date('Y-m-d'))) {
                 $upcomingTickets[] = $combined;
             } else {
@@ -74,7 +77,7 @@ class Profile {
             
         }
          
-        return $upcomingTickets;
+        return ['upcoming'=>$upcomingTickets,'past'=>$pastTickets];
 
     }
 

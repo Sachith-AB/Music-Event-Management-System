@@ -41,26 +41,63 @@
                     <button class="button button-2" type="submit" name="logOut">Sign out</button>
                 </form>
             </div>
-            <?php if (!empty($combinedTickets)): ?>
+            <?php if (!empty($pastTickets)): ?>
                 <div class="upcommingeve-tickets">
-                    <h2>My Tickets</h2>
-                    <?php foreach ($combinedTickets as $event): ?>
-                        <a href="<?=ROOT?>/view-event?id=<?= htmlspecialchars($event[0]->event_id) ?>" class="event-card-link">
-                            <div class="upcommingeve-ticket-card">
-                                <div class="event-status-process"><?= htmlspecialchars($event[0]->ticket_type) ?> - LKR<?= htmlspecialchars($event[0]->ticket_price) ?></div>
-                                <div class="upcommingeve-ticket-image">
-                                    <img src="<?=ROOT?>/assets/images/events/<?= htmlspecialchars($event[0]->event_images) ?>" alt="Event Image">
-                                </div>
-                                <div class="upcommingeve-ticket-info">
-                                    <h3><?= htmlspecialchars($event[0]->event_name) ?>: <?= htmlspecialchars($event[0]->event_description) ?></h3>
-                                    <p>📅 <?= htmlspecialchars(date("l, F d | h:i A", strtotime($event[0]->event_date))) ?></p>
-                                    <p>📍 <?= htmlspecialchars($event[0]->address) ?></p>
-                                    <div class="upcommingeve-ticket-meta"><?= htmlspecialchars($event['ticket_quantity']) ?> Tickets - LKR<?= htmlspecialchars($event['ticket_quantity'] * $event[0]->ticket_price) ?></div>
-                                </div>
-                            </div>
-                        </a>
-                    <?php endforeach; ?>
-                </div>
+    <h2>My Events</h2>
+    <div class="tab-buttons">
+        <button class="tab-button active" onclick="showTab('past')">Past Events</button>
+        <button class="tab-button" onclick="showTab('upcoming')">Upcoming Events</button>
+    </div>
+
+    <!-- Past Events -->
+    <div id="past" class="tab-content">
+        <?php if (!empty($pastTickets)): ?>
+            <?php foreach ($pastTickets as $event): ?>
+                <a href="<?=ROOT?>/view-pastevent?id=<?= htmlspecialchars($event[0]->event_id) ?>" class="event-card-link">
+                    <div class="upcommingeve-ticket-card">
+                        <div class="event-status-process"><?= htmlspecialchars($event[0]->ticket_type) ?> - LKR<?= htmlspecialchars($event[0]->ticket_price) ?></div>
+                        <div class="upcommingeve-ticket-image">
+                            <img src="<?=ROOT?>/assets/images/events/<?= htmlspecialchars($event[0]->event_images) ?>" alt="Event Image">
+                        </div>
+                        <div class="upcommingeve-ticket-info">
+                            <h3><?= htmlspecialchars($event[0]->event_name) ?>: <?= htmlspecialchars($event[0]->event_description) ?></h3>
+                            <p>📅 <?= htmlspecialchars(date("l, F d | h:i A", strtotime($event[0]->event_date))) ?></p>
+                            <p>📍 <?= htmlspecialchars($event[0]->address) ?></p>
+                            <div class="upcommingeve-ticket-meta"><?= htmlspecialchars($event['ticket_quantity']) ?> Tickets - LKR<?= htmlspecialchars($event['ticket_quantity'] * $event[0]->ticket_price) ?></div>
+                        </div>
+                    </div>
+                </a>
+            <?php endforeach; ?>
+        <?php else: ?>
+            <div class="purchase-text">No past events found.</div>
+        <?php endif; ?>
+    </div>
+
+    <!-- Upcoming Events -->
+    <div id="upcoming" class="tab-content" style="display: none;">
+        <?php if (!empty($upcomingTickets)): ?>
+            <?php foreach ($upcomingTickets as $event): ?>
+                <a href="<?=ROOT?>/view-event?id=<?= htmlspecialchars($event[0]->event_id) ?>" class="event-card-link">
+                    <div class="upcommingeve-ticket-card">
+                        <div class="event-status-process"><?= htmlspecialchars($event[0]->ticket_type) ?> - LKR<?= htmlspecialchars($event[0]->ticket_price) ?></div>
+                        <div class="upcommingeve-ticket-image">
+                            <img src="<?=ROOT?>/assets/images/events/<?= htmlspecialchars($event[0]->event_images) ?>" alt="Event Image">
+                        </div>
+                        <div class="upcommingeve-ticket-info">
+                            <h3><?= htmlspecialchars($event[0]->event_name) ?>: <?= htmlspecialchars($event[0]->event_description) ?></h3>
+                            <p>📅 <?= htmlspecialchars(date("l, F d | h:i A", strtotime($event[0]->event_date))) ?></p>
+                            <p>📍 <?= htmlspecialchars($event[0]->address) ?></p>
+                            <div class="upcommingeve-ticket-meta"><?= htmlspecialchars($event['ticket_quantity']) ?> Tickets - LKR<?= htmlspecialchars($event['ticket_quantity'] * $event[0]->ticket_price) ?></div>
+                        </div>
+                    </div>
+                </a>
+            <?php endforeach; ?>
+        <?php else: ?>
+            <div class="purchase-text">No upcoming events found.</div>
+        <?php endif; ?>
+    </div>
+</div>
+
             <?php else: ?>
                 <div class="purchase-text">
                     No tickets have been purchased yet...
@@ -93,6 +130,27 @@
             window.location.href = 'update-profile';
         }
     </script>
+
+
+
+    <script>
+        function showTab(tab) {
+            // Hide both
+            document.getElementById('past').style.display = 'none';
+            document.getElementById('upcoming').style.display = 'none';
+
+            // Remove active class from buttons
+            document.querySelectorAll('.tab-button').forEach(btn => btn.classList.remove('active'));
+
+            // Show selected
+            document.getElementById(tab).style.display = 'block';
+            document.querySelector(`.tab-button[onclick="showTab('${tab}')"]`).classList.add('active');
+        }
+    </script>
+
+
+
+
 
     <script src="<?=ROOT?>/assets/js/message.js"></script>
 
