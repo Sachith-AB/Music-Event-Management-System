@@ -11,7 +11,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
 </head>
 <body>
-    <h1>Admin Event Report</h1>
+    <h1>Event Report</h1>
 
     <div class = "pdf-container">
 

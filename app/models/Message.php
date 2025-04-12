@@ -32,7 +32,7 @@ class Message {
     public function getEventMessages($planner_id)
 {
     // Assume $planner_id is passed to fetch messages for the specific event planner
-    $query = "SELECT m.event_id, m.sender AS collaborator_id, e.event_name, c.name AS collaborator_name, 
+    $query = "SELECT m.event_id, m.sender AS collaborator_id, e.event_name, c.name AS collaborator_name, c.pro_pic AS collaborator_pic, 
                      MAX(m.timestamp) AS last_message_time, 
                      COUNT(m.id) AS total_messages 
               FROM messages m 

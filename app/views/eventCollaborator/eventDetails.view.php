@@ -12,10 +12,11 @@
 </head>
 <body>
     <?php include ('../app/views/components/loading.php'); ?>
-
+    <!-- <img src="<?=ROOT?>/assets/images/ticket/ticketevent-bg.jpg" alt="Musical Fusion Festival" class="headersection-img">  -->
     <div class="min-h-screen">
         <!-- Header -->
         <div class="gradient-header">
+            
             <h1 class="title"><?php echo $data['event']->event_name ?></h1>
             <div class="eventplanner">
                 <i class="fas fa-user"></i>
@@ -76,7 +77,7 @@
             <!-- Right Side - Chat with Event Planner -->
             <div class="card-style">
                 <div class="flex-center-space">
-                    <i class="fas fa-comments icon-purple"></i>
+                    <i class="fas fa-comments icon"></i>
                     <h2 class="text-large-semibold">Chat with Event Planner</h2>
                 </div>
 

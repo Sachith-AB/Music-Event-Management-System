@@ -46,7 +46,7 @@ class Buyticket {
     }
 
     public function getAllPurchasedEvents($userId){
-        $query = "SELECT * from buyticket WHERE user_id=?";
+        $query = "SELECT * from buyticket WHERE payment_status = 'complete' AND user_id=?";
         return $this->query($query, [$userId]);
     }
 

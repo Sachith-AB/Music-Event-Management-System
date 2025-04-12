@@ -107,14 +107,16 @@ class TicketController {
         }
     
         // Handle form submission for ticket update
-        if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['submit'])) {
+        if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['update'])) {
+            
             if (isset($_POST['restrictions']) && is_array($_POST['restrictions'])) {
                 $_POST['restrictions'] = json_encode($_POST['restrictions']);
+                //show($_POST);
             }
     
             if ($ticket->validTicket($_POST)) {
-                unset($_POST['submit']); // Remove the submit key
-    
+                unset($_POST['update']); // Remove the submit key
+                //show($_POST);
                 // Update the ticket
                 $ticket->update($ticket_id, $_POST);
                 redirect("view-tickets?event_id=".$_POST['event_id']);
@@ -134,20 +136,21 @@ class TicketController {
     $ticket = new Ticket;
 
     // Get the ticket ID from POST data
-    $ticket_id = $_POST['ticket_id'] ?? null;
+    $ticket_id = htmlspecialchars($_GET['ticket_id']?? null);
 
+    $data = $ticket->getTicketAndEventDetails($ticket_id);
+    // show($data);
     // Fetch the event ID associated with this ticket
     $event_id = $ticket->getEventIdByTicketId($ticket_id);
 
-    if ($ticket_id && $event_id) {
+    if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['delete'])) {
         // Delete the ticket
         $ticket->delete($ticket_id);
 
         // Use a redirect function to navigate to the view-tickets page with the event_id
         redirect("view-tickets?event_id=" . $event_id);
-    } else {
-        echo "Error: Ticket ID not provided or Event ID not found.";
     }
+    $this->view('ticket/deleteticket', $data);
 }
 
 
