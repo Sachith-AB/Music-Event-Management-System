@@ -5,7 +5,7 @@ class Request {
 
     protected $table = 'requests'; //database table name
     protected $allowedColumns = [
-        'id','event_id','collaborator_id','Status','role',
+        'id','event_id','collaborator_id','Status','role','date_time'
     ];
 
     // public function getSingerDetails()

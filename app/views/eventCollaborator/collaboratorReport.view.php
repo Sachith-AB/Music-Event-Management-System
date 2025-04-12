@@ -16,363 +16,376 @@
 
 <div class="pdf-container">
 
+    <div class="date-range">
 
-    <h1>Event Collaborator Report</h1>
+        <form action="" method = "post" >
+            <label for= "from" >From : </label>
+            <input type="date" id = "from" name = "start-date" required>
 
-    <h2>Event Requests by Collaborator</h2>
+            <label for= "to" >   To : </label>
+            <input type="date" id = "to" name = "end-date" required> <br><br>
 
-    <!-- <div class="Table-section"> -->
+            <button class = "submit-btn" type="submit">Generate report</button>
 
-        <div class="collaborator-table">
-            <h3>Singers</h3>
-            <table>
-                <tr>
-                    <th>Name</th>
-                    <th>Requests recieved</th>
-                </tr>
+        </form>
+    </div>
 
-                <?php $singerExists = false; // Flag to track if any singer is found ?>
+            <h1>Event Collaborator Report</h1>
 
-                <?php foreach($data as $request):?>
-                    
-                    <?php if($request->role == "singer"):?>
+            <h2>Event Requests by Collaborator</h2>
 
-                        <?php $singerExists = true; // Set flag to true ?>
+            <!-- <div class="Table-section"> -->
 
+                <div class="collaborator-table">
+                    <h3>Singers</h3>
+                    <table>
                         <tr>
-                            <td> <?php echo($request->name); ?> </td>
-                            <td> <?php echo($request->request_count); ?> </td>
+                            <th>Name</th>
+                            <th>Requests recieved</th>
                         </tr>
 
-                    <?php endif; ?>
+                        <?php $singerExists = false; // Flag to track if any singer is found ?>
 
-                <?php endforeach; ?>
+                        <?php foreach($data as $request):?>
+                            
+                            <?php if($request->role == "singer"):?>
 
-                <?php if (!$singerExists): ?>
-                    <tr>
-                        <td colspan="2">No requests yet</td>
-                    </tr>
-                <?php endif; ?>
+                                <?php $singerExists = true; // Set flag to true ?>
 
-            </table>
-        </div>
+                                <tr>
+                                    <td> <?php echo($request->name); ?> </td>
+                                    <td> <?php echo($request->request_count); ?> </td>
+                                </tr>
 
-     
+                            <?php endif; ?>
 
-        <div class="collaborator-table">
-            <h3>Bands</h3>
-            <table>
+                        <?php endforeach; ?>
 
-            <thead>
+                        <?php if (!$singerExists): ?>
+                            <tr>
+                                <td colspan="2">No requests yet</td>
+                            </tr>
+                        <?php endif; ?>
 
-                <tr>
-                    <th>Name</th>
-                    <th>Requests recieved</th>
-                </tr>
+                    </table>
+                </div>
 
-            </thead>
-                
+            
 
-                <?php $bandExists = false; // Flag to track if any band is found ?>
+                <div class="collaborator-table">
+                    <h3>Bands</h3>
+                    <table>
 
-                <?php foreach($data as $request):?>
-                
-                    <?php if($request->role == "band"):?>
-
-                        <?php $bandExists = true; // Set flag to true ?>
-                    
-                    <tbody>
+                    <thead>
 
                         <tr>
-                            <td> <?php echo($request->name); ?> </td>
-                            <td> <?php echo($request->request_count); ?> </td>
+                            <th>Name</th>
+                            <th>Requests recieved</th>
                         </tr>
 
-
-                    </tbody>
+                    </thead>
                         
-                    <?php endif; ?>
 
-                <?php endforeach; ?>
+                        <?php $bandExists = false; // Flag to track if any band is found ?>
 
+                        <?php foreach($data as $request):?>
+                        
+                            <?php if($request->role == "band"):?>
 
-                <?php if (!$bandExists): ?>
+                                <?php $bandExists = true; // Set flag to true ?>
+                            
+                            <tbody>
 
-                <tbody>
-
-                    <tr>
-                        <td colspan="2">No requests yet</td>
-                    </tr>
-
-                </tbody>
-                   
-                <?php endif; ?>
-
-
-            </table>
-
-        </div>
-
-        
-        <div class="collaborator-table">
-            <h3>Sounds & DJ</h3>
-            <table>
-
-            <thead>
-
-                <tr>
-                    <th>Name</th>
-                    <th>Requests recieved</th>
-                </tr>
-
-            </thead>
-               
-
-                <?php $soundExists = false; // Flag to track if any band is found ?>
-
-                <?php foreach($data as $request):?>
-                    
-                    <?php if($request->role == "sound"):?>
-
-                        <?php $soundExists = true; // Set flag to true ?>
-                    
-                    <tbody>
-
-                        <tr>
-                            <td> <?php echo($request->name); ?> </td>
-                            <td> <?php echo($request->request_count); ?> </td>
-                        </tr>
+                                <tr>
+                                    <td> <?php echo($request->name); ?> </td>
+                                    <td> <?php echo($request->request_count); ?> </td>
+                                </tr>
 
 
-                    </tbody>
-                       
+                            </tbody>
+                                
+                            <?php endif; ?>
 
-                    <?php endif; ?>
-
-                <?php endforeach; ?>
-
-                <?php if (!$soundExists): ?>
-
-                    <tbody>
-
-                        <tr>
-                            <td colspan="2">No requests yet</td>
-                        </tr>
-
-                    </tbody>
-                   
-                <?php endif; ?>
+                        <?php endforeach; ?>
 
 
-            </table>
-
-        </div>
-
-        <div class="collaborator-table">
-            <h3>Decorators</h3>
-            <table>
-
-                <thead>
-
-                    <tr>
-                        <th>Name</th>
-                        <th>Requests recieved</th>
-                    </tr>
-
-                </thead>
-               
-
-                <?php $decoratorExists = false; // Flag to track if any band is found ?>
-
-                <?php foreach($data as $request):?>
-                    
-                    <?php if($request->role == "decorator"):?>
-
-                        <?php $decoratorExists = true; // Set flag to true ?>
+                        <?php if (!$bandExists): ?>
 
                         <tbody>
 
                             <tr>
-                                <td> <?php echo($request->name); ?> </td>
-                                <td> <?php echo($request->request_count); ?> </td>
+                                <td colspan="2">No requests yet</td>
                             </tr>
 
                         </tbody>
-                    
-                    <?php endif; ?>
-
-                <?php endforeach; ?>
-
-
-                <?php if (!$decoratorExists): ?>
-
-                    <tbody>
-                        <tr>
-                            <td colspan="2">No requests yet</td>
-                        </tr>
-
-                    </tbody>
-                    
-                <?php endif; ?>
-
-            </table>
-
-        </div>
-
-        <div class="collaborator-table">
-            <h3>Stage Suppliers</h3>
-            <table>
-
-                <thead>
-                    <tr>
-                        <th>Name</th>
-                        <th>Requests recieved</th>
-                    </tr>
-
-
-                </thead>
-                    
-                
-                <?php $stageExists = false; // Flag to track if any band is found ?>
-
-                <?php foreach($data as $request):?>
-                    
-                    <?php if($request->role == "stage"):?>
-
-                        <?php $stageExists = true; // Set flag to true ?>
-                    
-                    <tbody>
-
-                        <tr>
-                            <td> <?php echo($request->name); ?> </td>
-                            <td> <?php echo($request->request_count); ?> </td>
-                        </tr>
-
-                    </tbody>
                         
-
-                    <?php endif; ?>
-
-                <?php endforeach; ?>
+                        <?php endif; ?>
 
 
-                <?php if (!$stageExists): ?>
+                    </table>
 
-                    <tbody>
-                        <tr>
-                            <td colspan="2">No requests yet</td>
-                        </tr>
+                </div>
 
-                    </tbody>
-                    
-                <?php endif; ?>
-
-            </table>
-        </div>
-
-        <div class="collaborator-table">
-            <h3>Announcers</h3>
-            <table>
-
-            <thead>
-
-                <tr>
-                    <th>Name</th>
-                    <th>Requests recieved</th>
-                </tr>
-
-            </thead>
                 
+                <div class="collaborator-table">
+                    <h3>Sounds & DJ</h3>
+                    <table>
 
-                <?php $announcerExists = false; // Flag to track if any band is found ?>
-
-                <?php foreach($data as $request):?>
-                    
-                    <?php if($request->role == "announcer"):?>
-
-                        <?php $announcerExists = true; // Set flag to true ?>
-                    
-                    <tbody>
+                    <thead>
 
                         <tr>
-                            <td> <?php echo($request->name); ?> </td>
-                            <td> <?php echo($request->request_count); ?> </td>
-                        </tr>
-                    
-                    </tbody>
-                        
-
-                    <?php endif; ?>
-
-                <?php endforeach; ?>
-
-
-                <?php if (!$announcerExists): ?>
-
-                    <tbody>
-                        <tr>
-                            <td colspan="2">No requests yet</td>
+                            <th>Name</th>
+                            <th>Requests recieved</th>
                         </tr>
 
-                    </tbody>
-                   
-                <?php endif; ?>
-
-            </table>
-        </div>
-
-    <!-- </div> -->
-
-    <h1>Top Requested Collaborators</h1>
-
-        <!-- <div class="Table-section"> -->
-
-            <div class="all-table">
-                <table>
-
-                <thead>
-
-                    <tr>
-                        <th>Name</th>
-                        <th>Role</th>
-                        <th>Requests recieved</th>
-                    </tr>
-
-                </thead>
+                    </thead>
                     
 
-                    <?php if(!empty($data)):?>
+                        <?php $soundExists = false; // Flag to track if any band is found ?>
 
                         <?php foreach($data as $request):?>
+                            
+                            <?php if($request->role == "sound"):?>
+
+                                <?php $soundExists = true; // Set flag to true ?>
+                            
+                            <tbody>
+
+                                <tr>
+                                    <td> <?php echo($request->name); ?> </td>
+                                    <td> <?php echo($request->request_count); ?> </td>
+                                </tr>
+
+
+                            </tbody>
+                            
+
+                            <?php endif; ?>
+
+                        <?php endforeach; ?>
+
+                        <?php if (!$soundExists): ?>
 
                             <tbody>
 
                                 <tr>
-                                    <td><?php echo($request->name);?></td>
-                                    <td><?php echo($request->role);?></td>
-                                    <td><?php echo($request->request_count);?></td>
+                                    <td colspan="2">No requests yet</td>
                                 </tr>
 
                             </tbody>
+                        
+                        <?php endif; ?>
+
+
+                    </table>
+
+                </div>
+
+                <div class="collaborator-table">
+                    <h3>Decorators</h3>
+                    <table>
+
+                        <thead>
+
+                            <tr>
+                                <th>Name</th>
+                                <th>Requests recieved</th>
+                            </tr>
+
+                        </thead>
+                    
+
+                        <?php $decoratorExists = false; // Flag to track if any band is found ?>
+
+                        <?php foreach($data as $request):?>
+                            
+                            <?php if($request->role == "decorator"):?>
+
+                                <?php $decoratorExists = true; // Set flag to true ?>
+
+                                <tbody>
+
+                                    <tr>
+                                        <td> <?php echo($request->name); ?> </td>
+                                        <td> <?php echo($request->request_count); ?> </td>
+                                    </tr>
+
+                                </tbody>
+                            
+                            <?php endif; ?>
 
                         <?php endforeach; ?>
 
-                    <?php else: ?>
 
-                        <tbody>
-                            <tr>
-                                <td colspan=3>No requests yet</td>
-                            </tr>
+                        <?php if (!$decoratorExists): ?>
+
+                            <tbody>
+                                <tr>
+                                    <td colspan="2">No requests yet</td>
+                                </tr>
+
+                            </tbody>
                             
-                        </tbody>
+                        <?php endif; ?>
 
-                    <?php endif; ?>
+                    </table>
+
+                </div>
+
+                <div class="collaborator-table">
+                    <h3>Stage Suppliers</h3>
+                    <table>
+
+                        <thead>
+                            <tr>
+                                <th>Name</th>
+                                <th>Requests recieved</th>
+                            </tr>
 
 
-                </table>
+                        </thead>
+                            
+                        
+                        <?php $stageExists = false; // Flag to track if any band is found ?>
 
-            </div>
-        <!-- </div> -->
+                        <?php foreach($data as $request):?>
+                            
+                            <?php if($request->role == "stage"):?>
+
+                                <?php $stageExists = true; // Set flag to true ?>
+                            
+                            <tbody>
+
+                                <tr>
+                                    <td> <?php echo($request->name); ?> </td>
+                                    <td> <?php echo($request->request_count); ?> </td>
+                                </tr>
+
+                            </tbody>
+                                
+
+                            <?php endif; ?>
+
+                        <?php endforeach; ?>
+
+
+                        <?php if (!$stageExists): ?>
+
+                            <tbody>
+                                <tr>
+                                    <td colspan="2">No requests yet</td>
+                                </tr>
+
+                            </tbody>
+                            
+                        <?php endif; ?>
+
+                    </table>
+                </div>
+
+                <div class="collaborator-table">
+                    <h3>Announcers</h3>
+                    <table>
+
+                    <thead>
+
+                        <tr>
+                            <th>Name</th>
+                            <th>Requests recieved</th>
+                        </tr>
+
+                    </thead>
+                        
+
+                        <?php $announcerExists = false; // Flag to track if any band is found ?>
+
+                        <?php foreach($data as $request):?>
+                            
+                            <?php if($request->role == "announcer"):?>
+
+                                <?php $announcerExists = true; // Set flag to true ?>
+                            
+                            <tbody>
+
+                                <tr>
+                                    <td> <?php echo($request->name); ?> </td>
+                                    <td> <?php echo($request->request_count); ?> </td>
+                                </tr>
+                            
+                            </tbody>
+                                
+
+                            <?php endif; ?>
+
+                        <?php endforeach; ?>
+
+
+                        <?php if (!$announcerExists): ?>
+
+                            <tbody>
+                                <tr>
+                                    <td colspan="2">No requests yet</td>
+                                </tr>
+
+                            </tbody>
+                        
+                        <?php endif; ?>
+
+                    </table>
+                </div>
+
+            <!-- </div> -->
+
+            <h1>Top Requested Collaborators</h1>
+
+                <!-- <div class="Table-section"> -->
+
+                    <div class="all-table">
+                        <table>
+
+                        <thead>
+
+                            <tr>
+                                <th>Name</th>
+                                <th>Role</th>
+                                <th>Requests recieved</th>
+                            </tr>
+
+                        </thead>
+                            
+
+                            <?php if(!empty($data)):?>
+
+                                <?php foreach($data as $request):?>
+
+                                    <tbody>
+
+                                        <tr>
+                                            <td><?php echo($request->name);?></td>
+                                            <td><?php echo($request->role);?></td>
+                                            <td><?php echo($request->request_count);?></td>
+                                        </tr>
+
+                                    </tbody>
+
+                                <?php endforeach; ?>
+
+                            <?php else: ?>
+
+                                <tbody>
+                                    <tr>
+                                        <td colspan=3>No requests yet</td>
+                                    </tr>
+                                    
+                                </tbody>
+
+                            <?php endif; ?>
+
+
+                        </table>
+
+                    </div>
+                <!-- </div> -->
 
 </div>
 
