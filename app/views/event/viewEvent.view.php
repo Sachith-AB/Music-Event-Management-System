@@ -152,17 +152,17 @@
                 <?php if(!empty($data['performers'])): ?>
                     <?php foreach($data['performers'] as $perfotmer): ?>
                         <div class="team-member">
-                            <img class="team-member-image" src="<?=ROOT?>/assets/images/user/<?php echo $perfotmer->pro_pic?>" alt="Selina Valencia">
+                            <img class="team-member-image" src="<?=ROOT?>/assets/images/user/<?php echo $perfotmer['pro_pic']?>" alt="Selina Valencia">
                             <div class="team-info">
-                                <h3><?php echo $perfotmer->name ?></h3>
+                                <h3><?php echo $perfotmer['name'] ?></h3>
                                 
 
                             </div>
                             <div class="social-icons">
-                                <a href="#"><i class="fab fa-facebook-f"></i></a>
-                                <a href="#"><i class="fab fa-twitter"></i></a>
-                                <a href="#"><i class="fab fa-instagram"></i></a>
-                                <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                                <a href="<?php echo $perfotmer[0]->fb?>"><i class="fab fa-facebook-f"></i></a>
+                                <a href="<?php echo $perfotmer[0]->twitter?>"><i class="fab fa-twitter"></i></a>
+                                <a href="<?php echo $perfotmer[0]->insta?>"><i class="fab fa-instagram"></i></a>
+                                <a href="<?php echo $perfotmer[0]->youtube?>"><i class="fab fa-youtube"></i></a>
                             </div>
                         </div>
 

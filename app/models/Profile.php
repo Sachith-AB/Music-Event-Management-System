@@ -110,4 +110,10 @@ class Profile {
         $result = $this->query($query, ['userId' => $userId]);
         return !empty($result);
     }
+
+    public function getProfileInfoByUserId($userId){
+        $query = "SELECT * FROM profile WHERE userID = :userId";
+        $result = $this->query($query, ['userId' => $userId]);
+        return $result;
+    }
 }

@@ -14,6 +14,7 @@ route('event-review', 'event/Review@index');
 route('event-update', 'event/Update@index');  
 route('event-delete', 'event/Delete@index');  
 route('view-event','event/ViewEvent@index');
+
 route('processing-event-update','event/ProcessingEventUpdate@index');
 route('processing-event-delete','event/ProcessingEventDelete@index');
 
@@ -78,6 +79,7 @@ route('ticketevent','ticket/PurchaseTicket@index4');
 route('profile','ticketHolder/Profile@index');
 route('update-profile','ticketHolder/UpdateProf@index');
 route('ticket-holder-home','ticketHolder/TicketHolderHome@index');
+route('view-pastevent','ticketHolder/ViewPastevent@index');
 
 // Route for event planners
 route('event-planner-profile','eventPlanner/Profile@index');

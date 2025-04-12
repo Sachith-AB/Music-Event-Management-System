@@ -204,6 +204,7 @@ class Event {
         $res['event']=[];
         $res['event'] = $this->firstById($id);
         $user = new User;
+        $profile = new Profile;
         
         $res['performers'] = [];
         $query_1 = "SELECT * FROM requests WHERE event_id = $id AND (role ='singer' OR role = 'band' OR role='announcer') AND Status = 'accepted' ";
@@ -211,7 +212,10 @@ class Event {
 
         if(!empty($result_1)){
             foreach($result_1 as $performer){
-                $res['performers'][]=$user->firstById($performer->collaborator_id);
+                $res['performers'][]=array_merge(
+                    (array)$user->firstById($performer->collaborator_id),
+                    (array)$profile->getProfileInfoByUserId($performer->collaborator_id)
+                );
             }
         }
 
