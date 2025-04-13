@@ -72,21 +72,34 @@ $_SESSION['last_visit'] = date('Y-m-d H:i:s');
         <!-- Main Content -->
         <div class="main-content">
             <section id="event-header">
-                <h1 >Event Header</h1>
-                    <img src="<?=ROOT?>/assets/images/events/1.jpg" alt="Event Cover Image" class="cover-image">
-                    <!-- <div class="image-scroll-container">
-
-                        <img src="<?=ROOT?>/assets/images/events/1.jpg" alt="Event Image 1" class="event-image">
-                        <img src="<?=ROOT?>/assets/images/events/2.jpg" class="event-image">
-                        <img src="<?=ROOT?>/assets/images/events/3.jpg" class="event-image">
-                        <img src="<?=ROOT?>/assets/images/events/4.jpg" class="event-image">
-                        <img src="<?=ROOT?>/assets/images/events/5.jpg" class="event-image">
-                    </div> -->
-                    <div class="event-name-desc">
-                        <h2  id = "event title" ><?php echo $data['event_name'] ?></h2>
-                        <p class="event-description"><?php echo $data['description'] ?></p>
-                    </div>
-                
+                <?php
+                // Check if cover_images exists and is not empty
+                if (isset($data['cover_images']) && !empty($data['cover_images'])) {
+                    // Decode the JSON string to get the array of image names
+                    $imageNames = json_decode($data['cover_images'], true);
+                    
+                    // If we have images, display them
+                    if (is_array($imageNames) && count($imageNames) > 0) {
+                        
+                        // If there are multiple images, display them in a scrollable container
+                        if (count($imageNames) > 1) {
+                            echo '<div class="image-scroll-container">';
+                            foreach ($imageNames as $imageName) {
+                                echo '<img src="' . ROOT . '/assets/images/events/' . $imageName . '" alt="Event Image" class="event-image">';
+                            }
+                            echo '</div>';
+                        }
+                    } else {
+                        echo '<div class="no-images">No images available for this event</div>';
+                    }
+                } else {
+                    echo '<div class="no-images">No images available for this event</div>';
+                }
+                ?>
+                <div class="event-name-desc">
+                    <h2 id="event title"><?php echo $data['event_name'] ?></h2>
+                    <p class="event-description"><?php echo $data['description'] ?></p>
+                </div>
             </section>
 
             <section id="general-information">

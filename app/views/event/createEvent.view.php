@@ -71,8 +71,9 @@ $_SESSION['last_visit'] = date('Y-m-d H:i:s');
                         <input type="number" id="audience" name="audience" />
                     </div>
                     <div class="form-group">
-                        <label for="coverImage">Cover Image</label>
-                        <input type="file" id="coverImage" name="coverImage" accept="image/*">
+                        <label for="coverImage">Cover Images</label>
+                        <input type="file" id="coverImage" name="coverImage[]" accept="image/*" multiple onchange="previewImages(this)">
+                        <div id="imagePreviewContainer" style="display: flex; flex-wrap: wrap; margin-top: 10px;"></div>
                     </div>
                 </section>
 
@@ -246,6 +247,47 @@ $_SESSION['last_visit'] = date('Y-m-d H:i:s');
             }
         });
         window.onload = initMap;
+
+        function previewImages(input) {
+            var previewContainer = document.getElementById('imagePreviewContainer');
+            previewContainer.innerHTML = '';
+            
+            if (input.files) {
+                // Limit to 5 images
+                var filesCount = Math.min(input.files.length, 5);
+                
+                for (var i = 0; i < filesCount; i++) {
+                    var reader = new FileReader();
+                    
+                    reader.onload = function(e) {
+                        var previewDiv = document.createElement('div');
+                        previewDiv.style.margin = '5px';
+                        previewDiv.style.position = 'relative';
+                        
+                        var img = document.createElement('img');
+                        img.src = e.target.result;
+                        img.style.width = '100px';
+                        img.style.height = '100px';
+                        img.style.objectFit = 'cover';
+                        img.style.borderRadius = '4px';
+                        
+                        previewDiv.appendChild(img);
+                        previewContainer.appendChild(previewDiv);
+                    }
+                    
+                    reader.readAsDataURL(input.files[i]);
+                }
+                
+                // Show warning if more than 5 files selected
+                if (input.files.length > 5) {
+                    var warningDiv = document.createElement('div');
+                    warningDiv.style.color = 'red';
+                    warningDiv.style.marginTop = '10px';
+                    warningDiv.textContent = 'Note: Only the first 5 images will be uploaded.';
+                    previewContainer.appendChild(warningDiv);
+                }
+            }
+        }
     </script>
 </body>
 </html>

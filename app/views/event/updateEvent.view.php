@@ -26,6 +26,7 @@ $_SESSION['last_visit'] = date('Y-m-d H:i:s');
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Review Event</title>
     <link rel="stylesheet" href="<?= ROOT ?>/assets/css/eventUpdate.css">
+    <link rel="stylesheet" href="<?= ROOT ?>/assets/css/create-event.css">
     <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
 </head>
 <body>
@@ -121,9 +122,33 @@ $_SESSION['last_visit'] = date('Y-m-d H:i:s');
                     <input type="hidden" name="event_id" value="<?php echo $data['id'] ?>">
 
                     <!-- Action Buttons -->
-                    <div class="button-wrap">
+                    
+
+                    <!-- In the form section for images -->
+                    <div class="form-group">
+
+                        <?php if(isset($data['cover_images']) && !empty($data['cover_images'])): ?>
+                            <div class="existing-images">
+                                <h4>Cover Images</h4>
+                                <div class="image-grid">
+                                    <?php 
+                                    $images = json_decode($data['cover_images'], true) ?: [];
+                                    foreach($images as $index => $image): 
+                                    ?>
+                                        <div class="image-item">
+                                            <img src="<?=ROOT?>/assets/images/events/<?=$image?>" alt="Event Image <?=$index+1?>">
+                                           
+                                        </div>
+                                    <?php endforeach; ?>
+                                </div>
+                                
+                            </div>
+                        <?php endif; ?>
+                        
+                        <div class="button-wrap">
                         <button type="button" onclick="goBack()">Cancel</button>
                         <button type="submit" name="update">Done</button>
+                    </div>
                     </div>
                 </form>
 

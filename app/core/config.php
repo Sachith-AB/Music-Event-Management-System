@@ -8,7 +8,7 @@ if($_SERVER['SERVER_NAME'] == 'localhost'){
     define('DBNAME','eventease');
     define('DBHOST','localhost');
     define('DBUSER','root');
-    define('DBPASS','');
+    define('DBPASS','12345');
     define('DBDRIVER','');
 }else{
     define('ROOT', 'https://www.websitename.com');
