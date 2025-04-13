@@ -18,9 +18,10 @@ class Profile {
         $tickets=$this->purchasedetails();
         $upcomingTickets = $tickets['upcoming'];
         $pastTickets = $tickets['past'];
-
         $ticketcount = $this->getticketcount(array_merge($upcomingTickets,$pastTickets));
-
+        $notifications = $this->getnotifications($upcomingTickets);
+        // show($notifications);
+        
         //  show($combinedTickets);
 
         if($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['logOut'])){
@@ -99,5 +100,16 @@ class Profile {
         $totalEvents = count($uniqueEvents);
 
         return [$totalEvents,$totalPurchase, $totalPrice];
+    }
+    public function getnotifications($upcomingTickets){
+        $notification = new Notification;
+        $notifymsg = [];
+        show($upcomingTickets);
+        foreach($upcomingTickets as $upcomingTicket){
+            show($upcomingTicket['event_id']);
+            $notifymsg = $notification->getNotifications($upcomingTicket['event_id']);
+            show($notifymsg);
+        }
+        return $notifymsg;
     }
 }

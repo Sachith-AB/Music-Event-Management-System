@@ -13,4 +13,11 @@ class Notification {
         'created_at'
 		
     ];
+
+    public function getNotifications($event_id) {
+        // Directly inject the $limit value into the query
+        $query = "SELECT * FROM notifications WHERE event_id = $event_id";
+    
+        return $this->query($query);
+    }
 }
