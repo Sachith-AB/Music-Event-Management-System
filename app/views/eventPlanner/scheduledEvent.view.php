@@ -15,6 +15,8 @@
     $pricing = $_SESSION['event_data']['pricing']?? '';
     $type = $_SESSION['event_data']['type']?? '';
 ?>
+
+
 <?php include ('../app/views/components/header.php'); ?>
 <!DOCTYPE html>
 <html lang="en">

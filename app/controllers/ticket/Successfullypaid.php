@@ -42,13 +42,13 @@ class Successfullypaid {
             $mail->isSMTP();
             $mail->Host = 'smtp.gmail.com';
             $mail->SMTPAuth = true;
-            $mail->Username = 'sathruwaninethmi@gmail.com';
-            $mail->Password = 'kbgrqiybaflylgnr'; // Store this securely
+            $mail->Username = 'irumiabeywickrama@gmail.com';
+            $mail->Password = 'diem tlif lxgm wgjx'; // Store this securely
             $mail->SMTPSecure = PHPMailer\PHPMailer\PHPMailer::ENCRYPTION_SMTPS;
             $mail->Port = 465;
 
             // Set email details
-            $mail->setFrom('sathruwaninethmi@gmail.com', 'Musicia');
+            $mail->setFrom('irumiabeywickrama@gmail.com', 'Musicia');
             $mail->addAddress($_POST['email']);
 
             $mail->isHTML(true);

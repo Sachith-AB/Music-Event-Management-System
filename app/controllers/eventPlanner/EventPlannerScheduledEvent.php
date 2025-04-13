@@ -14,20 +14,16 @@ class EventPlannerScheduledEvent {
         $data = [];
         $event_id = htmlspecialchars($_GET['id']); // Get event ID from the URL
 
-        $row = $event->firstById($event_id);
-       //show($row);
-
         if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['update'])) {
+            
             $event_id = htmlspecialchars($_GET['id']);
 
-            //show($event_id);
-
-            show($event_id);
-
-            //show($_POST);
+            $oldrow = $event->firstById($event_id);
+            // show($oldrow);
+            $this->createnotifitaion($oldrow,$_POST);
             $this->updateDetail($event,$event_id);
         }
-
+        $row = $event->firstById($event_id);
         $data1= $this->getData($row);
 
         // Fetch income and ticket count progress
@@ -57,8 +53,8 @@ class EventPlannerScheduledEvent {
         // Sanitize and validate POST data
         $updateData = [
             'event_date' => $_POST['event_date'] ?? null,
-            'start_time' => isset($_POST['starttime']) ? date('H:i:s', strtotime($_POST['starttime'])) : null,
-            'end_time' => isset($_POST['endtime']) ? date('H:i:s', strtotime($_POST['endtime'])) : null,
+            'start_time' => $_POST['starttime'],
+            'end_time' => $_POST['endtime'],
         ];
     
         // Filter out null values to avoid overwriting with empty fields
@@ -70,7 +66,7 @@ class EventPlannerScheduledEvent {
         
 
         // Debugging: Show the data being sent to the update method
-        show($filteredData);
+        // show($filteredData);
     
 
         // Check if there's data to update
@@ -81,6 +77,37 @@ class EventPlannerScheduledEvent {
         }
     }
     
+
+    public function createnotifitaion($old,$new){
+        $notification = new Notification;
+
+        $changes=[];
+        if($new['event_date'] !== $old->eventDate){
+            $changes[] = "Event Date changed from {$old->eventDate} to {$new['event_date']}";
+        }
+        if (isset($new['starttime'])) {
+            $new_start = date('H:i:s', strtotime($new['starttime']));
+            $old_start = date('H:i:s', strtotime($old->start_time));
+            if ($new_start !== $old_start) {
+                $changes[] = "Start Time changed from {$old->start_time} to $new_start";
+            }
+        }
+        if (isset($new['endtime'])) {
+            $new_end = date('H:i:s', strtotime($new['endtime']));
+            $old_end = date('H:i:s', strtotime($old->end_time));
+            if ($new_end !== $old_end) {
+                $changes[] = "End Time changed from {$old->end_time} to $new_end";
+            }
+        }
+        // show($changes);
+        $notifymsg = [
+            'event_id' => $old->id,
+            'title' => "Change Event Details",
+            'message' => json_encode($changes),
+            'is_read'=> 0
+        ];
+        $notification->insert($notifymsg);
+    }
     
 
     public function ticketIncome($ticket, $id) {

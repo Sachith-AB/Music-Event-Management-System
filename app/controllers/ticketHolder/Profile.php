@@ -15,10 +15,13 @@ class Profile {
         $data = $this->profile($user);
         //show( $data);
 
-        $combinedTickets=$this->purchasedetails();
-
-        $ticketcount = $this->getticketcount($combinedTickets);
-
+        $tickets=$this->purchasedetails();
+        $upcomingTickets = $tickets['upcoming'];
+        $pastTickets = $tickets['past'];
+        $ticketcount = $this->getticketcount(array_merge($upcomingTickets,$pastTickets));
+        $notifications = $this->getnotifications($upcomingTickets);
+        // show($notifications);
+        
         //  show($combinedTickets);
 
         if($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['logOut'])){
@@ -27,7 +30,7 @@ class Profile {
 
         
 
-        $this->view('ticketHolder/profile',['data'=>$data,'combinedTickets'=>$combinedTickets,'ticketcount'=>$ticketcount]);
+        $this->view('ticketHolder/profile',['data'=>$data,'upcomingTickets'=>$upcomingTickets,'pastTickets'=>$pastTickets,'ticketcount'=>$ticketcount]);
         
     }
 
@@ -54,14 +57,28 @@ class Profile {
         $id = $_SESSION['USER']->id ?? 0;
 
         $mytickets = $buyticket->getAllPurchasedEvents($id);
-        $combinedTickets = [];
+        $upcomingTickets = [];
+        $pastTickets = [];
         foreach ($mytickets as $myticket) {
             $ticket_id = $myticket->ticket_id; 
             $eventDetail = $ticket->getTicketAndEventDetails($ticket_id); 
-            $combinedTickets[] = array_merge((array)$myticket, (array)$eventDetail);
+            // show($eventDetail);
+            if($eventDetail && isset($eventDetail[0]->event_date)){
+                $combined = array_merge((array)$myticket, (array)$eventDetail);
+
+                $eventDate = $eventDetail[0]->event_date;
+                // show($eventDetail);
+            if (strtotime($eventDate) >= strtotime(date('Y-m-d'))) {
+                $upcomingTickets[] = $combined;
+            } else {
+                $pastTickets[] = $combined;
+            }
+            }
+
+            
         }
-        // show($combinedTickets);
-        return $combinedTickets;
+         
+        return ['upcoming'=>$upcomingTickets,'past'=>$pastTickets];
 
     }
 
@@ -83,5 +100,16 @@ class Profile {
         $totalEvents = count($uniqueEvents);
 
         return [$totalEvents,$totalPurchase, $totalPrice];
+    }
+    public function getnotifications($upcomingTickets){
+        $notification = new Notification;
+        $notifymsg = [];
+        show($upcomingTickets);
+        foreach($upcomingTickets as $upcomingTicket){
+            show($upcomingTicket['event_id']);
+            $notifymsg = $notification->getNotifications($upcomingTicket['event_id']);
+            show($notifymsg);
+        }
+        return $notifymsg;
     }
 }
