@@ -99,7 +99,7 @@ class EventPlannerScheduledEvent {
                 $changes[] = "End Time changed from {$old->end_time} to $new_end";
             }
         }
-        show($changes);
+        // show($changes);
         $notifymsg = [
             'event_id' => $old->id,
             'title' => "Change Event Details",
