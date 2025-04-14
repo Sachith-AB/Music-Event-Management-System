@@ -54,6 +54,10 @@ class Buyticket {
         $query = "UPDATE buyticket SET payment_status = 'complete' WHERE id = ?";
         return $this->query($query, [$purchase_id]);
     }
+    public function getticketbuyers($event_id){
+        $query = "SELECT DISTINCT user_id FROM buyticket WHERE event_id = ?";
+        $result = $this->query($query, [$event_id]);
+        return $result;
+    }
     
-
 }

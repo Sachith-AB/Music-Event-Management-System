@@ -6,7 +6,7 @@ class Notification {
     protected $table = 'notifications';
     protected $allowedColumns = [
         
-        'event_id',
+        'user_id',
         'title',
         'message',
         'is_read',

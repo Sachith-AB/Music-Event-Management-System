@@ -17,7 +17,7 @@
 ?>
 
 
-<?php include ('../app/views/components/header.php'); ?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>

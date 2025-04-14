@@ -66,10 +66,10 @@ class Profile {
             
             // show($eventDetail);
             if($eventDetail && isset($eventDetail[0]->event_date)){
-                $notifications = $notification->getNotifications($eventDetail[0]->event_id);
+                // $notifications = $notification->getNotifications($eventDetail[0]->event_id);
         
                 $combined = array_merge((array)$myticket, (array)$eventDetail);
-                $combined['notifications'] = $notifications;
+                // $combined['notifications'] = $notifications;
 
                 $eventDate = $eventDetail[0]->event_date;
                 // show($eventDetail);
