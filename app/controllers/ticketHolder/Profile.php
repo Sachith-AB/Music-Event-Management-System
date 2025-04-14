@@ -1,5 +1,7 @@
 <?php
 
+use Dom\Notation;
+
 class Profile {
 
     use Controller;
@@ -11,16 +13,19 @@ class Profile {
     public function index(){
 
         $user = new User;
+        $notification = new Notification;
 
         $data = $this->profile($user);
-        //show( $data);
+        // show( $data);
 
         $tickets=$this->purchasedetails();
         $upcomingTickets = $tickets['upcoming'];
         $pastTickets = $tickets['past'];
         $ticketcount = $this->getticketcount(array_merge($upcomingTickets,$pastTickets));
-        // $notifications = $this->getnotifications($upcomingTickets);
-        //  show($upcomingTickets);
+        $notifications = $this->getnotifications($data['id']);
+        if($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['changeread'])){
+            $notification->markasread($data['id']);
+        }
         
         //  show($combinedTickets);
 
@@ -30,9 +35,10 @@ class Profile {
 
         
 
-        $this->view('ticketHolder/profile',['data'=>$data,'upcomingTickets'=>$upcomingTickets,'pastTickets'=>$pastTickets,'ticketcount'=>$ticketcount]);
+        $this->view('ticketHolder/profile',['data'=>$data,'upcomingTickets'=>$upcomingTickets,'pastTickets'=>$pastTickets,'ticketcount'=>$ticketcount,'notifications'=>$notifications]);
         
     }
+    
 
     public function profile($user){
 
@@ -69,7 +75,6 @@ class Profile {
                 // $notifications = $notification->getNotifications($eventDetail[0]->event_id);
         
                 $combined = array_merge((array)$myticket, (array)$eventDetail);
-                // $combined['notifications'] = $notifications;
 
                 $eventDate = $eventDetail[0]->event_date;
                 // show($eventDetail);
@@ -106,15 +111,13 @@ class Profile {
 
         return [$totalEvents,$totalPurchase, $totalPrice];
     }
-    // public function getnotifications($upcomingTickets){
-    //     $notification = new Notification;
-    //     $notifymsg = [];
-    //     show($upcomingTickets);
-    //     foreach($upcomingTickets as $upcomingTicket){
-    //         show($upcomingTicket['event_id']);
-    //         $notifymsg = $notification->getNotifications($upcomingTicket['event_id']);
-    //         show($notifymsg);
-    //     }
-    //     return $notifymsg;
-    // }
+    public function getnotifications($user_id){
+        $notification = new Notification;
+        $notifymsg = [];
+        $newnotifymsg = $notification->getNewnotifications($user_id);
+        $allnotifymsg = $notification->getNotifications($user_id);
+        $notifymsg["newnotifications"] = $newnotifymsg;
+        $notifymsg["allnotifications"] = $allnotifymsg;
+        return $notifymsg;
+    }
 }
