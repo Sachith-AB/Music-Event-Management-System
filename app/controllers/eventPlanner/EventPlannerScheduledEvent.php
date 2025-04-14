@@ -102,7 +102,7 @@ class EventPlannerScheduledEvent {
             }
         }
         $buyers = $buyticket->getticketbuyers($old->id);
-        show($buyers);
+        
         if (!empty($changes)) {
             $buyers = $buyticket->getticketbuyers($old->id);
             
