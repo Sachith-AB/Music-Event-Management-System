@@ -442,21 +442,22 @@
 }
 
 .upcommingeve-ticket-card {
+  position: relative;
   display: flex;
   margin-bottom: 20px;
   border-radius: 8px;
   overflow: hidden;
   box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+  z-index: 1;
 }
 
-.upcommingeve-ticket-card:hover{
+.upcommingeve-ticket-card:hover {
   transform: scale(1.03);
   transition: all 1s ease-in-out;
   opacity: 1.5;
-  cursor: pointer;  
-  box-shadow:  0 0 30px rgba(0, 0, 0, 0.2);
+  cursor: pointer;
+  box-shadow: 0 0 30px rgba(0, 0, 0, 0.2);
 }
-
 .upcommingeve-ticket-image {
   width: 30%;
   background-color: #f0f0f0;
@@ -560,4 +561,50 @@
 .tab-button.active {
   background-color: #00BDD6;
   color: white;
+}
+.notification-wrapper {
+  position: absolute;
+  top: -5px;
+  left: -5px; 
+  /* padding: 5px 10px; */
+  z-index: 10;
+}
+
+.notification-icon {
+  position: relative;
+  cursor: pointer;
+}
+
+.notification-badge {
+  position: absolute;
+  top: -6px;
+  right: -6px;
+  background-color: red;
+  color: white;
+  font-size: 12px;
+  padding: 2px 6px;
+  border-radius: 50%;
+}
+
+.notificationDropdown {
+  position: absolute;
+  top: 35px;
+  right: 0;
+  background-color: white;
+  width: 250px;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.15);
+  border-radius: 8px;
+  z-index: 100;
+  padding: 10px;
+}
+
+.notification-item {
+  padding: 8px;
+  border-bottom: 1px solid #eee;
+  font-size: 14px;
+  color: #333;
+}
+
+.notification-item:last-child {
+  border-bottom: none;
 }

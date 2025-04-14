@@ -6,8 +6,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Ticket Buyer Profile</title>
     <link rel="stylesheet" href="<?=ROOT?>/assets/css/ticketHolder/profile.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
 </head>
 <body>
+    <script src="<?=ROOT?>/assets/js/ticket_holder/profile.js"></script>
     <?php include ('../app/views/components/loading.php'); ?>
     <?php //$id = $_SESSION['USER']->id;
 
@@ -43,61 +46,74 @@
             </div>
             <?php if (!empty($pastTickets)): ?>
                 <div class="upcommingeve-tickets">
-    <h2>My Events</h2>
-    <div class="tab-buttons">
-        <button class="tab-button active" onclick="showTab('past')">Past Events</button>
-        <button class="tab-button" onclick="showTab('upcoming')">Upcoming Events</button>
-    </div>
-
-    <!-- Past Events -->
-    <div id="past" class="tab-content">
-        <?php if (!empty($pastTickets)): ?>
-            <?php foreach ($pastTickets as $event): ?>
-                <a href="<?=ROOT?>/view-pastevent?id=<?= htmlspecialchars($event[0]->event_id) ?>" class="event-card-link">
-                    <div class="upcommingeve-ticket-card">
-                        <div class="event-status-process"><?= htmlspecialchars($event[0]->ticket_type) ?> - LKR<?= htmlspecialchars($event[0]->ticket_price) ?></div>
-                        <div class="upcommingeve-ticket-image">
-                            <img src="<?=ROOT?>/assets/images/events/<?= htmlspecialchars($event[0]->event_images) ?>" alt="Event Image">
-                        </div>
-                        <div class="upcommingeve-ticket-info">
-                            <h3><?= htmlspecialchars($event[0]->event_name) ?>: <?= htmlspecialchars($event[0]->event_description) ?></h3>
-                            <p>📅 <?= htmlspecialchars(date("l, F d | h:i A", strtotime($event[0]->event_date))) ?></p>
-                            <p>📍 <?= htmlspecialchars($event[0]->address) ?></p>
-                            <div class="upcommingeve-ticket-meta"><?= htmlspecialchars($event['ticket_quantity']) ?> Tickets - LKR<?= htmlspecialchars($event['ticket_quantity'] * $event[0]->ticket_price) ?></div>
-                        </div>
+                    <h2>My Events</h2>
+                    <div class="tab-buttons">
+                        <button class="tab-button active" onclick="showTab('past')">Past Events</button>
+                        <button class="tab-button" onclick="showTab('upcoming')">Upcoming Events</button>
                     </div>
-                </a>
-            <?php endforeach; ?>
-        <?php else: ?>
-            <div class="purchase-text">No past events found.</div>
-        <?php endif; ?>
-    </div>
 
-    <!-- Upcoming Events -->
-    <div id="upcoming" class="tab-content" style="display: none;">
-        <?php if (!empty($upcomingTickets)): ?>
-            <?php foreach ($upcomingTickets as $event): ?>
-                <a href="<?=ROOT?>/view-event?id=<?= htmlspecialchars($event[0]->event_id) ?>" class="event-card-link">
-                    <div class="upcommingeve-ticket-card">
-                        <div class="event-status-process"><?= htmlspecialchars($event[0]->ticket_type) ?> - LKR<?= htmlspecialchars($event[0]->ticket_price) ?></div>
-                        <div class="upcommingeve-ticket-image">
-                            <img src="<?=ROOT?>/assets/images/events/<?= htmlspecialchars($event[0]->event_images) ?>" alt="Event Image">
-                        </div>
-                        <div class="upcommingeve-ticket-info">
-                            <h3><?= htmlspecialchars($event[0]->event_name) ?>: <?= htmlspecialchars($event[0]->event_description) ?></h3>
-                            <p>📅 <?= htmlspecialchars(date("l, F d | h:i A", strtotime($event[0]->event_date))) ?></p>
-                            <p>📍 <?= htmlspecialchars($event[0]->address) ?></p>
-                            <div class="upcommingeve-ticket-meta"><?= htmlspecialchars($event['ticket_quantity']) ?> Tickets - LKR<?= htmlspecialchars($event['ticket_quantity'] * $event[0]->ticket_price) ?></div>
-                        </div>
+                    <!-- Past Events -->
+                    <div id="past" class="tab-content">
+                        <?php if (!empty($pastTickets)): ?>
+                            <?php foreach ($pastTickets as $event): ?>
+                                <a href="<?=ROOT?>/view-pastevent?id=<?= htmlspecialchars($event[0]->event_id) ?>" class="event-card-link">
+                                    <div class="upcommingeve-ticket-card">
+                                        <div class="event-status-process"><?= htmlspecialchars($event[0]->ticket_type) ?> - LKR<?= htmlspecialchars($event[0]->ticket_price) ?></div>
+                                        <div class="upcommingeve-ticket-image">
+                                            <img src="<?=ROOT?>/assets/images/events/<?= htmlspecialchars($event[0]->event_images) ?>" alt="Event Image">
+                                        </div>
+                                        <div class="upcommingeve-ticket-info">
+                                            <h3><?= htmlspecialchars($event[0]->event_name) ?>: <?= htmlspecialchars($event[0]->event_description) ?></h3>
+                                            <p>📅 <?= htmlspecialchars(date("l, F d | h:i A", strtotime($event[0]->event_date))) ?></p>
+                                            <p>📍 <?= htmlspecialchars($event[0]->address) ?></p>
+                                            <div class="upcommingeve-ticket-meta"><?= htmlspecialchars($event['ticket_quantity']) ?> Tickets - LKR<?= htmlspecialchars($event['ticket_quantity'] * $event[0]->ticket_price) ?></div>
+                                        </div>
+                                    </div>
+                                </a>
+                            <?php endforeach; ?>
+                        <?php else: ?>
+                            <div class="purchase-text">No past events found.</div>
+                        <?php endif; ?>
                     </div>
-                </a>
-            <?php endforeach; ?>
-        <?php else: ?>
-            <div class="purchase-text">No upcoming events found.</div>
-        <?php endif; ?>
-    </div>
-</div>
 
+                    <!-- Upcoming Events -->
+                    <div id="upcoming" class="tab-content" style="display: none;">
+                        <?php if (!empty($upcomingTickets)): ?>
+                            <?php foreach ($upcomingTickets as $event): ?>
+                                <div>
+                                    <a href="<?=ROOT?>/view-event?id=<?= htmlspecialchars($event[0]->event_id) ?>" class="event-card-link">
+                                        <div class="upcommingeve-ticket-card">
+                                            <?php if(!empty($event['notifications'])): ?>
+                                                <div class="notification-wrapper">
+                                                    <button type="button" class="notificationBtn">
+                                                        <div class="notification-icon">
+                                                            <i class="fas fa-bell"></i>
+                                                            <span class="notification-badge"><?= count($event['notifications']) ?></span>
+                                                        </div>
+                                                    </button>    
+                                                </div>
+                                            <?php endif; ?>
+
+                                            <div class="event-status-process"><?= htmlspecialchars($event[0]->ticket_type) ?> - LKR<?= htmlspecialchars($event[0]->ticket_price) ?></div>
+                                            <div class="upcommingeve-ticket-image">
+                                                <img src="<?=ROOT?>/assets/images/events/<?= htmlspecialchars($event[0]->event_images) ?>" alt="Event Image">
+                                            </div>
+                                            <div class="upcommingeve-ticket-info">
+                                                <h3><?= htmlspecialchars($event[0]->event_name) ?>: <?= htmlspecialchars($event[0]->event_description) ?></h3>
+                                                <p>📅 <?= htmlspecialchars(date("l, F d | h:i A", strtotime($event[0]->event_date))) ?></p>
+                                                <p>📍 <?= htmlspecialchars($event[0]->address) ?></p>
+                                                <div class="upcommingeve-ticket-meta"><?= htmlspecialchars($event['ticket_quantity']) ?> Tickets - LKR<?= htmlspecialchars($event['ticket_quantity'] * $event[0]->ticket_price) ?></div>
+                                            </div>
+                                            
+                                        </div>
+                                    </a>
+                                </div>
+                            <?php endforeach; ?>
+                        <?php else: ?>
+                            <div class="purchase-text">No upcoming events found.</div>
+                        <?php endif; ?>
+                    </div>
+                </div>
             <?php else: ?>
                 <div class="purchase-text">
                     No tickets have been purchased yet...
@@ -132,21 +148,33 @@
     </script>
 
 
-
     <script>
-        function showTab(tab) {
-            // Hide both
-            document.getElementById('past').style.display = 'none';
-            document.getElementById('upcoming').style.display = 'none';
+        document.querySelectorAll('.notificationBtn').forEach((btn, idx) => {
+            btn.addEventListener('click', function (e) {
+                e.stopPropagation(); // Prevent from bubbling up to document
 
-            // Remove active class from buttons
-            document.querySelectorAll('.tab-button').forEach(btn => btn.classList.remove('active'));
+                const dropdown = this.nextElementSibling;
 
-            // Show selected
-            document.getElementById(tab).style.display = 'block';
-            document.querySelector(`.tab-button[onclick="showTab('${tab}')"]`).classList.add('active');
-        }
+                // Close all other dropdowns
+                document.querySelectorAll('.notificationDropdown').forEach(el => {
+                    if (el !== dropdown) el.style.display = 'none';
+                });
+
+                // Toggle current
+                dropdown.style.display = (dropdown.style.display === 'block') ? 'none' : 'block';
+            });
+        });
+
+        // Hide dropdowns on clicking outside
+        document.addEventListener('click', function () {
+            document.querySelectorAll('.notificationDropdown').forEach(el => {
+                el.style.display = 'none';
+            });
+        });
     </script>
+
+
+    
 
 
 

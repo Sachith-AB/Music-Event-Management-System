@@ -19,8 +19,8 @@ class Profile {
         $upcomingTickets = $tickets['upcoming'];
         $pastTickets = $tickets['past'];
         $ticketcount = $this->getticketcount(array_merge($upcomingTickets,$pastTickets));
-        $notifications = $this->getnotifications($upcomingTickets);
-        // show($notifications);
+        // $notifications = $this->getnotifications($upcomingTickets);
+        //  show($upcomingTickets);
         
         //  show($combinedTickets);
 
@@ -53,6 +53,7 @@ class Profile {
 
         $buyticket = new Buyticket();
         $ticket = new Ticket();
+        $notification = new Notification;
 
         $id = $_SESSION['USER']->id ?? 0;
 
@@ -62,9 +63,13 @@ class Profile {
         foreach ($mytickets as $myticket) {
             $ticket_id = $myticket->ticket_id; 
             $eventDetail = $ticket->getTicketAndEventDetails($ticket_id); 
+            
             // show($eventDetail);
             if($eventDetail && isset($eventDetail[0]->event_date)){
+                $notifications = $notification->getNotifications($eventDetail[0]->event_id);
+        
                 $combined = array_merge((array)$myticket, (array)$eventDetail);
+                $combined['notifications'] = $notifications;
 
                 $eventDate = $eventDetail[0]->event_date;
                 // show($eventDetail);
@@ -101,15 +106,15 @@ class Profile {
 
         return [$totalEvents,$totalPurchase, $totalPrice];
     }
-    public function getnotifications($upcomingTickets){
-        $notification = new Notification;
-        $notifymsg = [];
-        show($upcomingTickets);
-        foreach($upcomingTickets as $upcomingTicket){
-            show($upcomingTicket['event_id']);
-            $notifymsg = $notification->getNotifications($upcomingTicket['event_id']);
-            show($notifymsg);
-        }
-        return $notifymsg;
-    }
+    // public function getnotifications($upcomingTickets){
+    //     $notification = new Notification;
+    //     $notifymsg = [];
+    //     show($upcomingTickets);
+    //     foreach($upcomingTickets as $upcomingTicket){
+    //         show($upcomingTicket['event_id']);
+    //         $notifymsg = $notification->getNotifications($upcomingTicket['event_id']);
+    //         show($notifymsg);
+    //     }
+    //     return $notifymsg;
+    // }
 }
