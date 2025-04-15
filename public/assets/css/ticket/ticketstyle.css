@@ -2,7 +2,7 @@ body {
     font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
     /*background-color: #f4f4f9;*/
     margin: 0;
-    padding: 50px;
+    padding: 70px;
 
 }
 
@@ -475,6 +475,7 @@ body {
     overflow: hidden;
     box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
     width: 300px;
+    height: 300px;
     position: relative;
     
 }
@@ -502,6 +503,7 @@ body {
 }
 
 .musicevent-event-details {
+    overflow: hidden;
     color: #888;
     font-size: 14px;
     margin-bottom: 10px;
