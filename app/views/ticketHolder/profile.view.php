@@ -11,7 +11,11 @@
 </head>
 <body>
     <script src="<?=ROOT?>/assets/js/ticket_holder/profile.js"></script>
-    <?php include ('../app/views/components/loading.php'); ?>
+    <?php 
+    include ('../app/views/components/loading.php');
+    // Set default value for showMore if not set
+    $showMore = isset($_POST['showMore']) ? $_POST['showMore'] == 'true' : false; 
+    ?>
     <?php //$id = $_SESSION['USER']->id;
 
     $success = htmlspecialchars($_GET['msg'] ?? '');
@@ -26,6 +30,7 @@
         <div class="all">
             <div class="container">
                 <h2>My Profile</h2>
+                <!-- notifications -->
                 <div class="avatacon">
                     <!-- JS handles POST  -->
                     <button class="avatarbadge" id="notificationButton" type="button">
@@ -56,9 +61,11 @@
                             <p>No notifications found.</p>
                         <?php endif; ?>
                     </div>
+
                     <div class="avatar">
                         <img src="<?=ROOT?>/assets/images/user/<?php echo $_SESSION['USER']->pro_pic ?>" alt="user image">        
                     </div>
+
                 </div>
                 <div class="details">
                     <h2 class="head2"><?php echo $_SESSION['USER']->name ?></h2>
@@ -86,7 +93,13 @@
                     <!-- Past Events -->
                     <div id="past" class="tab-content">
                         <?php if (!empty($pastTickets)): ?>
-                            <?php foreach ($pastTickets as $event): ?>
+                            <?php
+                                $maxEvents = $showMore ? count($pastTickets) : 3;
+                                $eventsDisplayed = 0;
+                                foreach ($pastTickets as $event): 
+                                    if ($eventsDisplayed >= $maxEvents) break;
+                                    $eventsDisplayed++;
+                            ?>
                                 <a href="<?=ROOT?>/view-pastevent?id=<?= htmlspecialchars($event[0]->event_id) ?>" class="event-card-link">
                                     <div class="upcommingeve-ticket-card">
                                         <div class="event-status-process"><?= htmlspecialchars($event[0]->ticket_type) ?> - LKR<?= htmlspecialchars($event[0]->ticket_price) ?></div>
@@ -102,6 +115,23 @@
                                     </div>
                                 </a>
                             <?php endforeach; ?>
+                            <!-- Show More / Show Less button -->
+                            <form method="POST" id="showMoreForm">
+                                <input type="hidden" id="showMore" name="showMore" value="<?= $showMore ? 'true' : 'false' ?>">
+                                <?php if (count($data) > 3): ?>
+                                    <button type="button" class="view-more" onclick="handleShowMore()">
+                                        <?= $showMore ? 'Show Less' : 'View More' ?>
+                                    </button>
+                                <?php endif; ?>
+                            </form>
+                            <script>
+                                // JavaScript function to handle the "View More" / "Show Less" button
+                                function handleShowMore() {
+                                    const showMoreInput = document.getElementById('showMore');
+                                    showMoreInput.value = showMoreInput.value === 'true' ? 'false' : 'true';
+                                    document.getElementById('showMoreForm').submit();
+                                }
+                            </script>
                         <?php else: ?>
                             <div class="purchase-text">No past events found.</div>
                         <?php endif; ?>
@@ -110,7 +140,14 @@
                     <!-- Upcoming Events -->
                     <div id="upcoming" class="tab-content" style="display: none;">
                         <?php if (!empty($upcomingTickets)): ?>
-                            <?php foreach ($upcomingTickets as $event): ?>
+                            
+                            <?php
+                                $maxEvents = $showMore ? count($upcomingTickets) : 3;
+                                $eventsDisplayed = 0;
+                                foreach ($upcomingTickets as $event): 
+                                    if ($eventsDisplayed >= $maxEvents) break;
+                                    $eventsDisplayed++;
+                            ?>
                                 <div>
                                     <a href="<?=ROOT?>/view-event?id=<?= htmlspecialchars($event[0]->event_id) ?>" class="event-card-link">
                                         <div class="upcommingeve-ticket-card">
@@ -129,6 +166,25 @@
                                     </a>
                                 </div>
                             <?php endforeach; ?>
+
+                            <!-- Show More / Show Less button -->
+                            <form method="POST" id="showMoreForm">
+                                <input type="hidden" id="showMore" name="showMore" value="<?= $showMore ? 'true' : 'false' ?>">
+                                <?php if (count($data) > 3): ?>
+                                    <button type="button" class="view-more" onclick="handleShowMore()">
+                                        <?= $showMore ? 'Show Less' : 'View More' ?>
+                                    </button>
+                                <?php endif; ?>
+                            </form>
+                            <script>
+                                // JavaScript function to handle the "View More" / "Show Less" button
+                                function handleShowMore() {
+                                    const showMoreInput = document.getElementById('showMore');
+                                    showMoreInput.value = showMoreInput.value === 'true' ? 'false' : 'true';
+                                    document.getElementById('showMoreForm').submit();
+                                }
+                            </script>
+                            
                         <?php else: ?>
                             <div class="purchase-text">No upcoming events found.</div>
                         <?php endif; ?>
@@ -165,6 +221,7 @@
         function goToUpdate(){
             window.location.href = 'update-profile';
         }
+        
     </script>
 
 
