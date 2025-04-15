@@ -22,10 +22,22 @@
         <img src="<?=ROOT?>/assets/images/ticket/ticketevent-bg.jpg" alt="Musical Fusion Festival" class="headersection-img">
         <!-- <div class="overlay"></div>  -->
         <div class="uppersec">
-            <div class="upper">
+            <div>
                 <div class="eventname">
                     <span class="highlight"><?php echo $data['event']->event_name ?></span><br/> <?php echo $data['event']->description ?>
                 </div>
+                <!-- event planner -->
+                <?php if (!empty($data["eventplanner"])): ?>
+                    
+                    <div class="event-planner" onclick="gotoPlannerProfile(<?= $data['eventplanner'][0]->createdBy ?>)">
+                        <img src="<?= ROOT ?>/assets/images/user/<?= $data['eventplanner'][0]->pro_pic ?>" alt="Planner" class="planner-pic">
+                        <div class="planner-info">
+                            <span class="planner-label">Organized by</span>
+                            <span class="planner-name"><?= $data['eventplanner'][0]->name ?></span>
+                        </div>
+                    </div>
+                <?php endif; ?>
+
 
             </div>
         </div>
@@ -71,7 +83,7 @@
                     <p><?php echo $data['event']->start_time ?></p>
                 </div>
             </div>
-
+            
             <div class="event-item">
                 <div class="icon">
                     <i class="fas fa-map-marker-alt"></i>
@@ -124,6 +136,54 @@
     </section>
     
 
+    <!-- comment section -->
+    <section class="comment-section">
+        <div class="comment-header">
+            <h1>Comments</h1>
+        </div>
+
+        <div class="comments-container">
+                <!-- Comment Input -->
+                <?php if($_SESSION['USER']->id != $_GET['id']): ?>
+                    <form id="addcomments" method="POST">
+                        <div class="add-comment">
+                            <img src="<?=ROOT?>/assets/images/user/<?php echo $_SESSION['USER']->pro_pic ?>" alt="User Avatar" class="comment-avatar">
+                            
+                            <input type="hidden" name="user_id" value="<?php echo $_SESSION['USER']->id ?>"/>
+                            <textarea class="comment-input" name="content" placeholder="Add a comment..."></textarea>                                
+                            <button name="add_comment" class="post-comment-btn">Submit</button>
+                        </div>
+                    </from>
+                <?php endif;?>
+                <?php if (!empty($commentsForEvent)): ?>
+                    <!-- Comments -->
+                    <?php foreach ($commentsForEvent as $comment): ?>
+                        <div class="comment">
+                            <img src="<?=ROOT?>/assets/images/user/<?php echo $comment->sender_pro_pic ?>" alt="User Avatar" class="comment-avatar">
+                            <div class="comment-content">
+                                <div class="comment-header">
+                                    <span class="comment-author"><?php echo $comment->sender_name ?></span>
+                                    <span class="comment-date"><?= date('jS F Y, H:i A', strtotime($comment->created_at)) ?></span>
+                                </div>
+                                <p class="comment-text"><?php echo htmlspecialchars($comment->comment) ?></p>
+                                <!-- <div class="comment-actions">
+                                    <button class="like-btn">👍 <?php echo $comment->num_likes ?></button>
+                                    
+                                </div> -->
+                            </div>
+                        </div>
+                    <?php endforeach; ?>
+                    
+                
+                <?php endif; ?>
+
+            </div>
+    </section>
+    <script>
+        function gotoPlannerProfile(userid){
+            window.location.href = "<?=ROOT?>/admin-vieweventplanner?id="+userid;
+        }
+    </script>
     
 </body>
 
