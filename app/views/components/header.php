@@ -25,8 +25,6 @@
     </nav> -->
     <div class="logo-image">
         <img src = "<?=ROOT?>/assets/images/logo/logo.png" alt = "musicia" onclick="goToHome()"> 
-        
-
     </div>
     <div class="nav-right">
         <nav>
