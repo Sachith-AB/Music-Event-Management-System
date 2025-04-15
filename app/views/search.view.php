@@ -14,13 +14,15 @@
     $showMore = isset($_POST['showMore']) ? $_POST['showMore'] == 'true' : false; 
     ?>
     <div class="container">
-        <div class="search-container">
+        <div>
             <h1>Search Event</h1>
-            <form method="POST" class="search-bar">
-                <input type="text" name="name" placeholder="Rock">
-                <input type="text" name="location" placeholder="Colombo, Sri Lanka">
-                <button type="submit" name="searchEvents" value="search">Search</button>
-            </form>
+            <div class="search-bar">
+                <form method="POST" class="search-bar">
+                    <input type="text" name="name" placeholder="Rock">
+                    <input type="text" name="location" placeholder="Colombo, Sri Lanka">
+                    <button type="submit" name="searchEvents" value="search">Search</button>
+                </form>
+            </div>
         </div>
         <div class="content">
             <form class="filter" method="POST">
