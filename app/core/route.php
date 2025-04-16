@@ -94,6 +94,7 @@ route('event-planner-scheduledEvent','eventPlanner/EventPlannerScheduledEvent@in
 route('get-event-messages','eventPlanner/EventPlannerMessage@index');
 route('collaborator-payment','eventPlanner/CollaboratorPayment@index');
 route('event-planner-completedEvent','eventPlanner/EventPlannerCompletedEvent@index');
+route('event-planner-completedEventInfo','eventPlanner/EventPlannerCompletedEventInfo@index');
 
 
 
