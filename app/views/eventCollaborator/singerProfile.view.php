@@ -115,7 +115,7 @@
               </ul>
             <?php endif; ?>
             <div class="profile-experience">
-              <form method="POST" action="add-experience">
+              <form method="POST">
                 <input type="text" name="experience" placeholder="Add a new experience">
                 <button class="add-button" name="add_experience">Add this experience</button>
               </form>
