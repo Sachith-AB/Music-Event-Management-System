@@ -30,7 +30,7 @@ class ViewProfile {
         $commentsForUser = $commnets->getCommnet($userId);
 
         if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['add_comment'])) {
-            show($_POST);
+            // show($_POST);
             $this->addComment($userId, $commnets, $_POST);
             redirect("collaborator-viewprofile?id=" . $userId);
             

@@ -1,4 +1,4 @@
-
+<?php include ('../app/views/components/header.php'); ?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -6,9 +6,16 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Ticket Buyer Profile</title>
     <link rel="stylesheet" href="<?=ROOT?>/assets/css/ticketHolder/profile.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
 </head>
 <body>
-    <?php include ('../app/views/components/loading.php'); ?>
+    <script src="<?=ROOT?>/assets/js/ticket_holder/profile.js"></script>
+    <?php 
+    include ('../app/views/components/loading.php');
+    // Set default value for showMore if not set
+    $showMore = isset($_POST['showMore']) ? $_POST['showMore'] == 'true' : false; 
+    ?>
     <?php //$id = $_SESSION['USER']->id;
 
     $success = htmlspecialchars($_GET['msg'] ?? '');
@@ -23,8 +30,42 @@
         <div class="all">
             <div class="container">
                 <h2>My Profile</h2>
-                <div class="avatar">
-                    <img src="<?=ROOT?>/assets/images/user/<?php echo $_SESSION['USER']->pro_pic ?>" alt="user image">
+                <!-- notifications -->
+                <div class="avatacon">
+                    <!-- JS handles POST  -->
+                    <button class="avatarbadge" id="notificationButton" type="button">
+                        <i class="fas fa-bell"></i>
+                        <?php if (!empty($notifications["newnotifications"])): ?>
+                            <span class="notification-indicator"></span>
+                        <?php endif; ?>
+                    </button>
+
+                    
+                    <div id="notificationPopup" class="notification-popup" style="display: none;">
+                        <?php if (!empty($notifications["allnotifications"])): ?>
+                            <ul>
+                                <?php foreach ($notifications["allnotifications"] as $note): ?>
+                                    <li class="notification-item">
+                                        <strong><?= htmlspecialchars($note->title) ?></strong><br>
+                                        <?php 
+                                            $messages = json_decode($note->message);
+                                            foreach ($messages as $msg) {
+                                                echo "<div>" . htmlspecialchars($msg) . "</div>";
+                                            }
+                                        ?>
+                                        <small><?= date('F j, Y, g:i a', strtotime($note->created_at)) ?></small>
+                                    </li>
+                                <?php endforeach; ?>
+                            </ul>
+                        <?php else: ?>
+                            <p>No notifications found.</p>
+                        <?php endif; ?>
+                    </div>
+
+                    <div class="avatar">
+                        <img src="<?=ROOT?>/assets/images/user/<?php echo $_SESSION['USER']->pro_pic ?>" alt="user image">        
+                    </div>
+
                 </div>
                 <div class="details">
                     <h2 class="head2"><?php echo $_SESSION['USER']->name ?></h2>
@@ -43,61 +84,112 @@
             </div>
             <?php if (!empty($pastTickets)): ?>
                 <div class="upcommingeve-tickets">
-    <h2>My Events</h2>
-    <div class="tab-buttons">
-        <button class="tab-button active" onclick="showTab('past')">Past Events</button>
-        <button class="tab-button" onclick="showTab('upcoming')">Upcoming Events</button>
-    </div>
-
-    <!-- Past Events -->
-    <div id="past" class="tab-content">
-        <?php if (!empty($pastTickets)): ?>
-            <?php foreach ($pastTickets as $event): ?>
-                <a href="<?=ROOT?>/view-pastevent?id=<?= htmlspecialchars($event[0]->event_id) ?>" class="event-card-link">
-                    <div class="upcommingeve-ticket-card">
-                        <div class="event-status-process"><?= htmlspecialchars($event[0]->ticket_type) ?> - LKR<?= htmlspecialchars($event[0]->ticket_price) ?></div>
-                        <div class="upcommingeve-ticket-image">
-                            <img src="<?=ROOT?>/assets/images/events/<?= htmlspecialchars($event[0]->event_images) ?>" alt="Event Image">
-                        </div>
-                        <div class="upcommingeve-ticket-info">
-                            <h3><?= htmlspecialchars($event[0]->event_name) ?>: <?= htmlspecialchars($event[0]->event_description) ?></h3>
-                            <p>📅 <?= htmlspecialchars(date("l, F d | h:i A", strtotime($event[0]->event_date))) ?></p>
-                            <p>📍 <?= htmlspecialchars($event[0]->address) ?></p>
-                            <div class="upcommingeve-ticket-meta"><?= htmlspecialchars($event['ticket_quantity']) ?> Tickets - LKR<?= htmlspecialchars($event['ticket_quantity'] * $event[0]->ticket_price) ?></div>
-                        </div>
+                    <h2>My Events</h2>
+                    <div class="tab-buttons">
+                        <button class="tab-button active" onclick="showTab('past')">Past Events</button>
+                        <button class="tab-button" onclick="showTab('upcoming')">Upcoming Events</button>
                     </div>
-                </a>
-            <?php endforeach; ?>
-        <?php else: ?>
-            <div class="purchase-text">No past events found.</div>
-        <?php endif; ?>
-    </div>
 
-    <!-- Upcoming Events -->
-    <div id="upcoming" class="tab-content" style="display: none;">
-        <?php if (!empty($upcomingTickets)): ?>
-            <?php foreach ($upcomingTickets as $event): ?>
-                <a href="<?=ROOT?>/view-event?id=<?= htmlspecialchars($event[0]->event_id) ?>" class="event-card-link">
-                    <div class="upcommingeve-ticket-card">
-                        <div class="event-status-process"><?= htmlspecialchars($event[0]->ticket_type) ?> - LKR<?= htmlspecialchars($event[0]->ticket_price) ?></div>
-                        <div class="upcommingeve-ticket-image">
-                            <img src="<?=ROOT?>/assets/images/events/<?= htmlspecialchars($event[0]->event_images) ?>" alt="Event Image">
-                        </div>
-                        <div class="upcommingeve-ticket-info">
-                            <h3><?= htmlspecialchars($event[0]->event_name) ?>: <?= htmlspecialchars($event[0]->event_description) ?></h3>
-                            <p>📅 <?= htmlspecialchars(date("l, F d | h:i A", strtotime($event[0]->event_date))) ?></p>
-                            <p>📍 <?= htmlspecialchars($event[0]->address) ?></p>
-                            <div class="upcommingeve-ticket-meta"><?= htmlspecialchars($event['ticket_quantity']) ?> Tickets - LKR<?= htmlspecialchars($event['ticket_quantity'] * $event[0]->ticket_price) ?></div>
-                        </div>
+                    <!-- Past Events -->
+                    <div id="past" class="tab-content">
+                        <?php if (!empty($pastTickets)): ?>
+                            <?php
+                                $maxEvents = $showMore ? count($pastTickets) : 3;
+                                $eventsDisplayed = 0;
+                                foreach ($pastTickets as $event): 
+                                    if ($eventsDisplayed >= $maxEvents) break;
+                                    $eventsDisplayed++;
+                            ?>
+                                <a href="<?=ROOT?>/view-pastevent?id=<?= htmlspecialchars($event[0]->event_id) ?>" class="event-card-link">
+                                    <div class="upcommingeve-ticket-card">
+                                        <div class="event-status-process"><?= htmlspecialchars($event[0]->ticket_type) ?> - LKR<?= htmlspecialchars($event[0]->ticket_price) ?></div>
+                                        <div class="upcommingeve-ticket-image">
+                                            <img src="<?=ROOT?>/assets/images/events/<?= htmlspecialchars($event[0]->event_images) ?>" alt="Event Image">
+                                        </div>
+                                        <div class="upcommingeve-ticket-info">
+                                            <h3><?= htmlspecialchars($event[0]->event_name) ?>: <?= htmlspecialchars($event[0]->event_description) ?></h3>
+                                            <p>📅 <?= htmlspecialchars(date("l, F d | h:i A", strtotime($event[0]->event_date))) ?></p>
+                                            <p>📍 <?= htmlspecialchars($event[0]->address) ?></p>
+                                            <div class="upcommingeve-ticket-meta"><?= htmlspecialchars($event['ticket_quantity']) ?> Tickets - LKR<?= htmlspecialchars($event['ticket_quantity'] * $event[0]->ticket_price) ?></div>
+                                        </div>
+                                    </div>
+                                </a>
+                            <?php endforeach; ?>
+                            <!-- Show More / Show Less button -->
+                            <form method="POST" id="showMoreForm">
+                                <input type="hidden" id="showMore" name="showMore" value="<?= $showMore ? 'true' : 'false' ?>">
+                                <?php if (count($data) > 3): ?>
+                                    <button type="button" class="view-more" onclick="handleShowMore()">
+                                        <?= $showMore ? 'Show Less' : 'View More' ?>
+                                    </button>
+                                <?php endif; ?>
+                            </form>
+                            <script>
+                                // JavaScript function to handle the "View More" / "Show Less" button
+                                function handleShowMore() {
+                                    const showMoreInput = document.getElementById('showMore');
+                                    showMoreInput.value = showMoreInput.value === 'true' ? 'false' : 'true';
+                                    document.getElementById('showMoreForm').submit();
+                                }
+                            </script>
+                        <?php else: ?>
+                            <div class="purchase-text">No past events found.</div>
+                        <?php endif; ?>
                     </div>
-                </a>
-            <?php endforeach; ?>
-        <?php else: ?>
-            <div class="purchase-text">No upcoming events found.</div>
-        <?php endif; ?>
-    </div>
-</div>
 
+                    <!-- Upcoming Events -->
+                    <div id="upcoming" class="tab-content" style="display: none;">
+                        <?php if (!empty($upcomingTickets)): ?>
+                            
+                            <?php
+                                $maxEvents = $showMore ? count($upcomingTickets) : 3;
+                                $eventsDisplayed = 0;
+                                foreach ($upcomingTickets as $event): 
+                                    if ($eventsDisplayed >= $maxEvents) break;
+                                    $eventsDisplayed++;
+                            ?>
+                                <div>
+                                    <a href="<?=ROOT?>/view-event?id=<?= htmlspecialchars($event[0]->event_id) ?>" class="event-card-link">
+                                        <div class="upcommingeve-ticket-card">
+                                            <div class="event-status-process"><?= htmlspecialchars($event[0]->ticket_type) ?> - LKR<?= htmlspecialchars($event[0]->ticket_price) ?></div>
+                                            <div class="upcommingeve-ticket-image">
+                                                <img src="<?=ROOT?>/assets/images/events/<?= htmlspecialchars($event[0]->event_images) ?>" alt="Event Image">
+                                            </div>
+                                            <div class="upcommingeve-ticket-info">
+                                                <h3><?= htmlspecialchars($event[0]->event_name) ?>: <?= htmlspecialchars($event[0]->event_description) ?></h3>
+                                                <p>📅 <?= htmlspecialchars(date("l, F d | h:i A", strtotime($event[0]->event_date))) ?></p>
+                                                <p>📍 <?= htmlspecialchars($event[0]->address) ?></p>
+                                                <div class="upcommingeve-ticket-meta"><?= htmlspecialchars($event['ticket_quantity']) ?> Tickets - LKR<?= htmlspecialchars($event['ticket_quantity'] * $event[0]->ticket_price) ?></div>
+                                            </div>
+                                            
+                                        </div>
+                                    </a>
+                                </div>
+                            <?php endforeach; ?>
+
+                            <!-- Show More / Show Less button -->
+                            <form method="POST" id="showMoreForm">
+                                <input type="hidden" id="showMore" name="showMore" value="<?= $showMore ? 'true' : 'false' ?>">
+                                <?php if (count($data) > 3): ?>
+                                    <button type="button" class="view-more" onclick="handleShowMore()">
+                                        <?= $showMore ? 'Show Less' : 'View More' ?>
+                                    </button>
+                                <?php endif; ?>
+                            </form>
+                            <script>
+                                // JavaScript function to handle the "View More" / "Show Less" button
+                                function handleShowMore() {
+                                    const showMoreInput = document.getElementById('showMore');
+                                    showMoreInput.value = showMoreInput.value === 'true' ? 'false' : 'true';
+                                    document.getElementById('showMoreForm').submit();
+                                }
+                            </script>
+                            
+                        <?php else: ?>
+                            <div class="purchase-text">No upcoming events found.</div>
+                        <?php endif; ?>
+                    </div>
+                </div>
             <?php else: ?>
                 <div class="purchase-text">
                     No tickets have been purchased yet...
@@ -129,24 +221,15 @@
         function goToUpdate(){
             window.location.href = 'update-profile';
         }
+        
     </script>
 
 
 
-    <script>
-        function showTab(tab) {
-            // Hide both
-            document.getElementById('past').style.display = 'none';
-            document.getElementById('upcoming').style.display = 'none';
 
-            // Remove active class from buttons
-            document.querySelectorAll('.tab-button').forEach(btn => btn.classList.remove('active'));
 
-            // Show selected
-            document.getElementById(tab).style.display = 'block';
-            document.querySelector(`.tab-button[onclick="showTab('${tab}')"]`).classList.add('active');
-        }
-    </script>
+
+    
 
 
 

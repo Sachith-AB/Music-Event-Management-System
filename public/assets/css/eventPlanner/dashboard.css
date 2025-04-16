@@ -10,6 +10,12 @@
     padding: 40px;
     width: 100%;
 }
+.dash-content {
+    display: flex;
+    margin: 30px auto;
+    padding: 70px;
+    width: 100%;
+}
 /* /* Content */
 /* .content {
     padding: 20px;
@@ -306,4 +312,23 @@ table th, table td {
 
 .purchases .tag {
     color: #ff0000;
+}
+.view-more {
+    background-color: #00BDD6;
+    color: white;
+    padding: 10px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    align-self: center;
+    margin-top: 20px;
+    transition: color 1s ease;
+}
+
+.view-more:hover::after {
+    transform: skewX(-45deg) scale(1, 1);
+}
+
+.view-more:hover {
+    color: black;
 }

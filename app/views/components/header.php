@@ -1,46 +1,3 @@
-<?php
-session_start();
-
-$current_page = $_SERVER['REQUEST_URI'];
-
-if (!isset($_SESSION['page_history'])) {
-    $_SESSION['page_history'] = [];
-}
-
-if (end($_SESSION['page_history']) !== $current_page) {
-    $_SESSION['page_history'][] = $current_page;
-}
-
-if (count($_SESSION['page_history']) > 10) {
-    array_shift($_SESSION['page_history']); // Keep only the last 10 pages
-}
-
-// Map paths to display-friendly names
-$pageNames = [
-    'home' => 'Home',
-    'search' => 'Explore',
-    'event-planner-dashboard' => 'Dashboard',
-    'event-planner-messages' => 'Messages',
-    'event-planner-calendar' => 'Calendar',
-    'view-event' => 'View Event',
-    'colloborator-dashboard' => 'Dashboard',
-    'create-event' => 'Create Event',
-    'signin' => 'Sign In',
-    'signup' => 'Sign Up',
-    'profile' => 'Profile',
-    'colloborator-profile' => 'Collaborator Profile'
-];
-
-// Function to extract the base path
-function getPageKey($url) {
-    $parts = explode('?', $url)[0]; // Remove query string
-    $parts = explode('/', trim($parts, '/'));
-    return end($parts); // Get last part
-}
-
-
-?>
-
 
 
 <!DOCTYPE html>
@@ -68,22 +25,6 @@ function getPageKey($url) {
     </nav> -->
     <div class="logo-image">
         <img src = "<?=ROOT?>/assets/images/logo/logo.png" alt = "musicia" onclick="goToHome()"> 
-        <!-- Breadcrumb -->
-        <?php if (!empty($_SESSION['page_history'])): ?>
-            <div class="breadcrumb">
-                <?php
-                $breadcrumbs = [];
-                $lastPages = array_slice($_SESSION['page_history'], -5); // Get only last 5 pages
-                foreach ($lastPages as $page) {
-                    $key = getPageKey($page);
-                    $name = isset($pageNames[$key]) ? $pageNames[$key] : ucfirst($key);
-                    $breadcrumbs[] = "<a href='$page'>$name</a>";
-                }
-                echo implode(' <i class="fas fa-chevron-right" style="margin: 0 5px; color: #888;"></i> ', $breadcrumbs);
-                ?>
-            </div>
-        <?php endif; ?>
-
     </div>
     <div class="nav-right">
         <nav>

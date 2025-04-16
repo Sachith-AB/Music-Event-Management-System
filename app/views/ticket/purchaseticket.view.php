@@ -45,7 +45,7 @@
 
             <div class="form-line"></div>
             <form id="purchaseForm" method="POST">
-            <!-- Contact section -->
+                <!-- Contact section -->
                 <div class="event-details-container">
                     <div class="contact-header">
                         <h2>Contact information</h2>
@@ -115,7 +115,7 @@
                 </script>
 
 
-            <!--summary section -->
+                <!--summary section -->
                 <div id="summaryModal" style="display: none;"> <!-- Initially hidden -->
                     <div class="summary-container">
                         <span class="close" onclick="closeModal()">&times;</span>
@@ -166,7 +166,7 @@
             <p>No events created yet.</p>
         <?php endif; ?>
         <!--other event section-->
-        <!-- <div class="event-details-container"> -->
+        <div class="event-details-container">
             <h2>Other events you may like</h2>
             <?php if (!empty($recentevents)): ?>
                 <div class="musicevent-events-container">
@@ -178,6 +178,7 @@
                                 <div class="musicevent-event-title"><?= htmlspecialchars($event->event_name) ?></div>
                                 <div class="musicevent-event-details">
                                     <div>📅 <?= htmlspecialchars(date("l, F d | h:i A", strtotime($event->start_time))) ?></div>
+                                    <br/>
                                     <div>📍 <?= htmlspecialchars($event->address) ?></div>
                                 </div>
                                 <!-- <div class="musicevent-event-price">From $80</div> -->
@@ -191,7 +192,7 @@
                 <p>No events created yet.</p>
             <?php endif; ?>
 
-        <!-- </div> -->
+        </div>
 
             
     </main>
@@ -199,7 +200,7 @@
     <!-- Include Footer -->
     <?php include ('../app/views/components/footer.php'); ?>
         
-    </div>
+    
 
 </body>
 </html>

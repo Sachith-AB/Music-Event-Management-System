@@ -80,8 +80,10 @@ class EventPlannerScheduledEvent {
 
     public function createnotifitaion($old,$new){
         $notification = new Notification;
+        $buyticket = new Buyticket;
 
         $changes=[];
+        $buyers =[];
         if($new['event_date'] !== $old->eventDate){
             $changes[] = "Event Date changed from {$old->eventDate} to {$new['event_date']}";
         }
@@ -99,14 +101,23 @@ class EventPlannerScheduledEvent {
                 $changes[] = "End Time changed from {$old->end_time} to $new_end";
             }
         }
-        // show($changes);
-        $notifymsg = [
-            'event_id' => $old->id,
-            'title' => "Change Event Details",
-            'message' => json_encode($changes),
-            'is_read'=> 0
-        ];
-        $notification->insert($notifymsg);
+        $buyers = $buyticket->getticketbuyers($old->id);
+        
+        if (!empty($changes)) {
+            $buyers = $buyticket->getticketbuyers($old->id);
+            
+            foreach ($buyers as $buyer) {
+                $notifymsg = [
+                    'user_id' => $buyer->user_id,
+                    'title' => "Change in Event '{$old->event_name}' Details",
+                    'message' => json_encode($changes),
+                    'is_read' => 0
+                ];
+                $notification->insert($notifymsg);
+            }
+        }
+        
+        
     }
     
 
