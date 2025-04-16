@@ -12,6 +12,8 @@
 
     <!-- Include Font Awesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+
 </head>
 
 <body>
@@ -33,7 +35,7 @@
             $durationInHours = round($durationInHours);
 
             ?>
-            <div class="event-details-container">
+            <div class="event-details-container-success">
                 <div class="success-message">
                     <div class="success-icon">
                         &#10004;
@@ -197,37 +199,64 @@
                                 </div>
                             </div>
                         </div>
+                    <?php endfor; ?>
                         <!--modal foe ticket view button-->
                         <div id="ticketModal" class="modal">
-                                <div class="modal-content">
-                                    <span class="close" onclick="closeViewTicketModal()">&times;</span>
-                                        <div class="digiticket">
-                                            <div class="digiticket-left">
-                                                <div class="digiticket-qr-code">
-                                                    <img src="<?= $qrCodeUrl ?>" alt="QR Code">
-                                                </div>
-                                                <div class="digiticket-qr-code-part">
-                                                    <p><strong>Code</strong></p>
-                                                    <a href="<?= $qrCodeUrl ?>">Download</a> <!-- Adjust ticket code if needed -->
-                                                </div>
-                                            </div>
-                                            <div class="digiticket-right">
-                                                <div class="digiticket-content">
-                                                    <h1 class="digievent-title"><?= htmlspecialchars($eventAndTicketDetails[0]->event_name) ?></h1>
-                                                    <p class="digievent-subtitle"><?= htmlspecialchars($eventAndTicketDetails[0]->event_description) ?></p>
-                                                    <p class="digievent-date"><?= htmlspecialchars(date("l, F d, Y h:i A", strtotime($eventAndTicketDetails[0]->event_date))) ?> / at <?= htmlspecialchars($eventAndTicketDetails[0]->address) ?></p>
-                                                    <div class="digiticket-price">
-                                                        <p class="price-label">Public Ticket</p>
-                                                        <p class="price-value"><?= htmlspecialchars($eventAndTicketDetails[0]->ticket_price) ?> LKR</p>
-                                                        <p class="price-desc">One ticket for one person.</p>
-                                                    </div>
-                                                </div>
+                            <div class="modal-content">
+                                <span class="close" onclick="closeViewTicketModal()">&times;</span>
+
+                                <?php
+                                        for ($i = 0; $i < $purchaseDetails[0]->ticket_quantity; $i++) :
+                                $qrData = [
+                                    'ticket_number' => $eventAndTicketDetails[0]->ticket_quantity+($i + 1),
+                                    'event_name' => $eventAndTicketDetails[0]->event_name,
+                                    'buyer_email' => $purchaseDetails[0]->buyer_email
+                                ];
+                                $qrCodeUrl = "https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=" . urlencode(json_encode($qrData));?>
+
+
+                                <div class="digiticket">
+                                    <div class="digiticket-left">
+                                        <div class="digiticket-qr-code">
+                                            <img src="<?= $qrCodeUrl ?>" alt="QR Code">
+                                        </div>
+                                        <div class="digiticket-qr-code-part">
+                                            <p><strong>Code</strong></p>
+                                            <button onclick="downloadTicket(this)">Download</button>
+                                        </div>
+                                    </div>
+                                    <div class="digiticket-right">
+                                        <div class="digiticket-content">
+                                            <h1 class="digievent-title"><?= htmlspecialchars($eventAndTicketDetails[0]->event_name) ?></h1>
+                                            <p class="digievent-subtitle"><?= htmlspecialchars($eventAndTicketDetails[0]->event_description) ?></p>
+                                            <p class="digievent-date"><?= htmlspecialchars(date("l, F d, Y h:i A", strtotime($eventAndTicketDetails[0]->event_date))) ?> / at <?= htmlspecialchars($eventAndTicketDetails[0]->address) ?></p>
+                                            <div class="digiticket-price">
+                                                <p class="price-label">Public Ticket</p>
+                                                <p class="price-value"><?= htmlspecialchars($eventAndTicketDetails[0]->ticket_price) ?> LKR</p>
+                                                <p class="price-desc">One ticket for one person.</p>
                                             </div>
                                         </div>
+                                    </div>
                                 </div>
+                                <?php endfor; ?>
+                            </div>
                         </div>
 
-                    <?php endfor; ?>
+
+                        <script>
+                            function downloadTicket(button) {
+                                const ticketElement = button.closest('.digiticket');
+
+                                html2canvas(ticketElement).then(canvas => {
+                                    const link = document.createElement('a');
+                                    link.download = 'ticket.png';
+                                    link.href = canvas.toDataURL();
+                                    link.click();
+                                });
+                            }
+                        </script>
+
+                    
 
                     <form id="purchaseForm" method="POST">
                         <input type="hidden" name="first-name" value= "<?php echo $purchaseDetails[0]->buyer_Fname ?>" />
