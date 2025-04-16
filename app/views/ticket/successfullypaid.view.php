@@ -202,58 +202,89 @@
                     <?php endfor; ?>
                         <!--modal foe ticket view button-->
                         <div id="ticketModal" class="modal">
-                            <div class="modal-content">
-                                <span class="close" onclick="closeViewTicketModal()">&times;</span>
+                            <div class="model-content-scroll">
+                                <div class="modal-content">
+                                    <span class="close" onclick="closeViewTicketModal()">&times;</span>
 
-                                <?php
-                                        for ($i = 0; $i < $purchaseDetails[0]->ticket_quantity; $i++) :
-                                $qrData = [
-                                    'ticket_number' => $eventAndTicketDetails[0]->ticket_quantity+($i + 1),
-                                    'event_name' => $eventAndTicketDetails[0]->event_name,
-                                    'buyer_email' => $purchaseDetails[0]->buyer_email
-                                ];
-                                $qrCodeUrl = "https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=" . urlencode(json_encode($qrData));?>
+                                    <?php
+                                            for ($i = 0; $i < $purchaseDetails[0]->ticket_quantity; $i++) :
+                                    $qrData = [
+                                        'ticket_number' => $eventAndTicketDetails[0]->ticket_quantity+($i + 1),
+                                        'event_name' => $eventAndTicketDetails[0]->event_name,
+                                        'buyer_email' => $purchaseDetails[0]->buyer_email
+                                    ];
+                                    $qrCodeUrl = "https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=" . urlencode(json_encode($qrData));?>
 
 
-                                <div class="digiticket">
-                                    <div class="digiticket-left">
-                                        <div class="digiticket-qr-code">
-                                            <img src="<?= $qrCodeUrl ?>" alt="QR Code">
+                                    <div class="digiticket">
+                                        <div class="digiticket-left">
+                                            <div class="digiticket-qr-code">
+                                                <img src="<?= $qrCodeUrl ?>" alt="QR Code">
+                                            </div>
+                                            <div class="digiticket-qr-code-part">
+                                                <p><strong>Code</strong></p>
+                                                <button class="digiticket-qr-code-part-button" onclick="downloadTicket(this)">Download</button>
+                                            </div>
                                         </div>
-                                        <div class="digiticket-qr-code-part">
-                                            <p><strong>Code</strong></p>
-                                            <button onclick="downloadTicket(this)">Download</button>
-                                        </div>
-                                    </div>
-                                    <div class="digiticket-right">
-                                        <div class="digiticket-content">
-                                            <h1 class="digievent-title"><?= htmlspecialchars($eventAndTicketDetails[0]->event_name) ?></h1>
-                                            <p class="digievent-subtitle"><?= htmlspecialchars($eventAndTicketDetails[0]->event_description) ?></p>
-                                            <p class="digievent-date"><?= htmlspecialchars(date("l, F d, Y h:i A", strtotime($eventAndTicketDetails[0]->event_date))) ?> / at <?= htmlspecialchars($eventAndTicketDetails[0]->address) ?></p>
-                                            <div class="digiticket-price">
-                                                <p class="price-label">Public Ticket</p>
-                                                <p class="price-value"><?= htmlspecialchars($eventAndTicketDetails[0]->ticket_price) ?> LKR</p>
-                                                <p class="price-desc">One ticket for one person.</p>
+                                        <div class="digiticket-right">
+                                            <div class="digiticket-content">
+                                                <h1 class="digievent-title"><?= htmlspecialchars($eventAndTicketDetails[0]->event_name) ?></h1>
+                                                <p class="digievent-subtitle"><?= htmlspecialchars($eventAndTicketDetails[0]->event_description) ?></p>
+                                                <p class="digievent-date"><?= htmlspecialchars(date("l, F d, Y h:i A", strtotime($eventAndTicketDetails[0]->event_date))) ?> / at <?= htmlspecialchars($eventAndTicketDetails[0]->address) ?></p>
+                                                <div class="digiticket-price">
+                                                    <p class="price-label">Public Ticket</p>
+                                                    <p class="price-value"><?= htmlspecialchars($eventAndTicketDetails[0]->ticket_price) ?> LKR</p>
+                                                    <p class="price-desc">One ticket for one person.</p>
+                                                </div>
                                             </div>
                                         </div>
                                     </div>
+                                    <?php endfor; ?>
                                 </div>
-                                <?php endfor; ?>
                             </div>
+                            
                         </div>
 
 
                         <script>
+                            // function downloadTicket(button) {
+                            //     const ticketElement = button.closest('.digiticket');
+
+                            //     html2canvas(ticketElement).then(canvas => {
+                            //         const link = document.createElement('a');
+                            //         link.download = 'ticket.png';
+                            //         link.href = canvas.toDataURL();
+                            //         link.click();
+                            //     });
+                            // }
+                            
                             function downloadTicket(button) {
                                 const ticketElement = button.closest('.digiticket');
 
-                                html2canvas(ticketElement).then(canvas => {
-                                    const link = document.createElement('a');
-                                    link.download = 'ticket.png';
-                                    link.href = canvas.toDataURL();
-                                    link.click();
+                                // Wait for all images inside the ticket to load
+                                const images = ticketElement.querySelectorAll("img");
+                                //ensure that all images are loaded
+                                const imagePromises = Array.from(images).map(img => {
+                                    if (img.complete) return Promise.resolve();
+                                    return new Promise(resolve => {
+                                        img.onload = resolve;
+                                        img.onerror = resolve; // resolve even if it fails
+                                    });
+                                });
+
+                                Promise.all(imagePromises).then(() => {
+                                    html2canvas(ticketElement, {
+                                        useCORS: true // allow QR image from external source
+                                    }).then(canvas => {
+                                        const link = document.createElement('a');
+                                        link.download = 'ticket.png';
+                                        link.href = canvas.toDataURL('image/png');
+                                        link.click();
+                                    });
                                 });
                             }
+                            
+
                         </script>
 
                     
