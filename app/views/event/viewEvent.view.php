@@ -158,7 +158,7 @@
             <div class="team-grid">
                 <?php if(!empty($data['performers'])): ?>
                     <?php foreach($data['performers'] as $perfotmer): ?>
-                        <div class="team-member">
+                        <div class="team-member" onclick="gotoperformerprofile(<?php echo $perfotmer['id']?>)">
                             <img class="team-member-image" src="<?=ROOT?>/assets/images/user/<?php echo $perfotmer['pro_pic']?>" alt="Selina Valencia">
                             <div class="team-info">
                                 <h3><?php echo $perfotmer['name'] ?></h3>
@@ -176,7 +176,11 @@
                     <?php endforeach ?>
                 <?php endif ?>
             </div>
-
+            <script>
+                function gotoperformerprofile(user_id){
+                    window.location.href = "<?= ROOT ?>/collaborator-viewprofile?id=" + user_id;
+                }
+            </script>
         </div>
     </section>
     

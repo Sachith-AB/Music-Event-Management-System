@@ -9,6 +9,8 @@
     <title>Musicia - Ticket Purchase Success</title>
     <link rel="stylesheet" href="<?= ROOT ?>/assets/css/ticket/ticketstyle.css">
     <link rel="stylesheet" href="<?= ROOT ?>/assets/css/ticket/popupmodal-style.css">
+    <link rel="stylesheet" href="<?= ROOT ?>/assets/css/backbutton.css">
+
 
     <!-- Include Font Awesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
@@ -36,14 +38,22 @@
 
             ?>
             <div class="event-details-container-success">
-                <div class="success-message">
-                    <div class="success-icon">
-                        &#10004;
+                <div class="back-button">
+                    <div>
+                        <!-- Include Back Button Component -->
+                        <?php include('../app/views/components/backbutton.view.php'); ?>
                     </div>
-                    <div class="success-text">
-                        Successful payment!
+                    
+                    <div class="success-message">
+                        <div class="success-icon">
+                            &#10004;
+                        </div>
+                        <div class="success-text">
+                            Successful payment!
+                        </div>
                     </div>
                 </div>
+                
                 <h1 class="event-title"><span><?= htmlspecialchars($eventAndTicketDetails[0]->event_name) ?></span>  <?= htmlspecialchars($eventAndTicketDetails[0]->event_description) ?></h1>
                 <div class="event-info">
                     <div class="event-item">
