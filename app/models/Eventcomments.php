@@ -31,7 +31,7 @@ class Eventcomments {
         WHERE 
             eventcomments.event_id = ?";
         $result = $this->query($query, [$eventId]);
-
+        
         // Return the result array, or an empty array if no results are found
         return $result ?: [];
     }

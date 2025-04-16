@@ -1,10 +1,15 @@
 <?php
 
 spl_autoload_register(function ($classname) {
-
-    require $filename =  "../app/models/" . ucfirst($classname) . ".php";
+    // Handle PHPMailer namespace
+    if (strpos($classname, 'PHPMailer\\') === 0) {
+        $classname = str_replace('\\', '/', $classname);
+        require "../app/controllers/ticket/phpmailer/src/" . str_replace('PHPMailer/', '', $classname) . ".php";
+        return;
+    }
     
-
+    // Handle other classes
+    require "../app/models/" . ucfirst($classname) . ".php";
 });
 
 require_once '../app/Provider/Router.php';
