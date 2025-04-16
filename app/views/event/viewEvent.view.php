@@ -14,6 +14,8 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900&family=Sen:wght@400..800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+    <link rel="stylesheet" href="<?= ROOT ?>/assets/css/backbutton.css">
+
 </head>
 <bo>
     <?php include ('../app/views/components/loading.php'); ?>
@@ -24,7 +26,12 @@
         <div class="uppersec">
             <div class="upper">
                 <div class="eventname">
-                    <span class="highlight"><?php echo $data['event']->event_name ?></span><br/> <?php echo $data['event']->description ?>
+                    <div class="back-button">
+                        <!-- Include Back Button Component -->
+                        <?php include('../app/views/components/backbutton.view.php'); ?>
+                        <span class="highlight"><?php echo $data['event']->event_name ?></span>
+                    </div>
+                    <?php echo $data['event']->description ?>
                 </div>
                 
                 <div class="countdown-timer">

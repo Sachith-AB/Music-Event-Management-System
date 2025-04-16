@@ -7,7 +7,7 @@
     <title>Ticket Buyer Profile</title>
     <link rel="stylesheet" href="<?=ROOT?>/assets/css/ticketHolder/profile.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
-
+    <link rel="stylesheet" href="<?= ROOT ?>/assets/css/backbutton.css">
 </head>
 <body>
     <script src="<?=ROOT?>/assets/js/ticket_holder/profile.js"></script>
@@ -82,9 +82,15 @@
                     <button class="button button-2" type="submit" name="logOut">Sign out</button>
                 </form>
             </div>
+            
             <?php if (!empty($pastTickets)): ?>
                 <div class="upcommingeve-tickets">
-                    <h2>My Events</h2>
+                    <div class="back-button">
+                        <!-- Include Back Button Component -->
+                        <?php include('../app/views/components/backbutton.view.php'); ?>
+                        <h2 class="upcommingeve-tickets-h2">My Events</h2>
+                    </div>
+                    
                     <div class="tab-buttons">
                         <button class="tab-button active" onclick="showTab('past')">Past Events</button>
                         <button class="tab-button" onclick="showTab('upcoming')">Upcoming Events</button>

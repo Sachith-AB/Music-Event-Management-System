@@ -1,3 +1,5 @@
+
+
 /* Basic Styles */
 * {
     margin: 0;
@@ -9,6 +11,8 @@ body {
     font-family: Arial, sans-serif;
     padding-top: 70px;
 }
+
+
 
 .headersection {
     position: relative;
@@ -43,7 +47,10 @@ body {
     text-align: left;
     padding: 80px 100px;
 }
-
+.back-button{
+    gap: 20px;
+    display: flex;
+}
 .eventname {
     font-size: 3rem;
     font-weight: bold;
@@ -60,6 +67,7 @@ body {
     transition: background 0.5s ease; /* Smooth transition for hover effect */
     font-weight: bold;
     color: #00BDD6;
+    
 
 }
 

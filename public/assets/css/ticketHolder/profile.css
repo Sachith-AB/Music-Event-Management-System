@@ -1,3 +1,28 @@
+.breadcrumb ul {
+  list-style: none;
+  padding: 0;
+  display: flex;
+  gap: 8px;
+}
+
+.breadcrumb li::after {
+  content: ">";
+  margin-left: 8px;
+  color: #999;
+}
+
+.breadcrumb li:last-child::after {
+  content: "";
+}
+
+.breadcrumb a {
+  text-decoration: none;
+  color: #00BDD6;
+}
+
+
+
+
 .head1 {
     position: absolute; 
     top: 88px; 
@@ -467,8 +492,12 @@
 
   
 }
+.back-button{
+ gap: 10px;
+  display: flex
+}
 
-.upcommingeve-tickets h2 {
+.upcommingeve-tickets-h2 {
   margin-bottom: 20px;
   font-size: 24px;
 }
