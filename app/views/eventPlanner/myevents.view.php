@@ -1,7 +1,9 @@
 <?php 
     $backPath = ROOT.'/event-planner-dashboard';
+    require_once '../app/helpers/load_notifications.php';
     include ('../app/views/components/header.php'); 
 ?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>

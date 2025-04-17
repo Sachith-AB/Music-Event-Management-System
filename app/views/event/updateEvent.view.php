@@ -17,7 +17,8 @@ $type = $_SESSION['event_data']['type'] ?? '';
 $last_visit = $_SESSION['last_visit'] ?? "This is my first visit";
 $_SESSION['last_visit'] = date('Y-m-d H:i:s');
 ?>
-<?php include ('../app/views/components/CreateEventHeader.php'); ?>
+<?php require_once '../app/helpers/load_notifications.php'; ?>
+<?php include ('../app/views/components/header.php'); ?>
 
 <!DOCTYPE html>
 <html lang="en">

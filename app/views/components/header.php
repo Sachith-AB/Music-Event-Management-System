@@ -40,6 +40,7 @@
                         <li><a href="colloborator-dashboard?id=<?= $_SESSION['USER']->id ?>">Dashboard</a></li>
                     <?Php endif ?>
                     <div class="notification-wrapper" style="position: relative;">
+                     
                         <button class="avatarbadge" id="notificationButton" type="button">
                             <i class="fas fa-bell"></i>
                             <?php if (!empty($notifications["newnotifications"])): ?>
@@ -73,10 +74,11 @@
                     </div>
                     <script>
                         document.addEventListener("DOMContentLoaded", function () {
-                            console.log("Notification button:", notifButton);
+                            
 
 
                             const notifButton = document.getElementById("notificationButton");
+                            console.log("Notification button:", notifButton);
                             const popup = document.getElementById("notificationPopup");
 
                             notifButton.addEventListener("click", function () {
