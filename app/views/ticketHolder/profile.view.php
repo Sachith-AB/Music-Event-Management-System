@@ -30,43 +30,13 @@
         <div class="all">
             <div class="container">
                 <h2>My Profile</h2>
-                <!-- notifications -->
-                <div class="avatacon">
-                    <!-- JS handles POST  -->
-                    <button class="avatarbadge" id="notificationButton" type="button">
-                        <i class="fas fa-bell"></i>
-                        <?php if (!empty($notifications["newnotifications"])): ?>
-                            <span class="notification-indicator"></span>
-                        <?php endif; ?>
-                    </button>
-
-                    
-                    <div id="notificationPopup" class="notification-popup" style="display: none;">
-                        <?php if (!empty($notifications["allnotifications"])): ?>
-                            <ul>
-                                <?php foreach ($notifications["allnotifications"] as $note): ?>
-                                    <li class="notification-item">
-                                        <strong><?= htmlspecialchars($note->title) ?></strong><br>
-                                        <?php 
-                                            $messages = json_decode($note->message);
-                                            foreach ($messages as $msg) {
-                                                echo "<div>" . htmlspecialchars($msg) . "</div>";
-                                            }
-                                        ?>
-                                        <small><?= date('F j, Y, g:i a', strtotime($note->created_at)) ?></small>
-                                    </li>
-                                <?php endforeach; ?>
-                            </ul>
-                        <?php else: ?>
-                            <p>No notifications found.</p>
-                        <?php endif; ?>
-                    </div>
-
+                
+                
                     <div class="avatar">
                         <img src="<?=ROOT?>/assets/images/user/<?php echo $_SESSION['USER']->pro_pic ?>" alt="user image">        
                     </div>
 
-                </div>
+               
                 <div class="details">
                     <h2 class="head2"><?php echo $_SESSION['USER']->name ?></h2>
                     <h3 class="head3"><?php echo $_SESSION['USER']->email ?></h3>

@@ -37,9 +37,26 @@
   .avatarcon{
     background-color: #00aaff;
   }
+  .avatar {
+    overflow: visible;
+    position: relative;
+    width: 140px; 
+    height: 140px; 
+    background: #D3C1FAFF; 
+    opacity: 1; 
+    overflow: hidden; 
+    
+    border-radius: 70px; 
+  }
+  .avatar img {
+
+    justify-content: center;
+    width: 140px; 
+    height: 140px; 
+  }
 
 /* Avatar 6 */
-.avatarcon{
+/* .avatarcon{
   background-color: #00aaff;
   z-index: 10;
 }
@@ -48,7 +65,7 @@
     position: relative;
     width: 140px; 
     height: 140px; 
-    background: #D3C1FAFF; /* primary-200 */
+    background: #D3C1FAFF; 
     opacity: 1; 
     overflow: hidden; 
     
@@ -65,16 +82,16 @@
     z-index: 10;
     overflow: visible;
     position: relative;
-    top: 40px;  /* adjust as needed */
-    right: -100px;  /* adjust as needed */
+    top: 40px;  
+    right: -100px;  
     width: 30px;
     height: 30px;
-    background-color: #00BDD6; /* You can change to suit the bell background */
+    background-color: #00BDD6; 
     border-radius: 50%;
     display: flex;
     align-items: center;
     justify-content: center;
-    opacity: 1; /* make it visible */
+    opacity: 1; 
     border: 2px solid white;
     box-shadow: 0 0 4px rgba(0, 0, 0, 0.2);
   }
@@ -117,7 +134,7 @@
   .avatar .badge i {
     font-size: 16px;
     color: white;
-  }
+  } */
   
 .detail {
   display: flex;
