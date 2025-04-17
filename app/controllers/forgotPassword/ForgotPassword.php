@@ -32,6 +32,6 @@ class ForgotPassword {
         //     }
         // }
 
-        $this->view('forgotpassword', [], false);
+        $this->view('forgotPassword/forgotpassword', [], false);
     }
 }
