@@ -190,8 +190,8 @@
                                 <div class="musicevent-event-title"><?= htmlspecialchars($event->event_name) ?></div>
                                 <div class="musicevent-event-details">
                                     <div>📅 <?= htmlspecialchars(date("l, F d | h:i A", strtotime($event->start_time))) ?></div>
-                                    <br/>
-                                    <div>📍 <?= htmlspecialchars($event->address) ?></div>
+                                   
+                                    <div class="two-line-ellipsis">📍 <?= htmlspecialchars($event->address) ?></div>
                                 </div>
                                 <!-- <div class="musicevent-event-price">From $80</div> -->
                             </div>
@@ -209,8 +209,7 @@
             
     </main>
 
-    <!-- Include Footer -->
-    <?php include ('../app/views/components/footer.php'); ?>
+
         
     
 

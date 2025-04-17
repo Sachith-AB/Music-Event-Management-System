@@ -20,7 +20,6 @@
 
 </head>
 
-<body>
 <!-- <?php include ('../app/views/components/loading.php'); ?> -->
 <?php $email = htmlspecialchars($_GET['email']) ; ?>
 
@@ -324,7 +323,7 @@
                 </script>
 
             </div>
-            
+            <div class="event-details-container">
             <!--other event section-->
             <h2>Other events you may like</h2>
             <?php if (!empty($recentevents)): ?>
@@ -337,7 +336,7 @@
                                 <div class="musicevent-event-title"><?= htmlspecialchars($event->event_name) ?></div>
                                 <div class="musicevent-event-details">
                                     <div>📅 <?= htmlspecialchars(date("l, F d | h:i A", strtotime($event->start_time))) ?></div>
-                                    <div>📍 <?= htmlspecialchars($event->address) ?></div>
+                                    <div class="two-line-ellipsis">📍 <?= htmlspecialchars($event->address) ?></div>
                                 </div>
                                 <!-- <div class="musicevent-event-price">From $80</div> -->
                             </div>
@@ -352,14 +351,14 @@
         <?php else: ?>
             <p>No purchase created.</p>
         <?php endif; ?>
+        </div>
     </main>
 
-    <!-- Include Footer -->
-    <?php include ('../app/views/components/footer.php'); ?>
 
-    </div>
 
-</body>
+    
+
+
 
 </html>
 <?php include ('../app/views/components/footer.php'); ?>

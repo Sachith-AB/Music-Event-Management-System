@@ -186,40 +186,41 @@
     </section>
     
 
-    <!-- ticket section -->
     <div class="ticketbackground">
+        <div>
+            <h1>Tickets</h1>
+            <!-- <p>Cupidatat sunt excepteur ipsum non. Ex consectetur amet eu commodo incididunt elit incididunt aliqua aliqua irure elit minim voluptate. Sit est nisi labore eiusmod et ad. Anim quis anim adipisicing quis cillum id ullamco officia do culpa voluptate exercitation nisi.</p> -->
+        </div>
         <div class="team-grid-scrollable">
             <div class="team-grid">
-        
                 <?php foreach($data['tickets'] as $ticket): ?>
-                        <!-- ticket card -->
                     <div class="pricing-card">
-                        <h2>
-                            <?php echo $ticket->ticket_type?>
-                        </h2>
-                        <p class="price"><?php echo $ticket->price?></p>
+                        <div>
+                            <h2><?= $ticket->ticket_type ?></h2>
+                            <p class="price"><?= $ticket->price ?></p>
+                            <ul>
+                                <?php 
+                                $restrictions = json_decode($ticket->restrictions, true);
+                                if (is_array($restrictions)): 
+                                    foreach ($restrictions as $feature): ?>
+                                        <li>✅ <?= htmlspecialchars($feature) ?></li>
+                                    <?php endforeach; 
+                                else: ?>
+                                    <li>No restrictions listed</li>
+                                <?php endif; ?>
+                            </ul>
+                        </div>
                         
-                        <ul>
-                            <?php 
-                            // Decode restrictions safely
-                            $restrictions = json_decode($ticket->restrictions, true);
-                            
-                            // Check if decoding was successful and it's an array
-                            if (is_array($restrictions)): 
-                                foreach ($restrictions as $feature): ?>
-                                    <li>✅ <?= htmlspecialchars($feature) ?></li>
-                                <?php endforeach; 
-                            else: ?>
-                                <li>No restrictions listed</li>
-                            <?php endif; ?>
-                        </ul>
-                            
-                    
                         <button onclick="window.location.href='purchaseticket?id=<?= $ticket->id ?>'">Buy Ticket Now</button>
                     </div>
-                <?php endforeach ?>
-                
-            </div>    
+                <?php endforeach; ?>
+            </div>
+        </div>
+    </div>
+
+
+
+
             <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
             <script>
                 var query = document.getElementById("address").textContent.trim();
@@ -261,8 +262,7 @@
             </script>
             <!-- reviw to event -->
             <?php include ('../app/views/components/review.php'); ?>
-        </div>
-    </div>
+        
 </body>
 
 </html>

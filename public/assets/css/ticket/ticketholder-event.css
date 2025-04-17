@@ -386,15 +386,31 @@ img {
     background-image: url('');
     background-size: cover;
     background-position: center;
-    width: 1200px;
-    
-    display: flex;
+
+    max-width: 1200px;
+    width: 100%; /* Allow full screen on small devices */
+
+    /* display: flex; */
     justify-content: center;
     align-items: center;
 
     background-color: #f7f7f7;
-    
-    margin-top: 40PX;
+    margin-top: 40px;
+    overflow-x: auto; /* Just in case */
+}
+.team-grid-scrollable {
+    overflow-x: auto;
+    width: 100%;
+}
+/* .team-grid-scrollable {
+    overflow-x: auto;
+    white-space: nowrap;
+    width: 100%;
+} */
+
+.team-grid {
+    display: flex;
+    gap: 20px;
 }
 
 .pricing-container {
@@ -410,7 +426,8 @@ img {
     background: rgba(255, 255, 255, 0.8);
     border-radius: 10px;
     padding: 20px;
-    width: 300PX;
+    flex: 0 0 auto; /* Prevents shrinking and allows horizontal layout */
+    width: 300px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
     transition: transform 0.3s ease;
     
@@ -485,6 +502,8 @@ img {
     font-weight: bold; /* Bold text */
     color: #a94442; /* Slightly darker red for contrast */
 }
+/* 
+event planner  */
 
 .event-planner {
     display: flex;
@@ -523,6 +542,8 @@ img {
     transform: scale(1.05);
     transition: all 1s ease-in-out;
 }
+
+
 
 
 

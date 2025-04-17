@@ -163,7 +163,7 @@ class Event {
 
     public function getRecentEvents($limit = 4) {
         // Directly inject the $limit value into the query
-        $query = "SELECT * FROM events WHERE is_delete = '0' ORDER BY eventDate DESC LIMIT $limit";
+        $query = "SELECT * FROM events WHERE status='scheduled'AND is_delete = '0' ORDER BY eventDate DESC LIMIT $limit";
     
         return $this->query($query);
     }
