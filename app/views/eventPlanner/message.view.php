@@ -65,3 +65,4 @@
     <script src="<?=ROOT?>/assets/js/eventPlanner.js"></script>
 </body>
 </html>
+<?php include ('../app/views/components/footer.php'); ?>

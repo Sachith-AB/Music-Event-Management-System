@@ -85,3 +85,4 @@
     <script src="https://unpkg.com/ionicons@5.5.2/dist/ionicons.js"></script>
 </body>
 </html>
+<?php include ('../app/views/components/footer.php'); ?>

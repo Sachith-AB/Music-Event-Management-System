@@ -163,3 +163,4 @@ $_SESSION['last_visit'] = date('Y-m-d H:i:s');
     </script>
 </body>
 </html>
+<?php include ('../app/views/components/footer.php'); ?>

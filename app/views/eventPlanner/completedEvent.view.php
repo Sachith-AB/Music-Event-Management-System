@@ -164,3 +164,4 @@
     
 
 </body>
+<?php include ('../app/views/components/footer.php'); ?>

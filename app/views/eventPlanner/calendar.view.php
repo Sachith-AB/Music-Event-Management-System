@@ -51,3 +51,4 @@
     <script src="<?=ROOT?>/assets/js/calander.js"></script>
 </body>
 </html>
+<?php include ('../app/views/components/footer.php'); ?>

@@ -123,3 +123,4 @@
 
 </body>
 </html>
+<?php include ('../app/views/components/footer.php'); ?>

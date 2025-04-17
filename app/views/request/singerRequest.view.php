@@ -94,3 +94,4 @@
 <script src="<?=ROOT?>/assets/js/request/singerdropdown.js"></script>
 </body>
 </html>
+<?php include ('../app/views/components/footer.php'); ?>
