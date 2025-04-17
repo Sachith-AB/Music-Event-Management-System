@@ -7,6 +7,7 @@ route('search','Search@index');
 
 route('signin','Signin@index');
 route('signup','Signup@index');
+route('forgot-password','ForgotPassword@index');
 
 
 route('create-event', 'event/Create@index');  
