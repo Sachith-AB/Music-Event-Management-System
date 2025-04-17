@@ -1,5 +1,4 @@
-
-<?php include ('../app/views/components/Header.php'); ?>
+<?php include ('../app/views/components/CreateEventHeader.php'); ?>
 
 <?php
 if (session_status() == PHP_SESSION_NONE) {
@@ -24,6 +23,8 @@ $_SESSION['last_visit'] = date('Y-m-d H:i:s');
     <link rel="stylesheet" href="<?=ROOT?>/assets/css/ticket/createticket.css">
     <link rel="stylesheet" href="<?=ROOT?>/assets/css/ticket/viewticket.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
 
 </head>
 <body>
@@ -38,48 +39,45 @@ $_SESSION['last_visit'] = date('Y-m-d H:i:s');
         <!--create main content -->
         <div class="main-content">
             <h1>Ticket Information</h1>
-
-            
             <!-- Display ticket cards -->
-            <?php if (!empty($tickets)): ?>
-                <?php foreach ($tickets as $ticket): ?>
-                    
-                        <div class="ticket-card">
-                            <div class="icon-container">
-                                <div class="silver-card">
-                                    <span>🎟</span>
-                                </div>
-                            </div> 
-                            <!-- <div class="ticket-icon">
-                                <span class="icon-text">🎟</span>
-                            </div> -->
-                            
-                            <div class="ticket-details">
-                                <div class="ticket-info">
-                                    <span class="ticket-type"><?= htmlspecialchars($ticket->ticket_type) ?></span>
-                                    <span class="ticket-price">Price: LKR<?= htmlspecialchars($ticket->price) ?></span>
-                                    <span class="ticket-quantity">Quantity: <?= htmlspecialchars($ticket->quantity) ?></span>
-                                </div>
-                                <div class="ticket-actions">
-                                    <form action="update-ticket" method="get">
-                                        <input type="hidden" name="ticket_id" value="<?= htmlspecialchars($ticket->id) ?>">
-                                        <button class="btn btn-update" type="submit">Update</button>
-                                    </form>
-                                    <form action="delete-ticket" method="post" onsubmit="return confirm('Are you sure you want to delete this ticket?');">
-                                        <input type="hidden" name="ticket_id" value="<?= htmlspecialchars($ticket->id) ?>">
-                                        <button class="btn btn-delete" type="submit">Delete</button>
-                                    </form>
+            <div class="ticket-container">
+                <?php if (!empty($tickets)): ?>
+                    <?php foreach ($tickets as $ticket): ?>
+                        <div class="card">
+                            <div class="img-box">
+                            <img src="<?=ROOT?>/assets/images/ticket/ticket.png" alt="Ticket" />
+                            </div>
+                            <div class="content">
+                                <div class="details">
+                                    <br />
+                                    <h2><?= htmlspecialchars($ticket->ticket_type) ?>
+                                        <br />
+                                        <!-- <span>LKR 1000</span> -->
+                                    </h2>
+                                    <div class="data">
+                                        <h3>
+                                            Price:
+                                            <br />
+                                            <span>LKR <?= htmlspecialchars($ticket->price) ?></span>
+                                        </h3>
+                                        <h3>
+                                            Quantity: 
+                                            <br />
+                                            <span><?= htmlspecialchars($ticket->quantity) ?></span>
+                                        </h3>
+                                    </div>
+                                    <div class="action-btn">
+                                        <button class="btn-btn-update" type="submit" onclick="goUpdate(<?= htmlspecialchars($ticket->id) ?>)">Update</button>
+                                        <button class="btn-btn-delete" type="submit" onclick="goDelete(<?= htmlspecialchars($ticket->id) ?>)">Delete</button>
+                                    </div>
                                 </div>
                             </div>
-                            
                         </div>
-
-
-                <?php endforeach; ?>
-            <?php else: ?>
-                <p>No tickets available.</p>
-            <?php endif; ?>
-
+                    <?php endforeach; ?>
+                <?php else: ?>
+                    <p>No tickets available.</p>
+                <?php endif; ?>
+            </div>
             <button class="next-button" onclick ="goToBack()"> Back </button>
             <button class="next-button" onclick ="goToRequest()"> Next </button>
 
@@ -87,6 +85,12 @@ $_SESSION['last_visit'] = date('Y-m-d H:i:s');
     </div>
 
     <script>
+        function goUpdate(ticket_id){
+            window.location.href = "update-ticket?ticket_id="+ticket_id;
+        }
+        function goDelete(ticket_id){
+            window.location.href = "delete-ticket?ticket_id="+ticket_id;
+        }
         function goToRequest() {
             window.location.href = "request-singers?id=<?php echo $id?>";
         }

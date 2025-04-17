@@ -1,5 +1,7 @@
 <?php
 
+use LDAP\Result;
+
 class Event {
     use Model;
 
@@ -19,6 +21,7 @@ class Event {
         'createdBy',
         'address',
         'status',
+        'is_delete'
     ];
 
     public function validEvent($data) {
@@ -201,6 +204,7 @@ class Event {
         $res['event']=[];
         $res['event'] = $this->firstById($id);
         $user = new User;
+        $profile = new Profile;
         
         $res['performers'] = [];
         $query_1 = "SELECT * FROM requests WHERE event_id = $id AND (role ='singer' OR role = 'band' OR role='announcer') AND Status = 'accepted' ";
@@ -208,9 +212,13 @@ class Event {
 
         if(!empty($result_1)){
             foreach($result_1 as $performer){
-                $res['performers'][]=$user->firstById($performer->collaborator_id);
+                $res['performers'][]=array_merge(
+                    (array)$user->firstById($performer->collaborator_id),
+                    (array)$profile->getProfileInfoByUserId($performer->collaborator_id)
+                );
             }
         }
+
         
 
 
@@ -270,7 +278,74 @@ class Event {
         return $result;
     }
 
+    public function getPastEvents()
+    {
+        $query = "SELECT e.id AS event_id,e.event_name AS user_id,u.name AS user_name from events e
+                  JOIN users u on e.createdBy = u.id
+                  WHERE e.is_delete = '0' AND e.eventDate < CURRENT_DATE
+                  ";
+
+        $result = $this->query($query);
+        return $result;
+    }
     
 
+    public function getFutureEvents()
+    {
+        $query = "SELECT e.id AS event_id,e.event_name AS user_id,u.name AS user_name from events e
+        JOIN users u on e.createdBy = u.id
+        WHERE e.is_delete = '0' AND e.eventDate > CURRENT_DATE
+        ";
 
+    $result = $this->query($query);
+    return $result;
+    }
+
+
+     
+     
+     public function getfullFutureEventInfo()
+     {
+        $query = "SELECT e.id AS event_id, e.event_name, e.eventDate, planner.id AS event_planner_id, planner.name AS event_planner_name,
+                    GROUP_CONCAT(u.name SEPARATOR ', ') AS collaborators
+                    FROM events e
+                    JOIN users planner ON e.createdBy = planner.id  -- Get event planner details
+                    LEFT JOIN requests r ON e.id = r.event_id AND r.status = 'accepted'  -- Get accepted collaborator requests
+                    LEFT JOIN users u ON r.collaborator_id = u.id  -- Get collaborator details
+                    WHERE e.is_delete = '0' 
+                    AND e.eventDate > CURRENT_DATE  -- Only fetch upcoming events
+                    GROUP BY e.id, e.event_name, e.eventDate, planner.id, planner.name;";
+
+        $result = $this->query($query);
+        return $result;
+     }
+
+     public function getFullPastEventInfoWithTickets()
+     {
+         $query = "SELECT e.id AS event_id, e.event_name, e.eventDate, planner.id AS event_planner_id, planner.name AS event_planner_name,
+                    GROUP_CONCAT(DISTINCT u.name SEPARATOR ', ') AS collaborators,
+                    IFNULL(SUM(t.price * b.ticket_quantity), 0) AS total_income,
+                    IFNULL(SUM(b.ticket_quantity), 0) AS total_sold_tickets,
+                    IFNULL(SUM(p.payment), 0) AS total_payments
+                    FROM events e
+                    JOIN users planner ON e.createdBy = planner.id
+                    LEFT JOIN requests r ON e.id = r.event_id AND r.status = 'accepted'
+                    LEFT JOIN users u ON r.collaborator_id = u.id
+                    LEFT JOIN buyticket b ON e.id = b.event_id
+                    LEFT JOIN tickets t ON b.ticket_id = t.id
+                    LEFT JOIN payments p ON e.id = p.event_id
+                    WHERE e.is_delete = '0' 
+                    AND e.eventDate < CURRENT_DATE
+                    GROUP BY e.id, e.event_name, e.eventDate, planner.id, planner.name
+                    ORDER BY total_income DESC, total_sold_tickets DESC";
+     
+        $result = $this->query($query);
+         return $result ? $result : [];
+     }
+
+     public function geteventplannerinfo($event_id){
+        $query = "SELECT * FROM users JOIN events ON events.createdBy = users.id WHERE events.id = $event_id";
+    
+        return $this->query($query);
+     }
 }

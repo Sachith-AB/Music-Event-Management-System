@@ -7,12 +7,12 @@ class ViewEventPlanner {
 
     public function index() {
 
-        $userId;
+        $userId=htmlspecialchars($_GET['id']);
 
-        if($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['user_id']))
-        {
-            $userId = $_POST['user_id'];
-        }
+        // if($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['user_id']))
+        // {
+        //     $userId = $_POST['user_id'];
+        // }
 
         $buyTicketModel = new Buyticket();
         $eventBuyers = $buyTicketModel->getEventBuyers($userId);
@@ -22,7 +22,7 @@ class ViewEventPlanner {
         $userEvents = $eventModel->getEventsByUserId($userId);
         
         usort($userEvents, function($a, $b) {
-            return strtotime($b->createdAt) - strtotime($a->createdAt);
+            return strtotime($b->start_time) - strtotime($a->start_time);
         });
 
         $totalRevenue = 0;

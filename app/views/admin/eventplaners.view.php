@@ -40,13 +40,14 @@
                                     <td><?php echo $planner->contact ?></td>
                                     <td>
                                         <div class = "button-section">
-                                            <form action="<?=ROOT?>/admin-vieweventplanner" method = "POST">
-                                                <input type = "hidden" name ="user_id" value = "<?php echo $planner->id ?>">
-                                                <button class="action-btn view" type = "submit" >View</button>
-                                            </form>
+                                            
+                                                
+                                            <button class="action-btn view" type = "submit" onclick="gotoplannerprofile(<?php echo $planner->id ?>)">View</button>
+                                            
                                              
                                             <form method = "POST">
                                                 <input type = "hidden" name = "user_id" value = "<?php echo $planner->id ?>">
+                                                <input type = "hidden" name = "is_delete" value = '1' >
                                                 <button name = "delete" class="action-btn delete" type = "submit" >Delete</button>
                                             </form>
                                                 
@@ -64,6 +65,11 @@
             </table>
         </div>
     </div>
+    <script>
+        function gotoplannerprofile(userid){
+            window.location.href = "<?=ROOT?>/admin-vieweventplanner?id="+userid;
+        }
+    </script>
 </body>
 </html>
 

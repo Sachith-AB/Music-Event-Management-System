@@ -8,8 +8,7 @@
     <link rel="stylesheet" href="<?=ROOT?>/assets/css/eventCollaborators/calender.css">
     <link rel="icon" type="image/png" href="<?=ROOT?>/assets/images/logo/logo.png">
 </head>
-    <?php $eventJson = json_encode($data);
-    ?>
+<?php $eventJson = json_encode($data ?? []); ?>
 <body>
 <?php include ('../app/views/components/loading.php'); ?>
     <div class="dash-container">
@@ -24,7 +23,7 @@
                         <button id="nextMonth">▶</button>
                     </div>
                     <div class="calendar-grid">
-                        <input type="hidden" id="events" value='<?php echo $eventJson ?>'>
+                    <script id="events" type="application/json"><?= $eventJson ?></script>
                     </div>
                 </div>
 

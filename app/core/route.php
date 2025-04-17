@@ -14,6 +14,7 @@ route('event-review', 'event/Review@index');
 route('event-update', 'event/Update@index');  
 route('event-delete', 'event/Delete@index');  
 route('view-event','event/ViewEvent@index');
+
 route('processing-event-update','event/ProcessingEventUpdate@index');
 route('processing-event-delete','event/ProcessingEventDelete@index');
 
@@ -33,6 +34,7 @@ route('colloborator-events','eventCollaborator/SingerEvents@index');
 route('colloborator-payments','eventCollaborator/SingerPayments@index');
 route('collaborator-viewprofile','eventCollaborator/ViewProfile@index');
 route('collaborator-eventdetails','eventCollaborator/EventDetails@index');
+route('collaborator-report','eventCollaborator/collaboratorReport@index');
 route('send-message','eventCollaborator/Chat@sendMessage');
 route('get-messages','eventCollaborator/Chat@getMessages');
 
@@ -77,6 +79,8 @@ route('ticketevent','ticket/PurchaseTicket@index4');
 route('profile','ticketHolder/Profile@index');
 route('update-profile','ticketHolder/UpdateProf@index');
 route('ticket-holder-home','ticketHolder/TicketHolderHome@index');
+route('view-pastevent','ticketHolder/ViewPastevent@index');
+route('profile/markread','ticketHolder/ViewPastevent@markNotificationsRead');
 
 // Route for event planners
 route('event-planner-profile','eventPlanner/Profile@index');
@@ -90,6 +94,7 @@ route('event-planner-scheduledEvent','eventPlanner/EventPlannerScheduledEvent@in
 route('get-event-messages','eventPlanner/EventPlannerMessage@index');
 route('collaborator-payment','eventPlanner/CollaboratorPayment@index');
 route('event-planner-completedEvent','eventPlanner/EventPlannerCompletedEvent@index');
+route('event-planner-completedEventInfo','eventPlanner/EventPlannerCompletedEventInfo@index');
 
 
 
@@ -99,4 +104,6 @@ route('admin-eventplanners','admin/EventPlanners@index');
 route('admin-eventcollaborators','admin/EventCollaborators@index');
 route('admin-ticketholders','admin/TicketHolders@index');
 route('admin-vieweventplanner','admin/ViewEventPlanner@index');
-
+route('admin-event-report','admin/AdminEventReport@index');
+route('admin-ticket-report','admin/AdminTicketReport@index');
+route('admin-user-report','admin/AdminUserReport@index');

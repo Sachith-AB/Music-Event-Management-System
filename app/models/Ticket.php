@@ -39,12 +39,12 @@ class Ticket {
 			$this->errors['error_no'] = 1;
 			return;
 		}
-        if (empty($data['ticket_type'])) {
-			$this->errors['flag'] = true;
-			$this->errors['error'] = "Ticket Type is Required ";
-			$this->errors['error_no'] = 1;
-			return;
-		}
+        // if (empty($data['ticket_type'])) {
+		// 	$this->errors['flag'] = true;
+		// 	$this->errors['error'] = "Ticket Type is Required ";
+		// 	$this->errors['error_no'] = 1;
+		// 	return;
+		// }
         if (empty($data['quantity'])) {
 			$this->errors['flag'] = true;
 			$this->errors['error'] = "Quantity is Required ";
@@ -182,6 +182,28 @@ class Ticket {
     
         $params = ['event_id' => $event_id];
         return $this->query($query, $params);
+    }
+    
+    
+    public function getEventTicketDetails() {
+        $query = "SELECT 
+                    e.event_name,
+                    t.ticket_type,
+                    SUM(t.quantity + t.sold_quantity) AS total_tickets_made,
+                    t.quantity AS available_quantity,
+                    t.sold_quantity AS sold_tickets,
+                    t.price AS ticket_price
+                  FROM 
+                    events e
+                  JOIN 
+                    tickets t ON e.id = t.event_id
+                  GROUP BY 
+                    e.event_name, t.ticket_type, t.quantity, t.sold_quantity, t.price
+                  ORDER BY 
+                    e.event_name, t.ticket_type";
+    
+        $result = $this->query($query);
+        return $result ? $result : [];
     }
     
 
