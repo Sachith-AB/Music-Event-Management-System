@@ -29,8 +29,14 @@
                     inputs[index + 1].focus();
                 }
             });
-        });
 
+            input.addEventListener('keydown', (e) => {
+                if (e.key === "Backspace" && input.value === '' && index > 0) {
+                    inputs[index - 1].focus();
+                }
+            });
+        });
     </script>
+
 </body>
 </html>
