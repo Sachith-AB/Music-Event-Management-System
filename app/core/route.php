@@ -80,6 +80,7 @@ route('profile','ticketHolder/Profile@index');
 route('update-profile','ticketHolder/UpdateProf@index');
 route('ticket-holder-home','ticketHolder/TicketHolderHome@index');
 route('view-pastevent','ticketHolder/ViewPastevent@index');
+route('notification-event','ticketHolder/NotificationEvent@index');
 route('profile/markread','ticketHolder/ViewPastevent@markNotificationsRead');
 
 // Route for event planners
