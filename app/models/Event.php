@@ -367,6 +367,11 @@ class Event {
         $result = $this->query($query);
         return $result;
      }
+     public function geteventplannerinfo($event_id){
+        $query = "SELECT * FROM users JOIN events ON events.createdBy = users.id WHERE events.id = $event_id";
+    
+        return $this->query($query);
+     }
 
      public function getFullPastEventInfoWithTickets()
      {

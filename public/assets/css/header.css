@@ -198,22 +198,6 @@ header {
         height: 35px;
     }
 }
-
-.breadcrumb {
-    font-size: 0.85rem;
-    color: #666;
-    
-}
-
-.breadcrumb a {
-    color: #007BFF;
-    text-decoration: none;
-    margin-right: 5px;
-}
-
-.breadcrumb a:hover {
-    text-decoration: underline;
-}
 .nav-right{
     margin-right: 30px;
 }
@@ -352,7 +336,7 @@ nav ul li.sign-up {
 }
 /*header end*/
 /* for notification button */
-/* for notification button */
+
 .user-controls {
     display: flex;
     align-items: center;
