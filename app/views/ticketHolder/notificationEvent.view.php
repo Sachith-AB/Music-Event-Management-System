@@ -9,7 +9,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Musicia - Ticket Purchase Success</title>
     
-    <link rel="stylesheet" href="<?= ROOT ?>/assets/css/ticket/ticketholder-event.css">
+    <link rel="stylesheet" href="<?= ROOT ?>/assets/css/ticketHolder/notificationevent.css">
 
     <!-- Include Font Awesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
@@ -58,6 +58,17 @@
             <!-- <div class="play-button">
                 <span>&#9654;</span> Play Icon
             </div> -->
+        </div>
+    </div>
+    <!-- reply box for notification -->
+  
+    <div class="section3">
+        <h2>Event Report</h2>
+        <div class="report-container">
+            <div class="report-section">
+                <p>Do you want to view the report?</p>
+                <button class="btn btn-primary" onclick="window.location.href='<?= ROOT ?>/event-planner-completedEvent?id=<?= htmlspecialchars($data['event']->id) ?>'">View Report</button>
+            </div>
         </div>
     </div>
 
@@ -190,6 +201,9 @@
 
             </div>
     </section>
+
+
+    
     <script>
         function gotoPlannerProfile(userid){
             window.location.href = "<?=ROOT?>/admin-vieweventplanner?id="+userid;
