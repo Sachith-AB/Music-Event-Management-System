@@ -7,17 +7,29 @@
     <link rel="stylesheet" href="<?= ROOT ?>/assets/css/forgotpassword/pinInput.css">
 </head>
 <body>
+    <?php 
+
+        //Get the pass data from URL for sign in part
+        $email = htmlspecialchars($_GET['email'] ?? '');
+        $pass = htmlspecialchars($_GET['pass'] ?? '');
+        $flag = htmlspecialchars($_GET['flag'] ?? 2);
+        $error = htmlspecialchars($_GET['error']?? '');
+        // echo $email;
+        // echo $pass;
+        // echo $flag;
+        // echo $error;
+    ?>
     <div class="pin-container">
         <h2>Enter Verification Code</h2>
         <p>We’ve sent a 4-digit code to your email</p>
         <form class="pin-form" method="POST">
             <div class="pin-inputs">
-                <input type="text" maxlength="1" required>
-                <input type="text" maxlength="1" required>
-                <input type="text" maxlength="1" required>
-                <input type="text" maxlength="1" required>
+                <input type="text" name="c1" maxlength="1" required>
+                <input type="text" name="c2" maxlength="1" required>
+                <input type="text" name="c3" maxlength="1" required>
+                <input type="text" name="c4" maxlength="1" required>
             </div>
-            <button type="submit">Verify Code</button>
+            <button type="submit" name="verifyCode">Verify Code</button>
         </form>
     </div>
     <script>
@@ -37,6 +49,19 @@
             });
         });
     </script>
+
+    <?php if (!empty($data['error'])): ?>
+        <?php 
+            $message = $data['error'];
+            include("../app/views/components/r-message.php")
+        ?>
+
+    <?php elseif($flag == 1): ?>
+        <?php 
+            $message = $error;
+            include("../app/views/components/r-message.php")
+        ?>
+    <?php endif ?>
 
 </body>
 </html>

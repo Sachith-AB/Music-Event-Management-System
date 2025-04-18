@@ -11,15 +11,15 @@
 
     <?php 
 
-    //Get the pass data from URL for sign in part
-    $email = htmlspecialchars($_GET['email'] ?? '');
-    $pass = htmlspecialchars($_GET['pass'] ?? '');
-    $flag = htmlspecialchars($_GET['flag'] ?? 2);
-    $error = htmlspecialchars($_GET['error']?? '');
-    // echo $email;
-    // echo $pass;
-    // echo $flag;
-    // echo $error;
+        //Get the pass data from URL for sign in part
+        $email = htmlspecialchars($_GET['email'] ?? '');
+        $pass = htmlspecialchars($_GET['pass'] ?? '');
+        $flag = htmlspecialchars($_GET['flag'] ?? 2);
+        $error = htmlspecialchars($_GET['error']?? '');
+        // echo $email;
+        // echo $pass;
+        // echo $flag;
+        // echo $error;
     ?>
 
     <div class="container">
