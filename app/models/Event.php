@@ -159,7 +159,55 @@ class Event {
         // Return the result array, or an empty array if no results are found
         return $result ?: [];
     }
-    
+
+    public function getCompletedEvents($userId) {
+        $query = "SELECT 
+        events.*,
+        IFNULL(ticket_totals.total_quantity, 0) AS total_quantity,
+        IFNULL(sold_data.sold_quantity, 0) AS sold_quantity,
+        IFNULL(sold_data.total_revenue, 0) AS total_revenue
+    FROM events
+    LEFT JOIN (
+        -- Subquery to get total quantity for each event
+        SELECT tickets.event_id, SUM(tickets.quantity) AS total_quantity
+        FROM tickets
+        GROUP BY tickets.event_id
+    ) AS ticket_totals ON events.id = ticket_totals.event_id
+    LEFT JOIN (
+        -- Subquery to get sold quantity and total revenue for each event
+        SELECT tickets.event_id, SUM(buyticket.ticket_quantity) AS sold_quantity, SUM(tickets.price * buyticket.ticket_quantity) AS total_revenue
+        FROM buyticket
+        JOIN tickets ON buyticket.ticket_id = tickets.id
+        GROUP BY tickets.event_id
+    ) AS sold_data ON events.id = sold_data.event_id
+    WHERE events.createdBy = ? 
+    AND events.is_delete = '0'
+    AND events.status = 'completed'";
+
+        return $this->query($query, [$userId]);
+    }
+
+    public function getEventPlannerPayments($userId) {
+        $query = "SELECT 
+            e.id as event_id,
+            e.event_name,
+            e.eventDate,
+            e.status,
+            e.createdBy,
+            p.user_id,
+            u.name as user_name,
+            SUM(p.payment) as total_payment
+        FROM payments p
+        JOIN events e ON p.event_id = e.id
+        JOIN users u ON p.user_id = u.id
+        WHERE e.createdBy = ? 
+        AND e.status = 'completed'
+        AND e.is_delete = '0'
+        GROUP BY e.id, p.user_id
+        ORDER BY e.eventDate DESC, total_payment DESC";
+
+        return $this->query($query, [$userId]);
+    }
 
     public function getRecentEvents($limit = 4) {
         // Directly inject the $limit value into the query

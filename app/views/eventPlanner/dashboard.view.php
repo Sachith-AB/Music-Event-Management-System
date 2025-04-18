@@ -53,6 +53,46 @@
 
                 <div class="section sales">
                     <h3>Sales by event</h3>
+                    
+                    <!-- Filter Controls -->
+                    <div class="filter-controls">
+                        <div class="filter-group">
+                            <label for="filterMonth">Month:</label>
+                            <select id="filterMonth" onchange="filterEvents()">
+                                <option value="">All Months</option>
+                                <?php
+                                $months = [
+                                    '01' => 'January', '02' => 'February', '03' => 'March',
+                                    '04' => 'April', '05' => 'May', '06' => 'June',
+                                    '07' => 'July', '08' => 'August', '09' => 'September',
+                                    '10' => 'October', '11' => 'November', '12' => 'December'
+                                ];
+                                foreach ($months as $num => $name) {
+                                    echo "<option value='$num'>$name</option>";
+                                }
+                                ?>
+                            </select>
+                        </div>
+                        
+                        <div class="filter-group">
+                            <label for="filterYear">Year:</label>
+                            <select id="filterYear" onchange="filterEvents()">
+                                <option value="">All Years</option>
+                                <?php
+                                $currentYear = date('Y');
+                                for ($year = $currentYear; $year >= $currentYear - 5; $year--) {
+                                    echo "<option value='$year'>$year</option>";
+                                }
+                                ?>
+                            </select>
+                        </div>
+                        
+                        <div class="filter-group">
+                            <label for="filterName">Event Name:</label>
+                            <input type="text" id="filterName" onkeyup="filterEvents()" placeholder="Search by event name">
+                        </div>
+                    </div>
+
                     <table>
                         <thead>
                             <tr>
@@ -64,7 +104,7 @@
                         </thead>
                         <tbody>
                             <?php foreach ($events as $event): ?>
-                                <tr>
+                                <tr class="event-row" data-date="<?= htmlspecialchars(explode(" ", $event->start_time)[0]) ?>" data-name="<?= strtolower(htmlspecialchars($event->event_name)) ?>">
                                     <td>
                                         <div class="event-info">
                                             <img class="eventimage" src='<?=ROOT?>/assets/images/events/<?php echo esc($event->cover_images) ?>' alt="Event Image">
@@ -80,6 +120,32 @@
                     </table>
                 </div>
 
+                <script>
+                    function filterEvents() {
+                        const month = document.getElementById('filterMonth').value;
+                        const year = document.getElementById('filterYear').value;
+                        const name = document.getElementById('filterName').value.toLowerCase().trim();
+                        
+                        const rows = document.querySelectorAll('.event-row');
+                        
+                        rows.forEach(row => {
+                            const eventDate = row.getAttribute('data-date');
+                            const eventName = row.getAttribute('data-name');
+                            
+                            const [eventYear, eventMonth] = eventDate.split('-');
+                            
+                            const monthMatch = !month || eventMonth === month;
+                            const yearMatch = !year || eventYear === year;
+                            const nameMatch = !name || eventName.includes(name);
+                            
+                            if (monthMatch && yearMatch && nameMatch) {
+                                row.style.display = '';
+                            } else {
+                                row.style.display = 'none';
+                            }
+                        });
+                    }
+                </script>
 
                 <!-- <div class="section purchases">
                     <h3>Recent purchases</h3>

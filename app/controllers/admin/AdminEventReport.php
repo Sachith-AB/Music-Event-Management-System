@@ -13,6 +13,9 @@ class AdminEventReport {
         $data['PastEvent'] = $this->displayPastEvents($event);
         //show($data['PastEvent']);
         
+        // Fetch all planners
+        $data['planners'] = $event->getUsers();
+        
         $this->view('admin/eventreport', $data);
     }
 

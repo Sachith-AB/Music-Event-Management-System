@@ -30,7 +30,7 @@ class EventPlannerCompletedEvent {
  
 
         $data2= array_merge($total_income, $ticket_count_data);
-        //show($data2);
+        show($data2);
 
         $payment_data = $this->getPaymentData($payment, $event_id);
         //show($payment_data);
