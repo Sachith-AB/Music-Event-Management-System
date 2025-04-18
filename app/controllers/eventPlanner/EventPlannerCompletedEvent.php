@@ -12,6 +12,7 @@ class EventPlannerCompletedEvent {
         $ticket = new Ticket;
         $payment = new Payment;
         $data =[];
+        
 
         $event_id = htmlspecialchars($_GET['id']);
 
@@ -29,7 +30,7 @@ class EventPlannerCompletedEvent {
  
 
         $data2= array_merge($total_income, $ticket_count_data);
-        //show($data2);
+        show($data2);
 
         $payment_data = $this->getPaymentData($payment, $event_id);
         //show($payment_data);
@@ -57,6 +58,7 @@ class EventPlannerCompletedEvent {
         $income_over_time = $ticket->getTicketIncomeOverTime($id);
 
         $total_income = 0.0;  
+        $record_data = [];
         
         foreach ($income_over_time as $record) {
             $total_income += $record->total_income;  

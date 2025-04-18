@@ -1,5 +1,3 @@
-
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -137,20 +135,59 @@
 
 <script>
 
-    document.querySelectorAll('nav ul li a').forEach(link => {
-        link.addEventListener('click', function(e) {
-            e.preventDefault();
 
-            document.querySelectorAll('nav ul li a').forEach(el => el.classList.remove('active'));
+    // document.querySelectorAll('nav ul li a').forEach(link => {
+    //     link.addEventListener('click', function(e) {
+    //         e.preventDefault();
 
-            this.classList.add('active');
+    document.addEventListener('DOMContentLoaded', function() {
+        // Get all navigation links
+        const navLinks = document.querySelectorAll('nav ul li a');
+        const currentPath = window.location.pathname;
 
-            if (this.getAttribute('href').startsWith('#')) {
-                document.querySelector(this.getAttribute('href')).scrollIntoView({ behavior: 'smooth' });
-            } else {
-                window.location.href = this.getAttribute('href');
-            }   
+
+        // Function to set active state
+        function setActiveLink() {
+            navLinks.forEach(link => {
+                const href = link.getAttribute('href');
+                // Remove active class from all links
+                link.classList.remove('active');
+                
+                // Check if the link's href matches the current path
+                if (href === currentPath || 
+                    (href.startsWith('#') && window.location.hash === href) ||
+                    (currentPath.includes(href) && href !== '/')) {
+                    link.classList.add('active');
+                }
+            });
+        }
+
+        // Set initial active state
+        setActiveLink();
+
+        // Handle click events
+        navLinks.forEach(link => {
+            link.addEventListener('click', function(e) {
+                const href = this.getAttribute('href');
+                
+                // If it's a hash link, prevent default and scroll
+                if (href.startsWith('#')) {
+                    e.preventDefault();
+                    document.querySelector(href).scrollIntoView({ 
+                        behavior: 'smooth' 
+                    });
+                    // Update active state after scroll
+                    setTimeout(setActiveLink, 100);
+                } else {
+                    // For regular links, update active state immediately
+                    navLinks.forEach(l => l.classList.remove('active'));
+                    this.classList.add('active');
+                }
+            });
         });
+
+        // Update active state on hash change
+        window.addEventListener('hashchange', setActiveLink);
     });
 
     function goToProfile() {

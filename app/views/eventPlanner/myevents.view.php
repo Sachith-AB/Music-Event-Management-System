@@ -75,7 +75,7 @@
                     <?php foreach ($events as $event): ?>
                         <?php if ($event->status == 'completed'): ?>
                             <div class="event-card">
-                                <a href = "<?=ROOT?>/event-planner-completedEvent?id=<?= htmlspecialchars($event->id) ?>" class="event-card-link" name = "completed">
+                                <a href = "<?=ROOT?>/event-planner-completedEventInfo?id=<?= htmlspecialchars($event->id) ?>" class="event-card-link" name = "completed">
                                 <div class="event-status-completed">Completed</div>
                                 <img src="<?=ROOT?>/assets/images/events/<?php echo htmlspecialchars($event->cover_images)?>" alt="<?= htmlspecialchars($event->event_name) ?>">
                                 <div>

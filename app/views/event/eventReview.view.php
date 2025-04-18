@@ -1,3 +1,4 @@
+
 <?php require_once '../app/helpers/load_notifications.php'; ?>
 <?php include ('../app/views/components/header.php'); ?>
 
@@ -42,34 +43,7 @@ $_SESSION['last_visit'] = date('Y-m-d H:i:s');
 <body>
 <?php include ('../app/views/components/loading.php'); ?>
     <div class="container">
-        <!-- Sidebar -->
-        <div class="sidebar">
-            <div class="last-update">
-                <h2>View Event</h2>
-                <p>Last Updated</p>
-                <h3><?php echo $last_visit; ?></h3>
-                <p>Status</p>
-                <h3>Draft</h3>
-            </div>
-
-            <div class="nav-links">
-                <h2>Event Information</h2>
-                <ul>
-                    <li><a href="#event-header">Event Header</a></li>
-                    <li><a href="#general-information">General Information</a></li>
-                    <li><a href="#location-time">Location and Time</a></li>
-                    <li><a href="#pricing-type">Pricing and Type</a></li>
-                </ul>
-            </div>
-
-            <div class="publish-event">
-                <h2>Publish Event</h2>
-                <ul>
-                    <li><a href="#review-publish">Review and Publish</a></li>
-                </ul>
-            </div>
-        </div>
-
+        
         <!-- Main Content -->
         <div class="main-content">
             <section id="event-header">
@@ -124,10 +98,7 @@ $_SESSION['last_visit'] = date('Y-m-d H:i:s');
                 <p><strong>Type:</strong> <?php echo $data['type']; ?></p>
             </section>
 
-            <section id="review-publish">
-                <h2>Review and Publish</h2>
-                <p>Review the event details and publish the event</p>
-            </section>
+            
 
 
 

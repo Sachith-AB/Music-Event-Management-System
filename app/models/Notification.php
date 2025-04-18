@@ -32,4 +32,12 @@ class Notification {
         $query = "UPDATE notifications SET is_read = 1 WHERE user_id = ?";
         $notification->query($query, [$user_id]);
     }
+
+    public function getNotificationsWithUserEmails($user_id) {
+        $query = "SELECT n.*, u.email 
+                 FROM notifications n 
+                 JOIN users u ON n.user_id = u.id 
+                 WHERE n.user_id = ?";
+        return $this->query($query, [$user_id]);
+    }
 }

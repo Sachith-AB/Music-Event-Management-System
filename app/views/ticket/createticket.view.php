@@ -11,8 +11,8 @@
 </head>
 <body>
 
-    <div class="container">
 
+    <div class="container">
         <!--create main content -->
         <div class="main-content">
             <form id="createticket" method="POST">
@@ -65,22 +65,22 @@
                         <button type="submit" class="review-button" name="add_another">Add Another Type of Ticket</button>
                         <button type="submit" class="review-button" name="submit">Review</button>
                     </div>
-                    
                 </div>
             </form>   
         </div>
-        <script src="<?= ROOT ?>/assets/js/ticker/ticket.js"></script>
     </div>
-<?php if(!empty($data)): ?>
-    <?php 
-        $message = $data['error'];
-        include("../app/views/components/r-message.php")
-    ?>
-<?php endif ?>
-<script src="<?=ROOT?>/assets/js/signin-up.js"></script>
-<script src="<?=ROOT?>/assets/js/message.js"></script>
 
-<script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+    <?php if(!empty($data)): ?>
+        <?php 
+            $message = $data['error'];
+            include("../app/views/components/r-message.php")
+        ?>
+    <?php endif ?>
+
+    <script src="<?= ROOT ?>/assets/js/ticker/ticket.js"></script>
+    <script src="<?=ROOT?>/assets/js/signin-up.js"></script>
+    <script src="<?=ROOT?>/assets/js/message.js"></script>
+    <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
     <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
     <script src="https://unpkg.com/ionicons@5.5.2/dist/ionicons.js"></script>
 </body>

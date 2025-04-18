@@ -33,26 +33,7 @@ $_SESSION['last_visit'] = date('Y-m-d H:i:s');
     ?>
     <?php include ('../app/views/components/loading.php'); ?>
     <div class="container">
-        <!-- Sidebar -->
-        <div class="sidebar">
-            <div class="last-update">
-                <h2>Create Event</h2>
-                <p>Last Updated</p>
-                <h3><?php echo $last_visit; ?></h3>
-                <p>Status</p>
-                <h3> Draft</h3>
-            </div>
-            <div class="nav-links">
-                <h2>Event Information</h2>
-                <ul>
-                    <li><a href="#upload-cover">Upload Cover</a></li>
-                    <li><a href="#general-information">General Information</a></li>
-                    <li><a href="#location-time">Location and Time</a></li>
-                    <li><a href="#pricing-type">Pricing and Type</a></li>
-                    <li><a href="#review-publish">Review and Publish</a></li>
-                </ul>
-            </div>
-        </div>
+       
 
         <!-- Main Content -->
         <div class="main-content">

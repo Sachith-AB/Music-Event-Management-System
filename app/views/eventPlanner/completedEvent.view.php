@@ -58,7 +58,7 @@
                 <div>
                     <?php if(!empty($data['performers'])): ?>
                         <?php foreach($data['performers'] as $performer): ?>
-                            <p><?php echo htmlspecialchars($performer->name); ?></p>
+                            <p><?php echo htmlspecialchars($performer['name']); ?></p>
                         <?php endforeach; ?>
                     <?php endif; ?>
                 </div>
