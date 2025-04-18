@@ -145,6 +145,34 @@ class User {
 
 	}
 
+	public function forgotPasswordChange($data){
+		$this->errors = [];
+
+		if(empty($data['password'])){
+			$this->errors['flag'] = true;
+			$this->errors['error'] = "Password is Required ";
+			$this->errors['error_no'] = 1;
+			return;
+		}
+		if(empty($data['c-password'])){
+			$this->errors['flag'] = true;
+			$this->errors['error'] = "Confirm Password is Required ";
+			$this->errors['error_no'] = 2;
+			return;
+		}else if ($data['password'] != $data['c-password']) {
+			$this->errors['flag'] = true;
+			$this->errors['error'] = "Passwords does not match ";
+			$this->errors['error_no'] = 3;
+			return;
+		}
+
+		if(empty($this->errors)){
+			return true;
+		}else{
+			return false;
+		}
+	}
+
 
 	public function getTotalUsers(){
 		$query = "SELECT role, 

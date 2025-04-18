@@ -20,13 +20,13 @@
                 </a>
             </div>
             <div class="input-wrap">
-                <input type="password" name="confirm-password" class="input-field" id="c-password" >
+                <input type="password" name="c-password" class="input-field" id="c-password" >
                 <label for="pass">Confirm Password</label>
                 <a href="#" class="hide active" onclick="togglePasswordVisibility('c-password','c-toggleIcon')">
                     <ion-icon name="eye-outline" id="c-toggleIcon"></ion-icon>
                 </a>
             </div>
-            <button type="submit">Reset Password</button>
+            <button type="submit" name="change-password">Reset Password</button>
         </form>
     </div>
 
