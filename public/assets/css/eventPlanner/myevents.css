@@ -6,15 +6,24 @@
 }
 .dash-container {
     display: flex;
-    margin: 20px auto;
+    margin: 0px auto;
     padding: 40px;
+    gap: 2rem;
 }
 /* /* Content */
+/* .dashboard {
+    width: 100%;
+    max-width: 2000px;
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+} */
 
 
 .content {
-    width: 80%;
-    max-width: 1200px;
+    width: 100%;
+    max-width: 2000px;
     background-color: #fff;
     padding: 20px;
     border-radius: 8px;
