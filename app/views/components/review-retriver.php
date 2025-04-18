@@ -47,6 +47,9 @@
         <?php endif; ?>
     </div>
 </div>
+<div>
+    
+</div>
 <style>
 .review-container {
     max-width: 600px;
