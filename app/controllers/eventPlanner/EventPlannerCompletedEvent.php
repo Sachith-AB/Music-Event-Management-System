@@ -36,7 +36,7 @@ class EventPlannerCompletedEvent {
         //show($payment_data);
 
         $performers = $this->getPerformers($event);
-        //show($performers);
+        // show($performers);
 
         $data = array_merge($data1, $data2,$payment_data, $performers);
         //show($data);

@@ -22,10 +22,10 @@ class Profile {
         $upcomingTickets = $tickets['upcoming'];
         $pastTickets = $tickets['past'];
         $ticketcount = $this->getticketcount(array_merge($upcomingTickets,$pastTickets));
-        $notifications = $this->getnotifications($data['id']);
-        if($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['changeread'])){
-            $notification->markasread($data['id']);
-        }
+        // $notifications = $this->getnotifications($data['id']);
+        // if($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['changeread'])){
+        //     $notification->markasread($data['id']);
+        // }
         
         //  show($combinedTickets);
 
@@ -35,7 +35,7 @@ class Profile {
 
         
 
-        $this->view('ticketHolder/profile',['data'=>$data,'upcomingTickets'=>$upcomingTickets,'pastTickets'=>$pastTickets,'ticketcount'=>$ticketcount,'notifications'=>$notifications]);
+        $this->view('ticketHolder/profile',['data'=>$data,'upcomingTickets'=>$upcomingTickets,'pastTickets'=>$pastTickets,'ticketcount'=>$ticketcount]);
         
     }
     
@@ -111,13 +111,13 @@ class Profile {
 
         return [$totalEvents,$totalPurchase, $totalPrice];
     }
-    public function getnotifications($user_id){
-        $notification = new Notification;
-        $notifymsg = [];
-        $newnotifymsg = $notification->getNewnotifications($user_id);
-        $allnotifymsg = $notification->getNotifications($user_id);
-        $notifymsg["newnotifications"] = $newnotifymsg;
-        $notifymsg["allnotifications"] = $allnotifymsg;
-        return $notifymsg;
-    }
+    // public function getnotifications($user_id){
+    //     $notification = new Notification;
+    //     $notifymsg = [];
+    //     $newnotifymsg = $notification->getNewnotifications($user_id);
+    //     $allnotifymsg = $notification->getNotifications($user_id);
+    //     $notifymsg["newnotifications"] = $newnotifymsg;
+    //     $notifymsg["allnotifications"] = $allnotifymsg;
+    //     return $notifymsg;
+    
 }

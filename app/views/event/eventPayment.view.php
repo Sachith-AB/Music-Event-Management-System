@@ -1,3 +1,4 @@
+<?php require_once '../app/helpers/load_notifications.php'; ?>
 <?php include ('../app/views/components/header.php'); ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -23,12 +24,12 @@
 
                             <tr>
                                 <td>
-                                    <img src="<?=ROOT?>/assets/images/user/<?php echo $performer->pro_pic ?>" alt="Performer">
-                                    <span><?php echo $performer->name ?></span>
+                                    <img src="<?=ROOT?>/assets/images/user/<?php echo $performer['pro_pic'] ?>" alt="Performer">
+                                    <span><?php echo $performer['name'] ?></span>
                                 </td>
                                 <td>
                                 <form method = "POST" onsubmit="return validatePayment(this);">
-                                    <input type="hidden" name="user_id" value="<?php echo $performer->id ?>">
+                                    <input type="hidden" name="user_id" value="<?php echo $performer['id'] ?>">
                                     <input class="input-payment" type="number" name="payment" placeholder="Enter amount" min="1" step="0.01">
                                     <button type="submit" class="submit-btn" name="submit">Submit Payments</button>
                                     
@@ -81,3 +82,4 @@
     </script>
 </body>
 </html>
+<?php include ('../app/views/components/footer.php'); ?>

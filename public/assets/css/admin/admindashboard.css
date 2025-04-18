@@ -7,7 +7,7 @@
 
 .dash-container {
     display: flex;
-    margin: 20px auto;
+    margin: 60px auto;
     padding: 40px;
 }
 
@@ -49,6 +49,15 @@
     border-radius: 4px;
     object-fit: cover;
     margin-bottom: 10px;
+}
+.two-line-ellipsis {
+    display: -webkit-box;
+    -webkit-line-clamp: 2; 
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    line-height: 1.4em;
+    max-height: 2.8em; /* 1.4em * 2 lines */
 }
 
 .event-status-process, .event-status-scheduled, .event-status-completed {
@@ -134,3 +143,22 @@
 .view-more a:hover {
     text-decoration: underline; /* Underline on hover */
 }
+.view-more {
+    background-color: #00BDD6;
+    color: white;
+    padding: 10px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    align-self: center;
+    margin-top: 20px;
+    transition: color 1s ease;
+  }
+  
+  .view-more:hover::after {
+    transform: skewX(-45deg) scale(1, 1);
+  }
+  
+  .view-more:hover {
+    color: black;
+  }

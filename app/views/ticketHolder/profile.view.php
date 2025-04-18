@@ -1,4 +1,6 @@
+<?php require_once '../app/helpers/load_notifications.php'; ?>
 <?php include ('../app/views/components/header.php'); ?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -7,7 +9,7 @@
     <title>Ticket Buyer Profile</title>
     <link rel="stylesheet" href="<?=ROOT?>/assets/css/ticketHolder/profile.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
-
+    <link rel="stylesheet" href="<?= ROOT ?>/assets/css/backbutton.css">
 </head>
 <body>
     <script src="<?=ROOT?>/assets/js/ticket_holder/profile.js"></script>
@@ -24,49 +26,19 @@
     
     ?>
     <div class="page-content">
-        <h1 class="head1">My Profile</h1>
+        
         
         
         <div class="all">
             <div class="container">
                 <h2>My Profile</h2>
-                <!-- notifications -->
-                <div class="avatacon">
-                    <!-- JS handles POST  -->
-                    <button class="avatarbadge" id="notificationButton" type="button">
-                        <i class="fas fa-bell"></i>
-                        <?php if (!empty($notifications["newnotifications"])): ?>
-                            <span class="notification-indicator"></span>
-                        <?php endif; ?>
-                    </button>
-
-                    
-                    <div id="notificationPopup" class="notification-popup" style="display: none;">
-                        <?php if (!empty($notifications["allnotifications"])): ?>
-                            <ul>
-                                <?php foreach ($notifications["allnotifications"] as $note): ?>
-                                    <li class="notification-item">
-                                        <strong><?= htmlspecialchars($note->title) ?></strong><br>
-                                        <?php 
-                                            $messages = json_decode($note->message);
-                                            foreach ($messages as $msg) {
-                                                echo "<div>" . htmlspecialchars($msg) . "</div>";
-                                            }
-                                        ?>
-                                        <small><?= date('F j, Y, g:i a', strtotime($note->created_at)) ?></small>
-                                    </li>
-                                <?php endforeach; ?>
-                            </ul>
-                        <?php else: ?>
-                            <p>No notifications found.</p>
-                        <?php endif; ?>
-                    </div>
-
+                
+                
                     <div class="avatar">
                         <img src="<?=ROOT?>/assets/images/user/<?php echo $_SESSION['USER']->pro_pic ?>" alt="user image">        
                     </div>
 
-                </div>
+               
                 <div class="details">
                     <h2 class="head2"><?php echo $_SESSION['USER']->name ?></h2>
                     <h3 class="head3"><?php echo $_SESSION['USER']->email ?></h3>
@@ -82,9 +54,15 @@
                     <button class="button button-2" type="submit" name="logOut">Sign out</button>
                 </form>
             </div>
+            
             <?php if (!empty($pastTickets)): ?>
                 <div class="upcommingeve-tickets">
-                    <h2>My Events</h2>
+                    <div class="back-button">
+                        <!-- Include Back Button Component -->
+                        <?php include('../app/views/components/backbutton.view.php'); ?>
+                        <h2 class="upcommingeve-tickets-h2">My Events</h2>
+                    </div>
+                    
                     <div class="tab-buttons">
                         <button class="tab-button active" onclick="showTab('past')">Past Events</button>
                         <button class="tab-button" onclick="showTab('upcoming')">Upcoming Events</button>
@@ -243,4 +221,4 @@
     
 </body>
 </html>
-
+<?php include ('../app/views/components/footer.php'); ?>

@@ -18,7 +18,6 @@
             <table class="modern-table">
                 <thead>
                     <tr>
-                        <th>ID</th>
                         <th>Name</th>
                         <th>Email</th>
                         <th>Contact</th>
@@ -33,21 +32,21 @@
                             <?php if($holder->role == "holder"): ?>
 
                                 <tr>
-                                    <td><?php echo $holder->id ?></td>
                                     <td><?php echo $holder->name ?></td>
                                     <td><?php echo $holder->email ?></td>
                                     <td><?php echo $holder->contact ?></td>
 
                                     <td>
+                                        <div class="view-delete-buttons">
 
-                                        <button class="action-btn view">View</button>
+                                            <button class="action-btn view">View</button>
 
                                             <form  method="post">
-                                                        <input type = 'hidden' name = 'user_id' value = "<?php echo $holder->id ?>" >
-                                                        <input type = 'hidden' name = 'is_delete' value = "1" >
-                                                        <button class="action-btn delete" name = 'delete' type = 'submit' >Delete</button>    
+                                                <input type = 'hidden' name = 'user_id' value = "<?php echo $holder->id ?>" >
+                                                <input type = 'hidden' name = 'is_delete' value = "1" >
+                                                <button class="action-btn delete" name = 'delete' type = 'submit' >Delete</button>    
                                             </form>
-
+                                        </div>
                                     </td>
 
                                 </tr>

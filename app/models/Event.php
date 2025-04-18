@@ -211,7 +211,7 @@ class Event {
 
     public function getRecentEvents($limit = 4) {
         // Directly inject the $limit value into the query
-        $query = "SELECT * FROM events WHERE is_delete = '0' ORDER BY eventDate DESC LIMIT $limit";
+        $query = "SELECT * FROM events WHERE status='scheduled'AND is_delete = '0' ORDER BY eventDate DESC LIMIT $limit";
     
         return $this->query($query);
     }
@@ -389,11 +389,5 @@ class Event {
      
         $result = $this->query($query);
          return $result ? $result : [];
-     }
-
-     public function geteventplannerinfo($event_id){
-        $query = "SELECT * FROM users JOIN events ON events.createdBy = users.id WHERE events.id = $event_id";
-    
-        return $this->query($query);
      }
 }

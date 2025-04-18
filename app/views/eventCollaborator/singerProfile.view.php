@@ -1,3 +1,4 @@
+<?php require_once '../app/helpers/load_notifications.php'; ?>
 <?php include ('../app/views/components/header.php'); ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -115,7 +116,7 @@
               </ul>
             <?php endif; ?>
             <div class="profile-experience">
-              <form method="POST" action="add-experience">
+              <form method="POST">
                 <input type="text" name="experience" placeholder="Add a new experience">
                 <button class="add-button" name="add_experience">Add this experience</button>
               </form>
@@ -193,3 +194,4 @@
   <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
 </body>
 </html>
+<?php include ('../app/views/components/footer.php'); ?>

@@ -1,3 +1,4 @@
+<?php require_once '../app/helpers/load_notifications.php'; ?>
 <?php include ('../app/views/components/header.php'); ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -6,6 +7,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Event planner dashboard</title>
     <link rel="stylesheet" href="<?=ROOT?>/assets/css/eventCollaborators\singerdashboard.css">
+    <link rel="stylesheet" href="<?= ROOT ?>/assets/css/backbutton.css">
+
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
 </head>
 <body>
@@ -15,9 +18,14 @@
         <div class="dashboard">
             <?php if (!empty($userdata)&&!empty($profiledata)): ?>
                 <section class="headersection">
-                    <img src="<?=ROOT?>/assets/images/eventCollaborators/blue_cover_pic.jpg" alt="Musical Fusion Festival" class="headersection-img">
+                    <img src="<?=ROOT?>/assets/images/eventCollaborators/blue_cover_pic.jpg" alt="Musical Fusion Festival" class="headersection-img">            
+                    
                     <div class="uppersec">
+                        <!-- Include Back Button Component -->
+                        <?php include('../app/views/components/backbutton.view.php'); ?>
+                        
                         <img src="<?=ROOT?>/assets/images/user/<?php echo $userdata['pro_pic'] ?>" alt="Profile Picture" class="profile-picture">
+
                         <div class="profile-info">
                             <h1><?php echo $userdata['name'] ?></h1>
                             <?php if (isset($profiledata['profile']['user_role']) && 
@@ -207,3 +215,4 @@
     </div>
 </body>
 </html>
+<?php include ('../app/views/components/footer.php'); ?>

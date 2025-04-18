@@ -1,32 +1,5 @@
-
+<?php require_once '../app/helpers/load_notifications.php'; ?>
 <?php include ('../app/views/components/header.php'); ?>
-
-<?php
-if (session_status() == PHP_SESSION_NONE) {
-    session_start();
-}
-
-// Retrieve event data from session
-$event_name = $_SESSION['event_data']['event_name'] ?? 'Event Title';
-$description = $_SESSION['event_data']['description'] ?? 'No description provided';
-$audience = $_SESSION['event_data']['audience'] ?? 'N/A';
-$city = $_SESSION['event_data']['city'] ?? 'N/A';
-$province = $_SESSION['event_data']['province'] ?? 'N/A';
-$eventDate = $_SESSION['event_data']['eventDate'] ?? 'N/A';
-$start_time = $_SESSION['event_data']['start_time'] ?? 'N/A';
-$end_time = $_SESSION['event_data']['end_time'] ?? 'N/A';
-$pricing = $_SESSION['event_data']['pricing'] ?? 'N/A';
-$type = $_SESSION['event_data']['type'] ?? 'N/A';
-
-
-// Track last visit time
-if (isset($_SESSION['last_visit'])) {
-    $last_visit = $_SESSION['last_visit'];
-} else {
-    $last_visit = "This is my first visit";
-}
-$_SESSION['last_visit'] = date('Y-m-d H:i:s');
-?>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -112,3 +85,4 @@ $_SESSION['last_visit'] = date('Y-m-d H:i:s');
     <script src="https://unpkg.com/ionicons@5.5.2/dist/ionicons.js"></script>
 </body>
 </html>
+<?php include ('../app/views/components/footer.php'); ?>

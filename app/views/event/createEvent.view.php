@@ -1,3 +1,4 @@
+<?php require_once '../app/helpers/load_notifications.php'; ?>
 <?php include ('../app/views/components/header.php'); ?>
 
 <?php
@@ -272,3 +273,4 @@ $_SESSION['last_visit'] = date('Y-m-d H:i:s');
     </script>
 </body>
 </html>
+<?php include ('../app/views/components/footer.php'); ?>
