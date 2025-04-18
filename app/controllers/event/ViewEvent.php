@@ -40,25 +40,26 @@ class ViewEvent{
         $res = [];
     
         $averageRating = 0;
-        $totalReviews = count($ratings);
+        $totalReviews = 0;
     
-        if ($totalReviews > 0) {
-            $sumRatings = 0;
-            foreach ($ratings as $rate) {
-                $sumRatings += $rate->rating;  // Assuming $rate->rating holds the numeric value.
-            }
-            $averageRating = $sumRatings / $totalReviews;
-        }
+        if (is_array($ratings)) {
+            $totalReviews = count($ratings);
+            if ($totalReviews > 0) {
+                $sumRatings = 0;
+                foreach ($ratings as $rate) {
+                    $sumRatings += $rate->rating;  // Assuming $rate->rating is numeric
+                }
+                $averageRating = $sumRatings / $totalReviews;
     
-        if ($ratings) {
-            foreach ($ratings as $rate) {
-                $userData = $user->firstById($rate->user_id);
-                $res[] = [
-                    'rating' => $rate,
-                    'user'   => $userData,
-                    'averageRating' => $averageRating,  // Include the correct average.
-                    'totalReviews' => $totalReviews,  // Include the total reviews count.
-                ];
+                foreach ($ratings as $rate) {
+                    $userData = $user->firstById($rate->user_id);
+                    $res[] = [
+                        'rating' => $rate,
+                        'user'   => $userData,
+                        'averageRating' => $averageRating,
+                        'totalReviews' => $totalReviews,
+                    ];
+                }
             }
         }
     

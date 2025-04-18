@@ -1,8 +1,15 @@
 <?php 
-    $averageRating = number_format($data['ratings'][0]['averageRating'], 1);  // Example — replace with your DB average.
-    $totalReviews = number_format($data['ratings'][0]['totalReviews'], 1);;
-    $percentage = ($averageRating / 5) * 100;
+    if (!empty($data['ratings'])) {
+        $averageRating = number_format($data['ratings'][0]['averageRating'], 1);
+        $totalReviews = number_format($data['ratings'][0]['totalReviews'], 1);
+        $percentage = ($averageRating / 5) * 100;
+    } else {
+        $averageRating = 0;
+        $totalReviews = 0;
+        $percentage = 0;
+    }
 ?>
+
 
 <div class="review-container">
     <div class="review-header">
@@ -14,10 +21,12 @@
             <span class="rating-text"><?= number_format($averageRating, 1) ?>/5 (<?= $totalReviews ?> reviews)</span>
         </div>
     </div>
-    <?php $counter = 0; ?>
+
     <div class="review-list">
-        <?php foreach ($data['ratings'] as $rating): ?>
-            <?php if ($counter >= 3) break; ?>
+        <?php if (!empty($data['ratings'])): ?>
+            <?php $counter = 0; ?>
+            <?php foreach ($data['ratings'] as $rating): ?>
+                <?php if ($counter >= 3) break; ?>
                 <div class="review-item">
                     <p class="comment"><?= $rating['rating']->comment ?></p>
                     <div class="user-rating">
@@ -31,11 +40,13 @@
                         <?= date("F j, Y, g:i a", strtotime($rating['rating']->created_at)) ?>
                     </div>
                 </div>
-            <?php $counter++; ?>
-        <?php endforeach; ?>
+                <?php $counter++; ?>
+            <?php endforeach; ?>
+        <?php else: ?>
+            <p>No reviews yet. Be the first to review!</p>
+        <?php endif; ?>
     </div>
 </div>
-
 <style>
 .review-container {
     max-width: 600px;
