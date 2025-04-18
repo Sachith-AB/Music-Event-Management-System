@@ -7,7 +7,7 @@
             <span class="star" data-value="3">★</span>
             <span class="star" data-value="4">★</span>
             <span class="star" data-value="5">★</span>
-            <span class="rating-text">4.2/5 (15 reviews)</span>
+            <span class="rating-text">3.6/5 (15 reviews)</span>
         </div>
     </div>
 
@@ -100,7 +100,7 @@
 
 <script>
     // Example average rating
-    let average = 4.2;
+    let average = 3.6;
     let stars = document.querySelectorAll('.star-rating .star');
 
     stars.forEach((star, index) => {

@@ -12,7 +12,8 @@ class ViewEvent{
         $id = htmlspecialchars($_GET['id']);
 
         $data = $this->getEventData($event,$id);
-        
+        $data['rating']  = $this->getEventRating($rating,$id);
+        //show($data);
         
         if($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['review'])){
             $this->reivewEvent($rating,$id);
@@ -32,5 +33,10 @@ class ViewEvent{
         $_POST['user_id'] = $_SESSION['USER']->id;
         $rating->insert($_POST);
 
+    }
+
+    private function getEventRating($rating,$id){
+        $res = $rating->getRatingFromEventId($id);
+        return $res;
     }
 }
