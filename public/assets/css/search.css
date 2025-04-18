@@ -15,7 +15,7 @@ body {
 .container {
     width: 90%;
     max-width: 1200px;
-    margin: 70px auto;
+    margin:0px auto;
     padding-top: 30px;
 }
 .search-container{

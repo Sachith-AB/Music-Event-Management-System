@@ -26,7 +26,7 @@
     
     ?>
     <div class="page-content">
-        <h1 class="head1">My Profile</h1>
+        
         
         
         <div class="all">
