@@ -13,76 +13,226 @@
 <body>
     <h1>Event Report</h1>
 
-    <div class = "pdf-container">
+    <div class="pdf-container">
+        <!-- Upcoming Events Section -->
+        <div class="section-container">
+            <h2>Upcoming Events</h2>
+            
+            <!-- Upcoming Events Filter Controls -->
+            <div class="filter-controls">
+                <div class="filter-group">
+                    <label for="upcomingMonth">Month:</label>
+                    <select id="upcomingMonth" onchange="filterUpcomingEvents()">
+                        <option value="">All Months</option>
+                        <?php
+                        $months = [
+                            '01' => 'January', '02' => 'February', '03' => 'March',
+                            '04' => 'April', '05' => 'May', '06' => 'June',
+                            '07' => 'July', '08' => 'August', '09' => 'September',
+                            '10' => 'October', '11' => 'November', '12' => 'December'
+                        ];
+                        foreach ($months as $num => $name) {
+                            echo "<option value='$num'>$name</option>";
+                        }
+                        ?>
+                    </select>
+                </div>
+                
+                <div class="filter-group">
+                    <label for="upcomingYear">Year:</label>
+                    <select id="upcomingYear" onchange="filterUpcomingEvents()">
+                        <option value="">All Years</option>
+                        <?php
+                        $currentYear = date('Y');
+                        for ($year = $currentYear; $year <= $currentYear + 2; $year++) {
+                            echo "<option value='$year'>$year</option>";
+                        }
+                        ?>
+                    </select>
+                </div>
+                
+                <div class="filter-group">
+                    <label for="upcomingPlanner">Event Planner:</label>
+                    <select id="upcomingPlanner" onchange="filterUpcomingEvents()">
+                        <option value="">All Planners</option>
+                        <?php if (!empty($data['planners'])): ?>
+                            <?php foreach ($data['planners'] as $planner): ?>
+                                <?php if($planner->role == 'planner'): ?>
+                                    <option value="<?= htmlspecialchars($planner->id) ?>">
+                                        <?= htmlspecialchars($planner->name) ?>
+                                    </option>
+                                <?php endif; ?>
+                            <?php endforeach; ?>
+                        <?php endif; ?>
+                    </select>
+                </div>
+            </div>
 
-    <!-- Upcoming Events Table -->
-    <h2>Upcoming Events</h2>
-    <?php if (!empty($data['upcoming'])): ?>
-        <table>
-            <thead>
-                <tr>
-                    <th>Event Name</th>
-                    <th>Event Date</th>
-                    <th>Planner Name</th>
-                    <th>Collaborators</th>
-                </tr>
-            </thead>
-            <tbody>
-                <?php foreach ($data['upcoming'] as $event): ?>
-                    <tr>
-                        <td><?php echo htmlspecialchars($event->event_name); ?></td>
-                        <td><?php echo htmlspecialchars($event->eventDate); ?></td>
-                        <td><?php echo htmlspecialchars($event->event_planner_name); ?></td>
-                        <td><?php echo htmlspecialchars($event->collaborators ?? 'None'); ?></td>
-                    </tr>
-                <?php endforeach; ?>
-            </tbody>
-        </table>
-    <?php else: ?>
-        <p>No upcoming events found.</p>
-    <?php endif; ?>
+            <?php if (!empty($data['upcoming'])): ?>
+                <table id="upcomingTable">
+                    <thead>
+                        <tr>
+                            <th>Event Name</th>
+                            <th>Event Date</th>
+                            <th>Planner Name</th>
+                            <th>Collaborators</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <?php foreach ($data['upcoming'] as $event): ?>
+                            <tr class="upcoming-event-row" 
+                                data-date="<?= htmlspecialchars(explode(" ", $event->eventDate)[0]) ?>"
+                                data-planner="<?= htmlspecialchars($event->event_planner_id) ?>">
+                                <td><?php echo htmlspecialchars($event->event_name); ?></td>
+                                <td><?php echo htmlspecialchars($event->eventDate); ?></td>
+                                <td><?php echo htmlspecialchars($event->event_planner_name); ?></td>
+                                <td><?php echo htmlspecialchars($event->collaborators ?? 'None'); ?></td>
+                            </tr>
+                        <?php endforeach; ?>
+                    </tbody>
+                </table>
+            <?php else: ?>
+                <p>No upcoming events found.</p>
+            <?php endif; ?>
+        </div>
 
-    <!-- Past Events Table -->
-    <h2>Past Events</h2>
-    <?php if (!empty($data['PastEvent'])): ?>
-        <table>
-            <thead>
-                <tr>
-                    <th>Event Name</th>
-                    <th>Event Date</th>
-                    <th>Planner Name</th>
-                    <th>Collaborators</th>
-                    <th>Total Sold Tickets</th>
-                    <th>Total Income</th>
-                    <th>Total Payments</th>
-                    <th>Profit</th>
-                    
-                </tr>
-            </thead>
-            <tbody>
-                <?php foreach ($data['PastEvent'] as $event): ?>
-                    <tr>
-                        <td><?php echo htmlspecialchars($event->event_name); ?></td>
-                        <td><?php echo htmlspecialchars($event->eventDate); ?></td>
-                        <td><?php echo htmlspecialchars($event->event_planner_name); ?></td>
-                        <td><?php echo htmlspecialchars($event->collaborators ?? 'None'); ?></td>
-                        <td><?php echo htmlspecialchars($event->total_sold_tickets); ?></td>
-                        <td><?php echo number_format($event->total_income, 2); ?></td>
-                        <td><?php echo number_format($event->total_payments, 2); ?></td>
-                        <td><?php echo number_format($event->total_income - $event->total_payments, 2); ?></td>
-                    </tr>
-                <?php endforeach; ?>
-            </tbody>
-        </table>
-    <?php else: ?>
-        <p>No past events found.</p>
-    <?php endif; ?>
+        <!-- Past Events Section -->
+        <div class="section-container">
+            <h2>Past Events</h2>
+            
+            <!-- Past Events Filter Controls -->
+            <div class="filter-controls">
+                <div class="filter-group">
+                    <label for="pastMonth">Month:</label>
+                    <select id="pastMonth" onchange="filterPastEvents()">
+                        <option value="">All Months</option>
+                        <?php
+                        foreach ($months as $num => $name) {
+                            echo "<option value='$num'>$name</option>";
+                        }
+                        ?>
+                    </select>
+                </div>
+                
+                <div class="filter-group">
+                    <label for="pastYear">Year:</label>
+                    <select id="pastYear" onchange="filterPastEvents()">
+                        <option value="">All Years</option>
+                        <?php
+                        for ($year = $currentYear; $year >= $currentYear - 5; $year--) {
+                            echo "<option value='$year'>$year</option>";
+                        }
+                        ?>
+                    </select>
+                </div>
+                
+                <div class="filter-group">
+                    <label for="pastPlanner">Event Planner:</label>
+                    <select id="pastPlanner" onchange="filterPastEvents()">
+                        <option value="">All Planners</option>
+                        <?php if (!empty($data['planners'])): ?>
+                            <?php foreach ($data['planners'] as $planner): ?>
+                                <?php if($planner->role == 'planner'): ?>
+                                    <option value="<?= htmlspecialchars($planner->id) ?>">
+                                        <?= htmlspecialchars($planner->name) ?>
+                                    </option>
+                                <?php endif; ?>
+                            <?php endforeach; ?>
+                        <?php endif; ?>
+                    </select>
+                </div>
+            </div>
+
+            <?php if (!empty($data['PastEvent'])): ?>
+                <table id="pastTable">
+                    <thead>
+                        <tr>
+                            <th>Event Name</th>
+                            <th>Event Date</th>
+                            <th>Planner Name</th>
+                            <th>Collaborators</th>
+                            <th>Total Sold Tickets</th>
+                            <th>Total Income</th>
+                            <th>Total Payments</th>
+                            <th>Profit</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <?php foreach ($data['PastEvent'] as $event): ?>
+                            <tr class="past-event-row" 
+                                data-date="<?= htmlspecialchars(explode(" ", $event->eventDate)[0]) ?>"
+                                data-planner="<?= htmlspecialchars($event->event_planner_id) ?>">
+                                <td><?php echo htmlspecialchars($event->event_name); ?></td>
+                                <td><?php echo htmlspecialchars($event->eventDate); ?></td>
+                                <td><?php echo htmlspecialchars($event->event_planner_name); ?></td>
+                                <td><?php echo htmlspecialchars($event->collaborators ?? 'None'); ?></td>
+                                <td><?php echo htmlspecialchars($event->total_sold_tickets); ?></td>
+                                <td><?php echo number_format($event->total_income, 2); ?></td>
+                                <td><?php echo number_format($event->total_payments, 2); ?></td>
+                                <td><?php echo number_format($event->total_income - $event->total_payments, 2); ?></td>
+                            </tr>
+                        <?php endforeach; ?>
+                    </tbody>
+                </table>
+            <?php else: ?>
+                <p>No past events found.</p>
+            <?php endif; ?>
+        </div>
     </div>
 
-
-    <button class = "print-button" onclick="print()"><i class="fa-solid fa-download"></i></button>
+    <button class="print-button" onclick="print()"><i class="fa-solid fa-download"></i></button>
 
     <script>
+        function filterUpcomingEvents() {
+            const month = document.getElementById('upcomingMonth').value;
+            const year = document.getElementById('upcomingYear').value;
+            const planner = document.getElementById('upcomingPlanner').value;
+            
+            const rows = document.querySelectorAll('.upcoming-event-row');
+            
+            rows.forEach(row => {
+                const eventDate = row.getAttribute('data-date');
+                const eventPlanner = row.getAttribute('data-planner');
+                
+                const [eventYear, eventMonth] = eventDate.split('-');
+                
+                const monthMatch = !month || eventMonth === month;
+                const yearMatch = !year || eventYear === year;
+                const plannerMatch = !planner || eventPlanner === planner;
+                
+                if (monthMatch && yearMatch && plannerMatch) {
+                    row.style.display = '';
+                } else {
+                    row.style.display = 'none';
+                }
+            });
+        }
+
+        function filterPastEvents() {
+            const month = document.getElementById('pastMonth').value;
+            const year = document.getElementById('pastYear').value;
+            const planner = document.getElementById('pastPlanner').value;
+            
+            const rows = document.querySelectorAll('.past-event-row');
+            
+            rows.forEach(row => {
+                const eventDate = row.getAttribute('data-date');
+                const eventPlanner = row.getAttribute('data-planner');
+                
+                const [eventYear, eventMonth] = eventDate.split('-');
+                
+                const monthMatch = !month || eventMonth === month;
+                const yearMatch = !year || eventYear === year;
+                const plannerMatch = !planner || eventPlanner === planner;
+                
+                if (monthMatch && yearMatch && plannerMatch) {
+                    row.style.display = '';
+                } else {
+                    row.style.display = 'none';
+                }
+            });
+        }
+
         function print() {
             const pdfContainer = document.querySelector('.pdf-container'); 
             const newWindow = window.open('', '_blank'); 
@@ -92,7 +242,6 @@
             newWindow.document.write(pdfContainer.innerHTML);
             newWindow.document.write('</body></html>');
             newWindow.document.close(); 
-            
             
             newWindow.onload = function() {
                 newWindow.print(); 

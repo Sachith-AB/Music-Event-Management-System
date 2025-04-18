@@ -17,7 +17,7 @@ $type = $_SESSION['event_data']['type'] ?? '';
 $last_visit = $_SESSION['last_visit'] ?? "This is my first visit";
 $_SESSION['last_visit'] = date('Y-m-d H:i:s');
 ?>
-<?php include ('../app/views/components/CreateEventHeader.php'); ?>
+
 
 <!DOCTYPE html>
 <html lang="en">
@@ -44,7 +44,7 @@ $_SESSION['last_visit'] = date('Y-m-d H:i:s');
 
                 <!-- Event Details Form -->
                 <form method="POST" class="form">
-
+               
                     <div class="input-wrap">
                         <label for = "event_name">Event Name</label>
                         <input name="event_name" type="text" placeholder="EventName" value="<?php echo $data['event_name'] ?>">
@@ -67,6 +67,7 @@ $_SESSION['last_visit'] = date('Y-m-d H:i:s');
                             <button type="button" class="search-button" id="search-button">Search</button>
                         </div>
                     </div>
+               
 
                     <div id="map" class="map" style="height: 400px;"></div>
 
