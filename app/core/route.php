@@ -8,6 +8,11 @@ route('search','Search@index');
 route('signin','Signin@index');
 route('signup','Signup@index');
 
+//route for forgot password
+route('forgot-password','forgotPassword/ForgotPassword@index');
+route('pin-input','forgotPassword/PinInput@index');
+route('reset-password','forgotPassword/ResetPassword@index');
+
 
 route('create-event', 'event/Create@index');  
 route('event-review', 'event/Review@index'); 
