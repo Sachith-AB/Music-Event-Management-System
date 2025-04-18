@@ -20,7 +20,7 @@ class User {
         
         $this->errors = [];
 
-        //flage mean errors include
+        //flag mean errors include
 
         // is empty name
         $this->errors = [];
@@ -102,7 +102,7 @@ class User {
 			$this->errors['error_no'] = 3;
 			return;
 		}	
-		show($this->errors);
+
 		if (empty($this->errors)) {
 			return true;
 		} else {
