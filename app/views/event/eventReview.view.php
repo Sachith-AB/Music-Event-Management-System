@@ -1,4 +1,4 @@
-<?php include ('../app/views/components/CreateEventHeader.php'); ?>
+<?php include ('../app/views/components/header.php'); ?>
 
 <?php
 if (session_status() == PHP_SESSION_NONE) {
@@ -41,52 +41,38 @@ $_SESSION['last_visit'] = date('Y-m-d H:i:s');
 <body>
 <?php include ('../app/views/components/loading.php'); ?>
     <div class="container">
-        <!-- Sidebar -->
-        <div class="sidebar">
-            <div class="last-update">
-                <h2>View Event</h2>
-                <p>Last Updated</p>
-                <h3><?php echo $last_visit; ?></h3>
-                <p>Status</p>
-                <h3>Draft</h3>
-            </div>
-
-            <div class="nav-links">
-                <h2>Event Information</h2>
-                <ul>
-                    <li><a href="#event-header">Event Header</a></li>
-                    <li><a href="#general-information">General Information</a></li>
-                    <li><a href="#location-time">Location and Time</a></li>
-                    <li><a href="#pricing-type">Pricing and Type</a></li>
-                </ul>
-            </div>
-
-            <div class="publish-event">
-                <h2>Publish Event</h2>
-                <ul>
-                    <li><a href="#review-publish">Review and Publish</a></li>
-                </ul>
-            </div>
-        </div>
-
+        
         <!-- Main Content -->
         <div class="main-content">
             <section id="event-header">
-                <h1 >Event Header</h1>
-                    <img src="<?=ROOT?>/assets/images/events/1.jpg" alt="Event Cover Image" class="cover-image">
-                    <!-- <div class="image-scroll-container">
-
-                        <img src="<?=ROOT?>/assets/images/events/1.jpg" alt="Event Image 1" class="event-image">
-                        <img src="<?=ROOT?>/assets/images/events/2.jpg" class="event-image">
-                        <img src="<?=ROOT?>/assets/images/events/3.jpg" class="event-image">
-                        <img src="<?=ROOT?>/assets/images/events/4.jpg" class="event-image">
-                        <img src="<?=ROOT?>/assets/images/events/5.jpg" class="event-image">
-                    </div> -->
-                    <div class="event-name-desc">
-                        <h2  id = "event title" ><?php echo $data['event_name'] ?></h2>
-                        <p class="event-description"><?php echo $data['description'] ?></p>
-                    </div>
-                
+                <?php
+                // Check if cover_images exists and is not empty
+                if (isset($data['cover_images']) && !empty($data['cover_images'])) {
+                    // Decode the JSON string to get the array of image names
+                    $imageNames = json_decode($data['cover_images'], true);
+                    
+                    // If we have images, display them
+                    if (is_array($imageNames) && count($imageNames) > 0) {
+                        
+                        // If there are multiple images, display them in a scrollable container
+                        if (count($imageNames) > 1) {
+                            echo '<div class="image-scroll-container">';
+                            foreach ($imageNames as $imageName) {
+                                echo '<img src="' . ROOT . '/assets/images/events/' . $imageName . '" alt="Event Image" class="event-image">';
+                            }
+                            echo '</div>';
+                        }
+                    } else {
+                        echo '<div class="no-images">No images available for this event</div>';
+                    }
+                } else {
+                    echo '<div class="no-images">No images available for this event</div>';
+                }
+                ?>
+                <div class="event-name-desc">
+                    <h2 id="event title"><?php echo $data['event_name'] ?></h2>
+                    <p class="event-description"><?php echo $data['description'] ?></p>
+                </div>
             </section>
 
             <section id="general-information">
@@ -110,10 +96,7 @@ $_SESSION['last_visit'] = date('Y-m-d H:i:s');
                 <p><strong>Type:</strong> <?php echo $data['type']; ?></p>
             </section>
 
-            <section id="review-publish">
-                <h2>Review and Publish</h2>
-                <p>Review the event details and publish the event</p>
-            </section>
+            
 
 
 

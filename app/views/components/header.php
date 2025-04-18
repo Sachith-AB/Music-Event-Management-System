@@ -1,48 +1,3 @@
-<?php
-session_start();
-
-$current_page = $_SERVER['REQUEST_URI'];
-
-if (!isset($_SESSION['page_history'])) {
-    $_SESSION['page_history'] = [];
-}
-
-if (end($_SESSION['page_history']) !== $current_page) {
-    $_SESSION['page_history'][] = $current_page;
-}
-
-if (count($_SESSION['page_history']) > 10) {
-    array_shift($_SESSION['page_history']); // Keep only the last 10 pages
-}
-
-// Map paths to display-friendly names
-$pageNames = [
-    'home' => 'Home',
-    'search' => 'Explore',
-    'event-planner-dashboard' => 'Dashboard',
-    'event-planner-messages' => 'Messages',
-    'event-planner-calendar' => 'Calendar',
-    'view-event' => 'View Event',
-    'colloborator-dashboard' => 'Dashboard',
-    'create-event' => 'Create Event',
-    'signin' => 'Sign In',
-    'signup' => 'Sign Up',
-    'profile' => 'Profile',
-    'colloborator-profile' => 'Collaborator Profile'
-];
-
-// Function to extract the base path
-function getPageKey($url) {
-    $parts = explode('?', $url)[0]; // Remove query string
-    $parts = explode('/', trim($parts, '/'));
-    return end($parts); // Get last part
-}
-
-
-?>
-
-
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -68,22 +23,6 @@ function getPageKey($url) {
     </nav> -->
     <div class="logo-image">
         <img src = "<?=ROOT?>/assets/images/logo/logo.png" alt = "musicia" onclick="goToHome()"> 
-        <!-- Breadcrumb -->
-        <?php if (!empty($_SESSION['page_history'])): ?>
-            <div class="breadcrumb">
-                <?php
-                $breadcrumbs = [];
-                $lastPages = array_slice($_SESSION['page_history'], -5); // Get only last 5 pages
-                foreach ($lastPages as $page) {
-                    $key = getPageKey($page);
-                    $name = isset($pageNames[$key]) ? $pageNames[$key] : ucfirst($key);
-                    $breadcrumbs[] = "<a href='$page'>$name</a>";
-                }
-                echo implode(' <i class="fas fa-chevron-right" style="margin: 0 5px; color: #888;"></i> ', $breadcrumbs);
-                ?>
-            </div>
-        <?php endif; ?>
-
     </div>
     <div class="nav-right">
         <nav>
@@ -123,20 +62,53 @@ function getPageKey($url) {
     </div>
 
 <script>
-    document.querySelectorAll('nav ul li a').forEach(link => {
-        link.addEventListener('click', function(e) {
-            e.preventDefault();
+    document.addEventListener('DOMContentLoaded', function() {
+        // Get all navigation links
+        const navLinks = document.querySelectorAll('nav ul li a');
+        const currentPath = window.location.pathname;
 
-            document.querySelectorAll('nav ul li a').forEach(el => el.classList.remove('active'));
+        // Function to set active state
+        function setActiveLink() {
+            navLinks.forEach(link => {
+                const href = link.getAttribute('href');
+                // Remove active class from all links
+                link.classList.remove('active');
+                
+                // Check if the link's href matches the current path
+                if (href === currentPath || 
+                    (href.startsWith('#') && window.location.hash === href) ||
+                    (currentPath.includes(href) && href !== '/')) {
+                    link.classList.add('active');
+                }
+            });
+        }
 
-            this.classList.add('active');
+        // Set initial active state
+        setActiveLink();
 
-            if (this.getAttribute('href').startsWith('#')) {
-                document.querySelector(this.getAttribute('href')).scrollIntoView({ behavior: 'smooth' });
-            } else {
-                window.location.href = this.getAttribute('href');
-            }   
+        // Handle click events
+        navLinks.forEach(link => {
+            link.addEventListener('click', function(e) {
+                const href = this.getAttribute('href');
+                
+                // If it's a hash link, prevent default and scroll
+                if (href.startsWith('#')) {
+                    e.preventDefault();
+                    document.querySelector(href).scrollIntoView({ 
+                        behavior: 'smooth' 
+                    });
+                    // Update active state after scroll
+                    setTimeout(setActiveLink, 100);
+                } else {
+                    // For regular links, update active state immediately
+                    navLinks.forEach(l => l.classList.remove('active'));
+                    this.classList.add('active');
+                }
+            });
         });
+
+        // Update active state on hash change
+        window.addEventListener('hashchange', setActiveLink);
     });
 
     function goToProfile() {

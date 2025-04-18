@@ -109,27 +109,66 @@
     justify-content: space-between;
     gap: 20px;
 }
-.btn-btn-update{
-    padding: 10px 30px;
-    border: none;
-    outline: none;
-    border-radius: 5px;
-    font-size: 1rem;
-    font-weight: 500;
-    background: #10B981;  /* Tailwind's blue-500 */
+.btn-btn-update,
+.btn-btn-delete {
+    padding: 10px 20px;
+    background-color: #00BDD6FF;
     color: white;
-    cursor: pointer;
-}
-.btn-btn-delete{
-    padding: 10px 30px;
-    border-radius: 5px;
+    border: none;
+    border-radius: 8px;
     font-size: 1rem;
     font-weight: 500;
-    border: 1px solid #999;
-    color: rgb(197, 0, 0);
-    background: #fff;
     cursor: pointer;
+    transition: all 0.3s ease;
+    min-width: 100px;
+    text-align: center;
+    margin-right: 50px;
 }
+
+.btn-btn-delete {
+    background-color: #FF4C4C;
+}
+
+.btn-btn-update:hover,
+.btn-btn-delete:hover,
+.next-button:hover {
+    color: black;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(0, 189, 214, 0.3);
+}
+
+.next-button{
+    padding: 10px 20px;
+    background-color: #00BDD6FF;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    font-size: 1rem;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    min-width: 100px;
+    text-align: center;
+    margin-right: 50px;
+    margin: 10px 150px;
+
+}
+
+/* Responsive Design */
+@media screen and (max-width: 768px) {
+    .card .content .details .action-btn {
+        flex-direction: column;
+        gap: 10px;
+    }
+
+    .btn-btn-update,
+    .btn-btn-delete {
+        width: 100%;
+        min-width: auto;
+        margin-right: 0;
+    }
+}
+
 /* Ticket info styling */
 /* .ticket-info {
     display: flex;

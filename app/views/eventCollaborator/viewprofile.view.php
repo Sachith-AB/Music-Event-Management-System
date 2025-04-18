@@ -166,22 +166,21 @@
 
 
             <!-- Comments Section -->
-            <?php if (!empty($commentsForUser)): ?>
-                <h2 class="comments-h2">Comments</h2>
-                <div class="comments-container">
-                    <!-- Comment Input -->
-                    <?php if($_SESSION['USER']->id != $_GET['id']): ?>
-                        <form id="addcomments" method="POST">
-                            <div class="add-comment">
-                                <img src="<?=ROOT?>/assets/images/user/<?php echo $_SESSION['USER']->pro_pic ?>" alt="User Avatar" class="comment-avatar">
-                                <input type="hidden" name="receiver_id" value="<?php echo $_GET['id'] ?>"/>
-                                <input type="hidden" name="sender_id" value="<?php echo $_SESSION['USER']->id ?>"/>
-                                <textarea class="comment-input" name="content" placeholder="Add a comment..."></textarea>
-                                <button name="add_comment" class="post-comment-btn">Submit</button>
-                            </div>
-                        </from>
-                    <?php endif;?>
-
+            
+            <h2 class="comments-h2">Comments</h2>
+            <div class="comments-container">
+                <!-- Comment Input -->
+                <?php if($_SESSION['USER']->id != $_GET['id']): ?>
+                    <form id="addcomments" method="POST">
+                        <div class="add-comment">
+                            <img src="<?=ROOT?>/assets/images/user/<?php echo $_SESSION['USER']->pro_pic ?>" alt="User Avatar" class="comment-avatar">
+                            <input type="hidden" name="receiver_id" value="<?php echo $_GET['id'] ?>"/>
+                            <input type="hidden" name="sender_id" value="<?php echo $_SESSION['USER']->id ?>"/>
+                            <textarea class="comment-input" name="content" placeholder="Add a comment..."></textarea>                                <button name="add_comment" class="post-comment-btn">Submit</button>
+                        </div>
+                    </from>
+                <?php endif;?>
+                <?php if (!empty($commentsForUser)): ?>
                     <!-- Comments -->
                     <?php foreach ($commentsForUser as $comment): ?>
                         <div class="comment">
@@ -200,10 +199,10 @@
                         </div>
                     <?php endforeach; ?>
                     
-                </div>
-            <?php endif; ?>
+                
+                <?php endif; ?>
 
-
+            </div>
         </div>
     </div>
 </body>

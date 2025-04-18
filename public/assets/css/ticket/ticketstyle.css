@@ -2,7 +2,9 @@ body {
     font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
     /*background-color: #f4f4f9;*/
     margin: 0;
-    padding: 50px;
+    padding: 70px;
+    background-color:  #FAFAFBFF;
+    /* background-color:#f4f9fc ; */
 
 }
 
@@ -50,7 +52,7 @@ body {
 .event-info {
     display: flex;
     justify-content: space-between;
-    background-color: #f6f6f9;
+    background-color: #f4f9fc;
     border-radius: 8px;
     box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
 }
@@ -147,9 +149,9 @@ body {
 .input-field input {
     width: 100%;
     padding: 10px;
-    border: 1px solid #e7e7eb;
+    border: 1px solid #d3d3e3;
     border-radius: 5px;
-    background-color: #f9f9f9;
+    background-color: #f4f9fc;
 }
 
 .checkbox-group {
@@ -311,9 +313,9 @@ body {
 .input-field input {
     width: 90%;
     padding: 10px;
-    border: 1px solid #e7e7eb;
+    border: 1px solid #d3d3e3;
     border-radius: 5px;
-    background-color: #f9f9f9;
+    background-color: #f4f9fc;
 }
 
 
@@ -475,6 +477,7 @@ body {
     overflow: hidden;
     box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
     width: 300px;
+    height: 300px;
     position: relative;
     
 }
@@ -502,6 +505,7 @@ body {
 }
 
 .musicevent-event-details {
+    overflow: hidden;
     color: #888;
     font-size: 14px;
     margin-bottom: 10px;
@@ -609,7 +613,15 @@ body {
 
 
 /*purchasetucketsuccess*/
+.event-details-container-success {
+    
+    margin: 10px auto;
+    padding-left: 60px;
+    padding-right: 60px;
+    
+}
 .success-message {
+    margin-top: 40px;
     display: flex;
     align-items: center;
     background-color: #e6f7ff; /* Light blue background color */
@@ -650,7 +662,7 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
-    background-color: #f8f9fa;
+    background-color: #e9f2f7;
     border-radius: 8px;
     padding: 10px;
 }

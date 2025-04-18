@@ -38,8 +38,43 @@
 
     <!-- Total Users by Month Table -->
     <h2>Total Users by Month</h2>
+    
+    <!-- Filter Controls -->
+    <div class="filter-controls">
+        <div class="filter-group">
+            <label for="filterYear">Year:</label>
+            <select id="filterYear" onchange="filterUsersByMonth()">
+                <option value="">All Years</option>
+                <?php
+                $currentYear = date('Y');
+                for ($year = $currentYear; $year >= $currentYear - 5; $year--) {
+                    echo "<option value='$year'>$year</option>";
+                }
+                ?>
+            </select>
+        </div>
+        
+        <div class="filter-group">
+            <label for="filterMonth">Month:</label>
+            <select id="filterMonth" onchange="filterUsersByMonth()">
+                <option value="">All Months</option>
+                <?php
+                $months = [
+                    '01' => 'January', '02' => 'February', '03' => 'March',
+                    '04' => 'April', '05' => 'May', '06' => 'June',
+                    '07' => 'July', '08' => 'August', '09' => 'September',
+                    '10' => 'October', '11' => 'November', '12' => 'December'
+                ];
+                foreach ($months as $num => $name) {
+                    echo "<option value='$num'>$name</option>";
+                }
+                ?>
+            </select>
+        </div>
+    </div>
+
     <?php if (!empty($data['totalUsersByMonth'])): ?>
-        <table>
+        <table id="usersByMonthTable">
             <thead>
                 <tr>
                     <th>Role</th>
@@ -50,7 +85,9 @@
             </thead>
             <tbody>
                 <?php foreach ($data['totalUsersByMonth'] as $user): ?>
-                    <tr>
+                    <tr class="user-month-row" 
+                        data-year="<?= htmlspecialchars($user->reg_year) ?>"
+                        data-month="<?= htmlspecialchars($user->reg_month) ?>">
                         <td><?php echo htmlspecialchars($user->role); ?></td>
                         <td><?php echo htmlspecialchars($user->reg_year); ?></td>
                         <td><?php echo htmlspecialchars($user->reg_month); ?></td>
@@ -65,6 +102,38 @@
     <button class = "print-button" onclick="print()"><i class="fa-solid fa-download"></i></button>
 
     <script>
+        function filterUsersByMonth() {
+            const year = document.getElementById('filterYear').value;
+            const month = document.getElementById('filterMonth').value;
+            
+            const rows = document.querySelectorAll('.user-month-row');
+            
+            rows.forEach(row => {
+                const rowYear = row.getAttribute('data-year');
+                const rowMonth = row.getAttribute('data-month');
+                
+                // Convert month names to numbers for comparison
+                const monthMap = {
+                    'January': '01', 'February': '02', 'March': '03',
+                    'April': '04', 'May': '05', 'June': '06',
+                    'July': '07', 'August': '08', 'September': '09',
+                    'October': '10', 'November': '11', 'December': '12'
+                };
+                
+                // Convert month name to number if needed
+                const normalizedRowMonth = monthMap[rowMonth] || rowMonth;
+                
+                const yearMatch = !year || rowYear === year;
+                const monthMatch = !month || normalizedRowMonth === month;
+                
+                if (yearMatch && monthMatch) {
+                    row.style.display = '';
+                } else {
+                    row.style.display = 'none';
+                }
+            });
+        }
+
         function print() {
             const pdfContainer = document.querySelector('.pdf-container'); 
             const newWindow = window.open('', '_blank'); 
@@ -75,17 +144,11 @@
             newWindow.document.write('</body></html>');
             newWindow.document.close(); 
             
-            
             newWindow.onload = function() {
                 newWindow.print(); 
                 newWindow.close(); 
             };
         }
     </script>
-
-    
-
-    
-    
-        
 </body>
+</html>

@@ -9,8 +9,12 @@
 </head>
 <body>
     
-    <?php include ('../app/views/components/loading.php');  ?>
-    <div class="dash-container">
+    <?php include ('../app/views/components/loading.php');  
+    $showMore = isset($_POST['showMore']) ? $_POST['showMore'] == 'true' : false; 
+    $showMoreForPurchase = isset($_POST['showMoreForPurchase']) ? $_POST['showMoreForPurchase'] == 'true' : false;
+
+    ?>
+    <div class="dash-content">
         
         <?php if (!empty($events)): ?>
             <div class="dashboard">
@@ -61,7 +65,15 @@
                             </tr>
                         </thead>
                         <tbody>
-                            <?php foreach ($events as $event): ?>
+                        
+                            <?php 
+                            // Limit events to 3 if showMore is false
+                            $maxEvents = $showMore ? count($events) : 3;
+                            $eventsDisplayed = 0;
+                            foreach ($events as $event): 
+                                if ($eventsDisplayed >= $maxEvents) break;
+                                $eventsDisplayed++;
+                            ?>
                                 <tr>
                                     <td>
                                         <div class="event-info">
@@ -74,10 +86,20 @@
                                     <td>LKR <?= htmlspecialchars($event->total_revenue) ?></td>
                                 </tr>
                             <?php endforeach; ?>
+                            
                         </tbody>
                     </table>
+                    <!-- Show More / Show Less button -->
+                    <form method="POST" id="showMoreForm">
+                        <input type="hidden" id="showMore" name="showMore" value="<?= $showMore ? 'true' : 'false' ?>">
+                        <?php if (count($data) > 3): ?>
+                            <button type="button" class="view-more" onclick="handleShowMore()">
+                                <?= $showMore ? 'Show Less' : 'View More' ?>
+                            </button>
+                        <?php endif; ?>
+                    </form>
                 </div>
-
+                
 
                 <div class="section purchases">
                     <h3>Recent purchases</h3>
@@ -93,7 +115,14 @@
                             </tr>
                         </thead>
                         <tbody>
-                            <?php foreach ($eventBuyers as $eventBuyer): ?>
+                            <?php 
+                                // Limit events to 3 if showMore is false
+                                $maxEvents = $showMoreForPurchase ? count($eventBuyers) : 3;
+                                $eventsDisplayedForPurchase = 0;
+                                foreach ($eventBuyers as $eventBuyer): 
+                                    if ($eventsDisplayedForPurchase >= $maxEvents) break;
+                                    $eventsDisplayedForPurchase++;
+                            ?>
                                 <tr>
                                     <td><?= htmlspecialchars($eventBuyer->event_name) ?></td>
                                     <td><?= htmlspecialchars($eventBuyer->buyer_Fname) ?> <?= htmlspecialchars($eventBuyer->buyer_Lname) ?></td>
@@ -105,6 +134,15 @@
                             <?php endforeach; ?>
                         </tbody>
                     </table>
+                    <!-- Show More / Show Less button -->
+                    <form method="POST" id="showMoreForPurchaseForm">
+                        <input type="hidden" id="showMoreForPurchase" name="showMoreForPurchase" value="<?= $showMoreForPurchase ? 'true' : 'false' ?>">
+                        <?php if (count($data) > 3): ?>
+                            <button type="button" class="view-more" onclick="handleshowMoreForPurchase()">
+                                <?= $showMoreForPurchase ? 'Show Less' : 'View More' ?>
+                            </button>
+                        <?php endif; ?>
+                    </form>
                 </div>
             </div>
         <?php else: ?>
@@ -112,7 +150,19 @@
         <?php endif; ?>
         
     </div>
-
+    <script>
+        // JavaScript function to handle the "View More" / "Show Less" button
+        function handleShowMore() {
+            const showMoreInput = document.getElementById('showMore');
+            showMoreInput.value = showMoreInput.value === 'true' ? 'false' : 'true';
+            document.getElementById('showMoreForm').submit();
+        }
+        function handleshowMoreForPurchase() {
+            const showMoreInput = document.getElementById('showMoreForPurchase');
+            showMoreInput.value = showMoreInput.value === 'true' ? 'false' : 'true';
+            document.getElementById('showMoreForPurchaseForm').submit();
+        }
+    </script>
     <script src="<?=ROOT?>/assets/js/eventPlanner.js"></script>
 </body>
 </html>
