@@ -1,7 +1,7 @@
 <?php show($data); ?>
 <?php 
     $averageRating = number_format($data['ratings'][0]['averageRating'], 1);  // Example — replace with your DB average.
-    $totalReviews = 15;
+    $totalReviews = number_format($data['ratings'][0]['totalReviews'], 1);;
     $percentage = ($averageRating / 5) * 100;
 ?>
 
