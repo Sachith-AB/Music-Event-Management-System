@@ -16,6 +16,38 @@
         <?php include ('../app/views/components/collaborator/singersidebar.php');  ?>
         <div class="dashboard">
 
+                <div class="events-container">
+                        
+                        <?php if(!empty($data)): ?>
+
+                            <?php foreach($data as $event): ?>
+
+                                <div class="event-card">
+                                    <a href="<?=ROOT?>/collaborator-eventdetails?event_id=<?php echo htmlspecialchars($event->id)?>&sender_id=<?php echo htmlspecialchars($_SESSION['USER']->id)?>" class="event-card-link">
+                                       
+                                        <img src="<?=ROOT?>/assets/images/events/<?php echo(htmlspecialchars($event->cover_images))?>" >
+                                        <div class = "event-details" >
+
+                                            <div>🎤 <?php echo htmlspecialchars($event->event_name); ?></div>
+                                            <div>
+                                                <div>📅 <?php echo htmlspecialchars(date('l, d F Y', strtotime($event->eventDate))); ?> </div>
+                                                <div>📍 <?php echo htmlspecialchars($event->address); ?> </div>
+                                            </div>
+                                        </div>
+                                    </a>
+                                </div>
+                            
+                            <?php endforeach; ?>
+
+                        <?php else: ?>
+
+                                <div> No any Events in the Future </div>
+
+                        <?php endif; ?>
+                            
+                            
+                </div>
+
         </div>
     </div>
 </body>
