@@ -47,7 +47,7 @@ $_SESSION['last_visit'] = date('Y-m-d H:i:s');
                     <?php foreach ($tickets as $ticket): ?>
                         <div class="card">
                             <div class="img-box">
-                            <img src="<?=ROOT?>/assets/images/ticket/ticket.png" alt="Ticket" />
+                                <img src="<?=ROOT?>/assets/images/ticket/ticket.png" alt="Ticket" />
                             </div>
                             <div class="content">
                                 <div class="details">

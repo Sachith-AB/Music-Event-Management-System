@@ -7,20 +7,20 @@
 
 .dash-container {
     display: flex;
-    margin: 40px auto;
+    margin: 0px auto;
     padding: 40px;
+    gap: 2rem;
 }
 .container {
     max-width: 900px;
     margin: 40px auto;
     padding: 20px;
-    background: white;
-    border-radius: 8px;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    background: rgba(255, 255, 255, 0.947);
+    
 }
 
 .dashboard {
-    width: 80%;
+    width: 100%;
     max-width: 1200px;
     background-color: #fff;
     border-radius: 8px;

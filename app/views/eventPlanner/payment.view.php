@@ -63,7 +63,9 @@
             </div>
         <?php endforeach; ?>
     <?php endif; ?>
+
 </div>
+    </div>
 
     <script src="<?=ROOT?>/assets/js/eventPlanner.js"></script>
 </body>
