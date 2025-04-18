@@ -5,8 +5,7 @@ class Request {
 
     protected $table = 'requests'; //database table name
     protected $allowedColumns = [
-        'id','event_id','collaborator_id','Status','role','date_time'
-    ];
+        'id','event_id','collaborator_id','Status','role'];
 
     // public function getSingerDetails()
     // {
@@ -101,15 +100,28 @@ class Request {
           return $result;
     }
 
-    public function getRequestsForCollaborators()
+    public function getRequestsForCollaborators( $start_date, $end_date )
     {
 
-        $query = "SELECT count(r.id) AS request_count, r.collaborator_id, r.role, u.name
-                  FROM requests r
-                  JOIN users u ON
-                  r.collaborator_id = u.id
-                  GROUP BY r.collaborator_id
-                  ORDER BY request_count DESC";
+        $query = "SELECT 
+                      r.collaborator_id, 
+                      r.role, 
+                      u.name,
+                      COUNT(r.id) AS request_count,
+                      SUM(CASE WHEN r.status = 'accepted' THEN 1 ELSE 0 END) AS accepted_count,
+                      SUM(CASE WHEN r.status = 'rejected' THEN 1 ELSE 0 END) AS rejected_count,
+                      SUM(CASE WHEN r.status = 'pending' THEN 1 ELSE 0 END) AS pending_count
+                  FROM 
+                      requests r
+                  JOIN 
+                      users u ON r.collaborator_id = u.id
+                  WHERE 
+                      r.request_date BETWEEN '$start_date' AND '$end_date' 
+                  GROUP BY 
+                      r.collaborator_id
+                  ORDER BY 
+                      request_count DESC
+                  ";
 
           $result = $this->query($query);
           return $result;

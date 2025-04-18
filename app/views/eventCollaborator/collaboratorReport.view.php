@@ -1,4 +1,4 @@
-<?php include ('../app/views/components/header.php'); ?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -18,14 +18,14 @@
 
     <div class="date-range">
 
-        <form action="" method = "post" >
+        <form method = "POST" >
             <label for= "from" >From : </label>
-            <input type="date" id = "from" name = "start-date" required>
+            <input type="date" id = "from" name = "start-date" value = "<?php echo htmlspecialchars($_POST['start-date'] ?? '', ENT_QUOTES); ?>" required>
 
             <label for= "to" >   To : </label>
-            <input type="date" id = "to" name = "end-date" required> <br><br>
+            <input type="date" id = "to" name = "end-date" value = "<?php echo htmlspecialchars($_POST['end-date'] ?? '', ENT_QUOTES); ?>" required> <br><br>
 
-            <button class = "submit-btn" type="submit">Generate report</button>
+            <button name = "generate-report" class = "submit-btn" type="submit">Generate report</button>
 
         </form>
     </div>
@@ -42,29 +42,45 @@
                         <tr>
                             <th>Name</th>
                             <th>Requests recieved</th>
+                            <th>Pending requests</th>
+                            <th>Accepted requests</th>
+                            <th>Rejected requests</th>
                         </tr>
 
                         <?php $singerExists = false; // Flag to track if any singer is found ?>
 
-                        <?php foreach($data as $request):?>
-                            
-                            <?php if($request->role == "singer"):?>
+                        <?php if(!empty($data)): ?>
 
-                                <?php $singerExists = true; // Set flag to true ?>
+                                <?php foreach($data as $request):?>
+                                    
+                                    <?php if($request->role == "singer"):?>
+
+                                        <?php $singerExists = true; // Set flag to true ?>
+
+                                        <tr>
+                                            <td> <?php echo($request->name); ?> </td>
+                                            <td> <?php echo($request->request_count); ?> </td>
+                                            <td><?php echo($request->pending_count);?></td>
+                                            <td><?php echo($request->accepted_count);?></td>
+                                            <td><?php echo($request->rejected_count);?></td>
+                                        </tr>
+
+                                    <?php endif; ?>
+
+                                <?php endforeach; ?>
+
+                                <?php if (!$singerExists): ?>
+                                    <tr>
+                                        <td colspan="5">No requests yet</td>
+                                    </tr>
+                                <?php endif; ?>
+
+                        <?php else: ?>
 
                                 <tr>
-                                    <td> <?php echo($request->name); ?> </td>
-                                    <td> <?php echo($request->request_count); ?> </td>
+                                        <td colspan="5">No requests yet</td>
                                 </tr>
 
-                            <?php endif; ?>
-
-                        <?php endforeach; ?>
-
-                        <?php if (!$singerExists): ?>
-                            <tr>
-                                <td colspan="2">No requests yet</td>
-                            </tr>
                         <?php endif; ?>
 
                     </table>
@@ -81,6 +97,9 @@
                         <tr>
                             <th>Name</th>
                             <th>Requests recieved</th>
+                            <th>Pending requests</th>
+                            <th>Accepted requests</th>
+                            <th>Rejected requests</th>
                         </tr>
 
                     </thead>
@@ -88,39 +107,51 @@
 
                         <?php $bandExists = false; // Flag to track if any band is found ?>
 
-                        <?php foreach($data as $request):?>
-                        
-                            <?php if($request->role == "band"):?>
+                        <?php if(!empty($data)): ?>
 
-                                <?php $bandExists = true; // Set flag to true ?>
-                            
-                            <tbody>
-
-                                <tr>
-                                    <td> <?php echo($request->name); ?> </td>
-                                    <td> <?php echo($request->request_count); ?> </td>
-                                </tr>
-
-
-                            </tbody>
+                                <?php foreach($data as $request):?>
                                 
-                            <?php endif; ?>
+                                        <?php if($request->role == "band"):?>
 
-                        <?php endforeach; ?>
+                                            <?php $bandExists = true; // Set flag to true ?>
+                                        
+                                        <tbody>
+
+                                            <tr>
+                                                <td> <?php echo($request->name); ?> </td>
+                                                <td> <?php echo($request->request_count); ?> </td>
+                                                <td><?php echo($request->pending_count);?></td>
+                                                <td><?php echo($request->accepted_count);?></td>
+                                                <td><?php echo($request->rejected_count);?></td>
+                                            </tr>
 
 
-                        <?php if (!$bandExists): ?>
+                                        </tbody>
+                                            
+                                        <?php endif; ?>
 
-                        <tbody>
+                                <?php endforeach; ?>
 
-                            <tr>
-                                <td colspan="2">No requests yet</td>
-                            </tr>
 
-                        </tbody>
+                                <?php if (!$bandExists): ?>
+
+                                    <tbody>
+                                        <tr>
+                                            <td colspan="5">No requests yet</td>
+                                        </tr>
+                                    </tbody>
+
+                                <?php endif; ?>
                         
-                        <?php endif; ?>
+                        <?php else: ?>
 
+                                <tbody>
+                                    <tr>
+                                        <td colspan="5">No requests yet</td>
+                                    </tr>
+                                </tbody>
+
+                        <?php endif; ?>
 
                     </table>
 
@@ -136,6 +167,9 @@
                         <tr>
                             <th>Name</th>
                             <th>Requests recieved</th>
+                            <th>Pending requests</th>
+                            <th>Accepted requests</th>
+                            <th>Rejected requests</th>
                         </tr>
 
                     </thead>
@@ -143,40 +177,51 @@
 
                         <?php $soundExists = false; // Flag to track if any band is found ?>
 
-                        <?php foreach($data as $request):?>
-                            
-                            <?php if($request->role == "sound"):?>
+                            <?php if(!empty($data)): ?>
 
-                                <?php $soundExists = true; // Set flag to true ?>
-                            
-                            <tbody>
+                                <?php foreach($data as $request):?>
+                                    
+                                        <?php if($request->role == "sound"):?>
 
-                                <tr>
-                                    <td> <?php echo($request->name); ?> </td>
-                                    <td> <?php echo($request->request_count); ?> </td>
-                                </tr>
+                                            <?php $soundExists = true; // Set flag to true ?>
+                                        
+                                            <tbody>
+
+                                                <tr>
+                                                    <td> <?php echo($request->name); ?> </td>
+                                                    <td> <?php echo($request->request_count); ?> </td>
+                                                    <td><?php echo($request->pending_count);?></td>
+                                                    <td><?php echo($request->accepted_count);?></td>
+                                                    <td><?php echo($request->rejected_count);?></td>
+                                                
+                                                </tr>
 
 
-                            </tbody>
-                            
+                                            </tbody>
+                                        
+                                        <?php endif; ?>
+
+                                <?php endforeach; ?>
+
+                                <?php if (!$soundExists): ?>
+                                    <tbody>
+                                        <tr>
+                                            <td colspan="5">No requests yet</td>
+                                        </tr>
+                                    </tbody>
+                                <?php endif; ?>
+
+                            <?php else: ?>
+
+                                    <tbody>
+                                        <tr>
+                                            <td colspan="5">No requests yet</td>
+                                        </tr>
+                                    </tbody>
 
                             <?php endif; ?>
-
-                        <?php endforeach; ?>
-
-                        <?php if (!$soundExists): ?>
-
-                            <tbody>
-
-                                <tr>
-                                    <td colspan="2">No requests yet</td>
-                                </tr>
-
-                            </tbody>
-                        
-                        <?php endif; ?>
-
-
+                            
+                            
                     </table>
 
                 </div>
@@ -190,6 +235,9 @@
                             <tr>
                                 <th>Name</th>
                                 <th>Requests recieved</th>
+                                <th>Pending requests</th>
+                                <th>Accepted requests</th>
+                                <th>Rejected requests</th>
                             </tr>
 
                         </thead>
@@ -197,36 +245,54 @@
 
                         <?php $decoratorExists = false; // Flag to track if any band is found ?>
 
-                        <?php foreach($data as $request):?>
-                            
-                            <?php if($request->role == "decorator"):?>
+                        <?php if(!empty($data)): ?>
 
-                                <?php $decoratorExists = true; // Set flag to true ?>
+                                    <?php foreach($data as $request):?>
+                                        
+                                        <?php if($request->role == "decorator"):?>
+
+                                            <?php $decoratorExists = true; // Set flag to true ?>
+
+                                            <tbody>
+
+                                                <tr>
+                                                    <td> <?php echo($request->name); ?> </td>
+                                                    <td> <?php echo($request->request_count); ?> </td>
+                                                    <td><?php echo($request->pending_count);?></td>
+                                                    <td><?php echo($request->accepted_count);?></td>
+                                                    <td><?php echo($request->rejected_count);?></td>
+                                                </tr>
+
+                                            </tbody>
+                                        
+                                        <?php endif; ?>
+
+                                    <?php endforeach; ?>
+
+
+                                    <?php if (!$decoratorExists): ?>
+
+                                        <tbody>
+                                            <tr>
+                                                <td colspan="5">No requests yet</td>
+                                            </tr>
+
+                                        </tbody>
+                                        
+                                    <?php endif; ?>
+                        
+                        <?php else: ?>
 
                                 <tbody>
-
                                     <tr>
-                                        <td> <?php echo($request->name); ?> </td>
-                                        <td> <?php echo($request->request_count); ?> </td>
+                                        <td colspan="5">No requests yet</td>
                                     </tr>
 
                                 </tbody>
-                            
-                            <?php endif; ?>
-
-                        <?php endforeach; ?>
 
 
-                        <?php if (!$decoratorExists): ?>
-
-                            <tbody>
-                                <tr>
-                                    <td colspan="2">No requests yet</td>
-                                </tr>
-
-                            </tbody>
-                            
                         <?php endif; ?>
+
 
                     </table>
 
@@ -240,6 +306,10 @@
                             <tr>
                                 <th>Name</th>
                                 <th>Requests recieved</th>
+                                <th>Pending requests</th>
+                                <th>Accepted requests</th>
+                                <th>Rejected requests</th>
+
                             </tr>
 
 
@@ -248,37 +318,52 @@
                         
                         <?php $stageExists = false; // Flag to track if any band is found ?>
 
-                        <?php foreach($data as $request):?>
-                            
-                            <?php if($request->role == "stage"):?>
+                            <?php if(!empty($data)): ?>
 
-                                <?php $stageExists = true; // Set flag to true ?>
-                            
-                            <tbody>
+                                    <?php foreach($data as $request):?>
+                                        
+                                        <?php if($request->role == "stage"):?>
 
-                                <tr>
-                                    <td> <?php echo($request->name); ?> </td>
-                                    <td> <?php echo($request->request_count); ?> </td>
-                                </tr>
+                                            <?php $stageExists = true; // Set flag to true ?>
+                                        
+                                        <tbody>
 
-                            </tbody>
-                                
+                                            <tr>
+                                                <td> <?php echo($request->name); ?> </td>
+                                                <td> <?php echo($request->request_count); ?> </td>
+                                                <td><?php echo($request->pending_count);?></td>
+                                                <td><?php echo($request->accepted_count);?></td>
+                                                <td><?php echo($request->rejected_count);?></td>
+                                            </tr>
+
+                                        </tbody>
+                                            
+                                        <?php endif; ?>
+
+                                    <?php endforeach; ?>
+
+
+                                    <?php if (!$stageExists): ?>
+
+                                        <tbody>
+                                            <tr>
+                                                <td colspan="5">No requests yet</td>
+                                            </tr>
+
+                                        </tbody>
+                                        
+                                    <?php endif; ?>
+
+                            <?php else: ?>
+                                      
+                                        <tbody>
+                                            <tr>
+                                                <td colspan="5">No requests yet</td>
+                                            </tr>
+
+                                        </tbody>
 
                             <?php endif; ?>
-
-                        <?php endforeach; ?>
-
-
-                        <?php if (!$stageExists): ?>
-
-                            <tbody>
-                                <tr>
-                                    <td colspan="2">No requests yet</td>
-                                </tr>
-
-                            </tbody>
-                            
-                        <?php endif; ?>
 
                     </table>
                 </div>
@@ -292,6 +377,9 @@
                         <tr>
                             <th>Name</th>
                             <th>Requests recieved</th>
+                            <th>Pending requests</th>
+                            <th>Accepted requests</th>
+                            <th>Rejected requests</th>
                         </tr>
 
                     </thead>
@@ -299,38 +387,54 @@
 
                         <?php $announcerExists = false; // Flag to track if any band is found ?>
 
-                        <?php foreach($data as $request):?>
-                            
-                            <?php if($request->role == "announcer"):?>
+                        <?php if(!empty($data)): ?>
 
-                                <?php $announcerExists = true; // Set flag to true ?>
-                            
-                            <tbody>
-
-                                <tr>
-                                    <td> <?php echo($request->name); ?> </td>
-                                    <td> <?php echo($request->request_count); ?> </td>
-                                </tr>
-                            
-                            </tbody>
+                            <?php foreach($data as $request):?>
                                 
+                                    <?php if($request->role == "announcer"):?>
 
-                            <?php endif; ?>
+                                        <?php $announcerExists = true; // Set flag to true ?>
+                                    
+                                        <tbody>
 
-                        <?php endforeach; ?>
+                                            <tr>
+                                                <td> <?php echo($request->name); ?> </td>
+                                                <td> <?php echo($request->request_count); ?> </td>
+                                                <td><?php echo($request->pending_count);?></td>
+                                                <td><?php echo($request->accepted_count);?></td>
+                                                <td><?php echo($request->rejected_count);?></td>
+                                            </tr>
+                                        
+                                        </tbody>
+
+                                    <?php endif; ?>
+
+                            <?php endforeach; ?>
+
+                                <?php if (!$announcerExists): ?>
+
+                                        <tbody>
+                                            <tr>
+                                                <td colspan="5">No requests yet</td>
+                                            </tr>
+
+                                        </tbody>
+
+                                <?php endif; ?>
 
 
-                        <?php if (!$announcerExists): ?>
+                        <?php else : ?>
 
                             <tbody>
                                 <tr>
-                                    <td colspan="2">No requests yet</td>
+                                    <td colspan="5">No requests yet</td>
                                 </tr>
 
                             </tbody>
-                        
+
                         <?php endif; ?>
 
+                                
                     </table>
                 </div>
 
@@ -349,6 +453,9 @@
                                 <th>Name</th>
                                 <th>Role</th>
                                 <th>Requests recieved</th>
+                                <th>Pending requests</th>
+                                <th>Accepted requests</th>
+                                <th>Rejected requests</th>
                             </tr>
 
                         </thead>
@@ -364,6 +471,10 @@
                                             <td><?php echo($request->name);?></td>
                                             <td><?php echo($request->role);?></td>
                                             <td><?php echo($request->request_count);?></td>
+                                            <td><?php echo($request->pending_count);?></td>
+                                            <td><?php echo($request->accepted_count);?></td>
+                                            <td><?php echo($request->rejected_count);?></td>
+
                                         </tr>
 
                                     </tbody>
@@ -374,7 +485,7 @@
 
                                 <tbody>
                                     <tr>
-                                        <td colspan=3>No requests yet</td>
+                                        <td colspan=6>No requests yet</td>
                                     </tr>
                                     
                                 </tbody>
