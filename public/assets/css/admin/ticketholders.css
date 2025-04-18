@@ -59,7 +59,10 @@
 .modern-table tbody tr:last-child td {
     border-bottom: none;
 }
-
+.view-delete-buttons{
+    display: flex;
+    gap: 10px;
+}
 .action-btn {
     padding: 8px 12px;
     border: none;

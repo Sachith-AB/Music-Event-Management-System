@@ -18,7 +18,7 @@
             <table class="modern-table">
                 <thead>
                     <tr>
-                        <th>ID</th>
+                        
                         <th>Name</th>
                         <th>Email</th>
                         <th>Contact</th>
@@ -34,7 +34,7 @@
                         <?php if($planner->role == 'planner'): ?>
 
                                 <tr>
-                                    <td><?php echo $planner->id ?></td>
+                                    
                                     <td><?php echo $planner->name ?></td>
                                     <td><?php echo $planner->email ?></td>
                                     <td><?php echo $planner->contact ?></td>
