@@ -1,0 +1,82 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: white;
+    font-family: 'Poppins', sans-serif;
+}
+
+.pin-container {
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(15px);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    border-radius: 20px;
+    padding: 40px 30px;
+    width: 350px;
+    box-shadow: 0 8px 32px rgba(31, 38, 135, 0.37);
+    text-align: center;
+    color: #151111;
+}
+
+.pin-container h2 {
+    font-size: 24px;
+    margin-bottom: 10px;
+}
+
+.pin-container p {
+    font-size: 14px;
+    margin-bottom: 20px;
+}
+
+.pin-form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.pin-inputs {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+    margin-bottom: 20px;
+}
+
+.pin-inputs input {
+    width: 50px;
+    height: 50px;
+    text-align: center;
+    font-size: 22px;
+    border: 2px solid #bbbb;
+    border-radius: 10px;
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.pin-inputs input:focus {
+    border-color: #00BDD6FF;
+    box-shadow: 0 0 8px rgba(0, 189, 214, 0.5);
+    outline: none;
+}
+
+button {
+    padding: 12px 0;
+    border: none;
+    border-radius: 10px;
+    background: #00BDD6FF;
+    color: #fff;
+    font-size: 15px;
+    font-weight: 600;
+    cursor: pointer;
+    width: 100%;
+    transition: 0.3s ease;
+}
+
+button:hover {
+    color: black;
+}

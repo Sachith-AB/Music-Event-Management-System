@@ -2,7 +2,7 @@
     <h2>Leave Your Review</h2>
 
     <!-- Star Rating -->
-    <div class="star-rating">
+    <div class="star-ratings">
         <label>
             <input type="radio" name="rating" value="1" hidden>
             <span class="star" data-value="1">&#9733;</span>
@@ -59,7 +59,7 @@
     }
 
     /* Star Rating */
-    .star-rating {
+    .star-ratings {
         text-align: center;
         margin: 1rem 0;
     }
