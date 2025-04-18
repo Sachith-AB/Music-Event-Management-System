@@ -1,5 +1,6 @@
 <?php require_once '../app/helpers/load_notifications.php'; ?>
 <?php include ('../app/views/components/header.php'); ?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -8,6 +9,7 @@
     <title>Calendar and Notifications</title>
     <link rel="stylesheet" href="<?=ROOT?>/assets/css/eventCollaborators/calender.css">
     <link rel="icon" type="image/png" href="<?=ROOT?>/assets/images/logo/logo.png">
+    <link rel="stylesheet" href="<?= ROOT ?>/assets/css/backbutton.css">
 </head>
 <?php $eventJson = json_encode($data ?? []); ?>
 <body>
@@ -16,7 +18,12 @@
     <?php include ('../app/views/components/eventPlanner/dashsidebar.php'); ?>
         <div class="dashboard">
             <div class="container">
-                <h1>My Calendar</h1>
+                <div class="back-button">
+                    <!-- Include Back Button Component -->
+                    <?php include('../app/views/components/backbutton.view.php'); ?>
+                    <h1>My Calendar</h1>
+                </div>
+                
                 <div class="calendar">
                     <div class="calendar-header">
                         <button id="prevMonth">◀</button>

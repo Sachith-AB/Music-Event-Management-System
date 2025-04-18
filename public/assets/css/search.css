@@ -16,7 +16,8 @@ body {
     width: 90%;
     max-width: 1200px;
     margin:0px auto;
-    padding-top: 30px;
+    /* padding-top: 30px; */
+    margin-bottom: 20px;
 }
 .search-container{
     margin-top: 10px;
