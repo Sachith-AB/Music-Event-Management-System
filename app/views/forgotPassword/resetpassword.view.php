@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Set New Password</title>
     <link rel="stylesheet" href="<?= ROOT ?>/assets/css/forgotpassword/resetpassword.css">
     <link rel="icon" type="image/png" href="<?=ROOT?>/assets/images/logo/logo.png">
 
