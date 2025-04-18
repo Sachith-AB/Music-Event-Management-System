@@ -5,7 +5,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Forgot Password</title>
     <link rel="stylesheet" href="<?= ROOT ?>/assets/css/forgotPassword/forgotpassword.css">
+    <link rel="stylesheet" href="<?= ROOT ?>/assets/css/signin-up.css">
     <link rel="icon" type="image/png" href="<?=ROOT?>/assets/images/logo/logo.png">
+
+    <!-- Boxicons CSS for additional icons -->
+    <link href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css" rel="stylesheet">
 </head>
 <body>
 
@@ -23,9 +27,17 @@
     ?>
 
     <div class="container">
+        <div class="logo-image">
+            <img src="<?=ROOT?>/assets/images/logo/logo.png" alt="company_logo">
+            <span>
+                <a href="javascript:history.back()">
+                    Back
+                </a>
+            </span>
+        </div>
         <h2>Reset your password</h2>
         <h3>Forgot your password? 
-            Please enter your email and we'll send ypu a 4-digit code.
+            Please enter your email and we'll send you a 4-digit code.
         </h3>
         <form method="POST">
             <div class="input-wrap">

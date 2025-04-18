@@ -5,6 +5,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Enter 4-Digit Code</title>
     <link rel="stylesheet" href="<?= ROOT ?>/assets/css/forgotpassword/pinInput.css">
+    <link rel="stylesheet" href="<?= ROOT ?>/assets/css/signin-up.css">
+    <link rel="icon" type="image/png" href="<?=ROOT?>/assets/images/logo/logo.png">
+
+    <!-- Boxicons CSS for additional icons -->
+    <link href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css" rel="stylesheet">
+    
 </head>
 <body>
     <?php 
@@ -20,6 +26,14 @@
         // echo $error;
     ?>
     <div class="pin-container">
+        <div class="logo-image">
+            <img src="<?=ROOT?>/assets/images/logo/logo.png" alt="company_logo">
+            <span>
+                <a href="javascript:history.back()">
+                    Back
+                </a>
+            </span>
+        </div>
         <h2>Enter Verification Code</h2>
         <p>We’ve sent a 4-digit code to your email</p>
         <form class="pin-form" method="POST">
