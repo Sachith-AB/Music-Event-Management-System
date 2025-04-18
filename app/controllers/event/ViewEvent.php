@@ -9,11 +9,11 @@ class ViewEvent{
         $data =[];
         $event = new Event;
         $rating = new Rating;
+        $user = new User;
         $id = htmlspecialchars($_GET['id']);
 
         $data = $this->getEventData($event,$id);
-        $data['rating']  = $this->getEventRating($rating,$id);
-        //show($data);
+        $data['ratings']  = $this->getEventRating($rating,$id,$user);
         
         if($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['review'])){
             $this->reivewEvent($rating,$id);
@@ -35,8 +35,35 @@ class ViewEvent{
 
     }
 
-    private function getEventRating($rating,$id){
-        $res = $rating->getRatingFromEventId($id);
+    private function getEventRating($rating, $id, $user) {
+        $ratings = $rating->getRatingFromEventId($id);
+        $res = [];
+    
+        $averageRating = 0;
+        $totalReviews = count($ratings);
+    
+        if ($totalReviews > 0) {
+            $sumRatings = 0;
+            foreach ($ratings as $rate) {
+                $sumRatings += $rate->rating;  // Assuming $rate->rating holds the numeric value.
+            }
+            $averageRating = $sumRatings / $totalReviews;
+        }
+    
+        if ($ratings) {
+            foreach ($ratings as $rate) {
+                $userData = $user->firstById($rate->user_id);
+                $res[] = [
+                    'rating' => $rate,
+                    'user'   => $userData,
+                    'averageRating' => $averageRating,  // Include the correct average.
+                    'totalReviews' => $totalReviews,  // Include the total reviews count.
+                ];
+            }
+        }
+    
         return $res;
     }
+    
+    
 }
