@@ -54,3 +54,20 @@
     background-color: #00BDD6FF;
     color: #fff;
   }
+  .submenu {
+    list-style: none;
+    padding-left: 20px;
+    margin: 0;
+}
+
+.submenu li a {
+    font-weight: normal;
+    font-size: 0.95rem;
+    padding: 10px 15px;
+    color: #333;
+}
+
+.submenu li a:hover {
+    background-color: #d3f0f4;
+    color: #000;
+}

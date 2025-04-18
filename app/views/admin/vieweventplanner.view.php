@@ -6,6 +6,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Event planner dashboard</title>
     <link rel="stylesheet" href="<?=ROOT?>/assets/css/eventPlanner/dashboard.css">
+    <link rel="stylesheet" href="<?= ROOT ?>/assets/css/backbutton.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
 </head>
 <body>
     
@@ -18,9 +20,17 @@
         
         <?php if (!empty($events)): ?>
             <div class="dashboard">
-                <div class="header">
-                    <h1>Dashboard</h1>
+                <div class="back-button">
+                    <div>
+                        <!-- Include Back Button Component -->
+                        <?php include('../app/views/components/backbutton.view.php'); ?>
+                    </div>
+                    
+                    <div class="header">
+                        <h1>Dashboard</h1>
+                    </div>
                 </div>
+                
 
                 <div class="stats">
                     <div class="stat-item">

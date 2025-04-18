@@ -1,3 +1,4 @@
+<?php require_once '../app/helpers/load_notifications.php'; ?>
 <?php include ('../app/views/components/header.php'); ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -64,3 +65,4 @@
     <script src="<?=ROOT?>/assets/js/eventPlanner.js"></script>
 </body>
 </html>
+<?php include ('../app/views/components/footer.php'); ?>

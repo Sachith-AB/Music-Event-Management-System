@@ -20,7 +20,7 @@ class Search {
             $data = $this->getEvents($event);
         }
         
-
+        
         $this->view('search',$data);
     }
 

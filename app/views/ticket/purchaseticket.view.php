@@ -1,4 +1,6 @@
+<?php require_once '../app/helpers/load_notifications.php'; ?>
 <?php include ('../app/views/components/header.php'); ?>
+
 
 <!DOCTYPE html>
 <html lang="en">
@@ -7,6 +9,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Musicia - Ticket Purchase</title>
     <link rel="stylesheet" href="<?=ROOT?>/assets/css/ticket/ticketstyle.css">
+    <link rel="stylesheet" href="<?= ROOT ?>/assets/css/backbutton.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
 
     <!-- Include Font Awesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
@@ -19,7 +23,15 @@
     <main>
         <?php if (!empty($ticketdetails)): ?>
             <div class="event-details-container">
-                <h1 class="event-title"><span><?= htmlspecialchars($ticketdetails[0]->event_name) ?></span>: <?= htmlspecialchars($ticketdetails[0]->event_description) ?></h1>
+                
+                <h1 class="event-title">
+                    <div class="back-button-purchase">
+                        <!-- Include Back Button Component -->
+                        <?php include('../app/views/components/backbutton.view.php'); ?>
+                    </div>
+                    
+                    <span><?= htmlspecialchars($ticketdetails[0]->event_name) ?></span>: <?= htmlspecialchars($ticketdetails[0]->event_description) ?>
+                </h1>
                 <div class="event-info">
                     <div class="event-item">
                         <div class="icon">
@@ -178,8 +190,8 @@
                                 <div class="musicevent-event-title"><?= htmlspecialchars($event->event_name) ?></div>
                                 <div class="musicevent-event-details">
                                     <div>📅 <?= htmlspecialchars(date("l, F d | h:i A", strtotime($event->start_time))) ?></div>
-                                    <br/>
-                                    <div>📍 <?= htmlspecialchars($event->address) ?></div>
+                                   
+                                    <div class="two-line-ellipsis">📍 <?= htmlspecialchars($event->address) ?></div>
                                 </div>
                                 <!-- <div class="musicevent-event-price">From $80</div> -->
                             </div>
@@ -197,10 +209,10 @@
             
     </main>
 
-    <!-- Include Footer -->
-    <?php include ('../app/views/components/footer.php'); ?>
+
         
     
 
 </body>
 </html>
+<?php include ('../app/views/components/footer.php'); ?>

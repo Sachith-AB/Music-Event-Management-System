@@ -1,4 +1,6 @@
+<?php require_once '../app/helpers/load_notifications.php'; ?>
 <?php include ('../app/views/components/header.php'); ?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -90,3 +92,4 @@
     
 </body>
 </html>
+<?php include ('../app/views/components/footer.php'); ?>

@@ -1,11 +1,13 @@
+<?php require_once '../app/helpers/load_notifications.php'; ?>
 <?php include ('../app/views/components/header.php'); ?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Event planner dashboard</title>
-    <link rel="stylesheet" href="<?=ROOT?>/assets/css/eventCollaborators\singerdashboard.css">
+    <link rel="stylesheet" href="<?=ROOT?>/assets/css/eventCollaborators/singerdashboard.css">
 </head>
 <body>
 <?php include ('../app/views/components/loading.php'); ?>
@@ -188,10 +190,10 @@
                                     <span class="comment-date"><?= date('jS F Y, H:i A', strtotime($comment->created_at)) ?></span>
                                 </div>
                                 <p class="comment-text"><?php echo htmlspecialchars($comment->content) ?></p>
-                                <div class="comment-actions">
-                                    <button class="like-btn">👍 <?php echo $comment->num_likes ?></button>
+                                <!-- <div class="comment-actions">
+                                    <button class="like-btn">👍 <?php echo $comment->num_likes ?></button> -->
                                     <!-- <button class="reply-btn">Reply</button> -->
-                                </div>
+                                <!-- </div> -->
                             </div>
                         </div>
                     <?php endforeach; ?>
@@ -203,3 +205,4 @@
     </div>
 </body>
 </html>
+<?php include ('../app/views/components/footer.php'); ?>
