@@ -37,7 +37,7 @@
                                             <div><?= htmlspecialchars($event->event_name) ?></div>
                                             <div>
                                                 <div>📅 <?= htmlspecialchars(date("l, F d | h:i A", strtotime($event->start_time))) ?></div>
-                                                <div>📍 <?= htmlspecialchars($event->address)?></div>
+                                                <div class="two-line-ellipsis">📍 <?= htmlspecialchars($event->address)?></div>
                                             </div>
                                         </div>
                                     </a>
@@ -60,7 +60,7 @@
                                         <div><?= htmlspecialchars($event->event_name) ?></div>
                                         <div>
                                             <div>📅 <?= htmlspecialchars(date("l, F d | h:i A", strtotime($event->start_time))) ?></div>
-                                            <div>📍 <?= htmlspecialchars($event->address) ?></div>
+                                            <div class="two-line-ellipsis">📍 <?= htmlspecialchars($event->address) ?></div>
                                         </div>
                                     </div>
                                 </a>
@@ -82,7 +82,7 @@
                                     <div><?= htmlspecialchars($event->event_name) ?></div>
                                     <div>
                                         <div>📅 <?= htmlspecialchars(date("l, F d | h:i A", strtotime($event->start_time))) ?></div>
-                                        <div>📍 <?= htmlspecialchars($event->address) ?></div>
+                                        <div class="two-line-ellipsis">📍 <?= htmlspecialchars($event->address) ?></div>
                                     </div>
                                 </div>
                             </div>
