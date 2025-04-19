@@ -260,12 +260,14 @@
                     });
             }
             </script>
+    <div class="ticketbackground">
+        <?php include ('../app/views/components/review-retriver.php'); ?>
 
-<?php include ('../app/views/components/review-retriver.php'); ?>
+        <!-- reviw to event -->
+        <?php include ('../app/views/components/review.php'); ?>
+    </div>
 
-<!-- reviw to event -->
-<?php include ('../app/views/components/review.php'); ?>
-        
+     
 </body>
 
 </html>
