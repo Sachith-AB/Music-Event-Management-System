@@ -73,7 +73,9 @@
     <?php if(!empty($data)): ?>
         <?php 
             $message = $data['error'];
+            // show($message);
             include("../app/views/components/r-message.php")
+            
         ?>
     <?php endif ?>
 

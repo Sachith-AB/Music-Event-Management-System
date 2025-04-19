@@ -126,7 +126,7 @@ class TicketController {
         }
     
         // Render the update form with the ticket data
-        $this->view('ticket/update-ticket', ['ticket' => $data, 'restrictions' => $data['restrictions']]);
+        $this->view('ticket/update-ticket', ['ticket' => $data, 'restrictions' => $data['restrictions'], 'errors' => $data['errors'] ?? null]);
     }
     
 
