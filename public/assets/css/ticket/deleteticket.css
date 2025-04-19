@@ -25,6 +25,7 @@ body {
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
     justify-items: center;
     align-items: center;
+    border-top: 2px solid #00BDD6FF;
 }
 .event-title{
     font-size: 1.4rem;
