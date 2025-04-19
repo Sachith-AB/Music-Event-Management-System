@@ -10,12 +10,18 @@ class NotificationEvent{
         $event = new Event;
         $rating = new Rating;
         $eventcomment = new Eventcomments;
+        $notification = new Notification;
 
         $event_id = htmlspecialchars($_GET['id']);
 
         $data = $this->getEventData($event,$event_id);
         $data["eventplanner"] = $this->getEventPlanner($event,$event_id);
         
+        if (isset($_GET['note_id'])) {
+            $noteId = $_GET['note_id'];
+            $note = $notification->firstById($noteId);
+        }
+      
         if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['add_comment'])) {
             // show($_POST);
             $this->addComment($event_id, $eventcomment, $_POST);
@@ -29,7 +35,7 @@ class NotificationEvent{
             $this->reivewEvent($rating,$event_id);
         }
 
-        $this->view('ticketholder/notificationEvent',['data'=>$data,'commentsForEvent'=>$commentsForEvent]);
+        $this->view('ticketholder/notificationEvent',['data'=>$data,'commentsForEvent'=>$commentsForEvent,'note'=>$note]);
     }
 
     public function getEventData($event,$id){
