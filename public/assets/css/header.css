@@ -418,6 +418,10 @@ nav ul li.sign-up {
     padding: 0;
     margin: 0;
 }
+.notification-popup ul li{
+    cursor: pointer;
+}
+
 
 .notification-item {
     display: flex;
@@ -426,6 +430,7 @@ nav ul li.sign-up {
     border-bottom: 1px solid #eee;
     font-size: 14px;
     color: #333;
+    
 }
 
 .notification-item strong {
