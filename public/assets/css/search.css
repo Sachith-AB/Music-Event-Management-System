@@ -258,6 +258,51 @@ h1 {
     }
 }
 
+.star-rating {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    margin-top: 8px;
+}
+
+.star-background {
+    position: relative;
+    display: inline-block;
+    font-size: 22px;
+    color: #ccc;
+}
+
+.star-background::before {
+    content: "★★★★★";
+    letter-spacing: 3px;
+}
+
+.star-filled {
+    position: absolute;
+    top: 0;
+    left: 0;
+    white-space: nowrap;
+    overflow: hidden;
+    color: gold;
+}
+
+.star-filled::before {
+    content: "★★★★★";
+    letter-spacing: 3px;
+}
+
+.stars {
+    font-size: 1rem;
+}
+
+.stars .filled {
+    color: gold;
+}
+
+.stars .unfilled {
+    color: #ccc;
+}
+
 @media (max-width: 480px) {
     .search-bar {
         flex-direction: column;
