@@ -28,7 +28,7 @@ route('event-report','event/Report@index');
 route('event-payment','event/EventPayment@index');
 route('event-view-payment','event/ViewEventPayment@index');
 
-if($_SESSION['USER']->role == 'collaborator' && $_SESSION['USER']->role == 'admin'){
+if($_SESSION['USER']->role == 'collaborator' || $_SESSION['USER']->role == 'admin'){
     //route for event collaborators
     route('colloborator-profile','eventCollaborator/singerProfile@index');
     route('colloborator-dashboard','eventCollaborator/SingerDashboard@index');
@@ -45,9 +45,8 @@ if($_SESSION['USER']->role == 'collaborator' && $_SESSION['USER']->role == 'admi
 }
 
 
-
 //all routes for event planner
-if ($_SESSION['USER']->role == 'planner' && $_SESSION['USER']->role == 'admin'){
+if ($_SESSION['USER']->role == 'planner' || $_SESSION['USER']->role == 'admin'){
     route('request','request/Requestview@index');
 
     //route for request
@@ -82,10 +81,6 @@ if ($_SESSION['USER']->role == 'planner' && $_SESSION['USER']->role == 'admin'){
     route('calender','calender/Calender@index');
 }
 
-
-
-
-
 //Route for purchaseticket
 route('purchaseticket','ticket/PurchaseTicket@index');
 route('payment-failure','ticket/PaymentFailure@index');
@@ -93,7 +88,7 @@ route('successfullypaid','ticket/Successfullypaid@index');
 route('upcommingevent','ticket/UpcomingEvents@index');
 route('ticketevent','ticket/PurchaseTicket@index4');
 
-if($_SESSION['USER']->role == 'planner' && $_SESSION['USER']->role == 'admin'){
+if($_SESSION['USER']->role === 'holder' || $_SESSION['USER']->role == 'admin'){
     // Route for ticket holder
     route('profile','ticketHolder/Profile@index');
     route('update-profile','ticketHolder/UpdateProf@index');
