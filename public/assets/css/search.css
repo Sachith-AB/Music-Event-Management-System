@@ -344,195 +344,96 @@ h1::after {
         min-width: auto;
     }
 
-
-.star-rating {
-    display: flex;
-    align-items: center;
-    gap: 5px;
-    margin-top: 8px;
-}
-
-.star-background {
-    position: relative;
-    display: inline-block;
-    font-size: 22px;
-    color: #ccc;
-}
-
-.star-background::before {
-    content: "★★★★★";
-    letter-spacing: 3px;
-}
-
-.star-filled {
-    position: absolute;
-    top: 0;
-    left: 0;
-    white-space: nowrap;
-    overflow: hidden;
-    color: gold;
-}
-
-.star-filled::before {
-    content: "★★★★★";
-    letter-spacing: 3px;
-}
-
-.stars {
-    font-size: 1rem;
-}
-
-.stars .filled {
-    color: gold;
-}
-
-.stars .unfilled {
-    color: #ccc;
-}
-
-@media (max-width: 480px) {
-    .search-bar {
-        flex-direction: column;
+    .star-rating {
+        display: flex;
         align-items: center;
-        gap: 10px;
-        padding: 15px;
+        gap: 5px;
+        margin-top: 8px;
     }
 
-    .search-bar input {
-        width: 100%;
-        max-width: 300px;
+    .star-background {
+        position: relative;
+        display: inline-block;
+        font-size: 22px;
+        color: #ccc;
     }
 
-    .search-bar button {
-        width: 100%;
-        max-width: 300px;
+    .star-background::before {
+        content: "★★★★★";
+        letter-spacing: 3px;
     }
 
-    .event-list {
-        grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
-        gap: 15px;
+    .star-filled {
+        position: absolute;
+        top: 0;
+        left: 0;
+        white-space: nowrap;
+        overflow: hidden;
+        color: gold;
     }
 
-    .event-card {
-        margin-bottom: 0;
+    .star-filled::before {
+        content: "★★★★★";
+        letter-spacing: 3px;
     }
 
-    .event-info h3 {
-        font-size: 1.1rem;
-    }
-
-    .date, .location {
-        font-size: 0.85rem;
-    }
-
-    .pricing {
-        font-size: 0.7rem;
-        padding: 5px 10px;
-    }
-    
-    .view-more {
-        width: 100%;
-        max-width: 200px;
-        margin: 20px auto;
-    }
-}
-
-.star-rating {
-    display: flex;
-    align-items: center;
-    gap: 5px;
-    margin-top: 8px;
-}
-
-.star-background {
-    position: relative;
-    display: inline-block;
-    font-size: 22px;
-    color: #ccc;
-}
-
-.star-background::before {
-    content: "★★★★★";
-    letter-spacing: 3px;
-}
-
-.star-filled {
-    position: absolute;
-    top: 0;
-    left: 0;
-    white-space: nowrap;
-    overflow: hidden;
-    color: gold;
-}
-
-.star-filled::before {
-    content: "★★★★★";
-    letter-spacing: 3px;
-}
-
-.stars {
-    font-size: 1rem;
-}
-
-.stars .filled {
-    color: gold;
-}
-
-.stars .unfilled {
-    color: #ccc;
-}
-
-@media (max-width: 480px) {
-    h1 {
-        font-size: 1.8rem;
-        margin-bottom: 20px;
-    }
-
-    .search-bar {
-        padding: 12px;
-    }
-
-    .filter {
-        padding: 15px;
-    }
-
-    .filter h3 {
-        font-size: 1.3rem;
-    }
-
-    .filter-section h4 {
+    .stars {
         font-size: 1rem;
     }
 
-    .event-list {
-        grid-template-columns: 1fr;
-        gap: 15px;
+    .stars .filled {
+        color: gold;
     }
 
-    .event-card img {
-        height: 160px;
+    .stars .unfilled {
+        color: #ccc;
     }
 
-    .event-info {
-        padding: 12px;
-    }
+    @media (max-width: 480px) {
+        .search-bar {
+            flex-direction: column;
+            align-items: center;
+            gap: 10px;
+            padding: 15px;
+        }
 
-    .event-info h3 {
-        font-size: 1rem;
-    }
+        .search-bar input {
+            width: 100%;
+            max-width: 300px;
+        }
 
-    .date, .location {
-        font-size: 0.8rem;
-    }
+        .search-bar button {
+            width: 100%;
+            max-width: 300px;
+        }
 
-    .pricing {
-        font-size: 0.65rem;
-        padding: 4px 8px;
-    }
-    
-    .view-more {
-        padding: 10px 20px;
-        font-size: 0.9rem;
+        .event-list {
+            grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+            gap: 15px;
+        }
+
+        .event-card {
+            margin-bottom: 0;
+        }
+
+        .event-info h3 {
+            font-size: 1.1rem;
+        }
+
+        .date, .location {
+            font-size: 0.85rem;
+        }
+
+        .pricing {
+            font-size: 0.7rem;
+            padding: 5px 10px;
+        }
+        
+        .view-more {
+            width: 100%;
+            max-width: 200px;
+            margin: 20px auto;
+        }
     }
 }
 
