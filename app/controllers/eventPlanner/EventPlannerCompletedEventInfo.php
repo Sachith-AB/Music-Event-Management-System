@@ -21,11 +21,9 @@ class EventPlannerCompletedEventInfo {
        $comments = $this->getComments($event_id);
 
        $data = array_merge($data1, $performers, ['comments' => $comments]);
-    //    show($data);
 
-       
-        
-        
+       //show($data);
+
 
         $this->view('eventPlanner/completedEventInfo', $data);
     }

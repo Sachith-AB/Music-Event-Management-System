@@ -149,7 +149,7 @@ h2 {
 .report-section p {
     color: #2c3e50;
     font-size: 1.2rem;
-    margin: 0;
+    margin: 0 0 1rem 0;
     text-align: center;
     width: 100%;
 }
@@ -164,6 +164,29 @@ h2 {
 /* Buttons */
 .btn {
     padding: 0.5rem 1.2rem;
+    padding: 10px 2px;
+    background-color: #00BDD6FF;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    font-size: 1rem;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    min-width: 100px;
+    text-align: center;
+
+}
+
+.btn:hover {
+    background-color: #00a8c0;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    color:black;
+}
+
+.btn-primary {
+    padding: 0.5rem 1.2rem;
     border: none;
     border-radius: 6px;
     cursor: pointer;
@@ -175,21 +198,11 @@ h2 {
     text-align: center;
     font-size: 0.9rem;
     display: inline-block;
-}
-
-.btn:hover {
-    background-color: #00a8c0;
-    transform: translateY(-2px);
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-}
-
-.btn-primary {
-    background-color: #00BDD6FF;
-    color: white;
+    
 }
 
 .btn-primary:hover {
-    background-color: #00a8c0;
+    color:black;
 }
 
 /* Responsive Design */
