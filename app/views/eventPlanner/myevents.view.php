@@ -25,7 +25,7 @@
         <?php if (!empty($events)):?>
             <div class="content">
                 <!-- Processing Events Section -->
-                <h2 class="content-header">Newly Created Events (Processing)</h2>
+                <h2 class="content-header">Processing Events</h2>
                 <div class="events-container">
                     <?php foreach ($events as $event): ?>
                         <?php if ($event->status == 'processing'): ?>
@@ -48,7 +48,7 @@
                 </div>
 
                 <!-- Scheduled Events Section -->
-                <h2 class="content-header">Upcoming Events (Scheduled)</h2>
+                <h2 class="content-header">Scheduled Events</h2>
                 <div class="events-container">
                     <?php foreach ($events as $event): ?>
                         <?php if ($event->status == 'scheduled'): ?>
@@ -70,7 +70,7 @@
                 </div>
 
                 <!-- Completed Events Section -->
-                <h2 class="content-header">Past Events (Completed)</h2>
+                <h2 class="content-header">Past Events</h2>
                 <div class="events-container">
                     <?php foreach ($events as $event): ?>
                         <?php if ($event->status == 'completed'): ?>

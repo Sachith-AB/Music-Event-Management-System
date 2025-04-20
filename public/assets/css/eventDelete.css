@@ -25,6 +25,8 @@ body {
     width: 90%;
     max-width: 600px;
     margin: 20px auto;
+    border: 3px solid #00BDD6FF;
+    transform: translateY(-2px);
 }
 
 /* Event Details Section */
@@ -85,8 +87,6 @@ body {
     min-width: 120px;
 }
 
-
-
 .action-buttons button {
     background-color: #00BDD6FF;
 }
@@ -120,6 +120,19 @@ body {
     .main-container {
         width: 95%;
         padding: 20px;
+        margin: 15px auto;
+    }
+
+    #event-header h2 {
+        font-size: 1.5em;
+    }
+
+    #general-information p {
+        font-size: 0.9em;
+    }
+
+    #validation h2 {
+        font-size: 1.2em;
     }
 
     .action-buttons {
@@ -129,5 +142,48 @@ body {
 
     .action-buttons button {
         width: 100%;
+        padding: 10px 20px;
+        font-size: 14px;
+    }
+
+    .event-details {
+        padding: 15px;
+    }
+}
+
+@media screen and (max-width: 480px) {
+    .main-container {
+        width: 98%;
+        padding: 15px;
+        margin: 10px auto;
+    }
+
+    #event-header h2 {
+        font-size: 1.3em;
+        margin-bottom: 10px;
+    }
+
+    #general-information p {
+        font-size: 0.85em;
+        line-height: 1.4;
+    }
+
+    #validation h2 {
+        font-size: 1.1em;
+        margin-bottom: 10px;
+    }
+
+    .action-buttons button {
+        padding: 8px 15px;
+        font-size: 13px;
+        min-width: auto;
+    }
+
+    .event-details {
+        padding: 12px;
+    }
+
+    body {
+        padding: 10px;
     }
 }
