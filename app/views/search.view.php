@@ -1,4 +1,6 @@
+<?php require_once '../app/helpers/load_notifications.php'; ?>
 <?php include ('../app/views/components/header.php'); ?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -73,7 +75,11 @@
                 ?>
 
                 <div class="event-card" onclick="window.location.href='view-event?id=<?= $event->id ?>'">
-                    <img src="<?=ROOT?>/assets/images/events/<?php echo $event->cover_images?>" alt="Event 2">
+                    <?php
+                    $coverImages = json_decode($event->cover_images, true);
+                    $firstImage = $coverImages[0] ?? ''; // fallback if empty
+                    ?>
+                    <img src="<?= ROOT ?>/assets/images/events/<?php echo $firstImage ?>" alt="Event Image">
                     <div class="event-info">
                         <h3><?php echo $event->event_name ?></h3>
                         <p class="date">📅 <?php echo $event->eventDate ?> | <?php echo $event->start_time ?></p>
@@ -151,5 +157,7 @@
 
 </body>
 </html>
+
+<?php include ('../app/views/components/footer.php'); ?>
 
 

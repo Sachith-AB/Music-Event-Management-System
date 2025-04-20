@@ -8,7 +8,7 @@
   
   .dash-container {
     display: flex;
-    margin: 20px auto;
+    margin: 40px auto;
     padding: 40px;
   }
   
@@ -22,4 +22,52 @@
     justify-content: space-between;
     padding: 20px;
   }
+
+  .events-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: flex-start; /* Center align cards */
+    gap: 20px; /* Add space between cards */
+    margin: 15px 5px;
+}
+
+.event-card {
+    position: relative;
+    flex: 1 1 300px; /* Set a fixed width for each card */
+    max-width: 300px;
+    background-color: #f1f0f0;
+    padding: 15px;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+    transition: transform 0.3s ease;
+    text-align: center;
+    height: 290px;
+}
+
+.event-card-link {
+  text-decoration: none;
+  color: inherit; /* Ensure text color does not change on hover */
+  display: block; /* Makes the entire card clickable */
+}
+
+.event-card img {
+  width: 100%;
+  height: 150px; /* Set a fixed height for the image */
+  border-radius: 4px;
+  object-fit: cover;
+  margin-bottom: 10px;
+  /* margin-top: 10px; */
+}
   
+.event-card:hover {
+  transform: scale(1.05);
+  box-shadow: 0 6px 8px rgba(0, 0, 0, 0.2);
+  cursor: pointer;
+}
+
+.event-details {
+
+  text-align: center;
+  padding: 12px;
+  line-height: 25px;
+}

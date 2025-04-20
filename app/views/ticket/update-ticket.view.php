@@ -1,4 +1,6 @@
-<?php include ('../app/views/components/CreateEventHeader.php'); ?>
+<?php require_once '../app/helpers/load_notifications.php'; ?>
+<?php include ('../app/views/components/header.php'); ?>
+
 
 <?php
 if (session_status() == PHP_SESSION_NONE) {
@@ -115,3 +117,4 @@ $_SESSION['last_visit'] = date('Y-m-d H:i:s');
     
 </body>
 </html>
+<?php include ('../app/views/components/footer.php'); ?>

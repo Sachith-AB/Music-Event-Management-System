@@ -1,3 +1,6 @@
+<?php require_once '../app/helpers/load_notifications.php'; ?>
+<?php include ('../app/views/components/header.php'); ?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -12,12 +15,13 @@
         $flag = htmlspecialchars($_GET['flag'] ?? 0);
         $error = htmlspecialchars($_GET['msg'] ?? '');
     ?>
-    <div class="">
+    <div class="main-content">
         <div class="page-content">
             <h1 class="head1">Edit profile</h1>
-            <h3 class="head2">Profile Photo</h3>
-            <div class="">
-                <div class="image">
+            
+            <div class="profile-pic-content">
+                <h3 class="head2">Profile Photo</h3>
+                <div class="pic-image">
                     <div class="avatar">
                         <img src="<?=ROOT?>/assets/images/user/<?php echo $_SESSION['USER']->pro_pic ?>" alt="pro pic">
                     </div>
@@ -34,6 +38,8 @@
                         <button type="submit" class="button" id="customButton" name="uploadImage">Upload File</button>
                     </div>
                 </form>
+            </div>
+
 
                 <div>
                     <form method="POST" class="form" >
@@ -86,7 +92,7 @@
                         </form>
                     </div>
                 </div>
-            </div>
+            
         </div>
     </div>
 
@@ -117,3 +123,4 @@
 
 </body>
 </html>
+<?php include ('../app/views/components/footer.php'); ?>

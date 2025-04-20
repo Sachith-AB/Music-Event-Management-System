@@ -8,6 +8,11 @@ route('search','Search@index');
 route('signin','Signin@index');
 route('signup','Signup@index');
 
+//route for forgot password
+route('forgot-password','forgotPassword/ForgotPassword@index');
+route('pin-input','forgotPassword/PinInput@index');
+route('reset-password','forgotPassword/ResetPassword@index');
+
 
 route('create-event', 'event/Create@index');  
 route('event-review', 'event/Review@index'); 
@@ -80,6 +85,7 @@ route('profile','ticketHolder/Profile@index');
 route('update-profile','ticketHolder/UpdateProf@index');
 route('ticket-holder-home','ticketHolder/TicketHolderHome@index');
 route('view-pastevent','ticketHolder/ViewPastevent@index');
+route('notification-event','ticketHolder/NotificationEvent@index');
 route('profile/markread','ticketHolder/ViewPastevent@markNotificationsRead');
 
 // Route for event planners

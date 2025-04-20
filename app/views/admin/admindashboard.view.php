@@ -8,6 +8,8 @@
     <link rel="stylesheet" href="<?=ROOT?>/assets/css/admin/admindashboard.css">
 </head>
 <body>
+    <?php $showMore = isset($_POST['showMore']) ? $_POST['showMore'] == 'true' : false;
+    $showMorePast = isset($_POST['showMorePast']) ? $_POST['showMorePast'] == 'true' : false; ?>
     <!-- Include Header -->
     
     <div class="dash-container">
@@ -19,8 +21,15 @@
             <!-- Upcoming Events Dummy Data -->
             
             <?php if(!empty($data['upcoming'])): ?>
+              
 
-                <?php foreach($data['upcoming'] as $event): ?>
+                <?php 
+                    $maxEvents = $showMore ? count($data['upcoming']) : 6;
+                    $eventsDisplayed = 0;
+                    foreach($data['upcoming'] as $event): 
+                        if ($eventsDisplayed >= $maxEvents) break;
+                                    $eventsDisplayed++;
+                ?>
 
                             <div class="event-card">
                                 <img src="<?=ROOT?>/assets/images/events/<?php echo $event->cover_images ?>" alt="Event Image">
@@ -28,7 +37,7 @@
                                     <div><?php echo $event->event_name?></div>
                                     <div>
                                         <div>📅 <?php echo $event->eventDate?> | <?php echo substr($event->start_time, 11);?> </div>
-                                        <div>📍 Location:  <?php echo $event->address?> </div>
+                                        <div class="two-line-ellipsis">📍 Location:  <?php echo $event->address?> </div>
                                         <div>👤 Created By: <?php echo $event->user_name ?> </div>
                                     </div>
                                 </div>
@@ -53,10 +62,27 @@
             <?php endif; ?>
 
         </div>
+        <!-- Show More / Show Less button -->
+        <form method="POST" id="showMoreForm">
+            <input type="hidden" id="showMore" name="showMore" value="<?= $showMore ? 'true' : 'false' ?>">
+            <?php if (count($data['upcoming']) > 6): ?>
+                <button type="button" class="view-more" onclick="handleShowMore()">
+                    <?= $showMore ? 'Show Less' : 'View More' ?>
+                </button>
+            <?php endif; ?>
+        </form>
+        <script>
+            // JavaScript function to handle the "View More" / "Show Less" button
+            function handleShowMore() {
+                const showMoreInput = document.getElementById('showMore');
+                showMoreInput.value = showMoreInput.value === 'true' ? 'false' : 'true';
+                document.getElementById('showMoreForm').submit();
+            }
+        </script>
 
-        <div class="view-more">
+        <!-- <div class="view-more">
             <a href="#" class ="view-more-events">View More Upcoming Events</a>
-        </div>
+        </div> -->
 
         <!-- <script>
             const viewMoreBtn = document.querySelector('.view-more-events');
@@ -77,13 +103,19 @@
             }
         </script> -->
 
-        <h2 class="content-header"><br>Already Held Events</h2>
+        <h2 class="content-header"><br>Past Events</h2>
         <div class="events-container">
             <!-- Already Held Events Dummy Data -->
 
             <?php if(!empty($data['held'])): ?>
 
-                <?php foreach($data['held'] as $event): ?>
+                <?php 
+                    $maxEventsPast = $showMorePast ? count($data['held']) : 6;
+                    $eventsDisplayedPast = 0;
+                    foreach($data['held'] as $event): 
+                        if ($eventsDisplayedPast >= $maxEventsPast) break;
+                                    $eventsDisplayedPast++;
+                ?>
 
                     <div class="event-card">
                         <img src="<?=ROOT?>/assets/images/events/<?php echo $event->cover_images ?>" alt="Event Image">
@@ -91,7 +123,7 @@
                             <div><?php echo $event->event_name ?></div>
                             <div>
                                 <div>📅 <?php echo $event->eventDate ?>| <?php echo substr($event->start_time, 11) ?></div>
-                                <div>📍 Location: <?php echo $event->address ?></div>
+                                <div class="two-line-ellipsis">📍 Location: <?php echo $event->address ?></div>
                                 <div>👤 Created By: <?php echo $event->user_name ?></div>
                             </div>
                         </div>
@@ -111,9 +143,23 @@
              
         </div>
 
-        <div class="view-more">
-            <a href="#">View More Already Held Events</a>
-        </div>
+        <!-- Show More / Show Less button -->
+        <form method="POST" id="showMoreFormPast">
+            <input type="hidden" id="showMorePast" name="showMorePast" value="<?= $showMorePast ? 'true' : 'false' ?>">
+            <?php if (count($data['held']) > 6): ?>
+                <button type="button" class="view-more" onclick="handleShowMorePast()">
+                    <?= $showMorePast ? 'Show Less' : 'View More' ?>
+                </button>
+            <?php endif; ?>
+        </form>
+        <script>
+            // JavaScript function to handle the "View More" / "Show Less" button
+            function handleShowMorePast() {
+                const showMoreInput = document.getElementById('showMorePast');
+                showMoreInput.value = showMoreInput.value === 'true' ? 'false' : 'true';
+                document.getElementById('showMoreFormPast').submit();
+            }
+        </script>
     </div>
 
 </div>

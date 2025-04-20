@@ -214,6 +214,9 @@ header {
 .breadcrumb a:hover {
     text-decoration: underline;
 }
+.nav-right{
+    margin-right: 30px;
+}
 
 nav {
     flex-grow: 1;
@@ -283,11 +286,188 @@ nav ul li.sign-up {
 
     height: 50px;
     width: 50px;
-    border-radius: 70px;
+    border-radius: 50%;
     cursor: pointer;
 }
 
 .sign-up{
     cursor: pointer;
 }
+/* Style for the popup background overlay */
+.modal-overlay {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+}
+
+/* Style for the modal popup */
+.modal {
+    background: #fff;
+    padding: 20px;
+    width: 400px;
+    height: 200px;
+    border-radius: 8px;
+    text-align: center;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+    position: relative;
+}
+
+/* Close button style */
+.close-btn {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    color: black;
+    border: none;
+    border-radius: 50%;
+    width: 24px;
+    height: 24px;
+    cursor: pointer;
+    font-size: 16px;
+}
+
+/* Style for role selection buttons */
+.role-btn {
+    display: block;
+    margin: 10px 0;
+    padding: 10px;
+    background-color: #00BDD6FF;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    text-decoration: none;
+    font-size: 16px;
+}
+
+.role-btn:hover {
+    background-color: rgb(157, 210, 217);
+}
 /*header end*/
+/* for notification button */
+/* for notification button */
+.user-controls {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.avatarbadge {
+    position: relative;
+    background-color: white;
+    z-index: 10;
+    width: 36px;
+    height: 36px;
+    color: #00BDD6;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 2px solid white;
+    box-shadow: 0 0 6px rgba(0, 0, 0, 0.15);
+    cursor: pointer;
+    padding: 0;
+    margin-right: 20px;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+    
+
+}
+
+.avatarbadge:hover {
+   
+    transform: scale(1.05);
+}
+
+.avatarbadge i {
+    font-size: 16px;
+}
+.notification-indicator {
+    position: absolute;
+    top: -9px;
+    right: -7px;
+    background-color: #04a8be;
+    color: white;
+    font-size: 10px;
+    font-weight: bold;
+    border-radius: 50%;
+    padding: 2px 2px;
+    line-height: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 18px;
+    height: 18px;
+    box-shadow: 0 0 3px rgba(0,0,0,0.3);
+}
+.notification-wrapper {
+    position: relative;
+    z-index: 1000; /* Make sure it's high */
+}
+.notification-popup {
+    position: absolute;
+    top: 50px; /* Adjust depending on your header height */
+    right: 0;
+    width: 300px;
+    max-height: 400px;
+    background-color: white;
+    border-radius: 8px;
+    box-shadow: 0 8px 16px rgba(0,0,0,0.2);
+    overflow-y: auto;
+    padding: 10px;
+    z-index: 10000;
+    transition: opacity 0.3s ease, transform 0.3s ease;
+    border: 1px solid #ddd;
+    
+}
+
+.notification-popup ul {
+    display: flex;
+    flex-direction: column;
+    gap: 10px; /* spacing between notifications */
+    padding: 0;
+    margin: 0;
+}
+
+.notification-item {
+    display: flex;
+    flex-direction: column; /* stack content vertically inside each item */
+    padding: 10px;
+    border-bottom: 1px solid #eee;
+    font-size: 14px;
+    color: #333;
+}
+
+.notification-item strong {
+    font-weight: 600;
+    color: #00BDD6;
+}
+
+.notification-item small {
+    display: block;
+    margin-top: 5px;
+    font-size: 12px;
+    color: #888;
+}
+
+.notification-popup p {
+    padding: 10px;
+    text-align: center;
+    font-size: 14px;
+    color: #555;
+}
+
+/* Optional scrollbar styling */
+.notification-popup::-webkit-scrollbar {
+    width: 6px;
+}
+.notification-popup::-webkit-scrollbar-thumb {
+    background-color: #ccc;
+    border-radius: 3px;
+}

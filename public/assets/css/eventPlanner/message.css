@@ -6,11 +6,12 @@
 }
 .dash-container {
     display: flex;
-    margin: 20px auto;
+    margin: 0px auto;
     padding: 40px;
+    gap: 2rem;
 }
 .dashboard {
-    width: 80%;
+    width: 100%;
     max-width: 1200px;
     background-color: #fff;
     padding: 20px;
@@ -21,7 +22,7 @@
     background-color: #f9f9f9;
     padding: 20px;
     margin-bottom: 20px;
-    border: 1px solid #e0e0e0;
+    border: 1px solid rgb(8, 201, 227);
     border-radius: 8px;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
@@ -37,6 +38,30 @@
     font-size: 14px;
     color: #555;
 }
+/* .print-button{
+    display: block;
+    margin: 0 auto;
+    padding: 10px 20px;
+    background: #00BDD6FF; 
+    color: white;
+    border: none;
+    border-radius: 5px;
+    font-size: 15px;
+    cursor: pointer;
+    position: relative;
+    overflow: hidden;
+    z-index: 1;
+    transition: color 1s ease;
+    margin-top: 20px;
+    
+}
+
+.print-button:hover::after{
+
+    transform: skewX(-45deg) scale(1, 1);
+
+} */
+
 
 .view-messages-btn {
     margin-top: 10px;
@@ -49,6 +74,7 @@
 }
 
 .view-messages-btn:hover {
+
     color:black;
 }
 .comment-avatar {

@@ -72,7 +72,7 @@
 
                                 <p class="text">
                                     Forgot your password or your login details?
-                                    <a href="#" id="help" class="toggle-1">Get Help</a> Signing in
+                                    <a href="forgot-password" id="help" class="toggle-1">Get Help</a> Signing in
                                 </p>
 
                             </div>

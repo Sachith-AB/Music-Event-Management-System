@@ -1,7 +1,9 @@
 <?php 
     $backPath = ROOT.'/event-planner-dashboard';
+    require_once '../app/helpers/load_notifications.php';
     include ('../app/views/components/header.php'); 
 ?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -18,7 +20,7 @@
         <!-- Sidebar -->
         <?php include ('../app/views/components/eventPlanner/dashsidebar.php'); ?>
         
-
+        <div class="dashboard">
 
         <?php if (!empty($events)):?>
             <div class="content">
@@ -68,7 +70,7 @@
                 </div>
 
                 <!-- Completed Events Section -->
-                <h2 class="content-header">Already Held Events (Completed)</h2>
+                <h2 class="content-header">Past Events (Completed)</h2>
                 <div class="events-container">
                     <?php foreach ($events as $event): ?>
                         <?php if ($event->status == 'completed'): ?>
@@ -91,8 +93,10 @@
         <?php else: ?>
             <p>No events created yet.</p>
         <?php endif; ?>
+        </div>
 
     <script src="<?=ROOT?>/assets/js/eventPlanner.js"></script>
-
+    </div>
 </body>
 </html>
+<?php include ('../app/views/components/footer.php'); ?>

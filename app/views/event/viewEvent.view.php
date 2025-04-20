@@ -1,3 +1,4 @@
+<?php require_once '../app/helpers/load_notifications.php'; ?>
 <?php include ('../app/views/components/header.php'); ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -14,6 +15,8 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900&family=Sen:wght@400..800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+    <link rel="stylesheet" href="<?= ROOT ?>/assets/css/backbutton.css">
+
 </head>
 <bo>
     <?php include ('../app/views/components/loading.php'); ?>
@@ -24,7 +27,12 @@
         <div class="uppersec">
             <div class="upper">
                 <div class="eventname">
-                    <span class="highlight"><?php echo $data['event']->event_name ?></span><br/> <?php echo $data['event']->description ?>
+                    <div class="back-button">
+                        <!-- Include Back Button Component -->
+                        <?php include('../app/views/components/backbutton.view.php'); ?>
+                        <span class="highlight"><?php echo $data['event']->event_name ?></span>
+                    </div>
+                    <?php echo $data['event']->description ?>
                 </div>
                 
                 <div class="countdown-timer">
@@ -151,7 +159,7 @@
             <div class="team-grid">
                 <?php if(!empty($data['performers'])): ?>
                     <?php foreach($data['performers'] as $perfotmer): ?>
-                        <div class="team-member">
+                        <div class="team-member" onclick="gotoperformerprofile(<?php echo $perfotmer['id']?>)">
                             <img class="team-member-image" src="<?=ROOT?>/assets/images/user/<?php echo $perfotmer['pro_pic']?>" alt="Selina Valencia">
                             <div class="team-info">
                                 <h3><?php echo $perfotmer['name'] ?></h3>
@@ -169,45 +177,50 @@
                     <?php endforeach ?>
                 <?php endif ?>
             </div>
-
+            <script>
+                function gotoperformerprofile(user_id){
+                    window.location.href = "<?= ROOT ?>/collaborator-viewprofile?id=" + user_id;
+                }
+            </script>
         </div>
     </section>
     
 
-    <!-- ticket section -->
     <div class="ticketbackground">
+        <div>
+            <h1>Tickets</h1>
+            <!-- <p>Cupidatat sunt excepteur ipsum non. Ex consectetur amet eu commodo incididunt elit incididunt aliqua aliqua irure elit minim voluptate. Sit est nisi labore eiusmod et ad. Anim quis anim adipisicing quis cillum id ullamco officia do culpa voluptate exercitation nisi.</p> -->
+        </div>
         <div class="team-grid-scrollable">
             <div class="team-grid">
-        
                 <?php foreach($data['tickets'] as $ticket): ?>
-                        <!-- ticket card -->
                     <div class="pricing-card">
-                        <h2>
-                            <?php echo $ticket->ticket_type?>
-                        </h2>
-                        <p class="price"><?php echo $ticket->price?></p>
+                        <div>
+                            <h2><?= $ticket->ticket_type ?></h2>
+                            <p class="price"><?= $ticket->price ?></p>
+                            <ul>
+                                <?php 
+                                $restrictions = json_decode($ticket->restrictions, true);
+                                if (is_array($restrictions)): 
+                                    foreach ($restrictions as $feature): ?>
+                                        <li>✅ <?= htmlspecialchars($feature) ?></li>
+                                    <?php endforeach; 
+                                else: ?>
+                                    <li>No restrictions listed</li>
+                                <?php endif; ?>
+                            </ul>
+                        </div>
                         
-                        <ul>
-                            <?php 
-                            // Decode restrictions safely
-                            $restrictions = json_decode($ticket->restrictions, true);
-                            
-                            // Check if decoding was successful and it's an array
-                            if (is_array($restrictions)): 
-                                foreach ($restrictions as $feature): ?>
-                                    <li>✅ <?= htmlspecialchars($feature) ?></li>
-                                <?php endforeach; 
-                            else: ?>
-                                <li>No restrictions listed</li>
-                            <?php endif; ?>
-                        </ul>
-                            
-                    
                         <button onclick="window.location.href='purchaseticket?id=<?= $ticket->id ?>'">Buy Ticket Now</button>
                     </div>
-                <?php endforeach ?>
-                
-            </div>    
+                <?php endforeach; ?>
+            </div>
+        </div>
+    </div>
+
+
+
+
             <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
             <script>
                 var query = document.getElementById("address").textContent.trim();
@@ -247,10 +260,13 @@
                     });
             }
             </script>
-            <!-- reviw to event -->
-            <?php include ('../app/views/components/review.php'); ?>
-        </div>
-    </div>
+
+<?php include ('../app/views/components/review-retriver.php'); ?>
+
+<!-- reviw to event -->
+<?php include ('../app/views/components/review.php'); ?>
+        
 </body>
 
 </html>
+<?php include ('../app/views/components/footer.php'); ?>

@@ -22,8 +22,8 @@ class SingerProfile {
         // show($profiledata);
 
         if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['submit'])) {
-            show($_POST);
-            //$this->profileDetails($profile,$userId, $_POST);
+            // show($_POST);
+            $this->profileDetails($profile,$userId, $_POST);
         }
 
         if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['add_experience'])) {
@@ -83,6 +83,7 @@ class SingerProfile {
         ];
         // show($data);
         $pastwork->insert($data);
+        redirect("colloborator-profile");
 
     }
 
@@ -94,7 +95,7 @@ class SingerProfile {
         ];
         // show($data);
         $service->insert($data);
-
+        redirect("colloborator-profile");
     }
     private function logOut(){
         session_unset(); // Unset all session variables

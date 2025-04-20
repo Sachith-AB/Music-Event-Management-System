@@ -1,3 +1,4 @@
+<?php require_once '../app/helpers/load_notifications.php'; ?>
 <?php include ('../app/views/components/header.php'); ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -6,6 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Event planner dashboard</title>
     <link rel="stylesheet" href="<?=ROOT?>/assets/css/eventPlanner/dashboard.css">
+    <link rel="stylesheet" href="<?= ROOT ?>/assets/css/backbutton.css">
 </head>
 <body>
     
@@ -16,10 +18,15 @@
 
         <?php if (!empty($events)): ?>
             <div class="dashboard">
-                <div class="header">
-                    <h1>Dashboard</h1>
-                </div>
+                <div class="back-button">
+                    <!-- Include Back Button Component -->
+                    <?php include('../app/views/components/backbutton.view.php'); ?>
+                    <div class="header">
+                        <h1>Dashboard</h1>
+                    </div>
 
+                </div>
+                
                 <div class="stats">
                     <div class="stat-item">
                         <div class="dolar-icon">
@@ -184,3 +191,4 @@
     <script src="<?=ROOT?>/assets/js/eventPlanner.js"></script>
 </body>
 </html>
+<?php include ('../app/views/components/footer.php'); ?>
