@@ -1,4 +1,3 @@
-
 <?php
 if (session_status() == PHP_SESSION_NONE) {
     session_start();
@@ -33,14 +32,10 @@ $_SESSION['last_visit'] = date('Y-m-d H:i:s');
                 <?php if (isset($data['id'])): ?>
                     <div class="event-details">
                         <section id="event-header">
-                            <div class="event-cover">
-                                <div class = "event-info">
-                                    <h2 id="event title"><?= htmlspecialchars($data['event_name']); ?></h2>
-                                </div>
-                            </div>
+                            <h2><?= htmlspecialchars($data['event_name']); ?></h2>
                         </section>
 
-                        <section id = "general-information">
+                        <section id="general-information">
                             <p><strong>Description:</strong> <?= htmlspecialchars($data['description']); ?></p>
                             <p><strong>Audience:</strong> <?= htmlspecialchars($data['audience']); ?></p>
                             <p><strong>Location:</strong> <?= htmlspecialchars($data['address']) ?></p>
@@ -55,14 +50,12 @@ $_SESSION['last_visit'] = date('Y-m-d H:i:s');
                         <h2>Are you sure you want to delete this event?</h2>
                     </section>
 
-                    <div class ="action-buttons">
+                    <div class="action-buttons">
                         <button onclick="goBack()">No</button>
-
                         <form method="POST">
                             <input type="hidden" name="id" value="<?php echo htmlspecialchars($data['id']); ?>">
                             <button type="submit" name="delete">Yes</button>
                         </form>
-
                     </div>
 
 
@@ -75,7 +68,6 @@ $_SESSION['last_visit'] = date('Y-m-d H:i:s');
     <script>
         function goBack() {
             window.location.href = "event-planner-viewEvent?id=<?php echo $data['id']?>";
-            window.history.back();
         }
     </script>
 

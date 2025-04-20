@@ -9,10 +9,10 @@
 </head>
 <body>
 <?php include ('../app/views/components/loading.php');?>
-    <!-- Include Header -->
+
     
     <div class="dash-container">
-        <!-- Sidebar -->
+
         <?php include ('../app/views/components/eventPlanner/dashsidebar.php');  ?>
         
 
@@ -44,14 +44,16 @@
                     <table class="modern-table">
                         <thead>
                             <tr>
-                                <th>User Name</th>
-                                <th>Payment Amount(Rs.)</th>
+                                <th>Performer Name</th>
+                                <th>Payment Date</th>
+                                <th>Amount (LKR)</th>
                             </tr>
                         </thead>
                         <tbody>
                             <?php foreach ($payments as $payment): ?>
                                 <tr>
                                     <td><?php echo htmlspecialchars($payment->user_name); ?></td>
+                                    <td><?php echo date('F j, Y', strtotime($payment->payment_timestamp)); ?></td>
                                     <td class="amount"><?php echo number_format($payment->total_payment, 2); ?></td>
                                 </tr>
                             <?php endforeach; ?>

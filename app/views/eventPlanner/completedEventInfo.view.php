@@ -71,7 +71,7 @@
             <div class="report-container">
                 <div class="report-section">
                     <p>Do you want to view the report?</p>
-                    <button class="btn btn-primary" onclick="window.location.href='<?= ROOT ?>/event-planner-completedEvent?id=<?= htmlspecialchars($data['event']->id) ?>'">View Report</button>
+                    <button class="btn-primary" onclick="window.location.href='<?= ROOT ?>/event-planner-completedEvent?id=<?= htmlspecialchars($data['event']->id) ?>'">View Report</button>
                 </div>
             </div>
         </div>
