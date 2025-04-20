@@ -32,6 +32,10 @@ class ViewEvent{
         $_POST['event_id'] = $id;
         $_POST['user_id'] = $_SESSION['USER']->id;
         $rating->insert($_POST);
+        unset($_POST['review']);
+        unset($_POST['event_id']);
+        unset($_POST['user_id']);
+        redirect('view-event?id='.$id);
 
     }
 

@@ -95,6 +95,10 @@
                         <?php else:?>
                             <span class="pricing outdoor"><?php echo "OUTDOOR" ?></span>
                         <?php endif?>
+                        <div class="star-background">
+                            <div class="star-filled" style="width: <?= ($event->averageRating/5)*100 ?>%;"></div>
+                        </div>
+                        <span class="rating-text"><?= number_format($event->averageRating, 1) ?>/5 (<?= $event->totalReviews ?> reviews)</span>
                     </div>
                     
                 </div>
