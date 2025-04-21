@@ -98,7 +98,7 @@ if($_SESSION['USER']->role === 'holder' || $_SESSION['USER']->role == 'admin'){
     route('profile/markread','ticketHolder/ViewPastevent@markNotificationsRead');
 }
 
-if($_SESSION['USER']->role == 'admin'){
+if($_SESSION['USER']->is_admin == 1){
     //Route for Admin
     route('admin-dashboard','admin/AdminDashboard@index');
     route('admin-eventplanners','admin/EventPlanners@index');
