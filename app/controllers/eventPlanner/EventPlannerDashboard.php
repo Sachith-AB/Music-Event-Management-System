@@ -4,6 +4,8 @@ class EventPlannerDashboard {
     use Controller;
 
     public function index() {
+        $commnets = new Comment();
+        $userId = $_SESSION['USER']->id;
         // Ensure the user is logged in and get their ID
         if (!$this->isLoggedIn()) {
             redirect('signin');
@@ -37,10 +39,12 @@ class EventPlannerDashboard {
             $totalTicket += $event->total_quantity;
         }
         
+        $commentsForUser = $commnets->getCommnet($userId);
+        // show($commentsForUser);
 
         // Pass the events data to the view
         $this->view('eventPlanner/dashboard', ['events' => $userEvents,'eventBuyers' => $eventBuyers,'totalRevenue' => $totalRevenue,
-            'totalTicketsSold' => $totalTicketsSold,'totalEvents' => $totalEvents,'totalEventBuyers' => $totalEventBuyers, 'totalTicket'=> $totalTicket]);
+            'totalTicketsSold' => $totalTicketsSold,'totalEvents' => $totalEvents,'totalEventBuyers' => $totalEventBuyers, 'totalTicket'=> $totalTicket,'commentsForUser'=>$commentsForUser]);
     }
 
 
