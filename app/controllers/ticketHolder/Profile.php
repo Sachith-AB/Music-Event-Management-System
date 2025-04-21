@@ -70,7 +70,7 @@ class Profile {
             $ticket_id = $myticket->ticket_id; 
             $eventDetail = $ticket->getTicketAndEventDetails($ticket_id); 
             
-            // show($eventDetail);
+            show($eventDetail);
             if($eventDetail && isset($eventDetail[0]->event_date)){
                 // $notifications = $notification->getNotifications($eventDetail[0]->event_id);
         

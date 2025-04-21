@@ -50,15 +50,7 @@
     color: #fff;
   }
   
-  .sidebar-menu li a.active{
-    background-color: #00BDD6FF;
-    color: #fff;
-  }
-  .submenu {
-    list-style: none;
-    padding-left: 20px;
-    margin: 0;
-}
+ 
 
 .submenu li a {
     font-weight: normal;
