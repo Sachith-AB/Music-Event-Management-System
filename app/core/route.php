@@ -4,6 +4,13 @@ function getUserRole() {
     return isset($_SESSION['USER']) && isset($_SESSION['USER']->role) ? $_SESSION['USER']->role : null;
 }
 
+function isAdmin() {
+    return isset($_SESSION['USER']) 
+        && is_object($_SESSION['USER']) 
+        && property_exists($_SESSION['USER'], 'is_admin') 
+        && $_SESSION['USER']->is_admin == 1;
+}
+
 route('home','Home@index');
 route('search','Search@index');
 
@@ -31,7 +38,7 @@ route('event-report','event/Report@index');
 route('event-payment','event/EventPayment@index');
 route('event-view-payment','event/ViewEventPayment@index');
 
-if(getUserRole() == 'collaborator' || getUserRole() == 'admin'){
+if(getUserRole() == 'collaborator' || isAdmin()){
     //route for event collaborators
     route('colloborator-profile','eventCollaborator/singerProfile@index');
     route('colloborator-dashboard','eventCollaborator/SingerDashboard@index');
@@ -49,7 +56,7 @@ if(getUserRole() == 'collaborator' || getUserRole() == 'admin'){
 
 
 //all routes for event planner
-if (getUserRole() == 'planner' || getUserRole() == 'admin'){
+if (getUserRole() == 'planner' || isAdmin()){
     route('request','request/Requestview@index');
     route('profile','ticketHolder/Profile@index');
     //route for request
@@ -93,7 +100,7 @@ route('successfullypaid','ticket/Successfullypaid@index');
 route('upcommingevent','ticket/UpcomingEvents@index');
 route('ticketevent','ticket/PurchaseTicket@index4');
 
-if(getUserRole() == 'holder' || getUserRole() == 'admin'){
+if(getUserRole() == 'holder' ||isAdmin()){
     // Route for ticket holder
     route('profile','ticketHolder/Profile@index');
     route('update-profile','ticketHolder/UpdateProf@index');
@@ -103,7 +110,7 @@ if(getUserRole() == 'holder' || getUserRole() == 'admin'){
     route('profile/markread','ticketHolder/ViewPastevent@markNotificationsRead');
 }
 
-if($_SESSION['USER']->is_admin == 1){
+if(isAdmin()){
     //Route for Admin
     route('admin-dashboard','admin/AdminDashboard@index');
     route('admin-eventplanners','admin/EventPlanners@index');
@@ -139,16 +146,4 @@ route('get-event-messages','eventPlanner/EventPlannerMessage@index');
 route('collaborator-payment','eventPlanner/CollaboratorPayment@index');
 route('event-planner-completedEvent','eventPlanner/EventPlannerCompletedEvent@index');
 route('event-planner-completedEventInfo','eventPlanner/EventPlannerCompletedEventInfo@index');
-
-
-
-//Route for Admin
-route('admin-dashboard','admin/AdminDashboard@index');
-route('admin-eventplanners','admin/EventPlanners@index');
-route('admin-eventcollaborators','admin/EventCollaborators@index');
-route('admin-ticketholders','admin/TicketHolders@index');
-route('admin-vieweventplanner','admin/ViewEventPlanner@index');
-route('admin-event-report','admin/AdminEventReport@index');
-route('admin-ticket-report','admin/AdminTicketReport@index');
-route('admin-user-report','admin/AdminUserReport@index');
 
