@@ -41,7 +41,7 @@
 
                             <div class="form-group">
                                 <label for="price"><strong>Discount Amount:</strong></label>
-                                <input type="number" id="discount" name="discount">
+                                <input type="number" id="discount" name="discount" value="<?= htmlspecialchars($data[0]->discount ?? 0) ?>">
                             </div>
                         </div>
 

@@ -30,7 +30,7 @@ class EditScheduledEventTicket {
         $event_id = $ticket_details->event_id; // Get the event ID from the ticket details
         $event_details =$event->firstById($event_id);
 
-
+        show($POST);
         if (isset($POST['restrictions']) && is_array($POST['restrictions'])) {
             $POST['restrictions'] = json_encode($POST['restrictions']);
             //show($_POST);
@@ -47,7 +47,7 @@ class EditScheduledEventTicket {
             elseif($event_details->eventDate < $POST['sale_end_date']) {
                 $data['errors'] = ['error' => "Sale end date cannot be later than event date"];
             }
-            elseif($POST['discount']<0 || $POST['discount'] > $ticket_details->price) {
+            elseif($POST['discount'] < 0 || $POST['discount'] > $ticket_details->price) {
                 $data['errors'] = ['error' => "Discount amount cannot be less than 0 or greater than ticket price"];
             }
             else{
