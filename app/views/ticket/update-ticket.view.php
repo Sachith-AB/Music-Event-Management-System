@@ -111,9 +111,22 @@ $_SESSION['last_visit'] = date('Y-m-d H:i:s');
                 <p>No ticket data available to display.</p>
             <?php endif; ?>
         </div>
-        <script src="<?= ROOT ?>/assets/js/ticker/ticket.js"></script>
-    </div>
 
+        <?php if(!empty($errors)): ?>
+            <?php 
+                $message = $errors['error'];
+                include("../app/views/components/r-message.php")
+            ?>
+        <?php endif ?>
+            
+        <script src="<?= ROOT ?>/assets/js/ticker/ticket.js"></script>
+        <script src="<?=ROOT?>/assets/js/signin-up.js"></script>
+        <script src="<?=ROOT?>/assets/js/message.js"></script>
+        <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+        <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
+        <script src="https://unpkg.com/ionicons@5.5.2/dist/ionicons.js"></script>
+    </div>
+    
     
 </body>
 </html>

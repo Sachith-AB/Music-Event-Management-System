@@ -1,0 +1,96 @@
+/* Basic Styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    /* padding-top: 70px; */
+    background-color: #f4f4f4;
+}
+
+.container {
+    background: #f8f9fa;
+    border-radius: 10px;
+    padding: 2rem;
+    margin: 2rem auto;
+    text-align: center;
+    border-top: 6px solid #00BDD6FF ;
+    max-width: 800px;
+    width: 100%;
+}
+.event-section {
+    margin-bottom: 3rem;
+    text-align: left;
+}
+
+.event-section h2 {
+    margin-bottom: 1rem;
+    color: #333;
+}
+
+.card-container {
+    margin-top: 10px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+}
+
+.ticket-card {
+    background: #ffffff;
+    border-radius: 10px;
+    padding: 20px;
+    width: 100%;
+    max-width: 360px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+    transition: transform 0.3s ease;
+}
+
+.ticket-card:hover {
+    transform: translateY(-5px);
+}
+
+.ticket-card h3 {
+    color: #00BDD6FF;
+    margin-bottom: 10px;
+}
+
+.ticket-card p {
+    font-size: 14px;
+    margin: 6px 0;
+}
+
+.badge {
+    padding: 4px 8px;
+    border-radius: 5px;
+    font-size: 12px;
+    color: white;
+}
+
+.badge.success {
+    background-color: #28a745;
+}
+
+.badge.pending {
+    background-color: #ffc107;
+    color: #333;
+}
+
+.delete-btn {
+    margin-top: 15px;
+    background-color: #dc3545;
+    color: white;
+    padding: 10px;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 14px;
+    width: 100%;
+    transition: background 0.3s;
+}
+
+.delete-btn:hover {
+    background-color: #c82333;
+}

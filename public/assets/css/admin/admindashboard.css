@@ -162,3 +162,34 @@
   .view-more:hover {
     color: black;
   }
+
+.star-rating {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 5px;
+    margin-top: 8px;
+    margin-left: 0;
+    width: 100%;
+}
+
+.star-rating i {
+    font-size: 1.2rem;
+}
+
+.rating-text {
+    font-size: 0.9rem;
+    color: #666;
+    margin-left: 5px;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    .star-rating i {
+        font-size: 1rem;
+    }
+    
+    .rating-text {
+        font-size: 0.8rem;
+    }
+}

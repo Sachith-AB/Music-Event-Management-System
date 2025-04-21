@@ -10,7 +10,8 @@ class Notification {
         'title',
         'message',
         'is_read',
-        'created_at'
+        'created_at',
+        'link',	
 		
     ];
     public function getNotifications($user_id) {

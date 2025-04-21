@@ -52,7 +52,7 @@
                             <?php if (!empty($notifications["allnotifications"])): ?>
                                 <ul>
                                     <?php foreach ($notifications["allnotifications"] as $note): ?>
-                                        <li class="notification-item">
+                                        <li class="notification-item" onclick="window.location.href='<?= $note->link ?>&note_id=<?= $note->id ?>'">
                                             <strong><?= htmlspecialchars($note->title) ?></strong><br>
                                             <?php 
                                                 $messages = json_decode($note->message);

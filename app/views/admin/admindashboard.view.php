@@ -9,24 +9,25 @@
 </head>
 <body>
     <?php $showMore = isset($_POST['showMore']) ? $_POST['showMore'] == 'true' : false;
-    $showMorePast = isset($_POST['showMorePast']) ? $_POST['showMorePast'] == 'true' : false; ?>
+    $showMorePast = isset($_POST['showMorePast']) ? $_POST['showMorePast'] == 'true' : false;
+    $showMoreScheduled = isset($_POST['showMoreScheduled']) ? $_POST['showMoreScheduled'] == 'true' : false; ?>
     <!-- Include Header -->
     
     <div class="dash-container">
     <!-- Sidebar -->
     <?php include('../app/views/components/admin/dashsidebar.php'); ?>
     <div class="dashboard">
-        <h2 class="content-header">Upcoming Events</h2>
+        <h2 class="content-header">Processing Events</h2>
         <div class="events-container">
             <!-- Upcoming Events Dummy Data -->
             
-            <?php if(!empty($data['upcoming'])): ?>
+            <?php if(!empty($data['processing'])): ?>
               
 
                 <?php 
-                    $maxEvents = $showMore ? count($data['upcoming']) : 6;
+                    $maxEvents = $showMore ? count($data['processing']) : 6;
                     $eventsDisplayed = 0;
-                    foreach($data['upcoming'] as $event): 
+                    foreach($data['processing'] as $event): 
                         if ($eventsDisplayed >= $maxEvents) break;
                                     $eventsDisplayed++;
                 ?>
@@ -62,10 +63,11 @@
             <?php endif; ?>
 
         </div>
+        
         <!-- Show More / Show Less button -->
         <form method="POST" id="showMoreForm">
             <input type="hidden" id="showMore" name="showMore" value="<?= $showMore ? 'true' : 'false' ?>">
-            <?php if (count($data['upcoming']) > 6): ?>
+            <?php if (count($data['processing']) > 6): ?>
                 <button type="button" class="view-more" onclick="handleShowMore()">
                     <?= $showMore ? 'Show Less' : 'View More' ?>
                 </button>
@@ -103,6 +105,60 @@
             }
         </script> -->
 
+        <h2 class="content-header"><br>Scheduled Events</h2>
+        <div class="events-container">
+            <?php if(!empty($data['scheduled'])): ?>
+                <?php 
+                    $maxEventsScheduled = $showMoreScheduled ? count($data['scheduled']) : 6;
+                    $eventsDisplayedScheduled = 0;
+                    foreach($data['scheduled'] as $event): 
+                        if ($eventsDisplayedScheduled >= $maxEventsScheduled) break;
+                                    $eventsDisplayedScheduled++;
+                        ?>
+                    <div class="event-card">
+                        <img src="<?=ROOT?>/assets/images/events/<?php echo $event->cover_images ?>" alt="Event Image">
+                        <div>
+                            <div><?php echo $event->event_name ?></div>
+                            <div>📅 <?php echo $event->eventDate ?> | <?php echo substr($event->start_time, 11) ?></div>
+                            <div class="two-line-ellipsis">📍 Location: <?php echo $event->address ?></div>
+                            <div>👤 Created By: <?php echo $event->user_name ?></div>
+                            <div class="star-rating">
+                                <?php 
+                                $eventModel = new Event();
+                                $rating = $event->average_rating ?? 0;
+                                echo $eventModel->getStarRating($rating);
+                                ?>
+                                <span class="rating-text"></span>
+                            </div>
+                        </div>
+                        <div class="event-card-icons">
+                            <a href="<?=ROOT?>/view-event?id=<?php echo $event->event_id ?>" > <i class="fas fa-eye"></i></a>
+                        </div>
+                    </div>
+                <?php endforeach; ?>
+            <?php else: ?>
+                <p> No scheduled events yet </p>
+            <?php endif; ?>
+        </div>
+
+        <!-- Show More / Show Less button -->
+        <form method="POST" id="showMoreFormScheduled">
+            <input type="hidden" id="showMoreScheduled" name="showMoreScheduled" value="<?= $showMoreScheduled ? 'true' : 'false' ?>">
+            <?php if (count($data['scheduled']) > 6): ?>
+                <button type="button" class="view-more" onclick="handleShowMoreScheduled()">
+                    <?= $showMoreScheduled ? 'Show Less' : 'View More' ?>
+                </button>
+            <?php endif; ?>
+        </form>
+        <script>
+            function handleShowMoreScheduled() {
+                const showMoreInput = document.getElementById('showMoreScheduled');
+                showMoreInput.value = showMoreInput.value === 'true' ? 'false' : 'true';
+                document.getElementById('showMoreFormScheduled').submit();
+            }
+        </script>
+
+
         <h2 class="content-header"><br>Past Events</h2>
         <div class="events-container">
             <!-- Already Held Events Dummy Data -->
@@ -125,6 +181,14 @@
                                 <div>📅 <?php echo $event->eventDate ?>| <?php echo substr($event->start_time, 11) ?></div>
                                 <div class="two-line-ellipsis">📍 Location: <?php echo $event->address ?></div>
                                 <div>👤 Created By: <?php echo $event->user_name ?></div>
+                                <div class="star-rating">
+                                    <?php 
+                                    $eventModel = new Event();
+                                    $rating = $event->average_rating ?? 0;
+                                    echo $eventModel->getStarRating($rating);
+                                    ?>
+                                    <span class="rating-text"></span>
+                                </div>
                             </div>
                         </div>
                         <div class="event-card-icons">

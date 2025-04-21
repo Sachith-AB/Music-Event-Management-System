@@ -10,12 +10,14 @@ class AdminDashboard {
         $event = new Event;
         $data = [];
 
-        $data['upcoming'] = $this->displayUpcomingEvents($event);
+        $data['processing'] = $this->displayProcessingEvents($event);
         // show($data['upcoming']);
 
         $data['held'] = $this->displayAlreadyHeldEvents($event);
         // show($data['held']);
 
+        $data['scheduled'] = $this->displayScheduledEvents($event);
+        //show($data['scheduled']);
         // echo json_encode($data['upcoming']);
 
         if($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['delete'])){
@@ -31,12 +33,12 @@ class AdminDashboard {
 
 
 
-    public function displayUpcomingEvents($event)
+    public function displayProcessingEvents($event)
     {
     //    $offset = isset($_GET['offset']) ? intval($_GET['offset']) : 0;
     //    $limit = 6;
     
-        $res = $event->getUpcomingEvents();
+        $res = $event->getProcessingEvents();
         return $res;
 
     }
@@ -45,6 +47,12 @@ class AdminDashboard {
     {
 
         $res = $event->getAlreadyHeldEvents();
+        return $res;
+    }
+
+    public function displayScheduledEvents($event)
+    {
+        $res = $event->getScheduledEvents();
         return $res;
     }
 

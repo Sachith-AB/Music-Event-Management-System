@@ -1,5 +1,4 @@
 <?php require_once '../app/helpers/load_notifications.php'; ?>
-<?php include ('../app/views/components/header.php'); ?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -15,7 +14,7 @@
 <body>
     <section class="team-section">
         <h1>Performers' Payment Information</h1>
-        <div>
+        <div class="team-section-content">
             <table>
                 <tbody>
 
@@ -49,7 +48,6 @@
         <button class="done-btn" onclick="goBack()">Done</button>
     </section>
 
-    <div class="container1" style="justify-content: center;">
     <div class="chart-section">
         <h2 class="section-title">Total Payment</h2>
         <!--<pre><?php echo htmlspecialchars(json_encode($total_cost, JSON_PRETTY_PRINT)); ?></pre>--->
@@ -58,8 +56,6 @@
             data-total_cost='<?= json_encode($total_cost) ?>'>
         </canvas>
 
-        </div>
-        
     </div>
 
     <script>
@@ -82,4 +78,3 @@
     </script>
 </body>
 </html>
-<?php include ('../app/views/components/footer.php'); ?>
