@@ -115,18 +115,20 @@
         </div>
     </div>
 
+    
+
     <section class="collaborator-payment-section">
-                <div class="collaborator-box">
-                    <h2 class="collaborator-title">Would you like to record collaborators' payments?</h2>
-                    <p class="collaborator-text">
-                        Keep track of payments made to your event collaborators, including performers, suppliers, and other key contributors. Ensure smooth operations with accurate records!
-                    </p>
-                    <div class="collaborator-buttons">
-                        <button type="submit" class="btn btn-primary" onclick="go()">Yes, Record Payments</button>
-                        <button class="btn btn-secondary" onclick="goBack()">No, Continue Without Payments</button>
-                    </div>
-                </div>
-            </section>
+        <div class="collaborator-box">
+            <h2 class="collaborator-title">Would you like to record collaborators' payments?</h2>
+            <p class="collaborator-text">
+                Keep track of payments made to your event collaborators, including performers, suppliers, and other key contributors. Ensure smooth operations with accurate records!
+            </p>
+            <div class="collaborator-buttons">
+                <button type="submit" class="btn btn-primary" onclick="go()">Yes, Record Payments</button>
+                <button class="btn btn-secondary" onclick="goBack()">No, Continue Without Payments</button>
+            </div>
+        </div>
+    </section>
 
     <script>
         function goBack() {

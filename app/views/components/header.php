@@ -29,7 +29,6 @@
             <ul>
                 <li><a href="home">Home</a></li>
                 <li><a href="search">Explore</a></li>
-                <li><a href="#new-events">Upcoming Events</a></li>
                 <?php if($_SESSION['USER']): ?>
                     <?php if($_SESSION['USER']->role == 'planner'): ?>
                         <li><a href="event-planner-dashboard">Dashboard</a></li>
@@ -42,7 +41,7 @@
                         <li><a href="admin-dashboard">Dashboard</a></li>
                     <?php endif ?>
                     <div class="notification-wrapper" style="position: relative;">
-                     
+                    
                         <button class="avatarbadge" id="notificationButton" type="button">
                             <i class="fas fa-bell"></i>
                             <?php if (!empty($notifications["newnotifications"])): ?>
@@ -57,7 +56,7 @@
                             <?php if (!empty($notifications["allnotifications"])): ?>
                                 <ul>
                                     <?php foreach ($notifications["allnotifications"] as $note): ?>
-                                        <li class="notification-item">
+                                        <li class="notification-item" onclick="window.location.href='<?= $note->link ?>&note_id=<?= $note->id ?>'">
                                             <strong><?= htmlspecialchars($note->title) ?></strong><br>
                                             <?php 
                                                 $messages = json_decode($note->message);

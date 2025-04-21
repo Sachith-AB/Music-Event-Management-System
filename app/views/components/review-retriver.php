@@ -49,24 +49,26 @@
 </div>
 <style>
 .review-container {
-    max-width: 600px;
-    margin: 30px auto;
+    font-family: Arial, sans-serif;
+    max-width: 100%;
+    margin: 50px 20px;
     background: #fff;
     border-radius: 12px;
-    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     padding: 20px;
 }
 
 .review-header h2 {
     margin: 0;
     font-size: 22px;
-    color: #333;
+    color: #00BDD6FF;
 }
 
 .star-rating {
     display: flex;
     align-items: center;
     gap: 5px;
+    font-weight: bold;
     margin-top: 8px;
 }
 
@@ -74,6 +76,7 @@
     position: relative;
     display: inline-block;
     font-size: 22px;
+    
     color: #ccc;
 }
 
@@ -117,10 +120,20 @@
 .review-list {
     margin-top: 20px;
 }
-
+.comment-content {
+    border-left: 2px solid #00BDD6FF;
+    background-color: white;
+    padding: 10px 15px;
+    border-radius: 10px;
+    box-shadow: 0 1px 4px rgba(0, 0, 0, 0.1);
+    flex: 1;
+    text-align: left;
+    
+}
 .review-item {
     border-top: 1px solid #eee;
-    padding: 15px 0;
+    padding: 15px 60px;
+    
 }
 
 .review-item:first-child {

@@ -54,7 +54,7 @@
                             <div class="heading">
                                 <h2>Welcome Back</h2>
                                 <h6>Not Registered Yet?</h6>
-                                <a href="signup" class="toggle">Sign Up</a>
+                                <a href="home" class="toggle">Home</a>
                             </div>
                             <div class="actual-form">
                                 <div class="input-wrap">

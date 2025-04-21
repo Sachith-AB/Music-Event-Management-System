@@ -2,6 +2,7 @@
 <?php include ('../app/views/components/header.php'); ?>
 <!DOCTYPE html>
 <html lang="en">
+    
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -27,6 +28,7 @@
                     </div>
                 </div>
 
+
                 <div class="avalibility">
                     <h2>Add Unavailable Dates</h2>
                     <form method="POST">
@@ -34,6 +36,9 @@
                         <button type="submit" name="addUnavailableDate">Add</button>
                     </form>
                 </div>
+
+                <?php include ('../app/views/components/collaborator/requestedEventList.php'); ?>
+
             </div>
             <div id="eventModal" class="modal">
                 <div class="modal-content">
