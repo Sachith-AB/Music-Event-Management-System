@@ -29,7 +29,6 @@
             <ul>
                 <li><a href="home">Home</a></li>
                 <li><a href="search">Explore</a></li>
-                <li><a href="#new-events">Upcoming Events</a></li>
                 <?php if($_SESSION['USER']): ?>
                     <?php if($_SESSION['USER']->role == 'planner'): ?>
                         <li><a href="event-planner-dashboard">Dashboard</a></li>
@@ -38,7 +37,7 @@
                         <li><a href="colloborator-dashboard?id=<?= $_SESSION['USER']->id ?>">Dashboard</a></li>
                     <?Php endif ?>
                     <div class="notification-wrapper" style="position: relative;">
-                     
+                    
                         <button class="avatarbadge" id="notificationButton" type="button">
                             <i class="fas fa-bell"></i>
                             <?php if (!empty($notifications["newnotifications"])): ?>

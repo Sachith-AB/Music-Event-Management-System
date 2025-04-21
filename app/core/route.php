@@ -1,5 +1,8 @@
 <?php
 
+function getUserRole() {
+    return isset($_SESSION['USER']) && isset($_SESSION['USER']->role) ? $_SESSION['USER']->role : null;
+}
 
 route('home','Home@index');
 route('search','Search@index');
@@ -28,7 +31,7 @@ route('event-report','event/Report@index');
 route('event-payment','event/EventPayment@index');
 route('event-view-payment','event/ViewEventPayment@index');
 
-if($_SESSION['USER']->role == 'collaborator' || $_SESSION['USER']->role == 'admin'){
+if(getUserRole() == 'collaborator' || getUserRole() == 'admin'){
     //route for event collaborators
     route('colloborator-profile','eventCollaborator/singerProfile@index');
     route('colloborator-dashboard','eventCollaborator/SingerDashboard@index');
@@ -46,7 +49,7 @@ if($_SESSION['USER']->role == 'collaborator' || $_SESSION['USER']->role == 'admi
 
 
 //all routes for event planner
-if ($_SESSION['USER']->role == 'planner' || $_SESSION['USER']->role == 'admin'){
+if (getUserRole() == 'planner' || getUserRole() == 'admin'){
     route('request','request/Requestview@index');
 
     //route for request
@@ -88,7 +91,7 @@ route('successfullypaid','ticket/Successfullypaid@index');
 route('upcommingevent','ticket/UpcomingEvents@index');
 route('ticketevent','ticket/PurchaseTicket@index4');
 
-if($_SESSION['USER']->role === 'holder' || $_SESSION['USER']->role == 'admin'){
+if(getUserRole() == 'holder' || getUserRole() == 'admin'){
     // Route for ticket holder
     route('profile','ticketHolder/Profile@index');
     route('update-profile','ticketHolder/UpdateProf@index');
@@ -98,7 +101,7 @@ if($_SESSION['USER']->role === 'holder' || $_SESSION['USER']->role == 'admin'){
     route('profile/markread','ticketHolder/ViewPastevent@markNotificationsRead');
 }
 
-if($_SESSION['USER']->role == 'admin'){
+if( getUserRole() == 'admin'){
     //Route for Admin
     route('admin-dashboard','admin/AdminDashboard@index');
     route('admin-eventplanners','admin/EventPlanners@index');
