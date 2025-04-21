@@ -88,8 +88,10 @@
 
 .action-btn.view:hover {
     background-color: #45a049;
+    color: black;
 }
 
 .action-btn.delete:hover {
     background-color: #d93636;
+    color: black;
 }
