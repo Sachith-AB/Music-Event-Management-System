@@ -8,6 +8,7 @@ class EditScheduledEventTicket {
     public function index() {
         $ticket = new Ticket;
         $data = [];
+        
 
         $ticket_id = $_GET['ticket_id'] ?? null;
         $data = $ticket->getTicketDetails($ticket_id);
@@ -18,7 +19,7 @@ class EditScheduledEventTicket {
             $data['errors'] = $this->updateTicket($ticket, $_POST);
         }
 
-        $this->view('ticket/editscheduledeventticket',['data'=>$data, 'errors'=>$data['errors']]);
+        $this->view('ticket/editscheduledeventticket',['data'=>$data, 'errors'=>$data['errors']??null]);
 
     }
     public function updateTicket($ticket,$POST){
@@ -60,5 +61,6 @@ class EditScheduledEventTicket {
         } else {
             $data['errors'] = $ticket->errors;
         }
+        return $data['errors'];
     } 
 }

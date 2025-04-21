@@ -106,6 +106,7 @@
         <?php if(!empty($errors)): ?>
             <?php 
                 $message = $errors['error'];
+                
                 include("../app/views/components/r-message.php")
             ?>
         <?php endif ?>
