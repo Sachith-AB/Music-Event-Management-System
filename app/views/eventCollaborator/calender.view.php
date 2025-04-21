@@ -2,6 +2,7 @@
 <?php include ('../app/views/components/header.php'); ?>
 <!DOCTYPE html>
 <html lang="en">
+    
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -29,12 +30,7 @@
                     </div>
                 </div>
 
-                <div class="event-list">
-                    <h2>My Events</h2>
-                    <ul id="eventList">
-                        <!-- Events will be listed here dynamically -->
-                    </ul>
-                </div>
+                <?php include ('../app/views/components/collaborator/requestedEventList.php'); ?>
             </div>
             <div id="eventModal" class="modal">
                 <div class="modal-content">
