@@ -152,10 +152,10 @@
                             <p id="totalDisplay"></p>
                         </div>
                         <!-- Payment Method -->
-                        <div class="payment-method">
+                        <!-- <div class="payment-method">
                             <img src="<?=ROOT?>/assets/images/ticket/mastercard-icon.png" alt="Mastercard">
                             <span>Mastercard **** 5987</span>
-                        </div>
+                        </div> -->
 
                         <button type="submit" class="pay-now-btn" name="submit">Pay now</button>
                         
