@@ -51,7 +51,7 @@ if(getUserRole() == 'collaborator' || getUserRole() == 'admin'){
 //all routes for event planner
 if (getUserRole() == 'planner' || getUserRole() == 'admin'){
     route('request','request/Requestview@index');
-
+    route('profile','ticketHolder/Profile@index');
     //route for request
     route('request-singers','request/SingerRequest@index');
     route('request-bands','request/BandRequest@index');
@@ -82,6 +82,8 @@ if (getUserRole() == 'planner' || getUserRole() == 'admin'){
     route('event-planner-completedEvent','eventPlanner/EventPlannerCompletedEvent@index');
     route('event-planner-completedEventInfo','eventPlanner/EventPlannerCompletedEventInfo@index');
     route('calender','calender/Calender@index');
+
+    route('collaborator-eventdetails','eventCollaborator/EventDetails@index');
 }
 
 //Route for purchaseticket

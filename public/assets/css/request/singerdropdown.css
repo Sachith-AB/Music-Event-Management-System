@@ -1,288 +1,237 @@
 body {
-    font-family: sans-serif;
-    background-color: #f4f9fc;
+    font-family: 'Segoe UI', 'Roboto', Arial, sans-serif;
+    background: linear-gradient(120deg, #f4f9fc 60%, #e1ecfa 100%);
     margin: 0;
     padding: 0;
     min-height: 100vh;
 }
 
- .req-container {
-        display: flex;
-        width: 100%;
-        padding: 40px 20px;
-        margin: 0;
-        box-sizing: border-box;
-    }
-    
-    .dashboard {
-        width: 80%;
-        max-width: 2000px;
-        background-color: #fff;
-        padding: 20px;
-        border-radius: 8px;
-        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    }
-    
-    .content {
-        padding: 20px;
-        font-family: sans-serif;
-        margin-top: 50px;
-    }
-    
-    .header{
-        display: flex;
-        flex-direction: row;
-        align-items: center;
-        gap: 5px;
-        height: 50px;
-    }
-    
-    .search {
-        display: flex;
-        align-items: center;
-        justify-items: center;
-        flex-direction: row;
-        gap: 12px;
-    
-    }
-    
-    .search button {
-        padding: 8px 16px;
-        font-size: 16px;
-        margin-top: 5px;
-        cursor: pointer;
-        background-color: #00BDD6FF;
-        color: white;
-        transition: color 1s ease;
-    }
-    
-    .search button:hover {
-        color: black;
-    }
-    
-    .search button:hover::after {
-        transform: skewX(-45deg) scale(1, 1);
-    }
-    
-    /* Search Bar */
-    .search-bar {
-        width: 100%;
-        max-width: 300px;
-        height: 40px;
-        padding: 8px 14px;
-        font-size: 16px;
-        border: 2px solid #ccc;
-        border-radius: 8px;
-        outline: none;
-        transition: border-color 0.3s ease, box-shadow 0.3s ease;
-        font-family: sans-serif;
-        color: #333;
-    }
-    
-    .search-bar:focus {
-        border-color: #00BDD6FF;
-        box-shadow: 0 0 8px rgba(0, 189, 214, 0.3);
-    }
-    
-    
-    /* Singers Section */
-    .singers-section {
-        margin-top: 20px;
-    }
-    
-    .singers-section h2 {
-        font-size: 24px;
-        margin-bottom: 10px;
-    }
-    
-    .singers-grid {
-        display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-        gap: 20px;
-        justify-items: center;
-        align-items: center;
-    }
-    
-    .singer-card {
-        width: 300px;
-        height: 350px;
-        background-color: #fff;
-        border: 1px solid #ddd;
-        border-radius: 5px;
-        padding: 10px;
-        text-align: center;
-        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
-        cursor: pointer;
-    }
-    
-    .singer-card img {
-        width: 100%;
-        height: 200px;
-        object-fit: cover;
-        border-radius: 5px;
-    }
-    
-    .singer-card h3 {
-        margin-top: 10px;
-        font-size: 18px;
-        color: #333;
-    }
-    
-    .singer-card p {
-        color: #666;
-    }
-    
-    .button-wrapper{
-        align-items: center;
-        justify-items: center;
-        justify-content: center;
-        align-content: center;
-        display: flex;
-        flex-direction: row;
-        gap: 10px;
-    }
-    /* .button-wrapper a{
-        padding: 10px 20px;
-        margin: 0.1em;
-        background: #00BDD6FF; 
-        color: white;
-        border: none;
-        border-radius: 5px;
-        font-size: 15px;
-        cursor: pointer;
-        
-        overflow: hidden;
-        z-index: 1;
-        transition: color 1s ease;
-        margin-top: 20px;
-    } */
-    button{
-        padding: 10px 20px;
-        /* margin: 0.1em; */
-        margin-top: 12px;
-        background: #00BDD6FF; 
-        color: white;
-        border: none;
-        border-radius: 5px;
-        font-size: 15px;
-        cursor: pointer;
-        overflow: hidden;
-        z-index: 1;
-        transition: color 1s ease;
-        
-    }
-    
-    button:hover::after{
-        transform: skewX(-45deg) scale(1, 1);
-    }
-    
-    button:hover {
-        color:black;
-    }
-    .profile {
-        padding: 10px 20px;
-        background: #00BDD6FF;
-        color: white;
-        border: none;
-        border-radius: 5px;
-        font-size: 15px;
-        cursor: pointer;
-        text-decoration: none;
-        transition: color 1s ease;
-        display: inline-flex; /* <- Add this */
-        align-items: center;
-        justify-content: center;
-    }
-    
-    
-    /* Accept Button Styles */
-    /* .profile, .request {
-        margin-top: 20px;
-        padding: 10px 20px;
-        margin: 0.1em;
-        background: #00BDD6FF; 
-        color: white;
-        border: none;
-        border-radius: 5px;
-        font-size: 15px;
-        cursor: pointer;
-        margin-right: 45px;
-        position: relative;
-        overflow: hidden;
-        z-index: 1;
-        transition: color 1s ease;
-        margin-top: 20px;
-        text-decoration: none;
-        
-    }
-     */
-    .profile:hover::after{
-        transform: skewX(-45deg) scale(1, 1);
-    }
-    .profile:hover {
-        color:black;
-    }
-    
-    /* Base Button Styles */
-    .request {
-        background-color: #88a0aa;
-        margin-top: 20px;
-        padding: 10px 20px;
-        margin: 0.1em;
-        color: white;
-        border: none;
-        border-radius: 5px;
-        font-size: 15px;
-        cursor: pointer;
-        margin-right: 45px;
-        position: relative;
-        overflow: hidden;
-        z-index: 1;
-        transition: color 1s ease;
-        margin-top: 20px;
-        text-decoration: none;
-    }
-    
-    .request:hover::after{
-        transform: skewX(-45deg) scale(1, 1);
-    }
-    
-    /* Hover Effect for Request Button */
-    .request:hover {
-        color: black; 
-    }
-    
-    /* Cancel Request Button Styles */
-    .cancel-request {
-        background-color: #FFCDD2; /* Light red background */
-        color: white; 
-    }
-    
-    .cancel-request:hover {
-        color: #D32F2F;
-    }
-    
-    /* Accepted Button Styles */
-    .accepted {
-        background-color: #C8E6C9; /* Light green background */
-        color: #388E3C; /* Dark green text */
-        cursor: default;
-    }
-    
-    .accepted:disabled {
-        opacity: 0.8;
-    }
-    
-    /* Rejected Button Styles */
-    .rejected {
-        background-color: #FFCDD2; /* Light red background */
-        color:  #D32F2F; /* Darker red text */
-        cursor: default;
-    }
-    
-    .rejected:disabled {
-        opacity: 0.8;
-    }
+.req-container {
+    display: flex;
+    width: 100%;
+    padding: 40px 0;
+    margin: 0;
+    box-sizing: border-box;
+    min-height: 100vh;
+}
+
+.dashboard {
+    width: 80%;
+    max-width: 1300px;
+    margin: 0 auto;
+    background: rgba(255,255,255,0.85);
+    padding: 38px 30px 30px 30px;
+    border-radius: 18px;
+    box-shadow: 0 8px 32px rgba(44, 62, 80, 0.12);
+    backdrop-filter: blur(3px);
+}
+
+.dashboard h1 {
+    font-size: 2.3rem;
+    font-weight: 700;
+    color: #263159;
+    margin-bottom: 28px;
+    letter-spacing: 1px;
+}
+
+.search {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    margin-bottom: 28px;
+}
+
+.search-bar {
+    padding: 12px 18px;
+    border: 1.5px solid #b8c6db;
+    border-radius: 10px;
+    font-size: 1.08rem;
+    background: #f7fafc;
+    transition: border-color 0.2s, box-shadow 0.2s;
+    width: 270px;
+    outline: none;
+    color: #333;
+}
+
+.search-bar:focus {
+    border-color: #00bdd6;
+    box-shadow: 0 0 10px rgba(0, 189, 214, 0.13);
+}
+
+.search button {
+    padding: 12px 26px;
+    background:#00bdd6;
+    border: none;
+    border-radius: 9px;
+    color: #fff;
+    font-size: 1.05rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background 0.18s, transform 0.12s;
+    box-shadow: 0 2px 8px rgba(44, 62, 80, 0.09);
+}
+
+.search button:hover {
+    background: linear-gradient(90deg, #009dbb 70%, #00bdd6 100%);
+    transform: translateY(-2px) scale(1.04);
+    color: #fff;
+}
+
+.singers-section {
+    margin-top: 18px;
+}
+
+.singers-section h2 {
+    font-size: 1.5rem;
+    margin-bottom: 10px;
+    color: #333;
+}
+
+.p-tag {
+    color: #888;
+    text-align: center;
+    margin-top: 30px;
+    font-size: 1.2rem;
+}
+
+.singers-grid {
+    display: flex;
+    flex-direction: row;
+    align-items: center;   /* Centers the card horizontally */
+    gap: 32px;
+    margin-top: 18px;
+}
+
+.singer-card {
+    background: rgba(255,255,255,0.98);
+    border-radius: 18px;
+    box-shadow: 0 4px 24px rgba(44, 62, 80, 0.14);
+    padding: 28px 18px 22px 18px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    transition: box-shadow 0.18s, transform 0.15s;
+    position: relative;
+    border: 1.5px solid #e1ecfa;
+    min-height: 370px;
+    width: 500px;          /* or your desired fixed width */
+    max-width: 100%;
+}
+
+.singer-card:hover {
+    box-shadow: 0 12px 32px rgba(44, 62, 80, 0.19);
+    transform: translateY(-7px) scale(1.025);
+    border-color: #00bdd6;
+}
+
+.singer-card img {
+    width: 110px;
+    height: 110px;
+    object-fit: cover;
+    border-radius: 50%;
+    border: 4px solid #e1ecfa;
+    margin-bottom: 18px;
+    background: #f4f8fb;
+    box-shadow: 0 2px 8px rgba(44, 62, 80, 0.06);
+    transition: border 0.2s;
+}
+
+.singer-card:hover img {
+    border-color: #00bdd6;
+}
+
+.singer-card h3 {
+    margin: 0 0 8px 0;
+    font-size: 1.18rem;
+    font-weight: 600;
+    color: #263159;
+    letter-spacing: 0.5px;
+}
+
+.singer-card p {
+    margin: 0 0 16px 0;
+    color: #4b5c6b;
+    font-size: 1.02rem;
+    text-align: center;
+    min-height: 22px;
+}
+
+.button-wrapper {
+    display: flex;
+    gap: 12px;
+    margin-top: 18px;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.profile {
+    background: #00bdd6;
+    color: #fff;
+    font-weight: 600;
+    padding: 10px 22px;
+    border-radius: 8px;
+    text-decoration: none;
+    font-size: 1.04rem;
+    transition: background 0.16s, transform 0.12s;
+    box-shadow: 0 2px 8px rgba(44, 62, 80, 0.09);
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    border: none;
+}
+
+.profile:hover {
+    background: linear-gradient(90deg, #009dbb 70%, #00bdd6 100%);
+    transform: translateY(-2px) scale(1.04);
+    color: #fff;
+}
+
+.request, .cancel-request, .accepted, .rejected {
+    padding: 10px 22px;
+    border-radius: 8px;
+    font-size: 1.04rem;
+    font-weight: 600;
+    border: none;
+    outline: none;
+    cursor: pointer;
+    box-shadow: 0 2px 8px rgba(44, 62, 80, 0.09);
+    transition: background 0.16s, color 0.16s, transform 0.12s;
+}
+
+.request {
+    background: linear-gradient(90deg, #2980ef 70%, #6ec6ff 100%);
+    color: #fff;
+}
+
+.request:hover {
+    background: linear-gradient(90deg, #2563eb 70%, #2980ef 100%);
+    transform: translateY(-2px) scale(1.04);
+    color: #fff;
+}
+
+.cancel-request {
+    background: linear-gradient(90deg, #e93a74 70%, #f10856 100%);
+    color: #fff;
+}
+
+.cancel-request:hover {
+    background: linear-gradient(90deg, #c7164b 70%, #e93a74 100%);
+    transform: translateY(-2px) scale(1.04);
+}
+
+.accepted {
+    background: linear-gradient(90deg, #40b146 70%, #52d681 100%);
+    color: #fff;
+    cursor: default;
+    opacity: 0.85;
+}
+
+.rejected {
+    background: linear-gradient(90deg, #b14640 70%, #e93a74 100%);
+    color: #fff;
+    cursor: default;
+    opacity: 0.85;
+}
 
 .sort-options {
     margin: 20px 0;
@@ -300,28 +249,64 @@ body {
 .sort-select {
     padding: 8px 12px;
     border: 1px solid #ddd;
-    border-radius: 5px;
-    font-size: 14px;
+    border-radius: 7px;
+    font-size: 15px;
     background-color: white;
 }
 
 .sort-button {
-    padding: 8px 15px;
-    background-color: #00BDD6FF;
+    padding: 10px 18px;
+    background: linear-gradient(90deg, #00bdd6 70%, #6ec6ff 100%);
     color: white;
     border: none;
-    border-radius: 5px;
+    border-radius: 7px;
     cursor: pointer;
-    transition: all 0.3s ease;
+    font-size: 1.02rem;
+    transition: background 0.2s, transform 0.12s;
 }
 
 .sort-button:hover {
-    background-color: #00a8c0;
+    background: linear-gradient(90deg, #009dbb 70%, #00bdd6 100%);
+    transform: scale(1.04);
 }
 
 .request-count {
-    font-size: 14px;
+    font-size: 15px;
     color: #666;
     margin: 5px 0;
     font-weight: 500;
+}
+
+/* Responsive Design */
+@media (max-width: 1100px) {
+    .dashboard {
+        width: 98%;
+        padding: 22px 6px 10px 6px;
+    }
+    .singers-grid {
+        gap: 18px;
+    }
+}
+
+@media (max-width: 700px) {
+    .req-container {
+        flex-direction: column;
+        padding: 10px 0;
+    }
+    .dashboard {
+        width: 100%;
+        padding: 10px 2vw 10px 2vw;
+        border-radius: 10px;
+    }
+    .singers-grid {
+        grid-template-columns: 1fr;
+        gap: 14px;
+    }
+    .singer-card {
+        padding: 18px 8px 16px 8px;
+        min-height: 320px;
+    }
+    .search-bar {
+        width: 100%;
+    }
 }
