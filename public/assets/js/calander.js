@@ -5,8 +5,6 @@ const eventList = document.getElementById("eventList");
 const eventN = document.getElementById("events")?.textContent?.trim();
 const events = eventN ? JSON.parse(eventN) : [];
 
-
-
 // Get today's date
 const today = new Date();
 let currentMonth = today.getMonth();
@@ -26,7 +24,6 @@ function populateCalendar(month, year) {
         const emptyCell = document.createElement("div");
         calendarGrid.appendChild(emptyCell);
     }
-
 
     for (let day = 1; day <= daysInMonth; day++) {
         const cell = document.createElement("div");
@@ -53,7 +50,6 @@ function populateCalendar(month, year) {
         calendarGrid.appendChild(cell);
     }
     
-
     // Update current month display
     const monthNames = [
         "January", "February", "March", "April", "May", "June",
@@ -64,15 +60,19 @@ function populateCalendar(month, year) {
 
 // Function to show event details in a modal
 function showEventDetails(event) {
-
     const ROOT = "http://localhost/Music-Event-Management-System/public";
 
     document.getElementById("eventName").textContent = event.event_name;
     document.getElementById("eventDescription").textContent = event.description;
     document.getElementById("eventDate").textContent = event.eventDate;
-    const eventImage = document.getElementById("eventImage"); 
-    eventImage.src = `${ROOT}/assets/images/events/${event.cover_images}`;
-    eventImage.style.display = "block";
+    
+    const eventImage = document.getElementById("eventImage");
+    if (event.is_unavailable) {
+        eventImage.style.display = "none";
+    } else {
+        eventImage.src = `${ROOT}/assets/images/events/${event.cover_images}`;
+        eventImage.style.display = "block";
+    }
 
     // Show the modal
     const modal = document.getElementById("eventModal");
@@ -80,9 +80,9 @@ function showEventDetails(event) {
 
     // Close the modal when the close button is clicked
     document.getElementById("closeModal").addEventListener("click", () => {
-    const modal = document.getElementById("eventModal");
-    modal.style.display = "none"; // Hide the modal
-});
+        const modal = document.getElementById("eventModal");
+        modal.style.display = "none"; // Hide the modal
+    });
 }
 
 // Function to list events
