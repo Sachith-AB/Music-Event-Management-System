@@ -436,7 +436,7 @@ class Event {
         $query = "SELECT r.*, 
                         u.name AS user_name,
                         u.profile_image
-                 FROM ratings r
+                 FROM rating r
                  JOIN users u ON r.user_id = u.id
                  WHERE r.event_id = ?
                  ORDER BY r.created_at DESC";
@@ -449,7 +449,7 @@ class Event {
         $query = "SELECT 
                         ROUND(AVG(rating), 1) AS average_rating,
                         COUNT(*) AS total_ratings
-                 FROM ratings 
+                 FROM rating 
                  WHERE event_id = ?";
 
         return $this->query($query, [$eventId])[0] ?? null;
