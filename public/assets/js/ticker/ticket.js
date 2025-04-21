@@ -11,4 +11,12 @@ document.addEventListener('DOMContentLoaded', () => {
         input.placeholder = 'Enter opportunity';
         opportunityContainer.appendChild(input);
     });
+    // Restrict sale start and end dates to future only
+    const today = new Date().toISOString().split('T')[0]; // Get today's date in YYYY-MM-DD
+
+    const saleStartDate = document.getElementById('sale-strt-date');
+    const saleEndDate = document.getElementById('sale-end-date');
+
+    if (saleStartDate) saleStartDate.setAttribute('min', today);
+    if (saleEndDate) saleEndDate.setAttribute('min', today);
 });

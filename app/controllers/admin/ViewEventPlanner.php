@@ -6,6 +6,8 @@ class ViewEventPlanner {
     use Model;
 
     public function index() {
+        $commnets = new Comment();
+        $userId = $_SESSION['USER']->id;
 
         $userId=htmlspecialchars($_GET['id']);
 
@@ -37,13 +39,32 @@ class ViewEventPlanner {
             $totalTicketsSold += $event->sold_quantity;
             $totalTicket += $event->total_quantity;
         }
+
+        $commentsForUser = $commnets->getCommnet($userId);
+
+        if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['add_comment'])) {
+            // show($_POST);
+            $this->addComment($userId, $commnets, $_POST);
+            redirect("admin-vieweventplanner?id=" . $userId);
+            
+        }
         
 
         // Pass the events data to the view
         $this->view('admin/vieweventplanner', ['events' => $userEvents,'eventBuyers' => $eventBuyers,'totalRevenue' => $totalRevenue,
-            'totalTicketsSold' => $totalTicketsSold,'totalEvents' => $totalEvents,'totalEventBuyers' => $totalEventBuyers, 'totalTicket'=> $totalTicket]);
+            'totalTicketsSold' => $totalTicketsSold,'totalEvents' => $totalEvents,'totalEventBuyers' => $totalEventBuyers, 'totalTicket'=> $totalTicket,'commentsForUser'=>$commentsForUser]);
     }
 
-   
+    public function addComment($userId, $commnets, $comment) {
+        // Prepare data for insertion
+        $data = [
+            'receiver_id' => htmlspecialchars($comment['receiver_id']),
+            'sender_id' => htmlspecialchars($comment['sender_id']),
+            'content' => htmlspecialchars($comment['content']),
+            'created_at' => date('Y-m-d H:i:s')
+        ];
+        // Save comment
+        $commnets->insert($data);
+    }
    
 }
