@@ -2,7 +2,7 @@ body {
     font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
     /*background-color: #f4f4f9;*/
     margin: 0;
-    padding: 70px;
+    
     background-color:  #FAFAFBFF;
     /* background-color:#f4f9fc ; */
 
@@ -10,10 +10,10 @@ body {
 
 .event-details-container {
     
-    margin: 100px auto;
+    margin: 0px auto;
     padding-left: 60px;
     padding-right: 60px;
-    
+    margin-bottom: 40px;
 }
 
 .back-link {

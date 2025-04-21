@@ -9,7 +9,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Musicia - Ticket Purchase Success</title>
     
-    <link rel="stylesheet" href="<?= ROOT ?>/assets/css/ticket/ticketholder-event.css">
+    <link rel="stylesheet" href="<?= ROOT ?>/assets/css/ticketHolder/notificationevent.css">
 
     <!-- Include Font Awesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
@@ -60,28 +60,81 @@
             </div> -->
         </div>
     </div>
+    
+  
+    <!-- reply box for notification -->
+    <div class="section3">
+        <h2><?= htmlspecialchars($note->title) ?></h2>
+        <div class="report-container">
+            <div class="report-section">
+                <?php 
+                $messages = json_decode($note->message);
+                foreach ($messages as $msg): ?>
+                    <p><?= htmlspecialchars($msg) ?></p>
+                <?php endforeach; ?>
+                <p style="margin-top: 10px; color: gray; font-size: 0.9rem;"><?= htmlspecialchars($note->created_at) ?></p>
+                <p style="margin-top: 20px;"><strong>Do you still want to keep your ticket for this event?</strong></p>
+                <div style="margin-top: 1rem; display: flex; justify-content: center; gap: 1rem;">
+                    <button class="btn btn-primary" onclick="respondToChange(true)">Yes, keep ticket</button>
+                    <button class="btn btn-secondary" onclick="gotodeletebuyticket()">No, refund me</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script>
+        function gotodeletebuyticket(){
+            window.location.href = "<?= ROOT ?>/delete-buyticket?id=<?= htmlspecialchars($_GET['id'])?>";
+        }
+    </script>
+
 
     <!-- eventdetails section -->
     <div class="eventdetails">
-        <!-- image section -->
-        <div class="eventimages">
-            <div class="image1">
-                <img src="<?=ROOT?>/assets/images/ticket/musicevent1.jpg" alt="Image 1" class="img">
-            </div>
-            <div class="image2">
-                <img src="<?=ROOT?>/assets/images/ticket/musicevent2.jpeg" alt="Image 2" class="img">
-            </div>
-            <div class="image3">
-                <img src="<?=ROOT?>/assets/images/ticket/musicevent3.jpg" alt="Image 3" class="img">
-            </div>
-            <div class="image4">
-                <img src="<?=ROOT?>/assets/images/ticket/musicevent4.jpg" alt="Image 4" class="img">
-            </div>
-            <div class="mid">
-                <div class="overlay-text">Recent<br>Photos</div>
+        <!-- comment section -->
+        <section class="comment-section">
+            <div class="comment-header">
+                <h1>Comments</h1>
             </div>
 
-        </div>
+            <div class="comments-container">
+                    <!-- Comment Input -->
+                    <?php if($_SESSION['USER']->id != $_GET['id']): ?>
+                        <form id="addcomments" method="POST">
+                            <div class="add-comment">
+                                <img src="<?=ROOT?>/assets/images/user/<?php echo $_SESSION['USER']->pro_pic ?>" alt="User Avatar" class="comment-avatar">
+                                
+                                <input type="hidden" name="user_id" value="<?php echo $_SESSION['USER']->id ?>"/>
+                                <textarea class="comment-input" name="content" placeholder="Add a comment..."></textarea>                                
+                                <button name="add_comment" class="post-comment-btn">Submit</button>
+                            </div>
+                        </from>
+                    <?php endif;?>
+                    <?php if (!empty($commentsForEvent)): ?>
+                        <!-- Comments -->
+                        <?php foreach ($commentsForEvent as $comment): ?>
+                            <div class="comment">
+                                <img src="<?=ROOT?>/assets/images/user/<?php echo $comment->sender_pro_pic ?>" alt="User Avatar" class="comment-avatar">
+                                <div class="comment-content">
+                                    <div class="comment-header">
+                                        <span class="comment-author"><?php echo $comment->sender_name ?></span>
+                                        <span class="comment-date"><?= date('jS F Y, H:i A', strtotime($comment->created_at)) ?></span>
+                                    </div>
+                                    <p class="comment-text"><?php echo htmlspecialchars($comment->comment) ?></p>
+                                    <!-- <div class="comment-actions">
+                                        <button class="like-btn">👍 <?php echo $comment->num_likes ?></button>
+                                        
+                                    </div> -->
+                                </div>
+                            </div>
+                        <?php endforeach; ?>
+                        
+                    
+                    <?php endif; ?>
+
+                </div>
+        </section>
+        
+        
         <!-- details section -->
         <div class="details">
             <h2>Welcome to <?php echo $data['event']->event_name ?> <br/> You can join the event</h2>
@@ -147,49 +200,10 @@
     </section>
     
 
-    <!-- comment section -->
-    <section class="comment-section">
-        <div class="comment-header">
-            <h1>Comments</h1>
-        </div>
+    
 
-        <div class="comments-container">
-                <!-- Comment Input -->
-                <?php if($_SESSION['USER']->id != $_GET['id']): ?>
-                    <form id="addcomments" method="POST">
-                        <div class="add-comment">
-                            <img src="<?=ROOT?>/assets/images/user/<?php echo $_SESSION['USER']->pro_pic ?>" alt="User Avatar" class="comment-avatar">
-                            
-                            <input type="hidden" name="user_id" value="<?php echo $_SESSION['USER']->id ?>"/>
-                            <textarea class="comment-input" name="content" placeholder="Add a comment..."></textarea>                                
-                            <button name="add_comment" class="post-comment-btn">Submit</button>
-                        </div>
-                    </from>
-                <?php endif;?>
-                <?php if (!empty($commentsForEvent)): ?>
-                    <!-- Comments -->
-                    <?php foreach ($commentsForEvent as $comment): ?>
-                        <div class="comment">
-                            <img src="<?=ROOT?>/assets/images/user/<?php echo $comment->sender_pro_pic ?>" alt="User Avatar" class="comment-avatar">
-                            <div class="comment-content">
-                                <div class="comment-header">
-                                    <span class="comment-author"><?php echo $comment->sender_name ?></span>
-                                    <span class="comment-date"><?= date('jS F Y, H:i A', strtotime($comment->created_at)) ?></span>
-                                </div>
-                                <p class="comment-text"><?php echo htmlspecialchars($comment->comment) ?></p>
-                                <!-- <div class="comment-actions">
-                                    <button class="like-btn">👍 <?php echo $comment->num_likes ?></button>
-                                    
-                                </div> -->
-                            </div>
-                        </div>
-                    <?php endforeach; ?>
-                    
-                
-                <?php endif; ?>
 
-            </div>
-    </section>
+    
     <script>
         function gotoPlannerProfile(userid){
             window.location.href = "<?=ROOT?>/admin-vieweventplanner?id="+userid;

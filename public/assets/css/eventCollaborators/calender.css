@@ -18,6 +18,10 @@
     background: rgba(255, 255, 255, 0.947);
     
 }
+
+.container h1{
+    color: #00BDD6;
+}
 .back-button{
     display: flex;
     gap: 20px;
@@ -78,6 +82,36 @@
     color: white;
 }
 
+.avalibility {
+    margin-top: 20px;
+    background: white;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+.avalibility h2 {
+    margin-bottom: 15px;
+    color: #333;
+}
+.avalibility input[type="date"] {
+    padding: 8px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    margin-right: 10px;
+}
+.avalibility button {
+    background-color: #00BDD6;
+    color: white;
+    padding: 8px 20px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-weight: 500;
+    transition: background-color 0.3s ease;
+}
+.avalibility button:hover {
+    color : black;
+}
 /* Event List Styles */
 .event-list {
     margin-top: 20px;

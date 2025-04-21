@@ -59,5 +59,10 @@ class Buyticket {
         $result = $this->query($query, [$event_id]);
         return $result;
     }
-    
+    public function getTicketAndPurchaseDetails($userId, $event_id){
+        $query = "SELECT buyticket.*, tickets.ticket_type, tickets.price FROM buyticket 
+                  JOIN tickets ON buyticket.ticket_id = tickets.id 
+                  WHERE buyticket.payment_status = 'complete' AND buyticket.user_id = ? AND buyticket.event_id = ?";
+        return $this->query($query, [$userId, $event_id]);
+    }
 }

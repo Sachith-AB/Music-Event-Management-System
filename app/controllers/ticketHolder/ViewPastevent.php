@@ -46,6 +46,7 @@ class ViewPastevent{
     }
     public function getEventPlanner($event, $id){
         $res = $event->geteventplannerinfo($id);
+        
         return $res;
     }
     public function addComment($event_id, $eventcommnet, $comment) {

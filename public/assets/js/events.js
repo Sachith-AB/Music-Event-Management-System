@@ -1,6 +1,5 @@
 let currentCity = 'colombo';
 let currentCategory = 'All';
-
 const eventsData = {
     'colombo': [
         { title: 'Rock Festival', date: 'Saturday, Oct 7, 2024', time: '08:00 PM', price: 'From LKR 2000', type: 'Outdoor' },

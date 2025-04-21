@@ -7,18 +7,22 @@ class TicketController {
 
     public function index() {
         $ticket = new Ticket;  // Ticket model instance
+        $event = new Event; // Event model instance
         $data = [];
+
+        
 
         $event_id = $_GET['event_id'] ?? null;
 
         if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             
+            
             if (isset($_POST['add_another'])) {
-                $data=$this->createTicket($ticket, $_POST);  
+                $data=$this->createTicket($ticket,$event, $_POST);  
                 redirect("create-ticket?event_id=" . $event_id);  
             } elseif (isset($_POST['submit'])) {
                 
-                $data = $this->createTicket($ticket, $_POST); 
+                $data = $this->createTicket($ticket,$event, $_POST); 
                 
             }
         }
@@ -47,9 +51,12 @@ class TicketController {
     }
     
 
-    private function createTicket($ticket, $POST) {
+    private function createTicket($ticket,$event, $POST) {
         
         $event_id = htmlspecialchars($_GET['event_id']);
+        $event_details =$event->firstById($event_id);
+        
+
         if (!$event_id) {
             // Handle the error if no event is found
             return ['error' => "No event found with the$event_id"];
@@ -63,11 +70,23 @@ class TicketController {
         
         
         if ($ticket->validTicket($POST)) {
+
+            if($POST['sale_strt_date'] > $POST['sale_end_date']) {
+                return ['error' => "Sale start date cannot be later than sale end date"];
+            }
+            elseif($event_details->eventDate < $POST['sale_strt_date']) {
+                return ['error' => "Sale start date cannot be later than event date"];
+            }
+            elseif($event_details->eventDate < $POST['sale_end_date']) {
+                return ['error' => "Sale end date cannot be later than event date"];
+            }
+            else{
             unset($POST['submit']);  
             unset($POST['add_another']);
             $ticket->insert($POST); 
             
             redirect('view-tickets?event_id='.$event_id);
+            }
             
         } else {
             
@@ -77,8 +96,13 @@ class TicketController {
 
     public function updateTicket() {
         $ticket = new Ticket;
+        $event = new Event; // Event model instance
         $ticket_id = $_GET['ticket_id'] ?? null;
         $data = [];
+        $data['ticket'] = $ticket->getTicketDetails($ticket_id);
+        $ticket_details = $data['ticket'][0];
+        $event_id = $ticket_details->event_id; // Get the event ID from the ticket details
+        $event_details =$event->firstById($event_id);
     
         if ($ticket_id) {
             // Load the current ticket data to display in the form
@@ -115,18 +139,31 @@ class TicketController {
             }
     
             if ($ticket->validTicket($_POST)) {
-                unset($_POST['update']); // Remove the submit key
-                //show($_POST);
-                // Update the ticket
-                $ticket->update($ticket_id, $_POST);
-                redirect("view-tickets?event_id=".$_POST['event_id']);
+
+                if($_POST['sale_strt_date'] > $_POST['sale_end_date']) {
+                    $data['errors'] = ['error' => "Sale start date cannot be later than sale end date"];
+                }
+                elseif($event_details->eventDate < $_POST['sale_strt_date']) {
+                    $data['errors'] = ['error' => "Sale start date cannot be later than event date"];
+                }
+                elseif($event_details->eventDate < $_POST['sale_end_date']) {
+                    $data['errors'] = ['error' => "Sale end date cannot be later than event date"];
+                }
+                else{
+
+                    unset($_POST['update']); // Remove the submit key
+                    //show($_POST);
+                    // Update the ticket
+                    $ticket->update($ticket_id, $_POST);
+                    redirect("view-tickets?event_id=".$_POST['event_id']);
+                }
             } else {
                 $data['errors'] = $ticket->errors;
             }
         }
     
         // Render the update form with the ticket data
-        $this->view('ticket/update-ticket', ['ticket' => $data, 'restrictions' => $data['restrictions']]);
+        $this->view('ticket/update-ticket', ['ticket' => $data, 'restrictions' => $data['restrictions'], 'errors' => $data['errors'] ?? null]);
     }
     
 
