@@ -13,6 +13,19 @@
 <body>
     <div class="pdf-container">
     <h1>Admin Ticket Report</h1>
+    
+    <div class="filter-controls">
+        <div class="filter-group">
+            <label for="eventFilter">Filter by Event:</label>
+            <select id="eventFilter" onchange="filterTable()">
+                <option value="">All Events</option>
+            <?php foreach ($groupedTickets as $eventName => $tickets): ?>
+                <option value="<?= htmlspecialchars($eventName) ?>"><?= htmlspecialchars($eventName) ?></option>
+            <?php endforeach; ?>
+            </select>
+        </div>
+    </div>
+
     <?php
     // Group ticket data by event_name
     $groupedTickets = [];
@@ -25,7 +38,7 @@
     }
     ?>
 
-    <table>
+    <table id="ticketTable">
         <thead>
             <tr>
                 <th>Event Name</th>
@@ -40,7 +53,7 @@
             <?php foreach ($groupedTickets as $eventName => $tickets): ?>
                 <?php $firstTicket = true; ?>
                 <?php foreach ($tickets as $ticket): ?>
-                    <tr>
+                    <tr data-event="<?= htmlspecialchars($eventName) ?>">
                         <?php if ($firstTicket): ?>
                             <!-- Display event name only for the first ticket type -->
                             <td rowspan="<?= count($tickets) ?>">
@@ -60,9 +73,23 @@
     </table>
     </div>
 
-    <button class = "print-button" onclick="print()"><i class="fa-solid fa-download"></i></button>
+    <button class="print-button" onclick="print()"><i class="fa-solid fa-download"></i></button>
 
     <script>
+        function filterTable() {
+            const filterValue = document.getElementById('eventFilter').value;
+            const rows = document.querySelectorAll('#ticketTable tbody tr');
+            
+            rows.forEach(row => {
+                const eventName = row.getAttribute('data-event');
+                if (filterValue === '' || eventName === filterValue) {
+                    row.style.display = '';
+                } else {
+                    row.style.display = 'none';
+                }
+            });
+        }
+
         function print() {
             const pdfContainer = document.querySelector('.pdf-container'); 
             const newWindow = window.open('', '_blank'); 
@@ -72,7 +99,6 @@
             newWindow.document.write(pdfContainer.innerHTML);
             newWindow.document.write('</body></html>');
             newWindow.document.close(); 
-            
             
             newWindow.onload = function() {
                 newWindow.print(); 

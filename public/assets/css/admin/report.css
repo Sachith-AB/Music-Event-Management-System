@@ -181,3 +181,78 @@ p {
         display: none;
     }
 }
+
+/* Responsive Styles */
+@media screen and (max-width: 1200px) {
+    body {
+        padding: 20px;
+    }
+    
+    h1 {
+        font-size: 26px;
+        margin-bottom: 30px;
+    }
+    
+    .filter-controls {
+        gap: 15px;
+    }
+    
+    .filter-group {
+        min-width: 180px;
+    }
+}
+
+@media screen and (max-width: 768px) {
+    body {
+        padding: 15px;
+    }
+    
+    h1 {
+        font-size: 22px;
+        margin-bottom: 25px;
+    }
+    
+    .filter-controls {
+        flex-direction: column;
+        gap: 10px;
+    }
+    
+    .filter-group {
+        width: 100%;
+    }
+    
+    th, td {
+        padding: 10px 12px;
+        font-size: 13px;
+    }
+    
+    .print-button {
+        width: 100%;
+        padding: 12px;
+    }
+}
+
+@media screen and (max-width: 480px) {
+    body {
+        padding: 10px;
+    }
+    
+    h1 {
+        font-size: 20px;
+        margin-bottom: 20px;
+    }
+    
+    th, td {
+        padding: 8px 10px;
+        font-size: 12px;
+    }
+    
+    .filter-group label {
+        font-size: 13px;
+    }
+    
+    .filter-group select {
+        padding: 8px 10px;
+        font-size: 13px;
+    }
+}
