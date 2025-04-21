@@ -1,4 +1,4 @@
-<?php include ('../app/views/components/header.php'); ?>
+<?php include ('../app/views/components/header.php'); ?> 
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -18,7 +18,7 @@
             <table class="modern-table">
                 <thead>
                     <tr>
-                        <th>ID</th>
+                        
                         <th>Name</th>
                         <th>Email</th>
                         <th>Contact</th>
@@ -26,79 +26,55 @@
                     </tr>
                 </thead>
                 <tbody>
-                    <tr>
-                        <td>1</td>
-                        <td>John Doe</td>
-                        <td>johndoe@example.com</td>
-                        <td>0760000000</td>
-                        <td>
-                            <button class="action-btn view">View</button>
-                            <button class="action-btn delete">Delete</button>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>2</td>
-                        <td>Jane Smith</td>
-                        <td>janesmith@example.com</td>
-                        <td>0760000000</td>
-                        <td>
-                            <button class="action-btn view">View</button>
-                            <button class="action-btn delete">Delete</button>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>2</td>
-                        <td>Jane Smith</td>
-                        <td>janesmith@example.com</td>
-                        <td>0760000000</td>
-                        <td>
-                            <button class="action-btn view">View</button>
-                            <button class="action-btn delete">Delete</button>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>2</td>
-                        <td>Jane Smith</td>
-                        <td>janesmith@example.com</td>
-                        <td>0760000000</td>
-                        <td>
-                            <button class="action-btn view">View</button>
-                            <button class="action-btn delete">Delete</button>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>2</td>
-                        <td>Jane Smith</td>
-                        <td>janesmith@example.com</td>
-                        <td>0760000000</td>
-                        <td>
-                            <button class="action-btn view">View</button>
-                            <button class="action-btn delete">Delete</button>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>2</td>
-                        <td>Jane Smith</td>
-                        <td>janesmith@example.com</td>
-                        <td>0760000000</td>
-                        <td>
-                            <button class="action-btn view">View</button>
-                            <button class="action-btn delete">Delete</button>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>2</td>
-                        <td>Jane Smith</td>
-                        <td>janesmith@example.com</td>
-                        <td>0760000000</td>
-                        <td>
-                            <button class="action-btn view">View</button>
-                            <button class="action-btn delete">Delete</button>
-                        </td>
-                    </tr>
+
+                <?php if(!empty($data)): ?>
+
+                    <?php foreach($data as $planner): ?>
+
+                        <?php if($planner->role == 'planner'): ?>
+
+                                <tr>
+                                    
+                                    <td><?php echo $planner->name ?></td>
+                                    <td><?php echo $planner->email ?></td>
+                                    <td><?php echo $planner->contact ?></td>
+                                    <td>
+                                        <div class = "button-section">
+                                            
+                                                
+                                            <button class="action-btn view" type = "submit" onclick="gotoplannerprofile(<?php echo $planner->id ?>)">View</button>
+                                            
+                                             
+                                            <form method = "POST">
+                                                <input type = "hidden" name = "user_id" value = "<?php echo $planner->id ?>">
+                                                <input type = "hidden" name = "is_delete" value = '1' >
+                                                <button name = "delete" class="action-btn delete" type = "submit" >Delete</button>
+                                            </form>
+                                                
+                                        </div> 
+                                    </td>
+                                </tr>
+
+                        <?php endif; ?>
+
+                    <?php endforeach; ?>
+
+                <?php endif; ?>
+                      
                 </tbody>
             </table>
         </div>
     </div>
+    <script>
+        function gotoplannerprofile(userid){
+            window.location.href = "<?=ROOT?>/admin-vieweventplanner?id="+userid;
+        }
+    </script>
 </body>
 </html>
+
+<!-- <script>
+    document.querySelector('.action-btn view').addEventListener('click', () => {
+        windows.location.href = "<?=ROOT?>/event-planner-profile?id=<?php echo $planner->id ?>";
+    });
+</script> -->

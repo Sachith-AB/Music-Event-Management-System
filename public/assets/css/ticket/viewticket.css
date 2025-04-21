@@ -1,244 +1,184 @@
-/* Ticket card styling
-.ticket-card {
-    background-color: #f9f9f9;
-    border: 1px solid #ddd;
-    border-radius: 10px;
-    padding: 20px;
-    margin: 20px 0;
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-} */
-
 .ticket-container {
-    display: flex;
-    flex-direction: column;
-    flex-wrap: wrap;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 60px;
+    padding-top: 40px;
+    padding-bottom: 20px;
     justify-content: center;
-    padding-left: 50px;
-    gap: 5px;
-    margin: 15px 0;
-    font-family: sans-serif;
-    
-
-
-}
-.ticket-card {
-    position: relative;
-    display: flex;
-    /* flex-direction: column; */
+    justify-items: center;
     align-items: center;
-    justify-content: center;
-    width: 90%;
-    height: 180px;
-    background: linear-gradient(145deg, rgb(235, 241, 242), #00BDD6FF);
-    border-radius: 15px;
-    margin: 20px;
-    padding: 10px;
-    box-shadow: 4px 4px 10px rgba(0, 0, 0, 0.2);
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
-    overflow: hidden;
-
-    /* position: relative; */
-    /* flex: 1 1 calc(33.333% - 20px); */
-    /* display: flex;
-    width: 75%;
-    height: 150px;
-    background-color: #f0f0f0;
-    margin: 20px;
-    padding: 5px;
-    border-radius: 5px;
-    box-shadow: 0 1px 3px rgba(0,0,0,0.1);
-    transition: transform 0.3s ease;
-    text-align: center;
-    font-family: sans-serif; */
 }
-.ticket-icon {
+
+.card{
     position: relative;
-    width: 120px;
-    height: 60px;
-    background: linear-gradient(145deg, #0066ff, #000000);
-    border-radius: 10px;
-    box-shadow: 4px 4px 20px rgba(0, 0, 255, 0.5), -4px -4px 20px rgba(0, 0, 0, 0.5);
-    display: flex;
+    width: 300px;
+    height: 190px;
+    background: #ddf0f7;
+    border-radius: 20px;
+    box-shadow: 0 25px 80px rgba(0, 0, 0, 0.15);
+    transition: 0.5s;
+    border: 1px solid rgb(8, 201, 227);
+    justify-items: center;
     align-items: center;
-    justify-content: center;
-    overflow: hidden;
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
-    cursor: pointer;
 }
-
-.ticket-icon:hover {
-    transform: scale(1.1);
-    box-shadow: 6px 6px 25px rgba(0, 0, 255, 0.6), -6px -6px 25px rgba(0, 0, 0, 0.6);
+.card:hover{
+    height: 350px;
 }
-
-.ticket-icon::before, 
-.ticket-icon::after {
-    content: '';
+.img-box{
     position: absolute;
-    width: 20px;
-    height: 20px;
-    background: #ffffff;
-    border-radius: 50%;
-    top: 50%;
-    transform: translateY(-50%);
-    box-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
-}
-
-.ticket-icon::before {
-    left: -10px;
-}
-
-.ticket-icon::after {
-    right: -10px;
-}
-
-.icon-text {
-    font-size: 2rem;
-    color: #ffffff;
-    text-shadow: 0px 2px 5px rgba(0, 0, 0, 0.5);
-}
-
-
-.ticket-card:hover {
-    transform: translateY(-10px);
-    box-shadow: 6px 6px 15px rgba(0, 0, 0, 0.3);
-}
-
-.icon-container, .ticket-details {
-    width: 50%; /* Allocate half of the width */
-    /* display: flex; */
-    align-items: center;
-    justify-content: center;
-    font-family: sans-serif;
-}
-/* .icon {
-    width: 120px;
-    height: 120px;
-    background-color: white;
-    padding: 15px;
-    border-radius: 50%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    margin-left: 10px;  
-} */
-/* Example gradient for Silver ticket */
-.silver-card {
-    background: white;
-    width: 120px;
-    height: 120px;
-    padding: 15px;
-    border-radius: 50%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    margin-left: 10px;
-}
-
-.gold-card {
-    background: white;
-    width: 120px;
-    height: 120px;
-    padding: 15px;
-    border-radius: 50%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    margin-left: 10px;
-}
-
-.platinum-card {
-    background: white;
-    width: 120px;
-    height: 120px;
-    padding: 15px;
-    border-radius: 50%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    margin-left: 10px;
-}
-
-/* .icon i {
-    font-size: 70px;
-    color: rgba(255, 255, 255, 0.8);
-} */
-
-
-.platinum-card i {
-    font-size: 70px;
-    color: #E5E4E2;
-}
-.gold-card i{
-    font-size: 70px;
-    color: #FFD700;
-}
-.silver-card span{
-    font-size: 90px;
-    color: #3d3939;
-}
-
-.ticket-info {
-    text-align: left;
-    padding: 15px; 
-    /* justify-content: center;
-    align-items: centers; */
-    font-family: sans-serif;
-    display: flex;
-    flex-direction: column;
-
-}
-.ticket-type{
-    font-size: 22px;
-    font-weight: bolder;
-    color: rgb(72, 70, 70);
-    margin: 10px;
-}
-.ticket-price, .ticket-quantity {
-    font-size: 16px;
-    color: #6f6c6c;
-    margin-top: 5px;
-    font-weight: bold;
-}
-
-.ticket-actions {
-    display: flex;
-    gap: 10px;
-    cursor: pointer;
-    padding: 8px 12px;
-    border: none;
+    left: 50%;
+    top: -50px;
+    transform: translateX(-50%);
+    width: 150px;
+    height: 150px;
+    background: #fff;
     border-radius: 20px;
-    font-size: 14px;
-    color: #fff;
-    transition: background 0.3s ease;
+    box-shadow: 0 15px 50px rgba(0, 0, 0, 0.35);
+    overflow: hidden;
+    transition: 0.5s ;
+}
+
+.card:hover  .img-box{
+    width: 180px;
+    height: 180px;
+    align-items: center;
+    justify-items: center;
+}
+.img-box img{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 80%;
+    height: 80%;
+    object-fit: contain;
+    transform: translate(-50%, -50%);
+}
+ .content{
+    position: absolute;
+    /* padding-top: 30px; */
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    justify-items: center;
+    align-items: flex-end;
+    overflow: hidden;
+}
+ .details{
+    padding-top: 40px;
+    padding-left: 40px;
+    padding-right: 40px;
+    padding-bottom: 35px;
+    justify-content: center;
+    justify-items: center;
+    text-align: center;
+    width: 100%;
+    transition: 0.5s;
+    transform: translateY(150px);
+
+}
+.card:hover .content .details{
+    transform: translateY(0px);
+}
+.card .content .details h2{
+    font-size: 1.6rem;
+    font-weight: 600;
+    color: #555;
+    line-height: 1.2rem;
     
 }
-.btn {
-    padding: 8px 12px;
+.card .content .details h2 span{
+    font-size: 0.7rem;
+    font-weight: 500;
+    opacity: 0.5;
+}
+.card .content .details .data{
+    
+    justify-content: space-between;
+    margin: 20px 0;
+}
+.card .content .details .data h3{
+    margin-top: 15px;
+    font-size: 1rem;
+    font-weight: 600;
+    color: #555;
+    line-height: 1.2rem;
+    display: flex;
+    gap: 7px;
+}
+.card .content .details .data h3 span{
+    font-size: 0.95rem;
+    font-weight: 400;
+    opacity: 1.5;
+}
+.card .content .details .action-btn{
+  
+    justify-items: center;
+    justify-content: center;
+    align-items: center;
+    display: flex;
+    align-content: center;
+    gap: 20px;
+}
+.btn-btn-update,
+.btn-btn-delete {
+    padding: 10px 20px;
+    background-color: #00BDD6FF;
+    color: white;
     border: none;
-    border-radius: 20px;
+    border-radius: 8px;
+    font-size: 1rem;
+    font-weight: 500;
     cursor: pointer;
-    font-size: 14px;
-    color: #fff;
-    transition: color 1s ease;
+    transition: all 0.3s ease;
+    min-width: 100px;
+    text-align: center;
+    
 }
 
-
-.btn-update {
-    background: linear-gradient(45deg, #4CAF50, #66bb6a);
+.btn-btn-delete {
+    background-color: #FF4C4C;
 }
 
-.btn-delete {
-    background: linear-gradient(45deg, #ff4d4d, #d93636);
+.btn-btn-update:hover,
+.btn-btn-delete:hover,
+.next-button:hover {
+    color: black;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(0, 189, 214, 0.3);
 }
 
-.btn:hover {
-    opacity: 0.9;
+.next-button{
+    padding: 10px 20px;
+    background-color: #00BDD6FF;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    font-size: 1rem;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    min-width: 100px;
+    text-align: center;
+    /* margin-right: 50px; */
+    margin: 10px 30px;
+
 }
 
+/* Responsive Design */
+@media screen and (max-width: 768px) {
+    .card .content .details .action-btn {
+        flex-direction: column;
+        gap: 10px;
+    }
+
+    .btn-btn-update,
+    .btn-btn-delete {
+        width: 100%;
+        min-width: auto;
+        margin-right: 0;
+    }
+}
 
 /* Ticket info styling */
 /* .ticket-info {

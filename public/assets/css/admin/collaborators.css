@@ -7,7 +7,7 @@
 
 .dash-container {
     display: flex;
-    margin: 20px auto;
+    margin: 60px auto;
     padding: 40px;
 }
 
@@ -118,6 +118,10 @@
 .modern-table tbody tr:last-child td {
     border-bottom: none;
 }
+.view-delete-buttons{
+    display: flex;
+    gap: 10px;
+}
 
 .action-btn {
     padding: 8px 12px;
@@ -148,5 +152,10 @@
 
 .action-btn.delete:hover {
     background-color: #d93636;
+}
+
+a {
+    text-decoration: none;
+    color: white;
 }
 

@@ -1,3 +1,4 @@
+<?php require_once '../app/helpers/load_notifications.php'; ?>
 <?php include ('../app/views/components/header.php'); ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -8,11 +9,16 @@
   <link rel="stylesheet" href="<?=ROOT?>/assets/css/eventCollaborators/singerProfile.css">
 </head>
 <body>
+
   <?php 
   // Capture success message and flag from GET request if available
   $success = htmlspecialchars($_GET['msg'] ?? '');
   $flag = htmlspecialchars($_GET['flag'] ?? 0);
   ?>
+
+
+
+ 
 
   <div class="dash-container">
     <!-- Include sidebar for navigation -->
@@ -21,7 +27,7 @@
     <div class="dashboard">
       <!-- Left section containing user profile information -->
       
-        <div class="update-login-info">
+      <div class="update-login-info">
         <form id="profiledetails" method="POST">
           <section class="headersection">
             <!-- Header section with background image -->
@@ -61,47 +67,6 @@
               </div>
               <br/>
 
-              <!-- Experiences Section -->
-              <div class="experience">
-                <h3>Experiences and Special Moments</h3>
-                <?php if (!empty($profiledata['past_works'])): ?>
-                  <ul>
-                    <?php foreach ($profiledata['past_works'] as $work): ?>
-                      <li class="experiencepoint"><?php echo $work['past_work']; ?></li>
-                    <?php endforeach; ?>
-                  </ul>
-                <?php endif; ?>
-                <div class="profile-experience">
-                  <form method="POST" action="add-experience">
-                    <input type="text" name="experience" placeholder="Add a new experience">
-                    <button class="add-button" name="add_experience">Add this experience</button>
-                  </form>
-                  
-                </div>
-              </div>
-
-              <!-- Services Section -->
-              <div class="experience">
-                <h3>Services</h3>
-                <?php if (!empty($profiledata['services'])): ?>
-                  <ul>
-                    <?php foreach ($profiledata['services'] as $service): ?>
-                      <li class="experiencepoint"><?php echo $service['service']; ?></li>
-                    <?php endforeach; ?>
-                  </ul>
-                <?php endif; ?>
-                <div class="profile-experience">
-                  <form method="POST">
-                    <input type="text" name="service" placeholder="Add a new service">
-                    <button class="add-button" name="add_service">Add this service</button>
-                  </form>
-                  
-                </div>
-              </div>
-            </div>
-
-            <!-- Right Section with Skills and Social Links -->
-            <div class="profile-right">
               <!-- Skills Section -->
               <div class="skills">
                 <h3>Skills</h3>
@@ -114,19 +79,19 @@
                 <div class="social-icons">
                   <div class="social-icons-input">
                     <i class="fab fa-facebook"></i>
-                    <input type="url" name="fb" placeholder="Facebook URL" value="<?php echo $profiledata['profile']['fb'] ?? ''; ?>">
+                    <input type="text" name="fb" placeholder="Facebook URL" value="<?php echo $profiledata['profile']['fb'] ?? ''; ?>">
                   </div>
                   <div class="social-icons-input">
                     <i class="fab fa-twitter"></i>
-                    <input type="url" name="twitter" placeholder="Twitter URL" value="<?php echo $profiledata['profile']['twitter'] ?? ''; ?>">
+                    <input type="text" name="twitter" placeholder="Twitter URL" value="<?php echo $profiledata['profile']['twitter'] ?? ''; ?>">
                   </div>
                   <div class="social-icons-input">
                     <i class="fab fa-instagram"></i>
-                    <input type="url" name="insta" placeholder="Instagram URL" value="<?php echo $profiledata['profile']['insta'] ?? ''; ?>">
+                    <input type="text" name="insta" placeholder="Instagram URL" value="<?php echo $profiledata['profile']['insta'] ?? ''; ?>">
                   </div>
                   <div class="social-icons-input">
                     <i class="fab fa-youtube"></i>
-                    <input type="url" name="youtube" placeholder="YouTube URL" value="<?php echo $profiledata['profile']['youtube'] ?? ''; ?>">
+                    <input type="text" name="youtube" placeholder="YouTube URL" value="<?php echo $profiledata['profile']['youtube'] ?? ''; ?>">
                   </div>
                 </div>
               </div>
@@ -136,8 +101,48 @@
 
           <!-- Submit Button -->
           <button type="submit" class="button" name="submit">Submit</button>
-          </form>
-        </div>
+        </form>
+        <br><br>
+        <!-- Right Section with Skills and Social Links -->
+        <div class="profile-right">
+          <!-- Experiences Section -->
+          <div class="experience">
+            <h3>Experiences and Special Moments</h3>
+            <?php if (!empty($profiledata['past_works'])): ?>
+              <ul>
+                <?php foreach ($profiledata['past_works'] as $work): ?>
+                <li class="experiencepoint"><?php echo $work['past_work']; ?></li>
+                <?php endforeach; ?>
+              </ul>
+            <?php endif; ?>
+            <div class="profile-experience">
+              <form method="POST">
+                <input type="text" name="experience" placeholder="Add a new experience">
+                <button class="add-button" name="add_experience">Add this experience</button>
+              </form>
+                  
+            </div>
+          </div>    
+
+          <!-- Services Section -->
+          <div class="experience">
+            <h3>Services</h3>
+            <?php if (!empty($profiledata['services'])): ?>
+              <ul>
+                <?php foreach ($profiledata['services'] as $service): ?>
+                  <li class="experiencepoint"><?php echo $service['service']; ?></li>
+                <?php endforeach; ?>
+              </ul>
+            <?php endif; ?>
+            <div class="profile-experience">
+              <form method="POST">
+                <input type="text" name="service" placeholder="Add a new service">
+                <button class="add-button" name="add_service">Add this service</button>
+              </form>
+            </div>
+          </div>
+        </div>  
+      </div>
       
 
       <!-- Section for updating profile information -->
@@ -153,7 +158,10 @@
           <label for="email">Email:</label>
           <div class="input-text"><?php echo $_SESSION['USER']->email ?? 'N/A'; ?></div>
         </div>
-        <a href="colloborator-updateprofile" class="button" type="button">Update Profile</a>
+        <form method="POST"  class='buttons'>
+          <a href="colloborator-updateprofile" class="button button-1" type="button">Update Profile</a>
+          <button  class="button button-2" name="signOut" type="submit">Sign Out</button>
+        </form>
       </div>
     </div>
   </div>
@@ -186,3 +194,4 @@
   <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
 </body>
 </html>
+<?php include ('../app/views/components/footer.php'); ?>

@@ -6,8 +6,16 @@
 }
 .dash-container {
     display: flex;
-    margin: 20px auto;
+    margin: 0px auto;
     padding: 40px;
+    width: 100%;
+    gap: 2rem;
+}
+.dash-content {
+    display: flex;
+    margin: 30px auto;
+    padding: 70px;
+    width: 100%;
 }
 /* /* Content */
 /* .content {
@@ -111,25 +119,33 @@
     box-shadow: black;
 } */
 .dashboard {
-    width: 80%;
+    width: 100%;
     max-width: 1200px;
     background-color: #fff;
     padding: 20px;
     border-radius: 8px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
-
+.back-button{
+    display: flex;
+}
 .header {
     display: flex;
     justify-content: space-between;
     align-items: center;
     margin-bottom: 20px;
+    margin-left: 10px;
 }
 
 .header h1 {
     font-size: 24px;
 }
-
+.back-button{
+    
+    display: flex;
+    align-items: center;
+    margin-bottom: 20px;
+}
 
 
 .stats {
@@ -305,4 +321,337 @@ table th, table td {
 
 .purchases .tag {
     color: #ff0000;
+}
+.view-more {
+    background-color: #00BDD6;
+    color: white;
+    padding: 10px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    align-self: center;
+    margin-top: 20px;
+    transition: color 1s ease;
+}
+
+.view-more:hover::after {
+    transform: skewX(-45deg) scale(1, 1);
+}
+
+.view-more:hover {
+    color: black;
+}
+
+/* Filter Controls */
+.filter-controls {
+    display: flex;
+    gap: 1.5rem;
+    margin-bottom: 1.5rem;
+    padding: 1rem;
+    background: #f8f9fa;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+}
+
+.filter-group {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    min-width: 200px;
+}
+
+.filter-group label {
+    color: #2c3e50;
+    font-weight: 500;
+    font-size: 0.9rem;
+}
+
+.filter-group select,
+.filter-group input {
+    padding: 0.5rem;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    font-size: 0.9rem;
+    background: white;
+    transition: all 0.3s ease;
+}
+
+.filter-group select:focus,
+.filter-group input:focus {
+    outline: none;
+    border-color: #00BDD6FF;
+    box-shadow: 0 0 0 2px rgba(0, 189, 214, 0.2);
+}
+
+/* Table Styles */
+.section.sales {
+    background: white;
+    border-radius: 8px;
+    padding: 1.5rem;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+}
+
+.section.sales h3 {
+    color: #2c3e50;
+    margin-bottom: 1rem;
+    font-size: 1.2rem;
+    font-weight: 600;
+}
+
+.section.sales table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 1rem;
+}
+
+.section.sales th {
+    background-color: #f8f9fa;
+    padding: 1rem;
+    text-align: left;
+    font-weight: 600;
+    color: #2c3e50;
+    border-bottom: 2px solid #eee;
+}
+
+.section.sales td {
+    padding: 1rem;
+    border-bottom: 1px solid #eee;
+    color: #666;
+}
+
+.section.sales tr:hover {
+    background-color: #f8f9fa;
+}
+
+/* Event Info in Table */
+.event-info {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+.event-info img {
+    width: 50px;
+    height: 50px;
+    object-fit: cover;
+    border-radius: 4px;
+}
+
+.payment-container {
+    flex: 1;
+    background-color: #ffffff;
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    margin: 0;
+    width: calc(100% - 300px); /* Adjust based on sidebar width */
+}
+
+.event-header {
+    margin-bottom: 20px;
+    padding-bottom: 15px;
+    border-bottom: 2px solid #000000;
+}
+
+.event-header h3 {
+    color: #2c3e50;
+    font-size: 24px;
+    margin: 0;
+}
+
+.total-payment {
+    color: #27ae60;
+    font-size: 18px;
+    font-weight: 600;
+    margin-top: 10px;
+}
+
+.modern-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 1rem;
+    background: white;
+    border-radius: 8px;
+    overflow: hidden;
+}
+
+.modern-table th {
+    background-color: #00BDD6FF;
+    color: white;
+    padding: 1rem;
+    text-align: left;
+    font-weight: 600;
+    font-size: 0.9rem;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.modern-table th:last-child {
+    text-align: right;
+}
+
+.modern-table td {
+    padding: 1rem;
+    border-bottom: 1px solid #e2e8f0;
+    color: #2c3e50;
+}
+
+.modern-table td:last-child {
+    text-align: right;
+    padding-right: 2rem;
+}
+
+.modern-table tr:hover {
+    background-color: #f7fafc;
+}
+
+.no-data {
+    text-align: center;
+    color: #6b7280;
+    font-style: italic;
+    padding: 20px;
+    background-color: #ffffff;
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* Payment View Styles */
+.payment-container {
+    max-width: 1200px;
+    margin: 2rem auto;
+    padding: 0 1rem;
+}
+
+.payment-container h1 {
+    color: #00BDD6FF;
+    margin-bottom: 2rem;
+    text-align: center;
+    font-size: 2rem;
+    position: relative;
+    padding-bottom: 1rem;
+}
+
+.payment-container h1::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 100px;
+    height: 3px;
+    background-color: #00BDD6FF;
+}
+
+.event-payment-section {
+    background: white;
+    border-radius: 10px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    margin-bottom: 2rem;
+    padding: 1.5rem;
+    transition: all 0.3s ease;
+    border: 1px solid transparent;
+}
+
+.event-payment-section:hover {
+    transform: translateY(-2px);
+    border-color: #00BDD6FF;
+    box-shadow: 0 6px 12px rgba(0, 189, 214, 0.15);
+}
+
+.event-header {
+    margin-bottom: 1.5rem;
+    padding-bottom: 1rem;
+    border-bottom: 2px solid #00BDD6FF;
+}
+
+.event-header h2 {
+    color: #2c3e50;
+    margin: 0;
+    font-size: 1.5rem;
+    font-weight: 600;
+}
+
+.event-date {
+    color: #666;
+    margin: 0.5rem 0 0;
+    font-size: 0.9rem;
+}
+
+.payment-summary {
+    overflow-x: auto;
+}
+
+.modern-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 1rem;
+    background: white;
+    border-radius: 8px;
+    overflow: hidden;
+}
+
+.modern-table th {
+    background-color: #00BDD6FF;
+    color: white;
+    padding: 1rem;
+    text-align: left;
+    font-weight: 600;
+    font-size: 0.9rem;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.modern-table td {
+    padding: 1rem;
+    border-bottom: 1px solid #e2e8f0;
+    color: #2c3e50;
+}
+
+.modern-table tr:last-child td {
+    border-bottom: none;
+}
+
+.modern-table tr:hover {
+    background-color: rgba(0, 189, 214, 0.05);
+}
+
+.amount {
+    font-weight: 600;
+    color: #00BDD6FF;
+    text-align: right;
+}
+
+.no-data {
+    text-align: center;
+    padding: 3rem;
+    background: white;
+    border-radius: 10px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    border: 2px dashed #00BDD6FF;
+}
+
+.no-data p {
+    color: #666;
+    font-size: 1.1rem;
+    margin: 0;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .payment-container {
+        padding: 1rem;
+    }
+
+    .event-payment-section {
+        padding: 1rem;
+    }
+
+    .modern-table th,
+    .modern-table td {
+        padding: 0.75rem;
+    }
+
+    .event-header h2 {
+        font-size: 1.25rem;
+    }
 }

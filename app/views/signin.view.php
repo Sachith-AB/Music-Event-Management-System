@@ -11,7 +11,7 @@
     <link href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css" rel="stylesheet">
 
     <link rel="stylesheet" href="<?= ROOT ?>/assets/css/toast.css">
-    <link rel="icon" href="<?= ROOT ?>/assets/images/amoral_1.ico">
+    <link rel="icon" type="image/png" href="<?=ROOT?>/assets/images/logo/logo.png">
 </head>
 
 <body>
@@ -34,7 +34,6 @@
             display: flex;
         }
     </style>
-    <?php include ('../app/views/components/loading.php'); ?>
     <div class="page-content">
         <main>
             <div class="box">
@@ -73,7 +72,7 @@
 
                                 <p class="text">
                                     Forgot your password or your login details?
-                                    <a href="#" id="help" class="toggle-1">Get Help</a> Signing in
+                                    <a href="forgot-password" id="help" class="toggle-1">Get Help</a> Signing in
                                 </p>
 
                             </div>

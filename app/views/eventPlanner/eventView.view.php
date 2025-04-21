@@ -1,3 +1,4 @@
+<?php require_once '../app/helpers/load_notifications.php'; ?>
 <?php include ('../app/views/components/header.php'); ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -9,266 +10,178 @@
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 </head>
 <body>
+<?php include ('../app/views/components/loading.php');?>
     <div class="container">
         <!-- Event Details -->
         <div class="section">
-            <div class="left-section">
-                <img src="<?=ROOT?>/assets/images/events/23.jpg" alt="Event Cover" class="cover-image">
-            </div>
-
-            <div class="right-section">
-                <h1 class="event-name">Sample Event Name</h1>
-                <p class="event-description">
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent commodo cursus magna, vel scelerisque nisl consectetur et. Donec id elit non mi porta gravida at eget metus.
-                </p>
-                <div class="event-details">
-                    <p><strong>Date:</strong> Sunday, December 15</p>
-                    <p><strong>Start Time:</strong> 6:00 PM</p>
-                    <p><strong>End Time:</strong> 6:00 PM</p>
-                    <p><strong>Audience:</strong> 200</p>
-                    <p><strong>Type:</strong> Indoor</p>
-                    <p><strong>Location:</strong> 123 Event Street, Cityville</p>
+        <?php if(!empty($data['event'])): ?>
+            <div class="details-section">
+                <div >
+                    <h1 class="event-name"><?php echo $data['event']->event_name ?></h1>
+                    <p class="event-description"><?php echo $data['event']->description ?></p>
+                    <div class="event-details">
+                        <p><strong>Date:</strong> <?php echo $data['event']->eventDate ?></p>
+                        <p><strong>Start Time:</strong> <?php echo $data['event']->start_time ?></p>
+                        <p><strong>End Time:</strong> <?php echo $data['event']->end_time ?></p>
+                        <p><strong>Audience:</strong> <?php echo $data['event']->audience ?></p>
+                        <p><strong>Type:</strong> <?php echo $data['event']->type ?></p>
+                        <p><strong>Location:</strong> <?php echo $data['event']->address ?></p>
+                    </div>
+                    <div class="button-group">
+                        <button class="change-button" onclick="goUpdate()">Update</button>
+                        <button class="remove-button" onclick="goDelete()">Draft</button>
+                    </div>
                 </div>
-                <button class="addbutton">Update</button>
+
+                <div class="right-section">
+                    <img src="<?=ROOT?>/assets/images/events/<?php echo $data['event']->cover_images ?>" alt="Event Cover" class="cover-image">
+                </div>
             </div>
+        <?php endif; ?>
         </div>
 
         <!-- Ticket Details -->
         <div class="sectionR">
             <h1 class="event-name">Tickets</h1>
-            <div class="team-grid-scrollable">
-                <div class="team-grid">
-                    <div class="team-member">
-                        <div class="update-icon material-icons">edit</div>
-                        <h2 class="ticket-name">VIP Ticket</h2>
-                        <div class="ticket-price">
-                            <span class="price-label">Price:</span>
-                            <span class="price-value"> LKR1000</span>
-                        </div>
-                        <div class="ticket-icon">
-                            <div class="silver-card">
-                                <span class="material-icons">star</span>
+
+            <?php if(!empty($data['tickets'])): ?>
+                
+                
+
+                <div class="team-grid-scrollable">
+                    <div class="team-grid">
+                        
+                        <?php foreach ($data['tickets'] as $ticket ): ?>
+                            <div class="team-member">
+                                <div class="update-icon material-icons" onclick="goUpdateTicket(<?php echo $ticket->id  ?>)">edit</div>
+                                <h2 class="ticket-name"><?php echo $ticket->ticket_type  ?></h2>
+                                <div class="ticket-price">
+                                    <span class="price-label">Price:</span>
+                                    <span class="price-value"> <?php echo $ticket->price  ?></span>
+                                </div>
+                                <div class="ticket-icon">
+                                    <div class="silver-card">
+                                        <span class="material-icons">star</span>
+                                    </div>
+                                </div>
+                                <div class="ticket-details">
+                                <?php $restrictions = json_decode($ticket->restrictions); ?>
+                                    <p>
+                                        <strong>Opportunities:</strong>
+                                        <?php if (!empty($restrictions)): ?>
+                                            <ul>
+                                                <?php foreach ($restrictions as $opo): ?>
+                                                    <li><?= htmlspecialchars($opo) ?></li>
+                                                <?php endforeach; ?>
+                                            </ul>
+                                        <?php else: ?>
+                                            <p>No opportunities</p>
+                                        <?php endif; ?>
+
+                                    </p>
+                                    <p>
+                                        <strong>Sale Start:</strong>
+                                        <span><?php echo $ticket->sale_strt_date ?></span>
+                                    </p>
+                                    <p>
+                                        <strong>Sale End:</strong>
+                                        <span><?php echo $ticket->sale_end_date ?></span>
+                                    </p>
+                                    <p>
+                                        <strong>Quantity:</strong>
+                                        <span><?php echo $ticket->quantity ?></span>
+                                    </p>
+                                </div>
                             </div>
-                        </div>
-                        <div class="ticket-details">
-                            <p>
-                                <strong>Opportunities:</strong>
-                                <ul>
-                                    <li>Access to VIP lounge</li>
-                                    <li>Free drinks</li>
-                                    <li>Priority entry</li>
-                                </ul>
-                            </p>
-                            <p>
-                                <strong>Sale Start:</strong>
-                                <span>December 1, 10:00 AM</span>
-                            </p>
-                            <p>
-                                <strong>Sale End:</strong>
-                                <span>December 10, 10:00 PM</span>
-                            </p>
-                            <p>
-                                <strong>Quantity:</strong>
-                                <span>50</span>
-                            </p>
-                        </div>
-
-                    </div>
-
-
-                    <div class="team-member">
-                        <div class="update-icon material-icons">edit</div>
-                        <h2 class="ticket-name">VIP Ticket</h2>
-                        <div class="ticket-price">
-                            <span class="price-label">Price:</span>
-                            <span class="price-value"> LKR1000</span>
-                        </div>
-                        <div class="ticket-icon">
-                            <div class="silver-card">
-                                <span class="material-icons">star</span>
-                            </div>
-                        </div>
-                        <div class="ticket-details">
-                            <p>
-                                <strong>Opportunities:</strong>
-                                <ul>
-                                    <li>Access to VIP lounge</li>
-                                    <li>Free drinks</li>
-                                    <li>Priority entry</li>
-                                </ul>
-                            </p>
-                            <p>
-                                <strong>Sale Start:</strong>
-                                <span>December 1, 10:00 AM</span>
-                            </p>
-                            <p>
-                                <strong>Sale End:</strong>
-                                <span>December 10, 10:00 PM</span>
-                            </p>
-                            <p>
-                                <strong>Quantity:</strong>
-                                <span>50</span>
-                            </p>
-                        </div>
-
-                    </div>
-
-
-
-                    <div class="team-member">
-                        <div class="update-icon material-icons">edit</div>
-                        <h2 class="ticket-name">VIP Ticket</h2>
-                        <div class="ticket-price">
-                            <span class="price-label">Price:</span>
-                            <span class="price-value"> LKR1000</span>
-                        </div>
-                        <div class="ticket-icon">
-                            <div class="silver-card">
-                                <span class="material-icons">star</span>
-                            </div>
-                        </div>
-                        <div class="ticket-details">
-                            <p>
-                                <strong>Opportunities:</strong>
-                                <ul>
-                                    <li>Access to VIP lounge</li>
-                                    <li>Free drinks</li>
-                                    <li>Priority entry</li>
-                                </ul>
-                            </p>
-                            <p>
-                                <strong>Sale Start:</strong>
-                                <span>December 1, 10:00 AM</span>
-                            </p>
-                            <p>
-                                <strong>Sale End:</strong>
-                                <span>December 10, 10:00 PM</span>
-                            </p>
-                            <p>
-                                <strong>Quantity:</strong>
-                                <span>50</span>
-                            </p>
-                        </div>
-
-                    </div>
-
-
-                    <div class="team-member">
-                        <div class="update-icon material-icons">edit</div>
-                        <h2 class="ticket-name">VIP Ticket</h2>
-                        <div class="ticket-price">
-                            <span class="price-label">Price:</span>
-                            <span class="price-value"> LKR1000</span>
-                        </div>
-                        <div class="ticket-icon">
-                            <div class="silver-card">
-                                <span class="material-icons">star</span>
-                            </div>
-                        </div>
-                        <div class="ticket-details">
-                            <p>
-                                <strong>Opportunities:</strong>
-                                <ul>
-                                    <li>Access to VIP lounge</li>
-                                    <li>Free drinks</li>
-                                    <li>Priority entry</li>
-                                </ul>
-                            </p>
-                            <p>
-                                <strong>Sale Start:</strong>
-                                <span>December 1, 10:00 AM</span>
-                            </p>
-                            <p>
-                                <strong>Sale End:</strong>
-                                <span>December 10, 10:00 PM</span>
-                            </p>
-                            <p>
-                                <strong>Quantity:</strong>
-                                <span>50</span>
-                            </p>
-                        </div>
-
-                    </div>
-
-                    <div class="team-member">
-                        <div class="update-icon material-icons">edit</div>
-                        <h2 class="ticket-name">VIP Ticket</h2>
-                        <div class="ticket-price">
-                            <span class="price-label">Price:</span>
-                            <span class="price-value"> LKR1000</span>
-                        </div>
-                        <div class="ticket-icon">
-                            <div class="silver-card">
-                                <span class="material-icons">star</span>
-                            </div>
-                        </div>
-                        <div class="ticket-details">
-                            <p>
-                                <strong>Opportunities:</strong>
-                                <ul>
-                                    <li>Access to VIP lounge</li>
-                                    <li>Free drinks</li>
-                                    <li>Priority entry</li>
-                                </ul>
-                            </p>
-                            <p>
-                                <strong>Sale Start:</strong>
-                                <span>December 1, 10:00 AM</span>
-                            </p>
-                            <p>
-                                <strong>Sale End:</strong>
-                                <span>December 10, 10:00 PM</span>
-                            </p>
-                            <p>
-                                <strong>Quantity:</strong>
-                                <span>50</span>
-                            </p>
-                        </div>
-
+                        <?php endforeach; ?>       
                     </div>
                 </div>
+            <?php endif; ?>
+            <!-- button to go ticket pages -->
+            <div style="display: flex; justify-content: center; width: 100%;">
+                <a href = "<?=ROOT?>/create-ticket?event_id=<?php echo $data['event']->id?>" style="text-decoration: none;" >
+                    <button class="addbutton">Add Another Ticket</button>
+                </a>
             </div>
         </div>
 
-
-
-        <!-- Request section -->
         <!-- Request section -->
         <div class="sectionR">
             <h1 class="event-name">Request Status</h1>
             <table class="request-table">
                 <thead>
                     <tr>
-                        <th>Profile Picture</th>
-                        <th>Name</th>
+                        <th>Event collaborator</th>
                         <th>Status</th>
                     </tr>
                 </thead>
-                <tbody>
-                    <!-- Example row for collaborator request -->
-                    <tr>
-                        <td><img src="<?=ROOT?>/assets/images/user/pro-pic=37.jpg" alt="Collaborator 1" class="profile-pic"></td>
-                        <td>Collaborator Name 1</td>
-                        <td class="status pending">Pending</td>
-                    </tr>
-                    <tr>
-                        <td><img src="<?=ROOT?>/assets/images/user/pro-pic=36.jpeg" alt="Collaborator 2" class="profile-pic"></td>
-                        <td>Collaborator Name 2</td>
-                        <td class="status accepted">Accepted</td>
-                    </tr>
-                    <tr>
-                        <td><img src="<?=ROOT?>/assets/images/user/pro-pic=41.jpg" alt="Collaborator 3" class="profile-pic"></td>
-                        <td>Collaborator Name 3</td>
-                        <td class="status rejected">Rejected</td>
-                    </tr>
-                </tbody>
+
+                <?php if(!empty($data['requests'])): ?>
+
+                    <?php foreach($data['requests'] as $request): ?>
+
+                        <tbody>
+                            <!-- Example row for collaborator request -->
+                            <?php if($request->Status  == "pending"): ?>
+                                <tr>
+                                    <td class="collaborator-de"><img src="<?=ROOT?>/assets/images/user/<?php echo $request->pro_pic ?>" alt="Collaborator 1" class="profile-pic"><?php echo $request->name ?></td>
+                                    <td class="status pending"><?php echo $request->Status ?></td>
+                                </tr>
+                            <?php endif; ?>
+
+                            <?php if($request->Status  == "accepted"): ?>
+                                <tr>
+                                    <td class="collaborator-de"><img src="<?=ROOT?>/assets/images/user/<?php echo $request->pro_pic ?>" alt="Collaborator 2" class="profile-pic"><?php echo $request->name ?></td>
+                                    <td class="status accepted"><?php echo $request->Status ?></td>
+                                </tr>
+                            <?php endif; ?>
+
+                            <?php if($request->Status  == "rejected"): ?>
+                                <tr>
+                                    <td class="collaborator-de"><img src="<?=ROOT?>/assets/images/user/<?php echo $request->pro_pic ?>" alt="Collaborator 3" class="profile-pic"><?php echo $request->name ?></td>
+                                    <td class="status rejected"><?php echo $request->Status ?></td>
+                                </tr>
+                            <?php endif; ?>
+
+                        </tbody>
+
+                    <?php endforeach; ?>
+
+                <?php endif; ?>
+
+
             </table>
-            <button class="addbutton">Add More Requests</button>
+
+            <!-- button to go request pages -->
+            <div style="display: flex; justify-content: center; width: 100%;">
+                <a href = "<?=ROOT?>/request-singers?id=<?php echo $data['event']->id?>" style="text-decoration: none;" >
+                    <button class="addbutton">Add More Requests</button>
+                </a>
+            </div>
+
         </div>
         
-        <button class="finishbutton">Move to Scheduled</button>
+        <form  method = "POST" >
+            <input type="hidden" name = "id" value = "<?php echo $data['event']->id?>" >
+            <input type="hidden" name = "status" value = "scheduled" >
+            <button class="finishbutton" name ="schedule" type = "submit"  >Move to Scheduled</button>
+        </form>
         
+        <script>
+            function goUpdate(){
+                window.location.href = "<?=ROOT?>/processing-event-update?event_id=<?php echo $data['event']->id?>";
+            }
+
+            function goDelete(){
+            window.location.href = "<?=ROOT?>/processing-event-delete?event_id=<?php echo $data['event']->id?>";
+            }
+
+            function goUpdateTicket(id){
+                window.location.href = "<?=ROOT?>/update-ticket?ticket_id="+id;
+            }
+        </script>
         
     </div>
 </body>
 </html>
+<?php include ('../app/views/components/footer.php'); ?>

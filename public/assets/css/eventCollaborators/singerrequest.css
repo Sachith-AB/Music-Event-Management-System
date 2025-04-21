@@ -7,7 +7,7 @@
 
 .dash-container {
     display: flex;
-    margin: 20px auto;
+    margin: 40px auto;
     padding: 40px;
 }
 
@@ -61,10 +61,12 @@ h1 {
 .rtable tbody tr {
     background-color: #fff;
     transition: background-color 0.3s ease;
+    cursor: pointer;
 }
 
 .rtable tbody tr:hover {
     background-color: #f1f8fa;
+    cursor: pointer;
 }
 
 .rtable td, .rtable th {
@@ -168,4 +170,22 @@ td:nth-child(3),
 td:nth-child(4) {
     width: auto;
 }
+
+.truncate-text {
+    max-width: 150px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+.read-more {
+    color: #007bff;
+    text-decoration: underline;
+    cursor: pointer;
+    font-size: 14px;
+}
+
+.read-more:hover {
+    color: #0056b3;
+}
+
 

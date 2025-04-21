@@ -1,3 +1,5 @@
+
+
 /* Basic Styles */
 * {
     margin: 0;
@@ -7,7 +9,10 @@
 
 body {
     font-family: Arial, sans-serif;
+    padding-top: 70px;
 }
+
+
 
 .headersection {
     position: relative;
@@ -40,9 +45,12 @@ body {
     position: relative;
     z-index: 6;
     text-align: left;
-    padding: 100px 100px;
+    padding: 80px 100px;
 }
-
+.back-button{
+    gap: 20px;
+    display: flex;
+}
 .eventname {
     font-size: 3rem;
     font-weight: bold;
@@ -59,6 +67,7 @@ body {
     transition: background 0.5s ease; /* Smooth transition for hover effect */
     font-weight: bold;
     color: #00BDD6;
+    
 
 }
 
@@ -70,6 +79,7 @@ body {
     display: flex;
     justify-content:space-between;
 }
+
 
 .countdown-timer {
     display: flex;
@@ -282,9 +292,11 @@ img {
 .team-grid-scrollable {
     overflow-x: auto; /* Enables horizontal scrolling */
     white-space: nowrap; /* Prevents wrapping of elements to the next line */
-    padding: 10px;
+    padding: 20px;
     margin: 0 auto;
     max-width: 100%; /* Ensures it doesn't extend beyond the viewport */
+    scrollbar-width: none; /* Firefox */
+    -ms-overflow-style: none;
 }
 
 .team-grid {
@@ -370,30 +382,55 @@ img {
 /* ticket section */
 .ticketbackground {
     margin: auto;
-    padding: 50px 20px;
+    padding: 20px 20px;
     background-image: url('');
     background-size: cover;
     background-position: center;
-    width: 100%;
-    height: 100%;
-    display: flex;
+
+    max-width: 1200px;
+    width: 100%; /* Allow full screen on small devices */
+
+    /* display: flex; */
     justify-content: center;
     align-items: center;
+
+    background-color: #f7f7f7;
+    margin-top: 40px;
+    overflow-x: auto; /* Just in case */
+}
+.team-grid-scrollable {
+    overflow-x: auto;
+    width: 100%;
+}
+/* .team-grid-scrollable {
+    overflow-x: auto;
+    white-space: nowrap;
+    width: 100%;
+} */
+
+.team-grid {
+    display: flex;
+    gap: 20px;
 }
 
 .pricing-container {
     display: flex;
     justify-content: space-between;
-    width: 80%;
+    width: 100%;
+    overflow-x: auto; /* Enables horizontal scrolling */
+    white-space: nowrap;
+    gap: 20px;
 }
 
 .pricing-card {
     background: rgba(255, 255, 255, 0.8);
     border-radius: 10px;
     padding: 20px;
-    width: 30%;
+    flex: 0 0 auto; /* Prevents shrinking and allows horizontal layout */
+    width: 300px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
     transition: transform 0.3s ease;
+    
 }
 
 .pricing-card:hover {
@@ -442,10 +479,202 @@ img {
 }
 
 
+.fail-message {
+    display: flex;
+    align-items: center;
+    background-color: #ffe6e6; /* Light red background color */
+    color: #d9534f; /* Red text color */
+    border: 2px solid #d9534f; /* Red border */
+    border-radius: 5px; /* Rounded corners */
+    padding: 10px 20px; /* Padding inside the box */
+    margin: 20px 0; /* Margin around the box */
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Subtle shadow for a 3D effect */
+}
+
+.fail-icon {
+    font-size: 24px; /* Larger size for the icon */
+    margin-right: 10px; /* Space between the icon and text */
+    color: #d9534f; /* Matching the text color */
+}
+
+.fail-text {
+    font-size: 18px; /* Font size for the text */
+    font-weight: bold; /* Bold text */
+    color: #a94442; /* Slightly darker red for contrast */
+}
+/* 
+event planner  */
+
+.event-planner {
+    display: flex;
+    align-items: center;
+    margin-top: 10px;
+    gap: 10px;
+    cursor: pointer;
+    width: fit-content;
+}
+
+.planner-pic {
+    width: 45px;
+    height: 45px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 2px solid #00BDD6;
+}
+
+.planner-info {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.planner-label {
+    font-size: 0.75rem;
+    color: #888;
+}
+
+.planner-name {
+    font-weight: 600;
+    color: #00BDD6;
+    font-size: 1rem;
+}
+.event-planner:hover {
+    transform: scale(1.05);
+    transition: all 1s ease-in-out;
+}
 
 
 
 
+
+
+/* commant section */
+.comment-section {
+    background-color: #f7f7f7;
+    padding: 20px 20px;
+    text-align: center;
+    max-width: 1200px;
+    margin: auto;
+    margin-top: 10PX;
+}
+
+.comment-header h1 {
+    text-align: left;
+    font-size: 36px;
+    font-weight: bold;
+    margin-bottom: 20px;
+}
+
+/* Comments Section */
+.comments-h2 {
+    margin-left: 50px;
+    margin-top: 30px;
+}
+
+.comments-container {
+    margin: 15px 50px;
+    padding: 20px;
+    background-color: #f9f9f9;
+    border-radius: 8px;
+}
+
+.add-comment {
+    display: flex;
+    align-items: flex-start;
+    margin-bottom: 20px;
+}
+
+.comment-avatar {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    margin-right: 10px;
+}
+
+.comment-input {
+    flex: 1;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 20px;
+    font-size: 14px;
+    resize: none;
+    margin-right: 10px;
+}
+
+.post-comment-btn {
+    background-color: #00BDD6;
+    color: white;
+    border: none;
+    padding: 8px 20px;
+    border-radius: 20px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.post-comment-btn:hover {
+    color: black;
+}
+
+.comment {
+    display: flex;
+    align-items: flex-start;
+    margin-bottom: 15px;
+}
+
+.reply {
+    margin-left: 50px;
+}
+
+.comment-content {
+    background-color: white;
+    padding: 10px 15px;
+    border-radius: 10px;
+    box-shadow: 0 1px 4px rgba(0, 0, 0, 0.1);
+    flex: 1;
+    text-align: left;
+}
+
+.comment-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 5px;
+}
+
+.comment-author {
+    font-weight: bold;
+    color: #333;
+}
+
+.comment-date {
+    font-size: 12px;
+    color: #666;
+}
+
+.comment-text {
+    font-size: 14px;
+    color: #555;
+    line-height: 1.5;
+}
+
+.comment-actions {
+    margin-top: 10px;
+}
+
+.like-btn,
+.reply-btn {
+    background: none;
+    border: none;
+    color: #007aff;
+    cursor: pointer;
+    font-size: 14px;
+    margin-right: 10px;
+}
+
+.like-btn:hover,
+.reply-btn:hover {
+    text-decoration: underline;
+}
 
 
 

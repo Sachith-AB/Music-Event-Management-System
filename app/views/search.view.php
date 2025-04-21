@@ -1,3 +1,5 @@
+<?php require_once '../app/helpers/load_notifications.php'; ?>
+<?php include ('../app/views/components/header.php'); ?>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -14,14 +16,16 @@
     $showMore = isset($_POST['showMore']) ? $_POST['showMore'] == 'true' : false; 
     ?>
     <div class="container">
-        <header>
+        <div>
             <h1>Search Event</h1>
-            <form method="POST" class="search-bar">
-                <input type="text" name="name" placeholder="Rock">
-                <input type="text" name="location" placeholder="Colombo, Sri Lanka">
-                <button type="submit" name="searchEvents" value="search">Search</button>
-            </form>
-        </header>
+            <div class="search-bar">
+                <form method="POST" class="search-bar">
+                    <input type="text" name="name" placeholder="Event name">
+                    <input type="text" name="location" placeholder="Location">
+                    <button type="submit" name="searchEvents" value="search">Search</button>
+                </form>
+            </div>
+        </div>
         <div class="content">
             <form class="filter" method="POST">
                 <h3>Filter</h3>
@@ -71,11 +75,15 @@
                 ?>
 
                 <div class="event-card" onclick="window.location.href='view-event?id=<?= $event->id ?>'">
-                    <img src="<?=ROOT?>/assets/images/events/<?php echo $event->cover_images?>" alt="Event 2">
+                    <?php
+                    $coverImages = json_decode($event->cover_images, true);
+                    $firstImage = $coverImages[0] ?? ''; // fallback if empty
+                    ?>
+                    <img src="<?= ROOT ?>/assets/images/events/<?php echo $firstImage ?>" alt="Event Image">
                     <div class="event-info">
                         <h3><?php echo $event->event_name ?></h3>
                         <p class="date">📅 <?php echo $event->eventDate ?> | <?php echo $event->start_time ?></p>
-                        <p class="location">📍 Colombo, Sri Lanka</p>
+                        <p class="location">📍 <?php echo $event->address ?></p>
                         <?php if($event->pricing == 'paid'):?>
                             <span class="pricing paid"><?php echo "PAID" ?></span> 
                         <?php else:?>
@@ -87,6 +95,10 @@
                         <?php else:?>
                             <span class="pricing outdoor"><?php echo "OUTDOOR" ?></span>
                         <?php endif?>
+                        <div class="star-background">
+                            <div class="star-filled" style="width: <?= ($event->averageRating/5)*100 ?>%;"></div>
+                        </div>
+                        <span class="rating-text"><?= number_format($event->averageRating, 1) ?>/5 (<?= $event->totalReviews ?> reviews)</span>
                     </div>
                     
                 </div>
@@ -149,5 +161,7 @@
 
 </body>
 </html>
+
+<?php include ('../app/views/components/footer.php'); ?>
 
 

@@ -1,4 +1,7 @@
+<?php require_once '../app/helpers/load_notifications.php'; ?>
 <?php include ('../app/views/components/header.php'); ?>
+
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -8,12 +11,18 @@
     <title>Musicia - Ticket Purchase Success</title>
     <link rel="stylesheet" href="<?= ROOT ?>/assets/css/ticket/ticketstyle.css">
     <link rel="stylesheet" href="<?= ROOT ?>/assets/css/ticket/popupmodal-style.css">
+    <link rel="stylesheet" href="<?= ROOT ?>/assets/css/backbutton.css">
+
 
     <!-- Include Font Awesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+
 </head>
 
-<body>
+<!-- <?php include ('../app/views/components/loading.php'); ?> -->
+<?php $email = htmlspecialchars($_GET['email']) ; ?>
+
 
     <!-- Include Header -->
     
@@ -29,15 +38,23 @@
             $durationInHours = round($durationInHours);
 
             ?>
-            <div class="event-details-container">
-                <div class="success-message">
-                    <div class="success-icon">
-                        &#10004;
+            <div class="event-details-container-success">
+                <div class="back-button">
+                    <div>
+                        <!-- Include Back Button Component -->
+                        <?php include('../app/views/components/backbutton.view.php'); ?>
                     </div>
-                    <div class="success-text">
-                        Successful payment!
+                    
+                    <div class="success-message">
+                        <div class="success-icon">
+                            &#10004;
+                        </div>
+                        <div class="success-text">
+                            Successful payment!
+                        </div>
                     </div>
                 </div>
+                
                 <h1 class="event-title"><span><?= htmlspecialchars($eventAndTicketDetails[0]->event_name) ?></span>  <?= htmlspecialchars($eventAndTicketDetails[0]->event_description) ?></h1>
                 <div class="event-info">
                     <div class="event-item">
@@ -193,37 +210,95 @@
                                 </div>
                             </div>
                         </div>
+                    <?php endfor; ?>
                         <!--modal foe ticket view button-->
                         <div id="ticketModal" class="modal">
+                            <div class="model-content-scroll">
                                 <div class="modal-content">
                                     <span class="close" onclick="closeViewTicketModal()">&times;</span>
-                                        <div class="digiticket">
-                                            <div class="digiticket-left">
-                                                <div class="digiticket-qr-code">
-                                                    <img src="<?= $qrCodeUrl ?>" alt="QR Code">
-                                                </div>
-                                                <div class="digiticket-qr-code-part">
-                                                    <p><strong>Code</strong></p>
-                                                    <a href="<?= $qrCodeUrl ?>">Download</a> <!-- Adjust ticket code if needed -->
-                                                </div>
+
+                                    <?php
+                                            for ($i = 0; $i < $purchaseDetails[0]->ticket_quantity; $i++) :
+                                    $qrData = [
+                                        'ticket_number' => $eventAndTicketDetails[0]->ticket_quantity+($i + 1),
+                                        'event_name' => $eventAndTicketDetails[0]->event_name,
+                                        'buyer_email' => $purchaseDetails[0]->buyer_email
+                                    ];
+                                    $qrCodeUrl = "https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=" . urlencode(json_encode($qrData));?>
+
+
+                                    <div class="digiticket">
+                                        <div class="digiticket-left">
+                                            <div class="digiticket-qr-code">
+                                                <img src="<?= $qrCodeUrl ?>" alt="QR Code">
                                             </div>
-                                            <div class="digiticket-right">
-                                                <div class="digiticket-content">
-                                                    <h1 class="digievent-title"><?= htmlspecialchars($eventAndTicketDetails[0]->event_name) ?></h1>
-                                                    <p class="digievent-subtitle"><?= htmlspecialchars($eventAndTicketDetails[0]->event_description) ?></p>
-                                                    <p class="digievent-date"><?= htmlspecialchars(date("l, F d, Y h:i A", strtotime($eventAndTicketDetails[0]->event_date))) ?> / at <?= htmlspecialchars($eventAndTicketDetails[0]->address) ?></p>
-                                                    <div class="digiticket-price">
-                                                        <p class="price-label">Public Ticket</p>
-                                                        <p class="price-value"><?= htmlspecialchars($eventAndTicketDetails[0]->ticket_price) ?> LKR</p>
-                                                        <p class="price-desc">One ticket for one person.</p>
-                                                    </div>
+                                            <div class="digiticket-qr-code-part">
+                                                <p><strong>Code</strong></p>
+                                                <button class="digiticket-qr-code-part-button" onclick="downloadTicket(this)">Download</button>
+                                            </div>
+                                        </div>
+                                        <div class="digiticket-right">
+                                            <div class="digiticket-content">
+                                                <h1 class="digievent-title"><?= htmlspecialchars($eventAndTicketDetails[0]->event_name) ?></h1>
+                                                <p class="digievent-subtitle"><?= htmlspecialchars($eventAndTicketDetails[0]->event_description) ?></p>
+                                                <p class="digievent-date"><?= htmlspecialchars(date("l, F d, Y h:i A", strtotime($eventAndTicketDetails[0]->event_date))) ?> / at <?= htmlspecialchars($eventAndTicketDetails[0]->address) ?></p>
+                                                <div class="digiticket-price">
+                                                    <p class="price-label">Public Ticket</p>
+                                                    <p class="price-value"><?= htmlspecialchars($eventAndTicketDetails[0]->ticket_price) ?> LKR</p>
+                                                    <p class="price-desc">One ticket for one person.</p>
                                                 </div>
                                             </div>
                                         </div>
+                                    </div>
+                                    <?php endfor; ?>
                                 </div>
+                            </div>
+                            
                         </div>
 
-                    <?php endfor; ?>
+
+                        <script>
+                            // function downloadTicket(button) {
+                            //     const ticketElement = button.closest('.digiticket');
+
+                            //     html2canvas(ticketElement).then(canvas => {
+                            //         const link = document.createElement('a');
+                            //         link.download = 'ticket.png';
+                            //         link.href = canvas.toDataURL();
+                            //         link.click();
+                            //     });
+                            // }
+                            
+                            function downloadTicket(button) {
+                                const ticketElement = button.closest('.digiticket');
+
+                                // Wait for all images inside the ticket to load
+                                const images = ticketElement.querySelectorAll("img");
+                                //ensure that all images are loaded
+                                const imagePromises = Array.from(images).map(img => {
+                                    if (img.complete) return Promise.resolve();
+                                    return new Promise(resolve => {
+                                        img.onload = resolve;
+                                        img.onerror = resolve; // resolve even if it fails
+                                    });
+                                });
+
+                                Promise.all(imagePromises).then(() => {
+                                    html2canvas(ticketElement, {
+                                        useCORS: true // allow QR image from external source
+                                    }).then(canvas => {
+                                        const link = document.createElement('a');
+                                        link.download = 'ticket.png';
+                                        link.href = canvas.toDataURL('image/png');
+                                        link.click();
+                                    });
+                                });
+                            }
+                            
+
+                        </script>
+
+                    
 
                     <form id="purchaseForm" method="POST">
                         <input type="hidden" name="first-name" value= "<?php echo $purchaseDetails[0]->buyer_Fname ?>" />
@@ -232,8 +307,7 @@
                         <input type="hidden" name="eventname" value= "<?php echo $eventAndTicketDetails[0]->event_name ?>" />
                         <input type="hidden" name="eventdate" value= "<?php echo $eventAndTicketDetails[0]->event_date?>" />
                         <input type="hidden" name="address" value= "<?php echo $eventAndTicketDetails[0]->event_city ?? ""?>" />
-                        <!-- <?php echo$_SESSION['USER']->email?> -->
-                        <input type="hidden" name ="email" value = "<?php echo$_SESSION['USER']->email?>"/>
+                        <input type="hidden" name ="email" value = "<?php echo $email?>"/>
 
                 
                     <div class="button-group">
@@ -249,7 +323,7 @@
                 </script>
 
             </div>
-            
+            <div class="event-details-container">
             <!--other event section-->
             <h2>Other events you may like</h2>
             <?php if (!empty($recentevents)): ?>
@@ -262,7 +336,7 @@
                                 <div class="musicevent-event-title"><?= htmlspecialchars($event->event_name) ?></div>
                                 <div class="musicevent-event-details">
                                     <div>📅 <?= htmlspecialchars(date("l, F d | h:i A", strtotime($event->start_time))) ?></div>
-                                    <div>📍 <?= htmlspecialchars($event->address) ?></div>
+                                    <div class="two-line-ellipsis">📍 <?= htmlspecialchars($event->address) ?></div>
                                 </div>
                                 <!-- <div class="musicevent-event-price">From $80</div> -->
                             </div>
@@ -277,13 +351,14 @@
         <?php else: ?>
             <p>No purchase created.</p>
         <?php endif; ?>
+        </div>
     </main>
 
-    <!-- Include Footer -->
-    <?php include ('../app/views/components/footer.php'); ?>
 
-    </div>
 
-</body>
+    
+
+
 
 </html>
+<?php include ('../app/views/components/footer.php'); ?>

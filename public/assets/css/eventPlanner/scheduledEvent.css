@@ -1,0 +1,374 @@
+/* General Reset */
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background-color: #f8f9fa;
+    color: #333;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+/* Main Layout Container */
+.main-layout {
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    gap: 30px;
+    max-width: 1400px;
+    margin: 20px auto;
+    align-items: stretch;
+    flex: 1;
+    padding: 0 20px;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+/* Left Side - Event Details */
+.event-details-box {
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    padding: 20px;
+    background-color: #f9f9f9;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    overflow: hidden;
+    transition: all 0.3s ease;
+}
+
+.event-details-box:hover {
+    transform: translateY(-2px);
+    border-color: #00BDD6FF;
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+}
+
+.event-details-box::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    border: 2px solid #00BDD6FF;
+    border-radius: 8px;
+    animation: borderAnimation 0.5s ease-out;
+    opacity: 0;
+}
+
+.event-details-box:active::before {
+    opacity: 1;
+}
+
+/* Right Side - Charts Container */
+.container {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    height: 100%;
+}
+
+/* Section Styling */
+.chart-section {
+    background-color: #ffffff;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    text-align: center;
+    flex: 1;
+    position: relative;
+    overflow: hidden;
+    transition: all 0.3s ease;
+}
+
+.chart-section:hover {
+    transform: translateY(-2px);
+    border-color: #00BDD6FF;
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+}
+
+.chart-section::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    border: 2px solid #00BDD6FF;
+    border-radius: 8px;
+    animation: borderAnimation 0.5s ease-out;
+    opacity: 0;
+}
+
+.chart-section:active::before {
+    opacity: 1;
+}
+
+@keyframes borderAnimation {
+    0% {
+        transform: scale(0.95);
+        opacity: 0;
+    }
+    50% {
+        transform: scale(1.05);
+        opacity: 0.5;
+    }
+    100% {
+        transform: scale(1);
+        opacity: 1;
+    }
+}
+
+/* Titles Styling */
+.section-title {
+    font-size: 1.5rem;
+    color: #00BDD6FF;
+    margin-bottom: 20px;
+}
+
+/* Chart Container Styling */
+canvas {
+    max-width: 100%;
+    height: auto;
+}
+
+/* Title styling */
+.event-title {
+    color: #00BDD6FF;
+    text-align: center;
+    font-size: 24px;
+    margin-bottom: 20px;
+}
+
+/* Form labels and inputs */
+.input-wrap {
+    margin-bottom: 15px;
+}
+
+label {
+    display: block;
+    font-size: 16px;
+    font-weight: bold;
+    color: #000;
+    margin-bottom: 5px;
+}
+
+.event-detail {
+    font-size: 16px;
+    color: #848484;
+    background-color: #f1f1f1;
+    padding: 8px;
+    border-radius: 4px;
+    border: 1px solid #ddd;
+}
+
+input[type="date"],
+input[type="time"] {
+    font-size: 16px;
+    color: #272a2a;
+    background-color: #f1f1f1;
+    padding: 8px;
+    border-radius: 4px;
+    border: 1px solid #ddd;
+    width: 100%;
+}
+
+/* Radio buttons */
+.radio-group {
+    display: flex;
+    gap: 20px;
+}
+
+.radio-item label {
+    font-size: 16px;
+    color: #000;
+}
+
+/* Buttons */
+.button-wrap {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 20px;
+}
+
+button {
+    padding: 10px 15px;
+    margin: 0.1em;
+    background: rgb(10, 10, 10); 
+    color: #00BDD6FF;
+    border: none;
+    border-radius: 5px;
+    font-size: 1rem;
+    cursor: pointer;
+    margin-right: 45px;
+    position: relative;
+    overflow: hidden;
+    z-index: 1;
+    transition: color 1s ease;
+}
+
+button[type="button"] {
+    background: #00BDD6FF; 
+    color: white;
+}
+
+button[type="submit"] {
+    background: #00BDD6FF; 
+    color: white;
+}
+
+button[type="button"]:hover::after{
+    transform: skewX(-45deg) scale(1, 1);
+}
+
+button[type="button"]:hover{
+    color: #000;
+}
+
+button[type="submit"]:hover::after{
+    transform: skewX(-45deg) scale(1, 1);
+}
+
+button[type="submit"]:hover {
+    color:black;
+}
+
+/* Required Field Star */
+.required {
+    color: red;
+    font-weight: bold;
+}
+
+/* Note Styling */
+.note {
+    font-size: 14px;
+    color: #555;
+    margin-top: 10px;
+    font-style: italic;
+}
+
+/* Collaborator Section */
+.collaborator-payment-section {
+    margin-top: 30px;
+    width: 100%;
+    max-width: 1400px;
+    margin-left: auto;
+    margin-right: auto;
+    padding: 0 20px;
+    box-sizing: border-box;
+}
+
+.collaborator-box {
+    max-width: 600px;
+    margin: 0 auto;
+    padding: 20px;
+    background-color: #ffffff;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
+}
+
+.collaborator-box:hover {
+    transform: translateY(-2px);
+    border-color: #00BDD6FF;
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+}
+
+.collaborator-title {
+    font-size: 1.5rem;
+    color: #00BDD6FF;
+    margin-bottom: 10px;
+}
+
+.collaborator-text {
+    font-size: 1rem;
+    margin-bottom: 20px;
+    color: #555;
+}
+
+.collaborator-buttons {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+}
+
+.btn {
+    text-decoration: none;
+    padding: 10px 20px;
+    font-size: 1rem;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.btn-primary {
+    background-color: #00BDD6FF;
+    color: white;
+    border: none;
+}
+
+.btn-primary:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    color: black;
+}
+
+.btn-secondary {
+    background-color: #00BDD6FF;
+    color: white;
+    border: none;
+}
+
+.btn-secondary:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    color: black;
+}
+
+/* Responsive Design */
+@media screen and (max-width: 1200px) {
+    .main-layout {
+        grid-template-columns: 1fr;
+        gap: 20px;
+    }
+
+    .container {
+        order: -1;
+    }
+}
+
+@media screen and (max-width: 768px) {
+    .main-layout {
+        margin: 15px auto;
+        padding: 0 15px;
+    }
+
+    .event-details-box,
+    .chart-section {
+        padding: 15px;
+    }
+
+    .button-wrap {
+        flex-direction: column;
+        gap: 10px;
+    }
+
+    button {
+        width: 100%;
+        margin-right: 0;
+    }
+
+    .collaborator-buttons {
+        flex-direction: column;
+        gap: 10px;
+    }
+
+    .btn {
+        width: 100%;
+    }
+}

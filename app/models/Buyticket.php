@@ -5,7 +5,7 @@ class Buyticket {
     protected $table = 'buyticket';  // Database table name
     protected $allowedColumns = [
         'id', 'user_id', 'ticket_id', 'buyer_Fname', 'buyer_Lname', 'buyer_phoneNo',
-        'buyer_email', 'event_id', 'ticket_quantity', 'buy_time',
+        'buyer_email', 'event_id', 'ticket_quantity', 'buy_time','payment_status'
     ];
 
 
@@ -46,10 +46,18 @@ class Buyticket {
     }
 
     public function getAllPurchasedEvents($userId){
-        $query = "SELECT * from buyticket WHERE user_id=?";
+        $query = "SELECT * from buyticket WHERE payment_status = 'complete' AND user_id=?";
         return $this->query($query, [$userId]);
     }
 
+    public function changePaymentStatus($purchase_id){
+        $query = "UPDATE buyticket SET payment_status = 'complete' WHERE id = ?";
+        return $this->query($query, [$purchase_id]);
+    }
+    public function getticketbuyers($event_id){
+        $query = "SELECT DISTINCT user_id FROM buyticket WHERE event_id = ?";
+        $result = $this->query($query, [$event_id]);
+        return $result;
+    }
     
-
 }

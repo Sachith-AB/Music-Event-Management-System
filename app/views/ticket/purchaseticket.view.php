@@ -1,4 +1,6 @@
+<?php require_once '../app/helpers/load_notifications.php'; ?>
 <?php include ('../app/views/components/header.php'); ?>
+
 
 <!DOCTYPE html>
 <html lang="en">
@@ -7,18 +9,29 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Musicia - Ticket Purchase</title>
     <link rel="stylesheet" href="<?=ROOT?>/assets/css/ticket/ticketstyle.css">
+    <link rel="stylesheet" href="<?= ROOT ?>/assets/css/backbutton.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
 
     <!-- Include Font Awesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
 </head>
 
     <!-- Include Header -->
+    <?php include ('../app/views/components/loading.php'); ?>
     
     <!-- Main Content -->
     <main>
         <?php if (!empty($ticketdetails)): ?>
             <div class="event-details-container">
-                <h1 class="event-title"><span><?= htmlspecialchars($ticketdetails[0]->event_name) ?></span>: <?= htmlspecialchars($ticketdetails[0]->event_description) ?></h1>
+                
+                <h1 class="event-title">
+                    <div class="back-button-purchase">
+                        <!-- Include Back Button Component -->
+                        <?php include('../app/views/components/backbutton.view.php'); ?>
+                    </div>
+                    
+                    <span><?= htmlspecialchars($ticketdetails[0]->event_name) ?></span>: <?= htmlspecialchars($ticketdetails[0]->event_description) ?>
+                </h1>
                 <div class="event-info">
                     <div class="event-item">
                         <div class="icon">
@@ -44,7 +57,7 @@
 
             <div class="form-line"></div>
             <form id="purchaseForm" method="POST">
-            <!-- Contact section -->
+                <!-- Contact section -->
                 <div class="event-details-container">
                     <div class="contact-header">
                         <h2>Contact information</h2>
@@ -114,7 +127,7 @@
                 </script>
 
 
-            <!--summary section -->
+                <!--summary section -->
                 <div id="summaryModal" style="display: none;"> <!-- Initially hidden -->
                     <div class="summary-container">
                         <span class="close" onclick="closeModal()">&times;</span>
@@ -165,7 +178,7 @@
             <p>No events created yet.</p>
         <?php endif; ?>
         <!--other event section-->
-        <!-- <div class="event-details-container"> -->
+        <div class="event-details-container">
             <h2>Other events you may like</h2>
             <?php if (!empty($recentevents)): ?>
                 <div class="musicevent-events-container">
@@ -177,7 +190,8 @@
                                 <div class="musicevent-event-title"><?= htmlspecialchars($event->event_name) ?></div>
                                 <div class="musicevent-event-details">
                                     <div>📅 <?= htmlspecialchars(date("l, F d | h:i A", strtotime($event->start_time))) ?></div>
-                                    <div>📍 <?= htmlspecialchars($event->address) ?></div>
+                                   
+                                    <div class="two-line-ellipsis">📍 <?= htmlspecialchars($event->address) ?></div>
                                 </div>
                                 <!-- <div class="musicevent-event-price">From $80</div> -->
                             </div>
@@ -190,15 +204,15 @@
                 <p>No events created yet.</p>
             <?php endif; ?>
 
-        <!-- </div> -->
+        </div>
 
             
     </main>
 
-    <!-- Include Footer -->
-    <?php include ('../app/views/components/footer.php'); ?>
+
         
-    </div>
+    
 
 </body>
 </html>
+<?php include ('../app/views/components/footer.php'); ?>

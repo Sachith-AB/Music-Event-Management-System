@@ -1,0 +1,216 @@
+.event-header{
+
+    /* border: 2px solid black; */
+    height: 200px;
+    /* width: 80%; */
+    display: flex;
+    align-items: center;
+    background-color: #fff;
+    margin-top: 80px;
+    margin-left:  20px;
+    margin-right: 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.event-header-content {
+   
+    margin-left: 35px;
+}
+
+.event-header-content h1 {
+   
+    color:  #00BDD6;
+    font-size: 45px;
+    margin-bottom: 10px;
+    margin-top: 10px;
+}
+
+body {
+    font-family: Arial, sans-serif;
+}
+
+.date-venue {
+
+    display: flex;
+    align-items: center;
+    gap: 250px;
+    margin-left: 35px;
+    
+}
+
+.icon {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+.icon i {
+   
+    color: white;
+   
+}
+
+.icon h3 {
+    font-size: 20px;
+}
+
+
+/* .calender-icon, .venue-icon, .users-icon {
+    width:100%;
+    height:100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    color: white;
+} */
+
+.calender-icon {
+
+   padding: 8px;
+    background-color: blue;
+    border-radius: 50%;
+    font-size: 18px;
+    
+}
+
+.venue-icon {
+
+    
+    background-color: orange;
+    border-radius: 50%;
+    padding: 8px;
+    font-size: 18px;
+}
+
+.users-icon {
+
+    
+    background-color: rgb(177, 55, 177);
+    border-radius: 50%;
+    padding: 7px;
+    
+}
+
+
+.chart-container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 0px;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    margin-top: 30px;
+    margin-left: 20px;
+    margin-right: 20px;
+    padding: 30px;
+
+}
+
+.chart-container h3 {
+
+    color:  #00BDD6;
+    font-size: 30px;
+}
+
+.bar-chart {
+
+    width: 75%;
+    margin-left: 50px;
+    border: 1px solid #ddd; /* Optional: Add a border */
+    border-radius: 8px; /* Optional: Add rounded corners */
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1); /* Optional: Add a shadow */
+    padding: 10px;
+   
+    align-items: center;
+    justify-content: center;
+
+}
+
+
+
+
+  #barChart {
+    max-width: 60%;
+    max-height: 700px;
+    border: 2px solid black;
+
+  }
+
+  #pieChart {
+    max-width: 50%;
+    max-height: 500px;
+    margin-top: 0px;
+    border: 2px solid black;
+   
+  }
+
+  .pie-chart {
+    width: 60%;
+    margin-left: 200px;
+    border: 1px solid #ddd; /* Optional: Add a border */
+    border-radius: 8px; /* Optional: Add rounded corners */
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1); /* Optional: Add a shadow */
+    padding: 10px;
+   
+    align-items: center;
+    justify-content: center;
+    
+  }
+
+  .profit-container {
+    display: flex;
+    justify-content: center; /* Horizontally center */
+    gap: 5px;
+    align-items: center; /* Vertically center */
+    height: 150px; /* Set a height for the div */
+    width: 410px; /* Optional: Set a width for the div */
+    border: 1px solid #ddd; /* Optional: Add a border */
+    border-radius: 8px; /* Optional: Add rounded corners */
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1); /* Optional: Add a shadow */
+    margin-top: 40px;
+    margin-left: 510px;
+    color:  #00BDD6; 
+}
+
+.profit-container i {
+
+    /* height: 50px; */
+   /* background-color: black; */
+    padding: 5px;
+    height: 50px;
+    width: 40px;
+    font-size: 45px;
+    color:rgb(39, 201, 39);
+}
+
+.rating-container {
+
+    display: flex;
+    justify-content: center; /* Horizontally center */
+    gap:9px;
+    align-items: center;
+    border-radius: 8px; /* Optional: Add rounded corners */
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1); /* Optional: Add a shadow */
+    border: 1px solid #ddd; /* Optional: Add a border */
+    width: 23%;
+    margin-top: 40px;
+    height: 100px;
+    margin-left: 550px;
+    color:  #f12e58;;
+
+}
+
+.rating-container i {
+
+    font-size: 40px;
+    color: rgb(245, 210, 12);
+    /* background-color: black; */
+    height: 40px;
+}
+
+
+
+  
+

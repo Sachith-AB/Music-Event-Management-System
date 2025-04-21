@@ -1,4 +1,6 @@
+<?php require_once '../app/helpers/load_notifications.php'; ?>
 <?php include ('../app/views/components/header.php'); ?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -9,6 +11,7 @@
     <link rel="stylesheet" href="<?=ROOT?>/assets/css/ticket/popupmodal-style.css">
 </head>
 <body>
+<?php include ('../app/views/components/loading.php'); ?>
     <!-- Include Header -->
     <?php include ('../app/views/components/Header.php'); ?>
 
@@ -75,4 +78,4 @@
             <?php endif; ?>
     </div>
 </body>
- 
+<?php include ('../app/views/components/footer.php'); ?>

@@ -18,7 +18,7 @@
             <li><a href="event-planner-myevents" class="menu-link"><i class="fas fa-list"></i> My Events </a></li>
             <li><a href="event-planner-payment" class="menu-link"><i class="fas fa-wallet"></i> Payment </a></li>
             <li><a href="event-planner-messages" class="menu-link"><i class="fas fa-comment-dots"></i> Messages </a></li>
-            <li><a href="event-planner-profile" class="menu-link"><i class="fas fa-plus-circle"></i> Create A Event </a></li>
+            <li><a href="create-event" class="menu-link"><i class="fas fa-plus-circle"></i> Create A Event </a></li>
         </ul>
     </aside>
     <script src="<?=ROOT?>/assets/js/request/singerdropdown.js"></script>

@@ -44,6 +44,8 @@ body {
     box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
     padding: 30px;
     margin-bottom: 40px;
+    transform: translateY(-2px);
+    border: 1px solid #00BDD6FF;
 }
 
 /* Header */
@@ -181,3 +183,103 @@ body {
 .button-wrap button[type="submit"]:hover {
     color:black;
 }
+
+
+
+
+.radio-group {
+    display: flex;
+    gap: 20px; 
+    align-items: center;
+    margin-top: 8px;
+}
+
+.radio-item {
+    display: flex;
+    align-items: center;
+    gap: 5px; 
+}
+
+.radio-group input[type="radio"] {
+    margin: 0;
+    accent-color: #00BDD6FF; 
+}
+
+.radio-group label {
+    font-size: 1em;
+    color: #333;
+    cursor: pointer;
+    font-weight: normal; 
+}
+
+/* Responsive Styles */
+@media screen and (max-width: 768px) {
+    .container {
+        margin-top: 40px;
+        padding: 0 15px;
+    }
+
+    .popup {
+        padding: 20px;
+        margin-bottom: 30px;
+    }
+
+    .head1 {
+        font-size: 1.5em;
+    }
+
+    .input-wrap input[type="text"],
+    .input-wrap input[type="number"],
+    .input-wrap input[type="date"],
+    .input-wrap input[type="time"] {
+        padding: 8px;
+        font-size: 0.9em;
+    }
+
+    .button-wrap {
+        flex-direction: column;
+        gap: 10px;
+    }
+
+    .button-wrap button {
+        width: 100%;
+        margin-right: 0;
+    }
+
+    .search-container {
+        flex-direction: column;
+        gap: 10px;
+    }
+
+    .search-button {
+        width: 100%;
+    }
+
+    #map {
+        height: 300px;
+    }
+}
+
+@media screen and (max-width: 480px) {
+    .container {
+        margin-top: 30px;
+    }
+
+    .popup {
+        padding: 15px;
+    }
+
+    .head1 {
+        font-size: 1.3em;
+    }
+
+    .radio-group {
+        flex-direction: column;
+        gap: 10px;
+    }
+
+    #map {
+        height: 250px;
+    }
+}
+

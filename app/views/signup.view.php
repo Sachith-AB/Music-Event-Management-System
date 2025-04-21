@@ -2,11 +2,12 @@
 <html lang="en">
 
 <head>
-  <!-- <meta http-equiv="refresh" content="1">  -->
+    <!-- <meta http-equiv="refresh" content="1">  -->
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Musicia Signup</title>
     <link rel="stylesheet" href="<?= ROOT ?>/assets/css/signin-up.css">
+    <link rel="icon" type="image/png" href="<?=ROOT?>/assets/images/logo/logo.png">
 
 
 
@@ -17,7 +18,6 @@
 </head>
 
 <body>
-<?php include ('../app/views/components/loading.php'); ?>
 <?php 
 
     //Get the pass data from URL for sign in part

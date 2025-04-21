@@ -10,12 +10,15 @@ $address = $_SESSION['event_data']['address'] ?? '';
 $eventDate = $_SESSION['event_data']['eventDate'] ?? '';
 $start_time = $_SESSION['event_data']['start_time'] ?? '';
 $end_time = $_SESSION['event_data']['end_time'] ?? '';
+$pricing = $_SESSION['event_data']['pricing'] ?? '';
+$type = $_SESSION['event_data']['type'] ?? '';
 
 // Track last visit time
 $last_visit = $_SESSION['last_visit'] ?? "This is my first visit";
 $_SESSION['last_visit'] = date('Y-m-d H:i:s');
 ?>
-<?php include ('../app/views/components/CreateEventHeader.php'); ?>
+<?php require_once '../app/helpers/load_notifications.php'; ?>
+<?php include ('../app/views/components/header.php'); ?>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -24,6 +27,7 @@ $_SESSION['last_visit'] = date('Y-m-d H:i:s');
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Review Event</title>
     <link rel="stylesheet" href="<?= ROOT ?>/assets/css/eventUpdate.css">
+    <link rel="stylesheet" href="<?= ROOT ?>/assets/css/create-event.css">
     <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
 </head>
 <body>
@@ -31,7 +35,7 @@ $_SESSION['last_visit'] = date('Y-m-d H:i:s');
         $flag = htmlspecialchars($_GET['flag'] ?? 0);
         $error = htmlspecialchars($_GET['msg'] ?? '');
     ?>
-
+    <?php include ('../app/views/components/loading.php'); ?>
     <div class="container">
         <div class = "popup">
             <div class="event-content">
@@ -41,7 +45,7 @@ $_SESSION['last_visit'] = date('Y-m-d H:i:s');
 
                 <!-- Event Details Form -->
                 <form method="POST" class="form">
-
+               
                     <div class="input-wrap">
                         <label for = "event_name">Event Name</label>
                         <input name="event_name" type="text" placeholder="EventName" value="<?php echo $data['event_name'] ?>">
@@ -64,10 +68,11 @@ $_SESSION['last_visit'] = date('Y-m-d H:i:s');
                             <button type="button" class="search-button" id="search-button">Search</button>
                         </div>
                     </div>
+               
 
                     <div id="map" class="map" style="height: 400px;"></div>
 
-                    
+                    <br>
                     <div class="input-wrap">
                         <label for="eventDate">Event Date</label>
                         <input name="eventDate" id="event-date" type="date" value="<?php echo $data ['eventDate'] ?>" required>
@@ -83,6 +88,35 @@ $_SESSION['last_visit'] = date('Y-m-d H:i:s');
                         <input name="endtime" id="end-time" type="time" value="<?php echo date('H:i', strtotime($data['end_time'])); ?>">
                     </div>
 
+                    <div class="input-wrap">
+                        <label>Pricing</label>
+                        <div class="radio-group">
+                            <div class="radio-item">
+                                <input type="radio" id="free" name="pricing" value="free" <?php echo $data['pricing'] == 'free' ? 'checked' : ''; ?>>
+                                <label for="free">Free</label>
+                            </div>
+                            <div class="radio-item">
+                                <input type="radio" id="paid" name="pricing" value="paid" <?php echo $data['pricing'] == 'paid' ? 'checked' : ''; ?>>
+                                <label for="paid">Paid</label>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="input-wrap">
+                        <label>Type</label>
+                        <div class="radio-group">
+                            <div class="radio-item">
+                                <input type="radio" id="indoor" name="type" value="indoor" <?php echo $data['type'] == 'indoor' ? 'checked' : ''; ?>>
+                                <label for="free">Indoor</label>
+                            </div>
+                            <div class="radio-item">
+                                <input type="radio" id="outdoor" name="type" value="outdoor" <?php echo $data['type'] == 'outdoor' ? 'checked' : ''; ?>>
+                                <label for="outdoor">Outoor</label>
+                            </div>
+
+                        </div>
+                    </div>
+
                     <input type="hidden" id="hidden-start-time" name="start_time">
                     <input type="hidden" id="hidden-end-time" name="end_time">
                     <script src="<?= ROOT ?>/assets/js/event/createEvent.js"></script>
@@ -90,9 +124,33 @@ $_SESSION['last_visit'] = date('Y-m-d H:i:s');
                     <input type="hidden" name="event_id" value="<?php echo $data['id'] ?>">
 
                     <!-- Action Buttons -->
-                    <div class="button-wrap">
+                    
+
+                    <!-- In the form section for images -->
+                    <div class="form-group">
+
+                        <?php if(isset($data['cover_images']) && !empty($data['cover_images'])): ?>
+                            <div class="existing-images">
+                                <h4>Cover Images</h4>
+                                <div class="image-grid">
+                                    <?php 
+                                    $images = json_decode($data['cover_images'], true) ?: [];
+                                    foreach($images as $index => $image): 
+                                    ?>
+                                        <div class="image-item">
+                                            <img src="<?=ROOT?>/assets/images/events/<?=$image?>" alt="Event Image <?=$index+1?>">
+                                           
+                                        </div>
+                                    <?php endforeach; ?>
+                                </div>
+                                
+                            </div>
+                        <?php endif; ?>
+                        
+                        <div class="button-wrap">
                         <button type="button" onclick="goBack()">Cancel</button>
                         <button type="submit" name="update">Done</button>
+                    </div>
                     </div>
                 </form>
 
@@ -214,4 +272,4 @@ $_SESSION['last_visit'] = date('Y-m-d H:i:s');
 
 </body>
 </html>
-
+<?php include ('../app/views/components/footer.php'); ?>

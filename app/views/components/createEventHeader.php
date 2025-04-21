@@ -4,12 +4,12 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Musicia</title>
-    <link rel="stylesheet" href="<?=ROOT?>/assets/css/landing.css">
+    <link rel="stylesheet" href="<?=ROOT?>/assets/css/header.css">
 </head>
 <body>
 <header>
-    <div class="logo">
-        <img src = "logo.png" alt = "musicia"> 
+    <div class="logo-image">
+        <img src = "<?=ROOT?>/assets/images/logo/logo.png" alt = "musicia" onclick="goToHome()"> 
     </div>
     <nav>
         <ul>

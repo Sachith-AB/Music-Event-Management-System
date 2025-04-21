@@ -22,6 +22,7 @@
         }
 
     </script>
+
 </head>
 <body>
     <!-- Include Header -->
@@ -43,54 +44,49 @@
                     <table class="modern-table">
                         <thead>
                             <tr>
-                                <th>ID</th>
                                 <th>Name</th>
                                 <th>Email</th>
                                 <th>Contact</th>
                                 <th>Actions</th>
                             </tr>
                         </thead>
+
                         <tbody>
-                            <tr>
-                                <td>1</td>
-                                <td>John Doe</td>
-                                <td>johndoe@example.com</td>
-                                <td>0760000000</td>
-                                <td>
-                                    <button class="action-btn view">View</button>
-                                    <button class="action-btn delete">Delete</button>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>2</td>
-                                <td>Jane Smith</td>
-                                <td>janesmith@example.com</td>
-                                <td>0760000000</td>
-                                <td>
-                                    <button class="action-btn view">View</button>
-                                    <button class="action-btn delete">Delete</button>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>3</td>
-                                <td>Jane Smith</td>
-                                <td>janesmith@example.com</td>
-                                <td>0760000000</td>
-                                <td>
-                                    <button class="action-btn view">View</button>
-                                    <button class="action-btn delete">Delete</button>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>4</td>
-                                <td>Jane Smith</td>
-                                <td>janesmith@example.com</td>
-                                <td>0760000000</td>
-                                <td>
-                                    <button class="action-btn view">View</button>
-                                    <button class="action-btn delete">Delete</button>
-                                </td>
-                            </tr>
+                            <?php if(!empty($data)): ?>
+                                
+                                <?php foreach($data as $singer): ?>
+
+                                    <?php if($singer->user_role == "singer"): ?>
+
+                                        <tr>
+                                            
+                                            <td><?php echo $singer->user_name ?></td>
+                                            <td><?php echo $singer->email ?></td>
+                                            <td><?php echo $singer->contact ?></td>
+                                            <td>
+                                                <div class="view-delete-buttons">
+                                                    <button class="action-btn view"><a href="<?=ROOT?>/collaborator-viewprofile?id=<?php echo $singer->user_id?>">View</a></button>
+
+                                                    <form  method="post">
+                                                        <input type = 'hidden' name = 'user_id' value = "<?php echo $singer->user_id ?>" >
+                                                        <input type = 'hidden' name = 'is_delete' value = "1" >
+                                                        <button class="action-btn delete" name = 'delete' type = 'submit' >Delete</button>
+                                                        
+                                                    </form>
+                                                </div>
+                                                
+                                                
+                                            </td>
+                                        </tr>
+
+                                    <?php endif; ?>
+
+                                <?php endforeach; ?>
+
+                            <?php endif; ?>
+                                
+                          
+                            
                         </tbody>
                     </table>
                 </div>
@@ -104,57 +100,55 @@
                     onclick="toggleSection('collaborator-content-2', 'toggle-icon-2')"></i>
                 </div>
                 <div id="collaborator-content-2" class="section-content">
+
                     <table class="modern-table">
+
                         <thead>
                             <tr>
-                                <th>ID</th>
+                                
                                 <th>Name</th>
                                 <th>Email</th>
                                 <th>Contact</th>
                                 <th>Actions</th>
                             </tr>
                         </thead>
+
                         <tbody>
-                            <tr>
-                                <td>1</td>
-                                <td>John Doe</td>
-                                <td>johndoe@example.com</td>
-                                <td>0760000000</td>
-                                <td>
-                                    <button class="action-btn view">View</button>
-                                    <button class="action-btn delete">Delete</button>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>2</td>
-                                <td>Jane Smith</td>
-                                <td>janesmith@example.com</td>
-                                <td>0760000000</td>
-                                <td>
-                                    <button class="action-btn view">View</button>
-                                    <button class="action-btn delete">Delete</button>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>3</td>
-                                <td>Jane Smith</td>
-                                <td>janesmith@example.com</td>
-                                <td>0760000000</td>
-                                <td>
-                                    <button class="action-btn view">View</button>
-                                    <button class="action-btn delete">Delete</button>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>4</td>
-                                <td>Jane Smith</td>
-                                <td>janesmith@example.com</td>
-                                <td>0760000000</td>
-                                <td>
-                                    <button class="action-btn view">View</button>
-                                    <button class="action-btn delete">Delete</button>
-                                </td>
-                            </tr>
+
+                                <?php if(!empty($data)): ?>
+
+                                    <?php foreach($data as $band): ?>
+                                        
+                                        <?php if($band->user_role == "band"): ?>
+
+                                            <tr>
+                                                
+                                                <td><?php echo $band->user_name ?></td>
+                                                <td><?php echo $band->email ?></td>
+                                                <td><?php echo $band->contact ?></td>
+                                                <td>
+                                                    <div class="view-delete-buttons">
+                                                        <button class="action-btn view"><a href="<?=ROOT?>/collaborator-viewprofile?id=<?php echo $band->user_id?>">View</a></button>
+                                                        
+                                                        <form  method="post">
+                                                            <div class="view-delete-buttons">
+                                                                <input type = 'hidden' name = 'user_id' value = "<?php echo $band->user_id ?>" >
+                                                                <input type = 'hidden' name = 'is_delete' value = "1" >
+                                                                <button class="action-btn delete" name = 'delete' type = 'submit' >Delete</button>
+                                                            </div>    
+                                                        </form>
+                                                    </div>
+                                                </td>
+                                            </tr>
+
+                                        <?php endif; ?>
+                                            
+                                    <?php endforeach; ?>
+
+                                <?php endif; ?>
+                            
+                        
+                         
                         </tbody>
                     </table>
                 </div>
@@ -170,54 +164,49 @@
                     <table class="modern-table">
                         <thead>
                             <tr>
-                                <th>ID</th>
+                                
                                 <th>Name</th>
                                 <th>Email</th>
                                 <th>Contact</th>
                                 <th>Actions</th>
                             </tr>
                         </thead>
+
                         <tbody>
-                            <tr>
-                                <td>1</td>
-                                <td>John Doe</td>
-                                <td>johndoe@example.com</td>
-                                <td>0760000000</td>
-                                <td>
-                                    <button class="action-btn view">View</button>
-                                    <button class="action-btn delete">Delete</button>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>2</td>
-                                <td>Jane Smith</td>
-                                <td>janesmith@example.com</td>
-                                <td>0760000000</td>
-                                <td>
-                                    <button class="action-btn view">View</button>
-                                    <button class="action-btn delete">Delete</button>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>3</td>
-                                <td>Jane Smith</td>
-                                <td>janesmith@example.com</td>
-                                <td>0760000000</td>
-                                <td>
-                                    <button class="action-btn view">View</button>
-                                    <button class="action-btn delete">Delete</button>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>4</td>
-                                <td>Jane Smith</td>
-                                <td>janesmith@example.com</td>
-                                <td>0760000000</td>
-                                <td>
-                                    <button class="action-btn view">View</button>
-                                    <button class="action-btn delete">Delete</button>
-                                </td>
-                            </tr>
+
+                                <?php if(!empty($data)): ?>
+
+                                    <?php foreach($data as $sound): ?>
+                                        
+                                        <?php if($sound->user_role == "sound"): ?>
+
+                                            <tr>
+                                                
+                                                <td><?php echo $sound->user_name ?></td>
+                                                <td><?php echo $sound->email ?></td>
+                                                <td><?php echo $sound->contact ?></td>
+                                                <td>
+                                                    <div class="view-delete-buttons">
+                                                        <button class="action-btn view"><a href="<?=ROOT?>/collaborator-viewprofile?id=<?php echo $sound->user_id?>">View</a></button>
+                                                        
+                                                        <form  method="post">
+                                                            <input type = 'hidden' name = 'user_id' value = "<?php echo $sound->user_id ?>" >
+                                                            <input type = 'hidden' name = 'is_delete' value = "1" >
+                                                            <button class="action-btn delete" name = 'delete' type = 'submit' >Delete</button>
+                                                            
+                                                        </form>
+                                                    </div>
+                                                </td>
+                                            </tr>
+
+                                        <?php endif; ?>
+
+                                    <?php endforeach; ?>
+
+                                <?php endif; ?>
+                                
+                        
+                          
                         </tbody>
                     </table>
                 </div>
@@ -233,54 +222,49 @@
                     <table class="modern-table">
                         <thead>
                             <tr>
-                                <th>ID</th>
+                                
                                 <th>Name</th>
                                 <th>Email</th>
                                 <th>Contact</th>
                                 <th>Actions</th>
                             </tr>
                         </thead>
+
                         <tbody>
-                            <tr>
-                                <td>1</td>
-                                <td>John Doe</td>
-                                <td>johndoe@example.com</td>
-                                <td>0760000000</td>
-                                <td>
-                                    <button class="action-btn view">View</button>
-                                    <button class="action-btn delete">Delete</button>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>2</td>
-                                <td>Jane Smith</td>
-                                <td>janesmith@example.com</td>
-                                <td>0760000000</td>
-                                <td>
-                                    <button class="action-btn view">View</button>
-                                    <button class="action-btn delete">Delete</button>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>3</td>
-                                <td>Jane Smith</td>
-                                <td>janesmith@example.com</td>
-                                <td>0760000000</td>
-                                <td>
-                                    <button class="action-btn view">View</button>
-                                    <button class="action-btn delete">Delete</button>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>4</td>
-                                <td>Jane Smith</td>
-                                <td>janesmith@example.com</td>
-                                <td>0760000000</td>
-                                <td>
-                                    <button class="action-btn view">View</button>
-                                    <button class="action-btn delete">Delete</button>
-                                </td>
-                            </tr>
+
+                                <?php if(!empty($data)): ?>
+
+                                    <?php foreach($data as $decorator): ?>
+            
+                                        <?php if($decorator->user_role == "decorator"): ?>
+
+                                            <tr>
+                                               
+                                                <td><?php echo $decorator->user_name ?></td>
+                                                <td><?php echo $decorator->email ?></td>
+                                                <td><?php echo $decorator->contact ?></td>
+                                                <td>
+                                                    <div class="view-delete-buttons">
+                                                        <button class="action-btn view"><a href="<?=ROOT?>/collaborator-viewprofile?id=<?php echo $decorator->user_id?>">View</a></button>
+
+                                                        <form  method="post">
+                                                            <input type = 'hidden' name = 'user_id' value = "<?php echo $decorator->user_id ?>" >
+                                                            <input type = 'hidden' name = 'is_delete' value = "1" >
+                                                            <button class="action-btn delete" name = 'delete' type = 'submit' >Delete</button>
+                                                            
+                                                        </form>
+                                                    </div>
+                                                </td>
+                                            </tr>
+
+                                        <?php endif; ?>
+
+                                    <?php endforeach; ?>
+
+                                <?php endif; ?>
+                                
+                         
+                            
                         </tbody>
                     </table>
                 </div>
@@ -297,55 +281,48 @@
                     <table class="modern-table">
                         <thead>
                             <tr>
-                                <th>ID</th>
+                                
                                 <th>Name</th>
                                 <th>Email</th>
                                 <th>Contact</th>
                                 <th>Actions</th>
                             </tr>
                         </thead>
+
                         <tbody>
-                            <tr>
-                                <td>1</td>
-                                <td>John Doe</td>
-                                <td>johndoe@example.com</td>
-                                <td>0760000000</td>
-                                <td>
-                                    <button class="action-btn view">View</button>
-                                    <button class="action-btn delete">Delete</button>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>2</td>
-                                <td>Jane Smith</td>
-                                <td>janesmith@example.com</td>
-                                <td>0760000000</td>
-                                <td>
-                                    <button class="action-btn view">View</button>
-                                    <button class="action-btn delete">Delete</button>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>3</td>
-                                <td>Jane Smith</td>
-                                <td>janesmith@example.com</td>
-                                <td>0760000000</td>
-                                <td>
-                                    <button class="action-btn view">View</button>
-                                    <button class="action-btn delete">Delete</button>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>4</td>
-                                <td>Jane Smith</td>
-                                <td>janesmith@example.com</td>
-                                <td>0760000000</td>
-                                <td>
-                                    <button class="action-btn view">View</button>
-                                    <button class="action-btn delete">Delete</button>
-                                </td>
-                            </tr>
+
+                            <?php if(!empty($data)): ?>
+
+                                <?php foreach($data as $stage): ?>
+
+                                    <?php if($stage->user_role == "stage"): ?>
+
+                                        <tr>
+                                            
+                                            <td><?php echo $stage->user_name ?></td>
+                                            <td><?php echo $stage->email ?></td>
+                                            <td><?php echo $stage->contact ?></td>
+                                            <td>
+                                                <div class="view-delete-buttons">
+                                                    <button class="action-btn view"><a href="<?=ROOT?>/collaborator-viewprofile?id=<?php echo $stage->user_id?>">View</a></button>
+                                                    <form  method="post">
+                                                        <input type = 'hidden' name = 'user_id' value = "<?php echo $stage->user_id ?>" >
+                                                        <input type = 'hidden' name = 'is_delete' value = "1" >
+                                                        <button class="action-btn delete" name = 'delete' type = 'submit' >Delete</button>
+                                                        
+                                                    </form>
+                                                </div>
+                                            </td>
+                                        </tr>
+
+                                    <?php endif; ?>
+
+                                <?php endforeach; ?>
+
+                            <?php endif; ?>
+                         
                         </tbody>
+
                     </table>
                 </div>
             </div>
@@ -361,55 +338,50 @@
                     <table class="modern-table">
                         <thead>
                             <tr>
-                                <th>ID</th>
+                                
                                 <th>Name</th>
                                 <th>Email</th>
                                 <th>Contact</th>
                                 <th>Actions</th>
                             </tr>
                         </thead>
+
                         <tbody>
-                            <tr>
-                                <td>1</td>
-                                <td>John Doe</td>
-                                <td>johndoe@example.com</td>
-                                <td>0760000000</td>
-                                <td>
-                                    <button class="action-btn view">View</button>
-                                    <button class="action-btn delete">Delete</button>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>2</td>
-                                <td>Jane Smith</td>
-                                <td>janesmith@example.com</td>
-                                <td>0760000000</td>
-                                <td>
-                                    <button class="action-btn view">View</button>
-                                    <button class="action-btn delete">Delete</button>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>3</td>
-                                <td>Jane Smith</td>
-                                <td>janesmith@example.com</td>
-                                <td>0760000000</td>
-                                <td>
-                                    <button class="action-btn view">View</button>
-                                    <button class="action-btn delete">Delete</button>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>4</td>
-                                <td>Jane Smith</td>
-                                <td>janesmith@example.com</td>
-                                <td>0760000000</td>
-                                <td>
-                                    <button class="action-btn view">View</button>
-                                    <button class="action-btn delete">Delete</button>
-                                </td>
-                            </tr>
+
+                            <?php if(!empty($data)): ?>
+
+                                <?php foreach($data as $announcer): ?>
+
+                                    <?php if($announcer->user_role == "announcer"): ?>
+
+                                        <tr>
+                                            
+                                            <td><?php echo $announcer->user_name ?></td>
+                                            <td><?php echo $announcer->email ?></td>
+                                            <td><?php echo $announcer->contact ?></td>
+                                            <td>
+                                                <div class="view-delete-buttons">
+                                                    <button class="action-btn view"><a href="<?=ROOT?>/collaborator-viewprofile?id=<?php echo $announcer->user_id?>">View</a></button>
+
+                                                    <form  method="post">
+                                                        <input type = 'hidden' name = 'user_id' value = "<?php echo $announcer->user_id ?>" >
+                                                        <input type = 'hidden' name = 'is_delete' value = "1" >
+                                                        <button class="action-btn delete" name = 'delete' type = 'submit' >Delete</button>
+                                                        
+                                                    </form>
+                                                </div>
+                                            </td>
+                                        </tr>
+
+                                    <?php endif; ?>
+
+                                <?php endforeach; ?>
+
+                            <?php endif; ?>
+                           
+                           
                         </tbody>
+
                     </table>
                 </div>
             </div>

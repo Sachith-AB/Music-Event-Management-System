@@ -18,18 +18,17 @@ class Signin {
     }
 
     private function  userLogin($user){
-        //echo 'check';
 
         if($user->signInData($_POST)){
             
-            //echo 'check';
             $arr['email'] = $_POST['email'];
 
             $row = $user->first($arr);
-            //show($row);
-            if($row){
-
-                //echo 'check';
+            
+            // Proceed if $row exists and is_delete is '0'
+            if ($row && $row->is_delete == '0')
+            {
+                //row->is_delete
                 $checkpassword = password_verify($_POST['password'], $row->password);
 
                 if($checkpassword){
@@ -40,13 +39,22 @@ class Signin {
                     $_SESSION['USER'] = $row;
                     $id = $row->id;
 
-                    redirect("home");
+                    //ADMIN CHECK TO REDIRECT
+                    if($row->is_admin == 1)
+                    {
+                        redirect("admin-dashboard");
+                    }
 
+                    else 
+                    {
+                        redirect("home");
+                    }
+
+                    
                     // Set the session start time
                     $_SESSION['LAST_ACTIVITY'] = time(); // Store the current time
 
                 }else{
-                    //echo "error";
                     $error = "Password Invalid";
 
                     $passData = 'email=' . $_POST['email'] . '&pass=' . $_POST['password'];
@@ -54,9 +62,7 @@ class Signin {
 
                     unset($_POST['signIn']);
                     redirect("signin?$errors&$passData");
-                    //echo 'check';
                     exit;
-                    //return $error; 
                 }
             }else{
 
@@ -67,13 +73,10 @@ class Signin {
 
                 unset($_POST['signIn']);
                     redirect("signin?$errors&$passData");
-                    //echo 'check';
                     exit;
-                    //return $error;
 
             }
         }else{
-                //show($user->errors);
                 return $user->errors;
         }
     }

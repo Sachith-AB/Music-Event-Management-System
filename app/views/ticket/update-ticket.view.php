@@ -1,4 +1,6 @@
+<?php require_once '../app/helpers/load_notifications.php'; ?>
 <?php include ('../app/views/components/header.php'); ?>
+
 
 <?php
 if (session_status() == PHP_SESSION_NONE) {
@@ -23,7 +25,8 @@ $_SESSION['last_visit'] = date('Y-m-d H:i:s');
     <link rel="stylesheet" href="<?=ROOT?>/assets/css/ticket/createticket.css">
 </head>
 <body>
-    
+<?php include ('../app/views/components/loading.php'); ?>
+
     <div class="container">
 
             <!--create slide bar -->
@@ -97,9 +100,9 @@ $_SESSION['last_visit'] = date('Y-m-d H:i:s');
                                 <?php else: ?>
                                     <p>No restrictions defined. Add new restrictions below:</p>
                                 <?php endif; ?>
-                                <button type="button" id="add-opportunity" class="review-button">Add More Opportunities</button>
+                                <button type="button" id="add-opportunity" name="add-opportunity" class="review-button">Add More Opportunities</button>
                             </div>
-                            <button type="submit" class="review-button" name="submit">Review</button>
+                            <button type="submit" class="review-button" name="update">Review</button>
                         </div>
                     </div>
 
@@ -114,3 +117,4 @@ $_SESSION['last_visit'] = date('Y-m-d H:i:s');
     
 </body>
 </html>
+<?php include ('../app/views/components/footer.php'); ?>

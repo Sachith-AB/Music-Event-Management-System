@@ -8,6 +8,7 @@
     }
 }
 
+
 .events-header {
     animation: apper linear;
     animation-timeline: view();
@@ -21,100 +22,7 @@ body, html {
     height: 100%;
     overflow-x: hidden;
 }
-/*header*/
-header {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    z-index: 1000;
-    background-color: white;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    padding: 10px 20px;
-    font-size: 14px;
-    
-}
 
-.logo-image img {
-    max-height: 50px; 
-    cursor: pointer;
-}
-
-nav {
-    flex-grow: 1;
-}
-
-nav ul {
-    list-style: none;
-    padding: 0;
-    margin: 0;
-    display: flex;
-    justify-content: center;
-    width: 100%;
-}
-
-nav ul li {
-    margin-right: 20px;
-    position: relative;
-    font-size: medium;
-}
-
-nav ul li a {
-    text-decoration: none;
-    color: #000;
-    font-size: 16px;
-    padding: 5px 10px;
-    transition: color 0.3s;
-    display: block;
-}
-
-nav ul li a:hover {
-    color: #00BDD6FF;
-    cursor: pointer;
-}
-
-nav ul li a::after {
-    content: '';
-    display: block;
-    height: 2px;
-    width: 0%;
-    background-color: #00BDD6FF;
-    transition: width 0.3s ease;
-    position: absolute;
-    left: 0;
-    bottom: -2px;
-}
-
-nav ul li a:hover::after,
-nav ul li a:active::after {
-    width: 100%;
-}
-
-nav ul li a.active{
-    color: #00BDD6FF;
-}
-
-nav ul li.sign-up {
-    padding: 8px 16px;
-    background-color: #00BDD6FF;
-    border-radius: 5px;
-    color: white;
-    text-decoration: none;
-}
-
-.image {
-
-    height: 50px;
-    width: 50px;
-    border-radius: 70px;
-    cursor: pointer;
-}
-
-.sign-up{
-    cursor: pointer;
-}
 
 /* Style for the popup background overlay */
 .modal-overlay {

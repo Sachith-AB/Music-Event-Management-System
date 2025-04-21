@@ -18,7 +18,6 @@
             <table class="modern-table">
                 <thead>
                     <tr>
-                        <th>ID</th>
                         <th>Name</th>
                         <th>Email</th>
                         <th>Contact</th>
@@ -26,76 +25,37 @@
                     </tr>
                 </thead>
                 <tbody>
-                    <tr>
-                        <td>1</td>
-                        <td>John Doe</td>
-                        <td>johndoe@example.com</td>
-                        <td>0760000000</td>
-                        <td>
-                            <button class="action-btn view">View</button>
-                            <button class="action-btn delete">Delete</button>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>2</td>
-                        <td>Jane Smith</td>
-                        <td>janesmith@example.com</td>
-                        <td>0760000000</td>
-                        <td>
-                            <button class="action-btn view">View</button>
-                            <button class="action-btn delete">Delete</button>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>3</td>
-                        <td>Jane Smith</td>
-                        <td>janesmith@example.com</td>
-                        <td>0760000000</td>
-                        <td>
-                            <button class="action-btn view">View</button>
-                            <button class="action-btn delete">Delete</button>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>4</td>
-                        <td>Jane Smith</td>
-                        <td>janesmith@example.com</td>
-                        <td>0760000000</td>
-                        <td>
-                            <button class="action-btn view">View</button>
-                            <button class="action-btn delete">Delete</button>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>5</td>
-                        <td>Jane Smith</td>
-                        <td>janesmith@example.com</td>
-                        <td>0760000000</td>
-                        <td>
-                            <button class="action-btn view">View</button>
-                            <button class="action-btn delete">Delete</button>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>6</td>
-                        <td>Jane Smith</td>
-                        <td>janesmith@example.com</td>
-                        <td>0760000000</td>
-                        <td>
-                            <button class="action-btn view">View</button>
-                            <button class="action-btn delete">Delete</button>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>7</td>
-                        <td>Jane Smith</td>
-                        <td>janesmith@example.com</td>
-                        <td>0760000000</td>
-                        <td>
-                            <button class="action-btn view">View</button>
-                            <button class="action-btn delete">Delete</button>
-                        </td>
-                    </tr>
+
+                    <?php if(!empty($data)): ?>
+
+                        <?php foreach($data as $holder): ?>
+                            <?php if($holder->role == "holder"): ?>
+
+                                <tr>
+                                    <td><?php echo $holder->name ?></td>
+                                    <td><?php echo $holder->email ?></td>
+                                    <td><?php echo $holder->contact ?></td>
+
+                                    <td>
+                                        <div class="view-delete-buttons">
+
+                                            <button class="action-btn view">View</button>
+
+                                            <form  method="post">
+                                                <input type = 'hidden' name = 'user_id' value = "<?php echo $holder->id ?>" >
+                                                <input type = 'hidden' name = 'is_delete' value = "1" >
+                                                <button class="action-btn delete" name = 'delete' type = 'submit' >Delete</button>    
+                                            </form>
+                                        </div>
+                                    </td>
+
+                                </tr>
+
+                            <?php endif; ?>
+                        <?php endforeach; ?>
+
+                    <?php endif; ?>
+               
                 </tbody>
             </table>
         </div>
