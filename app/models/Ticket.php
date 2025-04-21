@@ -128,6 +128,7 @@ class Ticket {
                     tickets.ticket_type AS ticket_type, 
                     tickets.price AS ticket_price, 
                     tickets.quantity AS ticket_quantity,
+                    tickets.discount AS discount,
                     events.id AS event_id, 
                     events.event_name AS event_name, 
                     events.description AS event_description,
