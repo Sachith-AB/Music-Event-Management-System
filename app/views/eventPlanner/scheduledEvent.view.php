@@ -136,7 +136,7 @@
                             <td><?php echo date($ticket->sale_strt_date); ?></td>
                             <td><?php echo date($ticket->sale_end_date); ?></td>
                             <td>
-                                <button class="btn btn-secondary">Edit or Apply Discount</button>
+                                <button class="btn btn-secondary" onclick="gotoeditticket(<?= $ticket->id ?>)">Edit or Apply Discount</button>
                             </td>
                         </tr>
                     <?php endforeach; ?>
@@ -163,6 +163,9 @@
     </section>
 
     <script>
+        function gotoeditticket(ticketId){
+            window.location.href = "edit-scheduled-event-ticket?ticket_id="+ticketId;
+        }
         function goBack() {
             window.location.href = "event-planner-viewEvent?id=<?php echo $data['id']?>";
             window.history.back();
