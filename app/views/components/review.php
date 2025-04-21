@@ -26,7 +26,7 @@
     </div>
 
     <!-- Comment Box -->
-    <textarea id="review-comment" name="comment" placeholder="Write your comments here..."></textarea>
+    <textarea id="review-comment" required name="comment" placeholder="Write your comments here..."></textarea>
 
     <!-- Submit Button -->
     <button id="submit-review" name="review" type="submit">Submit Review</button>

@@ -14,30 +14,30 @@
     <div class="container">
         <!-- Event Details -->
         <div class="section">
-        
         <?php if(!empty($data['event'])): ?>
-
-            <div class="left-section">
-                <img src="<?=ROOT?>/assets/images/events/<?php echo $data['event']->cover_images ?>" alt="Event Cover" class="cover-image">
-            </div>
-
-            <div class="right-section">
-                <h1 class="event-name"><?php echo $data['event']->event_name ?> </h1>
-                <p class="event-description"><?php echo $data['event']->description ?> </p>
-                <div class="event-details">
-                    <p><strong>Date:</strong> <?php echo $data['event']->eventDate ?> </p>
-                    <p><strong>Start Time:</strong> <?php echo $data['event']->start_time ?></p>
-                    <p><strong>End Time:</strong> <?php echo $data['event']->end_time ?></p>
-                    <p><strong>Audience:</strong> <?php echo $data['event']->audience ?></p>
-                    <p><strong>Type:</strong> <?php echo $data['event']->type ?></p>
-                    <p><strong>Location:</strong> <?php echo $data['event']->address ?></p>
+            <div class="details-section">
+                <div >
+                    <h1 class="event-name"><?php echo $data['event']->event_name ?></h1>
+                    <p class="event-description"><?php echo $data['event']->description ?></p>
+                    <div class="event-details">
+                        <p><strong>Date:</strong> <?php echo $data['event']->eventDate ?></p>
+                        <p><strong>Start Time:</strong> <?php echo $data['event']->start_time ?></p>
+                        <p><strong>End Time:</strong> <?php echo $data['event']->end_time ?></p>
+                        <p><strong>Audience:</strong> <?php echo $data['event']->audience ?></p>
+                        <p><strong>Type:</strong> <?php echo $data['event']->type ?></p>
+                        <p><strong>Location:</strong> <?php echo $data['event']->address ?></p>
+                    </div>
+                    <div class="button-group">
+                        <button class="change-button" onclick="goUpdate()">Update</button>
+                        <button class="remove-button" onclick="goDelete()">Draft</button>
+                    </div>
                 </div>
-                <button class="change-button" onclick = "goUpdate()">Update</button>
-                <button class = "remove-button" onclick="goDelete()">Draft</button>
-            </div>
 
-        <?php endif; ?>    
-        
+                <div class="right-section">
+                    <img src="<?=ROOT?>/assets/images/events/<?php echo $data['event']->cover_images ?>" alt="Event Cover" class="cover-image">
+                </div>
+            </div>
+        <?php endif; ?>
         </div>
 
         <!-- Ticket Details -->
@@ -98,9 +98,11 @@
                 </div>
             <?php endif; ?>
             <!-- button to go ticket pages -->
-            <a href = "<?=ROOT?>/create-ticket?event_id=<?php echo $data['event']->id?>" style="text-decoration: none;" >
+            <div style="display: flex; justify-content: center; width: 100%;">
+                <a href = "<?=ROOT?>/create-ticket?event_id=<?php echo $data['event']->id?>" style="text-decoration: none;" >
                     <button class="addbutton">Add Another Ticket</button>
-            </a>
+                </a>
+            </div>
         </div>
 
         <!-- Request section -->
@@ -151,9 +153,11 @@
             </table>
 
             <!-- button to go request pages -->
-            <a href = "<?=ROOT?>/request-singers?id=<?php echo $data['event']->id?>" style="text-decoration: none;" >
-                    <button class="addbutton" >Add More Requests</button>
-            </a>
+            <div style="display: flex; justify-content: center; width: 100%;">
+                <a href = "<?=ROOT?>/request-singers?id=<?php echo $data['event']->id?>" style="text-decoration: none;" >
+                    <button class="addbutton">Add More Requests</button>
+                </a>
+            </div>
 
         </div>
         

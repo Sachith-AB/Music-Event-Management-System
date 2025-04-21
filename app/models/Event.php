@@ -195,7 +195,9 @@ class Event {
             e.status,
             e.createdBy,
             p.user_id,
+            p.payment_timestamp,
             u.name as user_name,
+
             SUM(p.payment) as total_payment
         FROM payments p
         JOIN events e ON p.event_id = e.id
