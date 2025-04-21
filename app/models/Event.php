@@ -203,7 +203,6 @@ class Event {
         JOIN events e ON p.event_id = e.id
         JOIN users u ON p.user_id = u.id
         WHERE e.createdBy = ? 
-        AND e.status = 'completed'
         AND e.is_delete = '0'
         GROUP BY e.id, p.user_id
         ORDER BY e.eventDate DESC, total_payment DESC";
