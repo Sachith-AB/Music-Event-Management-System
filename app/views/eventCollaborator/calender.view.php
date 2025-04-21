@@ -2,7 +2,6 @@
 <?php include ('../app/views/components/header.php'); ?>
 <!DOCTYPE html>
 <html lang="en">
-    
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -17,6 +16,15 @@
         <div class="dashboard">
             <div class="container">
                 <h1>My Calendar</h1>
+                <?php if(isset($_SESSION['success'])): ?>
+                    <div class="alert alert-success"><?= $_SESSION['success'] ?></div>
+                    <?php unset($_SESSION['success']); ?>
+                <?php endif; ?>
+                <?php if(isset($_SESSION['error'])): ?>
+                    <div class="alert alert-danger"><?= $_SESSION['error'] ?></div>
+                    <?php unset($_SESSION['error']); ?>
+                <?php endif; ?>
+                <div id="messageContainer"></div>
                 <div class="calendar">
                     <div class="calendar-header">
                         <button id="prevMonth">◀</button>
@@ -24,21 +32,17 @@
                         <button id="nextMonth">▶</button>
                     </div>
                     <div class="calendar-grid">
-                        <script id="events" type="application/json"><?= json_encode($data['events']) ?></script>
+                        <script id="events" type="application/json"><?= json_encode($data) ?></script>
                     </div>
                 </div>
-
-
-                <div class="avalibility">
+                <div class="available-dates">
                     <h2>Add Unavailable Dates</h2>
-                    <form method="POST">
-                        <input type="date" name="unavailableDate" id="unavailableDate" required>
-                        <button type="submit" name="addUnavailableDate">Add</button>
+                    <form id="unavailableForm" method="POST">
+                        <input type="date" name="date" id="date" required min="<?= date('Y-m-d') ?>">
+                        <input type="hidden" name="user_id" value="<?= $_SESSION['USER']->id ?>">
+                        <button type="submit" name="submit" value = "submit">Add</button>
                     </form>
                 </div>
-
-                <?php include ('../app/views/components/collaborator/requestedEventList.php'); ?>
-
             </div>
             <div id="eventModal" class="modal">
                 <div class="modal-content">
