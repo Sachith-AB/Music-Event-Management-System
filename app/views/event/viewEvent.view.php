@@ -206,8 +206,20 @@
                     ?>
                         <div class="pricing-card">
                             <div>
-                                <h2><?= $ticket->ticket_type ?></h2>
-                                <p class="price"><?= $ticket->price ?></p>
+                                <div class="ticket-header">
+                                    <div>
+                                        <h2 class="ticket-type"><?= $ticket->ticket_type ?></h2>
+                                        <p class="ticket-price"><?= $ticket->price ?></p>
+                                    </div>
+                                    <?php if(!empty($ticket->discount) && $ticket->discount > 0): ?>
+                                        <div class="discount">
+                                            <span class="discount-label">Discount:</span>
+                                            <span class="discount-value"><?= htmlspecialchars($ticket->discount) ?><?= is_numeric($ticket->discount) ? ' LKR' : '' ?></span>
+                                        </div>
+                                    <?php endif;?>
+
+                                </div>
+                                
                                 <ul>
                                     <?php 
                                     $restrictions = json_decode($ticket->restrictions, true);

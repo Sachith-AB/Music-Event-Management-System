@@ -436,12 +436,43 @@ img {
 .pricing-card:hover {
     transform: scale(1.05);
 }
+.ticket-header{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 10px;
 
-.pricing-card h2 {
+}
+.discount {
+    display: flex;
+    gap: 5px;
+    align-items: center;
+    background-color: #f8d7da; /* Light red background */
+    border: 1px solid #f5c2c7;
+    color: #842029;
+    padding: 8px 12px;
+    border-radius: 8px;
+    font-weight: bold;
+    font-size: 14px;
+    margin-top: 10px;
+    max-width: fit-content;
+}
+
+.discount-label {
+    font-weight: 600;
+}
+
+.discount-value {
+    background-color: #fff;
+    padding: 2px 6px;
+    border-radius: 4px;
+}
+
+.ticket-type {
     color: #333;
 }
 
-.price {
+.ticket-price {
     font-size: 24px;
     color: #666;
 }
