@@ -89,6 +89,7 @@
                         <label><input type="checkbox" name="agree" checked> I agree with the <a href="#">Terms of Use</a> & <a href="#">Privacy Policy</a></label>
                     </div>
                 </div>
+             
 
                 <!-- Ticket section -->
                 <div class="event-details-container">
@@ -122,6 +123,7 @@
                         'quantity' => $ticketdetails[0]->ticket_quantity,
                         'price' => $ticketdetails[0]->ticket_price,
                         'type' => $ticketdetails[0]->ticket_type,
+                        'discount' =>$ticketdetails[0]->discount,
                         // Add any other details as needed
                     ]) ?>;
                 </script>
