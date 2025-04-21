@@ -483,4 +483,15 @@ class Event {
         
         return $stars;
     }
+    public function getFutureEventsInfoForCollaborators($user_id)
+      {
+         $query = "SELECT e.id, e.event_name, e.eventDate, e.cover_images, e.address FROM events e 
+                     JOIN requests r ON
+                     e.id = r.event_id 
+                     WHERE r.Status = 'accepted' AND e.eventDate > CURRENT_DATE AND r.collaborator_id = $user_id";
+ 
+         $result = $this->query($query);
+         return $result ? $result : [];
+ 
+      }
 }
