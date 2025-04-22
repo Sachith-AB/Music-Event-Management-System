@@ -70,6 +70,7 @@ if (getUserRole() == 'planner' || isAdmin()){
     route('request-stages','request/StageRequest@index');
     route('request-announcers','request/AnnouncerRequest@index');
     route('request-venues','request/VenueRequest@index');
+    route('collaborator-viewprofile','eventCollaborator/ViewProfile@index');
 
     
     //Routes for Ticket
@@ -95,7 +96,9 @@ if (getUserRole() == 'planner' || isAdmin()){
     route('calender','calender/Calender@index');
 
     route('collaborator-eventdetails','eventCollaborator/EventDetails@index');
+
     route('collaborator-viewprofile','eventCollaborator/ViewProfile@index');
+
 }
 
 //Route for purchaseticket

@@ -10,6 +10,23 @@ class EventPlannerMyEvents {
             exit();
         }
 
+        // Get showMore values from POST request for each section
+        $showMoreProcessing = false;
+        $showMoreScheduled = false;
+        $showMoreCompleted = false;
+
+        if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+            if (isset($_POST['showMoreProcessing'])) {
+                $showMoreProcessing = $_POST['showMoreProcessing'] === 'true';
+            }
+            if (isset($_POST['showMoreScheduled'])) {
+                $showMoreScheduled = $_POST['showMoreScheduled'] === 'true';
+            }
+            if (isset($_POST['showMoreCompleted'])) {
+                $showMoreCompleted = $_POST['showMoreCompleted'] === 'true';
+            }
+        }
+
         // Assuming $_SESSION['USER'] holds the logged-in user's details, including ID
         $userId = $_SESSION['USER']->id;
 
@@ -17,6 +34,14 @@ class EventPlannerMyEvents {
         $userEvents = $eventModel->getEventsByUserId($userId);
         // show($userEvents);
 
-        $this->view('eventPlanner/myevents',['events' => $userEvents]);
+        // Pass data to the view
+        $data = [
+            'events' => $userEvents,
+            'showMoreProcessing' => $showMoreProcessing,
+            'showMoreScheduled' => $showMoreScheduled,
+            'showMoreCompleted' => $showMoreCompleted
+        ];
+
+        $this->view('eventPlanner/myevents', $data);
     }
 }

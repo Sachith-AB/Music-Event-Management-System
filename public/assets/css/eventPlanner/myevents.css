@@ -30,9 +30,8 @@
   }
 
   .events-container {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: flex-start;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
     gap: 20px;
     margin: 15px 0;
     width: 100%;
@@ -41,21 +40,18 @@
 
 .event-card {
     position: relative;
-    flex: 0 0 calc(33.333% - 14px); 
     background-color: #f0f0f0;
     padding: 15px;
     border-radius: 8px;
     box-shadow: 0 4px 6px rgba(0,0,0,0.1);
     transition: all 0.3s ease;
     text-align: center;
-    min-width: 300px;
-    max-width: none;
 }
 
 /* Responsive styles */
 @media (max-width: 1200px) {
-    .event-card {
-        flex: 0 0 calc(50% - 14px);
+    .events-container {
+        grid-template-columns: repeat(2, 1fr);
     }
 }
 
@@ -65,9 +61,8 @@
         flex-direction: column;
     }
 
-    .event-card {
-        flex: 0 0 100%;
-        min-width: auto;
+    .events-container {
+        grid-template-columns: 1fr;
     }
 
     .content-header {
@@ -159,46 +154,51 @@
     max-height: 2.8em; /* 1.4em * 2 lines */
 }
 
-
-.view-more-container {
-    display: flex;
-    justify-content: center;
-    margin: 20px 0;
-    width: 100%;
-}
-
-.view-more-btn {
+/* View More button styles */
+.view-more {
     background-color: #00BDD6FF;
     color: white;
-    padding: 10px 20px;
+    padding: 8px 15px;
+    border: none;
     border-radius: 5px;
-    text-decoration: none;
+    cursor: pointer;
     font-weight: bold;
     transition: all 0.3s ease;
+    margin: 20px 0 20px auto;
+    display: block;
+    width: 150px;
     text-align: center;
-    min-width: 200px;
+    font-size: 14px;
+    float: right;
 }
 
-.view-more-btn:hover {
-    background-color: #00a8c0;
+/* Form styles for the button container */
+form[id^="showMore"] {
+    width: 100%;
+    margin: 20px 0;
+    clear: both;
+}
+
+.view-more:hover {
+    color: black;
     transform: translateY(-2px);
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
 }
 
 /* Responsive styles for View More button */
 @media (max-width: 768px) {
-    .view-more-btn {
-        padding: 8px 15px;
-        font-size: 14px;
-        min-width: 180px;
+    .view-more {
+        padding: 6px 12px;
+        font-size: 13px;
+        width: 120px;
     }
 }
 
 @media (max-width: 480px) {
-    .view-more-btn {
-        padding: 6px 12px;
-        font-size: 13px;
-        min-width: 160px;
+    .view-more {
+        padding: 5px 10px;
+        font-size: 12px;
+        width: 100px;
     }
 }
 

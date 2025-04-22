@@ -11,7 +11,7 @@
     <link rel="icon" type="image/png" href="<?=ROOT?>/assets/images/logo/logo.png">
     <link rel="stylesheet" href="<?= ROOT ?>/assets/css/backbutton.css">
 </head>
-<?php $eventJson = json_encode($data ?? []); ?>
+<?php $eventJson = json_encode($data['events'] ?? []); ?>
 <body>
 <?php include ('../app/views/components/loading.php'); ?>
     <div class="dash-container">
@@ -31,16 +31,16 @@
                         <button id="nextMonth">▶</button>
                     </div>
                     <div class="calendar-grid">
-                    <script id="events" type="application/json"><?= $eventJson ?></script>
+                        <script id="events" type="application/json"><?= $eventJson ?></script>
                     </div>
                 </div>
 
-                <div class="event-list">
+                <!--<div class="event-list">
                     <h2>My Events</h2>
                     <ul id="eventList">
-                        <!-- Events will be listed here dynamically -->
+                        
                     </ul>
-                </div>
+                </div>-->
             </div>
             <div id="eventModal" class="modal">
                 <div class="modal-content">
@@ -49,11 +49,11 @@
                     <img id="eventImage" src="" alt="Event Image" style="height: 100px; width: 200px;" />
                     <p id="eventDescription">Event Description goes here.</p>
                     <p><strong>Date:</strong> <span id="eventDate"></span></p>
+                    <p><strong>Time:</strong> <span id="eventTime"></span></p>
                 </div>
             </div>
         </div>
     </div>
-
 
     <script src="<?=ROOT?>/assets/js/calander.js"></script>
 </body>

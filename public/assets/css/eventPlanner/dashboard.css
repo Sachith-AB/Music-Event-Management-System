@@ -11,6 +11,10 @@
     width: 100%;
     gap: 2rem;
 }
+.header h1{
+    color: #00BDD6;
+}
+
 .dash-content {
     display: flex;
     margin: 30px auto;
@@ -755,5 +759,112 @@ table th, table td {
 
     .event-header h2 {
         font-size: 1.25rem;
+    }
+}
+
+/* Calendar Responsive Styles */
+@media (max-width: 1200px) {
+    .dash-container {
+        padding: 20px;
+        gap: 1rem;
+    }
+
+    .dashboard {
+        padding: 15px;
+    }
+}
+
+@media (max-width: 992px) {
+    .dash-container {
+        flex-direction: column;
+    }
+
+    .dashboard {
+        width: 100%;
+        margin-top: 20px;
+    }
+
+    .calendar {
+        width: 100%;
+        overflow-x: auto;
+    }
+
+    .calendar-grid {
+        min-width: 600px;
+    }
+}
+
+@media (max-width: 768px) {
+    .dash-container {
+        padding: 10px;
+    }
+
+    .dashboard {
+        padding: 10px;
+    }
+
+    .calendar-header {
+        flex-wrap: wrap;
+        gap: 10px;
+    }
+
+    .calendar-header h2 {
+        font-size: 1.2rem;
+    }
+
+    .calendar-grid {
+        min-width: 500px;
+    }
+
+    .modal-content {
+        width: 90%;
+        max-width: 400px;
+        padding: 15px;
+    }
+
+    .modal-content h1 {
+        font-size: 1.5rem;
+    }
+
+    .modal-content img {
+        max-width: 100%;
+        height: auto;
+    }
+}
+
+@media (max-width: 576px) {
+    .dash-container {
+        padding: 5px;
+    }
+
+    .dashboard {
+        padding: 5px;
+    }
+
+    .calendar-header {
+        padding: 5px;
+    }
+
+    .calendar-grid {
+        min-width: 400px;
+        gap: 2px;
+    }
+
+    .calendar-grid div {
+        font-size: 0.9rem;
+        padding: 5px;
+    }
+
+    .modal-content {
+        width: 95%;
+        padding: 10px;
+    }
+
+    .modal-content h1 {
+        font-size: 1.2rem;
+    }
+
+    .modal-content p {
+        font-size: 0.9rem;
     }
 }

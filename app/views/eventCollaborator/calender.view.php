@@ -10,7 +10,7 @@
     <link rel="icon" type="image/png" href="<?=ROOT?>/assets/images/logo/logo.png">
 </head>
 <body>
-    <?php include ('../app/views/components/loading.php'); ?>
+   
     <div class="dash-container">
         <?php include ('../app/views/components/collaborator/singersidebar.php'); ?>
         <div class="dashboard">
@@ -51,6 +51,8 @@
                     <img id="eventImage" src="" alt="Event Image" style="height: 100px; width: 200px;" />
                     <p id="eventDescription">Event Description goes here.</p>
                     <p><strong>Date:</strong> <span id="eventDate"></span></p>
+                    <p><strong>Time:</strong> <span id="eventTime"></span></p>
+                    
                 </div>
             </div>
         </div>
