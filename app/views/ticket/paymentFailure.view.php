@@ -7,9 +7,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Musicia - Ticket Purchase Success</title>
+    <title>Musicia - Ticket Purchase Failure</title>
     
-    <link rel="stylesheet" href="<?= ROOT ?>/assets/css/ticket/ticketholder-event.css">
+    <link rel="stylesheet" href="<?= ROOT ?>/assets/css/ticket/ticketpurchasefailure.css">
     
 
     <!-- Include Font Awesome -->
@@ -107,16 +107,16 @@
     <div class="eventdetails">
         <!-- image section -->
         <div class="eventimages">
-            <div class="image image1">
+            <div class="image1">
                 <img src="<?=ROOT?>/assets/images/ticket/musicevent1.jpg" alt="Image 1" class="img">
             </div>
-            <div class="image image2">
+            <div class="image2">
                 <img src="<?=ROOT?>/assets/images/ticket/musicevent2.jpeg" alt="Image 2" class="img">
             </div>
-            <div class="image image3">
+            <div class="image3">
                 <img src="<?=ROOT?>/assets/images/ticket/musicevent3.jpg" alt="Image 3" class="img">
             </div>
-            <div class="image image4">
+            <div class="image4">
                 <img src="<?=ROOT?>/assets/images/ticket/musicevent4.jpg" alt="Image 4" class="img">
             </div>
             <div class="mid">
@@ -159,26 +159,32 @@
 
         <div class="team-grid-scrollable">
             <div class="team-grid">
+                
                 <?php if(!empty($data['performers'])): ?>
                     <?php foreach($data['performers'] as $perfotmer): ?>
-                        <div class="team-member">
-                            <img class="team-member-image" src="<?=ROOT?>/assets/images/user/<?php echo $perfotmer->pro_pic?>" alt="Selina Valencia">
+                        <div class="team-member" onclick="gotoperformerprofile(<?php echo $perfotmer['id']?>)">
+                            <img class="team-member-image" src="<?=ROOT?>/assets/images/user/<?php echo $perfotmer['pro_pic']?>" alt="Selina Valencia">
                             <div class="team-info">
-                                <h3><?php echo $perfotmer->name ?></h3>
+                                <h3><?php echo $perfotmer['name'] ?></h3>
                                 
 
                             </div>
                             <div class="social-icons">
-                                <a href="#"><i class="fab fa-facebook-f"></i></a>
-                                <a href="#"><i class="fab fa-twitter"></i></a>
-                                <a href="#"><i class="fab fa-instagram"></i></a>
-                                <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                                <a href="<?php echo $perfotmer[0]->fb?>"><i class="fab fa-facebook-f"></i></a>
+                                <a href="<?php echo $perfotmer[0]->twitter?>"><i class="fab fa-twitter"></i></a>
+                                <a href="<?php echo $perfotmer[0]->insta?>"><i class="fab fa-instagram"></i></a>
+                                <a href="<?php echo $perfotmer[0]->youtube?>"><i class="fab fa-youtube"></i></a>
                             </div>
                         </div>
 
                     <?php endforeach ?>
                 <?php endif ?>
             </div>
+            <script>
+                function gotoperformerprofile(user_id){
+                    window.location.href = "<?= ROOT ?>/collaborator-viewprofile?id=" + user_id;
+                }
+            </script>
 
         </div>
     </section>
@@ -186,52 +192,63 @@
 
     <!-- ticket section -->
     <div class="ticketbackground">
-        <div class="pricing-container">
-            <?php if(!empty($data['tickets'])): ?>
+        <div>
+            <h1>Tickets</h1>
+            <!-- <p>Cupidatat sunt excepteur ipsum non. Ex consectetur amet eu commodo incididunt elit incididunt aliqua aliqua irure elit minim voluptate. Sit est nisi labore eiusmod et ad. Anim quis anim adipisicing quis cillum id ullamco officia do culpa voluptate exercitation nisi.</p> -->
+        </div>
+        <div class="team-grid-scrollable">
+            <div class="team-grid">
                 <?php foreach($data['tickets'] as $ticket): ?>
-                <div class="pricing-card">
-                <h2>
-                    <?php if($ticket->ticket_type == "SILVER"): ?>
-                        <i class="fas fa-ticket-alt"></i>
-                    <?php elseif($ticket->ticket_type == "GOLD"): ?>
-                        <i class="fas fa-medal"></i>
-                    <?php  else: ?>
-                        <i class="fas fa-gem"></i>
-                    <?php endif ?>
-                    <?php echo $ticket->ticket_type?>
-                </h2>
-                <p class="price"><?php echo $ticket->price?></p>
-                <?php if($ticket->ticket_type == "SILVER"): ?>
-                    <ul>
-                        <li>Access to general seating area</li>
-                        <li>Free snacks during breaks</li>
-                        <li><span class="not-included">❌</span> Priority entrance</li>
-                        <li><span class="not-included">❌</span> Backstage access</li>
-                        <li><span class="not-included">❌</span> Meet and greet with performers</li>
-                    </ul>
-                    <?php elseif($ticket->ticket_type == "GOLD"): ?>
-                        <ul>
-                            <li>Access to priority seating area</li>
-                            <li>Free snacks and beverages</li>
-                            <li>✅ Priority entrance</li>
-                            <li><span class="not-included">❌</span> Backstage access</li>
-                            <li><span class="not-included">❌</span> Meet and greet with performers</li>
-                        </ul>
-                    <?php  else: ?>
-                        <ul>
-                            <li>Access to VIP seating area</li>
-                            <li>All-inclusive food and beverage</li>
-                            <li>✅ Priority entrance</li>
-                            <li>✅ Backstage access</li>
-                            <li>✅ Meet and greet with performers</li>
-                        </ul>
-                    <?php endif ?>
-                
-                <button onclick="window.location.href='purchaseticket?id=<?= $ticket->id ?>'">Buy Ticket Now</button>
-                </div>
-            <?php endforeach ?>
-            <?php endif ?>
-            
+                    <?php
+                        // Combine date and time to create full datetime strings
+                        $startDateTime = strtotime($ticket->sale_strt_date . ' ' . $ticket->sale_strt_time);
+                        $endDateTime = strtotime($ticket->sale_end_date . ' ' . $ticket->sale_end_time);
+                        $currentDateTime = time(); // current server time
+
+                        // Only show ticket if current time is within the sale window
+                        if ($currentDateTime >= $startDateTime && $currentDateTime <= $endDateTime):
+
+                    ?>
+                        <div class="pricing-card">
+                            <div>
+                                <div class="ticket-header">
+                                    <div>
+                                        <h2 class="ticket-type"><?= $ticket->ticket_type ?></h2>
+                                        <p class="ticket-price"><?= $ticket->price ?></p>
+                                    </div>
+                                    <?php if(!empty($ticket->discount) && $ticket->discount > 0): ?>
+                                        <div class="discount">
+                                            <span class="discount-label">Discount:</span>
+                                            <span class="discount-value"><?= htmlspecialchars($ticket->discount) ?><?= is_numeric($ticket->discount) ? ' LKR' : '' ?></span>
+                                        </div>
+                                    <?php endif;?>
+
+                                </div>
+                                
+                                <ul>
+                                    <?php 
+                                    $restrictions = json_decode($ticket->restrictions, true);
+                                    if (is_array($restrictions)): 
+                                        foreach ($restrictions as $feature): ?>
+                                            <li>✅ <?= htmlspecialchars($feature) ?></li>
+                                        <?php endforeach; 
+                                    else: ?>
+                                        <li>No restrictions listed</li>
+                                    <?php endif; ?>
+                                </ul>
+                            </div>
+                            
+                            <button onclick="window.location.href='purchaseticket?id=<?= $ticket->id ?>'">Buy Ticket Now</button>
+                        </div>
+                    <?php 
+                    endif; 
+                    ?>
+                    
+                <?php endforeach; ?>
+            </div>
+        </div>
+    </div>
+    
             <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
             <script>
                 var query = document.getElementById("address").textContent.trim();
@@ -271,8 +288,7 @@
                     });
             }
             </script>
-        </div>
-    </div>
+
 </body>
 
 </html>
