@@ -60,7 +60,7 @@ class Profile {
 
         $buyticket = new Buyticket();
         $ticket = new Ticket();
-        $notification = new Notification;
+        
 
         $id = $_SESSION['USER']->id ?? 0;
 
