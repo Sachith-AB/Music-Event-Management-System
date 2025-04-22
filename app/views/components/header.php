@@ -36,6 +36,10 @@
                     <?php if($_SESSION['USER']->role == 'collaborator'): ?>
                         <li><a href="colloborator-dashboard?id=<?= $_SESSION['USER']->id ?>">Dashboard</a></li>
                     <?Php endif ?>
+
+                    <?php if($_SESSION['USER']->is_admin == 1): ?>
+                        <li><a href="admin-dashboard">Dashboard</a></li>
+                    <?php endif ?>
                     <div class="notification-wrapper" style="position: relative;">
                     
                         <button class="avatarbadge" id="notificationButton" type="button">

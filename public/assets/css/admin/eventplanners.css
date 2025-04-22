@@ -85,10 +85,12 @@
 
 .action-btn.view:hover {
     background-color: #45a049;
+    color: black;
 }
 
 .action-btn.delete:hover {
     background-color: #d93636;
+    color: black;
 }
 
 a {
@@ -99,4 +101,131 @@ a {
 .button-section {
     display: flex;
     gap: 5px;
+    flex-wrap: nowrap;
+}
+
+/* Responsive Design */
+@media (max-width: 1200px) {
+    .dash-container {
+        padding: 30px;
+    }
+    
+    .dashboard {
+        width: 85%;
+    }
+    
+    .modern-table {
+        font-size: 14px;
+    }
+    
+    .modern-table th, .modern-table td {
+        padding: 10px 12px;
+    }
+}
+
+@media (max-width: 992px) {
+    .dash-container {
+        padding: 20px;
+    }
+    
+    .dashboard {
+        width: 90%;
+    }
+    
+    .dashboard-title {
+        font-size: 22px;
+    }
+    
+    .modern-table {
+        font-size: 13px;
+    }
+    
+    .action-btn {
+        padding: 6px 10px;
+        font-size: 13px;
+    }
+}
+
+@media (max-width: 768px) {
+    .dash-container {
+        padding: 15px;
+    }
+    
+    .dashboard {
+        width: 95%;
+    }
+    
+    .modern-table {
+        display: block;
+        overflow-x: auto;
+        white-space: nowrap;
+    }
+    
+    .dashboard-title {
+        font-size: 20px;
+        margin-right: 0;
+    }
+    
+    .button-section {
+        gap: 3px;
+    }
+    
+    .action-btn {
+        padding: 5px 8px;
+        font-size: 12px;
+    }
+}
+
+@media (max-width: 576px) {
+    .dash-container {
+        padding: 10px;
+    }
+    
+    .dashboard {
+        width: 100%;
+    }
+    
+    .dashboard-title {
+        font-size: 18px;
+    }
+    
+    .modern-table {
+        font-size: 12px;
+    }
+    
+    .modern-table th, .modern-table td {
+        padding: 8px 10px;
+    }
+    
+    .action-btn {
+        padding: 5px 8px;
+        font-size: 12px;
+    }
+}
+
+@media (max-width: 400px) {
+    .dash-container {
+        padding: 8px;
+    }
+    
+    .dashboard-title {
+        font-size: 16px;
+    }
+    
+    .modern-table {
+        font-size: 11px;
+    }
+    
+    .modern-table th, .modern-table td {
+        padding: 6px 8px;
+    }
+    
+    .button-section {
+        gap: 2px;
+    }
+    
+    .action-btn {
+        padding: 4px 6px;
+        font-size: 11px;
+    }
 }
