@@ -46,6 +46,7 @@ if(getUserRole() == 'collaborator' || isAdmin()){
     route('colloborator-updateprofile','eventCollaborator/SingerUpdateProf@index');
     route('colloborator-calendar','eventCollaborator/Calender@index');
     route('colloborator-events','eventCollaborator/SingerEvents@index');
+    route('colloborator-pastevents','eventCollaborator/SingerPastEvents@index');
     route('colloborator-payments','eventCollaborator/SingerPayments@index');
     route('collaborator-viewprofile','eventCollaborator/ViewProfile@index');
     route('collaborator-eventdetails','eventCollaborator/EventDetails@index');
@@ -84,6 +85,7 @@ if (getUserRole() == 'planner' || isAdmin()){
     route('event-planner-messages','eventPlanner/EventPlannerMessage@index');
     route('event-planner-viewEvent','eventPlanner/EventPlannerViewEvent@index');
     route('event-planner-scheduledEvent','eventPlanner/EventPlannerScheduledEvent@index');
+    route('edit-scheduled-event-ticket','eventPlanner/EditScheduledEventTicket@index');
     route('get-event-messages','eventPlanner/EventPlannerMessage@index');
     route('collaborator-payment','eventPlanner/CollaboratorPayment@index');
     route('event-planner-completedEvent','eventPlanner/EventPlannerCompletedEvent@index');
@@ -107,6 +109,7 @@ if(getUserRole() == 'holder' ||isAdmin()){
     route('ticket-holder-home','ticketHolder/TicketHolderHome@index');
     route('view-pastevent','ticketHolder/ViewPastevent@index');
     route('notification-event','ticketHolder/NotificationEvent@index');
+    route('delete-buyticket','ticketHolder/Deletebuyticket@index');
     route('profile/markread','ticketHolder/ViewPastevent@markNotificationsRead');
 }
 

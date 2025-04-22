@@ -69,7 +69,6 @@ class Profile {
         foreach ($mytickets as $myticket) {
             $ticket_id = $myticket->ticket_id; 
             $eventDetail = $ticket->getTicketAndEventDetails($ticket_id); 
-        
             if($eventDetail && isset($eventDetail[0]->event_date)){
                 // $notifications = $notification->getNotifications($eventDetail[0]->event_id);
         

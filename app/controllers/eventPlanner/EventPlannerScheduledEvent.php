@@ -39,7 +39,13 @@ class EventPlannerScheduledEvent {
         $data2= array_merge($income_data, $ticket_count_data);
         $data = array_merge($data1, $data2);
 
-        $this->view('eventPlanner/scheduledEvent', $data);
+
+
+        $eventtickets = $this->getticketdetails($event,$event_id);
+        // show($eventtickets);
+        $data['tickets'] = $eventtickets;
+
+        $this->view('eventPlanner/scheduledEvent',$data);
     }
 
     public function getData($row) {
@@ -170,6 +176,11 @@ class EventPlannerScheduledEvent {
         ];
     }
 
+    public function getticketdetails($event,$event_id){
+        $all_data = $event->getAllEventData($event_id);
+        
+        return $all_data['tickets'];
+    }
 
     public function sendEmailtoBuyers()
     {
