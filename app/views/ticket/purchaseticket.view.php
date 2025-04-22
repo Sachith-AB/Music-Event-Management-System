@@ -81,7 +81,7 @@
                         </div>
                         <div class="input-field">
                             <label for="phone">Phone number</label>
-                            <input type="tel" id="phone" name="phone" placeholder="">
+                            <input type="tel" id="phone" name="phone" placeholder="07********">
                         </div>
                     </div>
                     <div class="checkbox-group">

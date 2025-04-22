@@ -138,20 +138,17 @@ class Purchaseticket {
 
     public function createPurchase($purchaseData,$buyticket)
     {
+        
         if($buyticket->validePurchase($purchaseData)){
-            unset($POST['submit']);
+            
             $buyticket->insert($purchaseData);
             // If the purchase was successful, decrease the ticket quantity
             $ticket = new Ticket();
             $ticket->decreaseQuantity($purchaseData['ticket_id'], $purchaseData['ticket_quantity']);
         }
         else{
-            $result = $buyticket->errors;
+            return $buyticket->errors;
         }
-        
-        
-        
-        return $result;
     }
     
 }   

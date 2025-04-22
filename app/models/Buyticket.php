@@ -34,13 +34,28 @@ class Buyticket {
 			$this->errors['error'] = "Phone number is Required ";
 			$this->errors['error_no'] = 1;
 			return;
-		}
+		}elseif (!preg_match('/^\d{10}$/', $data['buyer_phoneNo'])) {
+            $this->errors['flag'] = true;
+            $this->errors['error'] = "Phone number must be exactly 10 digits";
+            $this->errors['error_no'] = 1;
+            return;
+        }
+
+
+
+
         if (empty($data['buyer_email'])) {
 			$this->errors['flag'] = true;
 			$this->errors['error'] = "Email is Required";
 			$this->errors['error_no'] = 1;
 			return;
-		}
+		}elseif (!filter_var($data['buyer_email'], FILTER_VALIDATE_EMAIL)) {
+            $this->errors['flag'] = true;
+            $this->errors['error'] = "Invalid email format";
+            $this->errors['error_no'] = 1;
+            return;
+        }
+    
         // if (empty($data['ticket_type'])) {
 		// 	$this->errors['flag'] = true;
 		// 	$this->errors['error'] = "Ticket Type is Required ";
