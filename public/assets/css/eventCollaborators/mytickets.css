@@ -1,0 +1,425 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Arial, sans-serif;
+}
+
+.dash-container {
+    display: flex;
+    margin: 40px auto;
+    padding: 40px;
+    gap: 10px;
+}
+.dashboard {
+    width: 80%;
+    max-width: 1200px;
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+
+.head1 {
+    position: absolute; 
+    top: 88px; 
+    left: 150px; 
+    font-family:sans-serif;
+    font-size: 32px; 
+    line-height: 48px; 
+    font-weight: 700; 
+    color: #171A1FFF; /* neutral-900 */
+  }
+
+.container {
+    overflow: visible;
+    position: relative;
+    margin-top: 20px; 
+    margin-left: 122px;
+    width: 340px; 
+    height: 600px; 
+    background: #FAFAFBFF; /* neutral-100 */
+    border-radius: 4px; /* border-m */
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+    text-align: center;
+    justify-content: center;
+    align-items: center;
+    
+  }
+  .container h2 {
+    margin-bottom: 20px;
+    font-size: 24px;
+  }
+  .buttons{
+    display: flex;
+    flex-direction: row;
+    gap: 5px;
+  
+  }
+  
+  /* Button 55 */
+  .button { 
+      margin-top: 20px;
+      width: 100px; 
+      height: 44px; 
+      padding: 0 16px; 
+      display: flex; 
+      align-items: center; 
+      justify-content: center; 
+      font-family: sans-serif; 
+      font-size: 16px; 
+      line-height: 26px; 
+      font-weight: 400; 
+      color: #FFFFFFFF; /* white */
+      opacity: 1; 
+      border: none; 
+      border-radius: 4px; /* border-m */
+      gap: 6px; 
+      text-decoration: none;
+      cursor: pointer;
+      transition: color 1s ease;
+    }
+    .button .icon {
+      width: 20px; 
+      height: 20px; 
+      fill: #FFFFFFFF; /* white */
+    }
+    
+    .button :hover::after {
+      transform: skewX(-45deg) scale(1, 1);
+    }
+  
+    .button:hover {
+    color: black;
+    }
+    /* Pressed */
+    .button:hover:active {
+      transition: transform 0.2s ease-in-out;
+    }
+    /* Disabled */
+    .button:disabled {
+      opacity: 0.4; 
+    }
+  
+    .button-1{
+      background: #00BDD6FF; /* primary-500 */
+    }
+    .button-2{
+      background: #e93a74; /* primary-500 */
+    }
+  
+    /* Header Menu 7 */
+  .header-menu {
+      position: absolute; 
+      top: 168px; 
+      left: 504px; 
+      width: 213px; 
+      height: 52px; 
+      display: flex; 
+      align-items: center; 
+      font-family: sans-serif; /* Body */
+      font-size: 14px; 
+      line-height: 22px; 
+      font-weight: 400; 
+      opacity: 1; 
+      gap: 4px;
+    }
+    /* Header Menu 7 - Item */
+    .header-menu .header-menu-item {
+      padding: 15px 36.17px; 
+      width: 107px;
+      display: flex; 
+      align-items: center; 
+      justify-content: center; 
+      color: #565D6DFF; /* neutral-600 */
+      background:rgb(241, 241, 241); /* transparent */
+      border-radius: 4px; /* border-m */
+      cursor: pointer; 
+      white-space: nowrap; 
+    }
+  
+    .header-menu .header-menu-item:hover{
+      background-color: rgb(227, 226, 226);
+    }
+  
+    .header-menu .header-menu-item:active {
+      transform: scale(1.1); /* Increase size by 10% */
+      transition: transform 0.2s ease-in-out;
+    }
+    /* Header Menu 7 - Selected item */
+    .header-menu .header-menu-item.selected {
+      position: relative; 
+      font-weight: 700; 
+      color: rgb(252, 254, 254); /* primary-500 */
+      background: #00BDD6FF; /* primary-200 */
+    }
+  
+    .header-menu-item.selected:hover {
+      background-color: rgb(16, 171, 192);
+    }
+  
+    
+  .event {
+      position: absolute; 
+      top: 245px; 
+      left: 504px; 
+      font-family: sans-serif; /* Body */
+      font-size: 14px; 
+      line-height: 22px; 
+      font-weight: 400; 
+      color: #171A1FFF; /* neutral-900 */
+      background-color: white;
+    }
+  
+  /* Textbox 29 */
+  .textbox {
+      position: absolute; 
+      top: 238px; 
+      left: 840px; 
+      opacity: 1; 
+    }
+    .textbox input {
+      width: 382px; 
+      height: 36px; 
+      padding-left: 34px; 
+      padding-right: 12px; 
+      font-family: sans-serif; 
+      font-size: 14px; 
+      line-height: 22px; 
+      font-weight: 400; 
+      background: #F3F4F6FF; /* neutral-200 */
+      border-radius: 4px; /* border-m */
+      border-width: 0px; 
+      outline: none; 
+    }
+    .textbox svg {
+      position: absolute; 
+      top: 12px; 
+      right: 12px; 
+      width: 16px; 
+      height: 16px; 
+    }
+    .textbox svg.left {
+      left: 12px; 
+    }
+    /* hover */
+    .textbox input:hover {
+      color: rgb(19, 19, 20); /* neutral-400 */
+      background: #F3F4F6FF; /* neutral-200 */
+    }
+    /* focused */
+    .textbox input:focused {
+      color: rgb(15, 15, 15); /* neutral-400 */
+      background: #FFFFFFFF; /* white */
+    }
+    /* disabled */
+    .textbox input:disabled {
+      color: #BDC1CAFF; /* neutral-400 */
+      background: #F3F4F6FF; /* neutral-200 */
+    }
+    .textbox :disabled + .icon, .textbox :disabled + .icon + .icon {
+      fill: #171A1FFF; /* neutral-900 */
+    }
+  
+  /* Image 72 */
+  .event-image {
+      position: absolute; 
+      top: 0px; 
+      left: 0px; 
+      width: 383px; 
+      height: 221px; 
+      border-radius: 0px; 
+    }
+  
+  /* Container 122 */
+  .event-detail {
+      position: absolute; 
+      top: 295px; 
+      left: 504px; 
+      width: 765px; 
+      height: 221px; 
+      background: #FFFFFFFF; /* white */
+      border-radius: 4px; /* border-m */
+      border-width: 1px; 
+      border-color: #F3F4F6FF; /* neutral-200 */
+      border-style: solid;
+      
+    }
+  
+    .page-content {
+      display: flex;
+      flex-direction: column; /* Default: column layout */
+      gap: 20px;
+  }
+  
+  
+  
+  
+  
+  
+  /*my ticket section*/
+  
+  .upcommingeve-tickets {
+    width: 60%;
+    margin-top: 20px; 
+    margin-left: 20px;
+    background-color: #FAFAFBFF;
+    padding: 20px;
+    border-radius: 4px;
+  
+  
+  
+    
+  }
+  .back-button{
+   gap: 10px;
+    display: flex
+  }
+  
+  .upcommingeve-tickets-h2 {
+    margin-bottom: 20px;
+    font-size: 24px;
+  }
+  
+  .upcommingeve-ticket-card {
+    position: relative;
+    display: flex;
+    margin-bottom: 20px;
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+    z-index: 1;
+  }
+  
+  .upcommingeve-ticket-card:hover {
+    transform: scale(1.03);
+    transition: all 1s ease-in-out;
+    opacity: 1.5;
+    cursor: pointer;
+    box-shadow: 0 0 30px rgba(0, 0, 0, 0.2);
+  }
+  .upcommingeve-ticket-image {
+    width: 30%;
+    background-color: #f0f0f0;
+  }
+  
+  .upcommingeve-ticket-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+  
+  .upcommingeve-ticket-info {
+    padding: 20px;
+    width: 70%;
+    background-color: #fff;
+  }
+  
+  .upcommingeve-ticket-info h3 {
+    margin: 0;
+    font-size: 20px;
+    margin-bottom: 10px;
+  }
+  
+  .upcommingeve-ticket-info p {
+    margin: 5px 0;
+    color: #777;
+  }
+  
+  .upcommingeve-ticket-meta {
+    margin-top: 30px;
+    font-size: 16px;
+    font-weight: bolder;
+    color:#00BDD6FF;
+  
+  }
+  .purchase-text{
+    margin-left: 20px;
+    margin-top: 50px;
+    font-size: 18px;
+    font-weight: bolder;
+    color:#00BDD6FF;
+  
+  
+  }
+  .event-status-process {
+    position: absolute;
+    top: 3px;
+    left: 0px; 
+    padding: 5px 10px;
+    border-radius: 5px;
+    font-size: 12px;
+    color: white;
+    background-color: #00aaff;
+  }
+  
+  .event-card-link {
+    text-decoration: none;
+    color: inherit; /* Ensure text color does not change on hover */
+    display: block; /* Makes the entire card clickable */
+  }
+  
+  @media (max-width: 768px) {
+      .page-content {
+          flex-direction: row; /* Change to row layout on small screens */
+          flex-wrap: wrap; /* Allows wrapping of items */
+      }
+  
+      .container, .header-menu, .event-detail {
+          flex: 1 1 100%; /* Take up full width on small screens */
+          margin-bottom: 20px; /* Adds spacing between rows */
+      }
+      
+      .textbox {
+          flex: 1 1 100%; /* Make input take full width */
+      }
+  
+      .avatar, .tag {
+          flex-direction: row; /* For any content you want to align in a row */
+      }
+  }
+  
+  
+  
+  
+  .tab-buttons {
+    display: flex;
+    margin-bottom: 20px;
+    gap: 10px;
+  }
+  
+  .tab-button {
+    padding: 10px 20px;
+    border: none;
+    background-color: #eee;
+    cursor: pointer;
+    border-radius: 5px;
+    font-weight: bold;
+    transition: background-color 0.3s ease;
+  }
+  
+  .tab-button.active {
+    background-color: #00BDD6;
+    color: white;
+  }
+  .view-more {
+    background-color: #00BDD6;
+    color: white;
+    padding: 10px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    align-self: center;
+    margin-top: 20px;
+    transition: color 1s ease;
+  }
+  
+  .view-more:hover::after {
+    transform: skewX(-45deg) scale(1, 1);
+  }
+  
+  .view-more:hover {
+    color: black;
+  }

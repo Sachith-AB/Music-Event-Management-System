@@ -35,6 +35,7 @@ class SingerMyTickets {
         $mytickets = $buyticket->getAllPurchasedEvents($id);
         $upcomingTickets = [];
         $pastTickets = [];
+        if(!empty($mytickets)){
         foreach ($mytickets as $myticket) {
             $ticket_id = $myticket->ticket_id; 
             $eventDetail = $ticket->getTicketAndEventDetails($ticket_id); 
@@ -53,6 +54,7 @@ class SingerMyTickets {
             }
 
             
+        }
         }
         
         return ['upcoming'=>$upcomingTickets,'past'=>$pastTickets];
