@@ -1,4 +1,3 @@
-
 <?php require_once '../app/helpers/load_notifications.php'; ?>
 <?php include ('../app/views/components/header.php'); ?>
 
@@ -55,13 +54,17 @@ $_SESSION['last_visit'] = date('Y-m-d H:i:s');
                     
                     // If we have images, display them
                     if (is_array($imageNames) && count($imageNames) > 0) {
-                        
                         // If there are multiple images, display them in a scrollable container
                         if (count($imageNames) > 1) {
                             echo '<div class="image-scroll-container">';
                             foreach ($imageNames as $imageName) {
                                 echo '<img src="' . ROOT . '/assets/images/events/' . $imageName . '" alt="Event Image" class="event-image">';
                             }
+                            echo '</div>';
+                        } else {
+                            // Display single image
+                            echo '<div class="single-image-container">';
+                            echo '<img src="' . ROOT . '/assets/images/events/' . $imageNames[0] . '" alt="Event Image" class="event-image">';
                             echo '</div>';
                         }
                     } else {
@@ -134,4 +137,3 @@ $_SESSION['last_visit'] = date('Y-m-d H:i:s');
     </script>
 </body>
 </html>
-<?php include ('../app/views/components/footer.php'); ?>

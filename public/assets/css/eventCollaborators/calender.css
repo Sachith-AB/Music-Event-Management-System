@@ -18,6 +18,11 @@
     background: rgba(255, 255, 255, 0.947);
     
 }
+
+.container h1{
+    color: #00BDD6;
+}
+
 .back-button{
     display: flex;
     gap: 20px;
@@ -76,6 +81,25 @@
 .calendar-grid .has-event {
     background: #39e86d;
     color: white;
+}
+
+.calendar-grid .day.unavailable {
+    background: #00BDD6;
+    color: white;
+    position: relative;
+}
+
+.calendar-grid .day.unavailable:hover {
+    background: #00BDD6;
+    transform: scale(1.1);
+}
+
+.calendar-grid .day.unavailable::after {
+    content: '✕';
+    position: absolute;
+    bottom: 2px;
+    right: 2px;
+    font-size: 10px;
 }
 
 /* Event List Styles */
@@ -223,7 +247,7 @@
             margin-right: 10px;
         }
         .available-dates button {
-            background-color: #4CAF50;
+            background-color: #00BDD6;
             color: white;
             padding: 8px 20px;
             border: none;
@@ -233,11 +257,11 @@
             transition: background-color 0.3s ease;
         }
         .available-dates button:hover {
-            background-color: #45a049;
+            color: #000;
         }
         .unavailable-date {
-            background-color: #ff6b6b !important;
-            color: white !important;
+            background-color: #ff6b6b ;
+            color: white ;
         }
         .alert {
             padding: 15px;
