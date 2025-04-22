@@ -49,7 +49,7 @@ class Signup {
                 $errors = 'flag=' . 1 . '&error=' . $error . '&error_no=' . 7 ;
 
                 unset($_POST['signUp']);
-                redirect("home?$errors&$passData");
+                redirect("signup?$errors&$passData");
                 exit;
             }
         }else{

@@ -19,7 +19,6 @@
 
 <body>
 <?php 
-
     //Get the pass data from URL for sign in part
     //To handle Errors
     $email = htmlspecialchars($_GET['email'] ?? '');
@@ -152,10 +151,10 @@
         </main>
     </div>
 
-    <!-- Show error
     <?php if (!empty($data['error'])): ?>
         <?php 
             $message = $data['error'];
+            echo $message;
             include("../app/views/components/r-message.php")
         ?>
 
@@ -164,7 +163,7 @@
             $message = $error;
             include("../app/views/components/r-message.php")
         ?>
-    <?php endif ?> -->
+    <?php endif ?>
 
     <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
     <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
