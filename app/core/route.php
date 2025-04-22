@@ -46,6 +46,9 @@ if(getUserRole() == 'collaborator' || isAdmin()){
     route('colloborator-updateprofile','eventCollaborator/SingerUpdateProf@index');
     route('colloborator-calendar','eventCollaborator/Calender@index');
     route('colloborator-events','eventCollaborator/SingerEvents@index');
+    route('colloborator-pastevents','eventCollaborator/SingerPastEvents@index');
+    route('colloborator-mytickets','eventCollaborator/SingerMyTickets@index');
+    route('view-pastevent','ticketHolder/ViewPastevent@index');
     route('colloborator-payments','eventCollaborator/SingerPayments@index');
     route('collaborator-viewprofile','eventCollaborator/ViewProfile@index');
     route('collaborator-eventdetails','eventCollaborator/EventDetails@index');
@@ -85,6 +88,7 @@ if (getUserRole() == 'planner' || isAdmin()){
     route('event-planner-messages','eventPlanner/EventPlannerMessage@index');
     route('event-planner-viewEvent','eventPlanner/EventPlannerViewEvent@index');
     route('event-planner-scheduledEvent','eventPlanner/EventPlannerScheduledEvent@index');
+    route('edit-scheduled-event-ticket','eventPlanner/EditScheduledEventTicket@index');
     route('get-event-messages','eventPlanner/EventPlannerMessage@index');
     route('collaborator-payment','eventPlanner/CollaboratorPayment@index');
     route('event-planner-completedEvent','eventPlanner/EventPlannerCompletedEvent@index');
@@ -92,7 +96,9 @@ if (getUserRole() == 'planner' || isAdmin()){
     route('calender','calender/Calender@index');
 
     route('collaborator-eventdetails','eventCollaborator/EventDetails@index');
-    route('collaborator-calendar-for-eventplanner','eventCollaborator/CalenderForEventPlanner@index');
+
+    route('collaborator-viewprofile','eventCollaborator/ViewProfile@index');
+
 }
 
 //Route for purchaseticket
@@ -109,6 +115,7 @@ if(getUserRole() == 'holder' ||isAdmin()){
     route('ticket-holder-home','ticketHolder/TicketHolderHome@index');
     route('view-pastevent','ticketHolder/ViewPastevent@index');
     route('notification-event','ticketHolder/NotificationEvent@index');
+    route('delete-buyticket','ticketHolder/Deletebuyticket@index');
     route('profile/markread','ticketHolder/ViewPastevent@markNotificationsRead');
 }
 
@@ -119,6 +126,7 @@ if(isAdmin()){
     route('admin-eventcollaborators','admin/EventCollaborators@index');
     route('admin-ticketholders','admin/TicketHolders@index');
     route('admin-vieweventplanner','admin/ViewEventPlanner@index');
+    route('admin-viewticketholder','admin/ViewTicketHolder@index');
     route('admin-event-report','admin/AdminEventReport@index');
     route('admin-ticket-report','admin/AdminTicketReport@index');
     route('admin-user-report','admin/AdminUserReport@index');

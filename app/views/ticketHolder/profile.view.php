@@ -53,7 +53,7 @@
                 </form>
             </div>
             
-            <?php if (!empty($pastTickets)): ?>
+            <?php if (!empty($pastTickets) || !empty($upcomingTickets)): ?>
                 <div class="upcommingeve-tickets">
                     <div class="back-button">
                         <!-- Include Back Button Component -->

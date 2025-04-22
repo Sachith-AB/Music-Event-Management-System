@@ -66,22 +66,22 @@
                     <div class="input-group">
                         <div class="input-field">
                             <label for="first-name">First name</label>
-                            <input type="text" id="first-name" name="first-name" placeholder="" required>
+                            <input type="text" id="first-name" name="first-name" placeholder="">
                         </div>
                         <div class="input-field">
                             <label for="last-name">Last name</label>
-                            <input type="text" id="last-name" name="last-name" placeholder="" required>
+                            <input type="text" id="last-name" name="last-name" placeholder="">
                         </div>
                     </div>
 
                     <div class="input-group">
                         <div class="input-field">
                             <label for="email">Email</label>
-                            <input type="email" id="email" name="email" placeholder="" required>
+                            <input type="email" id="email" name="email" placeholder="">
                         </div>
                         <div class="input-field">
                             <label for="phone">Phone number</label>
-                            <input type="tel" id="phone" name="phone" placeholder="" required>
+                            <input type="tel" id="phone" name="phone" placeholder="07********">
                         </div>
                     </div>
                     <div class="checkbox-group">
@@ -89,6 +89,7 @@
                         <label><input type="checkbox" name="agree" checked> I agree with the <a href="#">Terms of Use</a> & <a href="#">Privacy Policy</a></label>
                     </div>
                 </div>
+             
 
                 <!-- Ticket section -->
                 <div class="event-details-container">
@@ -100,6 +101,7 @@
                             </div>
                             <div class="ticket-header">
                                 <h3><?= htmlspecialchars($ticketdetails[0]->ticket_quantity) ?> Tickets Available</h3>
+                                <input type="hidden" name="availableticketcount" id="availableticketcount" value="<?= htmlspecialchars($ticketdetails[0]->ticket_quantity) ?>">
                             </div>
                         </div>
                         <div class="available">
@@ -122,6 +124,7 @@
                         'quantity' => $ticketdetails[0]->ticket_quantity,
                         'price' => $ticketdetails[0]->ticket_price,
                         'type' => $ticketdetails[0]->ticket_type,
+                        'discount' =>$ticketdetails[0]->discount,
                         // Add any other details as needed
                     ]) ?>;
                 </script>
@@ -150,10 +153,10 @@
                             <p id="totalDisplay"></p>
                         </div>
                         <!-- Payment Method -->
-                        <div class="payment-method">
+                        <!-- <div class="payment-method">
                             <img src="<?=ROOT?>/assets/images/ticket/mastercard-icon.png" alt="Mastercard">
                             <span>Mastercard **** 5987</span>
-                        </div>
+                        </div> -->
 
                         <button type="submit" class="pay-now-btn" name="submit">Pay now</button>
                         
@@ -208,9 +211,20 @@
 
             
     </main>
+    <?php if(!empty($data)): ?>
+        <?php 
+            $message = $data['error'];
+            // show($message);
+            include("../app/views/components/r-message.php")
+            
+        ?>
+    <?php endif ?>
 
-
-        
+    <script src="<?=ROOT?>/assets/js/signin-up.js"></script>
+    <script src="<?=ROOT?>/assets/js/message.js"></script>
+    <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+    <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
+    <script src="https://unpkg.com/ionicons@5.5.2/dist/ionicons.js"></script> 
     
 
 </body>

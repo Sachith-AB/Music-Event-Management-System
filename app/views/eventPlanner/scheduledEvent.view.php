@@ -114,8 +114,40 @@
             </div>
         </div>
     </div>
+    <!-- display tickets -->
+    <div class="ticket-details-box">
+        <h2 class="event-title">Ticket Details</h2>
+        <div class="payment-summary">
+            <table class="modern-table">
+                <thead>
+                    <tr>
+                        <th>Ticket Type</th>
+                        <th>Price (LKR)</th>
+                        <th>Sale Start Date</th>
+                        <th>Sale End Date</th>
+                        <th></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <?php foreach ($data['tickets'] as $ticket): ?>
+                        <tr>
+                            <td><?php echo htmlspecialchars($ticket->ticket_type); ?></td>
+                            <td class="amount"><?php echo number_format($ticket->price, 2); ?></td>
+                            <td><?php echo date($ticket->sale_strt_date); ?></td>
+                            <td><?php echo date($ticket->sale_end_date); ?></td>
+                            <td>
+                                <button class="btn btn-secondary" onclick="gotoeditticket(<?= $ticket->id ?>)">Edit or Apply Discount</button>
+                            </td>
+                        </tr>
+                    <?php endforeach; ?>
+                </tbody>
+            </table>
+        </div>
 
-    
+
+
+
+    </div>
 
     <section class="collaborator-payment-section">
         <div class="collaborator-box">
@@ -131,6 +163,9 @@
     </section>
 
     <script>
+        function gotoeditticket(ticketId){
+            window.location.href = "edit-scheduled-event-ticket?ticket_id="+ticketId;
+        }
         function goBack() {
             window.location.href = "event-planner-viewEvent?id=<?php echo $data['id']?>";
             window.history.back();

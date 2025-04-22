@@ -9,6 +9,92 @@ class Buyticket {
     ];
 
 
+
+
+    public function validePurchase($data){
+        $this->errors = [];
+
+        
+
+        // Validate quantity
+        if (empty($data['buyer_Fname'])) {
+			$this->errors['flag'] = true;
+			$this->errors['error'] = "Frist name is Required ";
+			$this->errors['error_no'] = 1;
+			return;
+		}
+        if (empty($data['buyer_Lname'])) {
+			$this->errors['flag'] = true;
+			$this->errors['error'] = "Last name is Required ";
+			$this->errors['error_no'] = 1;
+			return;
+		}
+        if (empty($data['buyer_phoneNo'])) {
+			$this->errors['flag'] = true;
+			$this->errors['error'] = "Phone number is Required ";
+			$this->errors['error_no'] = 1;
+			return;
+		}elseif (!preg_match('/^\d{10}$/', $data['buyer_phoneNo'])) {
+            $this->errors['flag'] = true;
+            $this->errors['error'] = "Phone number must be exactly 10 digits";
+            $this->errors['error_no'] = 1;
+            return;
+        }
+
+
+
+
+        if (empty($data['buyer_email'])) {
+			$this->errors['flag'] = true;
+			$this->errors['error'] = "Email is Required";
+			$this->errors['error_no'] = 1;
+			return;
+		}elseif (!filter_var($data['buyer_email'], FILTER_VALIDATE_EMAIL)) {
+            $this->errors['flag'] = true;
+            $this->errors['error'] = "Invalid email format";
+            $this->errors['error_no'] = 1;
+            return;
+        }
+    
+        // if (empty($data['ticket_type'])) {
+		// 	$this->errors['flag'] = true;
+		// 	$this->errors['error'] = "Ticket Type is Required ";
+		// 	$this->errors['error_no'] = 1;
+		// 	return;
+		// }
+        if (empty($data['ticket_quantity'])) {
+			$this->errors['flag'] = true;
+			$this->errors['error'] = "Quantity is Required ";
+			$this->errors['error_no'] = 1;
+			return;
+		}
+        if ($data['ticket_quantity'] > $data['available_quantity']) {
+			$this->errors['flag'] = true;
+			$this->errors['error'] = "Available ticket quantity is not enough";
+			$this->errors['error_no'] = 1;
+			return;
+		}
+        
+        
+
+        // Validate price if the ticket is paid
+        // if ($data['ticket_type'] === 'paid' && (empty($data['price']) || !is_numeric($data['price']))) {
+        //     $this->errors['price'] = "Price is required for paid tickets and must be a valid number.";
+        // }
+
+        // Validate sale dates and times
+        // if (empty($data['sale_strt_date']) || empty($data['sale_end_date'])) {
+        //     $this->errors['sale_dates'] = "Both start and end sale dates are required.";
+        // }
+
+        // Return true if no errors, otherwise return false and keep the errors
+        if (empty($this->errors)) {
+            return true;  // Validation successful
+        }
+
+        return false;  // Validation failed
+    }
+
     public function getEventBuyers($userId) {
         // SQL query to retrieve ticket buyer details for events created by the logged-in user
         $query = "SELECT 

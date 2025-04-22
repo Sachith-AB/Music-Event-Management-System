@@ -39,7 +39,7 @@
                                     <td>
                                         <div class="view-delete-buttons">
 
-                                            <button class="action-btn view">View</button>
+                                            <button class="action-btn view" onclick="gotoholderprofile(<?php echo $holder->id ?>)">View</button>
 
                                             <form  method="post">
                                                 <input type = 'hidden' name = 'user_id' value = "<?php echo $holder->id ?>" >
@@ -59,6 +59,11 @@
                 </tbody>
             </table>
         </div>
+        <script>
+        function gotoholderprofile(userid){
+            window.location.href = "<?=ROOT?>/admin-viewticketholder?id="+userid;
+        }
+    </script>
     </div>
 </body>
 </html>
