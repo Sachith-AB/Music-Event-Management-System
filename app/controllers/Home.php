@@ -36,12 +36,16 @@ class Home {
             return strtotime($b->eventDate) <=> strtotime($a->eventDate);
         });
     
+        // Reverse the array so oldest events come first
+        $recentEvents = array_reverse($recentEvents);
+    
         // Final structured return
         return [
             'trendingEvents' => $trendingEvents,
             'recentEvents' => $recentEvents
         ];
     }
+    
     
 
     private function getEventRating($rating, $id, $user) {

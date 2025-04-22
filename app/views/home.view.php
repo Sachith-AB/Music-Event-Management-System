@@ -80,12 +80,13 @@
         </div>
 
     </div>
-    <div class = "events-selection">
-        <div class ="events-header">
-            <h2>Upcoming 24 hours</h2>
+        <div class = "events-selection">
+            <div class ="events-header">
+                <h2>Recent Events</h2>
+            </div>
+            <?php include ('../app/views/components/eventCard.php'); ?>
         </div>
-    </div>
-        <?php include ('../app/views/components/eventCard.php'); ?>
+            
     </div>
     <!-- Show error -->
     <?php if (!empty($data['error'])): ?>
