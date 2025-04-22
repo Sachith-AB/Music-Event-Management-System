@@ -19,6 +19,7 @@ class Profile {
         // show( $data);
 
         $tickets=$this->purchasedetails();
+        
         $upcomingTickets = $tickets['upcoming'];
         $pastTickets = $tickets['past'];
         $ticketcount = $this->getticketcount(array_merge($upcomingTickets,$pastTickets));
@@ -59,7 +60,7 @@ class Profile {
 
         $buyticket = new Buyticket();
         $ticket = new Ticket();
-        $notification = new Notification;
+        
 
         $id = $_SESSION['USER']->id ?? 0;
 
@@ -85,6 +86,7 @@ class Profile {
 
             
         }
+        
         return ['upcoming'=>$upcomingTickets,'past'=>$pastTickets];
 
     }

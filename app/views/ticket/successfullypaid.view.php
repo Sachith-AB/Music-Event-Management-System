@@ -302,14 +302,21 @@
 
                 
                     <div class="button-group">
-                        <button type="button" class="add-ticket-btn" onclick="goToMyTickets()">Go to profile</button>
+                        <button type="button" class="add-ticket-btn" onclick="<?= $_SESSION['USER']->role === 'collaborator' ? 'goToColloboratorProfile()' : 'goToMyTickets()' ?>">Go to profile</button>
+
                         <button type="submit" class="pay-now-btn" name="submit">Send Email for Ticket</button>
                     </div>
                     </form>
                 </div>
                 <script>
+                    
                     function goToMyTickets() {
-                        window.location.href = "profile";
+                        
+                            window.location.href = "profile";
+                        
+                    }
+                    function goToColloboratorProfile(){
+                        window.location.href = "colloborator-mytickets";
                     }
                 </script>
 

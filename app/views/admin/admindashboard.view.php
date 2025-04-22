@@ -192,7 +192,7 @@
                             </div>
                         </div>
                         <div class="event-card-icons">
-                            <a href="<?=ROOT?>/view-event?id=<?php echo $event->event_id ?>" > <i class="fas fa-eye"></i></a>
+                            <a href="<?=ROOT?>/view-pastevent?id=<?php echo $event->event_id ?>" > <i class="fas fa-eye"></i></a>
                             
                         </div>
                     </div>
