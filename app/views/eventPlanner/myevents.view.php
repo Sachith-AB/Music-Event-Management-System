@@ -37,7 +37,11 @@
                             <div class="event-card">
                                 <a href="<?=ROOT?>/event-planner-viewEvent?id=<?= htmlspecialchars($event->id) ?>" class="event-card-link">
                                     <div class="event-status-process">Processing</div>
-                                    <img src="<?=ROOT?>/assets/images/events/<?php echo htmlspecialchars($event->cover_images)?> " alt="<?= htmlspecialchars($event->event_name) ?>">
+                                    <?php
+                                    $coverImages = json_decode($event->cover_images, true);
+                                    $firstImage = $coverImages[0] ?? ''; // fallback if empty
+                                    ?>
+                                    <img src="<?= ROOT ?>/assets/images/events/<?php echo $firstImage ?> " alt="<?= htmlspecialchars($event->event_name) ?>">
                                     <div>
                                         <div><?= htmlspecialchars($event->event_name) ?></div>
                                         <div>
@@ -76,7 +80,11 @@
                             <div class="event-card">
                                 <a href="<?=ROOT?>/event-planner-scheduledEvent?id=<?= htmlspecialchars($event->id) ?>" class="event-card-link" name = "update">
                                     <div class="event-status-scheduled">Scheduled</div>
-                                    <img src="<?=ROOT?>/assets/images/events/<?php echo htmlspecialchars($event->cover_images)?>" alt="<?= htmlspecialchars($event->event_name) ?>">
+                                    <?php
+                                    $coverImages = json_decode($event->cover_images, true);
+                                    $firstImage = $coverImages[0] ?? ''; // fallback if empty
+                                    ?>
+                                    <img src="<?= ROOT ?>/assets/images/events/<?php echo $firstImage ?>" alt="<?= htmlspecialchars($event->event_name) ?>">
                                     <div>
                                         <div><?= htmlspecialchars($event->event_name) ?></div>
                                         <div>
@@ -115,7 +123,11 @@
                             <div class="event-card">
                                 <a href="<?=ROOT?>/event-planner-completedEventInfo?id=<?= htmlspecialchars($event->id) ?>" class="event-card-link" name="completed">
                                     <div class="event-status-completed">Completed</div>
-                                    <img src="<?=ROOT?>/assets/images/events/<?php echo htmlspecialchars($event->cover_images)?>" alt="<?= htmlspecialchars($event->event_name) ?>">
+                                    <?php
+                                    $coverImages = json_decode($event->cover_images, true);
+                                    $firstImage = $coverImages[0] ?? ''; // fallback if empty
+                                    ?>
+                                    <img src="<?= ROOT ?>/assets/images/events/<?php echo $firstImage ?>" alt="<?= htmlspecialchars($event->event_name) ?>">
                                     <div>
                                         <div><?= htmlspecialchars($event->event_name) ?></div>
                                         <div>

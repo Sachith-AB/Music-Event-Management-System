@@ -58,7 +58,11 @@
                                             <div class="upcommingeve-ticket-card">
                                                 <div class="event-status-process"><?= htmlspecialchars($event[0]->ticket_type) ?> - LKR<?= htmlspecialchars($event[0]->ticket_price) ?></div>
                                                 <div class="upcommingeve-ticket-image">
-                                                    <img src="<?=ROOT?>/assets/images/events/<?= htmlspecialchars($event[0]->event_images) ?>" alt="Event Image">
+                                                <?php
+                                                $coverImages = json_decode($event[0]->cover_images, true);
+                                                $firstImage = $coverImages[0] ?? ''; // fallback if empty
+                                                ?>
+                                                <img src="<?= ROOT ?>/assets/images/events/<?php echo $firstImage ?>" alt="Event Image">
                                                 </div>
                                                 <div class="upcommingeve-ticket-info">
                                                     <h3><?= htmlspecialchars($event[0]->event_name) ?>: <?= htmlspecialchars($event[0]->event_description) ?></h3>
@@ -107,7 +111,11 @@
                                                 <div class="upcommingeve-ticket-card">
                                                     <div class="event-status-process"><?= htmlspecialchars($event[0]->ticket_type) ?> - LKR<?= htmlspecialchars($event[0]->ticket_price) ?></div>
                                                     <div class="upcommingeve-ticket-image">
-                                                        <img src="<?=ROOT?>/assets/images/events/<?= htmlspecialchars($event[0]->event_images) ?>" alt="Event Image">
+                                                    <?php
+                                                    $coverImages = json_decode($event[0]->cover_images, true);
+                                                    $firstImage = $coverImages[0] ?? ''; // fallback if empty
+                                                    ?>
+                                                    <img src="<?= ROOT ?>/assets/images/events/<?php echo $firstImage ?>" alt="Event Image">
                                                     </div>
                                                     <div class="upcommingeve-ticket-info">
                                                         <h3><?= htmlspecialchars($event[0]->event_name) ?>: <?= htmlspecialchars($event[0]->event_description) ?></h3>

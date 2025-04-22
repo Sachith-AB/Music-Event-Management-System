@@ -25,7 +25,11 @@
                                 <div class="event-card">
                                     <a href="<?=ROOT?>/collaborator-eventdetails?event_id=<?php echo htmlspecialchars($event->id)?>&sender_id=<?php echo htmlspecialchars($_SESSION['USER']->id)?>" class="event-card-link">
                                        
-                                        <img src="<?=ROOT?>/assets/images/events/<?php echo(htmlspecialchars($event->cover_images))?>" >
+                                        <?php
+                                        $coverImages = json_decode($event->cover_images, true);
+                                        $firstImage = $coverImages[0] ?? ''; // fallback if empty
+                                        ?>
+                                        <img src="<?= ROOT ?>/assets/images/events/<?php echo $firstImage ?>" >
                                         <div class = "event-details" >
 
                                             <div>🎤 <?php echo htmlspecialchars($event->event_name); ?></div>

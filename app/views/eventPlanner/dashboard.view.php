@@ -114,7 +114,11 @@
                                 <tr class="event-row" data-date="<?= htmlspecialchars(explode(" ", $event->start_time)[0]) ?>" data-name="<?= strtolower(htmlspecialchars($event->event_name)) ?>">
                                     <td>
                                         <div class="event-info">
-                                            <img class="eventimage" src='<?=ROOT?>/assets/images/events/<?php echo esc($event->cover_images) ?>' alt="Event Image">
+                                        <?php
+                                        $coverImages = json_decode($event->cover_images, true);
+                                        $firstImage = $coverImages[0] ?? ''; // fallback if empty
+                                        ?>
+                                        <img class="eventimage" src="<?= ROOT ?>/assets/images/events/<?php echo $firstImage ?>" alt="Event Image">
                                             <?= htmlspecialchars($event->event_name) ?>
                                         </div>
                                     </td>
