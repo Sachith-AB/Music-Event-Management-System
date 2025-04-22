@@ -32,24 +32,26 @@
     <button id="submit-review" name="review" type="submit">Submit Review</button>
 
     <!-- Display Reviews -->
-    <div class="reviews-display">
+    <!-- <div class="reviews-display">
         <h3>Recent Reviews</h3>
         <ul id="reviews-list"></ul>
-    </div>
+    </div> -->
 </form>
 
 
 <style>
     /* Review Section */
     .review-section {
+        font-family: Arial, sans-serif;
         max-width: 600px;
         margin: 2rem auto;
         padding: 1.5rem;
         border: 1px solid #ddd;
         border-radius: 8px;
-        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        box-shadow: 0 4px 8px rgba(5, 5, 5, 0.1);
         font-family: Arial, sans-serif;
         background-color: #f9f9f9;
+        border-top: 2px solid #00BDD6FF;
     }
 
     /* Section Header */

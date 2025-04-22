@@ -39,7 +39,13 @@ class EventPlannerScheduledEvent {
         $data2= array_merge($income_data, $ticket_count_data);
         $data = array_merge($data1, $data2);
 
-        $this->view('eventPlanner/scheduledEvent', $data);
+
+
+        $eventtickets = $this->getticketdetails($event,$event_id);
+        // show($eventtickets);
+        $data['tickets'] = $eventtickets;
+
+        $this->view('eventPlanner/scheduledEvent',$data);
     }
 
     public function getData($row) {
@@ -88,6 +94,7 @@ class EventPlannerScheduledEvent {
         $buyers =[];
         if($new['event_date'] !== $old->eventDate){
             $changes[] = "Event Date changed from {$old->eventDate} to {$new['event_date']}";
+            $link = "notification-event?id={$old->id}";
         }
         if (isset($new['starttime'])) {
             $new_start = date('H:i:s', strtotime($new['starttime']));
@@ -95,6 +102,7 @@ class EventPlannerScheduledEvent {
             if ($new_start !== $old_start) {
                 $changes[] = "Start Time changed from {$old->start_time} to $new_start";
             }
+            $link = "notification-event?id={$old->id}";
         }
         if (isset($new['endtime'])) {
             $new_end = date('H:i:s', strtotime($new['endtime']));
@@ -102,6 +110,7 @@ class EventPlannerScheduledEvent {
             if ($new_end !== $old_end) {
                 $changes[] = "End Time changed from {$old->end_time} to $new_end";
             }
+            $link = "notification-event?id={$old->id}";
         }
         $buyers = $buyticket->getticketbuyers($old->id);
         
@@ -113,7 +122,8 @@ class EventPlannerScheduledEvent {
                     'user_id' => $buyer->user_id,
                     'title' => "Change in Event '{$old->event_name}' Details",
                     'message' => json_encode($changes),
-                    'is_read' => 0
+                    'is_read' => 0,
+                    'link' => $link,
                 ];
                 $notification->insert($notifymsg);
             }
@@ -166,6 +176,11 @@ class EventPlannerScheduledEvent {
         ];
     }
 
+    public function getticketdetails($event,$event_id){
+        $all_data = $event->getAllEventData($event_id);
+        
+        return $all_data['tickets'];
+    }
 
     public function sendEmailtoBuyers()
     {

@@ -11,9 +11,9 @@ class EventPlannerPayment {
         }
 
         $userId = $_SESSION['USER']->id;
-        $this->getEventPlannerPayments($userId);
+        // $this->getEventPlannerPayments($userId);
         $data = $this->getEventPlannerPayments($userId);
-       //show($data);
+    //    show($data);
         $this->view('eventPlanner/payment', $data);
     }
 

@@ -203,7 +203,6 @@ class Event {
         JOIN events e ON p.event_id = e.id
         JOIN users u ON p.user_id = u.id
         WHERE e.createdBy = ? 
-        AND e.status = 'completed'
         AND e.is_delete = '0'
         GROUP BY e.id, p.user_id
         ORDER BY e.eventDate DESC, total_payment DESC";
@@ -284,13 +283,13 @@ class Event {
     }
     
 
-    public function getUpcomingEvents()
+    public function getProcessingEvents()
     {
        
 
         $query = "SELECT e.id AS event_id,e.event_name,e.eventDate,e.start_time,e.address,e.createdBy,e.cover_images,u.id AS user_id,u.name AS user_name from events e
                   JOIN users u on e.createdBy = u.id
-                  WHERE e.is_delete = '0' AND e.eventDate > CURRENT_DATE
+                  WHERE e.is_delete = '0' AND e.status = 'processing'
                   ";
 
         $result = $this->query($query);
@@ -299,11 +298,49 @@ class Event {
 
     public function getAlreadyHeldEvents()
     {
+        $query = "SELECT e.id AS event_id, 
+                        e.event_name, 
+                        e.eventDate, 
+                        e.start_time, 
+                        e.address, 
+                        e.createdBy, 
+                        e.cover_images, 
+                        u.id AS user_id, 
+                        u.name AS user_name,
+                        ROUND(AVG(r.rating), 1) AS average_rating,
+                        COUNT(r.id) AS total_ratings
+                 FROM events e
+                 JOIN users u ON e.createdBy = u.id
+                 LEFT JOIN rating r ON e.id = r.event_id
+                 WHERE e.is_delete = '0' 
+                 AND e.eventDate < CURRENT_DATE
+                 GROUP BY e.id, e.event_name, e.eventDate, e.start_time, e.address, e.createdBy, e.cover_images, u.id, u.name";
 
-        $query = "SELECT e.id AS event_id,e.event_name,e.eventDate,e.start_time,e.address,e.createdBy,e.cover_images,u.id AS user_id,u.name AS user_name from events e
-                  JOIN users u on e.createdBy = u.id
-                  WHERE e.is_delete = '0' AND e.eventDate < CURRENT_DATE
-                  ";
+        $result = $this->query($query);
+        return $result;
+    }
+
+    public function getScheduledEvents()
+    {
+        $query = "SELECT e.id AS event_id, 
+                        e.event_name, 
+                        e.eventDate, 
+                        e.start_time, 
+                        e.address, 
+                        e.createdBy, 
+                        e.cover_images, 
+                        e.status,
+                        u.id AS user_id, 
+                        u.name AS user_name,
+                        ROUND(AVG(r.rating), 1) AS average_rating,
+                        COUNT(r.id) AS total_ratings
+                 FROM events e
+                 JOIN users u ON e.createdBy = u.id
+                 LEFT JOIN rating r ON e.id = r.event_id
+                 WHERE e.is_delete = '0' 
+                 AND e.status = 'scheduled'
+                 GROUP BY e.id, e.event_name, e.eventDate, e.start_time, e.address, e.createdBy, e.cover_images, e.status, u.id, u.name
+                 ORDER BY e.eventDate ASC, e.start_time ASC";
 
         $result = $this->query($query);
         return $result;
@@ -369,6 +406,11 @@ class Event {
         $result = $this->query($query);
         return $result;
      }
+     public function geteventplannerinfo($event_id){
+        $query = "SELECT * FROM users JOIN events ON events.createdBy = users.id WHERE events.id = $event_id";
+    
+        return $this->query($query);
+     }
 
      public function getFullPastEventInfoWithTickets()
      {
@@ -392,4 +434,75 @@ class Event {
         $result = $this->query($query);
          return $result ? $result : [];
      }
+
+    public function getEventRatings($eventId)
+    {
+        $query = "SELECT r.*, 
+                        u.name AS user_name,
+                        u.profile_image
+                 FROM rating r
+                 JOIN users u ON r.user_id = u.id
+                 WHERE r.event_id = ?
+                 ORDER BY r.created_at DESC";
+
+        return $this->query($query, [$eventId]);
+    }
+
+    public function getEventAverageRating($eventId)
+    {
+        $query = "SELECT 
+                        ROUND(AVG(rating), 1) AS average_rating,
+                        COUNT(*) AS total_ratings
+                 FROM rating 
+                 WHERE event_id = ?";
+
+        return $this->query($query, [$eventId])[0] ?? null;
+    }
+
+    public function getStarRating($rating) {
+        $fullStars = floor($rating);
+        $halfStar = ($rating - $fullStars) >= 0.5;
+        $emptyStars = 5 - $fullStars - ($halfStar ? 1 : 0);
+        
+        $stars = '';
+        
+        // Add full stars
+        for ($i = 0; $i < $fullStars; $i++) {
+            $stars .= '<i class="fas fa-star" style="color: #00BDD6FF;"></i>';
+        }
+        
+        // Add half star if needed
+        if ($halfStar) {
+            $stars .= '<i class="fas fa-star-half-alt" style="color: #00BDD6FF;"></i>';
+        }
+        
+        // Add empty stars
+        for ($i = 0; $i < $emptyStars; $i++) {
+            $stars .= '<i class="far fa-star" style="color: #666;"></i>';
+        }
+        
+        return $stars;
+    }
+    public function getFutureEventsInfoForCollaborators($user_id)
+      {
+         $query = "SELECT e.id, e.event_name, e.eventDate, e.cover_images, e.address FROM events e 
+                     JOIN requests r ON
+                     e.id = r.event_id 
+                     WHERE r.Status = 'accepted' AND e.eventDate > CURRENT_DATE AND r.collaborator_id = $user_id";
+ 
+         $result = $this->query($query);
+         return $result ? $result : [];
+ 
+      }
+      public function getPastEventsInfoForCollaborators($user_id)
+      {
+         $query = "SELECT e.id, e.event_name, e.eventDate, e.cover_images, e.address FROM events e 
+                     JOIN requests r ON
+                     e.id = r.event_id 
+                     WHERE r.Status = 'accepted' AND e.eventDate < CURRENT_DATE AND r.collaborator_id = $user_id";  // Changed to < CURRENT_DATE
+ 
+         $result = $this->query($query);
+         return $result ? $result : [];
+ 
+      }
 }

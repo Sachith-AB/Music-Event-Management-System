@@ -1,7 +1,6 @@
 <?php require_once '../app/helpers/load_notifications.php'; ?>
 <?php include ('../app/views/components/header.php'); ?>
 
-
 <!DOCTYPE html>
 <html lang="en">
 
@@ -19,14 +18,7 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
 
 </head>
-
-<!-- <?php include ('../app/views/components/loading.php'); ?> -->
 <?php $email = htmlspecialchars($_GET['email']) ; ?>
-
-
-    <!-- Include Header -->
-    
-    <!-- Main Content -->
     <main>
         <?php if (!empty($purchaseDetails) && !empty($eventAndTicketDetails)): ?>
             <!-- get the duration -->
@@ -36,7 +28,6 @@
             $durationInSeconds = $eventEndTime - $eventStartTime;
             $durationInHours = $durationInSeconds / 3600;
             $durationInHours = round($durationInHours);
-
             ?>
             <div class="event-details-container-success">
                 <div class="back-button">
@@ -82,7 +73,7 @@
                         </div>
                         <div>
                             <h3>Place</h3>
-                            <p><?= htmlspecialchars($eventAndTicketDetails[0]->address) ?></p>
+                            <p class="two-line-ellipsis"><?= htmlspecialchars($eventAndTicketDetails[0]->address) ?></p>
                         </div>
                     </div>
                     <div class="event-item">
@@ -311,14 +302,21 @@
 
                 
                     <div class="button-group">
-                        <button type="button" class="add-ticket-btn" onclick="goToMyTickets()">Go to profile</button>
+                        <button type="button" class="add-ticket-btn" onclick="<?= $_SESSION['USER']->role === 'collaborator' ? 'goToColloboratorProfile()' : 'goToMyTickets()' ?>">Go to profile</button>
+
                         <button type="submit" class="pay-now-btn" name="submit">Send Email for Ticket</button>
                     </div>
                     </form>
                 </div>
                 <script>
+                    
                     function goToMyTickets() {
-                        window.location.href = "profile";
+                        
+                            window.location.href = "profile";
+                        
+                    }
+                    function goToColloboratorProfile(){
+                        window.location.href = "colloborator-mytickets";
                     }
                 </script>
 

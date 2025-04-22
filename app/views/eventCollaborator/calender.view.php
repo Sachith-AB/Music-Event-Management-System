@@ -9,15 +9,22 @@
     <link rel="stylesheet" href="<?=ROOT?>/assets/css/eventCollaborators/calender.css">
     <link rel="icon" type="image/png" href="<?=ROOT?>/assets/images/logo/logo.png">
 </head>
-    <?php $eventJson = json_encode($data);
-    ?>
 <body>
     <?php include ('../app/views/components/loading.php'); ?>
     <div class="dash-container">
-    <?php include ('../app/views/components/collaborator/singersidebar.php'); ?>
+        <?php include ('../app/views/components/collaborator/singersidebar.php'); ?>
         <div class="dashboard">
             <div class="container">
                 <h1>My Calendar</h1>
+                <?php if(isset($_SESSION['success'])): ?>
+                    <div class="alert alert-success"><?= $_SESSION['success'] ?></div>
+                    <?php unset($_SESSION['success']); ?>
+                <?php endif; ?>
+                <?php if(isset($_SESSION['error'])): ?>
+                    <div class="alert alert-danger"><?= $_SESSION['error'] ?></div>
+                    <?php unset($_SESSION['error']); ?>
+                <?php endif; ?>
+                <div id="messageContainer"></div>
                 <div class="calendar">
                     <div class="calendar-header">
                         <button id="prevMonth">◀</button>
@@ -25,15 +32,16 @@
                         <button id="nextMonth">▶</button>
                     </div>
                     <div class="calendar-grid">
-                    <script id="events" type="application/json"><?= $eventJson ?></script>
+                        <script id="events" type="application/json"><?= json_encode($data) ?></script>
                     </div>
                 </div>
-
-                <div class="event-list">
-                    <h2>My Events</h2>
-                    <ul id="eventList">
-                        <!-- Events will be listed here dynamically -->
-                    </ul>
+                <div class="available-dates">
+                    <h2>Add Unavailable Dates</h2>
+                    <form id="unavailableForm" method="POST">
+                        <input type="date" name="date" id="date" required min="<?= date('Y-m-d') ?>">
+                        <input type="hidden" name="user_id" value="<?= $_SESSION['USER']->id ?>">
+                        <button type="submit" name="submit" value = "submit">Add</button>
+                    </form>
                 </div>
             </div>
             <div id="eventModal" class="modal">
@@ -47,7 +55,6 @@
             </div>
         </div>
     </div>
-
 
     <script src="<?=ROOT?>/assets/js/calander.js"></script>
 </body>

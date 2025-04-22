@@ -7,7 +7,7 @@ function openModal() {
         const pricePerTicket = ticketDetails.price;
         const ticketType = ticketDetails.type;
         const subtotal = ticketCount * pricePerTicket;
-        const discount = 0; // 10% discount
+        const discount = ticketDetails.discount * ticketCount; // 10% discount
         const total = subtotal - discount;
 
         // Update modal content

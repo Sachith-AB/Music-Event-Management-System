@@ -194,25 +194,51 @@
         <div class="team-grid-scrollable">
             <div class="team-grid">
                 <?php foreach($data['tickets'] as $ticket): ?>
-                    <div class="pricing-card">
-                        <div>
-                            <h2><?= $ticket->ticket_type ?></h2>
-                            <p class="price"><?= $ticket->price ?></p>
-                            <ul>
-                                <?php 
-                                $restrictions = json_decode($ticket->restrictions, true);
-                                if (is_array($restrictions)): 
-                                    foreach ($restrictions as $feature): ?>
-                                        <li>✅ <?= htmlspecialchars($feature) ?></li>
-                                    <?php endforeach; 
-                                else: ?>
-                                    <li>No restrictions listed</li>
-                                <?php endif; ?>
-                            </ul>
+                    <?php
+                        // Combine date and time to create full datetime strings
+                        $startDateTime = strtotime($ticket->sale_strt_date . ' ' . $ticket->sale_strt_time);
+                        $endDateTime = strtotime($ticket->sale_end_date . ' ' . $ticket->sale_end_time);
+                        $currentDateTime = time(); // current server time
+
+                        // Only show ticket if current time is within the sale window
+                        if ($currentDateTime >= $startDateTime && $currentDateTime <= $endDateTime):
+
+                    ?>
+                        <div class="pricing-card">
+                            <div>
+                                <div class="ticket-header">
+                                    <div>
+                                        <h2 class="ticket-type"><?= $ticket->ticket_type ?></h2>
+                                        <p class="ticket-price"><?= $ticket->price ?></p>
+                                    </div>
+                                    <?php if(!empty($ticket->discount) && $ticket->discount > 0): ?>
+                                        <div class="discount">
+                                            <span class="discount-label">Discount:</span>
+                                            <span class="discount-value"><?= htmlspecialchars($ticket->discount) ?><?= is_numeric($ticket->discount) ? ' LKR' : '' ?></span>
+                                        </div>
+                                    <?php endif;?>
+
+                                </div>
+                                
+                                <ul>
+                                    <?php 
+                                    $restrictions = json_decode($ticket->restrictions, true);
+                                    if (is_array($restrictions)): 
+                                        foreach ($restrictions as $feature): ?>
+                                            <li>✅ <?= htmlspecialchars($feature) ?></li>
+                                        <?php endforeach; 
+                                    else: ?>
+                                        <li>No restrictions listed</li>
+                                    <?php endif; ?>
+                                </ul>
+                            </div>
+                            
+                            <button onclick="window.location.href='purchaseticket?id=<?= $ticket->id ?>'">Buy Ticket Now</button>
                         </div>
-                        
-                        <button onclick="window.location.href='purchaseticket?id=<?= $ticket->id ?>'">Buy Ticket Now</button>
-                    </div>
+                    <?php 
+                    endif; 
+                    ?>
+                    
                 <?php endforeach; ?>
             </div>
         </div>
@@ -260,12 +286,14 @@
                     });
             }
             </script>
+    <div class="ticketbackground">
+        <?php include ('../app/views/components/review-retriver.php'); ?>
 
-<?php include ('../app/views/components/review-retriver.php'); ?>
+        <!-- reviw to event -->
+        <?php include ('../app/views/components/review.php'); ?>
+    </div>
 
-<!-- reviw to event -->
-<?php include ('../app/views/components/review.php'); ?>
-        
+     
 </body>
 
 </html>

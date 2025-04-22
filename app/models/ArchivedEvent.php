@@ -3,7 +3,7 @@
 class ArchivedEvent {
     use Model;
 
-    protected $table = 'archived_event'; // Table name
+    protected $table = 'archived_event'; 
     protected $allowedColumns = [
         'id',
         'event_name',

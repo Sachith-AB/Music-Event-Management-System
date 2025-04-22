@@ -39,67 +39,36 @@
             <h2>trending events</h2>
         </div>
         <div class="events">
+    <?php if (!empty($trendingEvents)): ?>
+        <?php foreach ($trendingEvents as $event): ?>
             <div class="event">
-                <img src="<?=ROOT?>/assets/images/landing/top1.png" alt="Classical Serenade">
+                <img src="<?= ROOT ?>/uploads/<?= $event->cover_images ?>" alt="<?= htmlspecialchars($event->event_name) ?>">
                 <div class="event-info">
                     <div class="event-details">
-                        <h3>Classical Serenade</h3>
-                        <p class="date-time">Wed, November 26, 2024 | 8.00 PM</p>
-                        <p class="venue">Royal College, auditorium</p>
+                        <h3><?= htmlspecialchars($event->event_name) ?></h3>
+                        <p class="date-time"><?= date('D, F d, Y | h.i A', strtotime($event->start_time)) ?></p>
+                        <p class="venue"><?= htmlspecialchars($event->address) ?></p>
                     </div>
                     <div class="pricing">
-                        <p class="price-from">From LKR 3000</p>
+                        <?php if (!empty($event->pricing) && strtolower($event->pricing) != 'free'): ?>
+                            <p class="price-from">From LKR <?= number_format($event->audience * 10) ?></p> <!-- You can replace this with your real price logic -->
+                        <?php else: ?>
+                            <p class="price-from">Free Entry</p>
+                        <?php endif; ?>
                     </div>
                 </div>
             </div>
+        <?php endforeach; ?>
+    <?php else: ?>
+        <p>No trending events available.</p>
+    <?php endif; ?>
+</div>
 
-            <div class="event">
-                <img src="<?=ROOT?>/assets/images/landing/top2.png" alt="Melody Mania">
-                <div class="event-info">
-                    <div class="event-details">
-                        <h3>Melody Mania</h3>
-                        <p class="date-time">Thu, December 27, 2024 | 7.30 PM</p>
-                        <p class="venue">City Hall, auditorium</p>
-                    </div>
-                    <div class="pricing">
-                        <p class="price-from">From LKR 2000</p>
-                    </div>
-                </div>
-            </div>
-
-            <div class="event">
-                <img src="<?=ROOT?>/assets/images/landing/top3.png" alt="Rock Fest Extravaganza">
-                <div class="event-info">
-                    <div class="event-details">
-                        <h3>Rock Fest</h3>
-                        <p class="date-time">Fri, December 30, 2024 | 9.00 PM</p>
-                        <p class="venue">Central Park, auditorium</p>
-                    </div>
-                    <div class="pricing">
-                        <p class="price-from">From LKR 5000</p>
-                    </div>
-                </div>
-            </div>
-        </div>
     </section>
 
     
     <!--Event Browsing-->
     <div id="new-events">
-        <div class="events-selection">
-            <div class="events-header">
-                <h2> New Events in
-                    <select id="city-select">
-                        <option value="colombo">Colombo</option>
-                        <option value="kandy">Kandy</option>
-                        <option value="galle">Galle</option>
-                        <option value="jaffna">Jaffna</option>
-                        <option value="kurunegala">Kurunegala</option>
-                    </select>
-                </h2>
-                <button class="view-more-btn" onclick="toggleVisibility()">View more</button>
-            </div>
-        </div>
         <div class="category-buttons">
             <button onclick="setActiveButton(this)">All</button>
             <button onclick="setActiveButton(this)">Indoor</button>
@@ -111,17 +80,14 @@
         </div>
 
     </div>
-    <div class = "events-selection">
-        <div class ="events-header">
-            <h2>Upcoming 24 hours</h2>
+        <div class = "events-selection">
+            <div class ="events-header">
+                <h2>Recent Events</h2>
+            </div>
+            <?php include ('../app/views/components/eventCard.php'); ?>
         </div>
+            
     </div>
-    <div class = "events-container2" id = "events-container2">
-        <!--Events Dynamically inserted here -->
-    </div>
-    </div>
-
-    <script src="<?=ROOT?>/assets/js/events.js"></script> 
     <!-- Show error -->
     <?php if (!empty($data['error'])): ?>
             <?php 

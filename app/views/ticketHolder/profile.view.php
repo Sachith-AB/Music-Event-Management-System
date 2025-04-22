@@ -37,8 +37,6 @@
                     <div class="avatar">
                         <img src="<?=ROOT?>/assets/images/user/<?php echo $_SESSION['USER']->pro_pic ?>" alt="user image">        
                     </div>
-
-               
                 <div class="details">
                     <h2 class="head2"><?php echo $_SESSION['USER']->name ?></h2>
                     <h3 class="head3"><?php echo $_SESSION['USER']->email ?></h3>
@@ -55,7 +53,7 @@
                 </form>
             </div>
             
-            <?php if (!empty($pastTickets)): ?>
+            <?php if (!empty($pastTickets) || !empty($upcomingTickets)): ?>
                 <div class="upcommingeve-tickets">
                     <div class="back-button">
                         <!-- Include Back Button Component -->

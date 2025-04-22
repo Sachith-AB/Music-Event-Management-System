@@ -108,7 +108,7 @@
 
     </div>
 
-
+    </div>
   <!-- Display success message if flag is set -->
   <?php if ($flag == 2): ?>
     <?php 
