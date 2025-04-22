@@ -36,6 +36,7 @@ if($_SESSION['USER']->role == 'collaborator' || $_SESSION['USER']->role == 'admi
     route('colloborator-updateprofile','eventCollaborator/SingerUpdateProf@index');
     route('colloborator-calendar','eventCollaborator/Calender@index');
     route('colloborator-events','eventCollaborator/SingerEvents@index');
+    route('colloborator-pastevents','eventCollaborator/SingerPastEvents@index');
     route('colloborator-payments','eventCollaborator/SingerPayments@index');
     route('collaborator-viewprofile','eventCollaborator/ViewProfile@index');
     route('collaborator-eventdetails','eventCollaborator/EventDetails@index');
