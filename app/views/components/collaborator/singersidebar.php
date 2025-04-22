@@ -18,6 +18,7 @@
             <li><a href="colloborator-request" class="menu-link"><i class="fas fa-clipboard-list"></i> Requests </a></li>
             <li><a href="colloborator-payments" class="menu-link"><i class="fas fa-wallet"></i> Payment </a></li>
             <li><a href="colloborator-events" class="menu-link"><i class="fas fa-bullhorn"></i> Future Events </a></li>
+            <li><a href="colloborator-pastevents" class="menu-link"><i class="fas fa-history"></i> Past Events </a></li>
             <li><a href="colloborator-profile" class="menu-link"><i class="fas fa-user"></i> Profile </a></li>
         </ul>
     </aside>
