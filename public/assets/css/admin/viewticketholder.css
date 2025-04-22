@@ -1,0 +1,207 @@
+
+
+.head1 {
+    position: absolute; 
+    top: 88px; 
+    left: 150px; 
+    font-family:sans-serif;
+    font-size: 32px; 
+    line-height: 48px; 
+    font-weight: 700; 
+    color: #171A1FFF; /* neutral-900 */
+  }
+.all{
+  display: flex;
+}
+.container {
+    overflow: visible;
+    position: relative;
+    margin-top: 20px; 
+    margin-left: 122px;
+    width: 340px; 
+    height: 600px; 
+    background: #FAFAFBFF; /* neutral-100 */
+    border-radius: 4px; /* border-m */
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+    text-align: center;
+    justify-content: center;
+    align-items: center;
+    
+  }
+  .container h2 {
+    margin-bottom: 20px;
+    font-size: 24px;
+  }
+  .avatarcon{
+    background-color: #00aaff;
+  }
+  .avatar {
+    overflow: visible;
+    position: relative;
+    width: 140px; 
+    height: 140px; 
+    background: #D3C1FAFF; 
+    opacity: 1; 
+    overflow: hidden; 
+    
+    border-radius: 70px; 
+  }
+  .avatar img {
+
+    justify-content: center;
+    width: 140px; 
+    height: 140px; 
+  }
+
+.upcommingeve-tickets {
+    width: 60%;
+    margin-top: 20px; 
+    margin-left: 20px;
+    background-color: #FAFAFBFF;
+    padding: 20px;
+    border-radius: 4px;
+  
+  
+  
+    
+  }
+  .detail {
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .head2 {
+      
+      text-transform: capitalize; 
+      font-family: sans-serif; /* Heading */
+      font-size: 24px; 
+      line-height: 36px; 
+      font-weight: 700; 
+      color: #00BDD6FF; /* primary-500 */
+    }
+  
+  .head3 {
+      
+      font-family: sans-serif; /* Body */
+      font-size: 14px; 
+      line-height: 22px; 
+      font-weight: 400; 
+      color: #171A1FFF; /* neutral-900 */
+    }
+    .tag {
+        width: 250px; 
+        height: 28px; 
+        display: flex; 
+        align-items: center; 
+        justify-content: space-between; 
+        font-family: sans-serif; /* Body */
+        font-size: 12px; 
+        line-height: 20px; 
+        font-weight: 400; 
+        opacity: 1; 
+      }
+      /* Tag 28 - Item */
+      .tag .tag-item {
+        height: 28px; 
+        padding-left: 6px; 
+        padding-right: 6px; 
+        display: flex; 
+        align-items: center; 
+        justify-content: center; 
+        border-radius: 6px; /* border-l */
+      }
+      .tag .tag-item > * {
+        padding-left: 2px; 
+        padding-right: 2px; 
+      }
+      /* Tag item 1 */
+      .tag .tag-item:nth-child(1) {
+        font-family: sans-serif; 
+        font-size: 12px; 
+        line-height: 20px; 
+        font-weight: 400; 
+        color: #00BDD6FF; /* primary-500 */
+        background: rgb(215, 243, 247); /* primary-100 */
+      }
+      /* Tag item 1 - Pressed */
+      .tag .tag-item:nth-child(1):hover {
+        color: #00BDD6FF; /* primary-500 */
+        background: rgb(210, 239, 243); /* primary-200 */
+        cursor: pointer;
+      }
+      /* Tag item 1 - Pressed */
+      .tag .tag-item:nth-child(1):hover:active {
+        color: #00BDD6FF; /* primary-500 */
+        transform: scale(1.1); /* Increase size by 10% */
+        transition: transform 0.2s ease-in-out;
+        
+      }
+      /* Tag item 1 - Pressed */
+      .tag .tag-item:nth-child(1):disabled {
+        color: #00BDD6FF; /* primary-500 */
+        background: #F5F1FEFF; /* primary-100 */
+      }
+      /* Tag item 2 */
+      .tag .tag-item:nth-child(2) {
+        font-family: sans-serif; 
+        font-size: 12px; 
+        line-height: 20px; 
+        font-weight: 400; 
+        color: #00BDD6FF; /* primary-500 */
+        background: rgb(215, 243, 247); /* primary-100 */
+      }
+      /* Tag item 2 - Pressed */
+      .tag .tag-item:nth-child(2):hover {
+        background: rgb(210, 239, 243); /* primary-200 */
+        cursor: pointer; /* primary-200 */
+      }
+      /* Tag item 2 - Pressed */
+      .tag .tag-item:nth-child(2):hover:active {
+        color: #00BDD6FF; /* primary-500 */
+        transform: scale(1.1); /* Increase size by 10% */
+        transition: transform 0.2s ease-in-out;
+      }
+      /* Tag item 2 - Pressed */
+      .tag .tag-item:nth-child(2):disabled {
+        color: #00BDD6FF; /* primary-500 */
+        background: #F5F1FEFF; /* primary-100 */
+      }
+      /* Tag item 3 */
+      .tag .tag-item:nth-child(3) {
+        font-family: sans-serif; 
+        font-size: 12px; 
+        line-height: 20px; 
+        font-weight: 400; 
+        color: #00BDD6FF; /* primary-500 */
+        background: rgb(215, 243, 247); /* primary-100 */
+      }
+      /* Tag item 3 - Pressed */
+      .tag .tag-item:nth-child(3):hover {
+        background: rgb(210, 239, 243); /* primary-200 */
+        cursor: pointer;
+      }
+      /* Tag item 3 - Pressed */
+      .tag .tag-item:nth-child(3):hover:active {
+        color: #00BDD6FF; /* primary-500 */
+        transform: scale(1.1); /* Increase size by 10% */
+        transition: transform 0.2s ease-in-out;
+      }
+      /* Tag item 3 - Pressed */
+      .tag .tag-item:nth-child(3):disabled {
+        color: #00BDD6FF; /* primary-500 */
+        background: #F5F1FEFF; /* primary-100 */
+      }
+      .upcommingeve-tickets {
+        width: 60%;
+        margin-top: 20px; 
+        margin-left: 20px;
+        background-color: #FAFAFBFF;
+        padding: 20px;
+        border-radius: 4px;
+      
+      
+      
+        
+      }      
