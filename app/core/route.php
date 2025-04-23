@@ -62,6 +62,9 @@ if(getUserRole() == 'collaborator' || isAdmin()){
 if (getUserRole() == 'planner' || isAdmin()){
     route('request','request/Requestview@index');
     route('profile','ticketHolder/Profile@index');
+    route('get-messages','eventCollaborator/Chat@getMessages');
+    route('send-message','eventCollaborator/Chat@sendMessage');
+
     //route for request
     route('request-singers','request/SingerRequest@index');
     route('request-bands','request/BandRequest@index');
@@ -117,6 +120,8 @@ if(getUserRole() == 'holder' ||isAdmin()){
     route('notification-event','ticketHolder/NotificationEvent@index');
     route('delete-buyticket','ticketHolder/Deletebuyticket@index');
     route('profile/markread','ticketHolder/ViewPastevent@markNotificationsRead');
+    route('admin-vieweventplanner','admin/ViewEventPlanner@index');
+    route('collaborator-viewprofile','eventCollaborator/ViewProfile@index');
 }
 
 if(isAdmin()){

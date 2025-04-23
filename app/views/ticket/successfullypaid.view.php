@@ -203,7 +203,7 @@
                         </div>
                     <?php endfor; ?>
                         <!--modal foe ticket view button-->
-                        <div id="ticketModal" class="modal">
+                        <div id="ticketModal" class="ticketdownloadmodal">
                             <div class="model-content-scroll">
                                 <div class="modal-content">
                                     <span class="close" onclick="closeViewTicketModal()">&times;</span>
@@ -329,7 +329,11 @@
                     <?php foreach ($recentevents as $event): ?>
                         <div class="musicevent-event-card">
                             <!-- <div class="musicevent-event-badge">20% OFF</div> -->
-                            <img src='<?=ROOT?>/assets/images/events/<?php echo $event->cover_images?>'alt="Musical Fusion Festival" class="musicevent-event-image">
+                            <?php
+                            $coverImages = json_decode($event->cover_images, true);
+                            $firstImage = $coverImages[0] ?? ''; // fallback if empty
+                            ?>
+                            <img src="<?= ROOT ?>/assets/images/events/<?php echo $firstImage ?>" alt="Musical Fusion Festival" class="musicevent-event-image">
                             <div class="musicevent-event-info">
                                 <div class="musicevent-event-title"><?= htmlspecialchars($event->event_name) ?></div>
                                 <div class="musicevent-event-details">

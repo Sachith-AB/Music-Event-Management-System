@@ -52,7 +52,11 @@
 
                     <?php foreach( $data['requests'] as $request):?>
                         <tr>
-                            <td><img class="cover-image" src ="<?=ROOT?>/assets/images/events/<?php echo $request->cover_images ?> " alt="cover image"/></td>
+                            <td><?php
+                            $coverImages = json_decode($request->cover_images, true);
+                            $firstImage = $coverImages[0] ?? ''; // fallback if empty
+                            ?>
+                            <img class="cover-image" src="<?= ROOT ?>/assets/images/events/<?php echo $firstImage ?> " alt="cover image"/></td>
                             <td><?php echo $request->event_name?></td>
                             <td><?php echo $request->eventDate?></td>
                             <td><?php echo $request->address?></td>
@@ -108,7 +112,11 @@
                     <?php foreach($data['accepted'] as $request): ?>
 
                         <tr>
-                            <td> <img class="cover-image"  src="<?=ROOT?>/assets/images/events/<?php echo $request->cover_images ?> " alt="cover image"></td>
+                            <td> <?php
+                            $coverImages = json_decode($request->cover_images, true);
+                            $firstImage = $coverImages[0] ?? ''; // fallback if empty
+                            ?>
+                            <img class="cover-image" src="<?= ROOT ?>/assets/images/events/<?php echo $firstImage ?>" alt="cover image"></td>
                             <td><?php echo $request->event_name?></td>
                             <td><?php echo $request->eventDate?></td>
                             <td><?php echo $request->address?></td>
