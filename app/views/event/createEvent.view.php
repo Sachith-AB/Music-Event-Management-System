@@ -46,15 +46,15 @@ $_SESSION['last_visit'] = date('Y-m-d H:i:s');
                     </div>
                     <div class="form-group">
                         <label for="event_description">Description</label>
-                        <textarea id="event_description" name="description"></textarea>
+                        <textarea id="event_description" name="description" class="form-control"></textarea>
                     </div>
                     <div class="form-group">
                         <label for="audience">Audience</label>
-                        <input type="number" id="audience" name="audience" />
+                        <input type="number" id="audience" name="audience" class="form-control" />
                     </div>
                     <div class="form-group">
                         <label for="coverImage">Cover Images</label>
-                        <input type="file" id="coverImage" name="coverImage[]" accept="image/*" multiple onchange="previewImages(this)">
+                        <input type="file" id="coverImage" name="coverImage[]" accept="image/*" multiple onchange="previewImages(this)" class="form-control">
                         <div id="imagePreviewContainer" style="display: flex; flex-wrap: wrap; margin-top: 10px;"></div>
                     </div>
                 </section>
@@ -62,7 +62,7 @@ $_SESSION['last_visit'] = date('Y-m-d H:i:s');
                 <section id="time-ticket">
                     <h2>Date and Time</h2>
                     <div class="form-group">
-                        <label for = "event-date">Event Date</label>
+                        <label for = "event-date">Event Start Date</label>
                         <input type="date" id="event-date" name="eventDate">
                     </div>
 
