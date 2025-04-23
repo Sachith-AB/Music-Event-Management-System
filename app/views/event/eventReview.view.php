@@ -112,7 +112,7 @@ $_SESSION['last_visit'] = date('Y-m-d H:i:s');
 
             
             <div class ="action-buttons">
-                <button class = "change-button" >Save Draft</button>
+                <button class = "change-button" onclick="goSaveDraft()">Save Draft</button>
                 <button class = "change-button" onclick="goUpdate()">Update</button>
                 <button class = "remove-button" onclick="goDelete()">Delete</button>
                 <button class = "publish-button" onclick="goTicket()">Next</button>
@@ -125,6 +125,10 @@ $_SESSION['last_visit'] = date('Y-m-d H:i:s');
     <script>
         function goUpdate(){
             window.location.href = "event-update?event_name=<?php echo $data['event_name']?>";
+        }
+
+        function goSaveDraft(){
+            window.location.href = "event-planner-dashboard";
         }
 
         function goDelete(){

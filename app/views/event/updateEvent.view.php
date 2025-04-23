@@ -18,7 +18,7 @@ $last_visit = $_SESSION['last_visit'] ?? "This is my first visit";
 $_SESSION['last_visit'] = date('Y-m-d H:i:s');
 ?>
 <?php require_once '../app/helpers/load_notifications.php'; ?>
-<?php include ('../app/views/components/header.php'); ?>
+
 
 <!DOCTYPE html>
 <html lang="en">
@@ -33,7 +33,8 @@ $_SESSION['last_visit'] = date('Y-m-d H:i:s');
 <body>
     <?php 
         $flag = htmlspecialchars($_GET['flag'] ?? 0);
-        $error = htmlspecialchars($_GET['msg'] ?? '');
+        $error = htmlspecialchars($_GET['error'] ?? '');
+        $error_no = htmlspecialchars($_GET['error_no'] ?? '');
     ?>
     <?php include ('../app/views/components/loading.php'); ?>
     <div class="container">
@@ -173,15 +174,19 @@ $_SESSION['last_visit'] = date('Y-m-d H:i:s');
 
 
     <!-- Error Message Display -->
-    <?php if ($flag == 1): ?>
-        <?php
-            $message = $error;
-            include ("../app/views/components/r-message.php");
+    <?php if (!empty($data['error'])): ?>
+        <?php 
+            $message = $data['error'];
+            include("../app/views/components/r-message.php");
         ?>
-    <?php endif; ?>
+    <?php elseif($flag == 1): ?>
+        <?php 
+            $message = $error;
+            include("../app/views/components/r-message.php");
+        ?>
+    <?php endif ?>
 
     <script src="<?= ROOT ?>/assets/js/message.js"></script>
-    
     <!-- Script to go back to the previous page when cancel button is clicked -->
     <script>
         function goBack() {
@@ -272,4 +277,4 @@ $_SESSION['last_visit'] = date('Y-m-d H:i:s');
 
 </body>
 </html>
-<?php include ('../app/views/components/footer.php'); ?>
+
