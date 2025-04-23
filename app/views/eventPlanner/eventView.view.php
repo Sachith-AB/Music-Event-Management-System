@@ -34,7 +34,11 @@
                 </div>
 
                 <div class="right-section">
-                    <img src="<?=ROOT?>/assets/images/events/<?php echo $data['event']->cover_images ?>" alt="Event Cover" class="cover-image">
+                <?php
+                    $coverImages = json_decode($data['event']->cover_images, true);
+                    $firstImage = $coverImages[0] ?? ''; // fallback if empty
+                    ?>
+                    <img src="<?= ROOT ?>/assets/images/events/<?php echo $firstImage ?>" alt="Event Cover" class="cover-image">
                 </div>
             </div>
         <?php endif; ?>

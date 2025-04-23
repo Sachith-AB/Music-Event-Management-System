@@ -63,7 +63,7 @@
               <!-- About Me Section -->
               <div class="about-me">
                 <h2>About me</h2>
-                <textarea name="biography" rows="4"><?php echo $profiledata['profile']['biography'] ?? 'Enter your biography here...'; ?></textarea>
+                <textarea name="biography"  placeholder="Enter your biography here..." rows="4"><?php echo $profiledata['profile']['biography'] ?? ''; ?></textarea>
               </div>
               <br/>
 
