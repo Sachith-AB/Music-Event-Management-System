@@ -54,7 +54,7 @@ class ProcessingEventDelete {
         $event->delete($event_id,);
 
         // Redirect to the create-event page
-        redirect("create-event");
+        redirect("event-planner-dashboard");
     }
 
     private function archiveEvent($event, $archivedEvent, $event_id) {

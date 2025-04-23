@@ -138,10 +138,11 @@ $_SESSION['last_visit'] = date('Y-m-d H:i:s');
         </div>
     </div>
 
-    <?php if (!empty($data['error'])): ?>
+    <!--<?php show($data); ?> -->
+    <?php if (!empty($data['errors'])): ?>
         <?php 
-            $message = $data['error'];
-            include("../app/views/components/r-message.php");
+            $message = $data['errors']['error'];
+            include("../../app/views/components/r-message.php");
         ?>
     <?php elseif($flag == 1): ?>
         <?php 
@@ -260,16 +261,11 @@ $_SESSION['last_visit'] = date('Y-m-d H:i:s');
                     reader.readAsDataURL(input.files[i]);
                 }
                 
-                // Show warning if more than 5 files selected
-                if (input.files.length > 5) {
-                    var warningDiv = document.createElement('div');
-                    warningDiv.style.color = 'red';
-                    warningDiv.style.marginTop = '10px';
-                    warningDiv.textContent = 'Note: Only the first 5 images will be uploaded.';
-                    previewContainer.appendChild(warningDiv);
-                }
+               
             }
         }
     </script>
+
+    <script src="<?=ROOT?>/assets/js/message.js"></script>
 </body>
 </html>

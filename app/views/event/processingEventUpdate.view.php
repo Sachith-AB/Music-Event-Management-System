@@ -20,29 +20,29 @@
     <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
 </head>
 <body>
-    <div class ="container">
-        <div class = "popup">
-            <div class = "event-content">
-                <h1 class = "head1">Update Event Details</h1>
+    <div class="event-update-container">
+        <div class="event-update-popup">
+            <div class="event-content">
+                <h1 class="event-update-head1">Update Event Details</h1>
 
                 <!--Event Details -->
-                <form method = "POST" class = "form">
+                <form method="POST" class="form">
                     
-                    <div class = "input-wrap">
-                        <label for = "event-name">Event Name </label>
-                        <input name = "event_name" type="text" value="<?php echo $data['event_name'] ?>">
+                    <div class="event-update-input-wrap">
+                        <label for="event-name">Event Name </label>
+                        <input name="event_name" type="text" value="<?php echo $data['event']['event_name'] ?>">
                     </div>
 
-                    <div class = "input-wrap">
-                        <label for = "audience">Audience </label>
-                        <input name = "audience" type="number" value="<?php echo $data['audience'] ?>">
+                    <div class="event-update-input-wrap">
+                        <label for="audience">Audience </label>
+                        <input name="audience" type="number" value="<?php echo $data['event']['audience'] ?>">
                     </div>
 
-                    <div class="input-wrap">
-                        <label for = "city">Address</label>
-                        <div class="search-container">
-                            <input name="address" id='address' type="text" placeholder="address" value="<?php echo $data['address'] ?>">
-                            <button type="button" class="search-button" id="search-button">Search</button>
+                    <div class="event-update-input-wrap">
+                        <label for="city">Address</label>
+                        <div class="event-update-search-container">
+                            <input name="address" id='address' type="text" placeholder="address" value="<?php echo $data['event']['address'] ?>">
+                            <button type="button" class="event-update-search-button" id="search-button">Search</button>
                         </div>
                     </div>
 
@@ -50,57 +50,63 @@
 
                     <br>
 
-                    <div class ="input-wrap">
-                        <label for = "eventDate">Date </label>
-                        <input name ="event_date" id = "event-date" type = "date"  value="<?php echo $data['eventDate']?>">
+                    <div class="event-update-input-wrap">
+                        <label for="eventDate">Date </label>
+                        <input name="event_date" id="event-date" type="date" value="<?php echo $data['event']['eventDate']?>" required>
                     </div>
 
-                    <div class = "input-wrap">
-                        <label for = "start_time">Start Time </label>
-                        <input id = start_time name = "starttime" type="time" value="<?php echo date('H:i', strtotime($data['start_time'])); ?>">
+                    <div class="event-update-input-wrap">
+                        <label for="start_time">Start Time </label>
+                        <input id="start_time" name="starttime" type="time" value="<?php echo date('H:i', strtotime($data['event']['start_time'])); ?>" >
                     </div>
 
-                    <div class = "input-wrap">
-                        <label for = "end_time">End Time </label>
-                        <input id = "end_time" name ="endtime"  type="time" value="<?php echo date('H:i', strtotime($data['end_time'])); ?>">
+                    <div class="event-update-input-wrap">
+                        <label for="end_time">End Time </label>
+                        <input id="end_time" name="endtime" type="time" value="<?php echo date('H:i', strtotime($data['event']['end_time'])); ?>" required>
                     </div>
 
-                    <div class = "input-wrap">
+                    <div class="event-update-input-wrap">
                         <label> Type </label>
-                        <div class = "radio-group">
-                            <div class ="radio-item">
-                                <input type = "radio" id = "indoor" name = "type" value = "indoor" <?php echo $data['type'] == 'indoor' ? 'checked' : ''; ?>>
-                                <label for = "indoor">Indoor</label>
+                        <div class="event-update-radio-group">
+                            <div class="event-update-radio-item">
+                                <input type="radio" id="indoor" name="type" value="indoor" <?php echo $data['event']['type'] == 'indoor' ? 'checked' : ''; ?>>
+                                <label for="indoor">Indoor</label>
                             </div>
-                            <div class ="radio-item">
-                                <input type = "radio" id = "outdoor" name = "type" value = "outdoor" <?php echo $data['type'] == 'outdoor' ? 'checked' : ''; ?>>
-                                <label for = "outdoor">Outdoor</label>
+                            <div class="event-update-radio-item">
+                                <input type="radio" id="outdoor" name="type" value="outdoor" <?php echo $data['event']['type'] == 'outdoor' ? 'checked' : ''; ?>>
+                                <label for="outdoor">Outdoor</label>
                             </div>
                         </div>
                     </div>
 
-                    <input type = "hidden" id = "hidden-start-time" name="starttime">
-                    <input type = "hidden" id = "hidden-end-time" name="endtime">
-                    <input type = "hidden" id = "hidden-event-id" name = "id" value = "<?php echo $data['id'] ?>">
+                    <input type="hidden" id="hidden-start-time" name="start_time">
+                    <input type="hidden" id="hidden-end-time" name="end_time">
+                    <input type="hidden" id="hidden-event-id" name="id" value="<?php echo $data['event']['id'] ?>">
 
                     <script src="<?= ROOT ?>/assets/js/event/processingEventUpdate.js"></script>
 
-
-                    
                     <!--Action Buttons -->
-                    <div class = "button-wrap">
-                        <button type = "button" onclick = "goBack()">Cancel</button>
-                        <button type = "submit" name = "update">Done</button>
-
-
+                    <div class="event-update-button-wrap">
+                        <button type="button" onclick="goBack()">Cancel</button>
+                        <button type="submit" name="update">Done</button>
+                    </div>
                 </form>
             </div>
         </div>
     </div>
 
+    <!--<?php show($data); ?> -->
+    <?php if (!empty($data['error']['errors']['error'])): ?>
+        <?php 
+            $message = $data['error']['errors']['error'];
+            include("../../app/views/components/r-message.php");
+        ?>
+   
+    <?php endif ?>
+
     <script>
         function goBack() {
-            window.location.href = "event-planner-viewEvent?id=<?php echo $data['id']?>";
+            window.location.href = "event-planner-viewEvent?id=<?php echo $data['event']['id']?>";
             window.history.back();
         }
     </script>
@@ -184,6 +190,8 @@
         });
         window.onload = initMap;
     </script>
+
+    <script src="<?=ROOT?>/assets/js/message.js"></script>
 
 
 </body>

@@ -37,84 +37,80 @@ $_SESSION['last_visit'] = date('Y-m-d H:i:s');
         $error_no = htmlspecialchars($_GET['error_no'] ?? '');
     ?>
     <?php include ('../app/views/components/loading.php'); ?>
-    <div class="container">
-        <div class = "popup">
+    <div class="event-update-container">
+        <div class="event-update-popup">
             <div class="event-content">
-                <h1 class="head1">Update Event Details</h1>
+                <h1 class="event-update-head1">Update Event Details</h1>
                 
-                
-
                 <!-- Event Details Form -->
                 <form method="POST" class="form">
                
-                    <div class="input-wrap">
-                        <label for = "event_name">Event Name</label>
-                        <input name="event_name" type="text" placeholder="EventName" value="<?php echo $data['event_name'] ?>">
+                    <div class="event-update-input-wrap">
+                        <label for="event_name">Event Name</label>
+                        <input name="event_name" type="text" placeholder="EventName" value="<?php echo $data['event']['event_name'] ?>">
                     </div>
 
-                    <div class="input-wrap">
+                    <div class="event-update-input-wrap">
                         <label for="description">Description</label>
-                        <input name="description" type="text" placeholder="Description" value="<?php echo $data['description'] ?>">
+                        <input name="description" type="text" placeholder="Description" value="<?php echo $data['event']['description'] ?>">
                     </div>
 
-                    <div class="input-wrap">
+                    <div class="event-update-input-wrap">
                         <label for="audience">Audience</label>
-                        <input name="audience" type="number" placeholder="Audience" value="<?php echo $data['audience'] ?>">
+                        <input name="audience" type="number" placeholder="Audience" value="<?php echo $data['event']['audience'] ?>">
                     </div>
 
-                    <div class="input-wrap">
-                        <label for = "city">Address</label>
-                        <div class="search-container">
-                            <input name="address" id='address' type="text" placeholder="address" value="<?php echo $data['address'] ?>">
-                            <button type="button" class="search-button" id="search-button">Search</button>
+                    <div class="event-update-input-wrap">
+                        <label for="city">Address</label>
+                        <div class="event-update-search-container">
+                            <input name="address" id='address' type="text" placeholder="address" value="<?php echo $data['event']['address'] ?>">
+                            <button type="button" class="event-update-search-button" id="search-button">Search</button>
                         </div>
                     </div>
                
-
                     <div id="map" class="map" style="height: 400px;"></div>
 
                     <br>
-                    <div class="input-wrap">
+                    <div class="event-update-input-wrap">
                         <label for="eventDate">Event Date</label>
-                        <input name="eventDate" id="event-date" type="date" value="<?php echo $data ['eventDate'] ?>" required>
+                        <input name="eventDate" id="event-date" type="date" value="<?php echo $data['event']['eventDate'] ?>" required>
                     </div>
 
-                    <div class="input-wrap">
+                    <div class="event-update-input-wrap">
                         <label for="start_time">Start Time</label>
-                        <input id="start-time" name="starttime" type="time" value="<?php echo date('H:i', strtotime($data['start_time'])); ?>">
+                        <input id="start-time" name="starttime" type="time" value="<?php echo date('H:i', strtotime($data['event']['start_time'])); ?>">
                     </div>
 
-                    <div class="input-wrap">
+                    <div class="event-update-input-wrap">
                         <label for="end_time">End Time</label>
-                        <input name="endtime" id="end-time" type="time" value="<?php echo date('H:i', strtotime($data['end_time'])); ?>">
+                        <input name="endtime" id="end-time" type="time" value="<?php echo date('H:i', strtotime($data['event']['end_time'])); ?>" required>
                     </div>
 
-                    <div class="input-wrap">
+                    <div class="event-update-input-wrap">
                         <label>Pricing</label>
-                        <div class="radio-group">
-                            <div class="radio-item">
-                                <input type="radio" id="free" name="pricing" value="free" <?php echo $data['pricing'] == 'free' ? 'checked' : ''; ?>>
+                        <div class="event-update-radio-group">
+                            <div class="event-update-radio-item">
+                                <input type="radio" id="free" name="pricing" value="free" <?php echo $data['event']['pricing'] == 'free' ? 'checked' : ''; ?>>
                                 <label for="free">Free</label>
                             </div>
-                            <div class="radio-item">
-                                <input type="radio" id="paid" name="pricing" value="paid" <?php echo $data['pricing'] == 'paid' ? 'checked' : ''; ?>>
+                            <div class="event-update-radio-item">
+                                <input type="radio" id="paid" name="pricing" value="paid" <?php echo $data['event']['pricing'] == 'paid' ? 'checked' : ''; ?>>
                                 <label for="paid">Paid</label>
                             </div>
                         </div>
                     </div>
 
-                    <div class="input-wrap">
+                    <div class="event-update-input-wrap">
                         <label>Type</label>
-                        <div class="radio-group">
-                            <div class="radio-item">
-                                <input type="radio" id="indoor" name="type" value="indoor" <?php echo $data['type'] == 'indoor' ? 'checked' : ''; ?>>
-                                <label for="free">Indoor</label>
+                        <div class="event-update-radio-group">
+                            <div class="event-update-radio-item">
+                                <input type="radio" id="indoor" name="type" value="indoor" <?php echo $data['event']['type'] == 'indoor' ? 'checked' : ''; ?>>
+                                <label for="indoor">Indoor</label>
                             </div>
-                            <div class="radio-item">
-                                <input type="radio" id="outdoor" name="type" value="outdoor" <?php echo $data['type'] == 'outdoor' ? 'checked' : ''; ?>>
-                                <label for="outdoor">Outoor</label>
+                            <div class="event-update-radio-item">
+                                <input type="radio" id="outdoor" name="type" value="outdoor" <?php echo $data['event']['type'] == 'outdoor' ? 'checked' : ''; ?>>
+                                <label for="outdoor">Outdoor</label>
                             </div>
-
                         </div>
                     </div>
 
@@ -122,66 +118,42 @@ $_SESSION['last_visit'] = date('Y-m-d H:i:s');
                     <input type="hidden" id="hidden-end-time" name="end_time">
                     <script src="<?= ROOT ?>/assets/js/event/createEvent.js"></script>
 
-                    <input type="hidden" name="event_id" value="<?php echo $data['id'] ?>">
-
-                    <!-- Action Buttons -->
-                    
+                    <input type="hidden" name="event_id" value="<?php echo $data['event']['id'] ?>">
 
                     <!-- In the form section for images -->
-                    <div class="form-group">
-
-                        <?php if(isset($data['cover_images']) && !empty($data['cover_images'])): ?>
+                    <div class="event-update-input-wrap">
+                        <?php if(isset($data['event']['cover_images']) && !empty($data['event']['cover_images'])): ?>
                             <div class="existing-images">
                                 <h4>Cover Images</h4>
                                 <div class="image-grid">
                                     <?php 
-                                    $images = json_decode($data['cover_images'], true) ?: [];
+                                    $images = json_decode($data['event']['cover_images'], true) ?: [];
                                     foreach($images as $index => $image): 
                                     ?>
                                         <div class="image-item">
                                             <img src="<?=ROOT?>/assets/images/events/<?=$image?>" alt="Event Image <?=$index+1?>">
-                                           
                                         </div>
                                     <?php endforeach; ?>
                                 </div>
-                                
                             </div>
                         <?php endif; ?>
                         
-                        <div class="button-wrap">
-                        <button type="button" onclick="goBack()">Cancel</button>
-                        <button type="submit" name="update">Done</button>
-                    </div>
+                        <div class="event-update-button-wrap">
+                            <button type="button" onclick="goBack()">Cancel</button>
+                            <button type="submit" name="update">Done</button>
+                        </div>
                     </div>
                 </form>
-
-
-                <!-- <form  method="post" enctype="multipart/form-data">
-                    <div class="input-wrap">
-                    <label for="images">Upload Images:</label>
-                    <input type="file" id="images" name="cover_images" accept="image/*" multiple>
-                    <input type="hidden" name="event_id" value="<?php echo $data['id'] ?>">
-                    <button class="upload-button" type="submit" name="upload">Upload</button>
-                    </div>
-                </form> -->
-
-
-                
-
             </div>
         </div>
     </div>
 
 
+    <!--<?php show($data); ?>-->
     <!-- Error Message Display -->
-    <?php if (!empty($data['error'])): ?>
+    <?php if (!empty($data['error']['errors']['error'])): ?>
         <?php 
-            $message = $data['error'];
-            include("../app/views/components/r-message.php");
-        ?>
-    <?php elseif($flag == 1): ?>
-        <?php 
-            $message = $error;
+            $message = $data['error']['errors']['error'];
             include("../app/views/components/r-message.php");
         ?>
     <?php endif ?>
@@ -274,7 +246,7 @@ $_SESSION['last_visit'] = date('Y-m-d H:i:s');
         window.onload = initMap;
     </script>
 
-
+    <script src="<?=ROOT?>/assets/js/message.js"></script>
 </body>
 </html>
 
