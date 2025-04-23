@@ -16,11 +16,11 @@ class ProcessingEventUpdate{
 
         if($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['update'])){
             $event_id = htmlspecialchars($_GET['event_id']);
-            show($event_id);
-            $this->updateDetail($event,$event_id);
+            //show($event_id);
+            $data['error']=$this->updateDetail($event,$event_id);
         }
 
-        $data = $this->getData($row);
+        $data['event'] = $this->getData($row);
         $this->view('event/processingEventUpdate',$data);
 
     }
@@ -36,9 +36,14 @@ class ProcessingEventUpdate{
         $msg = "Event updated Successfully";
         $success = 'flag=' . 2 . '&msg=' . $msg . '&success_no=' . 1;
 
-        $event->update($event_id, $_POST);
-        unset($_POST['update']);
-        show($_POST);
-        redirect('event-planner-viewEvent?id='.$event_id);
+        if($event->validProcessingEventUpdate($_POST)){
+            $event->update($event_id, $_POST);
+            unset($_POST['update']);
+            //show($_POST);
+            redirect('event-planner-viewEvent?id='.$event_id);
+        }else{
+            return ['success' => false, 'errors' => $event->errors];
+        }
+        
     }
 }

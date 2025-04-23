@@ -175,6 +175,72 @@ class Event {
     }
 
 
+    public function validEventUpdate($data) {
+            $this->errors = [];
+    
+            //flage mean errors include
+    
+            if (empty($data['event_name'])) {
+                $this->errors['flag'] = true;
+                $this->errors['error'] = "Event name is required";
+                $this->errors['error_no'] = 1;
+                return ;
+            }
+
+            if (empty($data['description'])) {
+                $this->errors['flag'] = true;
+                $this->errors['error'] = "Event description is required";
+                $this->errors['error_no'] = 2;
+                return ;
+            }
+    
+    
+            
+    
+            if (empty($data['audience'])) {
+                $this->errors['flag'] = true;
+                $this->errors['error'] = "Audience is required";
+                $this->errors['error_no'] = 3;
+            }
+    
+    
+            
+    
+            if (empty($this->errors)) {
+                return true;
+            }
+    
+            return false;
+        } 
+        
+        public function validProcessingEventUpdate($data) {
+            $this->errors = [];
+    
+            //flage mean errors include
+    
+            if (empty($data['event_name'])) {
+                $this->errors['flag'] = true;
+                $this->errors['error'] = "Event name is required";
+                $this->errors['error_no'] = 1;
+                return ;
+            }
+    
+            if (empty($data['audience'])) {
+                $this->errors['flag'] = true;
+                $this->errors['error'] = "Audience is required";
+                $this->errors['error_no'] = 3;
+            }
+    
+    
+            
+    
+            if (empty($this->errors)) {
+                return true;
+            }
+    
+            return false;
+        } 
+
     //get events details for eventplanner dashboard which are created by him
     public function getEventsByUserId($userId) {
         $query = "SELECT 

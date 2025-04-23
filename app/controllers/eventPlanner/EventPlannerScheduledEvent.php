@@ -207,6 +207,8 @@ class EventPlannerScheduledEvent {
             // Get buyers for this event
             $buyers = $buyticket->getticketbuyers($event_id);
             
+
+          
             if (!empty($buyers) && is_array($buyers)) {
                 // Get user emails for each buyer
                 foreach ($buyers as $buyer) {

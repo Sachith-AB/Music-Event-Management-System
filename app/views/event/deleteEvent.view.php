@@ -1,4 +1,3 @@
-
 <?php
 if (session_status() == PHP_SESSION_NONE) {
     session_start();
@@ -7,8 +6,6 @@ if (session_status() == PHP_SESSION_NONE) {
 // Retrieve event data from session
 $event_name = $_SESSION['event_data']['event_name'] ?? 'Event Title';
 $description = $_SESSION['event_data']['description'] ?? 'No description provided';
-
-
 
 // Track last visit time
 if (isset($_SESSION['last_visit'])) {
@@ -24,53 +21,47 @@ $_SESSION['last_visit'] = date('Y-m-d H:i:s');
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Review Event</title>
+    <title>Delete Event</title>
     <link rel="stylesheet" href="<?=ROOT?>/assets/css/eventDelete.css">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 </head>
-<?php $event_name = htmlspecialchars($_GET['event_name']?? '');
-?>
 <body>
-<?php include ('../app/views/components/loading.php'); ?>
-    <!-- Main Content -->
-        <div class="main-content">
-            <section id="event-header">
-                <div class="event-cover">
-                    <div class="event-info">
-                        <h2 id = "event title"><?php echo $data['event_name'] ?></h2>
-                    </div>
-                </div>
-            </section>
-
-            <section id="general-information">
-                <p class = "event-description"> <?php echo $data['description'] ?></p>
-            </section>
-
-
-            
-
-            <input type="hidden" name="event_id" value="<?php echo $data['id'] ?>">
-
-            
-            <section id="validation">
-                <h2>Are you sure you want to delete this event?</h2>
-            </section>
-
-            <div class ="action-buttons">
-                <button onclick="goBack()">No</button>
-
-                <form method = "POST">
-                    <input type="hidden" name="event_id" value="<?php echo $data['id'] ?>">
-                    <button type="submit" name="delete">Yes</button>
-                </form>
-
-
+    <?php include ('../app/views/components/loading.php'); ?>
+    
+    <div class="event-delete-container">
+        <div class="event-delete-details">
+            <div class="event-delete-header">
+                <h2><?php echo htmlspecialchars($data['event_name']); ?></h2>
             </div>
+
+            <div class="event-delete-info">
+                <p><?php echo htmlspecialchars($data['description']); ?></p>
+            </div>
+        </div>
+
+        <div class="event-delete-validation">
+            <h2>Are you sure you want to delete this event?</h2>
+            <p>This action cannot be undone.</p>
+        </div>
+
+        <div class="event-delete-buttons">
+            <button onclick="goBack()">
+                <i class="material-icons">arrow_back</i>
+                No, Keep Event
+            </button>
+
+            <form method="POST" style="display: inline;">
+                <input type="hidden" name="event_id" value="<?php echo $data['id']; ?>">
+                <button type="submit" name="delete">
+                    <i class="material-icons">delete_forever</i>
+                    Yes, Delete Event
+                </button>
+            </form>
         </div>
     </div>
 
-
     <script>
-       function goBack() {
+        function goBack() {
             const eventName = "<?= htmlspecialchars($data['event_name']) ?>";
             if (eventName) {
                 window.location.href = `event-review?event_name=${eventName}`;
@@ -81,4 +72,3 @@ $_SESSION['last_visit'] = date('Y-m-d H:i:s');
     </script>
 </body>
 </html>
-<?php include ('../app/views/components/footer.php'); ?>

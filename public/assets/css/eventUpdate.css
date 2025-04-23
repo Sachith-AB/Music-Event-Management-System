@@ -12,17 +12,15 @@ body {
     height: 100%;
     background-color: #f4f9fc;
     display: flex;
-    background-color: #f4f9fc;
     margin: 0;
     padding: 0;
-    display: flex;
-    flex-direction: column; /* Allow vertical stacking */
+    flex-direction: column;
     align-items: center;
-    justify-content: flex-start; /* Adjust positioning to start from the top */
+    justify-content: flex-start;
 }
 
-.container {
-    margin-top: 60px; /* Adjusted to ensure it moves further below the header */
+.event-update-container {
+    margin-top: 60px;
     position: relative;
     width: 100%;
     max-width: 900px;
@@ -30,12 +28,7 @@ body {
 }
 
 /* Popup */
-.popup {
-    /* width: 100%;
-    padding: 40px;
-    background-color: #fff;
-    border-radius: 8px;
-    box-shadow: 0 0 15px rgba(0, 128, 255, 0.5);  */
+.event-update-popup {
     position: relative;
     width: 100%;
     max-width: 900px;
@@ -49,7 +42,7 @@ body {
 }
 
 /* Header */
-.head1 {
+.event-update-head1 {
     font-size: 2em;
     font-weight: bold;
     color: #00BDD6FF;
@@ -58,21 +51,21 @@ body {
 }
 
 /* Input Fields */
-.input-wrap {
+.event-update-input-wrap {
     margin-bottom: 20px;
 }
 
-.input-wrap label {
+.event-update-input-wrap label {
     display: block;
     font-size: 1.1em;
     color: #333;
     margin-bottom: 5px;
 }
 
-.input-wrap input[type="text"],
-.input-wrap input[type="number"],
-.input-wrap input[type="date"],
-.input-wrap input[type="time"] {
+.event-update-input-wrap input[type="text"],
+.event-update-input-wrap input[type="number"],
+.event-update-input-wrap input[type="date"],
+.event-update-input-wrap input[type="time"] {
     width: 100%;
     padding: 10px;
     border: 1px solid #ddd;
@@ -81,35 +74,34 @@ body {
     transition: box-shadow 0.3s;
 }
 
-.input-wrap input[type="text"]:focus,
-.input-wrap input[type="number"]:focus,
-.input-wrap input[type="date"]:focus,
-.input-wrap input[type="time"]:focus {
+.event-update-input-wrap input[type="text"]:focus,
+.event-update-input-wrap input[type="number"]:focus,
+.event-update-input-wrap input[type="date"]:focus,
+.event-update-input-wrap input[type="time"]:focus {
     box-shadow: 0 0 8px rgba(0, 128, 255, 0.6); 
     outline: none;
 }
 
 /* Button Styling */
-.button-wrap {
+.event-update-button-wrap {
     display: flex;
     justify-content: space-between;
     margin-top: 20px;
 }
 
-.search-container{
+.event-update-search-container {
     display: flex;
     flex-direction: row;
     gap: 2px;
 }
 
-.search-button{
+.event-update-search-button {
     padding: 10px 20px;
     margin: 0.1em;
     border: none;
     border-radius: 5px;
     font-size: 15px;
     cursor: pointer;
-    
     position: relative;
     overflow: hidden;
     z-index: 1;
@@ -118,15 +110,15 @@ body {
     background-color: #00BDD6FF;
 }
 
-.search-button:hover{
+.event-update-search-button:hover {
     color: black;
 }
 
-.search-button:hover::after{
+.event-update-search-button:hover::after {
     transform: skewX(-45deg) scale(1, 1);
 }
 
-.button-wrap button {
+.event-update-button-wrap button {
     padding: 10px 20px;
     margin: 0.1em;
     border: none;
@@ -141,8 +133,7 @@ body {
     margin-top: 20px;
 }
 
-
-.upload-button{
+.event-update-upload-button {
     padding: 10px 15px;
     margin: 0.1em;
     background: rgb(10, 10, 10); 
@@ -158,54 +149,51 @@ body {
     transition: color 1s ease;
 }
 
-.button-wrap button[type="button"] {
+.event-update-button-wrap button[type="button"] {
     background: #00BDD6FF; 
     color: white;
 }
 
-.button-wrap button[type="button"]:hover::after{
+.event-update-button-wrap button[type="button"]:hover::after {
     transform: skewX(-45deg) scale(1, 1);
 }
 
-.button-wrap button[type="button"]:hover {
-    color:rgb(197, 0, 0);
+.event-update-button-wrap button[type="button"]:hover {
+    color: rgb(197, 0, 0);
 }
 
-.button-wrap button[type="submit"] {
+.event-update-button-wrap button[type="submit"] {
     background: #00BDD6FF; 
     color: white;
 }
 
-.button-wrap button[type="submit"]:hover::after{
+.event-update-button-wrap button[type="submit"]:hover::after {
     transform: skewX(-45deg) scale(1, 1);
 }
 
-.button-wrap button[type="submit"]:hover {
-    color:black;
+.event-update-button-wrap button[type="submit"]:hover {
+    color: black;
 }
 
-
-
-
-.radio-group {
+.event-update-radio-group {
     display: flex;
     gap: 20px; 
     align-items: center;
     margin-top: 8px;
 }
 
-.radio-item {
+.event-update-radio-item {
     display: flex;
     align-items: center;
     gap: 5px; 
 }
 
-.radio-group input[type="radio"] {
+.event-update-radio-group input[type="radio"] {
     margin: 0;
     accent-color: #00BDD6FF; 
 }
 
-.radio-group label {
+.event-update-radio-group label {
     font-size: 1em;
     color: #333;
     cursor: pointer;
@@ -214,44 +202,44 @@ body {
 
 /* Responsive Styles */
 @media screen and (max-width: 768px) {
-    .container {
+    .event-update-container {
         margin-top: 40px;
         padding: 0 15px;
     }
 
-    .popup {
+    .event-update-popup {
         padding: 20px;
         margin-bottom: 30px;
     }
 
-    .head1 {
+    .event-update-head1 {
         font-size: 1.5em;
     }
 
-    .input-wrap input[type="text"],
-    .input-wrap input[type="number"],
-    .input-wrap input[type="date"],
-    .input-wrap input[type="time"] {
+    .event-update-input-wrap input[type="text"],
+    .event-update-input-wrap input[type="number"],
+    .event-update-input-wrap input[type="date"],
+    .event-update-input-wrap input[type="time"] {
         padding: 8px;
         font-size: 0.9em;
     }
 
-    .button-wrap {
+    .event-update-button-wrap {
         flex-direction: column;
         gap: 10px;
     }
 
-    .button-wrap button {
+    .event-update-button-wrap button {
         width: 100%;
         margin-right: 0;
     }
 
-    .search-container {
+    .event-update-search-container {
         flex-direction: column;
         gap: 10px;
     }
 
-    .search-button {
+    .event-update-search-button {
         width: 100%;
     }
 
@@ -261,19 +249,19 @@ body {
 }
 
 @media screen and (max-width: 480px) {
-    .container {
+    .event-update-container {
         margin-top: 30px;
     }
 
-    .popup {
+    .event-update-popup {
         padding: 15px;
     }
 
-    .head1 {
+    .event-update-head1 {
         font-size: 1.3em;
     }
 
-    .radio-group {
+    .event-update-radio-group {
         flex-direction: column;
         gap: 10px;
     }
