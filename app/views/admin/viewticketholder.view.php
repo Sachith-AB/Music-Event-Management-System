@@ -52,7 +52,11 @@
                             <div class="event-card">
                                 <a href="<?=ROOT?>/event-planner-viewEvent?id=<?= htmlspecialchars($event[0]->id) ?>" class="event-card-link">
                                     <div class="event-status-process"><?= htmlspecialchars($event[0]->ticket_type) ?> - LKR<?= htmlspecialchars($event[0]->ticket_price) ?></div>
-                                    <img src="<?=ROOT?>/assets/images/events/<?= htmlspecialchars($event[0]->event_images) ?>" alt="<?= htmlspecialchars($event[0]->event_name) ?>">
+                                    <?php
+                                    $coverImages = json_decode($event[0]->cover_images, true);
+                                    $firstImage = $coverImages[0] ?? ''; // fallback if empty
+                                    ?>
+                                    <img src="<?= ROOT ?>/assets/images/events/<?php echo $firstImage ?>" alt="<?= htmlspecialchars($event[0]->event_name) ?>">
                                     <div>
                                         <div><?= htmlspecialchars($event[0]->event_name) ?></div>
                                         <div>
@@ -77,7 +81,11 @@
                                 <div class="event-card">
                                     <a href="<?=ROOT?>/event-planner-viewEvent?id=<?= htmlspecialchars($event[0]->id) ?>" class="event-card-link">
                                         <div class="event-status-process"><?= htmlspecialchars($event[0]->ticket_type) ?> - LKR<?= htmlspecialchars($event[0]->ticket_price) ?></div>
-                                        <img src="<?=ROOT?>/assets/images/events/<?= htmlspecialchars($event[0]->event_images) ?>" alt="<?= htmlspecialchars($event[0]->event_name) ?>">
+                                        <?php
+                                        $coverImages = json_decode($event[0]->cover_images, true);
+                                        $firstImage = $coverImages[0] ?? ''; // fallback if empty
+                                        ?>
+                                        <img src="<?= ROOT ?>/assets/images/events/<?php echo $firstImage ?>" alt="<?= htmlspecialchars($event[0]->event_name) ?>">
                                         <div>
                                             <div><?= htmlspecialchars($event[0]->event_name) ?></div>
                                             <div>

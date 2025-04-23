@@ -42,7 +42,11 @@
     <?php if (!empty($trendingEvents)): ?>
         <?php foreach ($trendingEvents as $event): ?>
             <div class="event">
-                <img src="<?= ROOT ?>/uploads/<?= $event->cover_images ?>" alt="<?= htmlspecialchars($event->event_name) ?>">
+                <?php
+                $coverImages = json_decode($event->cover_images, true);
+                $firstImage = $coverImages[0] ?? ''; // fallback if empty
+                ?>
+                <img src="<?= ROOT ?>/assets/images/events/<?php echo $firstImage ?>" alt="<?= htmlspecialchars($event->event_name) ?>">
                 <div class="event-info">
                     <div class="event-details">
                         <h3><?= htmlspecialchars($event->event_name) ?></h3>

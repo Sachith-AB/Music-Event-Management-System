@@ -33,7 +33,12 @@
                 ?>
 
                             <div class="event-card">
-                                <img src="<?=ROOT?>/assets/images/events/<?php echo $event->cover_images ?>" alt="Event Image">
+
+                                <?php
+                                $coverImages = json_decode($event->cover_images, true);
+                                $firstImage = $coverImages[0] ?? ''; // fallback if empty
+                                ?>
+                                <img src="<?= ROOT ?>/assets/images/events/<?php echo $firstImage ?>" alt="Event Image">
                                 <div>
                                     <div><?php echo $event->event_name?></div>
                                     <div>
@@ -116,7 +121,11 @@
                                     $eventsDisplayedScheduled++;
                         ?>
                     <div class="event-card">
-                        <img src="<?=ROOT?>/assets/images/events/<?php echo $event->cover_images ?>" alt="Event Image">
+                        <?php
+                        $coverImages = json_decode($event->cover_images, true);
+                        $firstImage = $coverImages[0] ?? ''; // fallback if empty
+                        ?>
+                        <img src="<?= ROOT ?>/assets/images/events/<?php echo $firstImage ?>" alt="Event Image">
                         <div>
                             <div><?php echo $event->event_name ?></div>
                             <div>📅 <?php echo $event->eventDate ?> | <?php echo substr($event->start_time, 11) ?></div>
@@ -174,7 +183,11 @@
                 ?>
 
                     <div class="event-card">
-                        <img src="<?=ROOT?>/assets/images/events/<?php echo $event->cover_images ?>" alt="Event Image">
+                        <?php
+                        $coverImages = json_decode($event->cover_images, true);
+                        $firstImage = $coverImages[0] ?? ''; // fallback if empty
+                        ?>
+                        <img src="<?= ROOT ?>/assets/images/events/<?php echo $firstImage ?>" alt="Event Image">
                         <div>
                             <div><?php echo $event->event_name ?></div>
                             <div>

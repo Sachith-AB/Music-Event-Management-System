@@ -37,7 +37,11 @@
                         
                         <?php foreach( $data['requests'] as $request):?>
                             <tr onclick="viewEventDetails(<?php echo $request->event_id; ?>,<?php echo $_SESSION['USER']->id; ?>)">
-                                <td><img class="cover-image" src ="<?=ROOT?>/assets/images/events/<?php echo $request->cover_images ?> " alt="cover image"/></td>
+                                <td><?php
+                                $coverImages = json_decode($request->cover_images, true);
+                                $firstImage = $coverImages[0] ?? ''; // fallback if empty
+                                ?>
+                                <img class="cover-image" src="<?= ROOT ?>/assets/images/events/<?php echo $firstImage ?>" alt="cover image"/></td>
                                 <td><?php echo $request->event_name?></td>
                                 <td><?php echo $request->eventDate?></td>
                                 <td class="truncate-text"><?php echo $request->address?></td>
@@ -93,7 +97,11 @@
                         <?php foreach($data['accepted'] as $request): ?>
 
                         <tr onclick="viewEventDetails(<?php echo $request->event_id; ?>,<?php echo $_SESSION['USER']->id; ?>)">
-                            <td> <img class="cover-image"  src="<?=ROOT?>/assets/images/events/<?php echo $request->cover_images ?> " alt="cover image"></td>
+                            <td> <?php
+                            $coverImages = json_decode($request->cover_images, true);
+                            $firstImage = $coverImages[0] ?? ''; // fallback if empty
+                            ?>
+                            <img class="cover-image" src="<?= ROOT ?>/assets/images/events/<?php echo $firstImage ?> " alt="cover image"></td>
                             <td><?php echo $request->event_name?></td>
                             <td><?php echo $request->eventDate?></td>
                             <td class="truncate-text"><?php echo $request->address?></td>
