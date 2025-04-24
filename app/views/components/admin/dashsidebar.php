@@ -25,6 +25,7 @@
                     <li><a href="admin-user-report" class="menu-link"><i class="fas fa-user"></i> Users Report</a></li>
                     <li><a href="admin-event-report" class="menu-link"><i class="fas fa-calendar-alt"></i> Events Report</a></li>
                     <li><a href="admin-ticket-report" class="menu-link"><i class="fas fa-ticket-alt"></i> Tickets Report</a></li>
+                    <li><a href="collaborator-report" class="menu-link"><i class="fas fa-handshake"></i> Collaborator Report</a></li>
                 </ul>
             </li>
 

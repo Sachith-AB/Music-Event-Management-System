@@ -64,7 +64,7 @@
 
                 <div class="input-wrap">
                     <label for="end_time">End Time: <span class="required">*</span> </label>
-                    <input id="end_time" name="endtime" type="time" value="<?= date('H:i', strtotime($data['end_time'])); ?>">
+                    <input id="end_time" name="endtime" type="time" value="<?= date('H:i', strtotime($data['end_time'])); ?>" required>
                 </div>
 
                 <div class="input-wrap">

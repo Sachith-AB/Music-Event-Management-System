@@ -95,10 +95,26 @@
                         <?php else:?>
                             <span class="pricing outdoor"><?php echo "OUTDOOR" ?></span>
                         <?php endif?>
-                        <div class="star-background">
-                            <div class="star-filled" style="width: <?= ($event->averageRating/5)*100 ?>%;"></div>
+                        <div class="star-rating">
+                            <?php
+                                $fullStars = floor($event->averageRating);
+                                $halfStar = ($event->averageRating - $fullStars) >= 0.5;
+                                $emptyStars = 5 - $fullStars - ($halfStar ? 1 : 0);
+
+                                for ($i = 0; $i < $fullStars; $i++) {
+                                    echo '<span class="star full">&#9733;</span>'; // ★
+                                }
+                                if ($halfStar) {
+                                    echo '<span class="star half">&#9733;</span>'; // Will style as half
+                                }
+                                for ($i = 0; $i < $emptyStars; $i++) {
+                                    echo '<span class="star empty">&#9733;</span>'; // ★ (faded)
+                                }
+                            ?>
+                            <span class="rating-text">
+                                <?= number_format($event->averageRating, 1) ?>/5 (<?= $event->totalReviews ?> reviews)
+                            </span>
                         </div>
-                        <span class="rating-text"><?= number_format($event->averageRating, 1) ?>/5 (<?= $event->totalReviews ?> reviews)</span>
                     </div>
                     
                 </div>
