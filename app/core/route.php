@@ -121,6 +121,7 @@ if(getUserRole() == 'holder' ||isAdmin()){
     route('update-profile','ticketHolder/UpdateProf@index');
     route('ticket-holder-home','ticketHolder/TicketHolderHome@index');
     route('view-pastevent','ticketHolder/ViewPastevent@index');
+    route('view-upcomingevent','ticketHolder/ViewUpcomingevent@index');
     route('notification-event','ticketHolder/NotificationEvent@index');
     route('delete-buyticket','ticketHolder/Deletebuyticket@index');
     route('profile/markread','ticketHolder/ViewPastevent@markNotificationsRead');

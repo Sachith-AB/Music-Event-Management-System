@@ -70,6 +70,7 @@ class Profile {
         $pastTickets = [];
         if(!empty($mytickets)){
         foreach ($mytickets as $myticket) {
+            
             $ticket_id = $myticket->ticket_id; 
             $eventDetail = $ticket->getTicketAndEventDetails($ticket_id); 
             if($eventDetail && isset($eventDetail[0]->event_date)){
