@@ -89,6 +89,7 @@ if (getUserRole() == 'planner' || isAdmin()){
     route('event-planner-myevents','eventPlanner/EventPlannerMyEvents@index');
     route('event-planner-payment','eventPlanner/EventPlannerPayment@index');
     route('event-planner-messages','eventPlanner/EventPlannerMessage@index');
+    route('event-planner-comments','eventPlanner/EventPlannerComments@index');
     route('event-planner-viewEvent','eventPlanner/EventPlannerViewEvent@index');
     route('event-planner-scheduledEvent','eventPlanner/EventPlannerScheduledEvent@index');
     route('edit-scheduled-event-ticket','eventPlanner/EditScheduledEventTicket@index');
