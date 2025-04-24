@@ -1,0 +1,1 @@
+{"version":1,"defects":{"Warning":6,"PurchaseTicketTest::testCreatePurchaseReturnsNullOnSuccess":4},"times":{"Warning":0.008,"PurchaseTicketTest::testCreatePurchaseReturnsNullOnSuccess":0.023}}

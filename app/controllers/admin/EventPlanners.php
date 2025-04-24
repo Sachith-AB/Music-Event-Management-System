@@ -15,10 +15,11 @@ class EventPlanners {
         // show($data);
        
 
-        if($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['delete'])){
+        if($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['is_delete'])){
 
-            // show($_POST);
+            show($_POST);
             $this->deleteUsers($user);
+            redirect('admin-eventplanners');
         }
 
         $this->view('admin/eventplaners', $data);

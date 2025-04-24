@@ -14,9 +14,10 @@ class EventCollaborators {
         $data = $this->DisplayCollaborators($event);
         // show($data);
 
-        if($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['delete'])){
+        if($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['is_delete'])){
 
             $this->DeleteCollaborators($user);
+            redirect('admin-eventcollaborators');
 
         }
         
