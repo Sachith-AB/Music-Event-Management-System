@@ -17,6 +17,7 @@
             <li><a href="admin-eventplanners" class="menu-link"><i class="fas fa-users-cog"></i> Event Planners </a></li>
             <li><a href="admin-eventcollaborators" class="menu-link"><i class="fas fa-handshake"></i> Event Collaborators </a></li>
             <li><a href="admin-ticketholders" class="menu-link"><i class="fas fa-ticket-alt"></i> Ticket Holders </a></li>
+            <li><a href="admin-profit-info" class="menu-link"><i class="fas fa-money-bill"></i> Profit </a></li>
             <li>
                 <a href="#reportSubMenu" class="menu-link" onclick="toggleSubMenu('reportSubMenu')">
                     <i class="fas fa-chart-line"></i> Reports <i class="fas fa-chevron-down" style="float:right;"></i>

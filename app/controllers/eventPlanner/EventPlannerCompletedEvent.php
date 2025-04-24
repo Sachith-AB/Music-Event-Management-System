@@ -68,7 +68,7 @@ class EventPlannerCompletedEvent {
 
         // Return income data with total
         return [
-            'total_income' => $this->numToPrice($total_income),  
+            'total_income' => $total_income,  
             'record' => $record_data
         ];
     }
