@@ -52,7 +52,7 @@ if(getUserRole() == 'collaborator' || isAdmin()){
     route('colloborator-payments','eventCollaborator/SingerPayments@index');
     route('collaborator-viewprofile','eventCollaborator/ViewProfile@index');
     route('collaborator-eventdetails','eventCollaborator/EventDetails@index');
-    route('collaborator-report','eventCollaborator/collaboratorReport@index');
+    
     route('send-message','eventCollaborator/Chat@sendMessage');
     route('get-messages','eventCollaborator/Chat@getMessages');
 }
@@ -74,6 +74,7 @@ if (getUserRole() == 'planner' || isAdmin()){
     route('request-announcers','request/AnnouncerRequest@index');
     route('request-venues','request/VenueRequest@index');
     route('collaborator-viewprofile','eventCollaborator/ViewProfile@index');
+    route('collaborator-report','eventCollaborator/collaboratorReport@index');
 
     
     //Routes for Ticket
@@ -136,4 +137,5 @@ if(isAdmin()){
     route('admin-event-report','admin/AdminEventReport@index');
     route('admin-ticket-report','admin/AdminTicketReport@index');
     route('admin-user-report','admin/AdminUserReport@index');
+    route('collaborator-report','eventCollaborator/collaboratorReport@index');
 }

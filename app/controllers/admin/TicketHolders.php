@@ -14,9 +14,10 @@ class TicketHolders {
         $data = $this->getHolderDetails($event);
         // show($data);
 
-        if($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['delete'])){
+        if($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['is_delete'])){
 
             $this->deleteHolders($user);
+            redirect('admin-ticketholders');
         }
 
         $this->view('admin/ticketholders', $data);

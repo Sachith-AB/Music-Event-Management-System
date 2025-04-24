@@ -164,3 +164,43 @@ a {
     color: white;
 }
 
+
+.confirm-btn {
+    padding: 10px 20px;
+    margin: 0 10px;
+    border: none;
+    border-radius: 6px; /* pill shape */
+    /* font-weight: bold; */
+    cursor: pointer;
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+/* Submit button styles */
+.submit-btn {
+    background-color: #dc3545; /* red background */
+    color: white;
+}
+
+.submit-btn:hover {
+    background-color: #c82333; /* sharper red background */
+    color: black; /* text turns black */
+}
+
+/* Cancel button styles */
+.cancel-btn {
+    background-color: #28a745; /* green background */
+    color: white;
+}
+
+.cancel-btn:hover {
+    background-color: #218838; /* sharper green background */
+    color: black; /* text turns black */
+}
+
+.confirm-message {
+    margin-bottom: 20px;
+    font-size: 16px;
+}
+
+
+

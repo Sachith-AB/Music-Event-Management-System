@@ -20,10 +20,11 @@ class AdminDashboard {
         //show($data['scheduled']);
         // echo json_encode($data['upcoming']);
 
-        if($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['delete'])){
+        if($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['is_delete'])){
 
             
             $this->deleteEvent($event);
+            redirect('admin-dashboard');
         }
 
 
