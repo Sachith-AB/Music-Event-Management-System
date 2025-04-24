@@ -1,5 +1,6 @@
 <?php
-
+require_once 'C:\xampp\htdocs\Music-Event-Management-System\vendor\autoload.php'; // Path to composer autoload
+use Twilio\Rest\Client;
 
 
 class Purchaseticket {
@@ -63,6 +64,11 @@ class Purchaseticket {
                 $data = $this->createPurchase($purchaseData, $buyticket, $ticketDetails);
             
                 if(empty($data)){
+                    // sending message to phone number
+                    // $this->sendsmstobuyer();
+
+
+
                     $latestpurchaseid = $buyticket->getLatestInsertedId();
                     $totalFee = $ticketDetails[0]->ticket_price*$ticketQuantity;
 
@@ -149,6 +155,32 @@ class Purchaseticket {
         else{
             return $buyticket->errors;
         }
+    }
+
+    public function sendsmstobuyer(){
+        
+
+        $phone = 94703864050; // make sure it's in correct format
+    $message = "Thanks for purchasing your ticket! Show this code at the entrance: ABC123";
+
+    $response = file_get_contents('https://textbelt.com/text', false, stream_context_create([
+        'http' => [
+            'method' => 'POST',
+            'header'  => "Content-type: application/x-www-form-urlencoded\r\n",
+            'content' => http_build_query([
+                'phone' => '+' . $phone,
+                'message' => $message,
+                'key' => 'textbelt',
+            ]),
+        ]
+    ]));
+
+    $responseData = json_decode($response, true);
+    if ($responseData['success']) {
+        echo "SMS sent successfully!";
+    } else {
+        echo "SMS failed: " . $responseData['error'];
+    }
     }
     
 }   
