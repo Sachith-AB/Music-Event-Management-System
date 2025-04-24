@@ -80,8 +80,10 @@ $_SESSION['last_visit'] = date('Y-m-d H:i:s');
                     <p>No tickets available.</p>
                 <?php endif; ?>
             </div>
-            <button class="next-button" onclick ="goToBack()"> Back </button>
-            <button class="next-button" onclick ="goToRequest()"> Next </button>
+            <div class="button-container">
+                <button class="next-button" onclick="goToBack()">Back</button>
+                <button class="next-button" onclick="goToRequest()">Next</button>
+            </div>
 
         </div>
     </div>

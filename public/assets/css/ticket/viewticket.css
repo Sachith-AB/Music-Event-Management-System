@@ -9,6 +9,10 @@
     align-items: center;
 }
 
+.main-content h1{
+    color: #00BDD6;
+}
+
 .card{
     position: relative;
     width: 300px;
@@ -148,8 +152,17 @@
     box-shadow: 0 4px 8px rgba(0, 189, 214, 0.3);
 }
 
-.next-button{
-    padding: 10px 20px;
+.button-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+    margin: 30px 0;
+    width: 100%;
+}
+
+.next-button {
+    padding: 12px 25px;
     background-color: #00BDD6FF;
     color: white;
     border: none;
@@ -158,25 +171,134 @@
     font-weight: 500;
     cursor: pointer;
     transition: all 0.3s ease;
-    min-width: 100px;
+    min-width: 120px;
     text-align: center;
-    /* margin-right: 50px; */
-    margin: 10px 30px;
+}
 
+.next-button:hover {
+    background-color: #00a7bd;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(0, 189, 214, 0.3);
 }
 
 /* Responsive Design */
+@media screen and (max-width: 1200px) {
+    .ticket-container {
+        grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+        gap: 40px;
+    }
+}
+
+@media screen and (max-width: 992px) {
+    .ticket-container {
+        grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+        gap: 30px;
+    }
+}
+
 @media screen and (max-width: 768px) {
-    .card .content .details .action-btn {
-        flex-direction: column;
-        gap: 10px;
+    .ticket-container {
+        grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+        gap: 20px;
+        padding: 20px;
+    }
+
+    .card {
+        width: 100%;
+        max-width: 300px;
+    }
+
+    .card:hover {
+        height: 350px;
+    }
+
+    .img-box {
+        width: 120px;
+        height: 120px;
+    }
+
+    .card:hover .img-box {
+        width: 150px;
+        height: 150px;
+    }
+
+    .card .content .details {
+        padding: 20px;
+    }
+
+    .card .content .details h2 {
+        font-size: 1.4rem;
+    }
+
+    .card .content .details .data h3 {
+        font-size: 0.9rem;
     }
 
     .btn-btn-update,
     .btn-btn-delete {
+        padding: 8px 15px;
+        font-size: 0.9rem;
+    }
+}
+
+@media screen and (max-width: 576px) {
+    .ticket-container {
+        grid-template-columns: 1fr;
+        gap: 40px;
+    }
+
+    .card {
         width: 100%;
-        min-width: auto;
-        margin-right: 0;
+        max-width: 280px;
+    }
+
+    .img-box {
+        width: 100px;
+        height: 100px;
+    }
+
+    .card:hover .img-box {
+        width: 130px;
+        height: 130px;
+    }
+
+    .card .content .details {
+        padding: 15px;
+    }
+
+    .card .content .details h2 {
+        font-size: 1.2rem;
+    }
+
+    .card .content .details .data h3 {
+        font-size: 0.8rem;
+    }
+
+    .btn-btn-update,
+    .btn-btn-delete {
+        padding: 6px 12px;
+        font-size: 0.8rem;
+    }
+}
+
+@media screen and (max-width: 400px) {
+    .ticket-container {
+        gap: 50px;
+    }
+
+    .card {
+        width: 100%;
+        max-width: 260px;
+    }
+
+    .img-box {
+        width: 90px;
+        height: 90px;
+    }
+
+    .card:hover .img-box {
+        width: 120px;
+        height: 120px;
     }
 }
 

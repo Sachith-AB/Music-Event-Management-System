@@ -44,13 +44,55 @@ class Event {
             return ;
         }
 
+        // Validate cover images
+        if (empty($_FILES['coverImage']) || empty($_FILES['coverImage']['name'][0])) {
+            $this->errors['flag'] = true;
+            $this->errors['error'] = "At least one cover image is required";
+            $this->errors['error_no'] = 4;
+            return;
+        }
+
+        // Check number of images
+        $imageCount = count($_FILES['coverImage']['name']);
+        if ($imageCount > 5) {
+            $this->errors['flag'] = true;
+            $this->errors['error'] = "Maximum 5 cover images allowed";
+            $this->errors['error_no'] = 5;
+            return;
+        }
+
+        // Validate each image
+        $allowedTypes = ['image/jpeg', 'image/png', 'image/jpg', 'image/gif'];
+        $maxFileSize = 5 * 1024 * 1024; 
+
+        for ($i = 0; $i < $imageCount; $i++) {
+            if (!isset($_FILES['coverImage']['type'][$i]) || !isset($_FILES['coverImage']['size'][$i])) {
+                continue; 
+            }
+
+            $fileType = $_FILES['coverImage']['type'][$i];
+            $fileSize = $_FILES['coverImage']['size'][$i];
+
+            if (!in_array($fileType, $allowedTypes)) {
+                $this->errors['flag'] = true;
+                $this->errors['error'] = "Invalid file type. Only JPG, JPEG, PNG and GIF images are allowed";
+                $this->errors['error_no'] = 6;
+                return;
+            }
+
+            if ($fileSize > $maxFileSize) {
+                $this->errors['flag'] = true;
+                $this->errors['error'] = "Image size should not exceed 5MB";
+                $this->errors['error_no'] = 7;
+                return;
+            }
+        }
 
         if (empty($data['audience'])) {
             $this->errors['flag'] = true;
             $this->errors['error'] = "Audience is required";
             $this->errors['error_no'] = 3;
         }
-
 
         if (empty($data['eventDate'])) {
             $this->errors['flag'] = true;
@@ -70,6 +112,8 @@ class Event {
                 $this->errors['error_no'] = 6;
             }
         }
+
+        
 
         if (empty($data['eventEndDate'])) {
             $this->errors['flag'] = true;
@@ -130,6 +174,72 @@ class Event {
         return false;
     }
 
+
+    public function validEventUpdate($data) {
+            $this->errors = [];
+    
+            //flage mean errors include
+    
+            if (empty($data['event_name'])) {
+                $this->errors['flag'] = true;
+                $this->errors['error'] = "Event name is required";
+                $this->errors['error_no'] = 1;
+                return ;
+            }
+
+            if (empty($data['description'])) {
+                $this->errors['flag'] = true;
+                $this->errors['error'] = "Event description is required";
+                $this->errors['error_no'] = 2;
+                return ;
+            }
+    
+    
+            
+    
+            if (empty($data['audience'])) {
+                $this->errors['flag'] = true;
+                $this->errors['error'] = "Audience is required";
+                $this->errors['error_no'] = 3;
+            }
+    
+    
+            
+    
+            if (empty($this->errors)) {
+                return true;
+            }
+    
+            return false;
+        } 
+        
+        public function validProcessingEventUpdate($data) {
+            $this->errors = [];
+    
+            //flage mean errors include
+    
+            if (empty($data['event_name'])) {
+                $this->errors['flag'] = true;
+                $this->errors['error'] = "Event name is required";
+                $this->errors['error_no'] = 1;
+                return ;
+            }
+    
+            if (empty($data['audience'])) {
+                $this->errors['flag'] = true;
+                $this->errors['error'] = "Audience is required";
+                $this->errors['error_no'] = 3;
+            }
+    
+    
+            
+    
+            if (empty($this->errors)) {
+                return true;
+            }
+    
+            return false;
+        } 
 
     //get events details for eventplanner dashboard which are created by him
     public function getEventsByUserId($userId) {

@@ -46,15 +46,15 @@ $_SESSION['last_visit'] = date('Y-m-d H:i:s');
                     </div>
                     <div class="form-group">
                         <label for="event_description">Description</label>
-                        <textarea id="event_description" name="description"></textarea>
+                        <textarea id="event_description" name="description" class="form-control"></textarea>
                     </div>
                     <div class="form-group">
                         <label for="audience">Audience</label>
-                        <input type="number" id="audience" name="audience" />
+                        <input type="number" id="audience" name="audience" class="form-control" />
                     </div>
                     <div class="form-group">
                         <label for="coverImage">Cover Images</label>
-                        <input type="file" id="coverImage" name="coverImage[]" accept="image/*" multiple onchange="previewImages(this)">
+                        <input type="file" id="coverImage" name="coverImage[]" accept="image/*" multiple onchange="previewImages(this)" class="form-control">
                         <div id="imagePreviewContainer" style="display: flex; flex-wrap: wrap; margin-top: 10px;"></div>
                     </div>
                 </section>
@@ -62,7 +62,7 @@ $_SESSION['last_visit'] = date('Y-m-d H:i:s');
                 <section id="time-ticket">
                     <h2>Date and Time</h2>
                     <div class="form-group">
-                        <label for = "event-date">Event Date</label>
+                        <label for = "event-date">Event Start Date</label>
                         <input type="date" id="event-date" name="eventDate">
                     </div>
 
@@ -138,10 +138,11 @@ $_SESSION['last_visit'] = date('Y-m-d H:i:s');
         </div>
     </div>
 
-    <?php if (!empty($data['error'])): ?>
+    <!--<?php show($data); ?> -->
+    <?php if (!empty($data['errors'])): ?>
         <?php 
-            $message = $data['error'];
-            include("../app/views/components/r-message.php");
+            $message = $data['errors']['error'];
+            include("../../app/views/components/r-message.php");
         ?>
     <?php elseif($flag == 1): ?>
         <?php 
@@ -260,17 +261,11 @@ $_SESSION['last_visit'] = date('Y-m-d H:i:s');
                     reader.readAsDataURL(input.files[i]);
                 }
                 
-                // Show warning if more than 5 files selected
-                if (input.files.length > 5) {
-                    var warningDiv = document.createElement('div');
-                    warningDiv.style.color = 'red';
-                    warningDiv.style.marginTop = '10px';
-                    warningDiv.textContent = 'Note: Only the first 5 images will be uploaded.';
-                    previewContainer.appendChild(warningDiv);
-                }
+               
             }
         }
     </script>
+
+    <script src="<?=ROOT?>/assets/js/message.js"></script>
 </body>
 </html>
-<?php include ('../app/views/components/footer.php'); ?>

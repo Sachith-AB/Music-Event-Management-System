@@ -54,7 +54,11 @@
         </div>
 
         <div class="lowersec">
-            <img src="<?=ROOT?>/assets/images/events/<?php echo $data['event']->cover_images?>" alt="Concert Image" class="concert-img">
+        <?php
+                    $coverImages = json_decode($data['event']->cover_images, true);
+                    $firstImage = $coverImages[0] ?? ''; // fallback if empty
+                    ?>
+                    <img src="<?= ROOT ?>/assets/images/events/<?php echo $firstImage ?>" alt="Concert Image" class="concert-img">
             <!-- <div class="play-button">
                 <span>&#9654;</span> Play Icon
             </div> -->

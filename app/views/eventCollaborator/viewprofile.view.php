@@ -8,6 +8,7 @@
     <title>Event planner dashboard</title>
     <link rel="stylesheet" href="<?=ROOT?>/assets/css/eventCollaborators\singerdashboard.css">
     <link rel="stylesheet" href="<?= ROOT ?>/assets/css/backbutton.css">
+    <link rel="stylesheet" href="<?=ROOT?>/assets/css/eventCollaborators/calender.css">
 
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
 </head>
@@ -170,6 +171,29 @@
                 </div>
             <?php endif; ?>
 
+            <!-- Calendar Section -->
+            <div class="calendar-container">
+                <h1>My Calendar</h1>
+                <?php if(isset($_SESSION['success'])): ?>
+                    <div class="alert alert-success"><?= $_SESSION['success'] ?></div>
+                    <?php unset($_SESSION['success']); ?>
+                <?php endif; ?>
+                <?php if(isset($_SESSION['error'])): ?>
+                    <div class="alert alert-danger"><?= $_SESSION['error'] ?></div>
+                    <?php unset($_SESSION['error']); ?>
+                <?php endif; ?>
+                <div id="messageContainer"></div>
+                <div class="calendar">
+                    <div class="calendar-header">
+                        <button id="prevMonth">◀</button>
+                        <h2 id="currentMonth"></h2>
+                        <button id="nextMonth">▶</button>
+                    </div>
+                    <div class="calendar-grid">
+                        <script id="events" type="application/json"><?= json_encode($data ?? []) ?></script>
+                    </div>
+                </div>
+            </div>
 
 
 
@@ -184,35 +208,32 @@
                             <img src="<?=ROOT?>/assets/images/user/<?php echo $_SESSION['USER']->pro_pic ?>" alt="User Avatar" class="comment-avatar">
                             <input type="hidden" name="receiver_id" value="<?php echo $_GET['id'] ?>"/>
                             <input type="hidden" name="sender_id" value="<?php echo $_SESSION['USER']->id ?>"/>
-                            <textarea class="comment-input" name="content" placeholder="Add a comment..."></textarea>                                <button name="add_comment" class="post-comment-btn">Submit</button>
+                            <textarea class="comment-input" name="content" placeholder="Add a comment..."></textarea>                                
+                            <button name="add_comment" class="post-comment-btn">Submit</button>
                         </div>
-                    </from>
+                    </form>
                 <?php endif;?>
-                <?php if (!empty($commentsForUser)): ?>
-                    <!-- Comments -->
-                    <?php foreach ($commentsForUser as $comment): ?>
-                        <div class="comment">
-                            <img src="<?=ROOT?>/assets/images/user/<?php echo $comment->sender_pro_pic ?>" alt="User Avatar" class="comment-avatar">
-                            <div class="comment-content">
-                                <div class="comment-header">
-                                    <span class="comment-author"><?php echo $comment->sender_name ?></span>
-                                    <span class="comment-date"><?= date('jS F Y, H:i A', strtotime($comment->created_at)) ?></span>
-                                </div>
-                                <p class="comment-text"><?php echo htmlspecialchars($comment->content) ?></p>
-                                <!-- <div class="comment-actions">
-                                    <button class="like-btn">👍 <?php echo $comment->num_likes ?></button>
-                                    
-                                </div> -->
-                            </div>
-                        </div>
-                    <?php endforeach; ?>
-                    
-                
-                <?php endif; ?>
 
+                <?php if (!empty($commentsForUser)): ?>
+                    <!-- Display comments here -->
+                    <!-- This is where you would loop through and display comments -->
+                <?php endif; ?>
             </div>
+
+            
+            <div id="eventModal" class="modal">
+                <div class="modal-content">
+                    <span id="closeModal" class="close-button">&times;</span>
+                    <h1 id="eventName">Event Title</h1>
+                    <img id="eventImage" src="" alt="Event Image" style="height: 100px; width: 200px;" />
+                    <p id="eventDescription">Event Description goes here.</p>
+                    <p><strong>Date:</strong> <span id="eventDate"></span></p>
+                    <p><strong>Time:</strong> <span id="eventTime"></span></p>
+                </div>
+            </div>
+            <script src="<?=ROOT?>/assets/js/calander.js"></script>
+
         </div>
     </div>
 </body>
 </html>
-<?php include ('../app/views/components/footer.php'); ?>
