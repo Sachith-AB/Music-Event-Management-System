@@ -207,8 +207,10 @@ class Ticket {
         return $result ? $result : [];
     }
     
-
-
-    
+    public function getTicketPriceFromEventId($event_id) {
+        $query = "SELECT price FROM tickets WHERE event_id = $event_id";
+        $res = $this->query($query);
+        return $res;
+    }
 
 }

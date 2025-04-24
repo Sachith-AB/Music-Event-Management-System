@@ -19,11 +19,6 @@
     $flag = htmlspecialchars($_GET['flag'] ?? 2);
     $error = htmlspecialchars($_GET['error']?? '');
     $role = htmlspecialchars($_GET['role']?? '');
-    // echo $email;
-    // echo $pass;
-    // echo $flag;
-    // echo $error;
-    //echo $role;
 ?>
 
     <div class="block">
