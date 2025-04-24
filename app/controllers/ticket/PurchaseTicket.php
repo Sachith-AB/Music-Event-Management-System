@@ -1,6 +1,6 @@
 <?php
-require_once 'C:\xampp\htdocs\Music-Event-Management-System\vendor\autoload.php'; // Path to composer autoload
-use Twilio\Rest\Client;
+// require_once 'C:\xampp\htdocs\Music-Event-Management-System\vendor\autoload.php'; // Path to composer autoload
+// use Twilio\Rest\Client;
 
 
 class Purchaseticket {
