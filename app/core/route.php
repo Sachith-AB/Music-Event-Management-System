@@ -102,6 +102,8 @@ if (getUserRole() == 'planner' || isAdmin()){
 
     route('collaborator-viewprofile','eventCollaborator/ViewProfile@index');
 
+    route('notification-event','ticketHolder/NotificationEvent@index');
+
 }
 
 //Route for purchaseticket

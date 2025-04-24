@@ -34,7 +34,7 @@
 <body>
     <div class="main-layout">
         <!-- Left Side - Event Details -->
-        <div class="event-details-box">
+        <div>
             <h2 class="event-title">Event Detail</h2>
             <form method="POST" class="form">
                 <div class="input-wrap">
