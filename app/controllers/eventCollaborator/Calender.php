@@ -27,8 +27,22 @@ class Calender {
 
         // Get accepted events
         $events = $this->getAcceptedEvent($id, $request);
-      
-       // show($events);
+        
+        // Format event times for regular events
+        if(!empty($events)) {
+            foreach($events as &$event) {
+                // Format times to 12-hour format
+                if(isset($event->start_time)) {
+                    $time = strtotime($event->start_time);
+                    $event->start_time = date('h:i A', $time);
+                }
+                if(isset($event->end_time)) {
+                    $time = strtotime($event->end_time);
+                    $event->end_time = date('h:i A', $time);
+                }
+            }
+            unset($event); // Break the reference
+        }
         
         // Get unavailable dates
         $unavailableDates = $calendar->getUserCalendar($id);
@@ -36,7 +50,7 @@ class Calender {
        // show($unavailableDates);
         
         // Combine events and unavailable dates
-        $data = $events;
+        $data = $events ?: [];
         
         if(!empty($unavailableDates)) {
             foreach($unavailableDates as $date) {
@@ -44,21 +58,34 @@ class Calender {
                     $data[] = (object)[
                         'eventDate' => $date->date,
                         'event_name' => 'Unavailable',
-                        'description' => 'You are not available on this date',
-                        'status' => 'unavailable'
+                        'description' => 'I am not available on this date',
+                        'status' => 'unavailable',
+                        'start_time' => 'All Day',
+                        'end_time' => 'All Day'
                     ];
                 }
             }
         }
-        
-       // show("Final data for view:");
-       // show($data);
         
         $this->view('eventCollaborator/calender', $data);
     }
 
     private function getAcceptedEvent($id, $request){
         $res = $request->getAcceptedEvents($id);
+        if($res) {
+            foreach($res as &$event) {
+                // Format times to 12-hour format
+                if(isset($event->start_time)) {
+                    $time = strtotime($event->start_time);
+                    $event->start_time = date('h:i A', $time);
+                }
+                if(isset($event->end_time)) {
+                    $time = strtotime($event->end_time);
+                    $event->end_time = date('h:i A', $time);
+                }
+            }
+            unset($event); // Break the reference
+        }
         return $res ?: [];
     }
 }

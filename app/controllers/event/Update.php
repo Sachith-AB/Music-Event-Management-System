@@ -18,14 +18,14 @@ class Update {
 
         if($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['update'])){
             
-            $this->updateDetail($event);
+            $data['error'] = $this->updateDetail($event);
         }
         // if($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['upload'])){
         //     $this->uploadImages($event,$_FILES);
         //     show($_FILES);
         // }
 
-        $data = $this->getData($row);
+        $data ['event'] = $this->getData($row);
         $this->view('event/updateEvent',$data);
     }
 
@@ -43,13 +43,19 @@ class Update {
         $success = 'flag=' . 2 . '&msg=' . $msg . '&success_no=' . 1;
 
         //Update event
-        $event->update($_POST['event_id'], $_POST);
-        unset($POST['update']);
+        if($event->validEventUpdate($_POST)){
+            $event->update($_POST['event_id'], $_POST);
+            unset($POST['update']);
+            redirect("event-review?event_name=$event_name");
+
+        }else{
+            return ['success' => false, 'errors' => $event->errors];
+        }
 
         // show($_POST);
 
         
-        redirect("event-review?event_name=$event_name");
+       
     }
 
    

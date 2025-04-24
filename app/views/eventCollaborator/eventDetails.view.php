@@ -30,8 +30,11 @@
             <!-- Left Side - Image and Details -->
             <div>
                 <!-- Cover Image -->
-                <img 
-                    src="<?=ROOT?>/assets/images/events/<?php echo $data['event']->cover_images ?>" 
+                <?php
+                    $coverImages = json_decode($data['event']->cover_images, true);
+                    $firstImage = $coverImages[0] ?? ''; // fallback if empty
+                    ?>
+                    <img src="<?= ROOT ?>/assets/images/events/<?php echo $firstImage ?>" 
                     alt="Summer Music Festival" 
                     class="image-style"
                 />

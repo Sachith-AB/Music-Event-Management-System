@@ -61,12 +61,14 @@ class Profile {
         $buyticket = new Buyticket();
         $ticket = new Ticket();
         
+        
 
         $id = $_SESSION['USER']->id ?? 0;
 
         $mytickets = $buyticket->getAllPurchasedEvents($id);
         $upcomingTickets = [];
         $pastTickets = [];
+        if(!empty($mytickets)){
         foreach ($mytickets as $myticket) {
             $ticket_id = $myticket->ticket_id; 
             $eventDetail = $ticket->getTicketAndEventDetails($ticket_id); 
@@ -83,7 +85,7 @@ class Profile {
                 $pastTickets[] = $combined;
             }
             }
-
+        }
             
         }
         

@@ -1,0 +1,132 @@
+.single-image-container {
+    width: 100%;
+    margin: 20px 0;
+    text-align: center;
+}
+
+.single-image-container .event-image {
+    max-width: 100%;
+    height: auto;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+.image-scroll-container {
+    display: flex;
+    overflow-x: auto;
+    gap: 15px;
+    padding: 15px 0;
+    scrollbar-width: thin;
+    scrollbar-color: #00BDD6 #f0f0f0;
+}
+
+.image-scroll-container::-webkit-scrollbar {
+    height: 8px;
+}
+
+.image-scroll-container::-webkit-scrollbar-track {
+    background: #f0f0f0;
+    border-radius: 4px;
+}
+
+.image-scroll-container::-webkit-scrollbar-thumb {
+    background-color: #00BDD6;
+    border-radius: 4px;
+}
+
+.event-image {
+    max-height: 300px;
+    object-fit: cover;
+    border-radius: 8px;
+    transition: transform 0.3s ease;
+}
+
+.event-image:hover {
+    transform: scale(1.02);
+}
+
+.no-images {
+    text-align: center;
+    padding: 20px;
+    background: #f8f9fa;
+    border-radius: 8px;
+    color: #6c757d;
+    font-style: italic;
+}
+
+/* Responsive Design */
+@media screen and (max-width: 1200px) {
+    .event-image {
+        max-height: 280px;
+    }
+}
+
+@media screen and (max-width: 992px) {
+    .single-image-container {
+        margin: 15px 0;
+    }
+
+    .event-image {
+        max-height: 250px;
+    }
+
+    .image-scroll-container {
+        gap: 12px;
+        padding: 12px 0;
+    }
+}
+
+@media screen and (max-width: 768px) {
+    .single-image-container {
+        margin: 12px 0;
+    }
+
+    .event-image {
+        max-height: 220px;
+    }
+
+    .image-scroll-container {
+        gap: 10px;
+        padding: 10px 0;
+    }
+
+    .image-scroll-container::-webkit-scrollbar {
+        height: 6px;
+    }
+}
+
+@media screen and (max-width: 576px) {
+    .single-image-container {
+        margin: 10px 0;
+    }
+
+    .event-image {
+        max-height: 200px;
+    }
+
+    .image-scroll-container {
+        gap: 8px;
+        padding: 8px 0;
+    }
+
+    .no-images {
+        padding: 15px;
+        font-size: 0.9rem;
+    }
+}
+
+@media screen and (max-width: 400px) {
+    .event-image {
+        max-height: 180px;
+    }
+
+    .image-scroll-container {
+        gap: 6px;
+        padding: 6px 0;
+    }
+
+    .no-images {
+        padding: 12px;
+        font-size: 0.8rem;
+    }
+} 

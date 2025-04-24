@@ -10,29 +10,32 @@
     <link rel="icon" type="image/png" href="<?=ROOT?>/assets/images/logo/logo.png">
 </head>
 <body>
-    <?php include ('../app/views/components/loading.php'); ?>
+   
     <div class="dash-container">
         <?php include ('../app/views/components/collaborator/singersidebar.php'); ?>
         <div class="dashboard">
+            
             <div class="container">
-                <h1>My Calendar</h1>
-                <?php if(isset($_SESSION['success'])): ?>
-                    <div class="alert alert-success"><?= $_SESSION['success'] ?></div>
-                    <?php unset($_SESSION['success']); ?>
-                <?php endif; ?>
-                <?php if(isset($_SESSION['error'])): ?>
-                    <div class="alert alert-danger"><?= $_SESSION['error'] ?></div>
-                    <?php unset($_SESSION['error']); ?>
-                <?php endif; ?>
-                <div id="messageContainer"></div>
-                <div class="calendar">
-                    <div class="calendar-header">
-                        <button id="prevMonth">◀</button>
-                        <h2 id="currentMonth"></h2>
-                        <button id="nextMonth">▶</button>
-                    </div>
-                    <div class="calendar-grid">
-                        <script id="events" type="application/json"><?= json_encode($data) ?></script>
+                <div class="calendar-container">
+                    <h1>My Calendar</h1>
+                    <?php if(isset($_SESSION['success'])): ?>
+                        <div class="alert alert-success"><?= $_SESSION['success'] ?></div>
+                        <?php unset($_SESSION['success']); ?>
+                    <?php endif; ?>
+                    <?php if(isset($_SESSION['error'])): ?>
+                        <div class="alert alert-danger"><?= $_SESSION['error'] ?></div>
+                        <?php unset($_SESSION['error']); ?>
+                    <?php endif; ?>
+                    <div id="messageContainer"></div>
+                    <div class="calendar">
+                        <div class="calendar-header">
+                            <button id="prevMonth">◀</button>
+                            <h2 id="currentMonth"></h2>
+                            <button id="nextMonth">▶</button>
+                        </div>
+                        <div class="calendar-grid">
+                            <script id="events" type="application/json"><?= json_encode($data) ?></script>
+                        </div>
                     </div>
                 </div>
                 <div class="available-dates">
@@ -51,6 +54,8 @@
                     <img id="eventImage" src="" alt="Event Image" style="height: 100px; width: 200px;" />
                     <p id="eventDescription">Event Description goes here.</p>
                     <p><strong>Date:</strong> <span id="eventDate"></span></p>
+                    <p><strong>Time:</strong> <span id="eventTime"></span></p>
+                    
                 </div>
             </div>
         </div>

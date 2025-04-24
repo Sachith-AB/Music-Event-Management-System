@@ -33,7 +33,7 @@ class Delete {
         $event->delete($_POST['event_id']);
     
         // Redirect to the create-event page
-        redirect("create-event");
+        redirect("event-planner-dashboard");
     }
     
     

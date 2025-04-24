@@ -1,6 +1,6 @@
 
 /* Modal styles */
-.modal {
+.ticketdownloadmodal {
     display: none; /* Hidden by default */
     position: fixed;
     z-index: 1000;
