@@ -10,7 +10,7 @@ foreach ($recentEvents as $event):
         : ROOT . '/assets/images/landing/top1.png';
     $priceText = ($event->pricing === 'free' || empty($event->pricing)) ? 'Free' : 'From LKR 5000';
 ?>
-    <div class="next-event-card">
+    <div class="next-event-card" onclick="location.href='<?= ROOT ?>/view-event?id=<?= $event->id ?>'">
         <div class="next-event-image-wrapper">
             <img src="<?= htmlspecialchars($imgSrc) ?>" alt="<?= htmlspecialchars($event->event_name) ?>">
             <?php if (strtotime($event->end_time) - strtotime($event->start_time) >= 60*60*12): ?>
@@ -57,6 +57,7 @@ foreach ($recentEvents as $event):
     display: flex;
     flex-direction: column;
     transition: transform 0.2s ease, box-shadow 0.2s ease;
+    cursor: pointer;
 }
 
 .next-event-card:hover {
