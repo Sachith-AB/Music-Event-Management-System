@@ -143,15 +143,25 @@ function showEventDetails(event) {
         timeEl.textContent = 'Time not specified';
     }
 
-    // Handle image
+    /// Handle image
     const eventImage = document.getElementById("eventImage");
     if (event.cover_images) {
-        eventImage.src = `${ROOT}/assets/images/events/${event.cover_images}`;
-        eventImage.style.display = "block";
+        try {
+            const imageArray = JSON.parse(event.cover_images);
+            const firstImage = imageArray[0];
+            if (firstImage) {
+                eventImage.src = `${ROOT}/assets/images/events/${firstImage}`;
+                eventImage.style.display = "block";
+            } else {
+                eventImage.style.display = "none";
+            }
+        } catch (e) {
+            console.error("Error parsing cover_images:", e);
+            eventImage.style.display = "none";
+        }
     } else {
         eventImage.style.display = "none";
     }
-
     // Show the modal
     const modal = document.getElementById("eventModal");
     modal.style.display = "block";
