@@ -98,13 +98,13 @@
                 <?php foreach($data['record'] as $record): ?>
                     <tr>
                         <td><?= htmlspecialchars($record->purchase_date); ?></td>
-                        <td class="text-right"><?= htmlspecialchars($record->total_income); ?></td>
+                        <td class="text-right"><?= htmlspecialchars(number_format($record->total_income,2,'.',',')); ?></td>
                     </tr>
                 <?php endforeach; ?>
             <?php endif; ?>
             <tr>
                 <td>Total</td>
-                <td class="text-right">LKR <?= htmlspecialchars($data['total_income']); ?></td>
+                <td class="text-right">LKR <?= htmlspecialchars(number_format($data['total_income'],2,'.',',')); ?></td>
             </tr>
         </table>
     </div>
@@ -120,20 +120,32 @@
                 <?php foreach($data['record1'] as $record1): ?>
                     <tr>
                         <td><?= htmlspecialchars($record1->name); ?></td>
-                        <td class="text-right"><?= htmlspecialchars($record1->total_payment); ?></td>
+                        <td class="text-right"> <?= htmlspecialchars(number_format($record1->total_payment, 2, '.', ',')); ?></td>
                     </tr>
                 <?php endforeach; ?>
             <?php endif; ?>
             <tr>
                 <td>Total</td>
-                <td class="text-right">LKR <?= htmlspecialchars($data['total_cost']); ?></td>
+                <td class="text-right">LKR <?= htmlspecialchars(number_format($data['total_cost'], 2, '.', ',')); ?></td>
             </tr>
         </table>
     </div>
 
-    <div class =  "balance report-look">
-        <h3>Balance</h3>
-        <p>LKR<?= htmlspecialchars(floatval($data['total_income']) - floatval($data['total_cost'])); ?></p>
+    <div class =  "financial-summary">
+    <table>
+        <tr>
+            <th>Total revenue</th>
+            <td>LKR <?= htmlspecialchars(number_format(floatval($data['total_income']) - floatval($data['total_cost']), 2, '.', ',')); ?></td>
+        </tr>
+        <tr>
+            <th>Administrative Fee</th>
+            <td>LKR <?= htmlspecialchars(number_format((floatval($data['total_income']) - floatval($data['total_cost']))*0.005, 2, '.', ',')); ?></td>
+        </tr>
+        <tr>
+            <th>Net Income</th>
+            <td>LKR <?= htmlspecialchars(number_format((floatval($data['total_income']) - floatval($data['total_cost'])) - ((floatval($data['total_income']) - floatval($data['total_cost']))*0.005), 2, '.', ',')); ?></td>
+        </tr>
+    </table>
     </div>  
 </div>
 </div>
