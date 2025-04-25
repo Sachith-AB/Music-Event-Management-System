@@ -11,6 +11,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Event planner dashboard</title>
     <link rel="stylesheet" href="<?=ROOT?>/assets/css/eventPlanner/myevents.css">
+    <link rel="stylesheet" href="<?= ROOT ?>/assets/css/backbutton.css">
 </head>
 <body>
     <!-- Include Header -->
@@ -24,8 +25,11 @@
 
         <?php if (!empty($events)):?>
             <div class="content">
-                <!-- Processing Events Section -->
-                <h2 class="content-header">Processing Events</h2>
+                <div class="back-button">
+                    <?php include('../app/views/components/backbutton.view.php'); ?>
+                    <!-- Processing Events Section -->
+                    <h2 class="content-header">Processing Events</h2>
+                </div>
                 <div class="events-container">
                     <?php 
                     $processingCount = 0;

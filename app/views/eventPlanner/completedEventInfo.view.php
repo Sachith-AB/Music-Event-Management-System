@@ -7,6 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Event Planner Completed Event Info</title>
     <link rel="stylesheet" href="<?= ROOT ?>/assets/css/eventplanner/completedEventInfo.css">
+    <link rel="stylesheet" href="<?= ROOT ?>/assets/css/backbutton.css">
     <script>
         function gotoperformerprofile(user_id) {
             window.location.href = "<?= ROOT ?>/collaborator-viewprofile?id=" + user_id;
@@ -17,7 +18,11 @@
     <div class="container">
         <!-- Section 1: Event Details -->
         <div class="section1">
-            <h1>Event Details</h1>
+            <div class="back-button">
+                <?php include('../app/views/components/backbutton.view.php'); ?>
+                <h1>Event Details</h1>
+            </div>
+            
             <div class="details">
                 <div class="event-detail">
                     <h3>Event Name:</h3>
