@@ -106,6 +106,8 @@ if (getUserRole() == 'planner' || isAdmin()){
 
     route('notification-event','ticketHolder/NotificationEvent@index');
 
+    route('update-profile','ticketHolder/UpdateProf@index');
+
 }
 
 //Route for purchaseticket

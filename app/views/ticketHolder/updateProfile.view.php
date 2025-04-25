@@ -46,7 +46,12 @@
 
                         <div class="input-wrap">
                             <!-- <label for="Name">Name</label> -->
-                            <input name="name" type="text" placeholder="Name" value="<?php echo $_SESSION['USER']->name ?>">
+                            <input name="first_name" type="text" placeholder="Name" value="<?php echo $_SESSION['USER']->first_name ?>">
+                        </div>
+
+                        <div class="input-wrap">
+                            <!-- <label for="Name">Name</label> -->
+                            <input name="last_name" type="text" placeholder="Name" value="<?php echo $_SESSION['USER']->last_name ?>">
                         </div>
 
                         <div class="input-wrap">
