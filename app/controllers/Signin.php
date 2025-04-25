@@ -26,8 +26,18 @@ class Signin {
             $row = $user->first($arr);
             
             // Proceed if $row exists and is_delete is '0'
-            if ($row && $row->is_delete == '0')
-            {
+            if ($row){
+
+                if($row->is_delete == 1){
+                    $error = "User is deleted";
+
+                    $passData = 'email=' . $_POST['email'] . '&pass=' . $_POST['password'];
+                    $errors = 'flag=' . 1 . '&error=' . $error . '&error_no=' . 6 ;
+
+                    unset($_POST['signIn']);
+                    redirect("signin?$errors&$passData");
+                    exit;
+                }
                 //row->is_delete
                 $checkpassword = password_verify($_POST['password'], $row->password);
 

@@ -70,10 +70,17 @@
                                 <a href="signin" class="toggle">Sign In</a>
                             </div>
                             <div class="actual-form">
-                                <div class="input-wrap">
-                                    <input type="text" name="name" class="input-field" >
-                                    <label for="fullname">Name</label>
-                                    <span id="nameError" class="error"></span>
+                                <div class="name-wrap">
+                                    <div class="input-wrap">
+                                        <input type="text" name="first_name" class="input-field" >
+                                        <label for="fullname">First Name</label>
+                                        <span id="nameError" class="error"></span>
+                                    </div>
+                                    <div class="input-wrap">
+                                        <input type="text" name="last_name" class="input-field" >
+                                        <label for="fullname">Last Name</label>
+                                        <span id="nameError" class="error"></span>
+                                    </div>
                                 </div>
                                 <div class="input-wrap">
                                     <input type="text" name="email" class="input-field">

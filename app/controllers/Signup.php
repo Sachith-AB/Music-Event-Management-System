@@ -21,20 +21,13 @@ class Signup {
 
     private function userRegistration($user,$POST){
         
-        //pass values to variables come from post method
-        $name = $POST['name'];
-        $email = $POST['email'];
-        $password = $POST['password'];
-        $confirm_password = $POST['confirm-password'];
-        
         //check data validation
         if($user->validUser($_POST)){
 
-            
+            show($POST);
             $arr['email'] = $_POST['email'];
             // To check email is taken or not
             $row = $user->first($arr);
-            //show($row);
 
             //Check email taken or not
             if($row == 0){
