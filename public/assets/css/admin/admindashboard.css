@@ -118,7 +118,16 @@
     
 }
 
-.event-card-icons a, button {
+.event-card-icons-a {
+    z-index: 3;
+    color: white;
+    background-color: rgba(0, 0, 0, 0.7);
+    padding: 10px;
+    border-radius: 50%;
+    text-decoration: none;
+    transition: background-color 0.3s ease;
+}
+.event-card-icons-button {
     z-index: 3;
     color: white;
     background-color: rgba(0, 0, 0, 0.7);
@@ -128,7 +137,11 @@
     transition: background-color 0.3s ease;
 }
 
-.event-card-icons a:hover, button:hover {
+.event-card-icons-a:hover{
+    background-color: #00BDD6FF;
+    
+}
+.event-card-icons-button:hover{
     background-color: #00BDD6FF;
     
 }

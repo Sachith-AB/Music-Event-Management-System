@@ -142,4 +142,6 @@ if(isAdmin()){
     route('admin-user-report','admin/AdminUserReport@index');
     route('admin-profit-info','admin/AdminProfit@index');
     route('collaborator-report','eventCollaborator/collaboratorReport@index');
+
+    route('notification-event','ticketHolder/NotificationEvent@index');
 }
