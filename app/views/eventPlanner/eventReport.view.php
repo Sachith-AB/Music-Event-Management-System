@@ -16,7 +16,7 @@
         <div class="section-container">
             <h2>Completed Events</h2>
 
-             <!-- Upcoming Events Filter Controls -->
+             
              <div class="filter-controls">
                 <div class="filter-group">
                     <label for="pastMonth">Month:</label>
