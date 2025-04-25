@@ -23,55 +23,7 @@
 
             <h2>Upcoming Events</h2>
             
-            <!-- Upcoming Events Filter Controls -->
-            <div class="filter-controls">
-                <div class="filter-group">
-                    <label for="upcomingMonth">Month:</label>
-                    <select id="upcomingMonth" onchange="filterUpcomingEvents()">
-                        <option value="">All Months</option>
-                        <?php
-                        $months = [
-                            '01' => 'January', '02' => 'February', '03' => 'March',
-                            '04' => 'April', '05' => 'May', '06' => 'June',
-                            '07' => 'July', '08' => 'August', '09' => 'September',
-                            '10' => 'October', '11' => 'November', '12' => 'December'
-                        ];
-                        foreach ($months as $num => $name) {
-                            echo "<option value='$num'>$name</option>";
-                        }
-                        ?>
-                    </select>
-                </div>
-                
-                <div class="filter-group">
-                    <label for="upcomingYear">Year:</label>
-                    <select id="upcomingYear" onchange="filterUpcomingEvents()">
-                        <option value="">All Years</option>
-                        <?php
-                        $currentYear = date('Y');
-                        for ($year = $currentYear; $year <= $currentYear + 2; $year++) {
-                            echo "<option value='$year'>$year</option>";
-                        }
-                        ?>
-                    </select>
-                </div>
-                
-                <div class="filter-group">
-                    <label for="upcomingPlanner">Event Planner:</label>
-                    <select id="upcomingPlanner" onchange="filterUpcomingEvents()">
-                        <option value="">All Planners</option>
-                        <?php if (!empty($data['planners'])): ?>
-                            <?php foreach ($data['planners'] as $planner): ?>
-                                <?php if($planner->role == 'planner'): ?>
-                                    <option value="<?= htmlspecialchars($planner->id) ?>">
-                                        <?= htmlspecialchars($planner->name) ?>
-                                    </option>
-                                <?php endif; ?>
-                            <?php endforeach; ?>
-                        <?php endif; ?>
-                    </select>
-                </div>
-            </div>
+           
 
             <?php if (!empty($data['upcoming'])): ?>
                 <table id="upcomingTable">

@@ -18,6 +18,7 @@ route('search','Search@index');
 route('signin','Signin@index');
 route('signup','Signup@index');
 
+
 //route for forgot password
 route('forgot-password','forgotPassword/ForgotPassword@index');
 route('pin-input','forgotPassword/PinInput@index');
@@ -55,6 +56,11 @@ if(getUserRole() == 'collaborator' || isAdmin()){
     
     route('send-message','eventCollaborator/Chat@sendMessage');
     route('get-messages','eventCollaborator/Chat@getMessages');
+
+    route('privacy','footer/Privacy@index');
+    route('terms-of-use','footer/TermsOfUse@index');
+    route('about-us','footer/AboutUs@index');
+    route('ask-question','footer/AskQuestion@index');
 }
 
 
@@ -102,11 +108,16 @@ if (getUserRole() == 'planner' || isAdmin()){
     route('calender','calender/Calender@index');
 
     route('collaborator-eventdetails','eventCollaborator/EventDetails@index');
+    route('event-planner-eventreport','eventPlanner/EventReport@index');
 
     route('collaborator-viewprofile','eventCollaborator/ViewProfile@index');
 
     route('notification-event','ticketHolder/NotificationEvent@index');
 
+    route('privacy','footer/Privacy@index');
+    route('terms-of-use','footer/TermsOfUse@index');
+    route('about-us','footer/AboutUs@index');
+    route('ask-question','footer/AskQuestion@index');
 }
 
 //Route for purchaseticket
@@ -128,6 +139,12 @@ if(getUserRole() == 'holder' ||isAdmin()){
     route('profile/markread','ticketHolder/ViewPastevent@markNotificationsRead');
     route('admin-vieweventplanner','admin/ViewEventPlanner@index');
     route('collaborator-viewprofile','eventCollaborator/ViewProfile@index');
+
+
+    route('privacy','footer/Privacy@index');
+    route('terms-of-use','footer/TermsOfUse@index');
+    route('about-us','footer/AboutUs@index');
+    route('ask-question','footer/AskQuestion@index');
 }
 
 if(isAdmin()){
@@ -144,5 +161,14 @@ if(isAdmin()){
     route('admin-profit-info','admin/AdminProfit@index');
     route('collaborator-report','eventCollaborator/collaboratorReport@index');
 
+
     route('notification-event','ticketHolder/NotificationEvent@index');
+
+    route('privacy','footer/Privacy@index');
+    route('terms-of-use','footer/TermsOfUse@index');
+    route('about-us','footer/AboutUs@index');
+    route('ask-question-admin','footer/AskQuestionAdmin@index');
+
 }
+
+
