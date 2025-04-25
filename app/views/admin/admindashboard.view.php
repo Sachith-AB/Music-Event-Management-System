@@ -53,12 +53,11 @@
                                         <form method="post">
                                             <input type="hidden" name="event_id" value="<?php echo $event->event_id ?>">
                                             <input type="hidden" name="is_delete" value="1">
+                                            <input type="hidden" name="user_id" value="<?php echo $event->createdBy ?>">
+                                            <input type="hidden" name="title" value="Your event '<?php echo $event->event_name ?>' has been deleted">
+                                            <input type="hidden" name="message" value="Your event '<?php echo $event->event_name         ?>' has been deleted by the admin.">
                                             <button type="button" onclick="showConfirmation(this.form)"><i class="fas fa-trash"></i></button>
                                         </form>
-
-                                        
-
-                                    
                                 </div>
                             </div>
 
@@ -175,63 +174,62 @@
         <div class="events-container">
             <!-- Already Held Events Dummy Data -->
 
-            <?php if(!empty($data['held'])): ?>
+            <?php if (!empty($data['held']) && count($data['held']) > 0): ?>
 
                 <?php 
                     $maxEventsPast = $showMorePast ? count($data['held']) : 6;
                     $eventsDisplayedPast = 0;
-                    foreach($data['held'] as $event): 
+                    foreach ($data['held'] as $event): 
                         if ($eventsDisplayedPast >= $maxEventsPast) break;
-                                    $eventsDisplayedPast++;
+                        $eventsDisplayedPast++;
                 ?>
 
-                    <div class="event-card">
-                        <?php
-                        $coverImages = json_decode($event->cover_images, true);
-                        $firstImage = $coverImages[0] ?? ''; // fallback if empty
-                        ?>
-                        <img src="<?= ROOT ?>/assets/images/events/<?php echo $firstImage ?>" alt="Event Image">
-                        <div>
-                            <div><?php echo $event->event_name ?></div>
-                            <div>
-                                <div>📅 <?php echo $event->eventDate ?>| <?php echo substr($event->start_time, 11) ?></div>
-                                <div class="two-line-ellipsis">📍 Location: <?php echo $event->address ?></div>
-                                <div>👤 Created By: <?php echo $event->user_name ?></div>
-                                <div class="star-rating">
-                                    <?php 
-                                    $eventModel = new Event();
-                                    $rating = $event->average_rating ?? 0;
-                                    echo $eventModel->getStarRating($rating);
-                                    ?>
-                                    <span class="rating-text"></span>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="event-card-icons">
-                            <a href="<?=ROOT?>/view-pastevent?id=<?php echo $event->event_id ?>" > <i class="fas fa-eye"></i></a>
-                            
+            <div class="event-card">
+                <?php
+                $coverImages = json_decode($event->cover_images, true);
+                $firstImage = $coverImages[0] ?? ''; // fallback if empty
+                ?>
+                <img src="<?= ROOT ?>/assets/images/events/<?php echo $firstImage ?>" alt="Event Image">
+                <div>
+                    <div><?php echo $event->event_name ?></div>
+                    <div>
+                        <div>📅 <?php echo $event->eventDate ?> | <?php echo substr($event->start_time, 11) ?></div>
+                        <div class="two-line-ellipsis">📍 Location: <?php echo $event->address ?></div>
+                        <div>👤 Created By: <?php echo $event->user_name ?></div>
+                        <div class="star-rating">
+                            <?php 
+                            $eventModel = new Event();
+                            $rating = $event->average_rating ?? 0;
+                            echo $eventModel->getStarRating($rating);
+                            ?>
+                            <span class="rating-text"></span>
                         </div>
                     </div>
+                </div>
+                <div class="event-card-icons">
+                    <a href="<?=ROOT?>/view-pastevent?id=<?php echo $event->event_id ?>"><i class="fas fa-eye"></i></a>
+                </div>
+            </div>
 
-                <?php endforeach; ?>
+        <?php endforeach; ?>
 
-            <?php else : ?>
-                <p> No any events are held yet </p>
-            
-            <?php endif; ?>
+        <?php else : ?>
+        <p>No past events yet.</p>
+        <?php endif; ?>
 
-             
         </div>
 
         <!-- Show More / Show Less button -->
         <form method="POST" id="showMoreFormPast">
             <input type="hidden" id="showMorePast" name="showMorePast" value="<?= $showMorePast ? 'true' : 'false' ?>">
-            <?php if (count($data['held']) > 6): ?>
+
+            <?php if (isset($data['held']) && is_array($data['held']) && count($data['held']) > 6): ?>
                 <button type="button" class="view-more" onclick="handleShowMorePast()">
                     <?= $showMorePast ? 'Show Less' : 'View More' ?>
                 </button>
             <?php endif; ?>
         </form>
+
         <script>
             // JavaScript function to handle the "View More" / "Show Less" button
             function handleShowMorePast() {
@@ -241,47 +239,43 @@
             }
         </script>
     </div>
-
 </div>
+            <!-- Confirmation Modal -->
+            <div id="confirmModal" style="display: none; position: fixed; top: 0; left: 0; 
+                width: 100%; height: 100%; background-color: rgba(0,0,0,0.5); 
+                justify-content: center; align-items: center; z-index: 1000;">
+                <div style="background: white; padding: 20px; border-radius: 8px; text-align: center;">
+                        <p class="confirm-message">Are you sure you want to delete this event?</p>
+                        <button class="confirm-btn submit-btn" onclick="submitConfirmedForm()">Submit</button>
+                        <button class="confirm-btn cancel-btn" onclick="closeModal()">Cancel</button>
+                </div>
+            </div>
 
+            <script>
+                let currentForm = null;
 
-<!-- Confirmation Modal -->
-<div id="confirmModal" style="display: none; position: fixed; top: 0; left: 0; 
-    width: 100%; height: 100%; background-color: rgba(0,0,0,0.5); 
-    justify-content: center; align-items: center; z-index: 1000;">
-    <div style="background: white; padding: 20px; border-radius: 8px; text-align: center;">
-            <p class="confirm-message">Are you sure you want to delete this event?</p>
-            <button class="confirm-btn submit-btn" onclick="submitConfirmedForm()">Submit</button>
-            <button class="confirm-btn cancel-btn" onclick="closeModal()">Cancel</button>
-    </div>
-</div>
+                function showConfirmation(form) {
+                    currentForm = form;
+                    document.getElementById('confirmModal').style.display = 'flex';
+                }
 
+                function closeModal() {
+                    document.getElementById('confirmModal').style.display = 'none';
+                    currentForm = null;
+                }
 
-                                        <script>
-                                            let currentForm = null;
+                function submitConfirmedForm() {
+                    if (currentForm) {
+                        currentForm.submit();
+                    }
+                    closeModal();
+                }
 
-                                            function showConfirmation(form) {
-                                                currentForm = form;
-                                                document.getElementById('confirmModal').style.display = 'flex';
-                                            }
-
-                                            function closeModal() {
-                                                document.getElementById('confirmModal').style.display = 'none';
-                                                currentForm = null;
-                                            }
-
-                                            function submitConfirmedForm() {
-                                                if (currentForm) {
-                                                    currentForm.submit();
-                                                }
-                                                closeModal();
-                                            }
-
-                                            function confirmDelete(form) {
-                                                // Prevent default submit and show confirmation modal instead
-                                                return false;
-                                            }
-                                        </script>
+                function confirmDelete(form) {
+                    // Prevent default submit and show confirmation modal instead
+                    return false;
+                }
+            </script>
 
 </body>
 </html>

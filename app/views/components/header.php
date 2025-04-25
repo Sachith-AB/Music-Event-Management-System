@@ -13,6 +13,7 @@
     if (!isset($_SESSION['USER'])) {
         $_SESSION['USER'] = null;
     }
+    
     //show($_SESSION["USER"]);
 ?>
 <header>
@@ -52,19 +53,23 @@
                         </button>
                         <!-- Notifications Popup -->
                         <div id="notificationPopup" class="notification-popup" style="display: none;">
-                            
-                            <?php if (!empty($notifications["allnotifications"])): ?>
+
+                            <?php if (!empty($notifications["allnotifications"]) && is_array($notifications["allnotifications"])): ?>
                                 <ul>
                                     <?php foreach ($notifications["allnotifications"] as $note): ?>
                                         <li class="notification-item" onclick="window.location.href='<?= $note->link ?>&note_id=<?= $note->id ?>'">
                                             <strong><?= htmlspecialchars($note->title) ?></strong><br>
                                             <?php 
                                                 $messages = json_decode($note->message);
-                                                foreach ($messages as $msg) {
-                                                    echo "<div>" . htmlspecialchars($msg) . "</div>";
+                                                if (json_last_error() === JSON_ERROR_NONE && is_array($messages)) {
+                                                    foreach ($messages as $msg) {
+                                                        echo "<div>" . htmlspecialchars($msg) . "</div>";
+                                                    }
+                                                } else {
+                                                    echo "<div>" . htmlspecialchars($note->message) . "</div>";
                                                 }
                                             ?>
-                                                <small><?= date('F j, Y, g:i a', strtotime($note->created_at)) ?></small>
+                                            <small><?= date('F j, Y, g:i a', strtotime($note->created_at)) ?></small>
                                         </li>
                                     <?php endforeach; ?>
                                 </ul>
@@ -72,6 +77,7 @@
                                 <p>No notifications found.</p>
                             <?php endif; ?>
                         </div>
+
                     </div>
                     <script>
                         document.addEventListener("DOMContentLoaded", function () {

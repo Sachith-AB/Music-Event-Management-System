@@ -8,6 +8,7 @@ class AdminDashboard {
     public function index()
     {
         $event = new Event;
+        $notification = new Notification;
         $data = [];
 
         $data['processing'] = $this->displayProcessingEvents($event);
@@ -21,9 +22,8 @@ class AdminDashboard {
         // echo json_encode($data['upcoming']);
 
         if($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['is_delete'])){
-
-            
             $this->deleteEvent($event);
+            $this->deleteNotification($notification);
             redirect('admin-dashboard');
         }
 
@@ -72,5 +72,10 @@ class AdminDashboard {
         // $event->delete($_POST['event_id']);
 
         // redirect('admin-dashboard');
+    }
+
+    private function deleteNotification($notification) {
+        $id = $_POST['notification_id'];
+        $notification->insert($_POST);
     }
 }
