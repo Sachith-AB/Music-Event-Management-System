@@ -64,6 +64,7 @@ if (getUserRole() == 'planner' || isAdmin()){
     route('profile','ticketHolder/Profile@index');
     route('get-messages','eventCollaborator/Chat@getMessages');
     route('send-message','eventCollaborator/Chat@sendMessage');
+    route('view-upcomingevent','ticketHolder/ViewUpcomingevent@index');
 
     //route for request
     route('request-singers','request/SingerRequest@index');
