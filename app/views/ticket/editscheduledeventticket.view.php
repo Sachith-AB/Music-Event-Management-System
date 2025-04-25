@@ -8,6 +8,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Edit Ticket</title>
     <link rel="stylesheet" href="<?=ROOT?>/assets/css/ticket/editticket.css">
+    <link rel="stylesheet" href="<?= ROOT ?>/assets/css/backbutton.css">
 </head>
 <body>
 <?php include ('../app/views/components/loading.php'); ?>
@@ -15,9 +16,13 @@
     <div class="container">
         <!--create main content -->
         <div class="main-content">
-        <?php if (!empty($data)): ?>
+            
+            <?php if (!empty($data)): ?>
                 <form id="editticket" method="POST">
                     <div class="sale-ticket-container">
+                        <div>
+                            <?php include('../app/views/components/backbutton.view.php'); ?>
+                        </div>
                         <div class="ticket-container">
                             <h3>Ticket</h3>
                             <!-- Hidden field to identify the ticket -->

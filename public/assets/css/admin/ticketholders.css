@@ -7,10 +7,12 @@
 
 .dash-container {
     display: flex;
-    margin: 60px auto;
-    padding: 40px;
+    margin: 10px;
+    padding: 10px;
+    min-height: 100vh;
+    position: relative;
+    gap: 10px;
 }
-
 .dashboard {
     width: 80%;
     max-width: 1200px;

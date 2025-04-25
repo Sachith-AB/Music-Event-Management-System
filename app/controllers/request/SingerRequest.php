@@ -7,11 +7,14 @@ class SingerRequest {
 
 
         $request = new Request;
+        $notification = new Notification;
+        $event = new Event;
         $data = [];
 
         if($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['request'])) {
             
             $this->createRequest($request);
+            $this->createNotification($event,$notification,$_POST);
             
         }
 
@@ -92,6 +95,19 @@ class SingerRequest {
         unset($_POST);
     }
 
+    public function createNotification($event,$notification,$post){
+        $eventDetails = $event->firstById($post['event_id']);
+        $changes[] = "Event name: '{$eventDetails->event_name}' Event Date: '{$eventDetails->eventDate}'";
+        $link = "colloborator-request";
+        $notifymsg = [
+            'user_id' => $post['collaborator_id'],
+            'title' => "Recieved a request",
+            'message' => json_encode($changes),
+            'is_read' => 0,
+            'link' => $link,
+        ];
+        $notification->insert($notifymsg);
+    }
 
 
 

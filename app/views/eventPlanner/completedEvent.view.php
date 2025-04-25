@@ -20,6 +20,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Event Planner Scheduled Event</title>
     <link rel="stylesheet" href="<?= ROOT ?>/assets/css/eventplanner/completed.css">
+    <link rel="stylesheet" href="<?= ROOT ?>/assets/css/backbutton.css">
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <script src="<?= ROOT ?>/assets/js/eventplanner/complete.js" defer></script>
@@ -30,7 +31,10 @@
 <div class = "pdf-container">
 <div class="container">
     <div class="left-section">
-        <h1>Event Details</h1>
+        <div class="back-button">
+            <?php include('../app/views/components/backbutton.view.php'); ?>
+            <h1 class="left-button-h1">Event Details</h1>
+        </div>
         <div class="details">
             <div class="event-detail">
                 <h3>Event Name:</h3>

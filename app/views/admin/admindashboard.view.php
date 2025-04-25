@@ -1,3 +1,4 @@
+<?php require_once '../app/helpers/load_notifications.php'; ?>
 <?php include ('../app/views/components/header.php'); ?> 
 <!DOCTYPE html>
 <html lang="en">
@@ -48,12 +49,12 @@
                                     </div>
                                 </div>
                                 <div class="event-card-icons">
-                                    <a href="<?=ROOT?>/view-event?id=<?php echo $event->event_id ?>" ><i class="fas fa-eye"></i></a>
+                                    <a class="event-card-icons-a" href="<?=ROOT?>/view-event?id=<?php echo $event->event_id ?>" ><i class="fas fa-eye"></i></a>
 
                                         <form method="post">
                                             <input type="hidden" name="event_id" value="<?php echo $event->event_id ?>">
                                             <input type="hidden" name="is_delete" value="1">
-                                            <button type="button" onclick="showConfirmation(this.form)"><i class="fas fa-trash"></i></button>
+                                            <button class="event-card-icons-button" type="button" onclick="showConfirmation(this.form)"><i class="fas fa-trash"></i></button>
                                         </form>
 
                                         
@@ -144,7 +145,7 @@
                             </div>
                         </div>
                         <div class="event-card-icons">
-                            <a href="<?=ROOT?>/view-event?id=<?php echo $event->event_id ?>" > <i class="fas fa-eye"></i></a>
+                            <a class="event-card-icons-a" href="<?=ROOT?>/view-event?id=<?php echo $event->event_id ?>" > <i class="fas fa-eye"></i></a>
                         </div>
                     </div>
                 <?php endforeach; ?>
@@ -208,7 +209,7 @@
                             </div>
                         </div>
                         <div class="event-card-icons">
-                            <a href="<?=ROOT?>/view-pastevent?id=<?php echo $event->event_id ?>" > <i class="fas fa-eye"></i></a>
+                            <a class="event-card-icons-a" href="<?=ROOT?>/view-pastevent?id=<?php echo $event->event_id ?>" > <i class="fas fa-eye"></i></a>
                             
                         </div>
                     </div>

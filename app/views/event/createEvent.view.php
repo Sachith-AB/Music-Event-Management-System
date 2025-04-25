@@ -23,6 +23,7 @@ $_SESSION['last_visit'] = date('Y-m-d H:i:s');
     <title>Create an Event</title>
     <link rel="stylesheet" href="<?=ROOT?>/assets/css/create-event.css">
     <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+    <link rel="stylesheet" href="<?= ROOT ?>/assets/css/backbutton.css">
 </head>
 
 <body>
@@ -39,7 +40,11 @@ $_SESSION['last_visit'] = date('Y-m-d H:i:s');
         <div class="main-content">
             <form method="POST" enctype="multipart/form-data">
                 <section id="general-information">
-                    <h2>General Information</h2>
+                   
+                        <?php include('../app/views/components/backbutton.view.php'); ?>
+                        <div class="çreateeventheader">
+                            <h2>General Information</h2>
+                        </div>
                     <div class="form-group">
                         <label for="event_name">Name</label>
                         <input type="text" id="event_name" name="event_name" placeholder="Make it catchy and memorable">

@@ -1,4 +1,18 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: Arial, sans-serif;
+}
 
+.dash-container {
+  display: flex;
+  margin: 10px;
+  padding: 10px;
+  min-height: 100vh;
+  position: relative;
+  gap: 10px;
+}
 
 .head1 {
     position: absolute; 
@@ -191,7 +205,7 @@
        
       }   
       .content {
-        width: 70%;
+        width: 100%;
         max-width: 2200px;
         background-color: #fff;
         padding: 20px;
@@ -200,6 +214,11 @@
         justify-content: center;
         align-items: center;
       }   
+      .back-button{
+        display: flex;
+        margin-bottom: 1rem;
+        gap: 10px;
+      }
       .content-header{
         color: #00BDD6FF;
         font-size: 1.5rem;

@@ -7,6 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Calendar and Notifications</title>
     <link rel="stylesheet" href="<?=ROOT?>/assets/css/eventCollaborators/calender.css">
+    <link rel="stylesheet" href="<?= ROOT ?>/assets/css/backbutton.css">
     <link rel="icon" type="image/png" href="<?=ROOT?>/assets/images/logo/logo.png">
 </head>
 <body>
@@ -17,7 +18,11 @@
             
             <div class="container">
                 <div class="calendar-container">
-                    <h1>My Calendar</h1>
+                    <div class="back-button">
+                        <?php include('../app/views/components/backbutton.view.php'); ?>
+                        <h1>My Calendar</h1>
+                    </div>
+                    
                     <?php if(isset($_SESSION['success'])): ?>
                         <div class="alert alert-success"><?= $_SESSION['success'] ?></div>
                         <?php unset($_SESSION['success']); ?>
