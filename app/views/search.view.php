@@ -74,52 +74,9 @@
                         $eventsDisplayed++;
                 ?>
 
-                <div class="event-card" onclick="window.location.href='view-event?id=<?= $event->id ?>'">
-                    <?php
-                    $coverImages = json_decode($event->cover_images, true);
-                    $firstImage = $coverImages[0] ?? ''; // fallback if empty
-                    ?>
-                    <img src="<?= ROOT ?>/assets/images/events/<?php echo $firstImage ?>" alt="Event Image">
-                    <div class="event-info">
-                        <h3><?php echo $event->event_name ?></h3>
-                        <p class="date">📅 <?php echo $event->eventDate ?> | <?php echo $event->start_time ?></p>
-                        <p class="location">📍 <?php echo $event->address ?></p>
-                        <?php if($event->pricing == 'paid'):?>
-                            <span class="pricing paid"><?php echo "PAID" ?></span> 
-                        <?php else:?>
-                            <span class="pricing free"><?php  echo "FREE" ?></span>
-                        <?php endif?>
-
-                        <?php if($event->type == 'indoor'):?>
-                            <span class="pricing indoor"><?php echo "INDOOR" ?></span> 
-                        <?php else:?>
-                            <span class="pricing outdoor"><?php echo "OUTDOOR" ?></span>
-                        <?php endif?>
-                        <div class="star-rating">
-                            <?php
-                                $fullStars = floor($event->averageRating);
-                                $halfStar = ($event->averageRating - $fullStars) >= 0.5;
-                                $emptyStars = 5 - $fullStars - ($halfStar ? 1 : 0);
-
-                                for ($i = 0; $i < $fullStars; $i++) {
-                                    echo '<span class="star full">&#9733;</span>'; // ★
-                                }
-                                if ($halfStar) {
-                                    echo '<span class="star half">&#9733;</span>'; // Will style as half
-                                }
-                                for ($i = 0; $i < $emptyStars; $i++) {
-                                    echo '<span class="star empty">&#9733;</span>'; // ★ (faded)
-                                }
-                            ?>
-                            <span class="rating-text">
-                                <?= number_format($event->averageRating, 1) ?>/5 (<?= $event->totalReviews ?> reviews)
-                            </span>
-                        </div>
-                    </div>
-                    
-                </div>
+                    <?php include ('../app/views/components/search/event-card.php'); ?>
                 <?php endforeach ?>
-                <!-- Show More / Show Less button -->
+                    <!-- Show More / Show Less button -->
                     <form method="POST" id="showMoreForm">
                         <input type="hidden" id="showMore" name="showMore" value="<?= $showMore ? 'true' : 'false' ?>">
                         <?php if (count($data) > 3): ?>
