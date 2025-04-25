@@ -255,10 +255,6 @@ body, html {
     cursor: pointer;
 }
 
-.event img:hover{
-    transform: scale(1.1);
-    cursor: pointer;
-}
 .event-info {
     display: flex;
     justify-content: space-between;

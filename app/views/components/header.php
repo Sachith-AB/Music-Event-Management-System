@@ -41,8 +41,9 @@
                     <?php if($_SESSION['USER']->is_admin == 1): ?>
                         <li><a href="admin-dashboard">Dashboard</a></li>
                     <?php endif ?>
+
+                    <!-- Notifications Modal -->
                     <div class="notification-wrapper" style="position: relative;">
-                    
                         <button class="avatarbadge" id="notificationButton" type="button">
                             <i class="fas fa-bell"></i>
                             <?php if (!empty($notifications["newnotifications"])): ?>
@@ -77,36 +78,34 @@
                                 <p>No notifications found.</p>
                             <?php endif; ?>
                         </div>
-
                     </div>
+
+                    <!-- js for header -->
                     <script>
                         document.addEventListener("DOMContentLoaded", function () {
-                            
+                        const notifButton = document.getElementById("notificationButton");
+                        console.log("Notification button:", notifButton);
+                        const popup = document.getElementById("notificationPopup");
+
+                        notifButton.addEventListener("click", function () {
+                        // Toggle popup
+                        const isHidden = window.getComputedStyle(popup).display === "none";
+                        popup.style.display = isHidden ? "block" : "none";
 
 
-                            const notifButton = document.getElementById("notificationButton");
-                            console.log("Notification button:", notifButton);
-                            const popup = document.getElementById("notificationPopup");
-
-                            notifButton.addEventListener("click", function () {
-                                // Toggle popup
-                                const isHidden = window.getComputedStyle(popup).display === "none";
-                                popup.style.display = isHidden ? "block" : "none";
-
-
-                                // Send POST request to mark as read
-                                fetch(window.location.href, {
-                                    method: 'POST',
-                                    headers: {
-                                        'Content-Type': 'application/x-www-form-urlencoded'
-                                    },
-                                    body: 'changeread=true'
-                                }).then(() => {
-                                    // Optionally remove the red indicator
-                                    const indicator = document.querySelector(".notification-indicator");
-                                    if (indicator) indicator.remove();
-                                });
+                        // Send POST request to mark as read
+                        fetch(window.location.href, {
+                            method: 'POST',
+                            headers: {
+                                'Content-Type': 'application/x-www-form-urlencoded'
+                            },
+                            body: 'changeread=true'
+                        }).then(() => {
+                            // Optionally remove the red indicator
+                            const indicator = document.querySelector(".notification-indicator");
+                            if (indicator) indicator.remove();
                             });
+                        });    
 
                             // Hide popup when clicking outside
                             document.addEventListener('click', function (e) {
