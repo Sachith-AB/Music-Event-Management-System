@@ -107,6 +107,7 @@ if (getUserRole() == 'planner' || isAdmin()){
     route('calender','calender/Calender@index');
 
     route('collaborator-eventdetails','eventCollaborator/EventDetails@index');
+    route('event-planner-eventreport','eventPlanner/EventReport@index');
 
     route('collaborator-viewprofile','eventCollaborator/ViewProfile@index');
 
