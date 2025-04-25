@@ -5,7 +5,7 @@ class User {
 
     protected $table = 'users';
     protected $allowedColumns = [
-        'first_name',
+        'name',
         'last_name',
         'email',
         'password',
@@ -27,7 +27,7 @@ class User {
         $this->errors = [];
 
         // is empty first name 
-		if (empty($data['first_name'])) {
+		if (empty($data['name'])) {
 			$this->errors['flag'] = true;
 			$this->errors['error'] = "First Name is Required ";
 			$this->errors['error_no'] = 1;

@@ -72,7 +72,7 @@
                             <div class="actual-form">
                                 <div class="name-wrap">
                                     <div class="input-wrap">
-                                        <input type="text" name="first_name" class="input-field" >
+                                        <input type="text" name="name" class="input-field" >
                                         <label for="fullname">First Name</label>
                                         <span id="nameError" class="error"></span>
                                     </div>
