@@ -61,7 +61,6 @@ class AdminDashboard {
     private function deleteEvent($event) {
 
         $id = $_POST['event_id'];
-       
         $event->update($id, $_POST);
 
         // $data = $event->firstById($_POST['event_id']);
