@@ -21,6 +21,10 @@ body {
     max-width: 800px;
     width: 100%;
 }
+.back-button{
+    display: flex;
+    gap: 20px;
+}
 .event-section {
     margin-bottom: 3rem;
     text-align: left;

@@ -113,6 +113,7 @@ if (getUserRole() == 'planner' || isAdmin()){
     route('collaborator-viewprofile','eventCollaborator/ViewProfile@index');
 
     route('notification-event','ticketHolder/NotificationEvent@index');
+    route('delete-buyticket','ticketHolder/Deletebuyticket@index');
 
     route('privacy','footer/Privacy@index');
     route('terms-of-use','footer/TermsOfUse@index');

@@ -52,28 +52,32 @@
                     </div>
                     
                     <div class="events-container">
-                        <?php foreach ($pastTickets as $event): ?>
-                            
-                            <div class="event-card">
-                                <a href="<?=ROOT?>/event-planner-viewEvent?id=<?= htmlspecialchars($event[0]->id) ?>" class="event-card-link">
-                                    <div class="event-status-process"><?= htmlspecialchars($event[0]->ticket_type) ?> - LKR<?= htmlspecialchars($event[0]->ticket_price) ?></div>
-                                    <?php
-                                    $coverImages = json_decode($event[0]->event_images, true);
-                                    $firstImage = $coverImages[0] ?? ''; // fallback if empty
-                                    ?>
-                                    <img src="<?= ROOT ?>/assets/images/events/<?php echo $firstImage ?>" alt="<?= htmlspecialchars($event[0]->event_name) ?>">
-                                    <div>
-                                        <div><?= htmlspecialchars($event[0]->event_name) ?></div>
-                                        <div>
-                                            <div>📅 <?= htmlspecialchars(date("l, F d | h:i A", strtotime($event[0]->event_date))) ?></div>
-                                            <div class="two-line-ellipsis">📍 <?= htmlspecialchars($event[0]->address)?></div>
-                                        </div>
-                                    </div>
-                                </a>
-                            </div>
+                        <?php if(!empty($pastTickets)): ?>
+                            <?php foreach ($pastTickets as $event): ?>
                                 
-                            
-                        <?php endforeach; ?>
+                                <div class="event-card">
+                                    <a href="<?=ROOT?>/event-planner-viewEvent?id=<?= htmlspecialchars($event[0]->id) ?>" class="event-card-link">
+                                        <div class="event-status-process"><?= htmlspecialchars($event[0]->ticket_type) ?> - LKR<?= htmlspecialchars($event[0]->ticket_price) ?></div>
+                                        <?php
+                                        $coverImages = json_decode($event[0]->event_images, true);
+                                        $firstImage = $coverImages[0] ?? ''; // fallback if empty
+                                        ?>
+                                        <img src="<?= ROOT ?>/assets/images/events/<?php echo $firstImage ?>" alt="<?= htmlspecialchars($event[0]->event_name) ?>">
+                                        <div>
+                                            <div><?= htmlspecialchars($event[0]->event_name) ?></div>
+                                            <div>
+                                                <div>📅 <?= htmlspecialchars(date("l, F d | h:i A", strtotime($event[0]->event_date))) ?></div>
+                                                <div class="two-line-ellipsis">📍 <?= htmlspecialchars($event[0]->address)?></div>
+                                            </div>
+                                        </div>
+                                    </a>
+                                </div>
+                                    
+                                
+                            <?php endforeach; ?>
+                        <?php else :?>
+                            <p>There are  no purchased tickets</p>
+                        <?php endif; ?>
                     </div>
 
 
@@ -103,6 +107,8 @@
                                     
                                 
                             <?php endforeach; ?>
+                        <?php else: ?>
+                            <p>There are no future events</p>
                         <?php endif; ?>
                     </div>
                 </div>
