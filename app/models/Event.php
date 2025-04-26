@@ -331,8 +331,9 @@ class Event {
     public function searchEventByName($searchTerm){
 
         $searchName = $searchTerm['name'] ?? "";
+        $searchLocation = $searchTerm['address'] ?? "";
         
-        $query = "SELECT * FROM events WHERE is_delete = '0' AND event_name LIKE '%$searchName%'";
+        $query = "SELECT * FROM events WHERE is_delete = '0' AND event_name LIKE '%$searchName%' AND address LIKE '%$searchLocation%'";
         $result = $this->query($query);
         return $result ? $result : [];
 
@@ -353,6 +354,7 @@ class Event {
         if (!empty($searchPricing)) {
             $query .= " AND pricing LIKE '%$searchPricing%'";
         }
+        
     
         $result = $this->query($query);
         return $result ? $result : [];
@@ -395,12 +397,11 @@ class Event {
 
     public function getProcessingEvents()
     {
-       
 
-        $query = "SELECT e.id AS event_id,e.event_name,e.eventDate,e.start_time,e.address,e.createdBy,e.cover_images,u.id AS user_id,u.name AS user_name from events e
-                  JOIN users u on e.createdBy = u.id
-                  WHERE e.is_delete = '0' AND e.status = 'processing'
-                  ";
+        $query = "SELECT e.id AS event_id,e.event_name,e.eventDate,e.start_time,e.address,e.createdBy,e.created_at,e.cover_images,u.id AS user_id,u.name AS user_name from events e
+                    JOIN users u on e.createdBy = u.id
+                    WHERE e.is_delete = '0' AND e.status = 'processing'
+                ";
 
         $result = $this->query($query);
         return $result;

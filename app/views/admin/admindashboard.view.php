@@ -23,11 +23,14 @@
             <!-- Upcoming Events Dummy Data -->
             
             <?php if(!empty($data['processing'])): ?>
-              
 
                 <?php 
                     $maxEvents = $showMore ? count($data['processing']) : 6;
                     $eventsDisplayed = 0;
+                    
+                    usort($data['processing'], function($a, $b) {
+                        return strtotime($a->created_at) - strtotime($b->created_at);
+                    });
                     foreach($data['processing'] as $event): 
                         if ($eventsDisplayed >= $maxEvents) break;
                                     $eventsDisplayed++;
@@ -54,7 +57,7 @@
                                         <form method="post">
                                             <input type="hidden" name="event_id" value="<?php echo $event->event_id ?>">
                                             <input type="hidden" name="is_delete" value="1">
-                                            <button type="button" onclick="showConfirmation(this.form)"><i class="fas fa-trash"></i></button>
+                                            <button class="event-card-icons-b" type="button" onclick="showConfirmation(this.form)"><i class="fas fa-trash"></i></button>
                                         </form>
                                 </div>
                             </div>
@@ -63,7 +66,7 @@
 
             <?php else: ?>
 
-                <p> No upcoming events events yet </p>
+                <p> No processing events events yet </p>
 
             <?php endif; ?>
 
@@ -116,6 +119,11 @@
                 <?php 
                     $maxEventsScheduled = $showMoreScheduled ? count($data['scheduled']) : 6;
                     $eventsDisplayedScheduled = 0;
+
+                    usort($data['scheduled'], function($a, $b) {
+                        return strtotime($a->created_at) - strtotime($b->created_at);
+                    });
+
                     foreach($data['scheduled'] as $event): 
                         if ($eventsDisplayedScheduled >= $maxEventsScheduled) break;
                                     $eventsDisplayedScheduled++;

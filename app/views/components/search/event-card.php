@@ -1,24 +1,30 @@
 <div class="event-card" onclick="window.location.href='view-event?id=<?= $event->id ?>'">
     <?php
         $coverImages = json_decode($event->cover_images, true);
-        $firstImage = $coverImages[0] ?? ''; // fallback if empty
+        $firstImage = $coverImages[0] ?? '1.jpg';
     ?>
-    <img src="<?= ROOT ?>/assets/images/events/<?php echo $firstImage ?>" alt="Event Image">
+    <div class="event-image-wrapper">
+        <img src="<?= ROOT ?>/assets/images/events/<?= $firstImage ?>" alt="Event Image">
+    </div>
     <div class="event-info">
-        <h3><?php echo $event->event_name ?></h3>
-        <p class="date">📅 <?php echo $event->eventDate ?> | <?php echo $event->start_time ?></p>
-        <p class="location">📍 <?php echo $event->address ?></p>
-        <?php if($event->pricing == 'paid'):?>
-            <span class="pricing paid"><?php echo "PAID" ?></span> 
-        <?php else:?>
-            <span class="pricing free"><?php  echo "FREE" ?></span>
-        <?php endif?>
+        <h3><?= htmlspecialchars($event->event_name) ?></h3>
+        <p class="date">📅 <?= $event->eventDate ?> | <?= $event->start_time ?></p>
+        <p class="location">📍 <?= htmlspecialchars($event->address) ?></p>
 
-        <?php if($event->type == 'indoor'):?>
-            <span class="pricing indoor"><?php echo "INDOOR" ?></span> 
-        <?php else:?>
-            <span class="pricing outdoor"><?php echo "OUTDOOR" ?></span>
-        <?php endif?>
+        <div class="event-pricing">
+            <?php if($event->pricing == 'paid'):?>
+                <span class="pricing paid">PAID</span> 
+            <?php else:?>
+                <span class="pricing free">FREE</span>
+            <?php endif?>
+
+            <?php if($event->type == 'indoor'):?>
+                <span class="pricing indoor">INDOOR</span> 
+            <?php else:?>
+                <span class="pricing outdoor">OUTDOOR</span>
+            <?php endif?>
+        </div>
+
         <div class="star-rating">
             <?php
                 $fullStars = floor($event->averageRating);
@@ -26,32 +32,36 @@
                 $emptyStars = 5 - $fullStars - ($halfStar ? 1 : 0);
 
                 for ($i = 0; $i < $fullStars; $i++) {
-                    echo '<span class="star full">&#9733;</span>'; // ★
+                    echo '<span class="star full">&#9733;</span>';
                 }
                 if ($halfStar) {
-                    echo '<span class="star half">&#9733;</span>'; // Will style as half
+                    echo '<span class="star half">&#9733;</span>';
                 }
                 for ($i = 0; $i < $emptyStars; $i++) {
-                    echo '<span class="star empty">&#9733;</span>'; // ★ (faded)
+                    echo '<span class="star empty">&#9733;</span>';
                 }
             ?>
-            <span class="rating-text">
-                <?= number_format($event->averageRating, 1) ?>/5 (<?= $event->totalReviews ?> reviews)
-            </span>
+            <span class="rating-text"><?= number_format($event->averageRating, 1) ?>/5 (<?= $event->totalReviews ?> reviews)</span>
         </div>
     </div>
-    
 </div>
 
 <style>
-    .event-card {
+.event-card {
+    display: flex;
     background-color: #fff;
     border-radius: 12px;
     overflow: hidden;
     box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
     transition: all 0.3s ease;
     cursor: pointer;
-    height: 300px;
+    height: 200px;
+    width: 90%; 
+    margin: 20px auto;
+}
+
+.event-pricing {
+    display: flex;
 }
 
 .event-card:hover {
@@ -59,16 +69,24 @@
     box-shadow: 0 8px 25px rgba(0, 0, 0, 0.12);
 }
 
-.event-card img {
-    width: 100%;
-    height: 200px;
-    object-fit: cover;
-    transition: transform 0.3s ease;
+.event-image-wrapper {
+    flex: 0 0 35%;
+    max-width: 35%;
+    height: 100%;
 }
 
+.event-image-wrapper img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
 
 .event-info {
+    flex: 1;
     padding: 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
 }
 
 .event-info h3 {
@@ -94,9 +112,9 @@
     color: white;
     text-transform: uppercase;
     letter-spacing: 0.5px;
-    transition: all 0.3s ease;
     position: relative;
     overflow: hidden;
+
 }
 
 .pricing::before {
@@ -110,27 +128,30 @@
     transition: all 0.5s ease;
 }
 
-.pricing:hover {
-    color: blue
-}
-
 .pricing:hover::before {
     left: 100%;
 }
 
-.paid {
-    background-color: #00BDD6;
+
+.star-rating {
+    margin-top: 10px;
+    font-size: 0.85rem;
+    color: #f1c40f;
 }
 
-.free {
-    background-color: #00BDD6;
+.star.full,
+.star.half,
+.star.empty {
+    color: #f1c40f;
+    font-size: 1rem;
 }
 
-.outdoor {
-    background-color: #00BDD6;
+.star.empty {
+    opacity: 0.3;
 }
 
-.indoor {
-    background-color: #00BDD6;
+.rating-text {
+    color: #555;
+    margin-left: 8px;
 }
 </style>
