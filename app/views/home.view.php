@@ -71,19 +71,7 @@
     </section>
 
     
-    <!--Event Browsing-->
-    <div id="new-events">
-        <div class="category-buttons">
-            <button onclick="setActiveButton(this)">All</button>
-            <button onclick="setActiveButton(this)">Indoor</button>
-            <button onclick="setActiveButton(this)">Outdoor</button>
-        </div>
-
-        <div class="events-container" id="events-container">
-            <!-- Events will be dynamically inserted here -->
-        </div>
-
-    </div>
+    
         <div class = "events-selection">
             <div class ="events-header">
                 <h2>Recent Events</h2>
