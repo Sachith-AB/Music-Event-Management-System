@@ -354,6 +354,7 @@ class Event {
         if (!empty($searchPricing)) {
             $query .= " AND pricing LIKE '%$searchPricing%'";
         }
+        
     
         $result = $this->query($query);
         return $result ? $result : [];

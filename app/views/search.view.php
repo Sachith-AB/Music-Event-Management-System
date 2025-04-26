@@ -1,5 +1,5 @@
 <?php require_once '../app/helpers/load_notifications.php'; ?>
-<?php include ('../app/views/components/header.php'); ?>
+
 
 <!DOCTYPE html>
 <html lang="en">
@@ -11,7 +11,7 @@
 </head>
 <body>
     <?php 
-    include ('../app/views/components/loading.php');
+    include ('../app/views/components/loading.php');  show($_POST);
     // Set default value for showMore if not set
     $showMore = isset($_POST['showMore']) ? $_POST['showMore'] == 'true' : false; 
     ?>
@@ -32,18 +32,16 @@
                     <h3>Filter</h3>
                     <div class="filter-section">
                         <h4>Category</h4>
-                        <label><input type="checkbox"> All</label>
-                        <label><input type="checkbox"> Trending</label>
-                        <label><input type="checkbox"> Upcoming</label>
-                        <label><input type="checkbox"> Music</label>
+                        <label><input type="checkbox" name="category"> All</label>
+                        <label><input type="checkbox" name="category" value="trending"> Trending</label>
                     </div>
                     <div class="filter-section">
                         <h4>Pricing</h4>
                         <label>
-                            <input type="checkbox" name="pricing" value="free" id="free-checkbox" onclick="toggleCheckbox('free')"> Free
+                            <input type="checkbox" name="pricing" value="free" id="free-checkbox" > Free
                         </label>
                         <label>
-                            <input type="checkbox" name="pricing" value="paid" id="paid-checkbox" onclick="toggleCheckbox('paid')"> Paid
+                            <input type="checkbox" name="pricing" value="paid" id="paid-checkbox" > Paid
                         </label>
                     </div>
                     <div class="filter-section">
@@ -62,6 +60,13 @@
                 <div class="event-list-container">
                     <main class="event-list">
                         <?php 
+
+                            if (isset($_POST['category']) && $_POST['category'] == 'trending') {
+                                // Sort events by averageRating descending
+                                usort($data, function($a, $b) {
+                                    return $b->averageRating <=> $a->averageRating;
+                                });
+                            }
                             // Limit events to 3 if showMore is false
                             $maxEvents = $showMore ? count($data) : 3;
                             $eventsDisplayed = 0;
