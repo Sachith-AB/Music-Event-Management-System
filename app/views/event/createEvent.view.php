@@ -34,7 +34,6 @@ $_SESSION['last_visit'] = date('Y-m-d H:i:s');
     ?>
     <?php include ('../app/views/components/loading.php'); ?>
     <div class="container">
-       
 
         <!-- Main Content -->
         <div class="main-content">
@@ -147,7 +146,7 @@ $_SESSION['last_visit'] = date('Y-m-d H:i:s');
     <?php if (!empty($data['errors'])): ?>
         <?php 
             $message = $data['errors']['error'];
-            include("../../app/views/components/r-message.php");
+            include("../app/views/components/r-message.php");
         ?>
     <?php elseif($flag == 1): ?>
         <?php 

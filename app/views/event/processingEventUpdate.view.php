@@ -52,12 +52,12 @@
 
                     <div class="event-update-input-wrap">
                         <label for="eventDate">Date </label>
-                        <input name="event_date" id="event-date" type="date" value="<?php echo $data['event']['eventDate']?>" required>
+                        <input name="eventDate" id="event-date" type="date" value="<?php echo $data['event']['eventDate']?>">
                     </div>
 
                     <div class="event-update-input-wrap">
                         <label for="start_time">Start Time </label>
-                        <input id="start_time" name="starttime" type="time" value="<?php echo date('H:i', strtotime($data['event']['start_time'])); ?>" >
+                        <input id="start_time" name="starttime" type="time" value="<?php echo date('H:i', strtotime($data['event']['start_time'])); ?>" required>
                     </div>
 
                     <div class="event-update-input-wrap">

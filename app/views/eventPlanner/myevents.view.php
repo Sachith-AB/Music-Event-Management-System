@@ -32,11 +32,16 @@
                 </div>
                 <div class="events-container">
                     <?php 
-                    $processingCount = 0;
-                    foreach ($events as $event): 
-                        if ($event->status == 'processing'):
-                            $processingCount++;
-                            if (!$showMoreProcessing && $processingCount > 6) continue;
+                        $processingCount = 0;
+
+                        usort($events,function($a, $b) {
+                            return strtotime($b->created_at) - strtotime($a->created_at);
+                        });
+
+                        foreach ($events as $event): 
+                            if ($event->status == 'processing'):
+                                $processingCount++;
+                                if (!$showMoreProcessing && $processingCount > 6) continue;
                     ?>
                             <div class="event-card">
                                 <a href="<?=ROOT?>/event-planner-viewEvent?id=<?= htmlspecialchars($event->id) ?>" class="event-card-link">
@@ -76,6 +81,10 @@
                 <div class="events-container">
                     <?php 
                     $scheduledCount = 0;
+
+                    usort($events,function($a,$b) {
+                        return strtotime($a->created_at) - strtotime($b->created_at); // corrected to use created_at for both
+                    });
                     foreach ($events as $event): 
                         if ($event->status == 'scheduled'):
                             $scheduledCount++;
@@ -119,6 +128,10 @@
                 <div class="events-container">
                     <?php 
                     $completedCount = 0;
+
+                    usort($events,function($a,$b) {
+                        return strtotime($a->created_at) - strtotime($b->created_at); // corrected to use created_at for both
+                    });
                     foreach ($events as $event): 
                         if ($event->status == 'completed'):
                             $completedCount++;

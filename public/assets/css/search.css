@@ -90,15 +90,22 @@ h1::after {
     display: flex;
     gap: 10px;
     flex-wrap: wrap;
+    width: 100%;
+}
+
+.content-all{
+    display: flex;
+    flex-direction: row;
+    gap: 10px;
+    width: 100%;
 }
 
 .filter {
-    flex: 1;
     background-color: #fff;
     padding: 25px;
     border-radius: 12px;
     box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
-    min-width: 280px;
+    width: 400px;
     position: sticky;
     top: 20px;
     height: fit-content;
@@ -159,11 +166,25 @@ h1::after {
     color: black;
 }
 
-.event-list {
+.event-section {
     flex: 3;
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    display: flex;
+    flex-direction: column;
     gap: 25px;
+}
+
+.event-list-container {
+    gap: 10px;
+    flex: 1; /* This makes it take the remaining space */
+    display: flex;
+    flex-direction: column;
+}
+
+.event-list {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
 }
 
 .event-card {
@@ -173,6 +194,7 @@ h1::after {
     box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
     transition: all 0.3s ease;
     cursor: pointer;
+    width: 100%;
 }
 
 .event-card:hover {
@@ -185,10 +207,6 @@ h1::after {
     height: 200px;
     object-fit: cover;
     transition: transform 0.3s ease;
-}
-
-.event-card:hover img {
-    transform: scale(1.05);
 }
 
 .event-info {
@@ -235,26 +253,14 @@ h1::after {
 }
 
 .pricing:hover {
-    color: blue
+    color: blue;
 }
 
 .pricing:hover::before {
     left: 100%;
 }
 
-.paid {
-    background-color: #00BDD6;
-}
-
-.free {
-    background-color: #00BDD6;
-}
-
-.outdoor {
-    background-color: #00BDD6;
-}
-
-.indoor {
+.paid, .free, .outdoor, .indoor {
     background-color: #00BDD6;
 }
 
@@ -268,8 +274,9 @@ h1::after {
     font-size: 1rem;
     font-weight: 600;
     transition: all 0.3s ease;
-    margin: 30px auto;
+    margin: 30px auto 0; /* Top auto margin to center */
     display: block;
+    width: fit-content;
 }
 
 .view-more:hover {
@@ -298,25 +305,17 @@ h1::after {
     -webkit-text-fill-color: transparent;
 }
 
-.star-rating .rating-text {
-    font-size: 14px;
-    margin-left: 8px;
-    color: #555;
-}
-
-
-
 /* Responsive Design */
 @media (max-width: 1200px) {
     .container {
         width: 90%;
     }
-    
+
     .event-list {
         grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
         gap: 20px;
     }
-    
+
     .filter {
         min-width: 250px;
     }
@@ -327,25 +326,25 @@ h1::after {
         font-size: 2.2rem;
         margin-bottom: 25px;
     }
-    
+
     .search-bar {
         padding: 15px;
         margin-bottom: 30px;
     }
-    
+
     .search-bar input {
         width: 200px;
     }
-    
+
     .event-list {
         grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
         gap: 15px;
     }
-    
+
     .event-card img {
         height: 180px;
     }
-    
+
     .event-info {
         padding: 15px;
     }
@@ -373,114 +372,46 @@ h1::after {
         min-width: auto;
     }
 
-    .star-rating {
-        display: flex;
-        align-items: center;
-        gap: 5px;
-        margin-top: 8px;
-    }
-
-    .star-background {
-        position: relative;
-        display: inline-block;
-        font-size: 22px;
-        color: #ccc;
-    }
-
-    .star-background::before {
-        content: "★★★★★";
-        letter-spacing: 3px;
-    }
-
-    .star-filled {
-        position: absolute;
-        top: 0;
-        left: 0;
-        white-space: nowrap;
-        overflow: hidden;
-        color: gold;
-    }
-
-    .star-filled::before {
-        content: "★★★★★";
-        letter-spacing: 3px;
-    }
-
-    .stars {
-        font-size: 1rem;
-    }
-
-    .stars .filled {
-        color: gold;
-    }
-
-    .stars .unfilled {
-        color: #ccc;
-    }
-
-    @media (max-width: 480px) {
-        .search-bar {
-            flex-direction: column;
-            align-items: center;
-            gap: 10px;
-            padding: 15px;
-        }
-
-        .search-bar input {
-            width: 100%;
-            max-width: 300px;
-        }
-
-        .search-bar button {
-            width: 100%;
-            max-width: 300px;
-        }
-
-        .event-list {
-            grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
-            gap: 15px;
-        }
-
-        .event-card {
-            margin-bottom: 0;
-        }
-
-        .event-info h3 {
-            font-size: 1.1rem;
-        }
-
-        .date, .location {
-            font-size: 0.85rem;
-        }
-
-        .pricing {
-            font-size: 0.7rem;
-            padding: 5px 10px;
-        }
-        
-        .view-more {
-            width: 100%;
-            max-width: 200px;
-            margin: 20px auto;
-        }
+    .event-list {
+        grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+        gap: 15px;
     }
 }
 
-/* Add landscape mode support for mobile */
-@media (max-height: 480px) and (orientation: landscape) {
-    .container {
-        margin: 10px auto;
-    }
-    
+@media (max-width: 480px) {
     .search-bar {
-        margin-bottom: 20px;
+        flex-direction: column;
+        align-items: center;
+        gap: 10px;
+        padding: 15px;
     }
-    
+
+    .search-bar input, .search-bar button {
+        width: 100%;
+        max-width: 300px;
+    }
+
     .event-list {
-        grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+        grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+        gap: 15px;
     }
-    
-    .event-card img {
-        height: 140px;
+
+    .event-info h3 {
+        font-size: 1.1rem;
+    }
+
+    .date, .location {
+        font-size: 0.85rem;
+    }
+
+    .pricing {
+        font-size: 0.7rem;
+        padding: 5px 10px;
+    }
+
+    .view-more {
+        width: 100%;
+        max-width: 200px;
+        margin: 20px auto 0;
     }
 }

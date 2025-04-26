@@ -54,12 +54,6 @@
             $message = $data['error'];
             include("../app/views/components/r-message.php")
         ?>
-
-    <?php elseif($flag == 1): ?>
-        <?php 
-            $message = $error;
-            include("../app/views/components/r-message.php")
-        ?>
     <?php endif ?>
 
     <script src="<?=ROOT?>/assets/js/signin-up.js"></script>
