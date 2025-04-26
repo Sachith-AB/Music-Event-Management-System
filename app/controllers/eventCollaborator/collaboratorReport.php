@@ -12,6 +12,27 @@ class CollaboratorReport {
 
         if($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['generate-report'])) {
 
+
+            $start_date = $_POST['start-date'];
+            $end_date = $_POST['end-date'];
+            $today = date('Y-m-d');
+
+            $errors = [];
+
+            // "From date must be earlier than "To" date 
+            if($start_date > $end_date) {
+
+                $errors[] = "The 'From' date must be earlier than or same as the 'To' date. ";
+
+            }
+
+            // no future dates
+            if($start_date > $today || $end_date > $today)
+            {
+                $errors[] = "Dates cannot be in the future";
+            }
+
+
             // show($_POST);
             $data = $this->getRequests($request);
             // show($data);

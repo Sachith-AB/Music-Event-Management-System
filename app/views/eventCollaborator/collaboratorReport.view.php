@@ -21,10 +21,10 @@
 
         <form method = "POST" >
             <label for= "from" >From : </label>
-            <input type="date" id = "from" name = "start-date" value = "<?php echo htmlspecialchars($_POST['start-date'] ?? '', ENT_QUOTES); ?>" required>
+            <input type="date" id = "from" name = "start-date" max = "<?php echo date('Y-m-d'); ?>" value = "<?php echo htmlspecialchars($_POST['start-date'] ?? date('Y-m-d'), ENT_QUOTES); ?>" required>
 
             <label for= "to" >   To : </label>
-            <input type="date" id = "to" name = "end-date" value = "<?php echo htmlspecialchars($_POST['end-date'] ?? '', ENT_QUOTES); ?>" required> <br><br>
+            <input type="date" id = "to" name = "end-date" max = "<?php echo date('Y-m-d'); ?>" value = "<?php echo htmlspecialchars($_POST['end-date'] ?? date('Y-m-d'), ENT_QUOTES); ?>" required> <br><br>
 
             <button name = "generate-report" class = "submit-btn" type="submit">Generate report</button>
 
