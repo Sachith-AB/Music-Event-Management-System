@@ -17,26 +17,34 @@ class CollaboratorReport {
             $end_date = $_POST['end-date'];
             $today = date('Y-m-d');
 
-            $errors = [];
-
             // "From date must be earlier than "To" date 
             if($start_date > $end_date) {
 
-                $errors[] = "The 'From' date must be earlier than or same as the 'To' date. ";
+                $error = "The Start date must be earlier than or same as the End date. ";
+                $errorParams = 'flag=1&error=' . urlencode($error) . '&error_no=1';
+            
+                redirect('collaborator-report?'. $errorParams);
 
             }
 
             // no future dates
-            if($start_date > $today || $end_date > $today)
+            elseif($start_date > $today || $end_date > $today)
             {
-                $errors[] = "Dates cannot be in the future";
+                $error = "Dates cannot be in the future";
+                $errorParams = 'flag=1&error=' . urlencode($error) . '&error_no=1';
+            
+                redirect('collaborator-report?'. $errorParams);
             }
 
+            else 
+            {
+                // show($_POST);
+                $data = $this->getRequests($request);
+                // show($data);
+                $this->view('eventcollaborator/collaboratorreport',$data);
 
-            // show($_POST);
-            $data = $this->getRequests($request);
-            // show($data);
-            $this->view('eventcollaborator/collaboratorreport',$data);
+            }
+    
 
         }
         else 

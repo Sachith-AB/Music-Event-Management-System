@@ -5,7 +5,7 @@ class Request {
 
     protected $table = 'requests'; //database table name
     protected $allowedColumns = [
-        'id','event_id','collaborator_id','Status','role'];
+        'id','event_id','collaborator_id','Status','role','request_date'];
 
     // public function getSingerDetails()
     // {
@@ -116,7 +116,7 @@ class Request {
                   JOIN 
                       users u ON r.collaborator_id = u.id
                   WHERE 
-                      r.request_datetime BETWEEN '$start_date' AND '$end_date' 
+                      r.request_date BETWEEN '$start_date' AND '$end_date' 
                   GROUP BY 
                       r.collaborator_id
                   ORDER BY 

@@ -22,6 +22,7 @@ class AdminDashboard {
         // echo json_encode($data['upcoming']);
 
         if($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['is_delete'])){
+            show($_POST);
             $this->deleteEvent($event);
             $this->deleteNotification($notification);
             redirect('admin-dashboard');
@@ -76,6 +77,7 @@ class AdminDashboard {
 
     private function deleteNotification($notification) {
         $id = $_POST['notification_id'];
+
         $notification->insert($_POST);
     }
 }
