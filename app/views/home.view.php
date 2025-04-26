@@ -63,6 +63,9 @@
     </section>
 
     
+
+    
+
     <!--Event Browsing-->
     <div id="new-events">
 
@@ -70,7 +73,7 @@
             <!-- Events will be dynamically inserted here -->
         </div>
 
-    </div>
+    
         <div class = "events-selection">
             <div class ="events-header">
                 <h2>Recent Events</h2>

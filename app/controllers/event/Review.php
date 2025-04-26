@@ -13,7 +13,7 @@ class Review {
     public function fetchEventDetails($event){
         $array['event_name'] = htmlspecialchars($_GET['event_name']);
         $row = $event->first($array);
-        // show ($row);
+        //show ($row);
         $data = json_decode(json_encode($row),true);
         return $data;
     }

@@ -34,6 +34,7 @@ class EventPlannerViewEvent {
     {
         $id = $_GET['id'];
         $res =  $event->getAllEventData($id);
+        //show($res);
 
         return $res;
 
