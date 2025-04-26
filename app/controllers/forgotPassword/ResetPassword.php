@@ -11,7 +11,6 @@ class ResetPassword {
 
         if($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['change-password'])){
             $data = $this->changePassword($user,$email);
-            show($data);
         }
 
         $this->view('forgotPassword/resetPassword', $data, false);

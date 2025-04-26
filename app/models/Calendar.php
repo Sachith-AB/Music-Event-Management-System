@@ -92,4 +92,19 @@ class Calendar {
         
         return $this->query($sql, $params);
     }
+
+    public function getAvailability($user_id, $date) {
+        $sql = "SELECT * FROM {$this->table} WHERE user_id = :user_id AND date = :date";
+        $params = [
+            'user_id' => $user_id,
+            'date' => $date
+        ];
+    
+        $result = $this->query($sql, $params);
+    
+        // If any result exists, user is NOT available, so return false
+        return empty($result) ? true : false;
+    }
+    
 }
+

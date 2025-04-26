@@ -19,53 +19,45 @@
     $flag = htmlspecialchars($_GET['flag'] ?? 2);
     $error = htmlspecialchars($_GET['error']?? '');
     $role = htmlspecialchars($_GET['role']?? '');
-    // echo $email;
-    // echo $pass;
-    // echo $flag;
-    // echo $error;
-    //echo $role;
 ?>
 
     <div class="block">
     <section id ="treanding" class="trending-events">
         <h1>Discover Unforgettable Experience at</h1>
         <h1 class="highlight">Musicia</h1>
-        <div class="search-bar">
-            <input type="search" placeholder="Search...">
-        </div>
 
         <div class="heading">
             <h2 class="top">Top 3</h2>
             <h2>trending events</h2>
         </div>
         <div class="events">
-    <?php if (!empty($trendingEvents)): ?>
-        <?php foreach ($trendingEvents as $event): ?>
-            <div class="event">
-                <?php
-                $coverImages = json_decode($event->cover_images, true);
-                $firstImage = $coverImages[0] ?? ''; // fallback if empty
-                ?>
-                <img src="<?= ROOT ?>/assets/images/events/<?php echo $firstImage ?>" alt="<?= htmlspecialchars($event->event_name) ?>">
-                <div class="event-info">
-                    <div class="event-details">
-                        <h3><?= htmlspecialchars($event->event_name) ?></h3>
-                        <p class="date-time"><?= date('D, F d, Y | h.i A', strtotime($event->start_time)) ?></p>
-                        <p class="venue"><?= htmlspecialchars($event->address) ?></p>
+            <?php if (!empty($trendingEvents)): ?>
+                <?php foreach ($trendingEvents as $event): ?>
+                    <div class="event" onclick="location.href='<?= ROOT ?>/view-event?id=<?= $event->id ?>'">
+                        <?php
+                            $coverImages = json_decode($event->cover_images, true);
+                            $firstImage = $coverImages[0] ?? ''; // fallback if empty
+                        ?>
+                        <img src="<?= ROOT ?>/assets/images/events/1.jpg" alt="<?= htmlspecialchars($event->event_name) ?>">
+                        <div class="event-info">
+                            <div class="event-details">
+                                <h3><?= htmlspecialchars($event->event_name) ?></h3>
+                                <p class="date-time"><?= date('D, F d, Y | h.i A', strtotime($event->start_time)) ?></p>
+                                <p class="venue"><?= htmlspecialchars($event->address) ?></p>
+                            </div>
+                            <div class="pricing">
+                                <?php if (!empty($event->pricing) && strtolower($event->pricing) != 'free'): ?>
+                                    <p class="price-from">From LKR <?= number_format($event->audience * 10) ?></p> <!-- You can replace this with your real price logic -->
+                                <?php else: ?>
+                                    <p class="price-from">Free Entry</p>
+                                <?php endif; ?>
+                            </div>
+                        </div>
                     </div>
-                    <div class="pricing">
-                        <?php if (!empty($event->pricing) && strtolower($event->pricing) != 'free'): ?>
-                            <p class="price-from">From LKR <?= number_format($event->audience * 10) ?></p> <!-- You can replace this with your real price logic -->
-                        <?php else: ?>
-                            <p class="price-from">Free Entry</p>
-                        <?php endif; ?>
-                    </div>
-                </div>
-            </div>
-        <?php endforeach; ?>
-    <?php else: ?>
-        <p>No trending events available.</p>
-    <?php endif; ?>
+                <?php endforeach; ?>
+            <?php else: ?>
+                <p>No trending events available.</p>
+        <?php endif; ?>
 </div>
 
     </section>
@@ -73,11 +65,6 @@
     
     <!--Event Browsing-->
     <div id="new-events">
-        <div class="category-buttons">
-            <button onclick="setActiveButton(this)">All</button>
-            <button onclick="setActiveButton(this)">Indoor</button>
-            <button onclick="setActiveButton(this)">Outdoor</button>
-        </div>
 
         <div class="events-container" id="events-container">
             <!-- Events will be dynamically inserted here -->
