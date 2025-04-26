@@ -114,10 +114,14 @@ if (getUserRole() == 'planner' || isAdmin()){
 
     route('notification-event','ticketHolder/NotificationEvent@index');
 
+    route('update-profile','ticketHolder/UpdateProf@index');
+
+
     route('privacy','footer/Privacy@index');
     route('terms-of-use','footer/TermsOfUse@index');
     route('about-us','footer/AboutUs@index');
     route('ask-question','footer/AskQuestion@index');
+
 }
 
 //Route for purchaseticket

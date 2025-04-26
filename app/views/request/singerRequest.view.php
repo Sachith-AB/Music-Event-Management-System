@@ -1,5 +1,8 @@
 <?php require_once '../app/helpers/load_notifications.php'; ?>
-<?php include ('../app/views/components/header.php'); ?>
+<?php include ('../app/views/components/header.php'); 
+
+    $error = esc($_GET['error'] ?? '');
+?>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -94,6 +97,26 @@
         </div>
     </div>
     
+
+   
+
+    <?php if($error != ''): ?>
+        <?php 
+            $message = $error;
+            include("../app/views/components/r-message.php")
+        ?>
+    <?php endif ?>
+
+    <script>
+        if (window.history.replaceState) {
+            const url = new URL(window.location);
+            url.searchParams.delete('flag');
+            url.searchParams.delete('error');
+            url.searchParams.delete('error_no');
+            window.history.replaceState(null, '', url.toString());
+        }
+    </script>
+
 
 <script src="<?=ROOT?>/assets/js/request/singerdropdown.js"></script>
 </body>
