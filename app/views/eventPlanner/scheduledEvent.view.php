@@ -27,6 +27,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Event Planner Scheduled Event</title>
     <link rel="stylesheet" href="<?=ROOT?>/assets/css/eventPlanner/scheduledEvent.css">
+    <link rel="stylesheet" href="<?= ROOT ?>/assets/css/backbutton.css">
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <script src="<?= ROOT ?>/assets/js/eventplanner/scheduledEvent.js" defer></script>
@@ -34,8 +35,12 @@
 <body>
     <div class="main-layout">
         <!-- Left Side - Event Details -->
-        <div class="event-details-box">
-            <h2 class="event-title">Event Detail</h2>
+        <div>
+            <div class="back-button">
+                <?php include('../app/views/components/backbutton.view.php'); ?>
+                <h2 class="event-title">Event Detail</h2>
+            </div>
+            
             <form method="POST" class="form">
                 <div class="input-wrap">
                     <label for="event-name">Event Name:</label>

@@ -13,6 +13,7 @@
     if (!isset($_SESSION['USER'])) {
         $_SESSION['USER'] = null;
     }
+    
     //show($_SESSION["USER"]);
 ?>
 <header>
@@ -40,8 +41,9 @@
                     <?php if($_SESSION['USER']->is_admin == 1): ?>
                         <li><a href="admin-dashboard">Dashboard</a></li>
                     <?php endif ?>
+
+                    <!-- Notifications Modal -->
                     <div class="notification-wrapper" style="position: relative;">
-                    
                         <button class="avatarbadge" id="notificationButton" type="button">
                             <i class="fas fa-bell"></i>
                             <?php if (!empty($notifications["newnotifications"])): ?>
@@ -52,19 +54,23 @@
                         </button>
                         <!-- Notifications Popup -->
                         <div id="notificationPopup" class="notification-popup" style="display: none;">
-                            
-                            <?php if (!empty($notifications["allnotifications"])): ?>
+
+                            <?php if (!empty($notifications["allnotifications"]) && is_array($notifications["allnotifications"])): ?>
                                 <ul>
                                     <?php foreach ($notifications["allnotifications"] as $note): ?>
                                         <li class="notification-item" onclick="window.location.href='<?= $note->link ?>&note_id=<?= $note->id ?>'">
                                             <strong><?= htmlspecialchars($note->title) ?></strong><br>
                                             <?php 
                                                 $messages = json_decode($note->message);
-                                                foreach ($messages as $msg) {
-                                                    echo "<div>" . htmlspecialchars($msg) . "</div>";
+                                                if (json_last_error() === JSON_ERROR_NONE && is_array($messages)) {
+                                                    foreach ($messages as $msg) {
+                                                        echo "<div>" . htmlspecialchars($msg) . "</div>";
+                                                    }
+                                                } else {
+                                                    echo "<div>" . htmlspecialchars($note->message) . "</div>";
                                                 }
                                             ?>
-                                                <small><?= date('F j, Y, g:i a', strtotime($note->created_at)) ?></small>
+                                            <small><?= date('F j, Y, g:i a', strtotime($note->created_at)) ?></small>
                                         </li>
                                     <?php endforeach; ?>
                                 </ul>
@@ -73,34 +79,33 @@
                             <?php endif; ?>
                         </div>
                     </div>
+
+                    <!-- js for header -->
                     <script>
                         document.addEventListener("DOMContentLoaded", function () {
-                            
+                        const notifButton = document.getElementById("notificationButton");
+                        console.log("Notification button:", notifButton);
+                        const popup = document.getElementById("notificationPopup");
+
+                        notifButton.addEventListener("click", function () {
+                        // Toggle popup
+                        const isHidden = window.getComputedStyle(popup).display === "none";
+                        popup.style.display = isHidden ? "block" : "none";
 
 
-                            const notifButton = document.getElementById("notificationButton");
-                            console.log("Notification button:", notifButton);
-                            const popup = document.getElementById("notificationPopup");
-
-                            notifButton.addEventListener("click", function () {
-                                // Toggle popup
-                                const isHidden = window.getComputedStyle(popup).display === "none";
-                                popup.style.display = isHidden ? "block" : "none";
-
-
-                                // Send POST request to mark as read
-                                fetch(window.location.href, {
-                                    method: 'POST',
-                                    headers: {
-                                        'Content-Type': 'application/x-www-form-urlencoded'
-                                    },
-                                    body: 'changeread=true'
-                                }).then(() => {
-                                    // Optionally remove the red indicator
-                                    const indicator = document.querySelector(".notification-indicator");
-                                    if (indicator) indicator.remove();
-                                });
+                        // Send POST request to mark as read
+                        fetch(window.location.href, {
+                            method: 'POST',
+                            headers: {
+                                'Content-Type': 'application/x-www-form-urlencoded'
+                            },
+                            body: 'changeread=true'
+                        }).then(() => {
+                            // Optionally remove the red indicator
+                            const indicator = document.querySelector(".notification-indicator");
+                            if (indicator) indicator.remove();
                             });
+                        });    
 
                             // Hide popup when clicking outside
                             document.addEventListener('click', function (e) {

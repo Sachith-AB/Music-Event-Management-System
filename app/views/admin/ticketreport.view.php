@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Admin Event Report</title>
     <link rel="stylesheet" href="<?= ROOT ?>/assets/css/admin/report.css">
+    <link rel="stylesheet" href="<?= ROOT ?>/assets/css/backbutton.css">
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <script src="<?= ROOT ?>/assets/js/eventplanner/complete.js" defer></script>
@@ -12,7 +13,11 @@
 </head>
 <body>
     <div class="pdf-container">
-    <h1>Admin Ticket Report</h1>
+        <div class="back-button">
+            <?php include('../app/views/components/backbutton.view.php'); ?>
+            <h1 class="usertext">Admin Ticket Report</h1>
+        </div>
+        
     
     <div class="filter-controls">
         <div class="filter-group">

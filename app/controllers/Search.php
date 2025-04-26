@@ -7,36 +7,54 @@ class Search {
     
     public function index(){
 
-        $event = new Event;
-        $data = [];
+    $event = new Event;
+    $data = [];
 
-        if($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['searchEvents'])){
-
-            $data = $this->searchEventByName($event);
-            // show($data);
-        }else if($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['apply'])){
-            $data = $this->filterEvents($event);
-        }else{
-            $data = $this->getEvents($event);
-        }
-        $this->view('search',$data);
+    if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['searchEvents'])) {
+        $data = $this->searchEventByName($event);
+    } elseif ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['apply'])) {
+        $data = $this->filterEvents($event);
+    } else {
+        $data = $this->getEvents($event);
     }
 
-    private function getEvents($event){
+    // Get today's date
+    $today = date('Y-m-d');
+
+    // Filter only future events (eventDate >= today)
+    $futureEvents = array_filter($data, function($event) use ($today) {
+        return strtotime($event->eventDate) >= strtotime($today);
+    });
+
+    // Sort future events by eventDate ascending
+    usort($futureEvents, function($a, $b) {
+        return strtotime($a->eventDate) - strtotime($b->eventDate);
+    });
+
+    // Now pass the sorted future events to view
+    $this->view('search', $futureEvents);
+}
+
+
+    private function getEvents($event) {
         $res = $event->findAll();
+        
         foreach ($res as $key => $evt) {
             $ratingData = $this->getEventRating(new Rating, $evt->id, new User);
             $res[$key]->averageRating = $ratingData[0]['averageRating'] ?? 0;
             $res[$key]->totalReviews = $ratingData[0]['totalReviews'] ?? 0;
         }
-        return $res;
+    
+    
+        return $res; // <- Make sure to return the sorted array
     }
+    
     
 
     private function searchEventByName($event){
         $res = $event->searchEventByName($_POST);
         unset($_POST['name']);
-        unset($_POST['location']);
+        unset($_POST['address']);
         unset($_POST['search']);
         
         foreach ($res as $key => $evt) {

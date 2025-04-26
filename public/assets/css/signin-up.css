@@ -230,6 +230,16 @@ form.sign-up-form {
   text-decoration: underline;
 }
 
+.name-wrap {
+  display: flex;
+  justify-content: space-between;
+  gap: 1rem;
+  margin-top:   10px;
+}
+
+.name-wrap .input-wrap {
+  flex: 1;
+}
 .input-wrap {
   position: relative;
   height: 37px;
@@ -550,6 +560,9 @@ main.sign-up-mode .carousel {
     border-radius: 2rem;
   }
 
+  .name-wrap {
+    flex-direction: column;
+  }
   .inner-box {
     padding: 1rem;
   }

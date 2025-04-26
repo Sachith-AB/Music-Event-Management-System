@@ -63,12 +63,12 @@ class EventPlannerCompletedEvent {
         foreach ($income_over_time as $record) {
             $total_income += $record->total_income;  
             $record_data[] = $record;
-            //show($record_data); 
+            // show($record_data); 
         }
 
         // Return income data with total
         return [
-            'total_income' => $this->numToPrice($total_income),  
+            'total_income' => $total_income,  
             'record' => $record_data
         ];
     }

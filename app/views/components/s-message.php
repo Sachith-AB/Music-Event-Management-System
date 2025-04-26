@@ -4,3 +4,4 @@
     <p id="error-message" class="p"><?php echo $message ?></p>
         <span id="countdown">5</span> sec
 </div>
+<script src="<?=ROOT?>/assets/js/message.js"></script>

@@ -13,7 +13,11 @@
 <?php include ('../app/views/components/loading.php'); ?>
     <?php 
         $flag = htmlspecialchars($_GET['flag'] ?? 0);
-        $error = htmlspecialchars($_GET['msg'] ?? '');
+        if($flag == 1){
+            $error = htmlspecialchars($_GET['msg'] ?? '');
+        }else{
+            $error = htmlspecialchars($_GET['msg'] ?? '');
+        }
     ?>
     <div class="main-content">
         <div class="page-content">
@@ -47,6 +51,11 @@
                         <div class="input-wrap">
                             <!-- <label for="Name">Name</label> -->
                             <input name="name" type="text" placeholder="Name" value="<?php echo $_SESSION['USER']->name ?>">
+                        </div>
+
+                        <div class="input-wrap">
+                            <!-- <label for="Name">Name</label> -->
+                            <input name="last_name" type="text" placeholder="Name" value="<?php echo $_SESSION['USER']->last_name ?>">
                         </div>
 
                         <div class="input-wrap">
@@ -96,22 +105,34 @@
         </div>
     </div>
 
-    <?php if($flag == 1):?>
-        <?php
-            $message = $error;
-            include ("../app/views/components/r-message.php");
-        ?>
-    <?php  endif ?>
-    
-    <?php if(!empty($data)): ?>
+    <?php if (!empty($data['error'])): ?>
         <?php
             $message = $data['error'];
             include ("../app/views/components/r-message.php");
         ?>
-    <?php  endif ?>
+        <?php elseif ($flag == 1): ?>
+            <?php
+                $message = $error;
+                include ("../app/views/components/r-message.php");
+            ?>
+        <?php elseif ($flag == 2): ?>
+            <?php
+                $message = $error;
+                include ("../app/views/components/s-message.php");
+            ?>
+        <?php endif ?>
+
+
     <script>
         function goToProfile() {
             window.location.href = "profile";
+        }
+        if (window.history.replaceState) {
+            const url = new URL(window.location);
+            url.searchParams.delete('flag');
+            url.searchParams.delete('error');
+            url.searchParams.delete('msg');
+            window.history.replaceState(null, '', url.toString());
         }
     </script>
 

@@ -66,7 +66,7 @@
                     <div class="input-group">
                         <div class="input-field">
                             <label for="first-name">First name</label>
-                            <input type="text" id="first-name" name="first-name" placeholder="">
+                            <input type="text" id="first-name" name="first-name" placeholder="" value="<?= htmlspecialchars($_SESSION['USER']->name)?>">
                         </div>
                         <div class="input-field">
                             <label for="last-name">Last name</label>
@@ -77,7 +77,7 @@
                     <div class="input-group">
                         <div class="input-field">
                             <label for="email">Email</label>
-                            <input type="email" id="email" name="email" placeholder="">
+                            <input type="email" id="email" name="email" placeholder="" value="<?= htmlspecialchars($_SESSION['USER']->email)?>">
                         </div>
                         <div class="input-field">
                             <label for="phone">Phone number</label>

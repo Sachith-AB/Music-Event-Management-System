@@ -7,10 +7,11 @@
 
 .dash-container {
     display: flex;
-    margin: 0;
-    padding: 0;
+    margin: 10px;
+    padding: 10px;
     min-height: 100vh;
     position: relative;
+    gap: 10px;
 }
 
 .dashboard {
@@ -118,7 +119,7 @@
     
 }
 
-.event-card-icons a, button {
+.event-card-icons-a {
     z-index: 3;
     color: white;
     background-color: rgba(0, 0, 0, 0.7);
@@ -128,7 +129,35 @@
     transition: background-color 0.3s ease;
 }
 
-.event-card-icons a:hover, button:hover {
+.event-card-icons-b {
+    z-index: 3;
+    color: white;
+    background-color: rgba(0, 0, 0, 0.7);
+    padding: 10px;
+    border-radius: 50%;
+    text-decoration: none;
+    transition: background-color 0.3s ease;
+    cursor: pointer;
+}
+.event-card-icons-button {
+    z-index: 3;
+    color: white;
+    background-color: rgba(0, 0, 0, 0.7);
+    padding: 10px;
+    border-radius: 50%;
+    text-decoration: none;
+    transition: background-color 0.3s ease;
+}
+
+.event-card-icons-a:hover{
+    background-color: #00BDD6FF;
+    
+}
+.event-card-icons-b:hover{
+    background-color: rgb(213, 0, 0);
+    
+}
+.event-card-icons-button:hover{
     background-color: #00BDD6FF;
     
 }
@@ -187,6 +216,46 @@
     color: #666;
     margin-left: 5px;
 }
+
+
+.confirm-btn {
+    padding: 10px 20px;
+    margin: 0 10px;
+    border: none;
+    border-radius: 6px; /* pill shape */
+    /* font-weight: bold; */
+    cursor: pointer;
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+/* Submit button styles */
+.submit-btn {
+    background-color: #dc3545; /* red background */
+    color: white;
+}
+
+.submit-btn:hover {
+    background-color: #c82333; /* sharper red background */
+    color: black; /* text turns black */
+}
+
+/* Cancel button styles */
+.cancel-btn {
+    background-color: #28a745; /* green background */
+    color: white;
+}
+
+.cancel-btn:hover {
+    background-color: #218838; /* sharper green background */
+    color: black; /* text turns black */
+}
+
+.confirm-message {
+    margin-bottom: 20px;
+    font-size: 16px;
+}
+
+
 
 /* Responsive Design */
 @media (max-width: 1200px) {

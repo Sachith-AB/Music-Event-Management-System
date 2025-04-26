@@ -7,6 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Event Planner View Event</title>
     <link rel="stylesheet" href="<?=ROOT?>/assets/css/eventPlanner/viewEvent.css">
+    <link rel="stylesheet" href="<?= ROOT ?>/assets/css/backbutton.css">
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 </head>
 <body>
@@ -17,7 +18,11 @@
         <?php if(!empty($data['event'])): ?>
             <div class="details-section">
                 <div >
-                    <h1 class="event-name"><?php echo $data['event']->event_name ?></h1>
+                    <div class="back-button">
+                        <?php include('../app/views/components/backbutton.view.php'); ?>
+                        <h1 class="event-name"><?php echo $data['event']->event_name ?></h1>
+                    </div>
+                    
                     <p class="event-description"><?php echo $data['event']->description ?></p>
                     <div class="event-details">
                         <p><strong>Date:</strong> <?php echo $data['event']->eventDate ?></p>

@@ -20,6 +20,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Event Planner Scheduled Event</title>
     <link rel="stylesheet" href="<?= ROOT ?>/assets/css/eventplanner/completed.css">
+    <link rel="stylesheet" href="<?= ROOT ?>/assets/css/backbutton.css">
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <script src="<?= ROOT ?>/assets/js/eventplanner/complete.js" defer></script>
@@ -30,7 +31,10 @@
 <div class = "pdf-container">
 <div class="container">
     <div class="left-section">
-        <h1>Event Details</h1>
+        <div class="back-button">
+            <?php include('../app/views/components/backbutton.view.php'); ?>
+            <h1 class="left-button-h1">Event Details</h1>
+        </div>
         <div class="details">
             <div class="event-detail">
                 <h3>Event Name:</h3>
@@ -98,13 +102,13 @@
                 <?php foreach($data['record'] as $record): ?>
                     <tr>
                         <td><?= htmlspecialchars($record->purchase_date); ?></td>
-                        <td class="text-right"><?= htmlspecialchars($record->total_income); ?></td>
+                        <td class="text-right"><?= htmlspecialchars(number_format($record->total_income,2,'.',',')); ?></td>
                     </tr>
                 <?php endforeach; ?>
             <?php endif; ?>
             <tr>
                 <td>Total</td>
-                <td class="text-right">LKR <?= htmlspecialchars($data['total_income']); ?></td>
+                <td class="text-right">LKR <?= htmlspecialchars(number_format($data['total_income'],2,'.',',')); ?></td>
             </tr>
         </table>
     </div>
@@ -120,20 +124,32 @@
                 <?php foreach($data['record1'] as $record1): ?>
                     <tr>
                         <td><?= htmlspecialchars($record1->name); ?></td>
-                        <td class="text-right"><?= htmlspecialchars($record1->total_payment); ?></td>
+                        <td class="text-right"> <?= htmlspecialchars(number_format($record1->total_payment, 2, '.', ',')); ?></td>
                     </tr>
                 <?php endforeach; ?>
             <?php endif; ?>
             <tr>
                 <td>Total</td>
-                <td class="text-right">LKR <?= htmlspecialchars($data['total_cost']); ?></td>
+                <td class="text-right">LKR <?= htmlspecialchars(number_format($data['total_cost'], 2, '.', ',')); ?></td>
             </tr>
         </table>
     </div>
 
-    <div class =  "balance report-look">
-        <h3>Balance</h3>
-        <p>LKR<?= htmlspecialchars(floatval($data['total_income']) - floatval($data['total_cost'])); ?></p>
+    <div class =  "financial-summary">
+    <table>
+        <tr>
+            <th>Total revenue</th>
+            <td>LKR <?= htmlspecialchars(number_format(floatval($data['total_income']) - floatval($data['total_cost']), 2, '.', ',')); ?></td>
+        </tr>
+        <tr>
+            <th>Administrative Fee</th>
+            <td>LKR <?= htmlspecialchars(number_format((floatval($data['total_income']) - floatval($data['total_cost']))*0.005, 2, '.', ',')); ?></td>
+        </tr>
+        <tr>
+            <th>Net Income</th>
+            <td>LKR <?= htmlspecialchars(number_format((floatval($data['total_income']) - floatval($data['total_cost'])) - ((floatval($data['total_income']) - floatval($data['total_cost']))*0.005), 2, '.', ',')); ?></td>
+        </tr>
+    </table>
     </div>  
 </div>
 </div>

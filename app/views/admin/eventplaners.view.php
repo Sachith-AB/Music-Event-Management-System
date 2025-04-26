@@ -28,6 +28,7 @@
                 <tbody>
 
                 <?php if(!empty($data)): ?>
+                    <!--  -->
 
                     <?php foreach($data as $planner): ?>
 
@@ -48,7 +49,8 @@
                                             <form method = "POST">
                                                 <input type = "hidden" name = "user_id" value = "<?php echo $planner->id ?>">
                                                 <input type = "hidden" name = "is_delete" value = '1' >
-                                                <button name = "delete" class="action-btn delete" type = "submit" >Delete</button>
+                                                <button type="button" name = "delete" class="action-btn delete" onclick="showConfirmation(this.form)">Delete</button>
+
                                             </form>
                                                 
                                         </div> 
@@ -70,6 +72,44 @@
             window.location.href = "<?=ROOT?>/admin-vieweventplanner?id="+userid;
         }
     </script>
+
+            <!-- Confirmation Modal -->
+        <div id="confirmModal" style="display: none; position: fixed; top: 0; left: 0; 
+            width: 100%; height: 100%; background-color: rgba(0,0,0,0.5); 
+            justify-content: center; align-items: center; z-index: 1000;">
+            <div style="background: white; padding: 20px; border-radius: 8px; text-align: center;">
+                    <p class="confirm-message">Are you sure you want to delete this event planner?</p>
+                    <button class="confirm-btn submit-btn" onclick="submitConfirmedForm()">Submit</button>
+                    <button class="confirm-btn cancel-btn" onclick="closeModal()">Cancel</button>
+            </div>
+        </div>
+
+        <script>
+                                            let currentForm = null;
+
+                                            function showConfirmation(form) {
+                                                currentForm = form;
+                                                document.getElementById('confirmModal').style.display = 'flex';
+                                            }
+
+                                            function closeModal() {
+                                                document.getElementById('confirmModal').style.display = 'none';
+                                                currentForm = null;
+                                            }
+
+                                            function submitConfirmedForm() {
+                                                if (currentForm) {
+                                                    currentForm.submit();
+                                                }
+                                                closeModal();
+                                            }
+
+                                            function confirmDelete(form) {
+                                                // Prevent default submit and show confirmation modal instead
+                                                return false;
+                                            }
+        </script>
+
 </body>
 </html>
 

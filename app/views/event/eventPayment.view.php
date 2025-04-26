@@ -1,4 +1,5 @@
 <?php require_once '../app/helpers/load_notifications.php'; ?>
+<?php include ('../app/views/components/header.php'); ?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -7,12 +8,18 @@
     <title>Performer Payments</title>
     <link rel="stylesheet" href="<?=ROOT?>/assets/css/payment.css">
     <link rel="stylesheet" href="<?=ROOT?>/assets/css/eventPlanner/scheduledEvent.css">
+    <link rel="stylesheet" href="<?= ROOT ?>/assets/css/backbutton.css">
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <script src="<?= ROOT ?>/assets/js/eventplanner/payment.js" defer></script>
 </head>
 <body>
+    <div class="back-button">
+        <?php include('../app/views/components/backbutton.view.php'); ?>
+    </div>
+    
     <section class="team-section">
+        
         <h1>Performers' Payment Information</h1>
         <div class="team-section-content">
             <table>
@@ -23,7 +30,7 @@
 
                             <tr>
                                 <td>
-                                    <img src="<?=ROOT?>/assets/images/user/<?php echo $performer['pro_pic'] ?>" alt="Performer">
+                                    <img class="collaboratorimg" src="<?=ROOT?>/assets/images/user/<?php echo $performer['pro_pic'] ?>" alt="Performer">
                                     <span><?php echo $performer['name'] ?></span>
                                 </td>
                                 <td>

@@ -19,6 +19,8 @@ class Home {
         // Assign rating and review data
         foreach ($res as $key => $evt) {
             $ratingData = $this->getEventRating(new Rating, $evt->id, new User);
+            $ticketData = $this->getEventTicketPrice(new Ticket, $evt->id);
+            $res[$key]->ticketPrice = $ticketData[0]->price ?? 0;
             $res[$key]->averageRating = $ratingData[0]['averageRating'] ?? 0;
             $res[$key]->totalReviews = $ratingData[0]['totalReviews'] ?? 0;
         }
@@ -76,6 +78,11 @@ class Home {
             }
         }
     
+        return $res;
+    }
+
+    private function getEventTicketPrice($ticket, $id) {
+        $res = $ticket->getTicketPriceFromEventId($id);
         return $res;
     }
 }

@@ -7,13 +7,27 @@ class SingerRequest {
 
 
         $request = new Request;
+        $calendar = new Calendar;
+        $event = new Event;
         $data = [];
 
-        if($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['request'])) {
+        if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['request'])) {
+    
+            $event_data = $event->firstById($_POST['event_id']);
+        
+            if (!$this->checkAvailability($calendar, $_POST['collaborator_id'], $event_data->eventDate)) {
+
+                $error = "User is not available on this date";
+                $errorParams = 'flag=1&error=' . urlencode($error) . '&error_no=1';
             
-            $this->createRequest($request);
+                redirect('request-singers?id=' . $_POST['event_id'] . '&' . $errorParams);
             
+            } else {
+                $this->createRequest($request);
+            }
         }
+        
+        
 
         if($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['deleteRequest'])){
 
@@ -24,8 +38,7 @@ class SingerRequest {
             
             
             $data['users'] = $this->searchUsers($request);
-            //show($data);
-            // show($_POST);
+
         }else{
             $data['users'] = $this->getUsers($request);
         }
@@ -34,7 +47,6 @@ class SingerRequest {
 
         $this->view('request/singerRequest', $data);
 
-        // show($data);
 
     }
 
@@ -57,42 +69,29 @@ class SingerRequest {
     public function searchUsers($request){
         
         $res = $request->searchByTerm($_POST , 'singer' , 'profile');
-        //show($_POST);
+
         unset($_POST['searchTerm']);
         unset($_POST['search']);
         return $res;
     }   
 
-    public function getExistingRequest($request)
-    {
+    public function getExistingRequest($request){
         $id = htmlspecialchars($_GET['id']);
-
-        //echo($id);
 
         $result = $request->getExistingRequests($id,'singer');
 
-        //show($result);
-
-        //echo($id);
-
-        //$result = $request->getExistingRequests($id);
-
-       // show($result);
-
-
         return $result;
-
     }
 
 
     public function deleteRequest($request){
 
-        //show($_POST['req_id']);
         $request->delete($_POST['req_id']);
         unset($_POST);
     }
 
-
-
+    private function checkAvailability($calendar, $user_id, $event_date) {
+        return $calendar->getAvailability($user_id, $event_date);
+    }    
 
 }
