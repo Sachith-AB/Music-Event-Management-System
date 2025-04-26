@@ -244,10 +244,11 @@ body, html {
 
 .event img {
     width: 100%;
-    height: auto;
+    height: 200px;
     border-radius: 5px;
     margin-bottom: 15px; 
     transition: transform 0.3 ease;
+    object-fit: cover;
 }
 
 .event:hover{

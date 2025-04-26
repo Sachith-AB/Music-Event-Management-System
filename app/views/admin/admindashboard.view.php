@@ -1,3 +1,4 @@
+<?php require_once '../app/helpers/load_notifications.php'; ?>
 <?php include ('../app/views/components/header.php'); ?> 
 <!DOCTYPE html>
 <html lang="en">
@@ -48,14 +49,11 @@
                                     </div>
                                 </div>
                                 <div class="event-card-icons">
-                                    <a href="<?=ROOT?>/view-event?id=<?php echo $event->event_id ?>" ><i class="fas fa-eye"></i></a>
+                                    <a class="event-card-icons-a" href="<?=ROOT?>/view-event?id=<?php echo $event->event_id ?>" ><i class="fas fa-eye"></i></a>
 
                                         <form method="post">
                                             <input type="hidden" name="event_id" value="<?php echo $event->event_id ?>">
                                             <input type="hidden" name="is_delete" value="1">
-                                            <input type="hidden" name="user_id" value="<?php echo $event->createdBy ?>">
-                                            <input type="hidden" name="title" value="Your event '<?php echo $event->event_name ?>' has been deleted">
-                                            <input type="hidden" name="message" value="Your event '<?php echo $event->event_name         ?>' has been deleted by the admin.">
                                             <button type="button" onclick="showConfirmation(this.form)"><i class="fas fa-trash"></i></button>
                                         </form>
                                 </div>
@@ -143,7 +141,7 @@
                             </div>
                         </div>
                         <div class="event-card-icons">
-                            <a href="<?=ROOT?>/view-event?id=<?php echo $event->event_id ?>" > <i class="fas fa-eye"></i></a>
+                            <a class="event-card-icons-a" href="<?=ROOT?>/view-event?id=<?php echo $event->event_id ?>" > <i class="fas fa-eye"></i></a>
                         </div>
                     </div>
                 <?php endforeach; ?>
@@ -184,32 +182,33 @@
                         $eventsDisplayedPast++;
                 ?>
 
-            <div class="event-card">
-                <?php
-                $coverImages = json_decode($event->cover_images, true);
-                $firstImage = $coverImages[0] ?? ''; // fallback if empty
-                ?>
-                <img src="<?= ROOT ?>/assets/images/events/<?php echo $firstImage ?>" alt="Event Image">
-                <div>
-                    <div><?php echo $event->event_name ?></div>
-                    <div>
-                        <div>📅 <?php echo $event->eventDate ?> | <?php echo substr($event->start_time, 11) ?></div>
-                        <div class="two-line-ellipsis">📍 Location: <?php echo $event->address ?></div>
-                        <div>👤 Created By: <?php echo $event->user_name ?></div>
-                        <div class="star-rating">
-                            <?php 
-                            $eventModel = new Event();
-                            $rating = $event->average_rating ?? 0;
-                            echo $eventModel->getStarRating($rating);
-                            ?>
-                            <span class="rating-text"></span>
+                    <div class="event-card">
+                        <?php
+                        $coverImages = json_decode($event->cover_images, true);
+                        $firstImage = $coverImages[0] ?? ''; // fallback if empty
+                        ?>
+                        <img src="<?= ROOT ?>/assets/images/events/<?php echo $firstImage ?>" alt="Event Image">
+                        <div>
+                            <div><?php echo $event->event_name ?></div>
+                            <div>
+                                <div>📅 <?php echo $event->eventDate ?>| <?php echo substr($event->start_time, 11) ?></div>
+                                <div class="two-line-ellipsis">📍 Location: <?php echo $event->address ?></div>
+                                <div>👤 Created By: <?php echo $event->user_name ?></div>
+                                <div class="star-rating">
+                                    <?php 
+                                    $eventModel = new Event();
+                                    $rating = $event->average_rating ?? 0;
+                                    echo $eventModel->getStarRating($rating);
+                                    ?>
+                                    <span class="rating-text"></span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="event-card-icons">
+                            <a href="<?=ROOT?>/view-pastevent?id=<?php echo $event->event_id ?>" > <i class="fas fa-eye"></i></a>
+                            
                         </div>
                     </div>
-                </div>
-                <div class="event-card-icons">
-                    <a href="<?=ROOT?>/view-pastevent?id=<?php echo $event->event_id ?>"><i class="fas fa-eye"></i></a>
-                </div>
-            </div>
 
         <?php endforeach; ?>
 

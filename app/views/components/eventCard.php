@@ -5,9 +5,12 @@ foreach ($recentEvents as $event):
     $startTime = date('g:i A', strtotime($event->start_time));
     $endDate = date('D, M d', strtotime($event->end_time));
     $endTime = date('g:i A', strtotime($event->end_time));
-    $imgSrc = !empty($event->cover_images) && $event->cover_images !== 'default-image.jpg'
-        ? ROOT . '/assets/images/events/' . $event->cover_images
-        : ROOT . '/assets/images/landing/top1.png';
+    $coverImages = json_decode($event->cover_images, true);
+    $firstImage = $coverImages[0] ?? ''; // fallback if empty
+    // $imgSrc = !empty($event->cover_images) && $event->cover_images !== 'default-image.jpg'
+    //     ? ROOT . '/assets/images/events/' . $event->cover_images
+    //     : ROOT . '/assets/images/landing/top1.png';
+        $imgSrc = ROOT . '/assets/images/events/' . $firstImage;
     $priceText = ($event->pricing === 'free' || empty($event->pricing)) ? 'Free' : 'From LKR 5000';
 ?>
     <div class="next-event-card" onclick="location.href='<?= ROOT ?>/view-event?id=<?= $event->id ?>'">

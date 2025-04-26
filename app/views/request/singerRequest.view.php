@@ -11,6 +11,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="<?=ROOT?>/assets/css/request/singerdropdown.css">
+    <link rel="stylesheet" href="<?= ROOT ?>/assets/css/backbutton.css">
     <title>Request To Singer</title>
 </head>
 
@@ -19,8 +20,11 @@
         <?php include ('../app/views/components/sidebar.php');  ?>
         <!-- Main Content -->
         <div class="dashboard">
-
-            <h1>Singers</h1>
+            <div class="back-button">
+                <?php include('../app/views/components/backbutton.view.php'); ?>
+                <h1 class="dashboard-header">Singers</h1>
+            </div>
+           
             <!-- Search Bar -->
             <div >
                 <form method="POST" class="search">

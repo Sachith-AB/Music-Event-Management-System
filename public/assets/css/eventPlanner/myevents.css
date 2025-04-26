@@ -182,6 +182,12 @@ form[id^="showMore"] {
     transform: translateY(-2px);
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
 }
+.back-button{
+    display: flex;
+    align-items: center;
+    margin-bottom: 1rem;
+    gap: 10px;
+}
 
 /* Responsive styles for View More button */
 @media (max-width: 768px) {

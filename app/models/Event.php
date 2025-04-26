@@ -545,6 +545,30 @@ class Event {
          return $result ? $result : [];
      }
 
+     public function EventPlannerPastEventInfoWithTickets($userId)
+     {
+         $query = "SELECT e.id AS event_id, e.event_name, e.eventDate,f.total_income,f.total_cost,
+                            f.total_revenue,f.administrative_fee,f.net_income,
+                    GROUP_CONCAT(DISTINCT u.name SEPARATOR ', ') AS collaborators,
+                    IFNULL(SUM(b.ticket_quantity), 0) AS total_sold_tickets
+                    FROM events e
+                    JOIN financial_summary f ON e.id = f.event_id
+                    JOIN users planner ON e.createdBy = planner.id
+                    LEFT JOIN requests r ON e.id = r.event_id AND r.status = 'accepted'
+                    LEFT JOIN users u ON r.collaborator_id = u.id
+                    LEFT JOIN buyticket b ON e.id = b.event_id
+                    LEFT JOIN tickets t ON b.ticket_id = t.id
+                    LEFT JOIN payments p ON e.id = p.event_id
+                    WHERE e.is_delete = '0' 
+                    AND e.createdBy = ?
+                    AND e.status = 'completed'
+                    GROUP BY e.id, e.event_name, e.eventDate
+                    ORDER BY total_income DESC, total_sold_tickets DESC";
+     
+        $result = $this->query($query, [$userId]);
+         return $result ? $result : [];
+     }
+
     public function getEventRatings($eventId)
     {
         $query = "SELECT r.*, 

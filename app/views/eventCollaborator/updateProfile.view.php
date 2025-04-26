@@ -14,20 +14,19 @@
         $flag = htmlspecialchars($_GET['flag'] ?? 0);
         $error = htmlspecialchars($_GET['msg'] ?? '');
     ?>
-    <?php include ('../app/views/components/loading.php'); ?>
-    <div class="">
+    
+    <div class="main-content">
         <div class="page-content">
             <h1 class="head1">Edit profile</h1>
-            <h3 class="head2">Profile Photo</h3>
-            <div class="">
-                <div class="image">
+            <div class="profile-pic-content">
+                <h3 class="head2">Profile Photo</h3>
+                <div class="pic-image">
                     <div class="avatar">
                         <img src="<?=ROOT?>/assets/images/user/<?php echo $_SESSION['USER']->pro_pic ?>" alt="pro pic">
                     </div>
                     <div>
                         <p class="p1">Upload your photo</p>
                         <p class="p2">Your photo should be in PNG or JPG format</p>
-
                     </div>
                 </div>
 
@@ -37,7 +36,7 @@
                         <button type="submit" class="button" id="customButton" name="uploadImage">Upload File</button>
                     </div>
                 </form>
-
+            </div>
                 <div>
                     <form method="POST" class="form" >
 

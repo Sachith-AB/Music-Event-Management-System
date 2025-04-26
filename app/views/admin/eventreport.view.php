@@ -5,68 +5,25 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Admin Event Report</title>
     <link rel="stylesheet" href="<?= ROOT ?>/assets/css/admin/report.css">
+    <link rel="stylesheet" href="<?= ROOT ?>/assets/css/backbutton.css">
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <script src="<?= ROOT ?>/assets/js/eventplanner/complete.js" defer></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
 </head>
 <body>
-    <h1>Event Report</h1>
+    <div class="back-button">
+        <?php include('../app/views/components/backbutton.view.php'); ?>
+        <h1 class="usertext">Event Report</h1>
+    </div>
 
     <div class="pdf-container">
         <!-- Upcoming Events Section -->
         <div class="section-container">
+
             <h2>Upcoming Events</h2>
             
-            <!-- Upcoming Events Filter Controls -->
-            <div class="filter-controls">
-                <div class="filter-group">
-                    <label for="upcomingMonth">Month:</label>
-                    <select id="upcomingMonth" onchange="filterUpcomingEvents()">
-                        <option value="">All Months</option>
-                        <?php
-                        $months = [
-                            '01' => 'January', '02' => 'February', '03' => 'March',
-                            '04' => 'April', '05' => 'May', '06' => 'June',
-                            '07' => 'July', '08' => 'August', '09' => 'September',
-                            '10' => 'October', '11' => 'November', '12' => 'December'
-                        ];
-                        foreach ($months as $num => $name) {
-                            echo "<option value='$num'>$name</option>";
-                        }
-                        ?>
-                    </select>
-                </div>
-                
-                <div class="filter-group">
-                    <label for="upcomingYear">Year:</label>
-                    <select id="upcomingYear" onchange="filterUpcomingEvents()">
-                        <option value="">All Years</option>
-                        <?php
-                        $currentYear = date('Y');
-                        for ($year = $currentYear; $year <= $currentYear + 2; $year++) {
-                            echo "<option value='$year'>$year</option>";
-                        }
-                        ?>
-                    </select>
-                </div>
-                
-                <div class="filter-group">
-                    <label for="upcomingPlanner">Event Planner:</label>
-                    <select id="upcomingPlanner" onchange="filterUpcomingEvents()">
-                        <option value="">All Planners</option>
-                        <?php if (!empty($data['planners'])): ?>
-                            <?php foreach ($data['planners'] as $planner): ?>
-                                <?php if($planner->role == 'planner'): ?>
-                                    <option value="<?= htmlspecialchars($planner->id) ?>">
-                                        <?= htmlspecialchars($planner->name) ?>
-                                    </option>
-                                <?php endif; ?>
-                            <?php endforeach; ?>
-                        <?php endif; ?>
-                    </select>
-                </div>
-            </div>
+           
 
             <?php if (!empty($data['upcoming'])): ?>
                 <table id="upcomingTable">
