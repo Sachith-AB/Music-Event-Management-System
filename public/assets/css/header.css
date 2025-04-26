@@ -22,9 +22,6 @@ header {
     transition: transform 0.3s ease;
 }
 
-.logo-image img:hover {
-    transform: scale(1.05);
-}
 
 .nav-right {
     display: flex;
@@ -119,9 +116,6 @@ nav ul li.sign-up a:hover {
     transition: transform 0.3s ease;
 }
 
-.image:hover {
-    transform: scale(1.1);
-}
 
 /* Modal Styles */
 .modal-overlay {
@@ -214,9 +208,7 @@ nav ul li.sign-up a:hover {
     transition: background-color 0.3s ease, transform 0.2s ease;
 }
 
-.avatarbadge:hover {
-    transform: scale(1.05);
-}
+
 
 .avatarbadge i {
     font-size: 16px;
@@ -293,9 +285,7 @@ nav ul li.sign-up a:hover {
     margin-right: 5px;
 }
 
-.breadcrumb a:hover {
-    text-decoration: underline;
-}
+
 
 /* Responsive Design */
 @media (max-width: 768px) {

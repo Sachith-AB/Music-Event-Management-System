@@ -20,8 +20,22 @@
             <li><a href="event-planner-messages" class="menu-link"><i class="fas fa-comment-dots"></i> Messages </a></li>
             <li><a href="event-planner-comments" class="menu-link"><i class="fas fa-comments"></i> Comments </a></li>
             <li><a href="create-event" class="menu-link"><i class="fas fa-plus-circle"></i> Create A Event </a></li>
+            <li>
+                <a href="#reportSubMenu" class="menu-link" onclick="toggleSubMenu('reportSubMenu')">
+                    <i class="fas fa-chart-line"></i> Reports <i class="fas fa-chevron-down" style="float:right;"></i>
+                </a>
+                <ul id="reportSubMenu" class="submenu" style="display: none;">
+                    <li><a href="event-planner-eventreport" class="menu-link"><i class="fas fa-file-alt"></i>  Event Report </a></li>
+                    <li><a href="collaborator-report" class="menu-link"><i class="fas fa-file-alt"></i>  Collaborator Report </a></li>
+                </ul>
+            </li>
         </ul>
     </aside>
+    <script> function toggleSubMenu(id) {
+            const submenu = document.getElementById(id);
+            submenu.style.display = submenu.style.display === 'block' ? 'none' : 'block';
+        }
+    </script>
     <script src="<?=ROOT?>/assets/js/request/singerdropdown.js"></script>
 </body>
 </html>

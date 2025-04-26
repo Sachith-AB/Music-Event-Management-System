@@ -8,6 +8,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Ticket holder Profile</title>
     <link rel="stylesheet" href="<?=ROOT?>/assets/css/admin/viewticketholder.css">
+    <link rel="stylesheet" href="<?= ROOT ?>/assets/css/backbutton.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
     <link rel="stylesheet" href="<?= ROOT ?>/assets/css/backbutton.css">
 </head>
@@ -45,7 +46,11 @@
             </div>
             <div class="upcommingeve-tickets">
                 <div class="content">
-                    <h2 class="content-header">Past Events</h2>
+                    <div class="back-button">
+                        <?php include('../app/views/components/backbutton.view.php'); ?>
+                        <h2 class="content-header">Past Events</h2>
+                    </div>
+                    
                     <div class="events-container">
                         <?php foreach ($pastTickets as $event): ?>
                             
@@ -53,7 +58,7 @@
                                 <a href="<?=ROOT?>/event-planner-viewEvent?id=<?= htmlspecialchars($event[0]->id) ?>" class="event-card-link">
                                     <div class="event-status-process"><?= htmlspecialchars($event[0]->ticket_type) ?> - LKR<?= htmlspecialchars($event[0]->ticket_price) ?></div>
                                     <?php
-                                    $coverImages = json_decode($event[0]->cover_images, true);
+                                    $coverImages = json_decode($event[0]->event_images, true);
                                     $firstImage = $coverImages[0] ?? ''; // fallback if empty
                                     ?>
                                     <img src="<?= ROOT ?>/assets/images/events/<?php echo $firstImage ?>" alt="<?= htmlspecialchars($event[0]->event_name) ?>">
@@ -82,7 +87,7 @@
                                     <a href="<?=ROOT?>/event-planner-viewEvent?id=<?= htmlspecialchars($event[0]->id) ?>" class="event-card-link">
                                         <div class="event-status-process"><?= htmlspecialchars($event[0]->ticket_type) ?> - LKR<?= htmlspecialchars($event[0]->ticket_price) ?></div>
                                         <?php
-                                        $coverImages = json_decode($event[0]->cover_images, true);
+                                        $coverImages = json_decode($event[0]->event_images, true);
                                         $firstImage = $coverImages[0] ?? ''; // fallback if empty
                                         ?>
                                         <img src="<?= ROOT ?>/assets/images/events/<?php echo $firstImage ?>" alt="<?= htmlspecialchars($event[0]->event_name) ?>">

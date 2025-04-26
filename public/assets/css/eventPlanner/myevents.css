@@ -7,21 +7,19 @@
 .dash-container {
     display: flex;
     margin: 0px auto;
-    padding: 40px;
-    gap: 2rem;
+    padding: 30px;
+    gap: 1rem;
 }
 
-
-.content {
+.dashboard {
     width: 100%;
-    max-width: 2200px;
+    max-width: 2000px;
     background-color: #fff;
     padding: 20px;
     border-radius: 8px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    justify-content: center;
-    align-items: center;
-  }
+}
+
 
   .content-header{
     color: #00BDD6FF;
@@ -183,6 +181,12 @@ form[id^="showMore"] {
     color: black;
     transform: translateY(-2px);
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+.back-button{
+    display: flex;
+    align-items: center;
+    margin-bottom: 1rem;
+    gap: 10px;
 }
 
 /* Responsive styles for View More button */

@@ -11,9 +11,8 @@ class Search {
         $data = [];
 
         if($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['searchEvents'])){
-
+            
             $data = $this->searchEventByName($event);
-            // show($data);
         }else if($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['apply'])){
             $data = $this->filterEvents($event);
         }else{
@@ -22,15 +21,22 @@ class Search {
         $this->view('search',$data);
     }
 
-    private function getEvents($event){
+    private function getEvents($event) {
         $res = $event->findAll();
+        
         foreach ($res as $key => $evt) {
             $ratingData = $this->getEventRating(new Rating, $evt->id, new User);
             $res[$key]->averageRating = $ratingData[0]['averageRating'] ?? 0;
             $res[$key]->totalReviews = $ratingData[0]['totalReviews'] ?? 0;
         }
-        return $res;
+    
+        usort($res, function($a, $b) {
+            return strtotime($a->eventDate) - strtotime($b->eventDate);
+        });
+    
+        return $res; // <- Make sure to return the sorted array
     }
+    
     
 
     private function searchEventByName($event){

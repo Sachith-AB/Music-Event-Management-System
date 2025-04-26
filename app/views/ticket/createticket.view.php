@@ -8,6 +8,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Create an Event</title>
     <link rel="stylesheet" href="<?=ROOT?>/assets/css/ticket/createticket.css">
+    <link rel="stylesheet" href="<?= ROOT ?>/assets/css/backbutton.css">
 </head>
 <body>
 
@@ -17,6 +18,7 @@
         <div class="main-content">
             <form id="createticket" method="POST">
                 <div class="ticket-container">
+                    <?php include('../app/views/components/backbutton.view.php'); ?>
                     <h3>Create Tickets for Your Event</h3>
                     <div class = "form-group">
                         <label for="sale-strt-date">Sale Start Date</label>

@@ -1,5 +1,8 @@
 <?php require_once '../app/helpers/load_notifications.php'; ?>
-<?php include ('../app/views/components/header.php'); ?>
+<?php include ('../app/views/components/header.php'); 
+
+    $error = esc($_GET['error'] ?? '');
+?>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -8,6 +11,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="<?=ROOT?>/assets/css/request/singerdropdown.css">
+    <link rel="stylesheet" href="<?= ROOT ?>/assets/css/backbutton.css">
     <title>Request To Singer</title>
 </head>
 
@@ -16,8 +20,11 @@
         <?php include ('../app/views/components/sidebar.php');  ?>
         <!-- Main Content -->
         <div class="dashboard">
-
-            <h1>Singers</h1>
+            <div class="back-button">
+                <?php include('../app/views/components/backbutton.view.php'); ?>
+                <h1 class="dashboard-header">Singers</h1>
+            </div>
+           
             <!-- Search Bar -->
             <div >
                 <form method="POST" class="search">
@@ -90,6 +97,26 @@
         </div>
     </div>
     
+
+   
+
+    <?php if($error != ''): ?>
+        <?php 
+            $message = $error;
+            include("../app/views/components/r-message.php")
+        ?>
+    <?php endif ?>
+
+    <script>
+        if (window.history.replaceState) {
+            const url = new URL(window.location);
+            url.searchParams.delete('flag');
+            url.searchParams.delete('error');
+            url.searchParams.delete('error_no');
+            window.history.replaceState(null, '', url.toString());
+        }
+    </script>
+
 
 <script src="<?=ROOT?>/assets/js/request/singerdropdown.js"></script>
 </body>

@@ -7,6 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Event Collaborator Report</title>
     <link rel="stylesheet" href="<?= ROOT ?>/assets/css/eventCollaborators/report.css">
+    <link rel="stylesheet" href="<?= ROOT ?>/assets/css/backbutton.css">
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <script src="<?= ROOT ?>/assets/js/eventplanner/complete.js" defer></script>
@@ -16,7 +17,7 @@
 <body>
 
 <div class="pdf-container">
-
+    <?php include('../app/views/components/backbutton.view.php'); ?>
     <div class="date-range">
 
         <form method = "POST" >

@@ -14,8 +14,12 @@
     padding: 30px;
     margin-bottom: 30px;
 }
+.back-button{
+    display: flex;
+    gap: 20px;
+}
 
-.left-section h1 {
+.left-section-h1 {
     color: #333;
     font-size: 28px;
     margin-bottom: 30px;

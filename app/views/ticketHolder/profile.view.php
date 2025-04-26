@@ -22,7 +22,7 @@
 
     $success = htmlspecialchars($_GET['msg'] ?? '');
     $flag = htmlspecialchars($_GET['flag'] ?? 0);
-    //show($_SESSION['USER']);
+
     
     ?>
     <div class="page-content">
@@ -129,7 +129,9 @@
                                     $eventsDisplayed++;
                             ?>
                                 <div>
-                                    <a href="<?=ROOT?>/view-event?id=<?= htmlspecialchars($event[0]->event_id) ?>" class="event-card-link">
+                                    
+                                    <a href="<?=ROOT?>/view-upcomingevent?id=<?= htmlspecialchars($event[0]->event_id) ?>&purchaseid=<?= htmlspecialchars($event['id']) ?>&email=<?= htmlspecialchars($event['buyer_email']) ?>" class="event-card-link">
+                                        
                                         <div class="upcommingeve-ticket-card">
                                             <div class="event-status-process"><?= htmlspecialchars($event[0]->ticket_type) ?> - LKR<?= htmlspecialchars($event[0]->ticket_price) ?></div>
                                             <div class="upcommingeve-ticket-image">
