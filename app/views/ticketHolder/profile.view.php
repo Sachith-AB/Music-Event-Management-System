@@ -22,7 +22,7 @@
 
     $success = htmlspecialchars($_GET['msg'] ?? '');
     $flag = htmlspecialchars($_GET['flag'] ?? 0);
-    //show($_SESSION['USER']);
+
     
     ?>
     <div class="page-content">
