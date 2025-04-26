@@ -1,5 +1,5 @@
 <?php require_once '../app/helpers/load_notifications.php'; ?>
-
+<?php include ('../app/views/components/header.php'); ?>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -11,7 +11,7 @@
 </head>
 <body>
     <?php 
-    include ('../app/views/components/loading.php');  show($_POST);
+    include ('../app/views/components/loading.php');;
     // Set default value for showMore if not set
     $showMore = isset($_POST['showMore']) ? $_POST['showMore'] == 'true' : false; 
     ?>
