@@ -105,17 +105,23 @@
         </div>
     </div>
 
-    <?php if ($flag == 1): ?>
+    <?php if (!empty($data['error'])): ?>
         <?php
-            $message = $error;
+            $message = $data['error'];
             include ("../app/views/components/r-message.php");
         ?>
-    <?php elseif ($flag == 2): ?>
-        <?php
-            $message = $error;
-            include ("../app/views/components/s-message.php");
-        ?>
-    <?php endif ?>
+        <?php elseif ($flag == 1): ?>
+            <?php
+                $message = $error;
+                include ("../app/views/components/r-message.php");
+            ?>
+        <?php elseif ($flag == 2): ?>
+            <?php
+                $message = $error;
+                include ("../app/views/components/s-message.php");
+            ?>
+        <?php endif ?>
+
 
     <script>
         function goToProfile() {
