@@ -331,8 +331,9 @@ class Event {
     public function searchEventByName($searchTerm){
 
         $searchName = $searchTerm['name'] ?? "";
+        $searchLocation = $searchTerm['address'] ?? "";
         
-        $query = "SELECT * FROM events WHERE is_delete = '0' AND event_name LIKE '%$searchName%'";
+        $query = "SELECT * FROM events WHERE is_delete = '0' AND event_name LIKE '%$searchName%' AND address LIKE '%$searchLocation%'";
         $result = $this->query($query);
         return $result ? $result : [];
 

@@ -21,72 +21,70 @@
             <div class="search-bar">
                 <form method="POST" class="search-bar">
                     <input type="text" name="name" placeholder="Event name">
-                    <input type="text" name="location" placeholder="Location">
+                    <input type="text" name="address" placeholder="Location">
                     <button type="submit" name="searchEvents" value="search">Search</button>
                 </form>
             </div>
         </div>
         <div class="content">
-            <form class="filter" method="POST">
-                <h3>Filter</h3>
-                <div class="filter-section">
-                    <h4>Category</h4>
-                    <label><input type="checkbox"> All</label>
-                    <label><input type="checkbox"> Trending</label>
-                    <label><input type="checkbox"> Upcoming</label>
-                    <label><input type="checkbox"> Music</label>
-                </div>
-                <div class="filter-section">
-                    <h4>Pricing</h4>
-                    <label>
-                        <input type="checkbox" name="pricing" value="free" id="free-checkbox" onclick="toggleCheckbox('free')"> Free
-                    </label>
-                    <label>
-                        <input type="checkbox" name="pricing" value="paid" id="paid-checkbox" onclick="toggleCheckbox('paid')"> Paid
-                    </label>
-                </div>
-                <div class="filter-section">
-                    <h4>Type</h4>
-                    <label>
-                        <input type="checkbox" name="type" value="indoor" id="indoor-checkbox" onclick="toggleCheckbox('type', 'indoor')"> Indoor
-                    </label>
-                    <label>
-                        <input type="checkbox" name="type" value="outdoor" id="outdoor-checkbox" onclick="toggleCheckbox('type', 'outdoor')"> Outdoor
-                    </label>
-                </div>
-                <button class="apply-btn" type="submit" value="apply" name="apply">Apply</button>
-                
-            </form>
+            <div class="content-all">
+                <form class="filter" method="POST">
+                    <h3>Filter</h3>
+                    <div class="filter-section">
+                        <h4>Category</h4>
+                        <label><input type="checkbox"> All</label>
+                        <label><input type="checkbox"> Trending</label>
+                        <label><input type="checkbox"> Upcoming</label>
+                        <label><input type="checkbox"> Music</label>
+                    </div>
+                    <div class="filter-section">
+                        <h4>Pricing</h4>
+                        <label>
+                            <input type="checkbox" name="pricing" value="free" id="free-checkbox" onclick="toggleCheckbox('free')"> Free
+                        </label>
+                        <label>
+                            <input type="checkbox" name="pricing" value="paid" id="paid-checkbox" onclick="toggleCheckbox('paid')"> Paid
+                        </label>
+                    </div>
+                    <div class="filter-section">
+                        <h4>Type</h4>
+                        <label>
+                            <input type="checkbox" name="type" value="indoor" id="indoor-checkbox" onclick="toggleCheckbox('type', 'indoor')"> Indoor
+                        </label>
+                        <label>
+                            <input type="checkbox" name="type" value="outdoor" id="outdoor-checkbox" onclick="toggleCheckbox('type', 'outdoor')"> Outdoor
+                        </label>
+                    </div>
+                    <button class="apply-btn" type="submit" value="apply" name="apply">Apply</button>
+                    
+                </form>
 
-            <?php if(empty($data)): ?>
-                    <h2>NO EVENTS YET</h2>
-                <?php else:?>
-            
-            <main class="event-list">
-            
-                <?php 
-                    // Limit events to 3 if showMore is false
-                    $maxEvents = $showMore ? count($data) : 3;
-                    $eventsDisplayed = 0;
+                <div class="event-list-container">
+                    <main class="event-list">
+                        <?php 
+                            // Limit events to 3 if showMore is false
+                            $maxEvents = $showMore ? count($data) : 3;
+                            $eventsDisplayed = 0;
 
-                    foreach($data as $event): 
-                        if ($eventsDisplayed >= $maxEvents) break;
-                        $eventsDisplayed++;
-                ?>
+                            foreach($data as $event): 
+                                if ($eventsDisplayed >= $maxEvents) break;
+                                $eventsDisplayed++;
+                        ?>
 
-                    <?php include ('../app/views/components/search/event-card.php'); ?>
-                <?php endforeach ?>
-                    <!-- Show More / Show Less button -->
-                    <form method="POST" id="showMoreForm">
-                        <input type="hidden" id="showMore" name="showMore" value="<?= $showMore ? 'true' : 'false' ?>">
-                        <?php if (count($data) > 3): ?>
-                            <button type="button" class="view-more" onclick="handleShowMore()">
-                                <?= $showMore ? 'Show Less' : 'View More' ?>
-                            </button>
-                        <?php endif; ?>
-                    </form>
-            </main>
-            <?php endif ?>
+                            <?php include ('../app/views/components/search/event-card.php'); ?>
+                        <?php endforeach ?>
+                            <!-- Show More / Show Less button -->
+                            <form method="POST" id="showMoreForm">
+                                <input type="hidden" id="showMore" name="showMore" value="<?= $showMore ? 'true' : 'false' ?>">
+                                <?php if (count($data) > 3): ?>
+                                    <button type="button" class="view-more" onclick="handleShowMore()">
+                                        <?= $showMore ? 'Show Less' : 'View More' ?>
+                                    </button>
+                                <?php endif; ?>
+                            </form>
+                    </main>
+                </div>
+            </div>
         </div>
     </div>
     <script>
@@ -97,40 +95,6 @@
             document.getElementById('showMoreForm').submit();
         }
     </script>
-
-        <script>
-            function toggleCheckbox(category,selected) {
-                const freeCheckbox = document.getElementById('free-checkbox');
-                const paidCheckbox = document.getElementById('paid-checkbox');
-
-                if (selected === 'free') {
-                    paidCheckbox.checked = false;
-                    paidCheckbox.disabled = freeCheckbox.checked;
-                } else if (selected === 'paid') {
-                    freeCheckbox.checked = false;
-                    freeCheckbox.disabled = paidCheckbox.checked;
-                }
-
-                if (category === 'type') {
-                    const indoorCheckbox = document.getElementById('indoor-checkbox');
-                    const outdoorCheckbox = document.getElementById('outdoor-checkbox');
-
-                    if (selected === 'indoor') {
-                        outdoorCheckbox.checked = false;
-                        outdoorCheckbox.disabled = indoorCheckbox.checked;
-                    } else if (selected === 'outdoor') {
-                        indoorCheckbox.checked = false;
-                        indoorCheckbox.disabled = outdoorCheckbox.checked;
-                    }
-                }
-            }
-
-            function goToEventPage($event){
-                window.location.href = window.location.href = "ticketevent?id=<?php $event->id?>";;
-            }
-            
-        
-        </script>
 
 </body>
 </html>
