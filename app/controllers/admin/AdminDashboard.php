@@ -22,8 +22,9 @@ class AdminDashboard {
         // echo json_encode($data['upcoming']);
 
         if($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['is_delete'])){
+            // show($_POST);
             $this->deleteEvent($event);
-            $this->deleteNotification($notification);
+            $this->deleteNotification($event,$notification);
             redirect('admin-dashboard');
         }
 
@@ -74,8 +75,18 @@ class AdminDashboard {
         // redirect('admin-dashboard');
     }
 
-    private function deleteNotification($notification) {
-        $id = $_POST['notification_id'];
-        $notification->insert($_POST);
+    private function deleteNotification($event,$notification) {
+        $eventid = $_POST['event_id'];
+        $eventDetails = $event->firstById($eventid);
+        $changes[] = "your event {$eventDetails->event_name} has been deleted by the admin";
+        $link = "event-planner-myevents";
+        $notifymsg = [
+            'user_id' => $eventDetails->createdBy,
+            'title' => "Your event {$eventDetails->event_name} has been deleted",
+            'message' => json_encode($changes),
+            'is_read' => 0,
+            'link' => $link,
+        ];
+        $notification->insert($notifymsg);
     }
 }

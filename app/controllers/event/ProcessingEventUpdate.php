@@ -17,6 +17,7 @@ class ProcessingEventUpdate{
         if($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['update'])){
             $event_id = htmlspecialchars($_GET['event_id']);
             //show($event_id);
+            show($_POST);
             $data['error']=$this->updateDetail($event,$event_id);
         }
 
@@ -37,6 +38,7 @@ class ProcessingEventUpdate{
         $success = 'flag=' . 2 . '&msg=' . $msg . '&success_no=' . 1;
 
         if($event->validProcessingEventUpdate($_POST)){
+
             $event->update($event_id, $_POST);
             unset($_POST['update']);
             //show($_POST);

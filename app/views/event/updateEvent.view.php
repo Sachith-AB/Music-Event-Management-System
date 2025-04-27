@@ -159,11 +159,10 @@ $_SESSION['last_visit'] = date('Y-m-d H:i:s');
     <?php endif ?>
 
     <script src="<?= ROOT ?>/assets/js/message.js"></script>
-    <!-- Script to go back to the previous page when cancel button is clicked -->
+   
     <script>
         function goBack() {
-            window.location.href = "event-review?event_name=<?php echo $data['event_name']?>";
-            // window.history.back();
+            window.location.href = "event-review?event_name=<?php echo $data['event']['event_name']?>";
         }
     </script>
     <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>

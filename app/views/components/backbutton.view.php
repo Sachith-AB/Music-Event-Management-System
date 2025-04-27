@@ -11,7 +11,7 @@
             window.history.back();
         } else {
             // fallback if no history: redirect to dashboard or a safe route
-            window.location.href = "<?= ROOT ?>/user/dashboard"; // update to your fallback route
+            window.location.href = "<?= ROOT ?>/home"; // update to your fallback route
         }
     }
 </script>
