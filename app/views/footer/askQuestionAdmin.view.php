@@ -13,9 +13,12 @@
 <body>
     <div class="page-container">
         <div class="container">
-            <!-- Include Back Button Component -->
-            <?php include('../app/views/components/backbutton.view.php'); ?>
-            <h1>Ask Questions</h1>
+            <div class="back-button">
+                <!-- Include Back Button Component -->
+                <?php include('../app/views/components/backbutton.view.php'); ?>
+                <h1>Ask Questions</h1>
+            </div>
+            
 
             <table>
                 <thead>
