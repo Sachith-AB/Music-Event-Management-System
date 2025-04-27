@@ -66,4 +66,5 @@
         </script>
     </div>
 </body>
+<?php include ('../app/views/components/footer.php'); ?>
 </html>

@@ -21,7 +21,8 @@ class Event {
         'createdBy',
         'address',
         'status',
-        'is_delete'
+        'is_delete',
+        'created_at'
     ];
 
     public function validEvent($data) {
@@ -523,6 +524,7 @@ class Event {
                         e.start_time, 
                         e.address, 
                         e.createdBy, 
+                        e.created_at,
                         e.cover_images, 
                         e.status,
                         u.id AS user_id, 

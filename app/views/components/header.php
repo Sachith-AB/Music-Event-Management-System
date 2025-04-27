@@ -14,7 +14,17 @@
         $_SESSION['USER'] = null;
     }
     
-    //show($_SESSION["USER"]);
+    if (!empty($notifications['newnotifications']) && is_array($notifications['newnotifications'])) {
+        usort($notifications['newnotifications'], function($a, $b) {
+            return strtotime($b->created_at) - strtotime($a->created_at);
+        });
+    }
+    
+    if (!empty($notifications['allnotifications']) && is_array($notifications['allnotifications'])) {
+        usort($notifications['allnotifications'], function($a, $b) {
+            return strtotime($b->created_at) - strtotime($a->created_at);
+        });
+    }
 ?>
 <header>
     <!-- <nav>
