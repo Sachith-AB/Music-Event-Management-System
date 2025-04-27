@@ -112,8 +112,8 @@
                             
                                 <p class="text">
                                     By signing up, I agree to the
-                                    <a href="<?=ROOT?>/terms-of-use" class="toggle-1">Terms of Services</a> and
-                                    <a href="<?=ROOT?>/privacy" class="toggle-1">Privacy Policy</a>
+                                    <a href="terms-of-use" class="toggle-1">Terms of Services</a> and
+                                    <a href="privacy" class="toggle-1">Privacy Policy</a>
                                 </p>
                             </div>
                         </form>
