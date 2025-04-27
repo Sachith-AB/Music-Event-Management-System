@@ -14,7 +14,17 @@
         $_SESSION['USER'] = null;
     }
     
-    //show($_SESSION["USER"]);
+    if (!empty($notifications['newnotifications']) && is_array($notifications['newnotifications'])) {
+        usort($notifications['newnotifications'], function($a, $b) {
+            return strtotime($b->created_at) - strtotime($a->created_at);
+        });
+    }
+    
+    if (!empty($notifications['allnotifications']) && is_array($notifications['allnotifications'])) {
+        usort($notifications['allnotifications'], function($a, $b) {
+            return strtotime($b->created_at) - strtotime($a->created_at);
+        });
+    }
 ?>
 <header>
     <!-- <nav>
@@ -53,31 +63,7 @@
                             <?php endif; ?>
                         </button>
                         <!-- Notifications Popup -->
-                        <div id="notificationPopup" class="notification-popup" style="display: none;">
-
-                            <?php if (!empty($notifications["allnotifications"]) && is_array($notifications["allnotifications"])): ?>
-                                <ul>
-                                    <?php foreach ($notifications["allnotifications"] as $note): ?>
-                                        <li class="notification-item" onclick="window.location.href='<?= $note->link ?>&note_id=<?= $note->id ?>'">
-                                            <strong><?= htmlspecialchars($note->title) ?></strong><br>
-                                            <?php 
-                                                $messages = json_decode($note->message);
-                                                if (json_last_error() === JSON_ERROR_NONE && is_array($messages)) {
-                                                    foreach ($messages as $msg) {
-                                                        echo "<div>" . htmlspecialchars($msg) . "</div>";
-                                                    }
-                                                } else {
-                                                    echo "<div>" . htmlspecialchars($note->message) . "</div>";
-                                                }
-                                            ?>
-                                            <small><?= date('F j, Y, g:i a', strtotime($note->created_at)) ?></small>
-                                        </li>
-                                    <?php endforeach; ?>
-                                </ul>
-                            <?php else: ?>
-                                <p>No notifications found.</p>
-                            <?php endif; ?>
-                        </div>
+                        <?php include_once 'notification-popup.php'; ?>
                     </div>
 
                     <!-- js for header -->

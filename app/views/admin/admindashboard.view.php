@@ -116,14 +116,16 @@
         <h2 class="content-header"><br>Scheduled Events</h2>
         <div class="events-container">
             <?php if(!empty($data['scheduled'])): ?>
+                
                 <?php 
                     $maxEventsScheduled = $showMoreScheduled ? count($data['scheduled']) : 6;
                     $eventsDisplayedScheduled = 0;
 
-                    usort($data['scheduled'], function($a, $b) {
-                        return strtotime($a->created_at) - strtotime($b->created_at);
-                    });
-
+                    if(!empty($data['scheduled']) && is_array($data['scheduled'])) {
+                        usort($data['scheduled'], function($a, $b) {
+                            return strtotime($a->eventDate) - strtotime($b->eventDate);
+                        });
+                    }
                     foreach($data['scheduled'] as $event): 
                         if ($eventsDisplayedScheduled >= $maxEventsScheduled) break;
                                     $eventsDisplayedScheduled++;
