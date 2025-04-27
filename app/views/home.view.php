@@ -38,7 +38,7 @@
                             $coverImages = json_decode($event->cover_images, true);
                             $firstImage = $coverImages[0] ?? ''; // fallback if empty
                         ?>
-                        <img src="<?= ROOT ?>/assets/images/events/1.jpg" alt="<?= htmlspecialchars($event->event_name) ?>">
+                        <img src="<?= ROOT . '/assets/images/events/' . $firstImage ?>" alt="<?= htmlspecialchars($event->event_name) ?>">
                         <div class="event-info">
                             <div class="event-details">
                                 <h3><?= htmlspecialchars($event->event_name) ?></h3>
