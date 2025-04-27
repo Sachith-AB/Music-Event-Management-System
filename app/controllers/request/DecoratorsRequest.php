@@ -8,13 +8,25 @@ class DecoratorsRequest {
 
         $request = new Request;
         $event = new Event;
+        $calendar = new Calendar;
         $notification = new Notification;
         $data = [];
 
         if($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['request'])) {
 
-            $this->createRequest($request);
-            $this->createNotification($event,$notification,$_POST);
+            $event_data = $event->firstById($_POST['event_id']);
+
+            if(!$this->checkAvailability($calendar, $_POST['collaborator_id'], $event_data->eventDate))
+            {
+                $error = "Collaborator is not available on this date";
+                $errorParams = 'flag=1&error=' . urlencode($error) . '&error_no=1';
+                redirect('request-bands?id='.$_POST['event_id'].'&'.$errorParams);
+            }
+            else
+            {
+                $this->createRequest($request);
+                $this->createNotification($event,$notification,$_POST);
+            }
             
         }
 
@@ -98,6 +110,9 @@ class DecoratorsRequest {
         $notification->insert($notifymsg);
     }
 
-
+    private function checkAvailability($calendar, $user_id, $event_date)
+    {
+        return $calendar->getAvailability($user_id, $event_date);
+    }
 
 }
