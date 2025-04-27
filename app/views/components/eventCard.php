@@ -1,6 +1,11 @@
 <div class="recent-events-row">
 <?php
-foreach ($recentEvents as $event):
+    $today = date('Y-m-d');
+    $futureEvents = array_filter($recentEvents, function($event) use ($today) {
+        return $event->eventDate >= $today; // Strictly after today
+    });
+
+foreach ($futureEvents as $event):
     $startDate = date('D, M d', strtotime($event->start_time));
     $startTime = date('g:i A', strtotime($event->start_time));
     $endDate = date('D, M d', strtotime($event->end_time));
