@@ -21,11 +21,11 @@ $error = esc($_GET['error'] ?? '');
 <body>
 
 <div class="pdf-container">
-
-    <?php include('../app/views/components/backbutton.view.php'); ?>
-    
-    <h1>Event Collaborator Report</h1>
-
+    <div class="back-button">
+        <?php include('../app/views/components/backbutton.view.php'); ?>
+        
+        <h1 class="usertext">Event Collaborator Report</h1>
+    </div>
             <div class="date-range">
 
                 <form method = "POST" >
