@@ -7,10 +7,19 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>About Us - Music Event Management System</title>
     <link rel="stylesheet" href="<?= ROOT ?>/assets/css/about.css">
+    <link rel="stylesheet" href="<?= ROOT ?>/assets/css/backbutton.css">
 </head>
 <body>
     <div class="container">
-        
+
+            <div class="back-button">
+                
+                    <!-- Include Back Button Component -->
+                    <?php include('../app/views/components/backbutton.view.php'); ?>
+                
+                
+            </div>
+                
             <h1>About Us</h1>
             <p class="last-updated">Creating Unforgettable Musical Experiences Since 2025</p>
         
