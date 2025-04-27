@@ -34,6 +34,7 @@
                     </div>
                     <div class="button-group">
                         <button class="change-button" onclick="goUpdate()">Update</button>
+                        <button class="remove-button" onclick="goDelete()">Delete</button>
                     </div>
                 </div>
 
@@ -74,7 +75,7 @@
                                 </div>
                                 <div class="ticket-details">
                                 <?php $restrictions = json_decode($ticket->restrictions); ?>
-                                    <p>
+                                    <p class="opportunity">
                                         <strong>Opportunities:</strong>
                                         <?php if (!empty($restrictions)): ?>
                                             <ul>
