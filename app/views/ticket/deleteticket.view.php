@@ -29,18 +29,17 @@
             </section>
 
             <div class ="action-buttons">
-                <button onclick="goBack()" class="no-btn">No</button>
                 <form method="POST">
                     <button type="submit" name="delete" class="yes-btn">Yes</button>
                 </form>
-                
+                <button onclick="goBack(<?php echo $data[0]->event_id ?>)" class="no-btn">No</button>
             </div>
         </div>
     </div>
 
 
     <script>
-       function goBack() {
+        function goBack(eventid) {
             
             if (eventid) {
                 window.location.href = `view-tickets?event_id=${eventid}`;
