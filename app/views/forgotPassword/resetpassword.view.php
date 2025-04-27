@@ -49,6 +49,12 @@
             $message = $data['error'];
             include("../app/views/components/r-message.php")
         ?>
+
+    <?php elseif($flag == 1): ?>
+        <?php 
+            $message = $error;
+            include("../app/views/components/r-message.php")
+        ?>
     <?php endif ?>
 
     <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
