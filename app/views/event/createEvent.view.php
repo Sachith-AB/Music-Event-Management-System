@@ -39,7 +39,7 @@ $_SESSION['last_visit'] = date('Y-m-d H:i:s');
         <div class="main-content">
             <form method="POST" enctype="multipart/form-data">
                 <section id="general-information">
-                   
+
                         <?php include('../app/views/components/backbutton.view.php'); ?>
                         <div class="çreateeventheader">
                             <h2>General Information</h2>
@@ -97,11 +97,11 @@ $_SESSION['last_visit'] = date('Y-m-d H:i:s');
                         <label>Pricing</label>
                         <div class="radio-group">
                             <div class="radio-item">
-                                <input type="radio" id="free" name="pricing" value="free" required>
+                                <input type="radio" id="free" name="pricing" value="free" >
                                 <label for="free">Free</label>
                             </div>
                             <div class="radio-item">
-                                <input type="radio" id="paid" name="pricing" value="paid" required>
+                                <input type="radio" id="paid" name="pricing" value="paid" >
                                 <label for="paid">Paid</label>
                             </div>
                         </div>
@@ -111,11 +111,11 @@ $_SESSION['last_visit'] = date('Y-m-d H:i:s');
                         <label>Type</label>
                         <div class="radio-group">
                             <div class="radio-item">
-                                <input type="radio" id="indoor" name="type" value="indoor" required>
+                                <input type="radio" id="indoor" name="type" value="indoor" >
                                 <label for="free">Indoor</label>
                             </div>
                             <div class="radio-item">
-                                <input type="radio" id="outdoor" name="type" value="outdoor" required>
+                                <input type="radio" id="outdoor" name="type" value="outdoor" >
                                 <label for="outdoor">Outoor</label>
                             </div>
 
@@ -142,7 +142,7 @@ $_SESSION['last_visit'] = date('Y-m-d H:i:s');
         </div>
     </div>
 
-    <!--<?php show($data); ?> -->
+
     <?php if (!empty($data['errors'])): ?>
         <?php 
             $message = $data['errors']['error'];
@@ -265,7 +265,7 @@ $_SESSION['last_visit'] = date('Y-m-d H:i:s');
                     reader.readAsDataURL(input.files[i]);
                 }
                 
-               
+
             }
         }
     </script>
