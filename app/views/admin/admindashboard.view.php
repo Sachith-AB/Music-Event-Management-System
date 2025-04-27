@@ -255,8 +255,8 @@
                 justify-content: center; align-items: center; z-index: 1000;">
                 <div style="background: white; padding: 20px; border-radius: 8px; text-align: center;">
                         <p class="confirm-message">Are you sure you want to delete this event?</p>
-                        <button class="confirm-btn submit-btn" onclick="submitConfirmedForm()">Submit</button>
-                        <button class="confirm-btn cancel-btn" onclick="closeModal()">Cancel</button>
+                        <button class="confirm-btn submit-btn" onclick="submitConfirmedForm()">Yes</button>
+                        <button class="confirm-btn cancel-btn" onclick="closeModal()">No</button>
                 </div>
             </div>
 

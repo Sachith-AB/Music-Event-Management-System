@@ -75,18 +75,8 @@ class AdminDashboard {
         // redirect('admin-dashboard');
     }
 
-    private function deleteNotification($event,$notification) {
-        $eventid = $_POST['event_id'];
-        $eventDetails = $event->firstById($eventid);
-        $changes[] = "your event {$eventDetails->event_name} has been deleted by the admin";
-        $link = "event-planner-myevents";
-        $notifymsg = [
-            'user_id' => $eventDetails->createdBy,
-            'title' => "Your event {$eventDetails->event_name} has been deleted",
-            'message' => json_encode($changes),
-            'is_read' => 0,
-            'link' => $link,
-        ];
-        $notification->insert($notifymsg);
+    private function deleteNotification($notification) {
+        $id = $_POST['notification_id'];
+        $notification->insert($_POST);
     }
 }

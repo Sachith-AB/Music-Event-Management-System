@@ -9,6 +9,7 @@ class SingerRequest {
         $request = new Request;
         $calendar = new Calendar;
         $event = new Event;
+        $notification = new Notification;
         $data = [];
 
         if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['request'])) {
@@ -17,13 +18,15 @@ class SingerRequest {
         
             if (!$this->checkAvailability($calendar, $_POST['collaborator_id'], $event_data->eventDate)) {
 
-                $error = "User is not available on this date";
+                $error = "Collaborator is not available on this date";
                 $errorParams = 'flag=1&error=' . urlencode($error) . '&error_no=1';
             
                 redirect('request-singers?id=' . $_POST['event_id'] . '&' . $errorParams);
             
             } else {
+                $this->createNotification($event,$notification,$_POST);
                 $this->createRequest($request);
+                $this->createNotification($event,$notification,$_POST);
             }
         }
         
@@ -90,8 +93,35 @@ class SingerRequest {
         unset($_POST);
     }
 
+    public function createNotification($event,$notification,$post){
+        $eventDetails = $event->firstById($post['event_id']);
+        $changes[] = "Event name: '{$eventDetails->event_name}' Event Date: '{$eventDetails->eventDate}'";
+        $link = "colloborator-request";
+        $notifymsg = [
+            'user_id' => $post['collaborator_id'],
+            'title' => "Recieved a request",
+            'message' => json_encode($changes),
+            'is_read' => 0,
+            'link' => $link,
+        ];
+        $notification->insert($notifymsg);
+    }
+
     private function checkAvailability($calendar, $user_id, $event_date) {
         return $calendar->getAvailability($user_id, $event_date);
-    }    
+    }  
+    public function createNotification($event,$notification,$post){
+        $eventDetails = $event->firstById($post['event_id']);
+        $changes[] = "Event name: '{$eventDetails->event_name}' Event Date: '{$eventDetails->eventDate}'";
+        $link = "colloborator-request";
+        $notifymsg = [
+            'user_id' => $post['collaborator_id'],
+            'title' => "Recieved a request",
+            'message' => json_encode($changes),
+            'is_read' => 0,
+            'link' => $link,
+        ];
+        $notification->insert($notifymsg);
+    }  
 
 }
