@@ -34,7 +34,6 @@
                     </div>
                     <div class="button-group">
                         <button class="change-button" onclick="goUpdate()">Update</button>
-                        <button class="remove-button" onclick="goDelete()">Draft</button>
                     </div>
                 </div>
 
