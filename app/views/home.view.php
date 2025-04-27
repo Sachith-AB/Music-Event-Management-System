@@ -18,7 +18,7 @@
     $pass = htmlspecialchars($_GET['pass'] ?? '');
     $flag = htmlspecialchars($_GET['flag'] ?? 2);
     $error = htmlspecialchars($_GET['error']?? '');
-    $role = htmlspecialchars($_GET['role']?? '');
+    $role = htmlspecialchars($_GET['role']?? ''); 
 ?>
 
     <div class="block">

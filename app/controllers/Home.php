@@ -15,7 +15,8 @@ class Home {
 
     private function getEventDetails($event) {
         $res = $event->findAll();
-    
+        $today = date('Y-m-d'); // Current date and time
+
         // Assign rating and review data
         foreach ($res as $key => $evt) {
             $ratingData = $this->getEventRating(new Rating, $evt->id, new User);
@@ -30,14 +31,21 @@ class Home {
         usort($trendingEvents, function ($a, $b) {
             return $b->averageRating <=> $a->averageRating;
         });
-        $trendingEvents = array_slice($trendingEvents, 0, 3);
+        $trendingEvents = array_filter($trendingEvents, function ($event) use ($today) {
+            return $event->eventDate > $today && $event->status == 'scheduled' && $event->is_delete == 0; // Filter out events with no ratings
+        });
     
         // Sort for recent events (by eventDate DESC)
         $recentEvents = $res;
         usort($recentEvents, function ($a, $b) {
             return strtotime($b->eventDate) <=> strtotime($a->eventDate);
         });
-    
+
+        if(count($trendingEvents) < 3) {
+            $trendingEvents = $recentEvents;
+        }
+        
+        $trendingEvents = array_slice($trendingEvents, 0, 3);
         // Reverse the array so oldest events come first
         $recentEvents = array_reverse($recentEvents);
     
