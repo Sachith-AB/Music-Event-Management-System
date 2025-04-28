@@ -29,8 +29,12 @@
                         <!-- Include Back Button Component -->
                         <?php include('../app/views/components/backbutton.view.php'); ?>
                     </div>
-                    
-                    <span><?= htmlspecialchars($ticketdetails[0]->event_name) ?></span>: <?= htmlspecialchars($ticketdetails[0]->event_description) ?>
+                    <span><?= htmlspecialchars($ticketdetails[0]->event_name)?>:</span>
+
+                    <?php
+                        $description = $ticketdetails[0]->event_description;
+                        echo strlen($description) > 50 ? substr($description, 0, 50) . '...' : $description;
+                    ?>
                 </h1>
                 <div class="event-info">
                     <div class="event-item">
