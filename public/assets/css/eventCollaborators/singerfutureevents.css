@@ -41,19 +41,16 @@
   position: relative;
   flex: 1 1 340px; /* Set a fixed width for each card */
   max-width: 340px;
+  height: 300px;
   background-color: #f0f0f0;
   padding: 15px;
   border-radius: 8px;
   box-shadow: 0 4px 6px rgba(0,0,0,0.1);
   transition: transform 0.3s ease;
   text-align: center;
+  overflow: hidden;
 }
-.event-card:hover {
-  transform: scale(1.05);
-  box-shadow: 0 6px 8px rgba(0, 0, 0, 0.2);
-  cursor: pointer;
-  opacity: 0.5;
-}
+
 .event-card img {
   width: 100%;
   height: 150px; /* Set a fixed height for the image */
@@ -76,4 +73,129 @@
   text-align: center;
   padding: 12px;
   line-height: 25px;
+  overflow: hidden;
+}
+.event-details:hover {
+  cursor: pointer;
+}
+.event-card:hover {
+  transform: scale(1.05);
+  box-shadow: 0 6px 8px rgba(0, 0, 0, 0.2);
+  opacity: 1.5;
+  border-radius: 10px;
+}
+/* Modal Background */
+.modal-wrapper {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0,0,0,0.6);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+}
+
+/* Hide Modal by default */
+.hidden {
+  display: none;
+}
+
+/* Modal Box */
+.modal {
+  background: #fff;
+  padding: 30px 25px;
+  border-radius: 12px;
+  width: 400px;
+  max-width: 90%;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+  position: relative;
+  animation: fadeIn 0.4s ease;
+}
+
+/* Animation */
+@keyframes fadeIn {
+  from { opacity: 0; transform: scale(0.9); }
+  to { opacity: 1; transform: scale(1); }
+}
+
+/* Close Button */
+.close-btn {
+  position: absolute;
+  top: 10px;
+  right: 15px;
+  background: transparent;
+  border: none;
+  font-size: 24px;
+  cursor: pointer;
+  color: #333;
+}
+
+/* Heading */
+.modal h2 {
+  margin-top: 10px;
+  font-size: 22px;
+  color: #00BDD6;
+  text-align: center;
+}
+
+/* Textarea */
+.modal textarea {
+  width: 100%;
+  margin-top: 20px;
+  padding: 12px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  resize: none;
+  font-size: 16px;
+  font-family: inherit;
+}
+
+/* Flag Button */
+.flag-btn {
+  z-index: 10px;
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  background-color: #00BDD6;
+  color: white;
+  font-size: 18px;
+  padding: 6px 8px;
+  border-radius: 50%;
+  cursor: pointer;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+  transition: transform 0.3s ease, background-color 0.3s ease;
+}
+
+.flag-btn:hover {
+  transform: scale(1.2);
+  background-color: #00a5ba;
+}
+/* Save Button */
+.save-btn {
+  margin-top: 20px;
+  width: 100%;
+  background-color: #00BDD6;
+  color: white;
+  border: none;
+  padding: 12px 0;
+  font-size: 16px;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.save-btn:hover {
+  background-color: #00a5ba;
+}
+textarea {
+  text-align: center;
+  padding: 10px; /* Optional: For better spacing */
+  width: 100%; /* Optional: To ensure it spans the full container width */
+  font-family: Arial, sans-serif; /* Optional: For a clean font */
+  resize: vertical; /* Optional: Allow resizing vertically */
+  justify-content: center;
+  
 }
