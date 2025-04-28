@@ -19,6 +19,10 @@ body {
     padding: 2rem;
     flex: 1;
 }
+.back-button{
+    display: flex;
+    gap: 20px;
+}
 
 h1 {
     color: #00BDD6FF;
