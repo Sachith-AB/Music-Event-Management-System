@@ -29,6 +29,10 @@
                         <label for="sale-strt-time">Sale Start Time</label>
                         <input type="time" id="sale-strt-time" name="sale_strt_time" >
                     </div>
+                   <!-- <select name="" id="">
+                    <option value="red">red</option>
+                   </select> -->
+                   
 
                     <div class = "form-group">
                         <label for="sale-end-date">Sale End Date</label>

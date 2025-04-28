@@ -37,8 +37,7 @@ class AdminDashboard {
 
     public function displayProcessingEvents($event)
     {
-    //    $offset = isset($_GET['offset']) ? intval($_GET['offset']) : 0;
-    //    $limit = 6;
+
     
         $res = $event->getProcessingEvents();
         return $res;

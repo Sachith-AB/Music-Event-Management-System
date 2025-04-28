@@ -32,6 +32,8 @@ class EventPlannerDashboard {
         $totalEvents = count($userEvents) ?? 0; // Number of events
         $totalEventBuyers = count($eventBuyers) ?? 0;
 
+        
+
         // Calculate total revenue and total tickets sold
         foreach ($userEvents as $event) {
             $totalRevenue += $event->total_revenue;

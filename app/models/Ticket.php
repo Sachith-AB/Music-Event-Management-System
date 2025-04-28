@@ -1,4 +1,6 @@
-<?php 
+<?php
+
+use PhpParser\Node\Expr\FuncCall;
 
 class Ticket {
     use Model;
@@ -211,6 +213,11 @@ class Ticket {
         $query = "SELECT price FROM tickets WHERE event_id = $event_id";
         $res = $this->query($query);
         return $res;
+    }
+
+    public function gettenticket($event_id){
+        $query = "SELECT SUM(sold_quantity) FROM tickets GROUP BY $event_id ";
+
     }
 
 }
