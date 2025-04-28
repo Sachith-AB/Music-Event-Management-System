@@ -81,7 +81,7 @@
                         </div>
                         <div class="input-field">
                             <label for="phone">Phone number</label>
-                            <input type="tel" id="phone" name="phone" placeholder="07********">
+                            <input type="tel" value="<?= htmlspecialchars($_SESSION['USER']->contact) ?>" id="phone" name="phone" placeholder="07********">
                         </div>
                     </div>
                 </div>
