@@ -32,7 +32,11 @@
                         <?php include('../app/views/components/backbutton.view.php'); ?>
                         <span class="highlight"><?php echo $data['event']->event_name ?></span>
                     </div>
-                    <?php echo $data['event']->description ?>
+                    <?php
+                        $description = $data['event']->description;
+                        echo strlen($description) > 100 ? substr($description, 0, 100) . '...' : $description;
+                    ?>
+
                 </div>
                 
                 <div class="countdown-timer">
