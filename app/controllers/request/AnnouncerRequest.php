@@ -8,7 +8,7 @@ class AnnouncerRequest {
 
         $request = new Request;
         $event = new Event;
-        $notication = new Notification;
+        $notification = new Notification;
         $calendar = new Calendar;
 
         $data = [];

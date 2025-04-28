@@ -4,7 +4,10 @@
     padding: 2rem;
     font-family: 'Poppins', sans-serif;
 }
-
+.back-button{
+    
+    padding-left: 90px;
+}
 h1 {
     color: #00BDD6FF;
     text-align: center;

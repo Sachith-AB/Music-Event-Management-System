@@ -153,8 +153,11 @@
                 <div class="events-container">
                     <?php foreach ($upcomingEvents as $event): ?>
                         <div class="event-card">
-                            <!-- Display cover image if available -->
-                            <img src="<?= !empty($event->cover_images) ? ROOT . "/assets/images/events/" . $event->cover_images : ROOT . "/assets/images/ticket/musicevent5.jpg"; ?>" alt="<?= htmlspecialchars($event->event_name); ?>" class="event-image">
+                        <?php
+                        $coverImages = json_decode($event->cover_images, true);
+                        $firstImage = $coverImages[0] ?? ''; // fallback if empty
+                        ?>
+                        <img src="<?= ROOT ?>/assets/images/events/<?php echo $firstImage ?>" alt="<?= htmlspecialchars($event->event_name); ?>" class="event-image">
                             
                             <div class="event-details">
                                 <!-- Event Name -->
