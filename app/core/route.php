@@ -63,6 +63,9 @@ if(getUserRole() == 'collaborator' || isAdmin()){
     route('terms-of-use','footer/TermsOfUse@index');
     route('about-us','footer/AboutUs@index');
     route('ask-question','footer/AskQuestion@index');
+
+    route('admin-vieweventplanner','admin/ViewEventPlanner@index');
+    route('update-profile','ticketHolder/UpdateProf@index');
 }
 
 

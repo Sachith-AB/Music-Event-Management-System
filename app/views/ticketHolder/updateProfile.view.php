@@ -102,7 +102,6 @@
                     </div>
 
                     <div class="up-button-group">
-                        <a href="forgot-password" type="button" class="up-btn-link">Forgot Password?</a>
                         <button type="submit" name="change-password" class="up-btn">Change Password</button>
                     </div>
                 </form>
@@ -111,6 +110,23 @@
 
     </div>
 </div>
+
+<script>
+    function goToProfile() {
+        window.location.href = "profile";
+    }
+    if (window.history.replaceState) {
+        const url = new URL(window.location);
+        url.searchParams.delete('flag');
+        url.searchParams.delete('error');
+        url.searchParams.delete('success');
+        url.searchParams.delete('error');
+        url.searchParams.delete('id');
+        url.searchParams.delete('success_no');
+        url.searchParams.delete('msg');
+        window.history.replaceState(null, '', url.toString());
+    }
+</script>
 
 <?php if (!empty($data['error'])): ?>
     <?php
@@ -128,19 +144,6 @@
         include ("../app/views/components/s-message.php");
     ?>
 <?php endif ?>
-
-<script>
-    function goToProfile() {
-        window.location.href = "profile";
-    }
-    if (window.history.replaceState) {
-        const url = new URL(window.location);
-        url.searchParams.delete('flag');
-        url.searchParams.delete('error');
-        url.searchParams.delete('msg');
-        window.history.replaceState(null, '', url.toString());
-    }
-</script>
 
 <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
 <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>

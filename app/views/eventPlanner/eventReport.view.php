@@ -23,8 +23,7 @@
         <div class="section-container">
             <h2>Completed Events</h2>
 
-             
-             <div class="filter-controls">
+            <div class="filter-controls">
                 <div class="filter-group">
                     <label for="pastMonth">Month:</label>
                     <select id="pastMonth" onchange="filterPastEvents()">
@@ -98,7 +97,7 @@
     <button class="print-button" onclick="print()"><i class="fa-solid fa-download"></i></button>
 
     <script>
-         function filterPastEvents() {
+        function filterPastEvents() {
             const month = document.getElementById('pastMonth').value;
             const year = document.getElementById('pastYear').value;
             

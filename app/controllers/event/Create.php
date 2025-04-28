@@ -86,7 +86,7 @@ class Create {
             $error = $errors[$index];
             $size = $sizes[$index];
     
-            $max_size = 5 * 1024 * 1024; // 5MB in bytes
+            $max_size = 10 * 1024 * 1024; // 5MB in bytes
     
             if ($error === 0 && $size < $max_size) {
                 // Get image extension
@@ -94,7 +94,7 @@ class Create {
                 $img_ex_lc = strtolower($img_ex);
     
                 // Allowed image extensions
-                $allowed_exs = ["jpg", "jpeg", "png"];
+                $allowed_exs = ["jpg", "jpeg", "png","avif"];
     
                 if (in_array($img_ex_lc, $allowed_exs)) {
                     // Create a unique name for the image

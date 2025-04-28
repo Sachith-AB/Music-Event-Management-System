@@ -43,8 +43,8 @@ $_SESSION['last_visit'] = date('Y-m-d H:i:s');
                 <h1 class="event-update-head1">Update Event Details</h1>
                 
                 <!-- Event Details Form -->
-                <form method="POST" class="form">
-               
+                <form method="POST" class="form" enctype="multipart/form-data">
+
                     <div class="event-update-input-wrap">
                         <label for="event_name">Event Name</label>
                         <input name="event_name" type="text" placeholder="EventName" value="<?php echo $data['event']['event_name'] ?>">
@@ -57,7 +57,7 @@ $_SESSION['last_visit'] = date('Y-m-d H:i:s');
 
                     <div class="event-update-input-wrap">
                         <label for="audience">Audience</label>
-                        <input name="audience" type="number" placeholder="Audience" value="<?php echo $data['event']['audience'] ?>">
+                        <input name="audience" type="number" placeholder="Audience" min="0" value="<?php echo $data['event']['audience'] ?>">
                     </div>
 
                     <div class="event-update-input-wrap">
@@ -67,7 +67,7 @@ $_SESSION['last_visit'] = date('Y-m-d H:i:s');
                             <button type="button" class="event-update-search-button" id="search-button">Search</button>
                         </div>
                     </div>
-               
+
                     <div id="map" class="map" style="height: 400px;"></div>
 
                     <br>
@@ -137,6 +137,14 @@ $_SESSION['last_visit'] = date('Y-m-d H:i:s');
                                 </div>
                             </div>
                         <?php endif; ?>
+
+                        <div class="upload-new">
+                            <h4>Upload New Images</h4>
+                            <div class="form-group">
+                                <input type="file" name="coverImage[]" id="coverImage" multiple accept="image/*" onchange="previewImages(this)">
+                                <div id="imagePreviewContainer" class="image-preview-container"></div>
+                            </div>
+                        </div>
                         
                         <div class="event-update-button-wrap">
                             <button type="button" onclick="goBack()">Cancel</button>
@@ -149,7 +157,6 @@ $_SESSION['last_visit'] = date('Y-m-d H:i:s');
     </div>
 
 
-    <!--<?php show($data); ?>-->
     <!-- Error Message Display -->
     <?php if (!empty($data['error']['errors']['error'])): ?>
         <?php 
@@ -159,7 +166,41 @@ $_SESSION['last_visit'] = date('Y-m-d H:i:s');
     <?php endif ?>
 
     <script src="<?= ROOT ?>/assets/js/message.js"></script>
-   
+
+    <script>
+        function previewImages(input) {
+            var previewContainer = document.getElementById('imagePreviewContainer');
+            previewContainer.innerHTML = '';
+            
+            if (input.files) {
+                // Limit to 5 images
+                var filesCount = Math.min(input.files.length, 5);
+                
+                for (var i = 0; i < filesCount; i++) {
+                    var reader = new FileReader();
+                    
+                    reader.onload = function(e) {
+                        var previewDiv = document.createElement('div');
+                        previewDiv.style.margin = '5px';
+                        previewDiv.style.position = 'relative';
+                        
+                        var img = document.createElement('img');
+                        img.src = e.target.result;
+                        img.style.width = '100px';
+                        img.style.height = '100px';
+                        img.style.objectFit = 'cover';
+                        img.style.borderRadius = '4px';
+                        
+                        previewDiv.appendChild(img);
+                        previewContainer.appendChild(previewDiv);
+                    }
+                    
+                    reader.readAsDataURL(input.files[i]);
+                }
+            }
+        }
+    </script>
+    
     <script>
         function goBack() {
             window.location.href = "event-review?event_name=<?php echo $data['event']['event_name']?>";

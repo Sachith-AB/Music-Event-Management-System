@@ -6,6 +6,7 @@
 
         public function index()
         {
-            $this->view('footer/termsOfUse');
+            $data = [];
+            $this->view('footer/termsOfUse', $data, false);
         }
     }
