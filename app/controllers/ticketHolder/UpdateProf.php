@@ -41,7 +41,7 @@ class UpdateProf {
         unset($POST['update']);
 
         //Redirect to profile page
-        redirect("profile?id=$id&$success");
+        redirect("update-profile?id=$id&$success");
     }
 
     public function uploadImage ($user,$FILES,$id) {
@@ -98,7 +98,7 @@ class UpdateProf {
                     $user->update($id, ['pro_pic' => $new_img_name], 'id');
 
                     //Redirect to profile page
-                    redirect("profile?id=$id&$success");
+                    redirect("update-profile?id=$id&$success");
                     
                 }else {
                     
@@ -143,6 +143,7 @@ class UpdateProf {
                 $msg = 'Password Invalid';
                 $flag = 1;
                 $errors = 'msg='.$msg.'&flag='.$flag;
+                
                 redirect("update-profile?$errors");
             }
         }else{

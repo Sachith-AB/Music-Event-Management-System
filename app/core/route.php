@@ -57,10 +57,15 @@ if(getUserRole() == 'collaborator' || isAdmin()){
     route('send-message','eventCollaborator/Chat@sendMessage');
     route('get-messages','eventCollaborator/Chat@getMessages');
 
+    route('get-note','eventCollaborator/SingerEvents@getNote');
+
     route('privacy','footer/Privacy@index');
     route('terms-of-use','footer/TermsOfUse@index');
     route('about-us','footer/AboutUs@index');
     route('ask-question','footer/AskQuestion@index');
+
+    route('admin-vieweventplanner','admin/ViewEventPlanner@index');
+    route('update-profile','ticketHolder/UpdateProf@index');
 }
 
 
@@ -113,6 +118,7 @@ if (getUserRole() == 'planner' || isAdmin()){
     route('collaborator-viewprofile','eventCollaborator/ViewProfile@index');
 
     route('notification-event','ticketHolder/NotificationEvent@index');
+    route('delete-buyticket','ticketHolder/Deletebuyticket@index');
 
     route('update-profile','ticketHolder/UpdateProf@index');
 

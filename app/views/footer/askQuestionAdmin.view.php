@@ -7,12 +7,18 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Questions Admin - Music Event Management System</title>
     <link rel="stylesheet" href="<?= ROOT ?>/assets/css/questionAdmin.css">
+    <link rel="stylesheet" href="<?= ROOT ?>/assets/css/backbutton.css">
 </head>
 
 <body>
     <div class="page-container">
         <div class="container">
-            <h1>Ask Questions</h1>
+            <div class="back-button">
+                <!-- Include Back Button Component -->
+                <?php include('../app/views/components/backbutton.view.php'); ?>
+                <h1>Ask Questions</h1>
+            </div>
+            
 
             <table>
                 <thead>

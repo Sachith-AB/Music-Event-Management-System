@@ -60,13 +60,6 @@
                 <div class="event-list-container">
                     <main class="event-list">
                         <?php 
-
-                            if (isset($_POST['category']) && $_POST['category'] == 'trending') {
-                                // Sort events by averageRating descending
-                                usort($data, function($a, $b) {
-                                    return $b->averageRating <=> $a->averageRating;
-                                });
-                            }
                             // Limit events to 3 if showMore is false
                             $maxEvents = $showMore ? count($data) : 3;
                             $eventsDisplayed = 0;

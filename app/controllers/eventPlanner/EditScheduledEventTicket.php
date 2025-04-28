@@ -30,7 +30,7 @@ class EditScheduledEventTicket {
         $event_id = $ticket_details->event_id; // Get the event ID from the ticket details
         $event_details =$event->firstById($event_id);
 
-        show($POST);
+        
         if (isset($POST['restrictions']) && is_array($POST['restrictions'])) {
             $POST['restrictions'] = json_encode($POST['restrictions']);
             //show($_POST);

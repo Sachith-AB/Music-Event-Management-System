@@ -12,10 +12,39 @@ class CollaboratorReport {
 
         if($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['generate-report'])) {
 
-            // show($_POST);
-            $data = $this->getRequests($request);
-            // show($data);
-            $this->view('eventcollaborator/collaboratorreport',$data);
+
+            $start_date = $_POST['start-date'];
+            $end_date = $_POST['end-date'];
+            $today = date('Y-m-d');
+
+            // "From date must be earlier than "To" date 
+            if($start_date > $end_date) {
+
+                $error = "The Start date must be earlier than or same as the End date. ";
+                $errorParams = 'flag=1&error=' . urlencode($error) . '&error_no=1';
+            
+                redirect('collaborator-report?'. $errorParams);
+
+            }
+
+            // no future dates
+            elseif($start_date > $today || $end_date > $today)
+            {
+                $error = "Dates cannot be in the future";
+                $errorParams = 'flag=1&error=' . urlencode($error) . '&error_no=1';
+            
+                redirect('collaborator-report?'. $errorParams);
+            }
+
+            else 
+            {
+                // show($_POST);
+                $data = $this->getRequests($request);
+                // show($data);
+                $this->view('eventcollaborator/collaboratorreport',$data);
+
+            }
+    
 
         }
         else 

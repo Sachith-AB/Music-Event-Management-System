@@ -21,7 +21,8 @@ class Event {
         'createdBy',
         'address',
         'status',
-        'is_delete'
+        'is_delete',
+        'created_at'
     ];
 
     public function validEvent($data) {
@@ -62,7 +63,7 @@ class Event {
         }
 
         // Validate each image
-        $allowedTypes = ['image/jpeg', 'image/png', 'image/jpg', 'image/gif'];
+        $allowedTypes = ['image/jpeg', 'image/png', 'image/jpg', 'image/avif', 'image/gif'];
         $maxFileSize = 5 * 1024 * 1024; 
 
         for ($i = 0; $i < $imageCount; $i++) {
@@ -75,7 +76,7 @@ class Event {
 
             if (!in_array($fileType, $allowedTypes)) {
                 $this->errors['flag'] = true;
-                $this->errors['error'] = "Invalid file type. Only JPG, JPEG, PNG and GIF images are allowed";
+                $this->errors['error'] = "Invalid file type. Only JPG, JPEG, PNG ,Gif and Avif images are allowed";
                 $this->errors['error_no'] = 6;
                 return;
             }
@@ -194,6 +195,25 @@ class Event {
                 return ;
             }
     
+
+            if (empty($data['eventDate'])) {
+                $this->errors['flag'] = true;
+                $this->errors['error'] = "Event date is required";
+            } else {
+                // Convert the event date to a timestamp
+                $eventDate = DateTime::createFromFormat('Y-m-d', $data['eventDate']);
+                $today = new DateTime('today'); // Today's date
+            
+                if (!$eventDate) {
+                    // Invalid date format
+                    $this->errors['error'] = "Invalid date format. Please use YYYY-MM-DD.";
+                } elseif ($eventDate <= $today) {
+                    // Event date must be in the future
+                    $this->errors['flag'] = true;
+                    $this->errors['error'] = "Event date must be in the future";
+                    $this->errors['error_no'] = 6;
+                }
+            }
     
             
     
@@ -203,6 +223,30 @@ class Event {
                 $this->errors['error_no'] = 3;
             }
     
+
+            if (empty($data['start_time'])) {
+                $this->errors['flag'] = true;
+                $this->errors['error'] = "Start time is required";
+                $this->errors['error_no'] = 7;
+            } elseif (empty($data['end_time'])) {
+                $this->errors['flag'] = true;
+                $this->errors['error'] = "End time is required";
+                $this->errors['error_no'] = 8;
+            } else {
+                // Convert times to DateTime objects for comparison
+                $startTime = $data['start_time'] ;//DateTime::createFromFormat('H:i', $data['start_time']);
+                $endTime = $data['end_time']; //DateTime::createFromFormat('H:i', $data['end_time']);
+            
+                if (!$startTime || !$endTime) {
+                    $this->errors['flag'] = true;
+                    $this->errors['error'] = "Invalid time format. Use HH:MM.";
+                    $this->errors['error_no'] = 9;}
+                // } elseif ($startTime<= $endTime) {
+                //     $this->errors['flag'] = true;
+                //     $this->errors['error'] = "Start time must be earlier than the end time";
+                //     $this->errors['error_no'] = 10;
+                // }      
+            }
     
             
     
@@ -214,7 +258,10 @@ class Event {
         } 
         
         public function validProcessingEventUpdate($data) {
+
             $this->errors = [];
+            
+
     
             //flage mean errors include
     
@@ -224,6 +271,19 @@ class Event {
                 $this->errors['error_no'] = 1;
                 return ;
             }
+
+            
+            $today = new DateTime('today'); 
+            $todayFormatted = $today->format('Y-m-d');
+            
+            if ($data['eventDate'] <= $todayFormatted) {
+                $this->errors['flag'] = true;
+                $this->errors['error'] = "Event date must be in the future";
+                $this->errors['error_no'] = 6;
+            }
+            
+    
+            
     
             if (empty($data['audience'])) {
                 $this->errors['flag'] = true;
@@ -231,6 +291,30 @@ class Event {
                 $this->errors['error_no'] = 3;
             }
     
+
+            if (empty($data['start_time'])) {
+                $this->errors['flag'] = true;
+                $this->errors['error'] = "Start time is required";
+                $this->errors['error_no'] = 7;
+            } elseif (empty($data['end_time'])) {
+                $this->errors['flag'] = true;
+                $this->errors['error'] = "End time is required";
+                $this->errors['error_no'] = 8;
+            } else {
+                // Convert times to DateTime objects for comparison
+                $startTime = $data['start_time'] ;//DateTime::createFromFormat('H:i', $data['start_time']);
+                $endTime = $data['end_time']; //DateTime::createFromFormat('H:i', $data['end_time']);
+            
+                if (!$startTime || !$endTime) {
+                    $this->errors['flag'] = true;
+                    $this->errors['error'] = "Invalid time format. Use HH:MM.";
+                    $this->errors['error_no'] = 9;}
+                // } elseif ($startTime<= $endTime) {
+                //     $this->errors['flag'] = true;
+                //     $this->errors['error'] = "Start time must be earlier than the end time";
+                //     $this->errors['error_no'] = 10;
+                // }      
+            }
     
             
     
@@ -239,6 +323,7 @@ class Event {
             }
     
             return false;
+
         } 
 
     //get events details for eventplanner dashboard which are created by him
@@ -439,6 +524,7 @@ class Event {
                         e.start_time, 
                         e.address, 
                         e.createdBy, 
+                        e.created_at,
                         e.cover_images, 
                         e.status,
                         u.id AS user_id, 

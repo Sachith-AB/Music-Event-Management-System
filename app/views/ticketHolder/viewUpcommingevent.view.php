@@ -1,4 +1,5 @@
-
+<?php require_once '../app/helpers/load_notifications.php'; ?>
+<?php include ('../app/views/components/header.php'); ?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -17,10 +18,10 @@
     <link rel="stylesheet" href="<?= ROOT ?>/assets/css/backbutton.css">
 
 </head>
-<bo>
+<body>
     <?php include ('../app/views/components/loading.php'); ?>
     <?php $purchaseid = $_GET['purchaseid'];
-    $email = $_GET['email']
+    $email = $_GET['email'];
 
     ?>
     <!-- headersection -->
@@ -104,14 +105,24 @@
         </div>
 
         <div class="lowersec">
-                    <?php
-                    $coverImages = json_decode($data['event']->cover_images, true);
-                    $firstImage = $coverImages[0] ?? ''; // fallback if empty
-                    ?>
-                    <img src="<?= ROOT ?>/assets/images/events/<?php echo $firstImage ?>" alt="Concert Image" class="concert-img">
-            <!-- <div class="play-button">
-                <span>&#9654;</span> Play Icon
-            </div> -->
+            <?php
+                $coverImages = json_decode($data['event']->cover_images, true);
+            ?>
+
+            <div class="slider-container">
+                <?php if (!empty($coverImages)): ?>
+                    <?php foreach ($coverImages as $image): ?>
+                        <?php echo $image ?>
+                        <div class="slide">
+                            <img src="<?= ROOT ?>/assets/images/events/<?= htmlspecialchars($image) ?>" alt="Concert Image" class="concert-img">
+                        </div>
+                    <?php endforeach; ?>
+                <?php else: ?>
+                    <div class="slide">
+                        <img src="<?= ROOT ?>/assets/images/events/default.jpg" alt="Default Image" class="concert-img">
+                    </div>
+                <?php endif; ?>
+            </div>
         </div>
     </div>
 
@@ -246,8 +257,30 @@
         <?php include ('../app/views/components/review.php'); ?>
     </div>
 
-     
 </body>
 
 </html>
 <?php include ('../app/views/components/footer.php'); ?>
+
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        const slides = document.querySelectorAll('.slide');
+        let currentSlide = 0;
+
+        function showSlide(index) {
+            slides.forEach((slide, i) => {
+                slide.classList.toggle('active', i === index);
+            });
+        }
+
+        function nextSlide() {
+            currentSlide = (currentSlide + 1) % slides.length;
+            showSlide(currentSlide);
+        }
+
+        if (slides.length > 0) {
+            showSlide(currentSlide);
+            setInterval(nextSlide, 3000); // Change image every 3 seconds
+        }
+    });
+</script>

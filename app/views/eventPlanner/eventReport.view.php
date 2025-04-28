@@ -9,15 +9,21 @@
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <script src="<?= ROOT ?>/assets/js/eventplanner/complete.js" defer></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="stylesheet" href="<?= ROOT ?>/assets/css/backbutton.css">
 </head>
 <body>
-    <h1>Event Report</h1>
+    <div class="back-button">
+        <!-- Include Back Button Component -->
+        <?php include('../app/views/components/backbutton.view.php'); ?>
+        <h1 class="usertext">Event Report</h1>
+    </div>
+    
+    
     <div class="pdf-container">
         <div class="section-container">
             <h2>Completed Events</h2>
 
-             
-             <div class="filter-controls">
+            <div class="filter-controls">
                 <div class="filter-group">
                     <label for="pastMonth">Month:</label>
                     <select id="pastMonth" onchange="filterPastEvents()">
@@ -91,7 +97,7 @@
     <button class="print-button" onclick="print()"><i class="fa-solid fa-download"></i></button>
 
     <script>
-         function filterPastEvents() {
+        function filterPastEvents() {
             const month = document.getElementById('pastMonth').value;
             const year = document.getElementById('pastYear').value;
             

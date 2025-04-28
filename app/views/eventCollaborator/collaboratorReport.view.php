@@ -1,5 +1,9 @@
-<?php require_once '../app/helpers/load_notifications.php'; ?>
-<?php include ('../app/views/components/header.php'); ?>
+<?php require_once '../app/helpers/load_notifications.php';
+
+$error = esc($_GET['error'] ?? '');
+
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -17,22 +21,24 @@
 <body>
 
 <div class="pdf-container">
-    <?php include('../app/views/components/backbutton.view.php'); ?>
-    <div class="date-range">
-
-        <form method = "POST" >
-            <label for= "from" >From : </label>
-            <input type="date" id = "from" name = "start-date" value = "<?php echo htmlspecialchars($_POST['start-date'] ?? '', ENT_QUOTES); ?>" required>
-
-            <label for= "to" >   To : </label>
-            <input type="date" id = "to" name = "end-date" value = "<?php echo htmlspecialchars($_POST['end-date'] ?? '', ENT_QUOTES); ?>" required> <br><br>
-
-            <button name = "generate-report" class = "submit-btn" type="submit">Generate report</button>
-
-        </form>
+    <div class="back-button">
+        <?php include('../app/views/components/backbutton.view.php'); ?>
+        
+        <h1 class="usertext">Event Collaborator Report</h1>
     </div>
+            <div class="date-range">
 
-            <h1>Event Collaborator Report</h1>
+                <form method = "POST" >
+                    <label for= "from" >From : </label>
+                    <input type="date" id = "from" name = "start-date"  value = "<?php echo htmlspecialchars($_POST['start-date'] ?? date('Y-m-d'), ENT_QUOTES); ?>" required>
+
+                    <label for= "to" >   To : </label>
+                    <input type="date" id = "to" name = "end-date"  value = "<?php echo htmlspecialchars($_POST['end-date'] ?? date('Y-m-d'), ENT_QUOTES); ?>" required> <br><br>
+
+                    <button name = "generate-report" class = "submit-btn" type="submit">Generate report</button>
+
+                </form>
+            </div>
 
             <h2>Event Requests by Collaborator</h2>
 
@@ -73,14 +79,14 @@
 
                                 <?php if (!$singerExists): ?>
                                     <tr>
-                                        <td colspan="5">No requests yet</td>
+                                        <td colspan="5">No requests </td>
                                     </tr>
                                 <?php endif; ?>
 
                         <?php else: ?>
 
                                 <tr>
-                                        <td colspan="5">No requests yet</td>
+                                        <td colspan="5">No requests </td>
                                 </tr>
 
                         <?php endif; ?>
@@ -139,7 +145,7 @@
 
                                     <tbody>
                                         <tr>
-                                            <td colspan="5">No requests yet</td>
+                                            <td colspan="5">No requests </td>
                                         </tr>
                                     </tbody>
 
@@ -149,7 +155,7 @@
 
                                 <tbody>
                                     <tr>
-                                        <td colspan="5">No requests yet</td>
+                                        <td colspan="5">No requests </td>
                                     </tr>
                                 </tbody>
 
@@ -208,7 +214,7 @@
                                 <?php if (!$soundExists): ?>
                                     <tbody>
                                         <tr>
-                                            <td colspan="5">No requests yet</td>
+                                            <td colspan="5">No requests </td>
                                         </tr>
                                     </tbody>
                                 <?php endif; ?>
@@ -217,7 +223,7 @@
 
                                     <tbody>
                                         <tr>
-                                            <td colspan="5">No requests yet</td>
+                                            <td colspan="5">No requests </td>
                                         </tr>
                                     </tbody>
 
@@ -276,7 +282,7 @@
 
                                         <tbody>
                                             <tr>
-                                                <td colspan="5">No requests yet</td>
+                                                <td colspan="5">No requests </td>
                                             </tr>
 
                                         </tbody>
@@ -287,7 +293,7 @@
 
                                 <tbody>
                                     <tr>
-                                        <td colspan="5">No requests yet</td>
+                                        <td colspan="5">No requests </td>
                                     </tr>
 
                                 </tbody>
@@ -349,7 +355,7 @@
 
                                         <tbody>
                                             <tr>
-                                                <td colspan="5">No requests yet</td>
+                                                <td colspan="5">No requests </td>
                                             </tr>
 
                                         </tbody>
@@ -360,7 +366,7 @@
                                       
                                         <tbody>
                                             <tr>
-                                                <td colspan="5">No requests yet</td>
+                                                <td colspan="5">No requests </td>
                                             </tr>
 
                                         </tbody>
@@ -417,7 +423,7 @@
 
                                         <tbody>
                                             <tr>
-                                                <td colspan="5">No requests yet</td>
+                                                <td colspan="5">No requests </td>
                                             </tr>
 
                                         </tbody>
@@ -429,7 +435,7 @@
 
                             <tbody>
                                 <tr>
-                                    <td colspan="5">No requests yet</td>
+                                    <td colspan="5">No requests </td>
                                 </tr>
 
                             </tbody>
@@ -487,7 +493,7 @@
 
                                 <tbody>
                                     <tr>
-                                        <td colspan=6>No requests yet</td>
+                                        <td colspan=6>No requests </td>
                                     </tr>
                                     
                                 </tbody>
@@ -505,6 +511,24 @@
     <button class = "print-button" onclick="print()"><i class="fa-solid fa-download"></i></button>
 
 
+    <?php if($error != ''): ?>
+        <?php 
+            $message = $error;
+            include("../app/views/components/r-message.php")
+        ?>
+    <?php endif ?>
+
+    <script>
+        if (window.history.replaceState) {
+            const url = new URL(window.location);
+            url.searchParams.delete('flag');
+            url.searchParams.delete('error');
+            url.searchParams.delete('error_no');
+            window.history.replaceState(null, '', url.toString());
+        }
+    </script>
+
+    
         <script>
             function print() {
                 const pdfContainer = document.querySelector('.pdf-container'); 
@@ -525,4 +549,3 @@
         </script>
     
 </body>
-<?php include ('../app/views/components/footer.php'); ?>

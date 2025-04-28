@@ -15,9 +15,9 @@
         $error = htmlspecialchars($_GET['msg'] ?? '');
     ?>
     
-    <div class="main-content">
-        <div class="page-content">
-            <h1 class="head1">Edit profile</h1>
+    <div class="up-main">
+        <div class="up-container">
+            <h1 class="up-title">Edit profile</h1>
             <div class="profile-pic-content">
                 <h3 class="head2">Profile Photo</h3>
                 <div class="pic-image">

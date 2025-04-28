@@ -8,7 +8,7 @@
         {
             $question = new Question();
             $data = $question->getQuestions();
-            $this->view('footer/askQuestionAdmin', $data);
+            $this->view('footer/askQuestionAdmin', $data,false);
         }
 
         public function getQuestions() {

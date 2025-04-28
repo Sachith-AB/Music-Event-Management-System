@@ -116,14 +116,16 @@
         <h2 class="content-header"><br>Scheduled Events</h2>
         <div class="events-container">
             <?php if(!empty($data['scheduled'])): ?>
+                
                 <?php 
                     $maxEventsScheduled = $showMoreScheduled ? count($data['scheduled']) : 6;
                     $eventsDisplayedScheduled = 0;
 
-                    usort($data['scheduled'], function($a, $b) {
-                        return strtotime($a->created_at) - strtotime($b->created_at);
-                    });
-
+                    if(!empty($data['scheduled']) && is_array($data['scheduled'])) {
+                        usort($data['scheduled'], function($a, $b) {
+                            return strtotime($a->eventDate) - strtotime($b->eventDate);
+                        });
+                    }
                     foreach($data['scheduled'] as $event): 
                         if ($eventsDisplayedScheduled >= $maxEventsScheduled) break;
                                     $eventsDisplayedScheduled++;
@@ -253,8 +255,8 @@
                 justify-content: center; align-items: center; z-index: 1000;">
                 <div style="background: white; padding: 20px; border-radius: 8px; text-align: center;">
                         <p class="confirm-message">Are you sure you want to delete this event?</p>
-                        <button class="confirm-btn submit-btn" onclick="submitConfirmedForm()">Submit</button>
-                        <button class="confirm-btn cancel-btn" onclick="closeModal()">Cancel</button>
+                        <button class="confirm-btn submit-btn" onclick="submitConfirmedForm()">Yes</button>
+                        <button class="confirm-btn cancel-btn" onclick="closeModal()">No</button>
                 </div>
             </div>
 
@@ -285,4 +287,5 @@
             </script>
 
 </body>
+<?php include ('../app/views/components/footer.php'); ?>
 </html>

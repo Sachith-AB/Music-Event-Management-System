@@ -7,9 +7,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Privacy Policy - Music Event Management System</title>
     <link rel="stylesheet" href="<?= ROOT ?>/assets/css/privacy.css">
+    <link rel="stylesheet" href="<?= ROOT ?>/assets/css/backbutton.css">
 </head>
 <body>
     <div class="container">
+            <!-- Include Back Button Component -->
+            <?php include('../app/views/components/backbutton.view.php'); ?>
         <h1>Privacy Policy</h1>
         <p class="last-updated">Last Updated: March 2024</p>
 

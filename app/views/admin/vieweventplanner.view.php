@@ -221,4 +221,5 @@
     </script>
     <script src="<?=ROOT?>/assets/js/eventPlanner.js"></script>
 </body>
+<?php include ('../app/views/components/footer.php'); ?>
 </html>

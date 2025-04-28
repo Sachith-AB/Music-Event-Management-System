@@ -17,7 +17,7 @@
                 //redirect('askQuestion');
             }
 
-            $this->view('footer/askQuestion', $data);
+            $this->view('footer/askQuestion', $data,false);
         }
 
         private function askQuestion($POST){

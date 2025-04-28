@@ -29,8 +29,12 @@
                         <!-- Include Back Button Component -->
                         <?php include('../app/views/components/backbutton.view.php'); ?>
                     </div>
-                    
-                    <span><?= htmlspecialchars($ticketdetails[0]->event_name) ?></span>: <?= htmlspecialchars($ticketdetails[0]->event_description) ?>
+                    <span><?= htmlspecialchars($ticketdetails[0]->event_name)?>:</span>
+
+                    <?php
+                        $description = $ticketdetails[0]->event_description;
+                        echo strlen($description) > 50 ? substr($description, 0, 50) . '...' : $description;
+                    ?>
                 </h1>
                 <div class="event-info">
                     <div class="event-item">
@@ -70,7 +74,7 @@
                         </div>
                         <div class="input-field">
                             <label for="last-name">Last name</label>
-                            <input type="text" id="last-name" name="last-name" placeholder="">
+                            <input type="text" id="last-name" name="last-name" placeholder="" value="<?= htmlspecialchars($_SESSION['USER']->last_name)?>">
                         </div>
                     </div>
 
@@ -81,15 +85,16 @@
                         </div>
                         <div class="input-field">
                             <label for="phone">Phone number</label>
-                            <input type="tel" id="phone" name="phone" placeholder="07********">
+                            <input type="tel" value="<?= htmlspecialchars($_SESSION['USER']->contact) ?>" id="phone" name="phone" placeholder="07********">
                         </div>
                     </div>
-                    <div class="checkbox-group">
+
+                    <!-- <div class="checkbox-group">
                         <label><input type="checkbox" name="updates" checked> Keep me updated on this event</label>
                         <label><input type="checkbox" name="agree" checked> I agree with the <a href="#">Terms of Use</a> & <a href="#">Privacy Policy</a></label>
-                    </div>
+                    </div> -->
+
                 </div>
-             
 
                 <!-- Ticket section -->
                 <div class="event-details-container">

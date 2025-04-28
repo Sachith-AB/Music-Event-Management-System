@@ -15,6 +15,12 @@
     <div class="dash-container">
         <!-- Sidebar -->
         <?php include ('../app/views/components/eventPlanner/dashsidebar.php');  ?>
+        <?php 
+            // Filter events where start_time is in 2025
+            $events2025 = array_filter($events, function($event) {
+                return date('Y', strtotime($event->start_time)) == 2025;
+            });
+        ?>
 
         <?php if (!empty($events)): ?>
             <div class="dashboard">
