@@ -1,6 +1,11 @@
 <div class="recent-events-row">
 <?php
-foreach ($recentEvents as $event):
+    $today = date('Y-m-d');
+    $futureEvents = array_filter($recentEvents, function($event) use ($today) {
+        return $event->eventDate >= $today; // Strictly after today
+    });
+
+foreach ($futureEvents as $event):
     $startDate = date('D, M d', strtotime($event->start_time));
     $startTime = date('g:i A', strtotime($event->start_time));
     $endDate = date('D, M d', strtotime($event->end_time));
@@ -11,7 +16,7 @@ foreach ($recentEvents as $event):
     //     ? ROOT . '/assets/images/events/' . $event->cover_images
     //     : ROOT . '/assets/images/landing/top1.png';
         $imgSrc = ROOT . '/assets/images/events/' . $firstImage;
-    $priceText = ($event->pricing === 'free' || empty($event->pricing)) ? 'Free' : 'From LKR 5000';
+        $priceText = $event->ticketPrice;
 ?>
     <div class="next-event-card" onclick="location.href='<?= ROOT ?>/view-event?id=<?= $event->id ?>'">
         <div class="next-event-image-wrapper">
@@ -30,7 +35,7 @@ foreach ($recentEvents as $event):
                 <p class="next-event-venue"><?= htmlspecialchars($event->address) ?></p>
             </div>
             <div class="next-event-pricing">
-                <p class="next-event-price"><?= $priceText ?></p>
+                <p class="next-event-price">LKR <?= $priceText ?></p>
             </div>
         </div>
     </div>
@@ -97,7 +102,7 @@ foreach ($recentEvents as $event):
 .next-event-title {
     margin: 0 0 8px;
     font-size: 18px;
-    color: #333;
+    color: #00BDD6FF;
 }
 
 .next-event-details {
@@ -118,6 +123,7 @@ foreach ($recentEvents as $event):
 .next-event-pricing .next-event-price {
     font-size: 16px;
     font-weight: bold;
-    color: #2c3e50;
+    color: #00BDD6FF;
+    margin-top: 20px;
 }
 </style>

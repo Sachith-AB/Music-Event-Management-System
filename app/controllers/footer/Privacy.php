@@ -6,6 +6,7 @@
 
         public function index()
         {
-            $this->view('footer/privacy');
+            $data = [];
+            $this->view('footer/privacy',$data,false);
         }
     }

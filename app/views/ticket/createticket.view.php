@@ -60,7 +60,7 @@
 
                     <div class="form-group">
                         <label for="quantity">Quantity</label>
-                        <input type="number" id="quantity" name="quantity">
+                        <input type="number" id="quantity" name="quantity" min="0">
                     </div>
 
                     <div class="form-group">

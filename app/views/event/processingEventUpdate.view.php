@@ -26,7 +26,7 @@
                 <h1 class="event-update-head1">Update Event Details</h1>
 
                 <!--Event Details -->
-                <form method="POST" class="form">
+                <form method="POST" class="form" enctype="multipart/form-data">
                     
                     <div class="event-update-input-wrap">
                         <label for="event-name">Event Name </label>
@@ -83,6 +83,31 @@
                     <input type="hidden" id="hidden-end-time" name="end_time">
                     <input type="hidden" id="hidden-event-id" name="id" value="<?php echo $data['event']['id'] ?>">
 
+                    <div class="event-update-input-wrap">
+                        <?php if(isset($data['event']['cover_images']) && !empty($data['event']['cover_images'])): ?>
+                            <div class="existing-images">
+                                <h4>Cover Images</h4>
+                                <div class="image-grid">
+                                    <?php 
+                                    $images = json_decode($data['event']['cover_images'], true) ?: [];
+                                    foreach($images as $index => $image): 
+                                    ?>
+                                        <div class="image-item">
+                                            <img src="<?=ROOT?>/assets/images/events/<?=$image?>" alt="Event Image <?=$index+1?>">
+                                        </div>
+                                    <?php endforeach; ?>
+                                </div>
+                            </div>
+                        <?php endif; ?>
+                        
+                        <div class="upload-new">
+                            <h4>Upload New Images</h4>
+                            <div class="form-group">
+                                <input type="file" name="coverImage[]" id="coverImage" multiple accept="image/*" onchange="previewImages(this)">
+                                <div id="imagePreviewContainer" class="image-preview-container"></div>
+                            </div>
+                        </div>
+
                     <script src="<?= ROOT ?>/assets/js/event/processingEventUpdate.js"></script>
 
                     <!--Action Buttons -->
@@ -101,7 +126,7 @@
             $message = $data['error']['errors']['error'];
             include("../../app/views/components/r-message.php");
         ?>
-   
+
     <?php endif ?>
 
     <script>
@@ -189,6 +214,40 @@
             }
         });
         window.onload = initMap;
+    </script>
+
+<script>
+        function previewImages(input) {
+            var previewContainer = document.getElementById('imagePreviewContainer');
+            previewContainer.innerHTML = '';
+            
+            if (input.files) {
+                // Limit to 5 images
+                var filesCount = Math.min(input.files.length, 5);
+                
+                for (var i = 0; i < filesCount; i++) {
+                    var reader = new FileReader();
+                    
+                    reader.onload = function(e) {
+                        var previewDiv = document.createElement('div');
+                        previewDiv.style.margin = '5px';
+                        previewDiv.style.position = 'relative';
+                        
+                        var img = document.createElement('img');
+                        img.src = e.target.result;
+                        img.style.width = '100px';
+                        img.style.height = '100px';
+                        img.style.objectFit = 'cover';
+                        img.style.borderRadius = '4px';
+                        
+                        previewDiv.appendChild(img);
+                        previewContainer.appendChild(previewDiv);
+                    }
+                    
+                    reader.readAsDataURL(input.files[i]);
+                }
+            }
+        }
     </script>
 
     <script src="<?=ROOT?>/assets/js/message.js"></script>

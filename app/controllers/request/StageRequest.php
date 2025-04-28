@@ -9,7 +9,7 @@ class StageRequest {
         $request = new Request;
         $event = new Event;
         $calendar = new Calendar;
-        $notificaton = new Notification;
+        $notification = new Notification;
 
         $data = [];
 

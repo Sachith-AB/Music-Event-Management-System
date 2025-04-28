@@ -1,7 +1,8 @@
 <?php require_once '../app/helpers/load_notifications.php'; ?>
 <?php include ('../app/views/components/header.php'); 
 
-         $error = esc($_GET['error'] ?? '');
+    $error = esc($_GET['error'] ?? '');
+
 ?>
 
 <!DOCTYPE html>
@@ -32,7 +33,7 @@
                     </form>
                 </div>
 
-                <!-- Singers Section -->
+                <!-- Announcers Section -->
                 <section class="singers-section">
 
                 <?php if(empty($data)): ?>
@@ -40,14 +41,14 @@
                 <?php endif ?>
                     
                     <div class="singers-grid">
-                        <?php foreach ($data['users'] as $singer): ?>
+                        <?php foreach ($data['users'] as $announcer): ?>
             <?php 
-                // Initialize a variable to store the request status for this singer
+                // Initialize a variable to store the request status for this announcer
                 $requestStatus = null;
                 
-                // Loop through the requests to find one that matches the singer
+                // Loop through the requests to find one that matches the announcer
                 foreach ($data['requests'] as $request) {
-                    if ($request->collaborator_id == $singer->id) {
+                    if ($request->collaborator_id == $announcer->id) {
                         $requestStatus = $request->Status;
                         break; // Exit loop once the matching request is found
                     }
@@ -55,22 +56,22 @@
             ?>
 
             <div class="singer-card">
-                <img src="<?=ROOT?>/assets/images/user/<?php echo $singer->pro_pic ?>" alt="Singer">
-                <h3><?php echo $singer->name ?></h3>
-                <p>Music Genre</p>
+                <img src="<?=ROOT?>/assets/images/user/<?php echo $announcer->pro_pic ?>" alt="Announcer">
+                <h3><?php echo $announcer->name ?></h3>
+                <p><?php echo $announcer->music_genres ?></p>
                 <div class="button-wrapper">
-                    <a href="collaborator-viewprofile?id=<?php echo $singer->id ?>" class="profile">Profile</a>
+                    <a href="collaborator-viewprofile?id=<?php echo $announcer->id ?>" class="profile">Profile</a>
                     <!-- <button class="profile">View</button> -->
                     <form method="POST">
                         <input name="event_id" type="hidden" value="<?= htmlspecialchars($_GET["id"]) ?>">
-                        <input name="collaborator_id" type="hidden" value="<?php echo $singer->id ?>">
-                        <input name="role" type="hidden" value="<?php echo $singer->user_role ?>">
+                        <input name="collaborator_id" type="hidden" value="<?php echo $announcer->id ?>">
+                        <input name="role" type="hidden" value="<?php echo $announcer->user_role ?>">
                         <input type="hidden" name="Status" value="pending">
                         <input type="hidden" name="req_id" value="<?php echo isset($request->id) ? $request->id : 0; ?>">
 
                         
                         <?php if ($requestStatus === null): ?>
-                            <!-- Show "Request" button if no request exists for this singer -->
+                            <!-- Show "Request" button if no request exists for this announcer -->
                             <button name="request" type="submit" class="request">Request</button>
                         <?php elseif ($requestStatus === 'pending'): ?>
                             <!-- Show "Cancel Request" button if the request is pending -->

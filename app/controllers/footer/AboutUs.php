@@ -1,11 +1,14 @@
 <?php
 
+use Twilio\Security\RequestValidator;
+
     class AboutUs {
 
         use Controller;
 
         public function index()
         {
-            $this->view('footer/aboutUs');
+            $data = [];
+            $this->view('footer/aboutUs',$data,false);
         }
     }
