@@ -110,6 +110,5 @@ class SingerRequest {
     private function checkAvailability($calendar, $user_id, $event_date) {
         return $calendar->getAvailability($user_id, $event_date);
     }  
-    
 
 }

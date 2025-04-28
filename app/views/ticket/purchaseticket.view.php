@@ -70,7 +70,7 @@
                         </div>
                         <div class="input-field">
                             <label for="last-name">Last name</label>
-                            <input type="text" id="last-name" name="last-name" placeholder="">
+                            <input type="text" id="last-name" name="last-name" placeholder="" value="<?= htmlspecialchars($_SESSION['USER']->last_name)?>">
                         </div>
                     </div>
 
