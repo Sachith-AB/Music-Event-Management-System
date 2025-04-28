@@ -63,7 +63,7 @@ class Event {
         }
 
         // Validate each image
-        $allowedTypes = ['image/jpeg', 'image/png', 'image/jpg', 'image/gif'];
+        $allowedTypes = ['image/jpeg', 'image/png', 'image/jpg', 'image/avif', 'image/gif'];
         $maxFileSize = 5 * 1024 * 1024; 
 
         for ($i = 0; $i < $imageCount; $i++) {
@@ -76,7 +76,7 @@ class Event {
 
             if (!in_array($fileType, $allowedTypes)) {
                 $this->errors['flag'] = true;
-                $this->errors['error'] = "Invalid file type. Only JPG, JPEG, PNG and GIF images are allowed";
+                $this->errors['error'] = "Invalid file type. Only JPG, JPEG, PNG ,Gif and Avif images are allowed";
                 $this->errors['error_no'] = 6;
                 return;
             }
@@ -323,7 +323,7 @@ class Event {
             }
     
             return false;
-           
+
         } 
 
     //get events details for eventplanner dashboard which are created by him

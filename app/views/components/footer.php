@@ -15,13 +15,13 @@
         <div class="box">
         <h3>EXTRA LINKS</h3>
         <?php if(isset($_SESSION['USER']) && $_SESSION['USER']->is_admin): ?>
-            <a href="<?=ROOT?>/ask-question-admin"><i class="fas fa-angle-right"></i>Ask Questions</a>
+            <a href="ask-question-admin"><i class="fas fa-angle-right"></i>Ask Questions</a>
         <?php else: ?>
-            <a href="<?=ROOT?>/ask-question"><i class="fas fa-angle-right"></i>Ask Questions</a>
+            <a href="ask-question"><i class="fas fa-angle-right"></i>Ask Questions</a>
         <?php endif; ?>
-            <a href="<?=ROOT?>/about-us"><i class="fas fa-angle-right"></i>About Us</a>
-            <a href="<?=ROOT?>/privacy"><i class="fas fa-angle-right"></i>Privacy Policy</a>
-            <a href="<?=ROOT?>/terms-of-use"><i class="fas fa-angle-right"></i>Terms of Use</a>
+            <a href="about-us"><i class="fas fa-angle-right"></i>About Us</a>
+            <a href="privacy"><i class="fas fa-angle-right"></i>Privacy Policy</a>
+            <a href="terms-of-use"><i class="fas fa-angle-right"></i>Terms of Use</a>
         </div>
 
 

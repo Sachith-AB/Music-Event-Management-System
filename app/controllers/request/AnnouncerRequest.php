@@ -64,9 +64,7 @@ class AnnouncerRequest {
     public function createRequest($request)
     {
 
-    $res =  $request->insert($_POST);
-    unset($_POST);
-    //return $res;
+    $request->insert($_POST);
 
     }
 

@@ -22,7 +22,7 @@
     width: 100%;
 }
 .dash-content-eventplannerview{
-   gap: 10px;
+    gap: 10px;
     margin: 0px auto;
     padding: 70px;
     width: 100%;
@@ -132,7 +132,6 @@
 } */
 .dashboard {
     width: 100%;
-    max-width: 1200px;
     background-color: #fff;
     padding: 20px;
     border-radius: 8px;
@@ -612,6 +611,8 @@ table th, table td {
     text-transform: uppercase;
     letter-spacing: 0.5px;
 }
+
+
 
 .modern-table td {
     padding: 1rem;
