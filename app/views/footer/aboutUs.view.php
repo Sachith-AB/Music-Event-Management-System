@@ -54,9 +54,52 @@
         </section>
 
         <section class="team-section">
-            <h2>Our Team</h2>
-            
+            <h2>Development Team</h2>
+            <div class="team-grid">
+                <div class="team-member">
+                    <img src="<?= ROOT ?>/assets/images/logo/sachith.jpeg" alt="Team Member 1" onclick="showPopup(this.src)">
+                    <h3>Sachith Abeywardhana</h3>
+                    <p>2022/CS/006</p>
+                </div>
+
+                <div class="team-member">
+                    <img src="<?= ROOT ?>/assets/images/logo/irumi.jpeg" alt="Team Member 1" onclick="showPopup(this.src)">
+                    <h3>Irumi Abeywickrama</h3>
+                    <p>2022/CS/007</p>
+                </div>
+
+                <div class="team-member">
+                    <img src="<?= ROOT ?>/assets/images/logo/thevindu.jpeg" alt="Team Member 1" onclick="showPopup(this.src)">
+                    <h3>Thevindu Fernando</h3>
+                    <p>2022/CS/054</p>
+                </div>
+
+                <div class="team-member">
+                    <img src="<?= ROOT ?>/assets/images/logo/nethmi.jpeg" alt="Team Member 1" onclick="showPopup(this.src)">
+                    <h3>Nethmi Hapuarachchi</h3>
+                    <p>2022/CS/064</p>
+                </div>
+            </div>
         </section>
+
+        <!-- Image Popup -->
+        <div class="image-popup" onclick="hidePopup()">
+            <img src="" alt="Popup Image">
+        </div>
+
+        <script>
+            function showPopup(imageSrc) {
+                const popup = document.querySelector('.image-popup');
+                const popupImg = popup.querySelector('img');
+                popupImg.src = imageSrc;
+                popup.classList.add('active');
+            }
+
+            function hidePopup() {
+                const popup = document.querySelector('.image-popup');
+                popup.classList.remove('active');
+            }
+        </script>
     </div>
 </body>
 </html>
