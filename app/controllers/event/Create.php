@@ -86,7 +86,7 @@ class Create {
             $error = $errors[$index];
             $size = $sizes[$index];
     
-            $max_size = 5 * 1024 * 1024; // 5MB in bytes
+            $max_size = 10 * 1024 * 1024; // 5MB in bytes
     
             if ($error === 0 && $size < $max_size) {
                 // Get image extension

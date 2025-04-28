@@ -159,7 +159,7 @@
           <div class="input-text"><?php echo $_SESSION['USER']->email ?? 'N/A'; ?></div>
         </div>
         <form method="POST"  class='buttons'>
-          <a href="colloborator-updateprofile" class="button button-1" type="button">Update Profile</a>
+          <a href="update-profile" class="button button-1" type="button">Update Profile</a>
           <button  class="button button-2" name="signOut" type="submit">Sign Out</button>
         </form>
       </div>
