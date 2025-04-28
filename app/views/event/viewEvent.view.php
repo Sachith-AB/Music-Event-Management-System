@@ -131,9 +131,7 @@
             <div class="image4">
                 <img src="<?=ROOT?>/assets/images/ticket/musicevent4.jpg" alt="Image 4" class="img">
             </div>
-            <div class="mid">
-                <div class="overlay-text">Recent<br>Photos</div>
-            </div>
+           
 
         </div>
         <!-- details section -->

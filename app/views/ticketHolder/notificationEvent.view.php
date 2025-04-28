@@ -1,6 +1,6 @@
+
 <?php require_once '../app/helpers/load_notifications.php'; ?>
 <?php include ('../app/views/components/header.php'); ?>
-
 <!DOCTYPE html>
 <html lang="en">
 
@@ -24,6 +24,10 @@
     <div class="headersection">
         <img src="<?=ROOT?>/assets/images/ticket/ticketevent-bg.jpg" alt="Musical Fusion Festival" class="headersection-img">
         <!-- <div class="overlay"></div>  -->
+         <?php
+         $success = htmlspecialchars($_GET['msg'] ?? '');
+         
+         ?>
         <div class="uppersec">
             <div>
                 <div class="eventname">
@@ -88,6 +92,9 @@
     <script>
         function gotodeletebuyticket(){
             window.location.href = "<?= ROOT ?>/delete-buyticket?id=<?= htmlspecialchars($_GET['id'])?>";
+        }
+        function respondToChange(){
+            window.location.href = "<?= ROOT ?>/notification-event?id=<?= htmlspecialchars($data['event']->id)?>"+"&note_id="+"<?= htmlspecialchars($note->id)?>"+"&msg="+"Thank you";
         }
     </script>
 
@@ -202,7 +209,12 @@
             </script>
         </div>
     </section>
-    
+    <?php if(!empty($success)):?>
+        <?php
+            $message = $success;
+            include ("../app/views/components/s-message.php")
+            ?>
+    <?php  endif ?>
 
     
 
@@ -213,6 +225,13 @@
             window.location.href = "<?=ROOT?>/admin-vieweventplanner?id="+userid;
         }
     </script>
+
+
+<script src="<?=ROOT?>/assets/js/message.js"></script>
+
+    <!-- Ionicons Scripts -->
+    <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+    <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
     
 </body>
 
