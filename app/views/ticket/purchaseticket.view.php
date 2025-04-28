@@ -84,12 +84,7 @@
                             <input type="tel" id="phone" name="phone" placeholder="07********">
                         </div>
                     </div>
-                    <div class="checkbox-group">
-                        <label><input type="checkbox" name="updates" checked> Keep me updated on this event</label>
-                        <label><input type="checkbox" name="agree" checked> I agree with the <a href="#">Terms of Use</a> & <a href="#">Privacy Policy</a></label>
-                    </div>
                 </div>
-             
 
                 <!-- Ticket section -->
                 <div class="event-details-container">
