@@ -57,6 +57,8 @@ if(getUserRole() == 'collaborator' || isAdmin()){
     route('send-message','eventCollaborator/Chat@sendMessage');
     route('get-messages','eventCollaborator/Chat@getMessages');
 
+    route('get-note','eventCollaborator/SingerEvents@getNote');
+
     route('privacy','footer/Privacy@index');
     route('terms-of-use','footer/TermsOfUse@index');
     route('about-us','footer/AboutUs@index');
