@@ -49,7 +49,7 @@ $_SESSION['last_visit'] = date('Y-m-d H:i:s');
                         <!-- Quantity field with prefilled value -->
                         <div class="form-group">
                             <label for="quantity">Quantity</label>
-                            <input type="number" id="quantity" name="quantity" value="<?= htmlspecialchars($ticket['ticket'][0]->quantity) ?>">
+                            <input type="number" id="quantity" name="quantity" min="0" value="<?= htmlspecialchars($ticket['ticket'][0]->quantity) ?>">
                         </div>
 
                         <!-- Price field with prefilled value -->

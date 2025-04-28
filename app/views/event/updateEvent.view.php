@@ -57,7 +57,7 @@ $_SESSION['last_visit'] = date('Y-m-d H:i:s');
 
                     <div class="event-update-input-wrap">
                         <label for="audience">Audience</label>
-                        <input name="audience" type="number" placeholder="Audience" value="<?php echo $data['event']['audience'] ?>">
+                        <input name="audience" type="number" placeholder="Audience" min="0" value="<?php echo $data['event']['audience'] ?>">
                     </div>
 
                     <div class="event-update-input-wrap">

@@ -5,7 +5,6 @@ class SingerRequest {
     use Controller;
     public function index() {
 
-
         $request = new Request;
         $calendar = new Calendar;
         $event = new Event;
@@ -24,13 +23,10 @@ class SingerRequest {
                 redirect('request-singers?id=' . $_POST['event_id'] . '&' . $errorParams);
             
             } else {
-                $this->createNotification($event,$notification,$_POST);
                 $this->createRequest($request);
-                $this->createNotification($event,$notification,$_POST);
+                $this->createNotification($event, $notification, $_POST);
             }
         }
-        
-        
 
         if($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['deleteRequest'])){
 

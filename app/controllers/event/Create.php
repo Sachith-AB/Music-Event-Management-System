@@ -94,7 +94,7 @@ class Create {
                 $img_ex_lc = strtolower($img_ex);
     
                 // Allowed image extensions
-                $allowed_exs = ["jpg", "jpeg", "png"];
+                $allowed_exs = ["jpg", "jpeg", "png","avif"];
     
                 if (in_array($img_ex_lc, $allowed_exs)) {
                     // Create a unique name for the image

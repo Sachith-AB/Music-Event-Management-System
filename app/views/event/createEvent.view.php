@@ -54,7 +54,7 @@ $_SESSION['last_visit'] = date('Y-m-d H:i:s');
                     </div>
                     <div class="form-group">
                         <label for="audience">Audience</label>
-                        <input type="number" id="audience" name="audience" class="form-control" />
+                        <input type="number" id="audience" name="audience" class="form-control" min="0"/>
                     </div>
                     <div class="form-group">
                         <label for="coverImage">Cover Images</label>
