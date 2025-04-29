@@ -34,9 +34,12 @@
                 </thead>
                 <tbody id="profitTableBody">
                     <?php foreach($data['administrative_fee'] as $fee): ?>
+                        <?php $fees =  htmlspecialchars(number_format($fee->administrative_fee, 2, '.', ',')); 
+                            $fees < 0 ? $fees = $fees * -1 : $fees = $fees * 1;
+                        ?>
                         <tr>
                             <td><?= htmlspecialchars($fee->event_name); ?></td>
-                            <td><?= htmlspecialchars(number_format($fee->administrative_fee, 2, '.', ',')); ?></td>
+                            <td>LKR <?= $fees; ?></td>
                             <td><?= htmlspecialchars((new DateTime($fee->updated_at))->format('Y-m-d')); ?></td>
                         </tr>
                     <?php endforeach; ?>
