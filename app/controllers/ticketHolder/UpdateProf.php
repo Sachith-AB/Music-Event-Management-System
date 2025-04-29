@@ -12,7 +12,7 @@ class UpdateProf {
 
         $id = $_SESSION['USER']->id;
         $row = $user->firstById($id);
-
+        $data['USER'] = $row;
         if($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['uploadImage']) && $_FILES['pro_pic']['name'] != ''){
             
             unset($_POST['uploadImage']);

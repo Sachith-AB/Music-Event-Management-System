@@ -33,7 +33,7 @@
                     <h3 class="up-subtitle">Profile Photo</h3>
                     <div class="up-avatar-section">
                         <div class="up-avatar">
-                            <img src="<?=ROOT?>/assets/images/user/<?php echo $_SESSION['USER']->pro_pic ?>" alt="Profile Picture">
+                            <img src="<?=ROOT?>/assets/images/user/<?php echo $data['USER']->pro_pic ?>" alt="Profile Picture">
                         </div>
                         <div class="up-avatar-text">
                             <p>Upload your photo</p>
@@ -53,19 +53,19 @@
                 <form method="POST" class="up-form">
 
                     <div class="up-input-wrap">
-                        <input name="name" type="text" placeholder="First Name" value="<?php echo $_SESSION['USER']->name ?>">
+                        <input name="name" type="text" placeholder="First Name" value="<?php echo $data['USER']->name ?>">
                     </div>
 
                     <div class="up-input-wrap">
-                        <input name="last_name" type="text" placeholder="Last Name" value="<?php echo $_SESSION['USER']->last_name ?>">
+                        <input name="last_name" type="text" placeholder="Last Name" value="<?php echo $data['USER']->last_name ?>">
                     </div>
 
                     <div class="up-input-wrap">
-                        <input name="email" type="email" placeholder="Email" value="<?php echo $_SESSION['USER']->email ?>">
+                        <input name="email" type="email" placeholder="Email" value="<?php echo $data['USER']->email ?>">
                     </div>
 
                     <div class="up-input-wrap">
-                        <input name="contact" type="text" placeholder="Contact Number" value="<?php echo $_SESSION['USER']->contact ?>">
+                        <input name="contact" type="text" placeholder="Contact Number" value="<?php echo $data['USER']->contact ?>">
                     </div>
 
                     <div class="up-button-group">

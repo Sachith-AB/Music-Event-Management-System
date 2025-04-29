@@ -71,8 +71,8 @@ class ForgotPassword {
         $mail->isSMTP();
         $mail->Host = 'smtp.gmail.com';
         $mail->SMTPAuth = true;
-        $mail->Username = 'irumiabeywickrama@gmail.com';
-        $mail->Password = 'diem tlif lxgm wgjx'; // Store securely
+        $mail->Username = 'musicia029cs@gmail.com';
+        $mail->Password = 'ozyo ewaj pcff mamo'; // Store securely
         $mail->SMTPSecure = PHPMailer\PHPMailer\PHPMailer::ENCRYPTION_SMTPS;
         $mail->Port = 465;
 
