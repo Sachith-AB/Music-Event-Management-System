@@ -85,7 +85,8 @@ class TicketController {
             unset($POST['add_another']);
             $ticket->insert($POST); 
             
-            redirect('view-tickets?event_id='.$event_id);
+            
+             redirect('view-tickets?event_id='.$event_id);
             }
             
         } else {
@@ -169,26 +170,26 @@ class TicketController {
 
     
     public function deleteTicket()
-{
-    $ticket = new Ticket;
+    {
+        $ticket = new Ticket;
 
-    // Get the ticket ID from POST data
-    $ticket_id = htmlspecialchars($_GET['ticket_id']?? null);
+        // Get the ticket ID from POST data
+        $ticket_id = htmlspecialchars($_GET['ticket_id']?? null);
 
-    $data = $ticket->getTicketAndEventDetails($ticket_id);
-    // show($data);
-    // Fetch the event ID associated with this ticket
-    $event_id = $ticket->getEventIdByTicketId($ticket_id);
+        $data = $ticket->getTicketAndEventDetails($ticket_id);
+        // show($data);
+        // Fetch the event ID associated with this ticket
+        $event_id = $ticket->getEventIdByTicketId($ticket_id);
 
-    if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['delete'])) {
-        // Delete the ticket
-        $ticket->delete($ticket_id);
+        if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['delete'])) {
+            // Delete the ticket
+            $ticket->delete($ticket_id);
 
-        // Use a redirect function to navigate to the view-tickets page with the event_id
-        redirect("view-tickets?event_id=" . $event_id);
+            // Use a redirect function to navigate to the view-tickets page with the event_id
+            redirect("view-tickets?event_id=" . $event_id);
+        }
+        $this->view('ticket/deleteticket', $data);
     }
-    $this->view('ticket/deleteticket', $data);
-}
 
 
 

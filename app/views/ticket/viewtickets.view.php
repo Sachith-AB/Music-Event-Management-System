@@ -67,6 +67,15 @@ $_SESSION['last_visit'] = date('Y-m-d H:i:s');
                                             <br />
                                             <span><?= htmlspecialchars($ticket->quantity) ?></span>
                                         </h3>
+                                        <h3>
+                                            Refund: 
+                                            <br />
+                                            <?php if($ticket->refund == 1) : ?>
+                                            <span>YES</span>
+                                            <?php else:?>
+                                            <span>No</span>
+                                            <?php endif ;?>
+                                        </h3>
                                     </div>
                                     <div class="action-btn">
                                         <button class="btn-btn-update" type="submit" onclick="goUpdate(<?= htmlspecialchars($ticket->id) ?>)">Update</button>

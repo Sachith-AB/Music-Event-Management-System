@@ -100,8 +100,10 @@ $_SESSION['last_visit'] = date('Y-m-d H:i:s');
                                 <?php else: ?>
                                     <p>No restrictions defined. Add new restrictions below:</p>
                                 <?php endif; ?>
-                                <button type="button" id="add-opportunity" name="add-opportunity" class="review-button">Add More Opportunities</button>
-                            </div>
+                                <?php if($ticket['ticket'][0]->ticket_type == "platinum"): ?>
+                                    <button type="button" id="add-opportunity" name="add-opportunity" class="review-button">Add More Opportunities</button>
+                                <?php endif; ?>
+                                </div>
                             <button type="submit" class="review-button" name="update">Review</button>
                         </div>
                     </div>

@@ -42,7 +42,13 @@
 
                     <div class="form-group">
                         <label for="ticket_type">Ticket Type</label>
-                        <input type="TEXT" id="type" name="ticket_type">
+                        <!-- <input type="TEXT" id="type" name="ticket_type"> -->
+                        <select name="ticket_type" id="user_role" required>
+                            <option value="platinum">Platinum</option>
+                            <option value="gold">Gold</option>
+                            <option value="silver">Silver</option>
+                            
+                        </select>
                     </div>
 
                     <div class="form-group">
@@ -63,6 +69,18 @@
                         <label for="price">Price</label>
                         <input type="number" id="price" name="price">
                     </div>
+
+                    <label for="price">Refund</label>
+                    <div class="radio-group">
+                            <div class="radio-item">
+                                <input type="radio" id="free" name="refund" value="1" >
+                                <label for="free">Yes</label>
+                            </div>
+                            <div class="radio-item">
+                                <input type="radio" id="paid" name="refund" value="0" >
+                                <label for="paid">No</label>
+                            </div>
+                        </div>
                     <div class="form-buttons">
                         <button type="submit" class="review-button" name="add_another">Add Another Type of Ticket</button>
                         <button type="submit" class="review-button" name="submit">Review</button>
