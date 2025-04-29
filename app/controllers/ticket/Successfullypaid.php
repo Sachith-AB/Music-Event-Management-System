@@ -14,7 +14,6 @@ class Successfullypaid {
 
         if($_SERVER['REQUEST_METHOD']==="POST" && isset ($_POST["submit"])){
             $this->sendEmail();
-            //show($_POST);
 
         }
 
@@ -42,14 +41,14 @@ class Successfullypaid {
             $mail->isSMTP();
             $mail->Host = 'smtp.gmail.com';
             $mail->SMTPAuth = true;
-            $mail->Username = 'irumiabeywickrama@gmail.com';
-            $mail->Password = 'diem tlif lxgm wgjx'; // Store this securely
+            $mail->Username = 'musicia029cs@gmail.com';
+            $mail->Password = 'ozyo ewaj pcff mamo'; // Store this securely
             $mail->SMTPSecure = PHPMailer\PHPMailer\PHPMailer::ENCRYPTION_SMTPS;
             $mail->Port = 465;
 
             // Set email details
-            $mail->setFrom('irumiabeywickrama@gmail.com', 'Musicia');
-            $mail->addAddress($_POST['email']);
+            $mail->setFrom('musicia029cs@gmail.com', 'Musicia');
+            $mail->addAddress($_SESSION['USER']->email);
 
             $mail->isHTML(true);
             $mail->Subject = "Your Ticket Purchase Details";

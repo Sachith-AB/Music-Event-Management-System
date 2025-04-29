@@ -77,7 +77,7 @@ class ForgotPassword {
         $mail->Port = 465;
 
         // Email headers
-        $mail->setFrom('irumiabeywickrama@gmail.com', 'Musicia');
+        $mail->setFrom('musicia029cs@gmail.com', 'Musicia');
         $mail->addAddress($recipientEmail);
 
         $mail->isHTML(true);

@@ -130,6 +130,14 @@
     
     <script src="<?=ROOT?>/assets/js/signin-up.js"></script>
     <script src="<?=ROOT?>/assets/js/message.js"></script>
-
+    <script>
+        if (window.history.replaceState) {
+            const url = new URL(window.location);
+            url.searchParams.delete('email');
+            url.searchParams.delete('pass');
+            url.searchParams.delete('error_no');
+            window.history.replaceState(null, '', url.toString());
+        }
+    </script>
 </body>
 </html>

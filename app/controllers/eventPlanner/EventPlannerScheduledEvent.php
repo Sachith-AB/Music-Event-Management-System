@@ -193,13 +193,13 @@ class EventPlannerScheduledEvent {
             $mail->isSMTP();
             $mail->Host = 'smtp.gmail.com';
             $mail->SMTPAuth = true;
-            $mail->Username = 'irumiabeywickrama@gmail.com';
-            $mail->Password = 'diem tlif lxgm wgjx'; // Store this securely
+            $mail->Username = 'musicia029cs@gmail.com';
+            $mail->Password = 'ozyo ewaj pcff mamo'; // Store this securely
             $mail->SMTPSecure = PHPMailer\PHPMailer\PHPMailer::ENCRYPTION_SMTPS;
             $mail->Port = 465;
 
             // Set email details
-            $mail->setFrom('irumiabeywickrama@gmail.com', 'Musicia');
+            $mail->setFrom('musicia029cs@gmail.com', 'Musicia');
 
             // Get event ID from GET parameter
             $event_id = htmlspecialchars($_GET['id']);
