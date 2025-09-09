@@ -103,7 +103,8 @@ Welcome to **Musicia**, a PHP MVC-based web application designed to revolutioniz
 
 ## 👥 Team  
 
-- **Sachith Abeywardhana**  
+- **Sachith Abeywardhana**
+- **Irumi Theekshana**
 - **Nethmi Hapuarachchi**  
 - **Thevindu Fernando**  
 
@@ -113,3 +114,4 @@ Welcome to **Musicia**, a PHP MVC-based web application designed to revolutioniz
 ---
 
 💡 We built **Musicia** with the shared vision of creating a **connected, vibrant music community in Sri Lanka**. 🎶  
+
